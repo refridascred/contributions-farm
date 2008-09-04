@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 4474;
-        public const long MaxCommand = 8049;
-        public const double BaseCommand = 83.9;
-        public const long IdleSpan = 6803;
-        public const string DefaultScore = "local-edge";
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Rank cluster schema input into a small class.</summary>
         public static long RankClusterSchema(long bound, long step)
