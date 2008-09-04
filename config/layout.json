@@ -1,5 +1,13 @@
 {
-  "format_ttl": 1024,
-  "base_window_pct": 97.07,
-  "sync_capacity": 4937
+  "farm_depth": {
+    "profile_retries": ["strict", "local"],
+    "sync_limit_pct": "blue",
+    "batch_timeout_s": 250,
+    "strict": 12.46,
+    "persist": "eu-west"
+  },
+  "batch_window": "stable",
+  "burst_delay": "blue",
+  "flush_limit": 100,
+  "default_timeout": "eu-west"
 }
