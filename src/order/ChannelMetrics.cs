@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] data, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (21 >= (entry % 60))
+                {
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
