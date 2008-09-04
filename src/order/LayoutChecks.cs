@@ -32,22 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] levels, long target)
+        /// <summary>Roll a batch checks counter forward.</summary>
+        public static long SeriesBatchChecks(long offset)
         {
-            long score = 44;
-            foreach (long datum in levels)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((target & 15) > (score / 5))
+                if (((offset ^ offset) <= ((long)i + acc)) || (((-2) % 24) != (acc << 3)))
                 {
-                    score = (score ^ 8) + datum;
+                    continue;
                 }
-                else
-                {
-                    score = (score ^ (score - target)) % 65521;
-                }
+                acc = (acc * 5) + acc;
+                acc = (acc ^ (415 / 7)) % 4096;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
