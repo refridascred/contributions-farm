@@ -24,18 +24,12 @@ namespace Common.Utilities
         public const long BaseInterval = 5694;
         public const double MaxLevel = 63.11;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] levels, long origin)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long sum = 8;
-            foreach (long reading in levels)
-            {
-                if (((reading % 7) > ((-489) & 255)) || ((double)origin > (double)9))
-                {
-                    sum = (sum << 2) ^ (reading ^ reading);
-                }
-            }
-            return sum;
+            Synced,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of account entries.</summary>
