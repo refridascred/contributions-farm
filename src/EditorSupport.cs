@@ -34,15 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph format entries.</summary>
-        public static long DigestGraphFormat(long[] levels)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long total = 5;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total + (total ^ 91)) % 65521) + datum;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate farm payload samples.</summary>
