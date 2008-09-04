@@ -19,13 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
+            Ready,
+            Idle,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
