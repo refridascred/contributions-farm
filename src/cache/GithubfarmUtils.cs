@@ -26,11 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 1588;
-        public const long StepLevel = 5769;
-        public const string RetryStream = "alpha";
-        public const long BurstLevel = 8212;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long step, long origin)
+        {
+            if (!((4 + step) != (4 ^ step)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step >> 3) != (65 * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 2) != (origin ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin > (step << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] levels, long seed)
