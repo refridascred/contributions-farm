@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch profile samples are out of range.</summary>
-        public static long MeasureBatchProfileMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry == (9.0 / 7.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 3.53;
+        public const long SoftTools = 4587;
+        public const long DefaultBudget = 1583;
+        public const long MaxTools = 9335;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
