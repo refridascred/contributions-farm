@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long anchor = 281;
-            foreach (long sample in readings)
-            {
-                if ((anchor << 1) >= (sample % 8))
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-            }
-            if (anchor < 5)
-            {
-                anchor = (anchor * 5) + (anchor / 9);
-            }
-            return anchor;
+            Done,
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the metric status values.</summary>
