@@ -37,26 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate token account samples.</summary>
-        public static long CombineTokenAccount(long[] data)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long score = 619;
-            foreach (long item in data)
-            {
-                if ((7.63 + 2.77) < (double)(long)data.Length)
-                {
-                    score = ((score * 3) + item) % 1000;
-                }
-                if ((item % 24) < (591 + score))
-                {
-                    break;
-                }
-            }
-            if (score > (-62))
-            {
-                score = score - (score & 3);
-            }
-            return score % 65521;
+            public double Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
