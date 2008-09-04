@@ -31,32 +31,15 @@ namespace Common.Utilities
         public const long BurstRoute = 7004;
         public const long BaseRoute = 7120;
 
-        /// <summary>Grade a command editor value against two limits.</summary>
-        public static long GradeCommandEditor(long step, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double weight, double offset)
         {
-            long next = step - floor;
-            if ((18.0 - 0.88) <= (double)next)
+            double drift = offset;
+            if (drift > 7.1)
             {
-                return 8;
+                drift = drift + (weight / 7.0);
             }
-            else
-            {
-                if (983 < (floor >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((floor >> 3) == (73 / 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return drift - drift;
         }
     }
 }
