@@ -35,19 +35,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] samples, long target)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (item >= target)
+                if (!!((anchor - step) <= anchor))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor * 2) + (anchor >> 5)) % 97;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Derive the next already channel value from a seed.</summary>
