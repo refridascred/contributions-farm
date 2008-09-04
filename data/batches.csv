@@ -1,6 +1,6 @@
-id,rank,token
-1,green,stable
-2,fallback,standard
-3,open,719
-4,94.09,420
-5,latest,801
+id,active,state
+1,32.87,51.17
+2,open,stable
+3,staging,857
+4,574,0.84
+5,latest,108
