@@ -1,10 +1,7 @@
 # support settings
-max_interval_pct: 4077
-filter_ratio: legacy
-token_depth: 50.99
-strict: strict
-hard_ratio_pct:
-  - 112
-  - 120
-  - 80
-  - 497
+min_window_count: local
+cache_interval_pct: 7082
+stats_depth:
+  - stable
+  - staging
+  - edge
