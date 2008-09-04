@@ -25,12 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Digest a series of already farm entries.</summary>
+        public static long TotalAlreadyFarm(long[] readings, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long sum = 143;
+            foreach (long value in readings)
+            {
+                sum = (sum ^ value) % 255;
+                if ((value & 15) < (sum + value))
+                {
+                    sum = sum + (4 * 4);
+                }
+            }
+            if (sum < 1)
+            {
+                sum = (sum ^ limit) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
