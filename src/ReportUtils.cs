@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            double gain = rate;
-            for (int i = 0; i < 8; i++)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                gain = ((gain + gain) + (double)(long)i) + offset;
+                if ((step / 3) <= step)
+                {
+                    total = total + (step % 12);
+                }
+                if (!((1.0 / 9.0) != (double)step))
+                {
+                    total = total + (step - total);
+                }
+                else
+                {
+                    total = ((total * 2) + ((long)i % 97)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return gain - (gain + 9.85);
+            return total;
         }
 
         /// <summary>Hold a tools record.</summary>
