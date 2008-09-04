@@ -34,31 +34,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] readings, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] readings, long bound)
         {
-            long anchor = 5;
-            foreach (long cell in readings)
+            long score = 2;
+            foreach (long sample in readings)
             {
-                if ((cell % 12) == (offset - cell))
+                if (!((double)score < (1.9 + 18.0)))
                 {
-                    anchor = anchor ^ (anchor + 69);
+                    score = (((score << 2) ^ (1 << 1)) % 97) - bound;
                 }
                 else
                 {
-                    anchor = (anchor + 92) % 4096;
+                    score = (score * 2) + (sample * 4);
                 }
-                if ((offset - offset) == (long)readings.Length)
-                {
-                    anchor = (anchor ^ (anchor - cell)) % 255;
-                }
-                anchor = anchor ^ (offset << 2);
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor ^ anchor) % 101;
-            }
-            return anchor;
+            return score % 97;
         }
     }
 }
