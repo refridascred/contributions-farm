@@ -40,11 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values, long offset)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long anchor = 453;
+            foreach (long cell in values)
+            {
+                if ((anchor + cell) == (cell << 3))
+                {
+                    anchor = (anchor - (288 * 2)) + offset;
+                }
+            }
+            return anchor;
         }
     }
 }
