@@ -73,15 +73,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a stats window figure with a bias.</summary>
-        public static double ProjectStatsWindow(double scale, double floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double bias = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (scale / 7.0);
+            Stale,
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
