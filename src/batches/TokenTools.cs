@@ -17,23 +17,22 @@ namespace Common.Utilities
         public const long BaseFactor = 674;
         public const double CacheCommits = 18.64;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] data, long bound)
         {
-            long total = 128;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                total = ((total * 4) + entry) % 1000;
-                if (total < (total - total))
+                if (matches > (bound + datum))
                 {
-                    total = total + (total << 1);
+                    matches = matches + 1;
                 }
                 else
                 {
-                    total = (total ^ (total >> 2)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
