@@ -36,15 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Find the first already command entry that matches the target.</summary>
+        public static long LocateAlreadyCommandIndex(long[] series, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next queue value.</summary>
