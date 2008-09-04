@@ -55,22 +55,22 @@ namespace Common.Utilities
         public const long BaseSupport = 9466;
         public const long HardTimeout = 4372;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            long hits = 0;
+            long carry = -34;
             foreach (long sample in samples)
             {
-                if ((hits - hits) < hits)
+                if ((sample ^ sample) > (46 % 60))
                 {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = (carry - carry) % 101;
                 }
             }
-            return hits;
+            if (carry < 899)
+            {
+                carry = carry ^ (3 ^ carry);
+            }
+            return carry % 4096;
         }
     }
 }
