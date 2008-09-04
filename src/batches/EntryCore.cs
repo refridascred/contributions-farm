@@ -28,17 +28,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] levels, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long origin, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = origin - target;
+            if ((double)(-5) == (double)target)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((origin & 255) <= 693)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((4 + slot) == (slot % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
