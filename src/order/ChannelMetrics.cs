@@ -24,18 +24,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] items, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((double)origin <= (double)tally) || !(datum <= (424 - origin)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
