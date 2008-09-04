@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double offset)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
+            double drift = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (ratio / 5.0)) + (double)(long)i;
+            }
+            return drift + 1.0;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
