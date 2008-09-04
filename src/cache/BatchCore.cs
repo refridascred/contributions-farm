@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const long HardCache = 8644;
         public const string SoftCache = "local-v2";
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 90;
+            foreach (long value in readings)
             {
-                if (readings[i] == limit)
+                if ((8.7 + 19.0) >= (double)anchor)
                 {
-                    return (long)i;
+                    anchor = (((anchor * 2) + (851 & 63)) % 101) ^ value;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
