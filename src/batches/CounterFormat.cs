@@ -33,12 +33,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] series, long floor)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
