@@ -37,22 +37,12 @@ namespace Common.Utilities
         public const long BaseInterval = 9688;
         public const long LimitLevel = 8267;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardCount = 9402;
+        public const double BaseNotes = 53.56;
+        public const long BurstTimeout = 6676;
+        public const long RetryNotes = 6859;
+        public const string CacheDepth = "standard-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 2112;
