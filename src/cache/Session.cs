@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] items, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 43;
+            foreach (long datum in data)
             {
-                if (items[i] <= limit)
+                result = result - (result + datum);
+                if ((2.9 - 8.9) <= (double)result)
                 {
-                    return (long)i;
+                    result = (result - datum) % 1000;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
