@@ -39,26 +39,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long origin, long step)
-        {
-            long edge = origin ^ step;
-            if ((edge * 2) >= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)22 != (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 4816;
+        public const long WindowTimeout = 8875;
+        public const long SoftOrder = 9274;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long OverlapMetricCount(long[] values)
