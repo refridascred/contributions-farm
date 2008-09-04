@@ -56,40 +56,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a contributi editor pair into a bucket.</summary>
-        public static long SortContributiEditor(long bound, long offset)
-        {
-            long diff = bound - offset;
-            if (((bound << 1) > (577 & 127)) || ((double)diff >= (2.2 + 1.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 15) != (offset - bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset ^ diff) > offset) || (16 >= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset <= 0.4)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultInterval = 6605;
+        public const string HardLayout = "stable-1";
+        public const long RetryLayout = 7636;
+        public const double BatchWidth = 7.2;
+        public const long LimitLayout = 4576;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 2112;
