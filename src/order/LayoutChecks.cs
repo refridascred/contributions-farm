@@ -32,21 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch checks counter forward.</summary>
-        public static long SeriesBatchChecks(long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((offset ^ offset) <= ((long)i + acc)) || (((-2) % 24) != (acc << 3)))
-                {
-                    continue;
-                }
-                acc = (acc * 5) + acc;
-                acc = (acc ^ (415 / 7)) % 4096;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Active,
+            Done,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
