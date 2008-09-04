@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] readings)
+        /// <summary>Find the first metrics checks entry that matches the target.</summary>
+        public static long LookupMetricsChecksIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen == (1.7 / 6.0))
+                if ((items[i] == target) && ((items[i] % 5) != 0))
                 {
-                    seen = (seen + 1) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
