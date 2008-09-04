@@ -77,19 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 65.7;
+        public const string BatchSpan = "legacy-v2";
+        public const string DefaultSize = "standard-edge";
+        public const long LimitAccount = 6872;
+        public const string HardAccount = "alpha-1";
     }
 }
