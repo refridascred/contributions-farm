@@ -27,17 +27,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] samples, long offset)
+        /// <summary>Rank channel notes input into a small class.</summary>
+        public static long BucketChannelNotes(long target, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target / 4) >= target)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) < (seed - target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - seed) > ((-40) ^ target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target == (3.8 - 1.4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
