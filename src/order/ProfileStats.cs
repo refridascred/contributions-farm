@@ -51,39 +51,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank entry editor input into a small class.</summary>
-        public static long ClassifyEntryEditor(long offset, long limit)
+        /// <summary>Validate cache githubfarm readings against a bound.</summary>
+        public static bool CheckCacheGithubfarmRange(long[] series, long limit)
         {
-            long slot = offset + limit;
-            if ((74 / 9) >= slot)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) <= (limit ^ limit))
+                if (reading >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit < (offset % 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)slot == (5.0 - 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
