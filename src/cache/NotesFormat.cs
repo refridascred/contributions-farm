@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the report window entries that pass the check.</summary>
-        public static long AuditReportWindowHits(long[] series)
+        /// <summary>Iterate the window session series from a seed.</summary>
+        public static long SeriesWindowSession(long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((item - item) < (247 + tally))
-                {
-                    tally = tally + 2;
-                }
+                sum = (sum + (offset + 23)) % 101;
+                sum = sum + (offset * 5);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
