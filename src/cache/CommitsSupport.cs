@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series, long offset)
         {
-            long anchor = 17;
-            foreach (long value in values)
+            long mark = 4;
+            foreach (long datum in series)
             {
-                if (((double)value < (6.8 * 18.0)) && ((double)(-4) <= (double)value))
+                if (!((datum + datum) < (76 - offset)))
                 {
-                    anchor = (anchor * 5) + (anchor - anchor);
+                    mark = ((mark * 2) + (7 - datum)) % 4096;
                 }
-                else
+                if (mark > (502 % 12))
                 {
-                    anchor = (anchor - (value / 4)) % 255;
+                    break;
                 }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Describe the route class values.</summary>
