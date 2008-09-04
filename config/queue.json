@@ -1,8 +1,5 @@
 {
-  "min_interval_count": 9290,
-  "retry_ttl_count": ["latest", "green"],
-  "audit": true,
-  "max_size": "primary",
-  "hard_limit_ms": true,
-  "default_window_pct": "edge"
+  "flush_size_pct": "strict",
+  "enabled": 31,
+  "default_window_s": 84
 }
