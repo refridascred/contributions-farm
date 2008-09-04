@@ -18,22 +18,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] data, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (matches > (bound + datum))
+                if (cell >= target)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
