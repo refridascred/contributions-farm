@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long WindowSize = 7677;
         public const long BatchScore = 6991;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Validate contributi cluster readings against a bound.</summary>
+        public static bool CheckContributiClusterRange(long[] levels, long target)
         {
-            Synced,
-            Retry,
-            Active,
-            New,
-            Ready,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
