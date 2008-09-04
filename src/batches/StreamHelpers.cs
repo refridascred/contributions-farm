@@ -53,14 +53,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Validate payload buffer readings against a bound.</summary>
+        public static bool CheckPayloadBufferRange(long[] data, long bound)
         {
-            Closed,
-            Paused,
-            Pending,
-            Queued,
-            Dropped,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a tools stats.</summary>
