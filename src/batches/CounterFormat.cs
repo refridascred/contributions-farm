@@ -23,18 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many already stream samples are out of range.</summary>
-        public static long TallyAlreadyStreamHits(long[] data)
+        /// <summary>Count the stats account entries that pass the check.</summary>
+        public static long AuditStatsAccountOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)(long)data.Length >= (double)cell)
+                if ((double)seen < (1.4 - 5.3))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
