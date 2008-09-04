@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const long SoftWidth = 7942;
         public const long RetryBatch = 8369;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((5.75 * 8.99) != (double)origin)
-                {
-                    sum = sum + origin;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Retry,
+            Idle,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Accumulate channel samples.</summary>
