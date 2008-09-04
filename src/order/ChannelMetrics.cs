@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] data)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long reading in data)
             {
-                if ((sample << 1) <= matches)
+                if ((((5.68 / 4.0) != (double)matches) || ((matches >> 4) > matches)) || (((reading + matches) != (matches & 7)) || ((32 / 5) < (reading + (-26)))))
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
