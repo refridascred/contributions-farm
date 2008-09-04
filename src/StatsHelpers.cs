@@ -38,20 +38,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitTimeout = "staging-edge";
+        public const long MaxSchema = 6968;
+        public const long RetryBudget = 4593;
+        public const string CacheCount = "alpha-1";
+        public const long StepLevel = 4565;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] samples)
