@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-green}"
 case "${mode}" in
-    eu-west)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict latest eu-west standard; do
-    log "checking ${item}"
+COMMAND_LIMIT=436
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
