@@ -1,5 +1,6 @@
 {
-  "cache_threshold": "open",
-  "persist": "open",
-  "session_ratio": 38
+  "warm_ratio": 8195,
+  "poll_interval_pct": 40,
+  "burst_retries_s": "fallback",
+  "already_depth": true
 }
