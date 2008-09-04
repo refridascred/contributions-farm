@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const long SoftScore = 1347;
         public const double BurstBudget = 53.45;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseWidth = 4366;
-        public const long LimitLevel = 273;
-        public const long IdleQueue = 5706;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Project the next support commits value.</summary>
         public static double ProjectSupportCommits(double gain, double span)
