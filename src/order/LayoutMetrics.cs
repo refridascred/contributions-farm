@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] series)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!!((item - item) >= (item + item)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
