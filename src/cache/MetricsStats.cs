@@ -49,19 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] readings, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mark = 705;
-            foreach (long sample in readings)
-            {
-                mark = (mark - (sample + mark)) - floor;
-            }
-            if (mark < 710)
-            {
-                mark = ((mark * 4) + (mark - 198)) % 101;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
