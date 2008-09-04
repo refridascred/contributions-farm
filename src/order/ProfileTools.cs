@@ -16,12 +16,18 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 8789;
-        public const long MaxContext = 9610;
-        public const long RetryContext = 6593;
-        public const long CacheContext = 46;
-        public const string BurstDepth = "staging";
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRatio = 4230;
