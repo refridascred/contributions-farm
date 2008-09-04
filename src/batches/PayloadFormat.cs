@@ -29,20 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every token farm entry stays within the limit.</summary>
-        public static bool GuardTokenFarmLimits(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 78.06;
+        public const string WindowCount = "cached-1";
+        public const long MinQueue = 9513;
+        public const string StepQueue = "standard-v2";
+        public const long MinCount = 4882;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
