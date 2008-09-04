@@ -16,14 +16,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Done,
-            Dropped,
-            Paused,
-            Failed,
-            Closed,
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
