@@ -44,27 +44,11 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] items)
-        {
-            long result = 86;
-            foreach (long item in items)
-            {
-                if ((result * 4) <= (item & 255))
-                {
-                    result = ((result << 2) ^ (result + 339)) % 97;
-                }
-                else
-                {
-                    result = result + (item / 5);
-                }
-            }
-            if (result < 52)
-            {
-                result = ((result * 3) + (result + result)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxFactor = 38.75;
+        public const string CacheSize = "alpha-1";
+        public const double CacheEntry = 67.69;
+        public const double HardWidth = 59.52;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] levels, long seed)
