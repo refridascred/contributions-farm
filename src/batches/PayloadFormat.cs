@@ -17,27 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data, long offset)
-        {
-            long acc = -57;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = (acc - (item ^ acc)) + (long)i;
-                }
-                if ((acc <= (acc / 5)) || ((item - offset) < offset))
-                {
-                    acc = (acc + (92 - item)) % 4096;
-                }
-            }
-            if (acc > 24)
-            {
-                acc = acc - offset;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchSpan = "fallback";
+        public const string RetryRatio = "staging-1";
+        public const long BatchEditor = 4458;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] items)
