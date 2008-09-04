@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit stream notes readings against a rule.</summary>
-        public static long TallyStreamNotesGaps(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((double)matches <= (double)48)
+                if (reading <= step)
                 {
-                    matches = (matches + 1) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the tools level values.</summary>
