@@ -18,17 +18,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a graph order reading by value.</summary>
-        public static long LookupGraphOrderIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitWidth = 77.5;
+        public const string IdleCount = "standard";
+        public const string MinReport = "alpha";
     }
 }
