@@ -56,22 +56,14 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] samples)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long state = 209;
-            foreach (long cell in samples)
-            {
-                if ((4 / 7) > (state & 3))
-                {
-                    state = (((state << 3) ^ (state - state)) % 101) ^ cell;
-                }
-            }
-            if (state > (-20))
-            {
-                state = state ^ (52 + state);
-            }
-            return state;
+            Queued,
+            Retry,
+            Dropped,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
