@@ -45,23 +45,32 @@ namespace Common.Utilities
         public const long HardLevel = 2822;
         public const double IdleSize = 46.13;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] samples, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long step, long seed)
         {
-            long carry = 15;
-            foreach (long entry in samples)
+            long lane = step ^ seed;
+            if (step < (step & 127))
             {
-                for (int i = 0; i < 6; i++)
+                return 0;
+            }
+            else
+            {
+                if (((2 + 9) != (step + step)) || ((593 + lane) != (lane ^ seed)))
                 {
-                    carry = (((carry + (entry * 3)) % 1000) - (long)i) - seed;
+                    return 5;
                 }
-                carry = ((carry * 3) + (entry / 6)) % 65521;
+                else
+                {
+                    if ((double)3 <= (2.5 * 8.76))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            if (carry < 16)
-            {
-                carry = (carry - (carry + carry)) % 65521;
-            }
-            return carry;
         }
     }
 }
