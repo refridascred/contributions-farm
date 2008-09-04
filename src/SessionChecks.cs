@@ -32,32 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long limit, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long floor)
         {
-            long next = limit + origin;
-            if (((6.5 * 2.0) != (double)origin) || ((95 + limit) <= (limit + next)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((18.0 + 3.8) == (double)next)
+                if (values[i] > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit ^ 85) <= next) || ((4.0 - 4.3) != (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a schema reading.</summary>
