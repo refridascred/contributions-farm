@@ -57,13 +57,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] data, long step)
         {
-            Stale,
-            Synced,
-            Pending,
-            Dropped,
+            long anchor = -49;
+            foreach (long entry in data)
+            {
+                if ((step / 9) >= anchor)
+                {
+                    anchor = ((anchor ^ anchor) % 101) - entry;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
