@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Done,
-            Stale,
-            Retry,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseCommits = 96.5;
+        public const double BurstCommits = 43.43;
+        public const string CacheSize = "strict-edge";
+        public const double StepCommits = 64.12;
 
         /// <summary>Adjust a batches reading.</summary>
         public static double BlendBatches(double bias, double floor)
