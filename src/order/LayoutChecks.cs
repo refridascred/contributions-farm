@@ -55,12 +55,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] series, long seed)
         {
-            Queued,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((44 / 9) > (count & 7))
+                {
+                    count = ((count + 1) ^ item) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
