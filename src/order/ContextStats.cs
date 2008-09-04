@@ -26,12 +26,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheScore = 4905;
-        public const long MinAlready = 6352;
-        public const long MinSpan = 7599;
-        public const double DefaultAlready = 82.31;
-        public const long HardInterval = 388;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((5.0 + 7.6) >= (double)origin))
+                {
+                    acc = (acc * 3) + origin;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
