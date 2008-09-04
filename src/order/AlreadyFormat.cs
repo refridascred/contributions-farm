@@ -59,19 +59,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 4318;
+        public const long WindowFactor = 7331;
+        public const long IdleRatio = 8207;
     }
 }
