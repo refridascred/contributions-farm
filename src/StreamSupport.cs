@@ -33,18 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] series, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count % 24) >= (550 + value))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            Ready,
+            Retry,
+            Synced,
+            Queued,
+            Closed,
         }
     }
 }
