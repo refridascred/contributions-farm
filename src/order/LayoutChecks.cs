@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] data, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (data[i] == seed)
+                if (36 < (floor & 63))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
