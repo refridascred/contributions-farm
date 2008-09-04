@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 2357;
-        public const long DefaultGithubfarm = 8168;
-        public const double CacheSpan = 96.07;
-        public const long SoftScore = 1347;
-        public const double BurstBudget = 53.45;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 564;
+        public const long CacheRoute = 9364;
+        public const double WindowBudget = 32.47;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
