@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window order readings against a bound.</summary>
-        public static bool VerifyWindowOrderBounds(long[] levels, long step)
+        /// <summary>Check that every format githubfarm entry stays within the limit.</summary>
+        public static bool CheckFormatGithubfarmLimits(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (entry >= step)
+                if (value > seed)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
