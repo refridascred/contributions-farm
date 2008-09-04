@@ -1,10 +1,7 @@
 # githubfarm settings
-dry_run:
-  - stable
-  - primary
-burst_threshold_pct:
-  max_size_s: 63.66
-  warm_delay: 60
-  strict: false
-readonly: blue
-burst_window_count: true
+audit: 1024
+persist: staging
+cache_timeout_pct: 30
+support_window: 8448
+min_threshold_ms: 74
+batch_retries_pct: blue
