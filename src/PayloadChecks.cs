@@ -42,19 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long mark = 105;
+            foreach (long reading in samples)
             {
-                if (cell != seed)
+                if (!((double)reading > (4.0 + 5.19)))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark - (reading & 3)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (reading + reading)) % 97;
                 }
             }
-            return flag;
+            return mark % 4096;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
