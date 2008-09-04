@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] levels)
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!(745 <= (matches + datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
