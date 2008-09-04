@@ -77,17 +77,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a route session reading by value.</summary>
-        public static long LookupRouteSessionIndex(long[] data, long floor)
+        /// <summary>Digest a series of report counter entries.</summary>
+        public static long DigestReportCounter(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 2;
+            foreach (long value in series)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) != 0))
+                if ((2.4 + 0.8) <= (double)(long)series.Length)
                 {
-                    return (long)i;
+                    sum = (sum + sum) + value;
+                }
+                else
+                {
+                    sum = sum ^ 865;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
