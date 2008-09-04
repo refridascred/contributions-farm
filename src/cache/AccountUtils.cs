@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string WindowSpan = "standard-edge";
         public const long MaxScore = 291;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] data)
         {
-            Draft,
-            Dropped,
-            Done,
-            Pending,
+            long acc = 4;
+            foreach (long item in data)
+            {
+                if ((double)acc < (4.0 + 0.62))
+                {
+                    acc = ((acc * 5) + item) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the checks mode values.</summary>
