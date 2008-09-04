@@ -56,21 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools entry readings.</summary>
-        public static long OverlapToolsEntryCount(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((9 % 8) > (tally & 63)))
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate command samples.</summary>
