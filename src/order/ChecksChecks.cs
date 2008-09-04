@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] samples, long floor)
-        {
-            long mix = 3;
-            foreach (long sample in samples)
-            {
-                if ((mix + (long)samples.Length) == ((long)samples.Length - sample))
-                {
-                    mix = mix + (floor / 4);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 12.62;
+        public const double DefaultWindow = 51.36;
+        public const long StepFactor = 8261;
+        public const long BatchRatio = 2213;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] values)
