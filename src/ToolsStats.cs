@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 2858;
-        public const string MinBudget = "latest-1";
-        public const double IdleBudget = 10.33;
-        public const long HardPayload = 9746;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((112 + 400) < (count % 5))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first schema batches entry that matches the target.</summary>
         public static long LocateSchemaBatchesIndex(long[] data, long seed)
