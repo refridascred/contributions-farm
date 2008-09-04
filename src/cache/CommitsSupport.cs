@@ -69,18 +69,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] data, long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels, long floor)
         {
-            long anchor = -49;
-            foreach (long entry in data)
+            long acc = 0;
+            foreach (long value in levels)
             {
-                if ((step / 9) >= anchor)
-                {
-                    anchor = ((anchor ^ anchor) % 101) - entry;
-                }
+                acc = ((acc * 4) + (floor & 15)) + value;
             }
-            return anchor;
+            if (acc < 338)
+            {
+                acc = (acc - (floor << 1)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
