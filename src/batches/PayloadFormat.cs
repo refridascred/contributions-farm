@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the window batch entries that pass the check.</summary>
-        public static long CountWindowBatchMatches(long[] series, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (!(((entry >> 3) > (entry + entry)) || (floor < entry)))
+                if (sample < bound)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of context readings.</summary>
