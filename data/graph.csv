@@ -1,7 +1,8 @@
-id,level,region,rank
-1,26.81,779,eu-west
-2,standard,903,615
-3,latest,65.16,edge
-4,latest,latest,371
-5,64.97,21.63,544
-6,cached,48,edge
+id,weight,owner
+1,230,959
+2,84.03,standard
+3,stable,59
+4,83.96,83.97
+5,383,blue
+6,local,796
+7,staging,1.54
