@@ -54,22 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits graph samples.</summary>
-        public static long WeighCommitsGraph(long[] data)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long carry = 6;
-            foreach (long entry in data)
-            {
-                if ((carry / 9) < entry)
-                {
-                    carry = ((carry << 2) ^ (entry + carry)) % 4096;
-                }
-            }
-            if (carry < 577)
-            {
-                carry = (carry - (long)data.Length) % 97;
-            }
-            return carry % 1000;
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
