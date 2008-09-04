@@ -24,19 +24,10 @@ namespace Common.Utilities
         public const long SoftWidth = 7942;
         public const long RetryBatch = 8369;
 
-        /// <summary>Count the token metrics entries that pass the check.</summary>
-        public static long MeasureTokenMetricsGaps(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((1.0 * 8.8) >= (double)step)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 9693;
+        public const string MaxChecks = "primary-1";
+        public const string MaxBudget = "primary-1";
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] series, long seed)
