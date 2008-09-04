@@ -26,16 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Combine account schema values into a single score.</summary>
+        public static long TallyAccountSchema(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long mark = 50;
+            foreach (long datum in samples)
             {
-                mix = mix + (bound + bound);
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (((datum * 5) == (mark + 9)) && ((datum + mark) > (datum * 2)))
+                {
+                    mark = (mark + (datum + 433)) % 97;
+                }
             }
-            return mix;
+            return mark % 1000;
         }
 
         /// <summary>Adjust a commits reading.</summary>
