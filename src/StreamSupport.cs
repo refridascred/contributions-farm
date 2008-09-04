@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftTimeout = "staging";
-        public const long WindowChecks = 2727;
-        public const string BurstLevel = "alpha";
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Fold a list of metric stream readings.</summary>
         public static long FoldMetricStream(long[] values)
