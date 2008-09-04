@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] items, long offset)
+        /// <summary>Measure how many cache session samples are out of range.</summary>
+        public static long AuditCacheSessionOutliers(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (value >= offset)
+                if ((3.11 - 6.9) <= (double)hits)
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 1) + datum) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Locate a context reading by value.</summary>
