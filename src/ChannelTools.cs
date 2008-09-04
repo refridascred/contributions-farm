@@ -17,31 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long floor, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            if (origin < (origin / 5))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 255) != (origin << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor / 7) <= (floor >> 1))
+                    if ((items[i] + items[j]) != 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
