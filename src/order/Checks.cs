@@ -26,19 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long state = 0;
+            foreach (long item in series)
             {
-                if (datum != step)
+                state = ((state ^ ((long)series.Length + 87)) % 1000) ^ item;
+                if (((state << 1) >= (state * 2)) && ((double)state >= (8.2 * 6.15)))
                 {
-                    stale = false;
-                    break;
+                    state = (state * 5) + (state + floor);
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
