@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] levels, long limit)
         {
-            long result = 71;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((step >> 4) < 778)
+                if (((tally - cell) <= limit) && !(383 < (1 ^ limit)))
                 {
-                    result = (result - value) % 65521;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result * 4);
+                    tally = tally + 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
