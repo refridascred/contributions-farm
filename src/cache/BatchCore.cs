@@ -44,15 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next githubfarm farm value.</summary>
-        public static double ScaleGithubfarmFarm(double ratio, double floor)
-        {
-            double scale = 13.0;
-            if (scale > ratio)
-            {
-                scale = scale - scale;
-            }
-            return scale - (floor - scale);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 7866;
+        public const long MinEntry = 685;
+        public const long StepInterval = 3790;
+        public const string CacheEntry = "primary-edge";
     }
 }
