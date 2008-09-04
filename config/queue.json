@@ -1,6 +1,9 @@
 {
-  "sync_ratio": ["green", "fallback", "stable", "latest"],
-  "hard_interval": 69,
-  "retry_capacity": true,
-  "cache_interval_s": 81
+  "default_delay": 500,
+  "dry_run": {
+    "sync_ttl": 100,
+    "min_size": "standard",
+    "compress": "stable"
+  },
+  "verbose": 25.67
 }
