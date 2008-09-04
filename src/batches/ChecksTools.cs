@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const string HardTimeout = "legacy-edge";
         public const double SoftBatch = 88.06;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 4711;
-        public const long DefaultQueue = 7245;
-        public const string BurstQueue = "strict-edge";
-        public const long StepQueue = 5744;
-        public const long BatchFactor = 4834;
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long CountClusterReportGaps(long[] data, long floor)
