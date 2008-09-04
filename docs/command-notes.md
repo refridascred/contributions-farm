@@ -1,16 +1,11 @@
 # Command notes
 
-When a layout fails, the channel handler retries a few times before giving up.
-Defaults for session live in the config folder and can be overridden per environment.
+Use order settings to tune how often batch data is refreshed.
 Defaults for stats live in the config folder and can be overridden per environment.
-
-When a batch fails, the tools handler retries a few times before giving up.
-Keep notes and payload names short and lowercase.
-The counter module keeps command values in sync with the context cache.
+A buffer that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Validate filter input early
-- Document new session fields
-- Log every order change
-- Prefer already defaults
+- Validate layout input early
+- Document new route fields
+- Review graph limits each release
