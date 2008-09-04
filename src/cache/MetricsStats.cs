@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up payload profile samples.</summary>
-        public static long MatchPayloadProfileCount(long[] readings)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a entry stats.</summary>
