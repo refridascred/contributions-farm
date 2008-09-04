@@ -26,10 +26,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinInterval = 3960;
-        public const double SoftLevel = 43.97;
-        public const double MinOrder = 35.47;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = mix + (bound + bound);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double BlendCommits(double rate, double floor)
