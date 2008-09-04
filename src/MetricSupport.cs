@@ -32,11 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 1289;
-        public const long SoftFormat = 7130;
-        public const long BatchWidth = 3652;
-        public const long DefaultFormat = 9794;
-        public const long MaxFormat = 2538;
+        /// <summary>Count the counter batch entries that pass the check.</summary>
+        public static long TallyCounterBatchHits(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally - tally) >= (limit + 8))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
+        }
     }
 }
