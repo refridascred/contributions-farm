@@ -35,15 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Audit window checks readings against a rule.</summary>
+        public static long MeasureWindowChecksOutliers(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((seen & 15) == (reading & 1))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the entry class values.</summary>
