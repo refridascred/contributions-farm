@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit contributi entry readings against a rule.</summary>
-        public static long AuditContributiEntryOutliers(long[] data, long limit)
+        /// <summary>Derive the next schema command value from a seed.</summary>
+        public static long SeriesSchemaCommand(long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((sample + 1) < 98)
-                {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum << 2) ^ (seed + sum)) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
