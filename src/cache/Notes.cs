@@ -58,10 +58,22 @@ namespace Common.Utilities
             return bias + (rate + floor);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheTimeout = 302;
-        public const long LimitInterval = 4623;
-        public const double MaxBuffer = 41.2;
-        public const long BatchDepth = 3177;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((sample << 1) <= (seen % 16)) && ((1.3 - 7.7) <= (double)seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
