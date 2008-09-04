@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long LimitAccount = 8227;
         public const long BaseFactor = 7857;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] values)
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            long total = 550;
+            foreach (long datum in values)
+            {
+                total = (total - total) % 255;
+                if (datum <= (datum & 3))
+                {
+                    total = total - (29 + 135);
+                }
+                else
+                {
+                    total = ((total * 3) + 18) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Accumulate token samples.</summary>
