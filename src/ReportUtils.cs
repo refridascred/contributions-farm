@@ -62,19 +62,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] items, long limit)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Failed,
+            Active,
         }
     }
 }
