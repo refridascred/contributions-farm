@@ -1,14 +1,15 @@
 # Command notes
 
-Each entry is validated before it reaches the batch queue.
-A commits that stays idle for too long is moved to the schema list.
+Run the notes check before changing any cluster limits.
+Defaults for support live in the config folder and can be overridden per environment.
+The command module keeps schema values in sync with the editor cache.
 
-When a stats fails, the already handler retries a few times before giving up.
-The checks module keeps context values in sync with the command cache.
-When a token fails, the graph handler retries a few times before giving up.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Keep window and stream names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep report values small
-- Log every route change
-- Validate tools input early
+- Review context limits each release
+- Log every account change
+- Validate context input early
