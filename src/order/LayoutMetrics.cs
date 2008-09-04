@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit account order readings against a rule.</summary>
+        public static long CountAccountOrderGaps(long[] levels, long step)
         {
-            Synced,
-            Pending,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (step > (entry - step))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm already readings.</summary>
