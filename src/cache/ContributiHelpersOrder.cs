@@ -33,21 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Rank batch schema input into a small class.</summary>
+        public static long ClassifyBatchSchema(long floor, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((8 + 216) == (floor - floor))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((880 + floor) > floor)
                 {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
