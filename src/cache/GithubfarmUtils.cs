@@ -30,24 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Accumulate payload profile samples.</summary>
+        public static long TotalPayloadProfile(long[] readings, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            long sum = 588;
+            foreach (long entry in readings)
             {
-                state = (state << 3) ^ state;
-                if ((state + state) >= (state % 64))
-                {
-                    state = ((state << 3) ^ ((long)i & 15)) % 1000;
-                }
-                else
-                {
-                    state = ((state * 5) + (state * 5)) % 97;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                sum = ((sum ^ (target << 1)) % 1000) - entry;
             }
-            return state;
+            if (sum < 0)
+            {
+                sum = sum - (sum << 3);
+            }
+            return sum;
         }
 
         /// <summary>Hold a layout record.</summary>
