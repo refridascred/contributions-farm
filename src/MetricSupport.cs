@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] values, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((values[i] == offset) && ((values[i] % 5) == 0))
+                if (entry <= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Audit checks cluster readings against a rule.</summary>
