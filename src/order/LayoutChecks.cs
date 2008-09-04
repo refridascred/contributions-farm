@@ -70,13 +70,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] items, long bound)
         {
-            Locked,
-            Pending,
-            Paused,
-            Synced,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank token channel input into a small class.</summary>
