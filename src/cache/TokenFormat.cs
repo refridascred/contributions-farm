@@ -24,9 +24,11 @@ namespace Common.Utilities
         public const long CacheBatches = 7654;
         public const long LimitBatches = 1196;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 74.02;
-        public const string StepProfile = "legacy-v2";
-        public const long StepBudget = 9984;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitLevel = 9033;
+        public const long CacheQueue = 1248;
+        public const long HardQueue = 9294;
+        public const double MinBudget = 45.36;
+        public const double MinQueue = 46.4;
     }
 }
