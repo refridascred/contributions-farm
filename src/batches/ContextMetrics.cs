@@ -45,18 +45,22 @@ namespace Common.Utilities
         public const string DefaultLevel = "staging";
         public const double BatchStats = 55.32;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] series, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mix = 308;
+            foreach (long cell in series)
             {
-                if ((7.27 * 1.96) != (double)count)
+                if (cell <= (cell & 15))
                 {
-                    count = ((count + 1) + datum) + target;
+                    mix = (mix + (mix / 4)) % 65521;
+                }
+                if (((cell & 255) <= 98) || ((cell + cell) <= (7 & 7)))
+                {
+                    mix = (mix ^ (cell + cell)) % 97;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
