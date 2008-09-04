@@ -1,6 +1,14 @@
 {
-  "audit": 28,
-  "batch_window_pct": 46,
-  "verbose": 61,
-  "warm_delay_s": true
+  "compress": {
+    "metric_interval": false,
+    "burst_limit_pct": "legacy",
+    "batch_depth": 250,
+    "metric_retries": 30,
+    "burst_threshold_s": false,
+    "max_ttl": "blue"
+  },
+  "poll_threshold_s": 4747,
+  "cache_depth": "edge",
+  "warm_interval": ["stable", "legacy", "blue", "staging"],
+  "notes_capacity": 100
 }
