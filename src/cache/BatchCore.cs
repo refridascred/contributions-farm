@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchSize = 4.8;
+        public const string BaseWidth = "primary-v2";
+        public const string MaxCluster = "cached-edge";
 
         /// <summary>Count profile payload pairs that satisfy a relation.</summary>
         public static long OverlapProfilePayloadCount(long[] series)
