@@ -30,23 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] values, long offset)
         {
-            double scale = (double)(269 + 46);
-            if (scale < 11.0)
+            bool flag = true;
+            foreach (long item in values)
             {
-                scale = (scale - 7.5) - ratio;
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (scale / 8.0);
+            return flag;
         }
 
         /// <summary>Describe the stats state values.</summary>
