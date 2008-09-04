@@ -19,32 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer route input into a small class.</summary>
-        public static long GradeBufferRoute(long floor, long offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            long span = floor + offset;
-            if (((span % 16) == (floor & 7)) && ((span - offset) < (98 ^ floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (offset + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (13 >= (span - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double ratio = gain;
+            return ratio + (ratio - bias);
         }
 
         /// <summary>Project the next cache value.</summary>
