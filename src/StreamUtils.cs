@@ -86,11 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 65.7;
-        public const string BatchSpan = "legacy-v2";
-        public const string DefaultSize = "standard-edge";
-        public const long LimitAccount = 6872;
-        public const string HardAccount = "alpha-1";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
