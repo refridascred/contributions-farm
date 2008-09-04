@@ -1,37 +1,41 @@
 # entry settings
-base_threshold_ms:
-  cache_timeout:
-    batches_ttl: standard
-    cache_size_s: 63
-    hard_timeout_count: legacy
-    compress: 4568
-    order_capacity: cached
-  enabled:
-    dry_run: 1024
-    checks_size:
-      - 144
-      - 285
-    batch_limit: fallback
-    sync_ttl: false
-  flush_interval: 500
-  verbose:
-    - strict
-    - legacy
-    - standard
-  sync_limit_pct:
-    - 102
-    - 224
-burst_delay: standard
-dry_run:
-  min_threshold_count:
-    audit: 1024
-    batches_depth: 9957
-    soft_ratio: 8248
-  graph_timeout: 3.64
-  min_ttl_s: latest
-  burst_capacity_ms: primary
-  enabled: false
-  hard_limit: 51
-checks_delay: 43.5
-enabled: 36
-verbose: local
+audit:
+  persist:
+    - 129
+    - 406
+    - 478
+  hard_interval: 57.47
+  flush_ttl_count:
+    poll_threshold: true
+    burst_window_pct: true
+    warm_interval: standard
+    channel_interval: 52.48
+    base_capacity: 7406
+    flush_capacity: 78.16
+  hard_window_pct:
+    entry_retries: false
+    cache_limit: edge
+    burst_timeout: 42.08
+    soft_retries_count: 500
+  batches_threshold: true
+  default_retries_pct:
+    max_interval_pct:
+      - latest
+      - cached
+    already_ratio: 54.26
+    default_limit: cached
+    compress: true
+poll_capacity_pct:
+  already_threshold: standard
+  default_ratio_s: 65.58
+  strict:
+    - 123
+    - 458
+  persist:
+    - open
+    - latest
+    - open
+    - latest
+compress: 250
+persist: 17
+dry_run: primary
