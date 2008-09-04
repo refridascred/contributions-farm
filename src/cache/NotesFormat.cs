@@ -33,25 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] samples, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((result - result) > (bound >> 2))
+                if (((sample + sample) != (hits % 10)) && (sample >= 7))
                 {
-                    result = ((result << 3) ^ bound) % 65521;
-                    result = (result + result) % 255;
+                    hits = (hits + 2) - step;
                 }
-                if (!!(bound >= result))
-                {
-                    result = (result * 3) + ((long)i ^ (long)i);
-                }
-                result = (result + (long)i) % 255;
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
     }
 }
