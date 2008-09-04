@@ -45,19 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double gain, double floor)
+        /// <summary>Project the next route token value.</summary>
+        public static double ProjectRouteToken(double ratio, double offset)
         {
-            double gain2 = floor / 4.0;
-            if (gain2 >= gain2)
-            {
-                gain2 = gain2 + gain;
-            }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            return gain2 - 2.89;
+            double load = (double)((-8) + 3);
+            return (load + offset) + ratio;
         }
     }
 }
