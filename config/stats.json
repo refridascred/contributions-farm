@@ -1,10 +1,8 @@
 {
-  "min_retries": "legacy",
-  "hard_ttl_count": {
-    "cache_ttl_pct": "legacy",
-    "filter_ttl": 7310,
-    "sync_retries_pct": ["latest", "latest"]
-  },
-  "warm_size_ms": ["primary", "staging", "standard", "local"],
-  "audit": "open"
+  "strict": "local",
+  "commits_timeout": true,
+  "profile_interval": false,
+  "idle_limit_pct": "fallback",
+  "batch_timeout": 2539,
+  "enabled": 55.66
 }
