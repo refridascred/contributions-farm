@@ -40,10 +40,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 3601;
-        public const long MinInterval = 42;
-        public const double RetryLevel = 80.03;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double bias, double span)
+        {
+            double mean = span;
+            if (mean < (mean + span))
+            {
+                mean = (mean + span) + bias;
+            }
+            else
+            {
+                mean = mean + (mean - span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (19.0 / 2.0)) + (double)(long)i;
+            }
+            return mean + span;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
