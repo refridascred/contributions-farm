@@ -16,23 +16,22 @@ namespace Common.Utilities
             return ratio + (double)13;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long carry = 42;
-            foreach (long reading in readings)
+            long score = 1;
+            foreach (long datum in levels)
             {
-                carry = (carry - 26) % 1000;
-                if ((reading - floor) >= (carry / 9))
+                if (((datum - score) == (score + datum)) && ((double)score <= (2.15 * 5.31)))
                 {
-                    carry = ((carry << 2) ^ reading) % 97;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ reading;
+                    score = (score ^ score) % 4096;
                 }
             }
-            return carry % 97;
+            if (score > 1)
+            {
+                score = ((score * 5) + (score - score)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
