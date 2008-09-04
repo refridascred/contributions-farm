@@ -29,18 +29,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] items, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = 2;
-            foreach (long item in items)
-            {
-                if ((total + item) > (-3))
-                {
-                    total = total - seed;
-                }
-            }
-            return total;
+            Paused,
+            Locked,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a layout info.</summary>
