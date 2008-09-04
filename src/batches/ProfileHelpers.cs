@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const long LimitCache = 5013;
         public const long SoftWidth = 5967;
 
-        /// <summary>Blend two context metric measurements.</summary>
-        public static double ProjectContextMetric(double rate, double span)
+        /// <summary>Digest a series of graph order entries.</summary>
+        public static long TallyGraphOrder(long[] items)
         {
-            double scale = rate * 0.77;
-            if (scale > span)
+            long acc = 2;
+            foreach (long sample in items)
             {
-                scale = scale + (double)0;
+                acc = (((acc << 3) ^ (746 + acc)) % 65521) - sample;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (span * 5.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            return acc;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
