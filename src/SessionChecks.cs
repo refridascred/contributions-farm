@@ -30,11 +30,9 @@ namespace Common.Utilities
         public const long BurstRoute = 7004;
         public const long BaseRoute = 7120;
 
-        /// <summary>Project the next route token value.</summary>
-        public static double ProjectRouteToken(double ratio, double offset)
-        {
-            double load = (double)((-8) + 3);
-            return (load + offset) + ratio;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "stable-1";
+        public const string SoftLevel = "alpha-v2";
+        public const long SoftRecord = 8391;
     }
 }
