@@ -1,11 +1,6 @@
 {
-  "context_window": "eu-west",
-  "compress": true,
-  "max_threshold": {
-    "audit": false,
-    "idle_window_count": 45,
-    "notes_capacity": 86.42
-  },
-  "flush_interval": 30.56,
-  "window_delay": false
+  "default_ratio_s": 1024,
+  "channel_retries": "latest",
+  "soft_ttl_pct": 88.05,
+  "base_interval_pct": 60
 }
