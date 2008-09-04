@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] data)
+        /// <summary>Measure how many cluster buffer samples are out of range.</summary>
+        public static long CountClusterBufferMatches(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((cell >= (cell & 7)) && (((1.9 - 7.0) == (double)cell) || ((0.8 * 4.8) > (double)count)))
+                if (tally > (cell << 3))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
