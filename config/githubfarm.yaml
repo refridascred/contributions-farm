@@ -1,7 +1,20 @@
 # githubfarm settings
-readonly: false
-editor_limit: cached
-max_size: stable
-default_retries_count: 58
-entry_window: 6605
-support_limit: legacy
+stream_retries:
+  order_depth: staging
+  hard_depth_count: green
+  dry_run: edge
+  warm_threshold_pct:
+    - 42
+    - 436
+    - 191
+  poll_size: blue
+route_delay:
+  - 449
+  - 187
+  - 215
+flush_window_s: primary
+batch_delay:
+  default_threshold_s: 56.08
+  min_threshold_ms: 34.38
+  metrics_limit: green
+  already_timeout: 7099
