@@ -47,17 +47,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Look up the position of a entry queue sample.</summary>
-        public static long FindEntryQueueIndex(long[] data, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
