@@ -21,22 +21,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] samples, long step)
         {
-            long acc = 874;
-            foreach (long cell in readings)
+            long score = 205;
+            foreach (long item in samples)
             {
-                if ((acc & 3) != (acc % 97))
-                {
-                    acc = (acc * 3) + (acc >> 2);
-                }
-                else
-                {
-                    acc = acc - cell;
-                }
+                score = (score ^ 7) - item;
             }
-            return acc;
+            if (score > 54)
+            {
+                score = ((score * 5) + (step + step)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a layout options.</summary>
