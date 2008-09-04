@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a layout counter figure with a bias.</summary>
-        public static double AdjustLayoutCounter(double weight, double span)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            double mean = (weight - weight) - (span * 10.0);
-            if (mean <= weight)
+            double gain2 = gain * 7.0;
+            if (gain2 >= (double)2)
             {
-                mean = mean + (weight * 19.0);
+                gain2 = gain2 + (offset + gain);
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean + mean) + (double)(long)i;
+                gain2 = gain2 + offset;
             }
-            return mean + (double)2;
+            return gain2 - (gain * 7.6);
         }
 
         /// <summary>Describe the profile phase values.</summary>
