@@ -46,10 +46,38 @@ namespace Common.Utilities
         public const long BaseInterval = 8302;
         public const double MaxEditor = 56.92;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxBudget = "latest";
-        public const string HardSchema = "open-edge";
-        public const string LimitSize = "fallback-1";
-        public const long LimitInterval = 4416;
+        /// <summary>Rank notes order input into a small class.</summary>
+        public static long RankNotesOrder(long seed, long offset)
+        {
+            if (0.72 > (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset >= (offset - seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((555 % 24) > (offset + 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset >= (seed % 2)) || ((offset / 3) >= (seed * 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
