@@ -45,18 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((3.75 * 3.9) == (double)cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
