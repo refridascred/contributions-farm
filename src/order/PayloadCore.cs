@@ -45,18 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] readings)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + reading) < tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
