@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of report cluster entries.</summary>
-        public static long ScoreReportCluster(long[] values, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series, long origin)
         {
-            long state = -69;
-            foreach (long reading in values)
+            long total = 719;
+            foreach (long item in series)
             {
-                if ((75 - state) >= offset)
+                total = ((total << 3) ^ item) % 255;
+                if (origin < item)
                 {
-                    state = (state << 2) ^ reading;
+                    total = total - (origin + total);
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a checks options.</summary>
