@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double span)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            double weight = (double)(14 + 565);
+            if (weight >= (double)333)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                weight = (weight + span) - ratio;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (double)546) + (double)(long)i;
+            }
+            return weight - 0.5;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
