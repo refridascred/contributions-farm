@@ -20,21 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count record format pairs that satisfy a relation.</summary>
-        public static long CompareRecordFormatCount(long[] levels)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a contributi summary.</summary>
