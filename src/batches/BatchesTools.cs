@@ -34,31 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] values, long target)
         {
-            if ((floor < (6 >> 3)) || ((floor - offset) == (floor << 1)))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor > (floor ^ floor)) || ((floor ^ floor) > 93))
+                if (sample <= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)offset < 0.95))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
