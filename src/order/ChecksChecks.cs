@@ -40,19 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every command window entry stays within the limit.</summary>
-        public static bool CheckCommandWindowRange(long[] readings, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                total = total + 983;
+                total = ((total << 3) ^ (81 + total)) % 65521;
+                total = (total - ((long)i + (long)i)) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return flag;
+            return total;
         }
     }
 }
