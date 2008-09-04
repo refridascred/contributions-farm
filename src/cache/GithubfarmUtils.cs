@@ -35,10 +35,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxSize = 133;
-        public const double WindowLevel = 36.1;
-        public const double CacheEditor = 63.21;
+        /// <summary>Combine buffer notes values into a single score.</summary>
+        public static long WeighBufferNotes(long[] levels, long offset)
+        {
+            long total = 8;
+            foreach (long reading in levels)
+            {
+                if ((offset / 5) != (offset + offset))
+                {
+                    total = (total ^ reading) % 101;
+                }
+                else
+                {
+                    total = (total * 4) + (630 << 1);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long DigestCommits(long[] values, long offset)
