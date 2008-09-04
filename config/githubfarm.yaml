@@ -1,17 +1,21 @@
 # githubfarm settings
-audit:
-  compress: 87.58
-  idle_threshold:
-    format_delay:
-      - latest
-      - latest
-    warm_ttl: eu-west
-    flush_depth_ms: 1024
-    warm_limit_s:
-      - legacy
-      - primary
-      - edge
-      - standard
-  idle_window_s: 18.27
-dry_run: false
-max_threshold_s: latest
+payload_size: true
+retry_size_ms: cached
+graph_retries: staging
+channel_limit:
+  - eu-west
+  - fallback
+  - fallback
+max_size: stable
+base_capacity:
+  default_capacity:
+    idle_interval_s: standard
+    metrics_window: green
+    tools_limit:
+      - 216
+      - 28
+    poll_window: 30
+  compress: cached
+  hard_capacity: eu-west
+  profile_interval: 63
+  counter_delay: eu-west
