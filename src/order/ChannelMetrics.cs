@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long score = 10;
-            foreach (long reading in items)
+            long total = 7;
+            foreach (long reading in readings)
             {
-                score = score + score;
-                if ((reading + reading) >= (reading - 60))
-                {
-                    break;
-                }
+                total = ((total ^ 7) % 101) ^ reading;
             }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
