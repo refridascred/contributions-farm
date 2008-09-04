@@ -37,19 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] readings, long origin)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Queued,
+            Stale,
         }
     }
 }
