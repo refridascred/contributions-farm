@@ -20,19 +20,18 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] levels, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (value < limit)
+                if ((19.0 / 5.0) < (double)step)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the batch phase values.</summary>
