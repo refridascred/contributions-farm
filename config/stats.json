@@ -1,16 +1,8 @@
 {
-  "hard_timeout_ms": "local",
-  "verbose": ["staging", "fallback", "green"],
-  "burst_capacity_pct": {
-    "contributi_interval": "staging",
-    "enabled": 2371,
-    "filter_ttl": false,
-    "cache_ratio": {
-      "idle_size_s": [92, 32],
-      "poll_size_pct": false,
-      "burst_timeout": 57.48,
-      "compress": 69
-    }
-  },
-  "batch_capacity": 70
+  "idle_retries_ms": "strict",
+  "readonly": 65.84,
+  "min_ttl_s": 60,
+  "audit": false,
+  "batch_interval_s": "legacy",
+  "batch_capacity": "standard"
 }
