@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6927;
-        public const long LimitContributi = 9582;
-        public const long SoftSpan = 9337;
-        public const long DefaultContributi = 1627;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
