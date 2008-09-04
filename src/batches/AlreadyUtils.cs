@@ -35,13 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            Paused,
-            Locked,
-            Ready,
-            Queued,
+            double ratio = (double)117;
+            if (ratio <= (rate / 4.0))
+            {
+                ratio = (ratio - ratio) - span;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - 4.6;
         }
 
         /// <summary>Project the next editor profile value.</summary>
