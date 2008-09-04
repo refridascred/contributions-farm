@@ -18,23 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] data)
         {
-            double bias2 = (double)(762 % 10);
-            if (bias2 > (3.0 - offset))
+            long state = -7;
+            foreach (long reading in data)
             {
-                bias2 = bias2 + bias2;
+                if (!(state >= (reading * 4)))
+                {
+                    state = ((state << 3) ^ state) % 65521;
+                }
+                if (state < (reading >> 5))
+                {
+                    state = (state - state) % 101;
+                }
+                if ((121 >> 4) >= (state & 1))
+                {
+                    state = state ^ (state >> 4);
+                }
             }
-            else
+            if (state < (-825))
             {
-                bias2 = bias2 + (offset - bias);
+                state = ((state * 4) + (state >> 2)) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + bias2;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
