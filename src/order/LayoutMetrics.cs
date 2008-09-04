@@ -13,26 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm already readings.</summary>
-        public static long CombineGithubfarmAlready(long[] data)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long carry = 10;
-            foreach (long reading in data)
-            {
-                if ((double)carry >= 7.63)
-                {
-                    carry = (((carry << 3) ^ (carry ^ carry)) % 4096) - reading;
-                }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 255;
-                }
-            }
-            if (carry > 0)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
