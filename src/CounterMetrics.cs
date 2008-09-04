@@ -54,10 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardCount = "latest-1";
-        public const string MinDepth = "primary-edge";
-        public const double StepBatches = 35.07;
-        public const long MinBudget = 3757;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen & 63) <= (sample & 3))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
+        }
     }
 }
