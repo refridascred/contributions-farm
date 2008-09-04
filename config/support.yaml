@@ -1,16 +1,11 @@
 # support settings
-window_delay:
-  poll_ttl:
-    - eu-west
-    - cached
-    - cached
-    - primary
-  strict:
-    - 359
-    - 490
-    - 51
-    - 132
-  sync_window: 1582
-sync_depth_s: open
-readonly: stable
-dry_run: 1744
+support_interval:
+  batches_ratio: 763
+  default_delay_s: 7878
+  idle_depth_count:
+    - 134
+    - 125
+sync_capacity_ms: latest
+flush_capacity: 100
+base_delay_count: 30
+max_limit_pct: 78.88
