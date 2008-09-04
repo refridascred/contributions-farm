@@ -1,6 +1,6 @@
-id,ratio,state,weight
-1,294,50,546
-2,open,edge,cached
-3,893,94.02,2.63
-4,760,329,895
-5,60.88,95.17,local
+id,owner,token
+1,45.34,42.27
+2,722,47.18
+3,edge,45.14
+4,882,682
+5,fallback,508
