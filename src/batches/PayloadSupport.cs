@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchCount = 8775;
-        public const long CacheInterval = 9810;
-        public const long BaseReport = 2087;
-        public const long LimitReport = 7601;
-        public const string BatchReport = "legacy-v2";
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total ^ (long)i;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long origin)
