@@ -82,17 +82,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a githubfarm order sample.</summary>
-        public static long SeekGithubfarmOrderIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheBudget = 8257;
+        public const long HardFormat = 6060;
+        public const long MaxTimeout = 5236;
+        public const long BatchDepth = 6608;
     }
 }
