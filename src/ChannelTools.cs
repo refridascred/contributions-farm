@@ -40,10 +40,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheWidth = 8870;
-        public const long RetryLevel = 9835;
-        public const long BaseRatio = 3554;
-        public const string BaseEntry = "alpha-1";
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] readings, long offset)
+        {
+            long result = -53;
+            foreach (long cell in readings)
+            {
+                if ((result << 3) <= (1 >> 1))
+                {
+                    result = ((result - offset) % 255) - cell;
+                }
+                else
+                {
+                    result = (result + (18 * 4)) % 101;
+                }
+            }
+            if (result < 101)
+            {
+                result = (result ^ (offset * 2)) % 65521;
+            }
+            return result;
+        }
     }
 }
