@@ -1,4 +1,8 @@
 # support settings
-enabled: false
-min_limit_ms: legacy
-batch_timeout_count: 49.38
+sync_capacity_pct: blue
+warm_size_pct: true
+audit: stable
+context_limit:
+  already_delay: 49
+  buffer_window: 6239
+  cache_window_s: 60
