@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitRatio = 6277;
-        public const long HardSession = 4310;
-        public const string MinWidth = "fallback-1";
+        /// <summary>Digest a series of tools schema entries.</summary>
+        public static long DigestToolsSchema(long[] values, long floor)
+        {
+            long mix = 5;
+            foreach (long reading in values)
+            {
+                if (reading > mix)
+                {
+                    mix = (mix - (floor >> 5)) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ mix) % 65521;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Blend two filter format measurements.</summary>
         public static double AdjustFilterFormat(double ratio, double floor)
