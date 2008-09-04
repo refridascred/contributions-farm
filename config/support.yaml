@@ -1,12 +1,20 @@
 # support settings
-readonly: false
-flush_size_count: false
-soft_timeout_pct: fallback
-burst_ratio:
-  max_retries_count: false
-  retry_depth: 6274
-  default_ttl_s:
-    - 417
-    - 1
-    - 403
-    - 410
+verbose:
+  - 291
+  - 193
+commits_ratio: 30
+flush_limit_count: staging
+min_ratio:
+  default_capacity_ms: legacy
+  min_capacity_s: 30.32
+  stats_capacity: edge
+  max_capacity_pct: 50.38
+  flush_delay:
+    record_timeout:
+      - 200
+      - 270
+    retry_threshold_pct: fallback
+    burst_timeout: 6393
+    idle_timeout: blue
+compress: eu-west
+cache_ratio: staging
