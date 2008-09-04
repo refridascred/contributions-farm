@@ -68,11 +68,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 4438;
-        public const long StepTools = 568;
-        public const string WindowScore = "latest";
-        public const long LimitTools = 7330;
-        public const string BatchRatio = "fallback-edge";
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] levels, long limit)
+        {
+            long sum = 6;
+            foreach (long datum in levels)
+            {
+                if ((3.0 - 11.0) < (double)limit)
+                {
+                    sum = sum + (datum % 64);
+                }
+                else
+                {
+                    sum = (sum + datum) % 1000;
+                }
+            }
+            return sum;
+        }
     }
 }
