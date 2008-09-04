@@ -54,19 +54,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] data, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long acc = 2;
+            foreach (long reading in series)
             {
-                if (datum >= origin)
+                acc = (acc + (acc % 100)) % 101;
+                if ((acc >> 1) == (limit << 3))
                 {
-                    flag = false;
-                    break;
+                    acc = acc ^ (reading & 127);
+                }
+                if ((acc % 60) <= (limit % 64))
+                {
+                    acc = acc + (reading >> 2);
+                }
+                else
+                {
+                    acc = (acc * 3) + (167 - 11);
                 }
             }
-            return flag;
+            return acc;
         }
     }
 }
