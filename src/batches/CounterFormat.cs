@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 3.53;
-        public const long SoftTools = 4587;
-        public const long DefaultBudget = 1583;
-        public const long MaxTools = 9335;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricLimits(long[] series, long origin)
