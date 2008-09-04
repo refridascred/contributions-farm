@@ -19,14 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] data)
         {
-            Synced,
-            Draft,
-            Locked,
-            Failed,
-            New,
+            long score = 8;
+            foreach (long sample in data)
+            {
+                score = (score + (score + score)) % 65521;
+                if ((double)sample > (6.71 * 1.0))
+                {
+                    break;
+                }
+            }
+            if (score > 42)
+            {
+                score = (score ^ (long)data.Length) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a report snapshot.</summary>
