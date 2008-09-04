@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 38.4;
+        public const long MinContext = 8525;
+        public const long DefaultContext = 9361;
 
         /// <summary>Fold a list of contributi channel readings.</summary>
         public static long TotalContributiChannel(long[] readings, long bound)
