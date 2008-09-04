@@ -13,13 +13,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Rank buffer route input into a small class.</summary>
+        public static long GradeBufferRoute(long floor, long offset)
         {
-            Pending,
-            Paused,
-            Retry,
-            Draft,
+            long span = floor + offset;
+            if (((span % 16) == (floor & 7)) && ((span - offset) < (98 ^ floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset <= (offset + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (13 >= (span - floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next cache value.</summary>
