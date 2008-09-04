@@ -34,19 +34,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum <= (7.06 * 15.0))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryTimeout = 6121;
+        public const long DefaultBudget = 31;
+        public const double MaxLevel = 91.49;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
