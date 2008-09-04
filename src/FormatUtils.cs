@@ -78,15 +78,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Retry,
+            Draft,
+            Pending,
+            Closed,
+            Ready,
         }
     }
 }
