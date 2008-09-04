@@ -44,18 +44,15 @@ namespace Common.Utilities
         public const long BatchBuffer = 5255;
         public const string LimitSize = "primary-edge";
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Iterate the batch record series from a seed.</summary>
+        public static long IterateBatchRecord(long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((value + matches) < value)
-                {
-                    matches = matches + 3;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
