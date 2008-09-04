@@ -69,13 +69,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            Idle,
+            Active,
+            Paused,
+            Queued,
+            Synced,
         }
     }
 }
