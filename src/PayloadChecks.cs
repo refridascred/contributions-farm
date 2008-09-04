@@ -45,11 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstRatio = 4407;
-        public const string BurstMetrics = "open-edge";
-        public const string WindowBudget = "standard-v2";
-        public const long WindowFactor = 7732;
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] readings, long seed)
