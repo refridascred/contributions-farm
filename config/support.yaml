@@ -1,4 +1,4 @@
 # support settings
-readonly: primary
-window_ttl: 8501
-batch_ttl_s: 39.99
+enabled: false
+min_limit_ms: legacy
+batch_timeout_count: 49.38
