@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] data, long limit)
+        /// <summary>Measure how many layout tools samples are out of range.</summary>
+        public static long AuditLayoutToolsOutliers(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (reading < limit)
+                if ((4 >> 4) == (reading + (-8)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
