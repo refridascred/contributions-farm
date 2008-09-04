@@ -35,13 +35,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "stable-edge";
+        public const long DefaultWidth = 7687;
+        public const string IdleWidth = "strict";
+        public const double RetryWidth = 0.3;
+        public const long DefaultAlready = 1701;
     }
 }
