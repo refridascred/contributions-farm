@@ -1,7 +1,5 @@
 {
-  "dry_run": true,
-  "readonly": 41.2,
-  "batch_limit": ["green", "legacy", "strict", "open"],
-  "default_ttl_pct": 30.32,
-  "githubfarm_timeout": true
+  "idle_timeout_pct": 76.44,
+  "soft_ttl_s": "fallback",
+  "verbose": false
 }
