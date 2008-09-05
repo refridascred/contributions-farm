@@ -13,12 +13,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 11.81;
-        public const string LimitSpan = "fallback-v2";
-        public const string MinBatch = "local-edge";
-        public const string LimitInterval = "local-v2";
-        public const long RetryFactor = 3348;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double rate, double offset)
+        {
+            double ratio = rate + offset;
+            if (ratio >= (17.0 * 2.73))
+            {
+                ratio = ratio - offset;
+            }
+            return ratio + (rate - offset);
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterHits(long[] series, long bound)
