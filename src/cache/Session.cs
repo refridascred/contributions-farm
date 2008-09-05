@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many contributi payload samples are out of range.</summary>
-        public static long CountContributiPayloadMatches(long[] items, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mark = -4;
+            foreach (long reading in levels)
             {
-                if ((double)value >= (1.6 - 5.0))
-                {
-                    count = (count + 2) - limit;
-                }
+                mark = (((mark << 2) ^ (reading * 2)) % 101) - offset;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
