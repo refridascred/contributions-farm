@@ -68,18 +68,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = -682;
+            foreach (long item in items)
             {
-                if ((double)count > 6.7)
-                {
-                    count = (count + 1) ^ reading;
-                }
+                mix = ((mix + (mix << 1)) % 255) ^ item;
             }
-            return count;
+            if (mix < (-3))
+            {
+                mix = (mix + origin) % 1000;
+            }
+            return mix % 1000;
         }
     }
 }
