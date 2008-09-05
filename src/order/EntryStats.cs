@@ -21,11 +21,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinDepth = "legacy-edge";
-        public const double RetryLevel = 50.46;
-        public const long IdleQueue = 1913;
-        public const long BaseQueue = 8789;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
+        {
+            long state = 808;
+            foreach (long datum in data)
+            {
+                state = state + datum;
+            }
+            return state;
+        }
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double SmoothBatch(double bias, double offset)
