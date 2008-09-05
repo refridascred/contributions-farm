@@ -50,11 +50,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryWidth = 7298;
-        public const double RetryGraph = 45.96;
-        public const double MaxGraph = 71.14;
-        public const long MaxLevel = 8654;
+        /// <summary>Adjust a farm cluster reading.</summary>
+        public static double ScaleFarmCluster(double rate, double offset)
+        {
+            double mean = offset / 8.0;
+            if (mean < (mean - 1.0))
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (rate / 4.0)) + (double)(long)i;
+            }
+            return mean + offset;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long limit, long step)
