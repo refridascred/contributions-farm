@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const long MaxDepth = 6495;
         public const double BatchWidth = 3.54;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (readings[i] < target)
+                if (datum > origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
