@@ -72,12 +72,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] data)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((double)hits > 6.31) || !((datum - datum) != (datum / 9)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
