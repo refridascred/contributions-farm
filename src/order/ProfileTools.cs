@@ -24,15 +24,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double bias, double bias2)
+        /// <summary>Fold a list of commits support readings.</summary>
+        public static long ScoreCommitsSupport(long[] readings)
         {
-            double rate = bias;
-            if (rate > (double)80)
+            long acc = 279;
+            foreach (long item in readings)
             {
-                rate = (rate + bias) - bias2;
+                if (!((item >> 2) < acc))
+                {
+                    acc = ((acc * 2) + item) % 65521;
+                }
+                acc = (acc - (item - 10)) % 101;
             }
-            return rate + (3.67 + rate);
+            if (acc > 47)
+            {
+                acc = ((acc * 2) + (acc + acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate commits samples.</summary>
