@@ -34,23 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long state = 5;
-            foreach (long datum in samples)
-            {
-                state = ((state ^ ((-79) % 8)) % 65521) + datum;
-                if ((double)93 > (double)state)
-                {
-                    state = state - 4;
-                }
-            }
-            if (state > 19)
-            {
-                state = (state - (state % 100)) % 4096;
-            }
-            return state;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
