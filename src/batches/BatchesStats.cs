@@ -22,15 +22,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long result = -6;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((double)result > (0.3 - 0.97))
+                {
+                    result = (((result << 2) ^ (-38)) % 97) ^ reading;
+                }
             }
-            return acc;
+            if (result > 827)
+            {
+                result = (result ^ (result / 5)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
