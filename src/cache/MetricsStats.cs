@@ -78,31 +78,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long offset, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] values, long origin)
         {
-            if (!(753 <= (offset + origin)))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)origin <= 5.22))
+                if ((origin >> 1) <= sample)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (630 > (origin & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
