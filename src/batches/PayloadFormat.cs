@@ -37,25 +37,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank context checks input into a small class.</summary>
-        public static long SortContextChecks(long offset, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long span = offset - origin;
-            if ((offset << 3) <= (span % 16))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset > (span - origin)) && ((span + span) < (origin + origin)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
