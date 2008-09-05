@@ -1,17 +1,6 @@
 {
-  "burst_ratio_count": {
-    "retry_capacity_ms": 3766,
-    "sync_timeout_count": 67,
-    "layout_ttl": {
-      "poll_ttl": 6009,
-      "soft_size_ms": 20.71,
-      "readonly": "edge",
-      "max_capacity": 2.91,
-      "batches_threshold": 5.41
-    }
-  },
-  "poll_timeout_count": [125, 301, 102],
-  "graph_threshold": "blue",
-  "schema_ttl": "strict",
-  "max_delay_count": "primary"
+  "max_ttl_count": 68,
+  "retry_size_pct": 24,
+  "account_limit": ["stable", "strict"],
+  "hard_depth_ms": true
 }
