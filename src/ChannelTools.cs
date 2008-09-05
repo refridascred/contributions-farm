@@ -33,12 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Find the first route already entry that matches the target.</summary>
+        public static long SeekRouteAlreadyIndex(long[] values, long bound)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
