@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] samples, long target)
         {
-            Retry,
-            Active,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
