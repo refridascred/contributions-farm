@@ -47,19 +47,20 @@ namespace Common.Utilities
             return load - (double)41;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long floor)
+        /// <summary>Digest a series of graph schema entries.</summary>
+        public static long FoldGraphSchema(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long total = 49;
+            foreach (long datum in samples)
             {
-                if (sample < floor)
+                long hits = (datum & 7) - (total >> 4);
+                total = total ^ hits;
+                if (datum > (857 + total))
                 {
-                    ready = false;
-                    break;
+                    total = (total << 3) ^ datum;
                 }
             }
-            return ready;
+            return total % 4096;
         }
 
         /// <summary>Rank order input into a small class.</summary>
