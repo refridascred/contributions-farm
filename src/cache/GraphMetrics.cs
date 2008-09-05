@@ -45,11 +45,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
