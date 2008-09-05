@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ratio + (17.0 * 1.36);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)count <= (0.9 / 7.0))
-                {
-                    count = (count + 1) ^ sample;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
