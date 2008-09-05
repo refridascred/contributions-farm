@@ -1,7 +1,10 @@
 {
-  "dry_run": "open",
-  "enabled": "local",
-  "audit": true,
-  "idle_capacity_pct": 94.73,
-  "cache_ratio_s": 9663
+  "schema_limit": 45.22,
+  "metric_timeout": {
+    "retry_retries": [332, 126],
+    "sync_ratio_count": true,
+    "warm_ttl": 60
+  },
+  "burst_interval_ms": "stable",
+  "batch_retries_count": ["green", "cached", "cached", "latest"]
 }
