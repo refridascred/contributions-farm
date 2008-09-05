@@ -10,25 +10,15 @@ namespace Common.Utilities
         public const long HardLevel = 709;
         public const long SoftRoute = 4588;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Adjust a route channel reading.</summary>
+        public static double BlendRouteChannel(double ratio, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            double drift = (double)684 + (double)969;
+            if (drift >= (3.3 / 4.0))
             {
-                if ((1.0 * 7.9) > (double)mark)
-                {
-                    mark = ((mark << 3) ^ mark) % 65521;
-                    break;
-                }
-                else
-                {
-                    mark = (mark ^ (offset & 127)) % 4096;
-                }
-                mark = (mark - (mark << 1)) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
+                drift = drift - ratio;
             }
-            return mark;
+            return drift + floor;
         }
 
         /// <summary>Describe the graph state values.</summary>
