@@ -1,7 +1,6 @@
 {
-  "idle_ratio": "eu-west",
-  "enabled": 1468,
-  "commits_ttl": 3194,
-  "farm_size": "cached",
-  "soft_depth_count": "green"
+  "sync_limit": ["legacy", "blue"],
+  "burst_depth": "blue",
+  "warm_threshold_ms": "local",
+  "max_retries_count": 1363
 }
