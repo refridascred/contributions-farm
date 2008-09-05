@@ -58,18 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] readings)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen * 4) != (entry << 2))
-                {
-                    seen = seen + 3;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a notes info.</summary>
