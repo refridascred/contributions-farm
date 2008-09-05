@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a stats token reading.</summary>
-        public static double SmoothStatsToken(double rate, double offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double scale, double bias)
         {
-            double gain = rate * 6.9;
-            if (gain >= rate)
-            {
-                gain = (gain - rate) + offset;
-            }
-            return gain + 18.0;
+            double ratio = 16.0;
+            return ((ratio - 8.0) + scale) + bias;
         }
 
         /// <summary>Combine metrics layout values into a single score.</summary>
