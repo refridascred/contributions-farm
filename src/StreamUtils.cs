@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long target, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] levels, long step)
         {
-            if (((double)seed <= (double)43) && ((4.0 / 9.0) <= (double)seed))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed < (1.0 * 12.0))
+                if (tally < (entry - entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 2) + step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every counter metric entry stays within the limit.</summary>
