@@ -1,5 +1,5 @@
 {
-  "flush_retries_count": 7879,
-  "hard_timeout_ms": false,
-  "audit": 53.04
+  "warm_retries_count": "eu-west",
+  "githubfarm_ratio": false,
+  "readonly": 38.38
 }
