@@ -27,13 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] values)
         {
-            Active,
-            Queued,
-            Paused,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric record.</summary>
