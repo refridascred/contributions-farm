@@ -14,17 +14,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] items, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((items[i] <= seed) && ((items[i] % 2) == 0))
+                if ((double)reading > (5.79 * 1.0))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
