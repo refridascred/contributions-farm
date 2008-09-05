@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            long score = 51;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (!((35 + cell) < (cell + score)))
+                {
+                    score = (score + (cell << 2)) % 255;
+                }
+                else
+                {
+                    score = ((score * 5) + (score - score)) % 1000;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Fold a list of schema account readings.</summary>
