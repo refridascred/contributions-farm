@@ -58,10 +58,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultTimeout = 901;
-        public const long DefaultLevel = 308;
-        public const long RetrySize = 7292;
-        public const double BaseGraph = 14.8;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Paused,
+            Pending,
+            Stale,
+        }
     }
 }
