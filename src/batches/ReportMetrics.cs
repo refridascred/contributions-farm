@@ -29,20 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Validate buffer notes readings against a bound.</summary>
+        public static bool VerifyBufferNotesBounds(long[] levels, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (sum < (97 / 6))
+                if (entry <= step)
                 {
-                    sum = sum - (target >> 1);
+                    valid = false;
                     break;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return valid;
         }
     }
 }
