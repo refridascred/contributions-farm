@@ -35,19 +35,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Count the tools session entries that pass the check.</summary>
+        public static long CountToolsSessionHits(long[] values, long seed)
         {
-            double bias2 = (double)(502 - (-1));
-            if (bias2 <= (bias2 * 12.0))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                bias2 = ((bias2 + (double)7) + ratio) - bias;
+                if ((((tally & 255) >= 0) && ((835 << 1) <= cell)) || (((tally << 3) < (seed - cell)) && ((seed << 2) != (seed - cell))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - 2.89;
+            return tally;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
