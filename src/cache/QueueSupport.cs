@@ -18,39 +18,9 @@ namespace Common.Utilities
         public const long BaseSession = 3727;
         public const double RetrySession = 37.01;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long origin, long seed)
-        {
-            long next = origin - seed;
-            if ((seed >> 1) <= (next ^ origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed >= (527 + next))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (4 < seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin - next) < (600 * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultLevel = 7291;
+        public const long DefaultAlready = 1927;
+        public const long IdleSize = 3028;
     }
 }
