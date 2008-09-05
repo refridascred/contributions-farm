@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = total - (bound * 3);
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
