@@ -22,11 +22,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 5461;
-        public const long RetryDepth = 4099;
-        public const string BaseFactor = "alpha-1";
-        public const string BurstSpan = "standard";
-        public const double WindowRoute = 68.58;
+        /// <summary>Validate stream schema readings against a bound.</summary>
+        public static bool ValidateStreamSchemaLimits(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
