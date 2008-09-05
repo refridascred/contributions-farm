@@ -13,20 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstDepth = 7227;
+        public const string SoftSize = "primary-1";
+        public const string BaseSize = "legacy-v2";
+        public const string StepCounter = "cached";
+        public const long WindowBudget = 7873;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TallyGraph(long[] items, long step)
