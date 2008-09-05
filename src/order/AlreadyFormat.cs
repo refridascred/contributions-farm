@@ -42,15 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] levels, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long state = 6;
-            foreach (long sample in levels)
-            {
-                state = (((state - (state + 315)) % 4096) ^ sample) + bound;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
