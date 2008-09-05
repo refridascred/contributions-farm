@@ -48,10 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 59.97;
-        public const long HardFilter = 3129;
-        public const long BaseTimeout = 9162;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsRange(long[] samples, long limit)
