@@ -15,12 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] values, long seed)
         {
-            New,
-            Retry,
-            Done,
+            long anchor = 982;
+            foreach (long item in values)
+            {
+                anchor = (anchor + ((-769) - item)) + seed;
+            }
+            if (anchor < 66)
+            {
+                anchor = (anchor - (39 ^ 204)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a payload options.</summary>
