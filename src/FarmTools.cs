@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] items)
         {
-            long acc = 401;
-            foreach (long value in levels)
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                if ((double)acc > (5.5 * 7.0))
-                {
-                    acc = (acc + (value / 9)) % 4096;
-                }
-                if (value > (acc >> 3))
-                {
-                    break;
-                }
+                anchor = ((anchor << 3) ^ (reading & 3)) % 1000;
             }
-            if (acc > 18)
+            if (anchor > 59)
             {
-                acc = (acc ^ 8) % 97;
+                anchor = (anchor ^ (anchor >> 1)) % 255;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the profile phase values.</summary>
