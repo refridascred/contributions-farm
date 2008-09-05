@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series, long seed)
-        {
-            long score = 31;
-            foreach (long cell in series)
-            {
-                score = (score - (cell % 3)) - seed;
-            }
-            if (score < 63)
-            {
-                score = (score + 24) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitWidth = 1660;
+        public const long SoftSchema = 7736;
+        public const double BaseWidth = 1.5;
+        public const long LimitTimeout = 8581;
+        public const long LimitSchema = 7612;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
