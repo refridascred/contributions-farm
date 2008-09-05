@@ -10,19 +10,39 @@ namespace Common.Utilities
         public const long RetryInterval = 3599;
         public const long SoftFilter = 865;
 
-        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
-        public static bool GuardBufferCommitsBounds(long[] values, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long step = target - origin;
+            if ((double)target < (double)step)
             {
-                if (datum > offset)
+                return 3;
+            }
+            else
+            {
+                if ((target % 100) < step)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((step - target) > (origin - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target - target) > (origin + origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
