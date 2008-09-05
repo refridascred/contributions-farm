@@ -49,10 +49,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 5990;
-        public const string SoftSpan = "legacy-edge";
-        public const string StepChannel = "primary";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
