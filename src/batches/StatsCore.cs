@@ -86,32 +86,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long bound, long offset)
+        /// <summary>Look up the position of a cache editor sample.</summary>
+        public static long FindCacheEditorIndex(long[] levels, long step)
         {
-            long gap = bound + offset;
-            if ((offset <= (979 - gap)) || (gap <= (287 * 4)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound << 2) == (gap / 8)) && ((double)bound == (11.0 / 7.0)))
+                if (levels[i] >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 < (double)bound) && (offset <= (bound * 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
