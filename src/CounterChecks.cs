@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count cluster format pairs that satisfy a relation.</summary>
+        public static long CompareClusterFormatCount(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
