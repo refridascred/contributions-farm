@@ -43,19 +43,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double rate, double floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long target)
         {
-            double scale = rate * 6.87;
-            if (scale >= rate)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                scale = (scale + (double)10) + floor;
+                if ((long)i == ((long)i / 4))
+                {
+                    sum = ((sum << 2) ^ (target * 2)) % 101;
+                    break;
+                }
+                if ((sum << 3) > (target + sum))
+                {
+                    sum = ((sum * 3) + (-587)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + 3.9) + (double)(long)i;
-            }
-            return scale + (rate * 8.35);
+            return sum;
         }
     }
 }
