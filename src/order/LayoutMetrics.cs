@@ -31,39 +31,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long origin, long origin2)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series, long offset)
         {
-            long span = origin ^ origin2;
-            if (((double)origin >= (4.0 * 8.9)) || (1.3 < (double)origin2))
+            long acc = -911;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((span % 64) <= span) && ((origin + span) >= origin))
+                acc = ((acc + ((-823) - acc)) % 97) - offset;
+                acc = (acc ^ (acc - 72)) % 101;
+                if (((double)reading < (17.0 / 8.0)) && ((7.1 * 3.3) > (20.0 * 0.52)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin & 15) >= 45) && ((double)origin < (8.63 + 7.27)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)origin2 > (double)span))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (acc > 8)
+            {
+                acc = (acc - (acc + acc)) % 97;
+            }
+            return acc % 1000;
         }
     }
 }
