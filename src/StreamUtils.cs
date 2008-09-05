@@ -53,11 +53,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultSize = "primary-1";
-        public const long IdleTimeout = 7626;
-        public const long DefaultRecord = 2219;
-        public const long BurstCount = 5071;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long FoldChecks(long[] samples)
