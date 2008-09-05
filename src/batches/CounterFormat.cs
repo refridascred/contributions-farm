@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const long MaxDepth = 6495;
         public const double BatchWidth = 3.54;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] data, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (item < offset)
+                if (!(origin >= 953))
                 {
-                    ready = false;
-                    break;
+                    result = (result << 2) ^ (long)i;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return ready;
+            return result;
         }
     }
 }
