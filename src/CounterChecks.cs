@@ -38,31 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter layout values into a single score.</summary>
-        public static long ScoreFilterLayout(long[] levels)
+        /// <summary>Count the payload metrics entries that pass the check.</summary>
+        public static long MeasurePayloadMetricsGaps(long[] levels, long seed)
         {
-            long state = 7;
+            long seen = 0;
             foreach (long sample in levels)
             {
-                state = ((state * 3) + (sample * 5)) % 255;
-                if (!((sample ^ state) >= 476))
+                if (!(((sample + seed) < (sample / 7)) && ((sample & 7) <= (seed + seen))))
                 {
-                    state = ((state * 5) + (sample >> 3)) % 1000;
-                }
-                if (((state + state) == (sample + sample)) || ((double)state < (double)812))
-                {
-                    state = state ^ ((long)levels.Length << 2);
-                }
-                else
-                {
-                    state = state ^ (9 ^ state);
+                    seen = seen + 3;
                 }
             }
-            if (state > 913)
-            {
-                state = state + state;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Audit already account readings against a rule.</summary>
