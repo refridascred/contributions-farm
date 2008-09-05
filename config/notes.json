@@ -1,7 +1,12 @@
 {
-  "persist": 1357,
-  "already_limit": ["cached", "blue", "blue"],
-  "verbose": "stable",
-  "flush_timeout_ms": false,
-  "burst_limit_pct": 14.98
+  "readonly": ["blue", "strict"],
+  "dry_run": 1024,
+  "poll_delay_ms": "fallback",
+  "max_size_pct": {
+    "idle_delay": 30.49,
+    "retry_timeout_s": 100,
+    "retry_size_ms": true,
+    "cache_timeout_pct": 4211,
+    "burst_ratio_count": 1024
+  }
 }
