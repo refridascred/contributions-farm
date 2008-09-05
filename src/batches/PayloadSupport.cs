@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] data)
         {
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((datum % 97) != (6 ^ datum)) && ((8 / 6) > (datum + 62)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
