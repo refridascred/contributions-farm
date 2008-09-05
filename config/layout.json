@@ -1,8 +1,7 @@
 {
-  "persist": true,
-  "command_retries": true,
-  "burst_interval_ms": true,
-  "warm_size": false,
-  "strict": "eu-west",
-  "flush_retries": "cached"
+  "warm_ratio": false,
+  "idle_depth": 5646,
+  "persist": 58.27,
+  "farm_retries": 93,
+  "batch_ratio_count": true
 }
