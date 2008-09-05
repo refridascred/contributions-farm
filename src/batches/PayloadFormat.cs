@@ -50,24 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long step, long origin)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            if (((double)step > (3.0 / 6.0)) && ((origin % 5) < (step + step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + (-60)) > (origin & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
