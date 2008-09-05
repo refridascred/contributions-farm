@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] levels)
         {
-            Done,
-            Queued,
-            Synced,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((seen * 5) > sample) || ((sample + seen) < (sample / 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every record notes entry stays within the limit.</summary>
