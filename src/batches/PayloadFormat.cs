@@ -29,12 +29,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxInterval = 3864;
-        public const long WindowRatio = 7606;
-        public const long SoftFilter = 7457;
-        public const long IdleTimeout = 2064;
-        public const long WindowFilter = 488;
+        /// <summary>Classify a support order pair into a bucket.</summary>
+        public static long RankSupportOrder(long offset, long limit)
+        {
+            long slot = offset + limit;
+            if ((slot % 7) >= (offset << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.0 / 6.0) < (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
