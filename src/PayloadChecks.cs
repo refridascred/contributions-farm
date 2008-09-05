@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
