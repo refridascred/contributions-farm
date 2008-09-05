@@ -40,20 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry already counter forward.</summary>
-        public static long StepEntryAlready(long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long sum = -960;
+            foreach (long cell in readings)
             {
-                long gap = (50 / 5) + (seed / 3);
-                if (!(gap > (seed * 4)))
+                if (591 >= (cell / 5))
                 {
-                    continue;
+                    sum = ((sum << 2) ^ 71) % 4096;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            if (sum < (-8))
+            {
+                sum = (sum ^ (origin + sum)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
