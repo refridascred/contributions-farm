@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first stream commits entry that matches the target.</summary>
-        public static long LocateStreamCommitsIndex(long[] levels, long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = rate + (rate / 8.0);
+            if (drift > (drift + drift))
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (span / 2.0);
             }
-            return -1;
+            else
+            {
+                drift = drift + (8.77 / 2.0);
+            }
+            return drift + 1.4;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
