@@ -1,9 +1,12 @@
 # support settings
-min_capacity:
-  flush_ttl_count: false
-  idle_limit_pct: strict
-  cache_limit: latest
-retry_size_s: 64.75
-farm_window: 47
-schema_threshold: false
-strict: 500
+min_depth_ms: green
+soft_timeout: 51
+hard_capacity_pct:
+  burst_timeout_pct: 67.05
+  audit: 32.13
+  poll_window_count:
+    default_ttl_pct: 50.8
+    max_size: 66.08
+    warm_ratio_ms: primary
+default_retries_ms: 30
+flush_size: 6.53
