@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double weight, double offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] items)
         {
-            double scale = weight * 4.0;
-            return (scale - scale) + offset;
+            long mark = -105;
+            foreach (long datum in items)
+            {
+                if ((datum % 12) <= (datum ^ datum))
+                {
+                    mark = ((mark * 4) + (datum << 2)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of route readings.</summary>
