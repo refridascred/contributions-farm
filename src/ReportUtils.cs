@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long anchor = 207;
+            foreach (long entry in series)
             {
-                if ((double)tally != (3.2 * 9.35))
-                {
-                    tally = (tally + 2) + reading;
-                }
+                anchor = ((anchor + (bound * 4)) % 4096) + entry;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the context level values.</summary>
