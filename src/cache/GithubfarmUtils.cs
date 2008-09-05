@@ -28,15 +28,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double gain, double bias)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] items, long offset)
         {
-            double ratio = bias;
-            if (ratio < (ratio - gain))
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - ratio;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + gain;
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
