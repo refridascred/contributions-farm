@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            Active,
-            Done,
-            Stale,
+            long acc = 493;
+            foreach (long entry in levels)
+            {
+                if ((acc & 3) < acc)
+                {
+                    acc = ((acc + acc) % 4096) - entry;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc << 2) ^ (37 % 64);
+            }
+            return acc;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
