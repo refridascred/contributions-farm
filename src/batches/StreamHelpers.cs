@@ -84,29 +84,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long step, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long offset, long offset2)
         {
-            if ((limit + limit) <= (step << 2))
+            if ((2.87 * 1.6) <= (double)offset)
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (!((12 >> 1) < step))
+                if ((offset2 + offset) <= (offset2 << 3))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((step & 3) == (step / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
