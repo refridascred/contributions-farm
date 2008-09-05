@@ -34,31 +34,13 @@ namespace Common.Utilities
         public const double SoftBuffer = 62.34;
         public const long BaseRatio = 8230;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long seed, long floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if (floor >= (seed / 6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 5) >= (seed >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor * 4) > floor) || ((floor & 7) != (seed ^ 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
