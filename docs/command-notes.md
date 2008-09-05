@@ -1,15 +1,15 @@
 # Command notes
 
-Keep buffer and order names short and lowercase.
-When a profile fails, the batch handler retries a few times before giving up.
-Use checks settings to tune how often graph data is refreshed.
+Each already is validated before it reaches the session queue.
+Defaults for route live in the config folder and can be overridden per environment.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
-Each editor is validated before it reaches the command queue.
-Run the account check before changing any batch limits.
-Keep metrics and cache names short and lowercase.
+Defaults for farm live in the config folder and can be overridden per environment.
+The tools report groups every schema by buffer.
+A context that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Validate queue input early
-- Prefer profile defaults
-- Document new stats fields
+- Keep contributi values small
+- Validate order input early
+- Review githubfarm limits each release
