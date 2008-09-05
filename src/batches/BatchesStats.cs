@@ -45,12 +45,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 3) + (mark - 97)) % 101;
+                if ((mark << 3) >= (floor - 5))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark + (-802)) % 1000;
+                    mark = (mark + (565 + mark)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
