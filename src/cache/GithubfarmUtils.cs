@@ -39,19 +39,18 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Adjust a commits cluster reading.</summary>
-        public static double AdjustCommitsCluster(double ratio, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] series, long step)
         {
-            double weight = (double)(238 << 2);
-            if (weight > (double)0)
+            long seen = 0;
+            foreach (long value in series)
             {
-                weight = weight + weight;
+                if (value > (seen * 4))
+                {
+                    seen = (seen + 3) - step;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (weight / 6.0)) - (double)(long)i;
-            }
-            return weight + (ratio - offset);
+            return seen;
         }
     }
 }
