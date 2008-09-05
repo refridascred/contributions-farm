@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 7882;
-        public const long BaseCache = 2077;
-        public const double MinBudget = 75.12;
-        public const long BatchCache = 4430;
-        public const long DefaultCache = 8127;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long CombineAccount(long[] levels, long origin)
