@@ -43,15 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks schema counter forward.</summary>
-        public static long IterateChecksSchema(long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
