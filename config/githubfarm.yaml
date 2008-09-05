@@ -1,5 +1,25 @@
 # githubfarm settings
-hard_ratio_ms: 5595
-default_threshold_count: false
-burst_capacity_pct: true
-counter_limit: false
+soft_ratio_pct: standard
+route_capacity: 3641
+tools_delay:
+  idle_depth_ms: local
+  already_retries:
+    stream_ratio: 21
+    max_timeout: 88.83
+    poll_capacity_count: 98.71
+    dry_run: 59
+    audit: 19.02
+    retry_delay: 23.61
+  burst_capacity_ms: 28.91
+  enabled:
+    - eu-west
+    - strict
+    - fallback
+    - stable
+  command_threshold: open
+  soft_threshold_ms: 7777
+hard_delay:
+  verbose: 94.04
+  min_ratio: false
+  flush_capacity: 7039
+strict: true
