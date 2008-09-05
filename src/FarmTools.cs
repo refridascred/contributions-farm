@@ -18,9 +18,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitWidth = 77.5;
-        public const string IdleCount = "standard";
-        public const string MinReport = "alpha";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
