@@ -1,13 +1,17 @@
 # githubfarm settings
-poll_threshold_count: blue
-max_capacity:
-  channel_window:
-    - 281
-    - 208
-  filter_threshold: false
-  burst_window: blue
-  dry_run: primary
-default_interval_pct: fallback
-batch_ratio_count: local
-batch_ttl: 6833
-flush_retries: 4216
+default_threshold:
+  - strict
+  - edge
+  - open
+  - green
+dry_run:
+  flush_timeout: legacy
+  audit:
+    - 154
+    - 473
+  hard_ratio_ms: true
+  checks_interval: 54.66
+  base_timeout: primary
+  contributi_limit: local
+soft_delay: 96.61
+hard_delay_s: true
