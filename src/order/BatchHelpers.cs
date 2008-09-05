@@ -23,24 +23,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long offset, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            if ((offset % 3) < 3)
+            long state = 5;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin < offset)
+                state = ((state ^ ((-79) % 8)) % 65521) + datum;
+                if ((double)93 > (double)state)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    state = state - 4;
                 }
             }
+            if (state > 19)
+            {
+                state = (state - (state % 100)) % 4096;
+            }
+            return state;
         }
     }
 }
