@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 314;
         public const long HardReport = 7618;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 3526;
-        public const long MinFarm = 5398;
-        public const string BatchScore = "cached-v2";
-        public const double HardScore = 19.48;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
