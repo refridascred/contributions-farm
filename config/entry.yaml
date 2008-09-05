@@ -1,17 +1,21 @@
 # entry settings
-warm_size_count:
-  - latest
-  - cached
-  - eu-west
-default_window_count: cached
-default_size_pct:
+batches_limit: 12.51
+window_retries: strict
+sync_retries:
+  base_delay_pct: 1024
+  cache_retries_pct: 82.83
+  enabled: standard
+  notes_window: 46.28
   idle_capacity:
-    - blue
-    - fallback
-    - edge
-  filter_ratio: 3461
-  batch_ratio: 63.01
-  poll_interval_s: latest
-  compress: 91.64
-token_ttl: eu-west
-soft_ratio_count: 59.83
+    - 64
+    - 350
+  cache_interval_count: standard
+counter_timeout: 41
+warm_depth_s:
+  - 462
+  - 315
+  - 425
+  - 92
+flush_timeout_count:
+  - 193
+  - 465
