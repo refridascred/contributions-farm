@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate filter window samples.</summary>
+        public static long DigestFilterWindow(long[] samples, long origin)
         {
-            Paused,
-            Dropped,
-            Idle,
+            long acc = -712;
+            foreach (long entry in samples)
+            {
+                if (((acc ^ (long)samples.Length) == (acc % 3)) || ((9.0 - 6.8) <= (double)acc))
+                {
+                    acc = (((acc << 2) ^ origin) % 101) - entry;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
