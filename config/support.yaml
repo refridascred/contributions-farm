@@ -1,6 +1,8 @@
 # support settings
-idle_retries_ms: 70
-batch_interval_s: 13.99
-counter_size: 85
-base_capacity: green
-cache_window_ms: staging
+flush_threshold_ms: 32
+min_interval_ms:
+  - primary
+  - edge
+  - stable
+poll_window: 78.51
+poll_window_s: 71.09
