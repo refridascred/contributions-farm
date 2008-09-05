@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double rate, double bias)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double ratio, double bias)
         {
-            double load = (double)((-812) & 63);
-            for (int i = 0; i < 5; i++)
+            double ratio2 = bias;
+            if (ratio2 <= ratio2)
             {
-                load = (((load - 3.0) + (double)(long)i) + rate) + bias;
+                ratio2 = (ratio2 - (double)28) - ratio;
             }
-            return load - (load / 7.0);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (bias * 20.0)) + (double)(long)i;
+            }
+            return ratio2 + (bias - 17.0);
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
