@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseSize = 4537;
-        public const string BaseContributi = "cached-1";
-        public const long SoftRatio = 5496;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings)
+        {
+            long anchor = 3;
+            foreach (long entry in readings)
+            {
+                if (19.0 <= (double)(long)readings.Length)
+                {
+                    anchor = ((anchor - ((long)readings.Length + anchor)) % 101) - entry;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (13 & 127);
+                }
+                if ((anchor >> 3) != ((long)readings.Length - anchor))
+                {
+                    anchor = (anchor - (anchor / 3)) % 101;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 3)) % 1000;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
