@@ -13,15 +13,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a route tools reading.</summary>
-        public static double ProjectRouteTools(double ratio, double bias)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double weight = ratio;
-            if (weight <= (double)56)
-            {
-                weight = (weight + ratio) + bias;
-            }
-            return weight + (double)(-7);
+            Active,
+            Done,
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Rank command input into a small class.</summary>
