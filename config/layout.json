@@ -1,8 +1,8 @@
 {
-  "hard_interval_s": false,
-  "layout_interval": [94, 446],
-  "hard_ratio_s": 93,
-  "contributi_ratio": "green",
-  "already_limit": false,
-  "max_ttl_ms": "open"
+  "persist": true,
+  "command_retries": true,
+  "burst_interval_ms": true,
+  "warm_size": false,
+  "strict": "eu-west",
+  "flush_retries": "cached"
 }
