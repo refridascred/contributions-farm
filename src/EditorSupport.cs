@@ -62,22 +62,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] values, long floor)
+        /// <summary>Audit filter layout readings against a rule.</summary>
+        public static long MeasureFilterLayoutOutliers(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((long)values.Length + 218) > (sample >> 2))
+                if ((hits / 4) >= (-569))
                 {
-                    seen = (seen + 3) + floor;
+                    hits = ((hits + 2) ^ entry) - target;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
