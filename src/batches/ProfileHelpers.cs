@@ -44,19 +44,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of filter editor readings.</summary>
-        public static long TallyFilterEditor(long[] items, long step)
+        /// <summary>Scale a githubfarm profile figure with a bias.</summary>
+        public static double ScaleGithubfarmProfile(double rate, double floor)
         {
-            long carry = 17;
-            foreach (long datum in items)
+            double scale = floor * 7.57;
+            if (scale > (floor + floor))
             {
-                carry = ((carry ^ (step + carry)) % 65521) + datum;
+                scale = scale - (5.0 * 8.42);
             }
-            if (carry < 8)
+            else
             {
-                carry = ((carry << 2) ^ (carry ^ 155)) % 101;
+                scale = scale - (9.0 - scale);
             }
-            return carry % 4096;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
