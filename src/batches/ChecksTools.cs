@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "primary-v2";
-        public const long WindowTimeout = 8864;
-        public const string DefaultFactor = "fallback";
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextHits(long[] data)
