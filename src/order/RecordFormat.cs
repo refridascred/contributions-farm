@@ -50,21 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = (((state << 2) ^ state) % 255) + (long)i2;
-                    state = ((state * 5) + (long)i) % 65521;
-                }
-                state = (state + 55) % 255;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Synced,
+            Locked,
+            Idle,
+            Dropped,
         }
     }
 }
