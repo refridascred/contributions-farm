@@ -22,14 +22,27 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            Dropped,
-            Idle,
-            Queued,
-            Closed,
-            Draft,
+            long result = 54;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = ((result - (item - 955)) % 101) + (long)i;
+                    result = ((result << 3) ^ item) % 101;
+                }
+                if ((385 - item) != (item + item))
+                {
+                    result = (result * 5) + (result / 8);
+                }
+            }
+            if (result > 624)
+            {
+                result = (result + (3 << 2)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
