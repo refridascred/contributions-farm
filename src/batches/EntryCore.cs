@@ -65,12 +65,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double gain, double offset)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            double mean = 16.0;
+            if (mean <= (9.4 / 9.0))
+            {
+                mean = (mean - 7.07) - offset;
+            }
+            else
+            {
+                mean = mean + (20.0 + gain);
+            }
+            return mean - mean;
         }
     }
 }
