@@ -54,19 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double ratio, double floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values, long origin)
         {
-            double mean = ratio + 7.81;
-            if (mean >= ratio)
+            long score = 81;
+            foreach (long sample in values)
             {
-                mean = (mean + 5.5) - floor;
+                if (origin < (origin % 10))
+                {
+                    score = (((score * 2) + (90 - origin)) % 97) ^ sample;
+                }
             }
-            else
-            {
-                mean = mean + (ratio + ratio);
-            }
-            return mean - mean;
+            return score;
         }
     }
 }
