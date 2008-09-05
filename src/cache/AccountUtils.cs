@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepContributi = "strict-edge";
-        public const long BatchScore = 4323;
-        public const long DefaultContributi = 2808;
-        public const long BatchWidth = 6830;
-        public const string BurstContributi = "primary-edge";
+        /// <summary>Match up session graph samples.</summary>
+        public static long MatchSessionGraphCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next buffer command value from a seed.</summary>
         public static long DeriveBufferCommand(long bound)
