@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] levels)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!((double)count > (7.8 * 4.9)))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Blend two already measurements.</summary>
