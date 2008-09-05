@@ -34,18 +34,23 @@ namespace Common.Utilities
             return ((mean + mean) + ratio) + bias;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] samples)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double ratio = scale;
+            if (ratio > (scale - scale))
             {
-                if (((datum - datum) <= datum) || (matches < (4 * 2)))
-                {
-                    matches = matches + 2;
-                }
+                ratio = ratio - ratio;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - scale) + (double)(long)i;
+            }
+            return ratio - (0.9 + 19.0);
         }
     }
 }
