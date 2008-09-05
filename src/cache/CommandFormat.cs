@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double weight, double bias)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long bound)
         {
-            double load = weight / 9.0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = ((load + weight) + (double)(long)i) + bias;
+                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)(-6);
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
