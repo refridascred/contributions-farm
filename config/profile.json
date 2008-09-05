@@ -1,14 +1,8 @@
 {
-  "soft_timeout_ms": 9725,
-  "default_timeout": "primary",
-  "token_size": 7,
-  "poll_retries_count": {
-    "cache_ratio": "legacy",
-    "editor_ttl": 944,
-    "dry_run": [406, 209, 39],
-    "channel_interval": "strict",
-    "cache_timeout_s": 500
-  },
-  "sync_delay": 95.88,
-  "persist": 4523
+  "base_ratio_ms": "standard",
+  "githubfarm_delay": "primary",
+  "readonly": 3993,
+  "poll_depth_pct": "stable",
+  "dry_run": 61,
+  "report_delay": 65
 }
