@@ -13,11 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 5773;
-        public const long HardSpan = 8130;
-        public const long RetrySize = 3319;
-        public const double SoftTimeout = 98.03;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen ^ (long)items.Length) < seen)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportMatches(long[] series)
