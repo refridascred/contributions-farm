@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] values, long limit)
-        {
-            long acc = -463;
-            foreach (long entry in values)
-            {
-                if (((-193) <= ((-8) - acc)) && (9.24 >= (double)limit))
-                {
-                    acc = (((acc << 3) ^ (624 + acc)) % 255) + entry;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc + acc)) % 1000;
-                }
-            }
-            if (acc < 56)
-            {
-                acc = ((acc << 2) ^ (3 / 6)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseSize = 4537;
+        public const string BaseContributi = "cached-1";
+        public const long SoftRatio = 5496;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
