@@ -45,22 +45,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] readings, long seed)
+        /// <summary>Blend two record githubfarm measurements.</summary>
+        public static double SmoothRecordGithubfarm(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((2 + hits) > (sample + seed))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double ratio = (bias2 / 4.0) * 8.2;
+            return (ratio + (7.5 * 12.0)) + bias;
         }
     }
 }
