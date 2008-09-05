@@ -20,19 +20,22 @@ namespace Common.Utilities
             return rate + (double)9;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double ratio, double offset)
+        /// <summary>Digest a series of profile githubfarm entries.</summary>
+        public static long CombineProfileGithubfarm(long[] samples, long step)
         {
-            double gain = offset;
-            if (gain >= ratio)
+            long anchor = 5;
+            foreach (long cell in samples)
             {
-                gain = gain + offset;
+                if (!(12.0 < (double)anchor))
+                {
+                    anchor = (anchor * 2) + (cell / 7);
+                }
             }
-            else
+            if (anchor < 432)
             {
-                gain = gain - (gain - offset);
+                anchor = anchor - (step << 2);
             }
-            return gain + (double)6;
+            return anchor;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
