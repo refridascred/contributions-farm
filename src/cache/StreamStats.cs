@@ -50,18 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long CountEntryChecksHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count >> 1) <= (3 % 97))
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 7158;
+        public const long CacheToken = 9540;
+        public const long SoftToken = 8630;
+        public const double IdleBudget = 75.28;
     }
 }
