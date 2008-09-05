@@ -1,12 +1,12 @@
 # support settings
-min_depth_ms: green
-soft_timeout: 51
-hard_capacity_pct:
-  burst_timeout_pct: 67.05
-  audit: 32.13
-  poll_window_count:
-    default_ttl_pct: 50.8
-    max_size: 66.08
-    warm_ratio_ms: primary
-default_retries_ms: 30
-flush_size: 6.53
+max_depth:
+  strict: 8457
+  batch_depth_pct: 57.35
+  verbose: eu-west
+flush_size:
+  - legacy
+  - cached
+base_interval: 7033
+sync_ratio_pct: 58
+min_ttl_ms: true
+command_window: 10
