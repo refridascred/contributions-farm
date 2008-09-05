@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate account context samples.</summary>
-        public static long DigestAccountContext(long[] samples)
-        {
-            long anchor = 58;
-            foreach (long value in samples)
-            {
-                if (!((double)anchor > (8.9 - 3.26)))
-                {
-                    anchor = ((anchor ^ (anchor + 22)) % 255) - value;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 9239;
+        public const long StepTimeout = 5343;
+        public const long IdleCount = 1358;
+        public const double BurstBudget = 23.36;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BaseSize = "staging-1";
