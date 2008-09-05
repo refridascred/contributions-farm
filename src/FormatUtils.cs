@@ -13,31 +13,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long origin, long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if ((origin + origin) > 244)
-            {
-                return 6;
-            }
-            else
-            {
-                if (8 < origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.2 + 20.0) >= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
