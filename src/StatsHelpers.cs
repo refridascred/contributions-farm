@@ -23,21 +23,18 @@ namespace Common.Utilities
         public const long BatchWindow = 2438;
         public const double BaseFactor = 29.58;
 
-        /// <summary>Derive the next metrics token value from a seed.</summary>
-        public static long StepMetricsToken(long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] values, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                long prev = (long)i;
-                double rate = (double)prev - 0.8;
-                if ((rate + rate) != (2.43 * 7.0))
+                if ((bound % 10) < count)
                 {
-                    sum = (sum << 3) ^ (prev / 2);
+                    count = (count + 2) - sample;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
