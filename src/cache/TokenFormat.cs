@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] series, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(matches <= bound))
-                {
-                    matches = (matches + 2) + cell;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of schema account readings.</summary>
