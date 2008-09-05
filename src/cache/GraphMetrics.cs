@@ -38,15 +38,11 @@ namespace Common.Utilities
         public const double DefaultMetric = 6.92;
         public const string SoftMetric = "staging-v2";
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] series, long target)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long carry = 5;
-            foreach (long cell in series)
-            {
-                carry = (((carry << 3) ^ carry) + cell) + target;
-            }
-            return carry;
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
