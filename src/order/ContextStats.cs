@@ -29,23 +29,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double scale = 7.0 * 13.0;
-            if (scale < (double)234)
-            {
-                scale = scale - (gain / 7.0);
-            }
-            else
-            {
-                scale = scale - (double)(-9);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (offset / 7.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            Synced,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
