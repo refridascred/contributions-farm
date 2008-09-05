@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] samples, long bound)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((item >> 5) > (item & 127)) || (bound > (86 + seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
