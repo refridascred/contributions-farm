@@ -12,12 +12,6 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in local blue latest; do
+for item in open eu-west primary stable; do
     log "checking ${item}"
 done
