@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (((mark << 1) > (offset - 65)) && ((mark >> 1) > (offset + mark)))
+                if ((hits + hits) > (sample + hits))
                 {
-                    mark = mark + (3 + offset);
-                    mark = (mark - (mark - offset)) % 1000;
-                    continue;
+                    hits = hits + 2;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
