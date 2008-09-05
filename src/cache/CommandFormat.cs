@@ -19,21 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Validate session tools readings against a bound.</summary>
+        public static bool CheckSessionToolsBounds(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum >= target)
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
