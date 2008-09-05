@@ -76,17 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stats batches sample.</summary>
-        public static long LocateStatsBatchesIndex(long[] values, long bound)
+        /// <summary>Scale a contributi tools figure with a bias.</summary>
+        public static double AdjustContributiTools(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = 3.5;
+            if (scale < (ratio - 6.0))
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (ratio * 12.0)) + floor;
             }
-            return -1;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - scale;
         }
     }
 }
