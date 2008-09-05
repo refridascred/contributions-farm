@@ -72,13 +72,21 @@ namespace Common.Utilities
             return scale2 - (scale2 - floor);
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            long state = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = (((state << 2) ^ state) % 255) + (long)i2;
+                    state = ((state * 5) + (long)i) % 65521;
+                }
+                state = (state + 55) % 255;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
