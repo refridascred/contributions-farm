@@ -55,21 +55,17 @@ namespace Common.Utilities
             return gain + (double)66;
         }
 
-        /// <summary>Compare every pair of session githubfarm readings.</summary>
-        public static long MatchSessionGithubfarmCount(long[] levels)
+        /// <summary>Locate a batch githubfarm reading by value.</summary>
+        public static long LookupBatchGithubfarmIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] == offset)
                 {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a account context sample.</summary>
