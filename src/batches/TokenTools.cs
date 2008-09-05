@@ -39,18 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] series)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long acc = 953;
+            foreach (long entry in items)
             {
-                if (((seen << 3) > (sample - sample)) && (sample >= (seen + 994)))
+                for (int i = 0; i < 7; i++)
                 {
-                    seen = seen + 3;
+                    long cur = (long)i;
+                    acc = (acc + (cur + cur)) % 1000;
+                }
+                if ((double)acc > (0.14 / 3.0))
+                {
+                    acc = (acc + (entry ^ entry)) % 1000;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
