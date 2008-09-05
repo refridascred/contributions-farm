@@ -70,16 +70,14 @@ namespace Common.Utilities
         public const long WindowCommand = 6979;
         public const double DefaultCommand = 56.24;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 2) + mark) % 255;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            Idle,
+            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the farm phase values.</summary>
