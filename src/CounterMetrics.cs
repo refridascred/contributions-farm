@@ -34,19 +34,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            double rate = bias;
-            if (rate >= (double)37)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                rate = (rate + (double)574) + floor;
+                if (((double)(long)samples.Length <= (double)entry) && (count <= entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                rate = rate + 7.5;
-            }
-            return rate - 9.02;
+            return count;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
