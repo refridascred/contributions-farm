@@ -1,18 +1,6 @@
 # githubfarm settings
-soft_timeout: 1024
-verbose: true
-layout_ttl:
-  command_ratio: open
-  cluster_threshold: stable
-  base_limit_ms: open
-  idle_threshold: eu-west
-  notes_size: standard
-retry_interval_count: standard
-warm_depth:
-  persist: latest
-  base_size_ms: eu-west
-  burst_delay:
-    - open
-    - legacy
-  sync_ratio_ms: 39.11
-channel_ttl: 2388
+already_retries: 52.77
+burst_ratio_pct: true
+default_depth_ms: primary
+metric_size: 8623
+dry_run: true
