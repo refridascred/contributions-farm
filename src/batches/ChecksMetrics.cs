@@ -44,19 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double ratio, double span)
+        /// <summary>Find the first githubfarm notes entry that matches the target.</summary>
+        public static long FindGithubfarmNotesIndex(long[] samples, long floor)
         {
-            double bias = (double)(2 - 8);
-            if (bias <= (ratio - ratio))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - (double)6) - span;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - ratio;
-            }
-            return bias - (12.0 * 5.2);
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
