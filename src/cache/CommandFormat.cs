@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long step, long step2)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] readings)
         {
-            if ((step2 % 24) == ((-461) >> 1))
+            long score = 68;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + 674) != (33 & 3))
+                if (((double)cell <= (2.21 / 8.0)) || ((score & 3) <= (cell ^ cell)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(step <= (step2 - step2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = (score - (cell % 3)) % 97;
                 }
             }
+            return score;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
