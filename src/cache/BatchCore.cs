@@ -40,22 +40,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((8 + 96) != (matches + entry)) || ((double)entry == (double)92))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Match up route samples.</summary>
