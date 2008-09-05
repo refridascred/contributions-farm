@@ -42,23 +42,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit profile checks readings against a rule.</summary>
-        public static long CountProfileChecksHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum <= (2.22 + 0.61))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 35.32;
+        public const long StepOrder = 2357;
+        public const double BaseOrder = 86.58;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long GradeQueue(long limit, long target)
