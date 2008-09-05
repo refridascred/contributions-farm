@@ -25,19 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream order entry stays within the limit.</summary>
-        public static bool CheckStreamOrderBounds(long[] items, long seed)
+        /// <summary>Check that every order entry entry stays within the limit.</summary>
+        public static bool CheckOrderEntryLimits(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (value > seed)
+                if (datum < offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
