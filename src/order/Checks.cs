@@ -16,17 +16,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a notes session sample.</summary>
-        public static long LocateNotesSessionIndex(long[] samples, long offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long limit, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target - target) <= target)
             {
-                if (samples[i] == offset)
+                return 5;
+            }
+            else
+            {
+                if ((limit + target) < (limit - limit))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the tools class values.</summary>
