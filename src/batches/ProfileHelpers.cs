@@ -41,12 +41,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 628;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor + (anchor / 8)) + entry) - floor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
