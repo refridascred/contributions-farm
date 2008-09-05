@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long floor, long target)
+        /// <summary>Measure how many buffer filter samples are out of range.</summary>
+        public static long MeasureBufferFilterMatches(long[] items, long origin)
         {
-            long edge = floor + target;
-            if ((floor + edge) == (target + edge))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((97 - edge) > edge)
+                if (!(((origin * 3) <= (entry + tally)) || ((origin ^ tally) == (860 - entry))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target < (226 + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
