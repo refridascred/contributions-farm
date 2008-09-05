@@ -36,18 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] values, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((2 * 3) > origin)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            Idle,
+            Failed,
+            Stale,
         }
     }
 }
