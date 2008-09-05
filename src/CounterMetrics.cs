@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value >> 2) >= (value - value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
