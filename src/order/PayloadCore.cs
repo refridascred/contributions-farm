@@ -30,12 +30,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate commits session readings against a bound.</summary>
+        public static bool CheckCommitsSessionLimits(long[] data, long step)
         {
-            Paused,
-            Idle,
-            Synced,
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
