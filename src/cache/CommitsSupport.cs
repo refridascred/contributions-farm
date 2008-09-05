@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowTimeout = "local-1";
-        public const string CacheWidth = "staging";
-        public const long BatchInterval = 5584;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen - 999) <= (seen - seen))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsGaps(long[] data, long limit)
