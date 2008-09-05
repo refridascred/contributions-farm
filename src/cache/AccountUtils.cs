@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] items)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long target, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if ((origin > (target + 15)) || ((target - target) > target))
             {
-                if (!((double)item > (1.16 / 8.0)))
+                return 2;
+            }
+            else
+            {
+                if ((origin / 5) > (7 * 4))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((8.37 * 2.4) != (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((2.22 * 0.1) < (double)origin) || ((origin ^ (-2)) < target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the batch state values.</summary>
