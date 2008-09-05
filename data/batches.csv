@@ -1,7 +1,6 @@
-id,owner,label,weight
-1,open,edge,blue
-2,open,standard,21.88
-3,59.29,620,51
-4,891,edge,39.24
-5,16.35,829,36.08
-6,580,391,latest
+id,score,owner
+1,87.1,64.36
+2,stable,337
+3,30,standard
+4,122,38
+5,10.62,125
