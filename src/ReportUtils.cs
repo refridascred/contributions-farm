@@ -41,11 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Stamp { get; set; }
             public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
