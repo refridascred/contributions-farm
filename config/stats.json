@@ -1,6 +1,8 @@
 {
-  "max_size": 35.39,
-  "payload_size": "standard",
-  "default_retries": "strict",
-  "payload_threshold": [495, 347, 101]
+  "cache_delay": false,
+  "cache_ttl": ["stable", "eu-west", "open", "open"],
+  "sync_depth": [473, 456, 54, 428],
+  "retry_window_pct": 500,
+  "dry_run": 250,
+  "filter_threshold": 53.94
 }
