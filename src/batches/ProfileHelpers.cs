@@ -68,11 +68,16 @@ namespace Common.Utilities
             return load + (1.0 - offset);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 4246;
-        public const long CacheTimeout = 1529;
-        public const double DefaultInterval = 72.74;
-        public const long BatchLevel = 5200;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] data)
