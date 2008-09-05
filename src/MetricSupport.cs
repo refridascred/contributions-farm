@@ -45,12 +45,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Accumulate editor order samples.</summary>
+        public static long WeighEditorOrder(long[] levels, long bound)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = 5;
+            foreach (long datum in levels)
+            {
+                if (datum < 63)
+                {
+                    anchor = ((anchor * 5) + datum) % 65521;
+                }
+            }
+            if (anchor < 165)
+            {
+                anchor = anchor + (bound ^ anchor);
+            }
+            return anchor % 65521;
         }
     }
 }
