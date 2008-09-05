@@ -54,24 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches metric value against two limits.</summary>
-        public static long ClassifyBatchesMetric(long floor, long step)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            if ((94 >> 4) != (step - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.22 - 0.56) != (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Adjust a commits cluster reading.</summary>
