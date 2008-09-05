@@ -43,22 +43,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 2443;
+        public const long BaseSchema = 5846;
+        public const long CacheFactor = 4531;
 
         /// <summary>Combine entry editor values into a single score.</summary>
         public static long FoldEntryEditor(long[] readings)
