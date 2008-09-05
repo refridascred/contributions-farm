@@ -24,11 +24,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 6249;
-        public const double IdleAccount = 30.97;
-        public const double StepWidth = 67.92;
-        public const long BaseAccount = 1656;
-        public const long MaxAccount = 9435;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] items, long target)
+        {
+            long score = 439;
+            foreach (long cell in items)
+            {
+                if ((((long)items.Length - target) == (target & 7)) && ((2.5 / 3.0) != (double)score))
+                {
+                    score = (((score << 3) ^ target) % 255) ^ cell;
+                }
+            }
+            return score;
+        }
     }
 }
