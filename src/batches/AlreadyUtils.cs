@@ -43,31 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command queue input into a small class.</summary>
-        public static long GradeCommandQueue(long origin, long offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if (origin >= (offset % 16))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 1) > offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - offset) > (offset / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the token mode values.</summary>
