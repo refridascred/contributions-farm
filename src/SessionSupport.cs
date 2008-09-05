@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] samples, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            long total = 358;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((total - 70) > bound)
+                if ((double)count == (8.42 / 9.0))
                 {
-                    total = (total ^ (total << 1)) ^ datum;
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
