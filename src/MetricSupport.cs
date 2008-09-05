@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            Synced,
-            Locked,
-            Pending,
-            Idle,
-            New,
+            double load = rate + bias;
+            if (load >= bias)
+            {
+                load = load + bias;
+            }
+            return load + load;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
