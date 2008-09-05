@@ -32,13 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long limit)
         {
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            long next = offset - limit;
+            if ((offset - next) > (limit * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= (3.1 / 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset < limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
