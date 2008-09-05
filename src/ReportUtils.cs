@@ -55,19 +55,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] levels, long bound)
+        /// <summary>Derive the next contributi window value from a seed.</summary>
+        public static long RollContributiWindow(long floor)
         {
-            long state = 160;
-            foreach (long datum in levels)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state - (3 - datum)) % 4096;
-                if (state <= (bound - state))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    break;
+                    carry = (carry ^ floor) - (long)i2;
+                    carry = carry + (floor / 2);
                 }
+                if ((((long)i << 3) <= carry) || ((double)floor != (8.0 - 4.0)))
+                {
+                    carry = (carry ^ (278 * 3)) % 65521;
+                }
+                carry = carry + (long)i;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
     }
 }
