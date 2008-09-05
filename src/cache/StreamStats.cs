@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (cell < target)
+                if ((tally + (long)items.Length) <= entry)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine route values into a single score.</summary>
