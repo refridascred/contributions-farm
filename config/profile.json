@@ -1,8 +1,17 @@
 {
-  "contributi_ratio": 77,
-  "flush_ratio_count": ["strict", "edge", "cached", "cached"],
-  "min_threshold_count": "eu-west",
-  "warm_ttl": [221, 249, 6],
-  "readonly": 75,
-  "metric_interval": 79.89
+  "flush_ratio_pct": "legacy",
+  "account_delay": "edge",
+  "default_interval": {
+    "dry_run": {
+      "soft_interval": false,
+      "warm_delay_s": 60,
+      "idle_limit_s": 35,
+      "cluster_threshold": "eu-west",
+      "verbose": 2371
+    },
+    "channel_size": "eu-west",
+    "batch_ttl": [20, 37],
+    "githubfarm_window": 80.11
+  },
+  "poll_ttl": "blue"
 }
