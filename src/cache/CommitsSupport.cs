@@ -96,10 +96,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 2648;
-        public const long BaseBudget = 6119;
-        public const string WindowCluster = "legacy-v2";
-        public const long BurstCluster = 1245;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 3633;
+        public const long MaxInterval = 1684;
+        public const long BatchWindow = 47;
     }
 }
