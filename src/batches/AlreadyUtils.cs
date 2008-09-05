@@ -39,11 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a counter entry.</summary>
