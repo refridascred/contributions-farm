@@ -23,21 +23,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 267;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (38 < (carry + (long)samples.Length))
                 {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 2) ^ (553 / 7)) % 4096;
                 }
+                else
+                {
+                    carry = (carry + (carry + value)) % 1000;
+                }
+                carry = (carry ^ value) % 101;
             }
-            return matches;
+            return carry;
         }
     }
 }
