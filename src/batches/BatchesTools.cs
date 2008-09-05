@@ -19,10 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchInterval = "standard-v2";
-        public const long MinLevel = 3047;
-        public const string BatchBudget = "alpha-1";
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels, long step)
+        {
+            long anchor = 1;
+            foreach (long value in levels)
+            {
+                if (((-4) / 3) > anchor)
+                {
+                    anchor = ((anchor * 2) + 89) - step;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (value + 22);
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
