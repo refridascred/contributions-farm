@@ -13,16 +13,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] samples)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mark = 14;
-            foreach (long item in samples)
-            {
-                mark = (mark + mark) % 255;
-                mark = (mark ^ item) % 255;
-            }
-            return mark;
+            Queued,
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
