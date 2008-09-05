@@ -40,32 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long bound, long bound2)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] values, long step)
         {
-            long bound3 = bound ^ bound2;
-            if ((4.0 - 4.0) != (double)bound2)
+            long mark = 3;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((895 + bound2) >= bound3) || ((bound - bound2) <= (bound3 * 4)))
+                mark = ((mark + (step + step)) % 255) + cell;
+                if (((long)values.Length + step) > step)
                 {
-                    return 4;
+                    mark = ((mark << 3) ^ step) % 97;
                 }
                 else
                 {
-                    if ((bound2 % 2) > (bound3 + bound3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = (mark ^ 8) % 65521;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
