@@ -1,8 +1,7 @@
-id,rank,ratio
-1,eu-west,72.97
-2,strict,green
-3,19.3,local
-4,44.11,fallback
-5,13.42,62
-6,743,882
-7,341,506
+id,ratio,token
+1,local,570
+2,45.35,eu-west
+3,standard,staging
+4,689,cached
+5,431,stable
+6,120,166
