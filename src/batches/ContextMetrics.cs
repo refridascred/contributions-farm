@@ -27,12 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 2117;
-        public const double SoftCount = 15.46;
-        public const string HardSupport = "latest-edge";
-        public const double BurstSupport = 86.53;
-        public const long BatchRatio = 2392;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatGaps(long[] series)
