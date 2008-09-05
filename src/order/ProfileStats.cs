@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] items, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (cell <= bound)
+                if (!(((seed * 2) < seed) || ((double)tally <= 1.0)))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) + item;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Locate a session reading by value.</summary>
