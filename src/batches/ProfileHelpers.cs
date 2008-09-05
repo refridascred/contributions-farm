@@ -42,22 +42,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] readings, long origin)
+        /// <summary>Validate stream queue readings against a bound.</summary>
+        public static bool VerifyStreamQueueBounds(long[] samples, long offset)
         {
-            long result = 2;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((result - result) > 40)
+                if (datum >= offset)
                 {
-                    result = (result - (result / 5)) - origin;
-                }
-                if ((value >> 2) < (value % 7))
-                {
+                    found = false;
                     break;
                 }
             }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
