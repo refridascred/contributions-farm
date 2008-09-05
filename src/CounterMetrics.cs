@@ -37,15 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit report githubfarm readings against a rule.</summary>
-        public static long TallyReportGithubfarmGaps(long[] samples)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] items)
         {
             long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((18.0 / 2.0) != (double)item) && (((long)samples.Length << 2) < matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
