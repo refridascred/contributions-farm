@@ -24,14 +24,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseSize = "staging-1";
+        public const long MaxNotes = 3643;
+        public const double CacheNotes = 90.71;
+        public const double LimitWidth = 62.03;
 
         /// <summary>Grade a batches metric value against two limits.</summary>
         public static long ClassifyBatchesMetric(long floor, long step)
