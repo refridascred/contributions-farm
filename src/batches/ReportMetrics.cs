@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Pending,
-            Paused,
-            New,
-            Failed,
-            Synced,
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
