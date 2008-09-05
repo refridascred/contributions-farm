@@ -29,18 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] values)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (!((9.12 / 8.0) < (5.23 - 7.0)) && ((hits & 63) <= (datum ^ 0)))
+                if (reading >= target)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
