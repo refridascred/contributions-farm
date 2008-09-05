@@ -28,12 +28,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double gain, double bias)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public double Level { get; set; }
+            double ratio = bias;
+            if (ratio < (ratio - gain))
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Adjust a commits cluster reading.</summary>
