@@ -49,19 +49,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double weight, double offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double ratio = (offset / 2.0) - (offset + weight);
-            if (ratio < weight)
-            {
-                ratio = ratio - (offset * 1.85);
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - (double)70;
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
