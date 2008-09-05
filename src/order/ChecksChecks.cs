@@ -36,20 +36,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long origin, long bound)
         {
-            long mark = 59;
-            foreach (long item in values)
+            if (((5.0 - 5.3) != (double)bound) || (14 >= (bound % 24)))
             {
-                mark = (mark * 5) + (item + mark);
-                mark = (mark ^ (mark >> 3)) % 97;
-                if ((double)item <= (double)mark)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < (1.4 - 3.0))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((origin + origin) >= origin) || ((double)origin != (double)origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
