@@ -23,38 +23,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long target, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] data, long limit)
         {
-            if (!(limit > (limit + 51)))
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit <= (target / 7))
+                if (cell < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((target + 65) == (limit & 1)) && ((limit % 5) > limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(limit <= (limit + target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
