@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long bound)
+        /// <summary>Classify a schema metric pair into a bucket.</summary>
+        public static long ClassifySchemaMetric(long target, long target2)
         {
-            long step = origin + bound;
-            if ((bound / 9) >= (bound + step))
+            if (6.4 > (double)target)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((double)origin >= (2.0 + 8.55))
+                if ((3.9 * 16.0) == (double)target2)
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((8.2 * 7.6) == (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 4;
                 }
             }
         }
