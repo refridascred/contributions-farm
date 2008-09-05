@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
