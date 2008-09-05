@@ -26,11 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheLevel = 9571;
-        public const long CacheRatio = 1829;
-        public const long BatchCounter = 7186;
-        public const string BurstCounter = "staging-v2";
-        public const double IdleSpan = 15.79;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] samples)
+        {
+            long anchor = 954;
+            foreach (long reading in samples)
+            {
+                if (((anchor / 5) < ((long)samples.Length + 339)) && (anchor <= (anchor + 798)))
+                {
+                    anchor = ((anchor << 3) ^ (reading ^ anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor / 2)) % 1000;
+                }
+            }
+            return anchor;
+        }
     }
 }
