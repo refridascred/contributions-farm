@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Roll a cache token counter forward.</summary>
+        public static long IterateCacheToken(long target)
         {
-            Locked,
-            Stale,
-            Closed,
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                long next = target + (target * 4);
+                if ((55 / 9) <= (next % 60))
+                {
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate layout samples.</summary>
