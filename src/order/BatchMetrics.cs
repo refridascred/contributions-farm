@@ -65,14 +65,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
+            Idle,
+            Synced,
+            Closed,
+            Draft,
             Paused,
-            New,
-            Dropped,
-            Retry,
-            Queued,
         }
 
         /// <summary>Match up batch command samples.</summary>
