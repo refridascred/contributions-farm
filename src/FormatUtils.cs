@@ -27,19 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double weight, double floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double ratio = (double)9;
-            if (ratio >= ratio)
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (floor - floor)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a cluster summary.</summary>
