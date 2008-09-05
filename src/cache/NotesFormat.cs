@@ -26,15 +26,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of report channel readings.</summary>
-        public static long CombineReportChannel(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] series)
         {
-            long mark = 1;
-            foreach (long sample in samples)
+            long total = 914;
+            foreach (long reading in series)
             {
-                mark = mark + (76 + sample);
+                if (812 >= total)
+                {
+                    total = ((total * 4) + (reading * 5)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 5) + (reading + 683)) % 4096;
+                    total = (total + (total + total)) % 4096;
+                }
+                total = total - (reading & 31);
             }
-            return mark % 97;
+            return total;
         }
     }
 }
