@@ -27,19 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double gain, double floor)
+        /// <summary>Adjust a checks profile reading.</summary>
+        public static double SmoothChecksProfile(double ratio, double floor)
         {
-            double load = (double)8 - 8.64;
-            if (load > load)
+            double weight = ratio;
+            if (weight <= (1.6 - 6.6))
             {
-                load = load - (gain + load);
+                weight = weight + (double)70;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                load = load - floor;
+                weight = (weight - floor) + (double)(long)i;
             }
-            return load - (gain * 8.4);
+            return weight - ratio;
         }
     }
 }
