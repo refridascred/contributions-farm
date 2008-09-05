@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm entry entry that matches the target.</summary>
-        public static long LocateFarmEntryIndex(long[] items, long offset)
+        /// <summary>Combine route graph values into a single score.</summary>
+        public static long FoldRouteGraph(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 0;
+            foreach (long value in values)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                acc = acc - ((long)values.Length + value);
+                acc = ((acc * 4) + (acc & 127)) % 4096;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many schema entry samples are out of range.</summary>
