@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "primary-edge";
+        public const long HardReport = 533;
+        public const double MaxDepth = 89.3;
+        public const double WindowReport = 6.25;
+        public const long LimitReport = 3646;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] samples)
