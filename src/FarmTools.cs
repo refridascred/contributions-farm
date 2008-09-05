@@ -33,22 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long anchor = 954;
-            foreach (long reading in samples)
-            {
-                if (((anchor / 5) < ((long)samples.Length + 339)) && (anchor <= (anchor + 798)))
-                {
-                    anchor = ((anchor << 3) ^ (reading ^ anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor / 2)) % 1000;
-                }
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
