@@ -1,6 +1,8 @@
 {
-  "default_ttl_pct": "latest",
-  "account_retries": false,
-  "sync_ratio": [58, 272, 470, 430],
-  "flush_capacity_s": 70
+  "context_depth": "edge",
+  "min_delay_pct": false,
+  "min_capacity_pct": [123, 222],
+  "tools_capacity": 2,
+  "entry_window": "green",
+  "batch_capacity": "legacy"
 }
