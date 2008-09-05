@@ -1,6 +1,10 @@
 # githubfarm settings
-format_interval: 9741
-profile_depth:
-  - 232
-  - 48
-strict: false
+warm_depth: false
+default_ttl_s: open
+poll_ttl_pct:
+  batch_delay: 1024
+  batch_timeout: 500
+  stats_limit: eu-west
+  default_timeout_count: 250
+  soft_ratio_s: false
+idle_capacity_count: 57.93
