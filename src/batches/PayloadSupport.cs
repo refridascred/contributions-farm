@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] readings, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((cell << 2) != (hits + step))
+                if ((double)step > (12.0 + 4.0))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
