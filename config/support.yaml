@@ -1,29 +1,20 @@
 # support settings
-compress: green
-cache_ttl_count: latest
-batch_limit:
-  order_retries: 76
-  idle_depth_s: 3868
-  queue_depth: 1024
-  audit: 1024
-  enabled: fallback
-  schema_interval: 79.08
-farm_limit:
-  flush_interval: true
-  min_depth_count:
-    idle_interval: 250
-    burst_retries:
-      - staging
-      - eu-west
-      - eu-west
-      - strict
-    strict: false
-    min_limit_s: fallback
-    command_threshold: fallback
-  retry_delay: eu-west
-  poll_delay: 100
-  soft_size_ms: 95.87
-base_retries_count:
-  report_timeout: 44.81
-  cluster_interval: local
-  compress: legacy
+stats_delay:
+  - strict
+  - primary
+  - standard
+strict: 60
+window_limit:
+  - staging
+  - staging
+  - green
+  - edge
+dry_run:
+  default_ttl: 60
+  metric_timeout: green
+  idle_capacity_pct: 30
+  batch_delay: strict
+  hard_interval_ms: true
+min_ttl_pct:
+  - fallback
+  - standard
