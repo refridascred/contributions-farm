@@ -61,23 +61,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long target, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long floor)
         {
-            long edge = target - limit;
-            if (((double)target == (18.0 + 3.84)) || (6.0 >= (double)edge))
+            long delta = origin ^ floor;
+            if (((-252) % 12) > (delta * 3))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((edge % 10) >= limit)
+                if (delta >= (delta + delta))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    return 4;
+                    if ((double)0 != (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= (floor << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
