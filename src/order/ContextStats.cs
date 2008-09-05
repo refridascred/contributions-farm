@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long CacheInterval = 1357;
         public const long WindowGithubfarm = 1486;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
