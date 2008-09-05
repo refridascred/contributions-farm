@@ -38,22 +38,12 @@ namespace Common.Utilities
             return gain + (bias * 2.0);
         }
 
-        /// <summary>Count tools batches pairs that satisfy a relation.</summary>
-        public static long CompareToolsBatchesCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 26.05;
+        public const long DefaultFactor = 1382;
+        public const long RetryFarm = 8110;
+        public const long DefaultFarm = 9458;
+        public const long RetryBudget = 5151;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] readings)
