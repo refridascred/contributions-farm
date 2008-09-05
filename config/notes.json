@@ -1,21 +1,8 @@
 {
-  "min_interval": false,
-  "max_timeout_ms": false,
-  "cache_size_ms": true,
-  "sync_window_ms": false,
-  "route_capacity": {
-    "persist": "standard",
-    "base_capacity_s": "staging",
-    "batch_ratio_pct": {
-      "base_ttl": 48,
-      "payload_window": "stable",
-      "entry_timeout": 54.36,
-      "burst_threshold_count": 250,
-      "flush_capacity_s": 2697
-    },
-    "dry_run": [109, 344, 473, 159],
-    "base_window": [98, 110, 427],
-    "already_size": true
-  },
-  "flush_timeout_count": 8980
+  "min_window": "fallback",
+  "default_retries": 2042,
+  "format_size": 1,
+  "channel_delay": ["legacy", "staging", "open"],
+  "dry_run": "standard",
+  "profile_limit": 30
 }
