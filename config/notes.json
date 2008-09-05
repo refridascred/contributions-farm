@@ -1,12 +1,5 @@
 {
-  "readonly": ["blue", "strict"],
-  "dry_run": 1024,
-  "poll_delay_ms": "fallback",
-  "max_size_pct": {
-    "idle_delay": 30.49,
-    "retry_timeout_s": 100,
-    "retry_size_ms": true,
-    "cache_timeout_pct": 4211,
-    "burst_ratio_count": 1024
-  }
+  "readonly": 2242,
+  "base_ttl_s": [273, 48, 234, 142],
+  "payload_ttl": false
 }
