@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long floor, long floor2)
         {
-            Draft,
-            Done,
-            Paused,
-            Stale,
+            long prev = floor - floor2;
+            if ((prev - floor) > (floor2 << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((97 + floor) >= (floor2 + 2)) && (28 <= (679 + floor2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.6 > (double)floor2) || ((7 * 3) > floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor2 & 255) < (floor2 * 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes level values.</summary>
