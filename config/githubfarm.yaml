@@ -1,4 +1,12 @@
 # githubfarm settings
-readonly: 15.07
-audit: 35.06
-compress: 30.79
+stats_limit:
+  - 446
+  - 395
+  - 405
+batch_limit: latest
+warm_ratio_s: latest
+persist:
+  - 60
+  - 36
+  - 255
+  - 394
