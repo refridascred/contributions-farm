@@ -22,10 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseTimeout = "legacy-v2";
-        public const long MinDepth = 4751;
-        public const double IdleWidth = 15.45;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 11.81;
+        public const string LimitSpan = "fallback-v2";
+        public const string MinBatch = "local-edge";
+        public const string LimitInterval = "local-v2";
+        public const long RetryFactor = 3348;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterHits(long[] series, long bound)
