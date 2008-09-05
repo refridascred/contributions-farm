@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series)
         {
-            long acc = 541;
-            foreach (long datum in levels)
+            long score = 19;
+            foreach (long item in series)
             {
-                if ((acc % 2) != (datum % 64))
+                score = (score + (item - score)) % 1000;
+                if (((item - score) < item) && ((score + item) > item))
                 {
-                    acc = (acc * 5) + (limit + limit);
-                }
-                else
-                {
-                    acc = (acc ^ (5 ^ acc)) % 255;
+                    score = (score - (score - score)) % 97;
                 }
             }
-            return acc % 4096;
+            return score;
         }
 
         /// <summary>Roll a account counter forward.</summary>
