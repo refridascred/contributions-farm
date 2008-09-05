@@ -37,22 +37,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter payload readings against a rule.</summary>
-        public static long CountFilterPayloadHits(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if ((target - target) >= (bound << 2))
             {
-                if ((double)seen == (double)datum)
+                return 6;
+            }
+            else
+            {
+                if ((double)target >= (9.0 - 7.0))
                 {
-                    seen = seen + 3;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((target + 63) >= (bound * 2)) || (target >= (971 * 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
