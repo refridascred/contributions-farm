@@ -23,19 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)hits > (double)value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultOrder = 72.79;
+        public const string RetryOrder = "fallback";
+        public const long IdleCount = 3027;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportMatches(long[] series)
