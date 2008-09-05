@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const long MinTimeout = 8886;
         public const double WindowSize = 5.15;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Paused,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryScore = 7921;
+        public const long MinBudget = 2509;
+        public const string DefaultFactor = "standard-1";
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
