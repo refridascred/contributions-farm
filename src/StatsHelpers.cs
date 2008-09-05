@@ -45,13 +45,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Grade a channel metrics value against two limits.</summary>
+        public static long GradeChannelMetrics(long offset, long seed)
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            if ((double)offset > (17.0 * 16.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= (3.46 / 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
