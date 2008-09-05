@@ -1,17 +1,13 @@
 # githubfarm settings
-commits_interval:
-  record_window: 91
-  idle_timeout_ms: false
-  queue_interval: local
-command_interval: 11.91
-base_depth_ms:
-  - 442
-  - 472
-  - 87
-base_ttl_pct:
-  - cached
-  - strict
-sync_capacity_pct:
-  - cached
-  - legacy
-  - cached
+soft_window:
+  - 102
+  - 325
+  - 305
+  - 439
+max_window: 93.11
+idle_depth_count: false
+audit:
+  - 62
+  - 478
+  - 193
+  - 47
