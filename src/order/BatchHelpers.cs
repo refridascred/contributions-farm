@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm buffer counter forward.</summary>
-        public static long IterateGithubfarmBuffer(long offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = carry ^ (offset >> 5);
-                if (((long)i ^ 26) > (76 - carry))
-                {
-                    carry = (carry - (carry + (long)i)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of window counter readings.</summary>
