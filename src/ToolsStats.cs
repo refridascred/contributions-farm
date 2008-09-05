@@ -23,11 +23,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
