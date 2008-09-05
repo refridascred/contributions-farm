@@ -14,18 +14,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] levels)
+        /// <summary>Fold a list of checks tools readings.</summary>
+        public static long ScoreChecksTools(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mix = -405;
+            foreach (long cell in values)
             {
-                if ((47 / 9) >= (cell & 31))
-                {
-                    matches = matches + 3;
-                }
+                mix = (((mix * 3) + (mix >> 1)) % 65521) - cell;
+                mix = (mix + mix) % 97;
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
