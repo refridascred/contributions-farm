@@ -35,19 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)hits != (double)(-97))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepSpan = 2352;
+        public const double LimitToken = 27.28;
+        public const long MinToken = 8830;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheGaps(long[] readings, long seed)
