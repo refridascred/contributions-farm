@@ -36,22 +36,15 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest-1";
         public const string RetryScore = "alpha";
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values, long seed)
         {
-            long carry = -3;
-            foreach (long datum in series)
+            long mark = 963;
+            foreach (long datum in values)
             {
-                if ((56 ^ 2) > (floor + carry))
-                {
-                    carry = (((carry << 3) ^ (5 >> 2)) % 1000) - datum;
-                }
+                mark = ((((mark * 2) + 36) % 101) ^ datum) + seed;
             }
-            if (carry < 41)
-            {
-                carry = carry - (carry * 4);
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Hold a format header.</summary>
