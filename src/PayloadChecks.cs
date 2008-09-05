@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const long BurstSize = 6467;
         public const string BatchBatches = "latest-1";
 
-        /// <summary>Validate editor notes readings against a bound.</summary>
-        public static bool ValidateEditorNotesBounds(long[] levels, long offset)
+        /// <summary>Check that every queue notes entry stays within the limit.</summary>
+        public static bool CheckQueueNotesRange(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (reading <= offset)
+                if (value >= origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Audit batches githubfarm readings against a rule.</summary>
