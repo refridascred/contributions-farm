@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowLevel = 79.01;
-        public const long LimitRecord = 7260;
-        public const double StepTimeout = 1.47;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading * 4) < (reading - hits)) && ((step << 2) < (hits % 60)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowCount = 2937;
