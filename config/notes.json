@@ -1,17 +1,12 @@
 {
-  "context_window": {
-    "retry_ttl_pct": "edge",
-    "route_size": ["green", "staging", "standard"],
+  "metrics_size": false,
+  "contributi_ttl": "fallback",
+  "base_size": {
+    "verbose": "cached",
+    "tools_interval": "fallback",
+    "support_window": 37.73,
     "strict": true
   },
-  "compress": 9632,
-  "min_timeout": {
-    "min_ttl_count": "stable",
-    "record_ratio": ["open", "eu-west"],
-    "compress": ["stable", "strict", "standard", "legacy"],
-    "soft_depth_pct": "open",
-    "warm_ttl_ms": 6799,
-    "stream_ttl": 57.1
-  },
-  "base_window": 43.0
+  "idle_ttl_s": 73,
+  "retry_window_s": 60
 }
