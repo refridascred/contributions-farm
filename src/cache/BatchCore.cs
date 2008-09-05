@@ -40,14 +40,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] levels, long target)
         {
-            Dropped,
-            Failed,
-            Ready,
-            Synced,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up route samples.</summary>
