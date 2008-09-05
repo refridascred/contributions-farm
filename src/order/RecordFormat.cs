@@ -61,38 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long origin, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] values)
         {
-            if ((5.0 + 1.48) == (double)origin)
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed + (-46)) <= 7) && ((origin & 31) >= origin))
+                if ((double)count > 6.7)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed - 50) == (origin - seed)) && ((origin >> 2) < origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)(-2) < (4.05 + 14.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 1) ^ reading;
                 }
             }
+            return count;
         }
     }
 }
