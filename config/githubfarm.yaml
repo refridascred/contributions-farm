@@ -1,13 +1,6 @@
 # githubfarm settings
-batches_threshold: 22
-batch_retries: 28.11
-verbose:
-  - 452
-  - 195
-  - 423
-  - 491
-dry_run: 61.08
-audit:
-  flush_ratio_pct: 60
-  sync_capacity_count: 6856
-  idle_interval_ms: stable
+warm_depth_pct: 37
+batches_ratio: staging
+hard_retries_count: strict
+batch_interval_ms: local
+warm_window_pct: latest
