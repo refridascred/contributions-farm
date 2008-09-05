@@ -37,19 +37,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate githubfarm checks readings against a bound.</summary>
-        public static bool GuardGithubfarmChecksRange(long[] items, long bound)
+        /// <summary>Classify a already editor pair into a bucket.</summary>
+        public static long SortAlreadyEditor(long limit, long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            if ((limit % 64) == (step ^ 8))
             {
-                if (value != bound)
+                return 6;
+            }
+            else
+            {
+                if ((6.4 * 18.0) <= (double)step)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit <= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)93 >= (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
