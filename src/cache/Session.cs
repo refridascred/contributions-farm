@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const double WindowPayload = 12.36;
         public const long DefaultBudget = 9651;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first contributi commits entry that matches the target.</summary>
