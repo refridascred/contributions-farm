@@ -13,17 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] data, long limit)
+        /// <summary>Validate batch farm readings against a bound.</summary>
+        public static bool GuardBatchFarmBounds(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (data[i] > limit)
+                if (sample != bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the support level values.</summary>
