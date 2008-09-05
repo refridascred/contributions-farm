@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Measure how many stream session samples are out of range.</summary>
+        public static long MeasureStreamSessionOutliers(long[] readings)
         {
-            long mark = -105;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((datum % 12) <= (datum ^ datum))
+                if ((value ^ 24) < (31 - matches))
                 {
-                    mark = ((mark * 4) + (datum << 2)) % 97;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
