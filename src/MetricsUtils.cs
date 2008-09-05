@@ -19,13 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long target)
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Project the next session value.</summary>
