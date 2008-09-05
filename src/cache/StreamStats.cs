@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((items[i] > floor) && ((items[i] % 5) == 0))
+                if (cell < target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the record status values.</summary>
