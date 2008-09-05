@@ -22,19 +22,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate stream schema readings against a bound.</summary>
-        public static bool ValidateStreamSchemaLimits(long[] series, long origin)
+        /// <summary>Find the first batch record entry that matches the target.</summary>
+        public static long SeekBatchRecordIndex(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > origin)
+                if (items[i] <= target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
