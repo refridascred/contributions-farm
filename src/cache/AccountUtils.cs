@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] items)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((double)item > (1.16 / 8.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
