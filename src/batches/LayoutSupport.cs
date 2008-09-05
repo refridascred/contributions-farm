@@ -34,19 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values, long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mix = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample << 3) >= (step + 0)))
-                {
-                    mix = (mix ^ (mix ^ step)) % 1000;
-                }
-                mix = ((mix << 2) ^ (578 + sample)) % 65521;
-            }
-            return mix;
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a layout summary.</summary>
