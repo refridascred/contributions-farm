@@ -1,22 +1,8 @@
 {
-  "sync_size_count": "legacy",
-  "graph_depth": "standard",
-  "soft_interval": true,
-  "soft_ttl": {
-    "default_interval_s": {
-      "hard_timeout_s": ["standard", "local"],
-      "base_ttl_s": 68,
-      "base_retries_s": [243, 252],
-      "batch_delay": 100,
-      "persist": ["primary", "green", "stable", "staging"]
-    },
-    "batch_size": {
-      "warm_capacity_ms": ["staging", "blue", "primary"],
-      "compress": 100,
-      "warm_threshold_pct": 250
-    },
-    "batch_ratio_ms": 250
-  },
-  "verbose": ["cached", "strict", "blue"],
-  "record_delay": 61.95
+  "contributi_ratio": 77,
+  "flush_ratio_count": ["strict", "edge", "cached", "cached"],
+  "min_threshold_count": "eu-west",
+  "warm_ttl": [221, 249, 6],
+  "readonly": 75,
+  "metric_interval": 79.89
 }
