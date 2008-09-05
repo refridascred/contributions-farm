@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] values, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((long)values.Length >= (4 << 1))
-                {
-                    tally = ((tally + 1) + item) - origin;
-                }
-            }
-            return tally;
+            Failed,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a profile options.</summary>
