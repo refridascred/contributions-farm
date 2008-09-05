@@ -63,12 +63,24 @@ namespace Common.Utilities
         public const long IdleSpan = 6571;
         public const long MinCommits = 3035;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long step)
         {
-            Idle,
-            Done,
-            New,
+            if ((double)floor >= (7.0 - 8.5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((14.0 - 7.0) >= (4.4 / 8.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
