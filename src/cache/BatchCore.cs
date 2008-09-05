@@ -40,19 +40,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] series, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (sample < floor)
+                if (!((8 + 96) != (matches + entry)) || ((double)entry == (double)92))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
