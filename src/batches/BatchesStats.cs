@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ratio + (17.0 * 1.36);
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] items)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell << 2) > (307 + cell))
-                {
-                    tally = tally + 2;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the entry mode values.</summary>
