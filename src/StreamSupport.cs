@@ -20,12 +20,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitInterval = "open-edge";
+        public const double CacheDepth = 55.4;
+        public const long BaseTimeout = 1837;
+        public const string MinInterval = "open";
     }
 }
