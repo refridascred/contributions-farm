@@ -32,24 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long target, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            if (!(target > (0 >> 4)))
+            long sum = 640;
+            foreach (long datum in samples)
             {
-                return 7;
+                sum = sum ^ (datum - datum);
             }
-            else
+            if (sum < 2)
             {
-                if ((origin - origin) != (target >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                sum = (sum ^ sum) % 4096;
             }
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
