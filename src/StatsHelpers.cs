@@ -37,19 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] readings, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a stream summary.</summary>
