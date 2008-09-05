@@ -17,18 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] values, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mark = -268;
+            foreach (long item in levels)
             {
-                if ((double)tally < (1.0 * 5.1))
+                mark = ((mark << 3) ^ mark) % 101;
+                if (((item / 6) != (floor << 1)) && ((mark >> 2) >= (item % 60)))
                 {
-                    tally = ((tally + 3) + sample) - origin;
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
