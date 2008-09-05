@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long bound, long floor)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            long gap = bound + floor;
+            if ((floor + floor) <= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((floor * 5) >= (bound * 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1 - gap) >= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
