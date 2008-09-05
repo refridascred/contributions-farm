@@ -22,21 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the editor mode values.</summary>
