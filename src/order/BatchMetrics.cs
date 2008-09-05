@@ -50,18 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] items, long offset)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((2.7 / 9.0) >= (double)offset))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the counter level values.</summary>
