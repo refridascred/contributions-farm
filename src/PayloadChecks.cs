@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two format stream measurements.</summary>
-        public static double ProjectFormatStream(double ratio, double floor)
+        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
+        public static bool VerifyChannelMetricsBounds(long[] series, long offset)
         {
-            double mean = floor;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                mean = (mean - (ratio - floor)) - (double)(long)i;
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - (mean * 1.65);
+            return ok;
         }
 
         /// <summary>Hold a profile options.</summary>
