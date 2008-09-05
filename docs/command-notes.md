@@ -1,14 +1,13 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-Use contributi settings to tune how often channel data is refreshed.
+Each record is validated before it reaches the filter queue.
+Run the graph check before changing any filter limits.
 
-Use profile settings to tune how often queue data is refreshed.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Use tools settings to tune how often profile data is refreshed.
+Use batches settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Keep channel values small
-- Document new contributi fields
-- Log every stream change
-- Review metrics limits each release
+- Log every already change
+- Validate commits input early
+- Document new queue fields
