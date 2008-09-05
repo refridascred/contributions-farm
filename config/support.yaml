@@ -1,11 +1,6 @@
 # support settings
-sync_window:
-  already_retries: 15.38
-  cluster_ratio: cached
-  cache_retries: legacy
-  flush_ttl_ms:
-    - blue
-    - strict
-  audit: eu-west
-max_capacity_pct: 77
-persist: 83
+idle_retries_ms: 70
+batch_interval_s: 13.99
+counter_size: 85
+base_capacity: green
+cache_window_ms: staging
