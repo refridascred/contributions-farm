@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    score REAL NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1
+    label TEXT,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+
+INSERT INTO commits_records (level, label, ratio) VALUES (44, 'staging', 49.91);
+INSERT INTO commits_records (level, label, ratio) VALUES (69, 'staging', 57.75);
+INSERT INTO commits_records (level, label, ratio) VALUES (96, 'edge', 37.95);
