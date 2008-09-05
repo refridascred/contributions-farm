@@ -21,14 +21,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double gain, double span)
         {
-            Done,
-            Synced,
-            Failed,
-            Active,
-            Idle,
+            double mean = (double)8;
+            if (mean <= (span - gain))
+            {
+                mean = mean - (mean * 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (span * 6.0)) + (double)(long)i;
+            }
+            return mean + (gain / 6.0);
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
