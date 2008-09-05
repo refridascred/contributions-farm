@@ -47,18 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record batch readings against a rule.</summary>
-        public static long CountRecordBatchHits(long[] levels, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (matches <= seed)
+                if ((hits >> 1) < (bound ^ 1))
                 {
-                    matches = (matches + 3) + cell;
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
