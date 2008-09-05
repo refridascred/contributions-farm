@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double rate, double floor)
-        {
-            double rate2 = floor;
-            if (rate2 > 3.7)
-            {
-                rate2 = rate2 + (rate / 2.0);
-            }
-            return rate2 + (double)(-970);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 5050;
+        public const long DefaultInterval = 8984;
+        public const long IdleRoute = 6193;
 
         /// <summary>Count the account already entries that pass the check.</summary>
         public static long TallyAccountAlreadyHits(long[] values, long bound)
