@@ -39,11 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long TallyWindowTokenMatches(long[] series, long bound)
         {
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (105 <= (count ^ entry))
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
         }
     }
 }
