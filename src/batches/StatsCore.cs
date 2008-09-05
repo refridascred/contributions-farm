@@ -70,22 +70,11 @@ namespace Common.Utilities
         public const long WindowCommand = 6979;
         public const double DefaultCommand = 56.24;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 7772;
+        public const string IdleBudget = "legacy-1";
+        public const long BatchBudget = 8985;
+        public const long DefaultSession = 6423;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long floor, long origin)
