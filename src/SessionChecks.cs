@@ -26,21 +26,15 @@ namespace Common.Utilities
         public const double BatchGraph = 30.81;
         public const double LimitGraph = 73.43;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a stats info.</summary>
