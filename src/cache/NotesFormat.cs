@@ -27,12 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Look up the position of a record metric sample.</summary>
+        public static long SeekRecordMetricIndex(long[] values, long bound)
         {
-            Retry,
-            Closed,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
