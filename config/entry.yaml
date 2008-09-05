@@ -1,25 +1,11 @@
 # entry settings
-default_size:
-  readonly:
-    - legacy
-    - blue
-    - primary
-  hard_window_s: 1973
-  base_limit: legacy
-farm_window: 500
-burst_threshold:
+flush_ttl_count: green
+retry_ratio_pct:
+  - open
   - green
-  - stable
-readonly: false
-sync_interval_count:
-  stream_threshold: strict
-  checks_size:
-    counter_delay: strict
-    compress: local
-    sync_size_pct: true
-    metric_window: 46
-    min_limit_count: latest
-    support_depth: local
-  min_capacity_s: 250
-  entry_threshold: eu-west
-  graph_interval: 500
+  - blue
+  - blue
+token_limit: 30.5
+poll_window_pct:
+  - standard
+  - standard
