@@ -58,12 +58,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "cached";
-        public const double DefaultScore = 78.5;
-        public const long LimitRecord = 5065;
-        public const long BatchRecord = 3079;
-        public const double SoftRecord = 51.16;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
