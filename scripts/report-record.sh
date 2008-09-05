@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=464
+mode="${1:-strict}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=349
 log "limit is ${RECORD_LIMIT}"
-
-for item in standard green fallback cached; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
