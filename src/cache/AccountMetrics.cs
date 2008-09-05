@@ -42,20 +42,11 @@ namespace Common.Utilities
         public const long WindowBudget = 7166;
         public const long DefaultDepth = 9852;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 255;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = (carry ^ (carry % 100)) + (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            double scale = (weight / 8.0) * 9.1;
+            return (scale - (double)0) + offset;
         }
 
         /// <summary>Audit metric buffer readings against a rule.</summary>
