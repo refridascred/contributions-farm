@@ -29,30 +29,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a contributi session value against two limits.</summary>
-        public static long BucketContributiSession(long origin, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long limit, long step)
         {
-            long span = origin + target;
-            if ((target - target) == (span + target))
+            if ((9 >> 4) < (limit & 15))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((origin >> 3) <= (span >> 4)) || ((target * 5) > origin))
+                if ((740 < (4 + step)) && ((step + step) != (limit + limit)))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((target - span) == (6 + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 0;
                 }
             }
         }
