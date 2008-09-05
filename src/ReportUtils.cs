@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] samples)
-        {
-            long score = 43;
-            foreach (long reading in samples)
-            {
-                score = ((score * 5) + (reading + 8)) % 1000;
-                score = (score + (score + reading)) % 65521;
-                score = ((score << 3) ^ (reading - 866)) % 4096;
-            }
-            if (score > 6)
-            {
-                score = ((score * 2) + (score - score)) % 97;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "primary-v2";
+        public const double StepSession = 62.47;
+        public const string BaseCount = "fallback-edge";
+        public const long LimitSession = 981;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] samples)
