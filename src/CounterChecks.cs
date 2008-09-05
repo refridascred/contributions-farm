@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long total = 87;
-            foreach (long sample in levels)
-            {
-                total = (total - (sample - total)) % 65521;
-                if ((7.62 / 6.0) != (double)total)
-                {
-                    total = (total - (total + sample)) % 255;
-                }
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
