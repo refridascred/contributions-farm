@@ -70,18 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks order readings against a rule.</summary>
-        public static long TallyChecksOrderGaps(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long carry = -99;
+            foreach (long item in items)
             {
-                if ((45 & 15) >= (sample + seen))
+                if ((1 * 5) > (floor - item))
                 {
-                    seen = seen + 1;
+                    carry = (carry << 3) ^ (floor * 3);
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
