@@ -1,8 +1,8 @@
-id,state,region,rank
-1,704,strict,779
-2,88,stable,179
-3,5.65,930,853
-4,483,staging,73.05
-5,774,7.4,legacy
-6,0.57,61.63,80.01
-7,13.58,blue,48.86
+id,score,level
+1,66,blue
+2,82.88,legacy
+3,fallback,890
+4,13,260
+5,fallback,green
+6,652,61.07
+7,edge,primary
