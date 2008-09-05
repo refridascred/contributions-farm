@@ -20,17 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] readings, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long seed, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = seed ^ origin;
+            if ((step > seed) || (step > seed))
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((origin + seed) > step)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate queue order readings against a bound.</summary>
