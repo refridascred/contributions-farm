@@ -15,12 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] samples)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long result = -71;
+            foreach (long reading in samples)
+            {
+                if ((result + result) < result)
+                {
+                    result = ((result * 2) + reading) % 4096;
+                }
+                if (result < 9)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a graph counter counter forward.</summary>
