@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up order command samples.</summary>
-        public static long OverlapOrderCommandCount(long[] series)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < seed)
                 {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
