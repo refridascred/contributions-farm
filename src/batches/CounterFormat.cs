@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long limit)
         {
-            Draft,
-            Done,
-            Idle,
-            Pending,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
