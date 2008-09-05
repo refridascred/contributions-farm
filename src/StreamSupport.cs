@@ -32,16 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix ^ (mix - mix)) % 1000;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
