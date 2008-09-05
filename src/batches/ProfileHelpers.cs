@@ -61,19 +61,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] levels)
-        {
-            long acc = -72;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 4) <= datum)
-                {
-                    acc = (acc - (acc % 64)) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 4246;
+        public const long CacheTimeout = 1529;
+        public const double DefaultInterval = 72.74;
+        public const long BatchLevel = 5200;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] data)
