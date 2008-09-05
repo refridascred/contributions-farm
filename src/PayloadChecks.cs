@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
-        public static bool VerifyChannelMetricsBounds(long[] series, long offset)
+        /// <summary>Compare every pair of window entry readings.</summary>
+        public static long MatchWindowEntryCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the schema kind values.</summary>
