@@ -23,18 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] levels)
+        /// <summary>Fold a list of report window readings.</summary>
+        public static long ScoreReportWindow(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = 16;
+            foreach (long item in values)
             {
-                if (entry <= ((-475) + 980))
+                if (anchor > 595)
                 {
-                    seen = seen + 3;
+                    anchor = ((anchor + (limit - limit)) % 101) + item;
                 }
             }
-            return seen;
+            if (anchor > (-44))
+            {
+                anchor = anchor + (limit - limit);
+            }
+            return anchor;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
