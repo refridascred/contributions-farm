@@ -36,22 +36,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels, long bound)
+        /// <summary>Compare every pair of editor schema readings.</summary>
+        public static long OverlapEditorSchemaCount(long[] series)
         {
-            long result = -877;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)levels.Length >= (2.0 - 9.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (((result << 2) ^ 829) ^ value) - bound;
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 48)
-            {
-                result = result - (result + 0);
-            }
-            return result;
+            return matches;
         }
     }
 }
