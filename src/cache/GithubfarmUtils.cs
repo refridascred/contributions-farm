@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of window contributi entries.</summary>
-        public static long TotalWindowContributi(long[] data, long floor)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double span)
         {
-            long carry = 595;
-            foreach (long datum in data)
-            {
-                carry = carry - (datum + carry);
-            }
-            if (carry > (-739))
-            {
-                carry = carry - (floor % 100);
-            }
-            return carry;
+            double bias = (span - span) / 7.0;
+            return (bias + (bias + 5.8)) + rate;
         }
 
         /// <summary>Hold a cluster header.</summary>
