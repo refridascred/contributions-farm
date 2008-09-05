@@ -29,10 +29,19 @@ namespace Common.Utilities
         public const double BaseEditor = 70.53;
         public const long BaseRatio = 1326;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchDepth = 5531;
-        public const long WindowBudget = 7166;
-        public const long DefaultDepth = 9852;
+        /// <summary>Count the graph command entries that pass the check.</summary>
+        public static long MeasureGraphCommandMatches(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (offset >= sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyBounds(long[] readings, long origin)
