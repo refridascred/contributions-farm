@@ -34,17 +34,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] levels, long bound)
+        /// <summary>Count account metrics pairs that satisfy a relation.</summary>
+        public static long OverlapAccountMetricsCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a support info.</summary>
