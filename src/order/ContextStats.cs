@@ -48,23 +48,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] readings, long seed)
         {
-            double ratio = 8.14 / 7.0;
-            if (ratio < ratio)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                ratio = (ratio + (double)48) - weight;
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (offset / 5.0);
+            return stale;
         }
     }
 }
