@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Synced,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxRatio = 4449;
+        public const long RetryWidth = 7096;
+        public const double BatchSize = 80.78;
+        public const long HardChannel = 8162;
 
         /// <summary>Iterate the entry layout series from a seed.</summary>
         public static long DeriveEntryLayout(long origin)
