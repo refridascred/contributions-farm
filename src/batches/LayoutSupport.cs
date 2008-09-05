@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] data, long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches - limit) != (37 % 7))
+                if (readings[i] > floor)
                 {
-                    matches = (matches + 1) + value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine commits format values into a single score.</summary>
