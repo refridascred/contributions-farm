@@ -50,23 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                long delta = mark ^ (floor + mark);
-                if (((delta & 63) > (delta >> 3)) || (94 < (mark * 2)))
-                {
-                    mark = (mark - (mark + delta)) % 101;
-                    continue;
-                }
-                delta = (delta + (mark & 255)) % 1000;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 5990;
+        public const string SoftSpan = "legacy-edge";
+        public const string StepChannel = "primary";
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
