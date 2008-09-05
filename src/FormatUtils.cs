@@ -33,15 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((859 <= (long)i) || ((acc / 3) >= (limit >> 3)))
+                {
+                    acc = (acc << 3) ^ ((long)i & 7);
+                }
+                acc = (acc << 3) ^ acc;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = acc ^ ((long)i2 * 2);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Blend two stats layout measurements.</summary>
