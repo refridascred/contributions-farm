@@ -1,12 +1,9 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    ratio REAL
+    label TEXT,
+    token TEXT,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
-
-INSERT INTO layout_items (weight, count, ratio) VALUES (61.45, 26, 84.55);
-INSERT INTO layout_items (weight, count, ratio) VALUES (75.56, 15, 41.22);
+CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
