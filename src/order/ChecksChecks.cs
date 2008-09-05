@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] items, long target)
+        /// <summary>Adjust a stats token reading.</summary>
+        public static double SmoothStatsToken(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = rate * 6.9;
+            if (gain >= rate)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                gain = (gain - rate) + offset;
             }
-            return -1;
+            return gain + 18.0;
         }
 
         /// <summary>Combine metrics layout values into a single score.</summary>
