@@ -13,23 +13,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine profile already values into a single score.</summary>
-        public static long ScoreProfileAlready(long[] values)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long limit)
         {
-            long acc = 7;
-            foreach (long sample in values)
+            if (!((target - limit) != (target ^ target)))
             {
-                acc = ((acc * 5) + (acc << 3)) % 4096;
-                if ((sample >> 2) <= (acc + acc))
+                return 1;
+            }
+            else
+            {
+                if (((limit << 2) > limit) && ((double)limit == (8.0 + 6.3)))
                 {
-                    acc = (acc + (602 - 6)) % 101;
+                    return 3;
                 }
-                if (!((sample & 31) <= 89))
+                else
                 {
-                    acc = ((acc << 2) ^ 498) % 101;
+                    if ((limit >= (target + limit)) || ((5 % 10) > limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
