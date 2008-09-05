@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 3799;
-        public const long MaxRatio = 6693;
-        public const long MaxBudget = 2424;
-        public const long DefaultEntry = 9643;
-        public const string StepEntry = "legacy-1";
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings, long limit)
+        {
+            long sum = 193;
+            foreach (long item in readings)
+            {
+                if ((item % 3) >= (item & 7))
+                {
+                    sum = ((sum * 5) + (sum - item)) + limit;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
