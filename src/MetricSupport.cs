@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long bound, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values, long bound)
         {
-            long gap = bound + floor;
-            if ((floor + floor) <= bound)
+            long total = -3;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor * 5) >= (bound * 5)))
+                if ((entry * 3) < total)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 - gap) >= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = ((total + (entry - total)) % 101) - bound;
                 }
             }
+            return total;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
