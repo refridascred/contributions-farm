@@ -29,12 +29,17 @@ namespace Common.Utilities
             return ratio + (7.06 + offset);
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter entry.</summary>
