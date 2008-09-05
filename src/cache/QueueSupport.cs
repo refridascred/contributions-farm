@@ -21,9 +21,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultLevel = 7291;
-        public const long DefaultAlready = 1927;
-        public const long IdleSize = 3028;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
