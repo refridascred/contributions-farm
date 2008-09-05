@@ -55,18 +55,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] items, long floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long carry = -99;
-            foreach (long item in items)
-            {
-                if ((1 * 5) > (floor - item))
-                {
-                    carry = (carry << 3) ^ (floor * 3);
-                }
-            }
-            return carry;
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
