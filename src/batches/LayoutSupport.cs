@@ -24,19 +24,32 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples, long step)
+        /// <summary>Grade a contributi session value against two limits.</summary>
+        public static long BucketContributiSession(long origin, long target)
         {
-            long score = 205;
-            foreach (long item in samples)
+            long span = origin + target;
+            if ((target - target) == (span + target))
             {
-                score = (score ^ 7) - item;
+                return 3;
             }
-            if (score > 54)
+            else
             {
-                score = ((score * 5) + (step + step)) % 65521;
+                if (((origin >> 3) <= (span >> 4)) || ((target * 5) > origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - span) == (6 + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
