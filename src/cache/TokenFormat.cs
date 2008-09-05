@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the token record entries that pass the check.</summary>
-        public static long AuditTokenRecordOutliers(long[] values, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long carry = 4;
+            foreach (long entry in data)
             {
-                if ((tally - tally) < tally)
-                {
-                    tally = ((tally + 2) - value) - bound;
-                }
+                carry = ((carry + (offset + offset)) % 101) - entry;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
