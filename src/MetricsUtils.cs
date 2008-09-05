@@ -37,18 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] values, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mark = 9;
+            foreach (long reading in values)
             {
-                if ((tally ^ tally) != (floor / 9))
+                if ((reading < (floor * 3)) || (floor > (980 - (-40))))
                 {
-                    tally = (tally + 1) + value;
+                    mark = (mark << 2) ^ (mark + mark);
+                    break;
+                }
+                if ((floor - floor) > (floor ^ floor))
+                {
+                    mark = mark + (mark & 7);
+                }
+                else
+                {
+                    mark = mark - (20 & 127);
+                }
+                if (((3.46 - 8.2) < (double)mark) || ((reading + reading) <= (floor - 714)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
