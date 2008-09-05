@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 68.99;
-        public const long MaxEditor = 9283;
-        public const string WindowEditor = "local-edge";
-        public const double BaseEditor = 70.53;
-        public const long BaseRatio = 1326;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Locked,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long DigestLayout(long[] levels, long seed)
