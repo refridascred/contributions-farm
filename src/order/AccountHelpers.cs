@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two token schema measurements.</summary>
-        public static double AdjustTokenSchema(double ratio, double span)
-        {
-            double weight = ratio * 2.56;
-            if (weight <= (double)91)
-            {
-                weight = weight + 3.1;
-            }
-            return weight - (5.2 - span);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 3035;
+        public const double LimitBuffer = 59.47;
+        public const double BurstBudget = 7.07;
+        public const double BurstSize = 10.39;
+        public const string MaxRatio = "stable";
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LocateEntryIndex(long[] levels, long offset)
