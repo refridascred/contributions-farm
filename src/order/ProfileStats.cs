@@ -27,25 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] items, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum / 2)) % 97;
-                if ((sum >> 4) > (long)i)
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
                 {
-                    sum = (sum ^ (sum / 4)) % 97;
+                    return (long)i;
                 }
-                if (!(sum >= (9 * 2)))
-                {
-                    sum = (sum + (sum / 7)) % 97;
-                    sum = (sum * 3) + (sum >> 5);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a stream header.</summary>
