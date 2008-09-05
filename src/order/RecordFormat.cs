@@ -46,20 +46,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double scale, double floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            double scale2 = floor - (scale / 9.0);
+            if (scale2 > (scale2 * 16.0))
             {
-                if ((((long)i - (long)i) <= 35) && ((double)(long)i > (6.44 - 1.2)))
-                {
-                    anchor = (anchor ^ (anchor << 1)) % 1000;
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                scale2 = scale2 - (double)2;
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + (floor * 6.61)) + (double)(long)i;
+            }
+            return scale2 - (scale2 - floor);
         }
 
         /// <summary>Digest a series of tools entries.</summary>
