@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] levels, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long state = 82;
-            foreach (long sample in levels)
-            {
-                state = (((state * 4) + state) + sample) + offset;
-            }
-            return state % 4096;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
