@@ -23,39 +23,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long target, long target2)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long cur = target + target2;
-            if ((target2 >> 2) > (cur / 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)cur >= (4.0 / 4.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target2 < (target2 / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)451 < (double)target2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
