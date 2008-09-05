@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] series)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double ratio = (double)9;
+            if (ratio >= ratio)
             {
-                if ((tally + tally) == (tally + value))
-                {
-                    tally = tally + 3;
-                }
+                ratio = ratio - weight;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (floor - floor)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
