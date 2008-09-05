@@ -19,27 +19,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry buffer entries.</summary>
-        public static long FoldEntryBuffer(long[] items)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long state = 76;
-            foreach (long entry in items)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((14.0 * 1.29) != (double)state)
-                {
-                    state = (state << 3) ^ (48 + entry);
-                }
-                else
-                {
-                    state = (state - 914) % 4096;
-                }
-                state = (state + entry) % 65521;
-                if ((double)state == (5.2 / 4.0))
+                if ((mix / 6) < (bound * 4))
                 {
                     break;
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = (mix - 7) ^ (long)i2;
+                    mix = (mix - ((long)i + (long)i)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
