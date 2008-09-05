@@ -1,7 +1,6 @@
 {
-  "enabled": false,
-  "strict": "primary",
-  "hard_size_count": 21.34,
-  "idle_threshold": 30,
-  "max_depth_ms": 7679
+  "base_interval": 17.98,
+  "soft_timeout_s": "cached",
+  "cache_window": 31.07,
+  "verbose": "legacy"
 }
