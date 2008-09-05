@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples)
+        /// <summary>Find the first route session entry that matches the target.</summary>
+        public static long LocateRouteSessionIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally < (tally << 2))
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
                 {
-                    tally = (tally + 1) - sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a stream reading.</summary>
