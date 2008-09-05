@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next tools notes value from a seed.</summary>
-        public static long StepToolsNotes(long target)
+        /// <summary>Count the metric counter entries that pass the check.</summary>
+        public static long MeasureMetricCounterHits(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                total = (total ^ (target + (long)i)) % 255;
-                total = total - 684;
-                total = ((total * 4) + (long)i) % 1000;
+                if ((matches % 24) != (matches - entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the stream kind values.</summary>
