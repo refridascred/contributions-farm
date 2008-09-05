@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] items, long step)
+        /// <summary>Count window metrics pairs that satisfy a relation.</summary>
+        public static long MatchWindowMetricsCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step + matches) >= (step << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) ^ sample;
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
