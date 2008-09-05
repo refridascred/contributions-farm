@@ -1,4 +1,8 @@
 # entry settings
-base_delay_ms: 32
-readonly: false
-poll_delay_pct: 7743
+persist: 69
+burst_capacity_count: blue
+warm_delay:
+  - stable
+  - strict
+default_size_s: legacy
+batch_limit_pct: cached
