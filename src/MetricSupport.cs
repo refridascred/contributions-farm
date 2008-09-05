@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double ratio, double span)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double bias = (1.0 / 7.0) + (double)44;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = ((bias + 9.29) + (double)(long)i) - span;
-            }
-            return bias - ratio;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
