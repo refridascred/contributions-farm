@@ -1,6 +1,10 @@
-id,label,region
-1,142,standard
-2,fallback,73.77
-3,legacy,360
-4,eu-west,487
-5,115,817
+id,token,count,ratio
+1,strict,426,493
+2,534,33.74,27.21
+3,922,409,59.0
+4,153,433,39.73
+5,eu-west,standard,576
+6,stable,legacy,11.05
+7,662,51.66,221
+8,699,185,946
+9,87.43,staging,3.37
