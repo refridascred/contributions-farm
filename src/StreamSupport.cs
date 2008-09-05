@@ -30,21 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window cluster readings.</summary>
-        public static long CompareWindowClusterCount(long[] series)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Stale,
         }
     }
 }
