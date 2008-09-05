@@ -67,12 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Measure how many tools route samples are out of range.</summary>
+        public static long CountToolsRouteGaps(long[] items)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen + value) <= (99 * 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
