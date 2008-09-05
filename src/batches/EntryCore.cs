@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double rate, double span)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double drift = rate + (rate / 8.0);
-            if (drift > (drift + drift))
-            {
-                drift = drift + (span / 2.0);
-            }
-            else
-            {
-                drift = drift + (8.77 / 2.0);
-            }
-            return drift + 1.4;
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
