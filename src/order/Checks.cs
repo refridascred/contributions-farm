@@ -48,15 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long step)
         {
-            double gain = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - weight) + (double)(long)i;
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return gain + 5.4;
+            return -1;
         }
 
         /// <summary>Describe the stream level values.</summary>
