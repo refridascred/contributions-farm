@@ -24,12 +24,14 @@ namespace Common.Utilities
         public const double WindowPayload = 12.36;
         public const long DefaultBudget = 9651;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            Pending,
+            Paused,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
