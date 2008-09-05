@@ -34,15 +34,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double floor)
+        /// <summary>Fold a list of tools window readings.</summary>
+        public static long DigestToolsWindow(long[] series)
         {
-            double load = rate;
-            if (load >= load)
+            long result = -326;
+            foreach (long datum in series)
             {
-                load = load + load;
+                if (((11.0 - 2.0) < (double)datum) && ((double)result <= (2.44 / 3.0)))
+                {
+                    result = (result - 750) % 101;
+                }
+                else
+                {
+                    result = (result - (datum + 33)) % 4096;
+                }
+                if (((double)result <= (6.0 / 6.0)) && (datum < (datum / 9)))
+                {
+                    break;
+                }
             }
-            return load - floor;
+            return result % 1000;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
