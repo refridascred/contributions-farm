@@ -1,6 +1,6 @@
 # githubfarm settings
-warm_depth_pct: 37
-batches_ratio: staging
-hard_retries_count: strict
-batch_interval_ms: local
-warm_window_pct: latest
+idle_retries: 47.89
+order_capacity: 1024
+base_interval_s: 50.22
+flush_threshold_s: eu-west
+readonly: 60
