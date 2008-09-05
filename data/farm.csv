@@ -1,8 +1,6 @@
-id,score,count
-1,stable,strict
-2,309,371
-3,717,fallback
-4,fallback,8.36
-5,539,31.76
-6,57.81,565
-7,37.33,10.37
+id,ratio,state,active,token
+1,74.91,blue,966,656
+2,744,276,61.7,open
+3,fallback,80.46,889,485
+4,eu-west,277,96.86,473
+5,660,24.83,65.49,589
