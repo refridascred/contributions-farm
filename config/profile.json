@@ -1,5 +1,16 @@
 {
-  "soft_retries_ms": ["cached", "latest", "local"],
-  "base_depth_ms": [365, 133, 152, 444],
-  "dry_run": 2238
+  "payload_size": 64,
+  "cache_delay_ms": 60,
+  "order_threshold": {
+    "max_size_s": 30,
+    "burst_delay_ms": 69.53,
+    "profile_threshold": 25.36,
+    "route_ttl": {
+      "record_interval": 61,
+      "dry_run": 95,
+      "buffer_retries": 7.31,
+      "sync_timeout": "blue"
+    }
+  },
+  "poll_size": [347, 303]
 }
