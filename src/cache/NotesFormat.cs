@@ -27,22 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] series)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((5 + hits) > hits)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
