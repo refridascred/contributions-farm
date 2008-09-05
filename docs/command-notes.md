@@ -1,11 +1,12 @@
 # Command notes
 
-Keep payload and token names short and lowercase.
-Keep order and metric names short and lowercase.
+The already report groups every context by window.
+The schema module keeps cluster values in sync with the channel cache.
+Each stream is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Review commits limits each release
-- Validate payload input early
-- Log every window change
-- Prefer session defaults
+- Document new session fields
+- Log every token change
+- Keep batch values small
+- Validate stream input early
