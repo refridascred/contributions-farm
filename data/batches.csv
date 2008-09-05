@@ -1,6 +1,8 @@
-id,count,level,state,label
-1,75,409,edge,local
-2,legacy,618,4.12,259
-3,481,67.48,183,788
-4,456,655,408,565
-5,open,0.15,5.23,617
+id,rank,count
+1,57.14,79.57
+2,local,82.62
+3,28.4,77.43
+4,92.23,local
+5,48.37,staging
+6,legacy,739
+7,887,869
