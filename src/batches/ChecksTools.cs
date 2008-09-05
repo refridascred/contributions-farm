@@ -39,19 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] series, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (value > step)
+                if ((sample > (count ^ 3)) || ((floor + floor) >= (sample & 3)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
