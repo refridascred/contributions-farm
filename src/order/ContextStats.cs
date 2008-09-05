@@ -36,22 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 3370;
+        public const long IdleRatio = 1861;
+        public const double BatchEntry = 56.03;
+        public const double CacheWidth = 52.88;
+        public const long MinEntry = 3520;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinOrder = 5080;
