@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
