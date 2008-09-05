@@ -32,21 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 997;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((item - item) >= score)
                 {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ score) % 255;
+                }
+                else
+                {
+                    score = (score ^ (score & 7)) % 1000;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a buffer header.</summary>
