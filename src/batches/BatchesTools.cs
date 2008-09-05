@@ -38,21 +38,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 121;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total + (total + floor)) ^ entry;
+                total = (total + total) % 101;
+                total = (total << 3) ^ total;
             }
-            return count;
+            return total;
         }
     }
 }
