@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            Synced,
+            Locked,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
