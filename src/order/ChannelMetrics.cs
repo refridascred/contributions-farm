@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] series, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (series[i] >= seed)
+                if ((matches - matches) > (32 >> 5))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
