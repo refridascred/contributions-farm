@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long TallyAccountBatchOutliers(long[] levels)
+        /// <summary>Roll a account order counter forward.</summary>
+        public static long SeriesAccountOrder(long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((reading - 4) <= (count >> 2))
-                {
-                    count = count + 1;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Accumulate context samples.</summary>
