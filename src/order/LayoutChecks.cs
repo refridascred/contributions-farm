@@ -43,14 +43,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 1075;
+        public const string WindowBatches = "stable-1";
+        public const double LimitLevel = 0.96;
+        public const string StepTimeout = "open";
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
