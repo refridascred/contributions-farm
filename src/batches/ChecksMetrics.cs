@@ -21,13 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] readings)
         {
-            Idle,
-            Done,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item < matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first githubfarm notes entry that matches the target.</summary>
