@@ -18,21 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = step ^ seed;
+            if ((double)span <= 1.14)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((5.9 - 8.0) > (double)step)
                 {
-                    if ((values[i] - values[j]) < 14)
+                    return 1;
+                }
+                else
+                {
+                    if (((double)span >= (4.2 * 1.6)) && ((double)span > (1.5 / 9.0)))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(15.0 > (double)step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
