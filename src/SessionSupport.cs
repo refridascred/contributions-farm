@@ -32,22 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] readings, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] readings, long bound)
         {
-            long score = 2;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (!((double)score < (1.9 + 18.0)))
+                if (entry >= bound)
                 {
-                    score = (((score << 2) ^ (1 << 1)) % 97) - bound;
-                }
-                else
-                {
-                    score = (score * 2) + (sample * 4);
+                    ok = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ok;
         }
     }
 }
