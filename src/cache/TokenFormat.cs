@@ -42,9 +42,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseCount = 7296;
-        public const long BaseContext = 4620;
-        public const long IdleContext = 1329;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstDepth = 80.37;
+        public const long HardCommand = 2169;
+        public const long CacheFactor = 6954;
+        public const long StepDepth = 694;
     }
 }
