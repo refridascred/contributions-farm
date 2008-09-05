@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=144
-log "limit is ${CHANNEL_LIMIT}"
+for item in stable latest blue staging; do
+    log "checking ${item}"
+done
 
-mode="${1:-blue}"
+mode="${1:-legacy}"
 case "${mode}" in
-    latest)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge latest; do
-    log "checking ${item}"
-done
