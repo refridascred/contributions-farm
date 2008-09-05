@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 62.33;
-        public const long StepContext = 4028;
-        public const string StepInterval = "open-edge";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (seen >= (seen / 7))
+                {
+                    seen = ((seen + 1) ^ item) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferLimits(long[] series, long limit)
