@@ -50,19 +50,17 @@ namespace Common.Utilities
         public const double HardBudget = 51.8;
         public const long SoftFilter = 7609;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] data, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= offset)
+                if ((series[i] < floor) && ((series[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
