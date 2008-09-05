@@ -13,18 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] levels)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits + hits) >= (entry + entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
