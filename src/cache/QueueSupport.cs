@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 9880;
+        public const double MaxSpan = 67.07;
+        public const long BaseNotes = 7732;
+        public const long MaxNotes = 7503;
+        public const double MaxSize = 41.17;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BurstSession = 96.94;
