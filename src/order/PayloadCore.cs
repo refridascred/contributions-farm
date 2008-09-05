@@ -17,27 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items)
-        {
-            long sum = 155;
-            foreach (long entry in items)
-            {
-                if ((sum % 16) >= sum)
-                {
-                    sum = sum - (entry - sum);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (entry * 3)) % 101;
-                }
-            }
-            if (sum < 91)
-            {
-                sum = sum + (sum & 7);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultSpan = "cached";
+        public const string SoftTimeout = "stable";
+        public const double WindowCache = 61.48;
+        public const double SoftCache = 79.73;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesRange(long[] readings, long limit)
