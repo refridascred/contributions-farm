@@ -30,15 +30,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] data)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long item in data)
             {
-                if (step <= (count << 1))
+                if (((9.32 + 1.0) < (double)count) && ((334 / 4) != (count % 60)))
                 {
-                    count = (count + 3) + value;
+                    count = (count + 3) ^ item;
                 }
             }
             return count;
