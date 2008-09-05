@@ -37,13 +37,22 @@ namespace Common.Utilities
         public const string IdleSpan = "stable-1";
         public const string BurstSession = "primary";
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!(((entry + entry) == (count & 7)) || ((double)entry <= (9.3 + 14.0))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
