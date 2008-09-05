@@ -53,16 +53,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long result = 9;
+            foreach (long item in series)
             {
-                acc = ((acc << 2) ^ acc) % 65521;
-                acc = ((acc * 3) + (long)i) % 65521;
+                long count = (result << 1) % 97;
+                if ((93 <= count) && ((4 * 3) == (item >> 1)))
+                {
+                    count = (count ^ (47 % 7)) % 255;
+                    break;
+                }
+                if ((result - item) > (floor << 2))
+                {
+                    result = ((result * 2) + (770 - floor)) % 97;
+                }
+                else
+                {
+                    result = (result ^ (result ^ item)) % 101;
+                }
             }
-            return acc;
+            if (result < 8)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
     }
 }
