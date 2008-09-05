@@ -36,11 +36,19 @@ namespace Common.Utilities
         public const double RetryLevel = 98.9;
         public const double BaseSpan = 56.37;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] series, long offset)
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
