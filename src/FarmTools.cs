@@ -19,39 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long limit, long seed)
+        /// <summary>Accumulate notes filter samples.</summary>
+        public static long CombineNotesFilter(long[] series, long limit)
         {
-            long next = limit + seed;
-            if (((seed ^ (-205)) != (346 - limit)) || ((seed / 7) <= (seed + limit)))
+            long sum = 400;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + next) <= (seed - limit))
+                sum = ((sum * 2) + sum) ^ entry;
+                if ((4.33 - 14.0) > (double)sum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((next << 2) > 6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)next != (2.7 - 9.4)) || ((40 & 255) >= limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (sum > 28)
+            {
+                sum = (sum - (limit - sum)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate record cluster samples.</summary>
