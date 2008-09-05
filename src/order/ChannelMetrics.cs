@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 64.55;
-        public const long WindowLevel = 4787;
-        public const double IdleAlready = 93.25;
-        public const double SoftAlready = 72.66;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long RankSupport(long target, long limit)
