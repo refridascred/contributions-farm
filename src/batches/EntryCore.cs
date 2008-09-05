@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 98.26;
-        public const string BatchRatio = "standard-v2";
-        public const long BurstInterval = 9158;
-        public const double IdleCommits = 57.04;
-        public const long BaseCommits = 2018;
+        /// <summary>Count the filter token entries that pass the check.</summary>
+        public static long CountFilterTokenHits(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)count > (8.8 * 5.9))
+                {
+                    count = ((count + 3) - value) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] samples, long seed)
