@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a already counter counter forward.</summary>
-        public static long SeriesAlreadyCounter(long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor * 5) + (target & 31);
-                if (target > anchor)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine session values into a single score.</summary>
