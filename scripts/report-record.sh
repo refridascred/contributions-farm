@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy primary; do
+mode="${1:-staging}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge open fallback standard; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=67
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
