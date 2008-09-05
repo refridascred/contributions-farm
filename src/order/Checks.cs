@@ -66,14 +66,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double ratio, double floor)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Paused,
-            Locked,
+            double mean = ratio + 7.81;
+            if (mean >= ratio)
+            {
+                mean = (mean + 5.5) - floor;
+            }
+            else
+            {
+                mean = mean + (ratio + ratio);
+            }
+            return mean - mean;
         }
     }
 }
