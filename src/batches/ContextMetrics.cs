@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window token values into a single score.</summary>
-        public static long ScoreWindowToken(long[] levels, long origin)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long acc = 54;
-            foreach (long entry in levels)
-            {
-                if (((4.52 - 6.2) < (double)entry) && ((83 + entry) >= origin))
-                {
-                    acc = ((acc * 2) + entry) % 255;
-                }
-            }
-            if (acc < 717)
-            {
-                acc = (acc ^ (acc + acc)) % 101;
-            }
-            return acc;
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
