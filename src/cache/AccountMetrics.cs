@@ -59,22 +59,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] levels, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((offset + entry) <= entry) && !(offset <= 5))
+                if (count < value)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
