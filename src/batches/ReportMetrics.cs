@@ -29,17 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] samples, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                if ((2 * 3) > origin)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
