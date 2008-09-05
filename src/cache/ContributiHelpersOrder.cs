@@ -24,22 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate batch order samples.</summary>
-        public static long FoldBatchOrder(long[] items, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mark = 6;
-            foreach (long value in items)
-            {
-                if (((long)items.Length * 2) == (target - 515))
-                {
-                    mark = ((mark + (target ^ target)) % 65521) - value;
-                }
-            }
-            if (mark < (-542))
-            {
-                mark = (mark << 2) ^ (mark - target);
-            }
-            return mark % 1000;
+            Paused,
+            Closed,
+            Done,
+            Queued,
+            Idle,
         }
     }
 }
