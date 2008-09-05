@@ -1,16 +1,8 @@
 # githubfarm settings
-flush_timeout:
-  - 133
-  - 430
-  - 497
-hard_window_count:
-  - 340
-  - 260
-  - 154
-  - 139
-retry_ttl_s: 4419
-queue_capacity:
-  - strict
-  - latest
-  - staging
-  - blue
+default_retries_ms:
+  idle_timeout_s: blue
+  enabled: 500
+  layout_retries: 53.35
+  route_depth: 483
+persist: 3046
+stream_threshold: legacy
