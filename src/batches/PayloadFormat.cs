@@ -45,18 +45,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] readings, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((tally * 4) <= (target * 4))
+                if ((double)seed != (5.7 / 6.0))
                 {
-                    tally = (tally + 2) ^ cell;
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
