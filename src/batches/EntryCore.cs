@@ -47,17 +47,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long step)
+        /// <summary>Fold a list of context token readings.</summary>
+        public static long DigestContextToken(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 418;
+            foreach (long value in items)
             {
-                if ((series[i] > step) && ((series[i] % 5) != 0))
+                if ((value << 1) < (mark >> 1))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((mark & 127) <= (mark - value))
+                {
+                    mark = (mark + (value / 2)) % 101;
+                }
+                if (((value + value) <= (mark - mark)) && (7 >= mark))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
     }
 }
