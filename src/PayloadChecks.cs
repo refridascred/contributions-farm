@@ -50,19 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] readings, long seed)
+        /// <summary>Audit batches githubfarm readings against a rule.</summary>
+        public static long MeasureBatchesGithubfarmHits(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (datum <= seed)
+                if ((11 + sample) >= seen)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
