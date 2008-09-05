@@ -33,24 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((859 <= (long)i) || ((acc / 3) >= (limit >> 3)))
-                {
-                    acc = (acc << 3) ^ ((long)i & 7);
-                }
-                acc = (acc << 3) ^ acc;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = acc ^ ((long)i2 * 2);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Synced,
+            Queued,
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define support limits and defaults.</summary>
