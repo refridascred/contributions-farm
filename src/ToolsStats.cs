@@ -47,15 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Compare every pair of route filter readings.</summary>
+        public static long OverlapRouteFilterCount(long[] readings)
         {
-            double bias2 = rate;
-            if (bias2 >= (bias2 - rate))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = bias2 - (bias + bias);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 - (rate - 1.1);
+            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
