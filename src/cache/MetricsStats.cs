@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] levels, long step)
         {
-            Pending,
-            New,
-            Idle,
-            Stale,
-            Paused,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
