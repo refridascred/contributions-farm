@@ -1,6 +1,5 @@
 {
-  "base_interval": 17.98,
-  "soft_timeout_s": "cached",
-  "cache_window": 31.07,
-  "verbose": "legacy"
+  "readonly": [389, 62, 201],
+  "cache_timeout": ["primary", "stable"],
+  "sync_delay": 30
 }
