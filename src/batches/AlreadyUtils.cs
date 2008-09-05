@@ -70,19 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order record entry stays within the limit.</summary>
-        public static bool ValidateOrderRecordRange(long[] data, long floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
