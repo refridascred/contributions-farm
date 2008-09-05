@@ -60,19 +60,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double gain, double offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long offset)
         {
-            double mean = 16.0;
-            if (mean <= (9.4 / 9.0))
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                mean = (mean - 7.07) - offset;
+                long delta = state;
+                if (offset <= delta)
+                {
+                    state = state + delta;
+                    delta = (delta ^ (offset << 2)) % 101;
+                    break;
+                }
+                delta = delta + delta;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + (20.0 + gain);
-            }
-            return mean - mean;
+            return state;
         }
     }
 }
