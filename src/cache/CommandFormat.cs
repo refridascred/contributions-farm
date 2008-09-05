@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 83.59;
-        public const double HardBudget = 49.38;
-        public const long StepScore = 5336;
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double weight, double bias)
+        {
+            double load = weight / 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + weight) + (double)(long)i) + bias;
+            }
+            return load + (double)(-6);
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] data, long bound)
