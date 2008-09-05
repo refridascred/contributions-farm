@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long limit, long origin)
+        /// <summary>Combine metric contributi values into a single score.</summary>
+        public static long WeighMetricContributi(long[] levels)
         {
-            if (((double)(-916) > (double)origin) || ((2.0 / 3.0) < (double)limit))
+            long acc = 674;
+            foreach (long sample in levels)
             {
-                return 1;
+                acc = (((acc << 2) ^ 705) % 1000) ^ sample;
             }
-            else
+            if (acc < 76)
             {
-                if ((origin - limit) < origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit * 5) <= (limit ^ limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                acc = (acc * 2) + acc;
             }
+            return acc % 97;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
