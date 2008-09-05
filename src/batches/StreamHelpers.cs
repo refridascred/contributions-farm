@@ -90,31 +90,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long floor, long bound)
+        /// <summary>Count the order token entries that pass the check.</summary>
+        public static long AuditOrderTokenMatches(long[] readings, long bound)
         {
-            if ((double)bound <= (double)floor)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(bound > (floor * 5)))
+                if (((8 ^ 93) >= (entry >> 2)) || ((double)bound <= (double)tally))
                 {
-                    return 4;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (bound > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
