@@ -29,13 +29,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Synced,
-            Dropped,
-            New,
-            Stale,
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
