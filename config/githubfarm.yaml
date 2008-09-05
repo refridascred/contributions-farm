@@ -1,12 +1,25 @@
 # githubfarm settings
-stats_limit:
-  - 446
-  - 395
-  - 405
-batch_limit: latest
-warm_ratio_s: latest
-persist:
-  - 60
-  - 36
-  - 255
-  - 394
+tools_ttl:
+  - blue
+  - fallback
+dry_run:
+  metrics_timeout:
+    retry_size_s: 2328
+    hard_capacity_ms: 82.47
+    audit: cached
+    dry_run:
+      - 104
+      - 498
+      - 26
+    entry_size: 100
+    cache_interval:
+      - 409
+      - 390
+  base_retries: blue
+  audit: 47.17
+cache_ttl_count: eu-west
+retry_threshold_ms: 91
+compress:
+  - 220
+  - 372
+  - 61
