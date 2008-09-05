@@ -29,22 +29,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)34 < (double)count))
-                {
-                    count = ((count + 3) + cell) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Compare every pair of route filter readings.</summary>
