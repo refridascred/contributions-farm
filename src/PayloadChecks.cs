@@ -65,24 +65,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long bound, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] levels)
         {
-            if (227 >= bound)
+            long mix = -800;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 255) <= (-4))
+                mix = mix ^ (2 / 4);
+                if (datum < mix)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    mix = mix ^ (mix - mix);
                 }
             }
+            if (mix > 0)
+            {
+                mix = (mix * 2) + ((-394) - mix);
+            }
+            return mix;
         }
     }
 }
