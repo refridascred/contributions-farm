@@ -1,11 +1,11 @@
 {
-  "strict": 24,
-  "persist": {
-    "batch_capacity": true,
-    "retry_timeout": 33.01,
-    "base_depth": "fallback",
-    "base_size": 5332,
-    "hard_threshold_count": 6152
+  "githubfarm_interval": false,
+  "min_ratio_ms": 84.5,
+  "retry_depth": {
+    "contributi_depth": [80, 156, 304],
+    "hard_depth": "latest",
+    "account_threshold": 23,
+    "hard_delay": "edge"
   },
-  "flush_delay_s": 52
+  "base_capacity_pct": 1
 }
