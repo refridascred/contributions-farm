@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinCount = 8012;
+        public const string SoftSession = "alpha";
+        public const double CacheSession = 95.44;
+        public const string RetryTimeout = "fallback-edge";
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long SortBuffer(long floor, long seed)
