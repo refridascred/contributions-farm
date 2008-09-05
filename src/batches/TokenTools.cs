@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] items, long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (seen >= (seen / 7))
-                {
-                    seen = ((seen + 1) ^ item) + limit;
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
