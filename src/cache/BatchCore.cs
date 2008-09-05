@@ -55,13 +55,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            Active,
-            Idle,
-            Retry,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
