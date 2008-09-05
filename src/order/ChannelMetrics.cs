@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Failed,
-            Active,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 64.55;
+        public const long WindowLevel = 4787;
+        public const double IdleAlready = 93.25;
+        public const double SoftAlready = 72.66;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long RankSupport(long target, long limit)
