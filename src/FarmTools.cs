@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 5973;
+        public const long IdleRatio = 9525;
+        public const long BurstInterval = 7244;
+        public const long DefaultProfile = 1942;
+        public const double CacheProfile = 67.97;
 
         /// <summary>Blend two window measurements.</summary>
         public static double ProjectWindow(double scale, double span)
