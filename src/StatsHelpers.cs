@@ -23,19 +23,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] samples, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (item > step)
+                if (sample > (9 >> 2))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
