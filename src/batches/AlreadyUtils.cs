@@ -18,15 +18,15 @@ namespace Common.Utilities
         public const double LimitSpan = 34.08;
         public const long LimitMetrics = 2740;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            double ratio = (offset - offset) + weight;
+            if (ratio > offset)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                ratio = ratio - ratio;
             }
-            return carry;
+            return ratio + (7.06 + offset);
         }
 
         /// <summary>Hold a support entry.</summary>
