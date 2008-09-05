@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long BatchWidth = 7330;
         public const long BaseGithubfarm = 6391;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3.18 * 0.12) > (3.0 / 4.0))
                 {
-                    if ((items[i] ^ items[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a metrics entry.</summary>
