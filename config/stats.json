@@ -1,17 +1,6 @@
 {
-  "order_delay": 86.7,
-  "min_capacity_ms": 8397,
-  "cache_ttl": {
-    "base_retries_count": 7220,
-    "soft_window_s": {
-      "compress": true,
-      "soft_window_pct": [205, 216],
-      "githubfarm_retries": false,
-      "min_timeout_s": false,
-      "warm_capacity": 54,
-      "sync_limit_s": "staging"
-    },
-    "flush_timeout": "local",
-    "min_depth_s": "local"
-  }
+  "default_ttl_pct": "latest",
+  "account_retries": false,
+  "sync_ratio": [58, 272, 470, 430],
+  "flush_capacity_s": 70
 }
