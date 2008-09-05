@@ -36,11 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 6087;
-        public const long LimitScore = 1762;
-        public const long SoftSize = 8257;
-        public const double HardDepth = 52.24;
-        public const long DefaultSize = 3370;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double floor)
+        {
+            double load = (double)8 - 8.64;
+            if (load > load)
+            {
+                load = load - (gain + load);
+            }
+            else
+            {
+                load = load - floor;
+            }
+            return load - (gain * 8.4);
+        }
     }
 }
