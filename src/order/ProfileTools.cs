@@ -50,22 +50,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the tools session entries that pass the check.</summary>
-        public static long CountToolsSessionHits(long[] values, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long anchor = 93;
+            foreach (long datum in data)
             {
-                if ((((tally & 255) >= 0) && ((835 << 1) <= cell)) || (((tally << 3) < (seed - cell)) && ((seed << 2) != (seed - cell))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((((anchor << 2) ^ (anchor + (-4))) % 101) + datum) + step;
+                anchor = anchor ^ anchor;
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the cluster level values.</summary>
