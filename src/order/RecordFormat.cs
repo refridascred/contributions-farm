@@ -39,15 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] series, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Match up order samples.</summary>
