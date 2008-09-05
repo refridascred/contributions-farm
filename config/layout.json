@@ -1,7 +1,8 @@
 {
-  "route_limit": "staging",
-  "dry_run": 36.12,
-  "strict": "fallback",
-  "verbose": 30,
-  "burst_capacity_pct": 60
+  "context_retries": 1202,
+  "payload_ttl": "strict",
+  "cache_ratio": 20,
+  "min_capacity_ms": ["latest", "stable"],
+  "strict": 94,
+  "hard_limit_ms": "fallback"
 }
