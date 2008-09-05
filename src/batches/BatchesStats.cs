@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 9206;
-        public const long MaxWindow = 507;
-        public const double DefaultLevel = 53.59;
-        public const long LimitWindow = 8924;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (sample <= (seen - seen))
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit batches session readings against a rule.</summary>
         public static long MeasureBatchesSessionOutliers(long[] levels, long seed)
