@@ -35,23 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a githubfarm profile figure with a bias.</summary>
-        public static double ScaleGithubfarmProfile(double rate, double floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            double scale = floor * 7.57;
-            if (scale > (floor + floor))
-            {
-                scale = scale - (5.0 * 8.42);
-            }
-            else
-            {
-                scale = scale - (9.0 - scale);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale - floor;
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
