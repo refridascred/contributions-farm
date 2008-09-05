@@ -13,11 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultLevel = 2244;
-        public const double BatchDepth = 47.64;
-        public const double StepScore = 29.98;
-        public const string MaxStream = "standard-1";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string LimitSchema = "fallback-1";
