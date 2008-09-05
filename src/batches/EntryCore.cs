@@ -43,12 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Failed,
+            Pending,
         }
     }
 }
