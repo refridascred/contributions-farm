@@ -27,11 +27,39 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Blend two farm contributi measurements.</summary>
-        public static double ScaleFarmContributi(double gain, double floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long limit, long step)
         {
-            double scale = floor;
-            return (scale + (double)824) + gain;
+            long next = limit + step;
+            if (step < (next ^ (-300)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= (8.52 * 2.82))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit / 7) <= (limit + next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((next ^ limit) >= (limit - limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
