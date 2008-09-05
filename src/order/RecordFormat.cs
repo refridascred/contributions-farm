@@ -61,19 +61,13 @@ namespace Common.Utilities
             return scale2 - (scale2 - floor);
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] items, long origin)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long mix = -682;
-            foreach (long item in items)
-            {
-                mix = ((mix + (mix << 1)) % 255) ^ item;
-            }
-            if (mix < (-3))
-            {
-                mix = (mix + origin) % 1000;
-            }
-            return mix % 1000;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
