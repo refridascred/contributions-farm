@@ -72,18 +72,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] samples)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long step, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long gap = step ^ floor;
+            if (((gap + 40) < (1 ^ gap)) && ((double)floor <= (double)gap))
             {
-                if ((hits + hits) > hits)
+                return 3;
+            }
+            else
+            {
+                if (!((gap ^ gap) > floor))
                 {
-                    hits = (hits + 2) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
