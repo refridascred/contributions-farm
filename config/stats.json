@@ -1,19 +1,5 @@
 {
-  "route_ratio": 100,
-  "channel_limit": "cached",
-  "base_ratio_count": {
-    "sync_capacity": 2608,
-    "payload_depth": {
-      "route_threshold": [186, 320],
-      "strict": "stable",
-      "default_capacity": false,
-      "checks_interval": 89.52,
-      "batch_timeout_pct": [441, 449, 435],
-      "channel_limit": [294, 312, 158, 448]
-    },
-    "route_retries": ["edge", "local", "primary"],
-    "audit": "cached",
-    "retry_threshold": true
-  },
-  "retry_depth_pct": ["strict", "cached", "cached"]
+  "persist": 4282,
+  "metrics_capacity": "cached",
+  "strict": [354, 346, 34]
 }
