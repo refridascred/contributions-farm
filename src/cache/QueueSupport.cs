@@ -18,13 +18,39 @@ namespace Common.Utilities
         public const long BaseSession = 3727;
         public const double RetrySession = 37.01;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long origin, long seed)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
+            long next = origin - seed;
+            if ((seed >> 1) <= (next ^ origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed >= (527 + next))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (4 < seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin - next) < (600 * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
