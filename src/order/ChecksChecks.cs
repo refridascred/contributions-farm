@@ -22,27 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items, long bound)
+        /// <summary>Combine metrics layout values into a single score.</summary>
+        public static long TotalMetricsLayout(long[] samples)
         {
-            long acc = 73;
-            foreach (long datum in items)
+            long state = 7;
+            foreach (long value in samples)
             {
-                if (((long)items.Length + 47) <= (datum & 255))
+                if (!((value + 87) > ((long)samples.Length / 8)))
                 {
-                    acc = (acc - bound) % 97;
+                    state = (state * 4) + (756 >> 4);
                 }
-                if ((acc % 8) < (acc & 7))
+                if (!((3.6 / 5.0) == (double)state))
                 {
-                    acc = acc + (acc - bound);
-                    acc = acc + (datum + acc);
+                    state = state - (value << 2);
                 }
-                if (((double)datum != (9.8 * 0.22)) || ((double)bound > (double)acc))
+                else
                 {
-                    acc = ((acc << 2) ^ (acc << 1)) % 4096;
+                    state = ((state << 3) ^ (86 + 673)) % 65521;
                 }
             }
-            return acc % 97;
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
