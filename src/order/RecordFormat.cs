@@ -54,21 +54,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
