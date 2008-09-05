@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double ratio, double bias)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] levels)
         {
-            double ratio2 = bias;
-            if (ratio2 <= ratio2)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                ratio2 = (ratio2 - (double)28) - ratio;
+                if ((double)datum < 11.0)
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (bias * 20.0)) + (double)(long)i;
-            }
-            return ratio2 + (bias - 17.0);
+            return hits;
         }
 
         /// <summary>Describe the graph phase values.</summary>
