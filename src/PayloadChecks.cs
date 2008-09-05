@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            Synced,
+            Retry,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
