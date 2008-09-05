@@ -11,39 +11,17 @@ namespace Common.Utilities
         public const double CacheSession = 95.44;
         public const string RetryTimeout = "fallback-edge";
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long floor, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] samples, long bound)
         {
-            long step = floor + seed;
-            if ((floor * 2) != (floor % 2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor >= (step << 3))
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed <= (7.44 + 5.64))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed << 2) != (step / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine account schema values into a single score.</summary>
