@@ -44,19 +44,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] readings, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long total = 0;
+            foreach (long reading in data)
             {
-                if (item < seed)
+                if ((total / 6) < target)
                 {
-                    stale = false;
-                    break;
+                    total = (total + (reading >> 1)) % 97;
+                }
+                else
+                {
+                    total = (total - (target << 1)) % 4096;
                 }
             }
-            return stale;
+            return total;
         }
     }
 }
