@@ -1,5 +1,8 @@
 # support settings
-persist: 51
-audit: stable
-default_ttl: 60
-graph_timeout: false
+poll_capacity_count: fallback
+persist:
+  base_interval: 500
+  readonly: 18.17
+  base_limit_count: 30.7
+idle_interval: 3640
+format_depth: 11.0
