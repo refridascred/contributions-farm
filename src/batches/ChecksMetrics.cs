@@ -30,40 +30,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a route checks value against two limits.</summary>
-        public static long SortRouteChecks(long floor, long target)
-        {
-            long diff = floor - target;
-            if ((diff ^ 26) <= diff)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target + diff) != (target - target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor ^ target) < (diff & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9 & 31) >= (target >> 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftSpan = 3269;
+        public const double MinRatio = 37.84;
+        public const long DefaultAccount = 7420;
+        public const long HardTimeout = 7502;
+        public const long LimitAccount = 1515;
 
         /// <summary>Count the filter already entries that pass the check.</summary>
         public static long AuditFilterAlreadyHits(long[] levels, long limit)
