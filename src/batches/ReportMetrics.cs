@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double gain, double bias)
-        {
-            double drift = bias;
-            if (drift < (double)322)
-            {
-                drift = (drift + (double)8) + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift / 3.0)) - (double)(long)i;
-            }
-            return drift + (double)18;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 86.7;
+        public const double MaxRatio = 21.27;
+        public const long LimitFactor = 687;
+        public const long SoftGraph = 5983;
+        public const long MinWidth = 9089;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool VerifyFormatLimits(long[] data, long bound)
