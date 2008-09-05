@@ -31,18 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] series, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((double)seen < (double)floor)
+                if ((hits + floor) <= (hits - floor))
                 {
-                    seen = (seen + 1) + item;
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
