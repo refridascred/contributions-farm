@@ -49,13 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Idle,
+            Retry,
+            Stale,
         }
     }
 }
