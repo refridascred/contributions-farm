@@ -41,13 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
