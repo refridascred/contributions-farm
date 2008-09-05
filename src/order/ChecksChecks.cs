@@ -43,18 +43,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] items)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long result = 79;
+            foreach (long entry in readings)
             {
-                if ((double)seen >= (double)reading)
+                if (!((entry * 4) <= (result >> 1)))
                 {
-                    seen = seen + 3;
+                    break;
+                }
+                if ((result << 1) > (entry - 8))
+                {
+                    result = (result + (entry & 1)) % 4096;
+                }
+                if (!((7.7 - 9.7) <= (double)result))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
