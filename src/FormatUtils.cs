@@ -52,16 +52,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two stats layout measurements.</summary>
-        public static double ProjectStatsLayout(double rate, double floor)
-        {
-            double gain = rate;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain + (rate / 7.0)) + (double)(long)i) + floor;
-            }
-            return gain + (double)66;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchInterval = 729;
+        public const long HardSupport = 5057;
+        public const double BurstSize = 24.7;
+        public const string BaseFactor = "staging-edge";
+        public const long BurstSupport = 3749;
 
         /// <summary>Locate a batch githubfarm reading by value.</summary>
         public static long LookupBatchGithubfarmIndex(long[] readings, long offset)
