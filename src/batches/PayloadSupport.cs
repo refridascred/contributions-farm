@@ -29,12 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] values, long target)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
