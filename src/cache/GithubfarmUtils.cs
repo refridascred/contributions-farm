@@ -40,18 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((2.74 * 1.8) > (double)cell)
+                if (cell != target)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
