@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Closed,
-            Queued,
-            Idle,
-            Synced,
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
