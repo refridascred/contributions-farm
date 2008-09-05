@@ -25,19 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double gain, double span)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double mean = (double)8;
-            if (mean <= (span - gain))
-            {
-                mean = mean - (mean * 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (span * 6.0)) + (double)(long)i;
-            }
-            return mean + (gain / 6.0);
+            Retry,
+            Paused,
+            Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
