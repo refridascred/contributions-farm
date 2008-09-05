@@ -22,12 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstDepth = 7227;
-        public const string SoftSize = "primary-1";
-        public const string BaseSize = "legacy-v2";
-        public const string StepCounter = "cached";
-        public const long WindowBudget = 7873;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long floor, long offset)
+        {
+            if ((double)offset < (9.2 - 4.3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0 - offset) <= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TallyGraph(long[] items, long step)
