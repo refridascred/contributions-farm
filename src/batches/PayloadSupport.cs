@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Draft,
-            Pending,
-            New,
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
