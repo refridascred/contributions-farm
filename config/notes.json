@@ -1,6 +1,10 @@
 {
-  "channel_size": 69.83,
-  "poll_size_ms": 43.42,
-  "min_threshold_s": 4008,
-  "strict": 9544
+  "graph_interval": "stable",
+  "metrics_window": false,
+  "order_ttl": 44.48,
+  "poll_ttl_ms": {
+    "commits_ttl": ["green", "staging", "primary"],
+    "compress": false,
+    "readonly": "strict"
+  }
 }
