@@ -50,13 +50,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] readings, long offset)
         {
-            Dropped,
-            Ready,
-            New,
-            Failed,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
