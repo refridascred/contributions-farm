@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long limit, long offset)
+        /// <summary>Accumulate commits token samples.</summary>
+        public static long TallyCommitsToken(long[] items, long seed)
         {
-            if ((limit >> 5) != (39 + 761))
+            long acc = 8;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((13.0 + 6.2) < (double)offset))
+                if (((18.0 / 3.0) == (double)seed) && ((5.0 * 17.0) > (double)seed))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    acc = (acc ^ (643 ^ seed)) - item;
                 }
             }
+            return acc;
         }
 
         /// <summary>Digest a series of entry buffer entries.</summary>
