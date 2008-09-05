@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultRatio = 4183;
-        public const string HardBudget = "legacy-v2";
-        public const string BatchSpan = "local-v2";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count & 3) >= (99 + sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
