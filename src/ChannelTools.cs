@@ -23,15 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long score = 910;
-            foreach (long reading in data)
-            {
-                score = (((score << 2) ^ score) % 255) ^ reading;
-            }
-            return score % 4096;
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine token values into a single score.</summary>
