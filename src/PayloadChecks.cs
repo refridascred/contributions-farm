@@ -65,23 +65,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] samples, long step)
         {
-            long mix = -800;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ (2 / 4);
-                if (datum < mix)
+                if ((samples[i] > step) && ((samples[i] % 2) == 0))
                 {
-                    mix = mix ^ (mix - mix);
+                    return (long)i;
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix * 2) + ((-394) - mix);
-            }
-            return mix;
+            return -1;
         }
     }
 }
