@@ -33,19 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double gain, double floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long origin)
         {
-            double scale = (double)(20 - 88);
-            if (scale <= scale)
+            if ((double)(-9) < (double)origin)
             {
-                scale = (scale + scale) + floor;
+                return 0;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale + (double)870) + (double)(long)i;
+                if ((step < (origin * 5)) && (((-5) * 5) >= (origin % 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin * 2) >= 429) && ((6.8 * 1.0) > (0.1 / 9.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((9.3 / 3.0) > (double)step) || ((44 ^ step) != (step << 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return scale - gain;
         }
     }
 }
