@@ -16,20 +16,12 @@ namespace Common.Utilities
             return load - 4.44;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples)
-        {
-            long sum = 640;
-            foreach (long datum in samples)
-            {
-                sum = sum ^ (datum - datum);
-            }
-            if (sum < 2)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 820;
+        public const double BurstContributi = 78.73;
+        public const long MinContributi = 5161;
+        public const long MinRatio = 7048;
+        public const long SoftScore = 8251;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string LimitSchema = "fallback-1";
