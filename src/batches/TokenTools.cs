@@ -36,21 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
+        public static long MeasureGithubfarmMetricsMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen >> 5) > (seen - seen))
                 {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) - item;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
