@@ -16,12 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
