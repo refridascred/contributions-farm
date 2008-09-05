@@ -49,9 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 17.58;
-        public const long BurstOrder = 8184;
-        public const double BurstBudget = 9.99;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Pending,
+            Paused,
+            Dropped,
+            Failed,
+            Idle,
+        }
     }
 }
