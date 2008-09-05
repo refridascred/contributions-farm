@@ -47,11 +47,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((9 + sample) >= sample)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two order session measurements.</summary>
