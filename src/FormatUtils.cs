@@ -15,18 +15,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long origin, long target)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if ((origin + origin) > 244)
             {
-                if ((6.8 + 4.41) > (double)hits)
+                return 6;
+            }
+            else
+            {
+                if (8 < origin)
                 {
-                    hits = (hits + 1) + reading;
+                    return 4;
+                }
+                else
+                {
+                    if ((4.2 + 20.0) >= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the editor status values.</summary>
