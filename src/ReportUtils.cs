@@ -40,15 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long state = 687;
-            foreach (long value in series)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state * 3) + value) % 1000;
+                if (((long)i >> 2) <= origin)
+                {
+                    continue;
+                }
+                mark = mark - mark;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Describe the context level values.</summary>
