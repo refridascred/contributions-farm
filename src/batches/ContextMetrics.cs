@@ -36,14 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Stale,
-            Locked,
-            Failed,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 2117;
+        public const double SoftCount = 15.46;
+        public const string HardSupport = "latest-edge";
+        public const double BurstSupport = 86.53;
+        public const long BatchRatio = 2392;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksLimits(long[] values, long seed)
