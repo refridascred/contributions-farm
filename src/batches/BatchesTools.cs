@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double bias, double floor)
         {
-            Active,
-            Paused,
-            Idle,
+            double rate = floor;
+            if (rate > floor)
+            {
+                rate = (rate - (double)852) + bias;
+            }
+            else
+            {
+                rate = rate - 8.1;
+            }
+            return rate + (double)9;
         }
 
         /// <summary>Blend two already measurements.</summary>
