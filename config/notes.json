@@ -1,15 +1,6 @@
 {
-  "readonly": "legacy",
-  "flush_depth_pct": {
-    "checks_retries": true,
-    "base_delay": 60,
-    "min_timeout_pct": 250,
-    "schema_capacity": "latest",
-    "default_retries_s": 93.24,
-    "soft_depth_pct": [431, 414, 337]
-  },
-  "farm_retries": ["local", "cached", "standard"],
-  "commits_ratio": 60,
-  "commits_threshold": 63.75,
-  "default_depth": [348, 123, 417, 52]
+  "channel_size": 69.83,
+  "poll_size_ms": 43.42,
+  "min_threshold_s": 4008,
+  "strict": 9544
 }
