@@ -29,15 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] levels, long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mix = 5;
-            foreach (long value in levels)
-            {
-                mix = (((mix ^ (0 << 3)) % 97) ^ value) + floor;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
