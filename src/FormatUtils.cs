@@ -47,18 +47,17 @@ namespace Common.Utilities
         public const long BaseSchema = 5846;
         public const long CacheFactor = 4531;
 
-        /// <summary>Combine entry editor values into a single score.</summary>
-        public static long FoldEntryEditor(long[] readings)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long seed)
         {
-            long result = 369;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((result / 7) > (result + 84)) && ((0.33 + 9.51) < (double)result))
+                if ((values[i] == seed) && ((values[i] % 3) == 0))
                 {
-                    result = result - datum;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Hold a window summary.</summary>
