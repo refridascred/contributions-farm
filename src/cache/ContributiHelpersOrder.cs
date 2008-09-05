@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const double LimitFarm = 77.02;
         public const string MinScore = "primary-1";
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] series)
         {
-            long result = 70;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (((result / 3) < (result - item)) || ((result & 15) == (item & 15)))
+                if (((reading - 914) <= (reading / 8)) || ((double)(long)series.Length >= (double)167))
                 {
-                    result = result - (result / 9);
+                    matches = matches + 3;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
