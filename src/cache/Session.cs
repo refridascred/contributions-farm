@@ -39,19 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value > limit)
+                if ((double)seen < (double)floor)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + item;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
