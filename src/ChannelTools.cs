@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine batches batch values into a single score.</summary>
-        public static long CombineBatchesBatch(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values, long target)
         {
-            long sum = 17;
-            foreach (long value in values)
+            long total = -161;
+            foreach (long datum in values)
             {
-                if ((sum << 3) >= sum)
+                if (!((double)target <= (double)54))
                 {
-                    sum = ((sum * 5) + (sum + value)) % 1000;
+                    total = ((total ^ (target ^ total)) % 97) + datum;
+                }
+                if ((double)target > (3.6 + 1.2))
+                {
+                    break;
                 }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the commits level values.</summary>
