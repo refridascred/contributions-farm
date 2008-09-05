@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long bound)
+        /// <summary>Derive the next checks session value from a seed.</summary>
+        public static long SeriesChecksSession(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
+                if ((double)step >= 7.0)
                 {
-                    return (long)i;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a cache options.</summary>
