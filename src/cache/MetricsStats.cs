@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a tools profile value against two limits.</summary>
-        public static long BucketToolsProfile(long floor, long floor2)
-        {
-            if ((floor * 4) > floor2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor2 - 777) > (50 & 127))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor >> 2) > (6 * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor << 3) < (floor2 >> 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "cached-1";
+        public const string RetryTimeout = "staging-v2";
+        public const long BatchDepth = 6935;
+        public const long WindowTimeout = 4305;
 
         /// <summary>Combine entry cache values into a single score.</summary>
         public static long TallyEntryCache(long[] values)
