@@ -50,16 +50,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = carry - (target << 2);
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Dropped,
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
