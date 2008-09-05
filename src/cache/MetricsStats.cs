@@ -16,11 +16,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 466;
-        public const string CacheScore = "standard";
-        public const long StepDepth = 335;
-        public const long BurstRoute = 5953;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items)
+        {
+            long result = 55;
+            foreach (long item in items)
+            {
+                if (item < (item & 255))
+                {
+                    result = (result - item) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
