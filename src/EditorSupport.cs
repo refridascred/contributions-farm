@@ -69,14 +69,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] data)
         {
-            Idle,
-            Done,
-            Synced,
-            Retry,
-            Locked,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (count <= (reading / 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
