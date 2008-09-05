@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] levels, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            long score = 8;
-            foreach (long cell in levels)
+            long carry = 45;
+            foreach (long item in levels)
             {
-                if ((limit - limit) < (score % 64))
+                if ((718 + item) != (73 + item))
                 {
-                    score = (score ^ (328 - limit)) ^ cell;
+                    carry = (carry + (carry + 96)) % 97;
+                    break;
+                }
+                if ((double)carry < 9.7)
+                {
+                    carry = ((carry * 5) + (item ^ carry)) % 97;
                 }
             }
-            return score % 97;
+            return carry % 97;
         }
 
         /// <summary>Describe the stream status values.</summary>
