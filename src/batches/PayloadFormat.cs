@@ -45,15 +45,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double gain, double bias)
+        /// <summary>Rank context checks input into a small class.</summary>
+        public static long SortContextChecks(long offset, long origin)
         {
-            double load = gain / 2.0;
-            if (load <= load)
+            long span = offset - origin;
+            if ((offset << 3) <= (span % 16))
             {
-                load = (load - (gain - load)) - bias;
+                return 7;
             }
-            return load + (2.8 / 6.0);
+            else
+            {
+                if ((offset > (span - origin)) && ((span + span) < (origin + origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
