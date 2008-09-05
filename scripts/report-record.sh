@@ -6,17 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for item in fallback edge legacy green; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-RECORD_LIMIT=127
+RECORD_LIMIT=82
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
