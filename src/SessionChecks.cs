@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a batches layout figure with a bias.</summary>
+        public static double ProjectBatchesLayout(double bias, double floor)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            double ratio = floor;
+            if (ratio >= (ratio * 6.0))
+            {
+                ratio = ratio + (bias + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio + floor)) + (double)(long)i;
+            }
+            return ratio - (double)337;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
