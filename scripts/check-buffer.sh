@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in green primary fallback; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in strict latest edge standard; do
-    log "checking ${item}"
-done
