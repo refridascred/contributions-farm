@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 8864;
         public const string DefaultFactor = "fallback";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 2.02;
-        public const long HardSession = 4859;
-        public const long BaseSession = 4954;
-        public const string IdleSession = "local-edge";
-        public const double LimitCount = 63.75;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((count + (-520)) <= ((-670) - count)) || ((value + count) < (968 - 57)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
