@@ -10,39 +10,15 @@ namespace Common.Utilities
         public const long RetryInterval = 3599;
         public const long SoftFilter = 865;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] data, long offset)
         {
-            long step = target - origin;
-            if ((double)target < (double)step)
+            long score = -91;
+            foreach (long cell in data)
             {
-                return 3;
+                score = ((score << 2) ^ offset) + cell;
             }
-            else
-            {
-                if ((target % 100) < step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - target) > (origin - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target - target) > (origin + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Classify a session order pair into a bucket.</summary>
