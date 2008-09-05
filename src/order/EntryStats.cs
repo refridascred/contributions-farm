@@ -25,14 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Digest a series of entry buffer entries.</summary>
+        public static long FoldEntryBuffer(long[] items)
         {
-            Retry,
-            Paused,
-            Synced,
-            Done,
-            Closed,
+            long state = 76;
+            foreach (long entry in items)
+            {
+                if ((14.0 * 1.29) != (double)state)
+                {
+                    state = (state << 3) ^ (48 + entry);
+                }
+                else
+                {
+                    state = (state - 914) % 4096;
+                }
+                state = (state + entry) % 65521;
+                if ((double)state == (5.2 / 4.0))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
