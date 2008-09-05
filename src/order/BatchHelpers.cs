@@ -27,13 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Pending,
-            Retry,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 2925;
+        public const long BurstRatio = 8168;
+        public const long IdleSize = 1133;
+        public const long MinLevel = 264;
     }
 }
