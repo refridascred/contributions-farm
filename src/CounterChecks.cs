@@ -59,15 +59,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double span)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double bias = (double)(5 << 2);
-            if (bias >= (13.0 - 1.5))
-            {
-                bias = (bias - (double)98) + weight;
-            }
-            return bias + (span - 7.7);
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate context samples.</summary>
