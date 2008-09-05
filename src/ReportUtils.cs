@@ -37,12 +37,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long limit)
         {
-            Pending,
-            Idle,
-            Active,
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metric record.</summary>
