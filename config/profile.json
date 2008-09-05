@@ -1,16 +1,8 @@
 {
-  "payload_size": 64,
-  "cache_delay_ms": 60,
-  "order_threshold": {
-    "max_size_s": 30,
-    "burst_delay_ms": 69.53,
-    "profile_threshold": 25.36,
-    "route_ttl": {
-      "record_interval": 61,
-      "dry_run": 95,
-      "buffer_retries": 7.31,
-      "sync_timeout": "blue"
-    }
-  },
-  "poll_size": [347, 303]
+  "cache_retries": [352, 226, 393],
+  "idle_depth": ["stable", "green"],
+  "idle_ttl": 30,
+  "checks_threshold": [328, 487],
+  "cache_window_s": [30, 394, 282],
+  "queue_limit": false
 }
