@@ -26,38 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] items, long bound)
         {
-            if ((double)(-9) < (double)origin)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step < (origin * 5)) && (((-5) * 5) >= (origin % 5)))
+                if (items[i] <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin * 2) >= 429) && ((6.8 * 1.0) > (0.1 / 9.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((9.3 / 3.0) > (double)step) || ((44 ^ step) != (step << 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
