@@ -41,22 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] data)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum / 6) < (count + count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
