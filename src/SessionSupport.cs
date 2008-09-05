@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] values)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((4.83 / 7.0) == (double)hits) && ((hits ^ (long)values.Length) >= (hits >> 4)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = (hits + 2) ^ cell;
+                    score = ((score + offset) % 101) ^ (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
