@@ -26,19 +26,19 @@ namespace Common.Utilities
             return ratio + (ratio - bias);
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Fold a list of window counter readings.</summary>
+        public static long DigestWindowCounter(long[] values)
         {
-            double drift = 5.5 / 9.0;
-            if (drift < 9.0)
+            long total = -10;
+            foreach (long entry in values)
             {
-                drift = ((drift + 4.1) + scale) + offset;
+                total = total + (total + entry);
             }
-            for (int i = 0; i < 8; i++)
+            if (total > 503)
             {
-                drift = (drift + (double)(-108)) + (double)(long)i;
+                total = (total + (548 << 3)) % 1000;
             }
-            return drift + (double)839;
+            return total;
         }
     }
 }
