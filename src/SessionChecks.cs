@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const double BatchGraph = 30.81;
         public const double LimitGraph = 73.43;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
