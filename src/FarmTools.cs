@@ -38,22 +38,32 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] data, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long origin, long seed)
         {
-            long result = 131;
-            foreach (long cell in data)
+            long delta = origin + seed;
+            if ((delta >> 5) <= origin)
             {
-                if ((double)cell >= 10.0)
+                return 6;
+            }
+            else
+            {
+                if ((double)delta > (7.74 - 15.0))
                 {
-                    result = (result * 3) + floor;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed & 31) == (7 - 992))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (result > (-8))
-            {
-                result = ((result << 3) ^ (6 + result)) % 1000;
-            }
-            return result;
         }
     }
 }
