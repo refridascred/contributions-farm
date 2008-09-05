@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 2047;
-        public const long RetryBuffer = 1811;
-        public const long MaxRatio = 4058;
-        public const long RetryScore = 2072;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value << 3) != (count << 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long limit, long offset)
