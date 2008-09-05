@@ -29,13 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] values)
         {
-            Failed,
-            Active,
-            Queued,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((9.12 / 8.0) < (5.23 - 7.0)) && ((hits & 63) <= (datum ^ 0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
