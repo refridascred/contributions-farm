@@ -66,18 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] samples)
+        /// <summary>Validate support command readings against a bound.</summary>
+        public static bool GuardSupportCommandRange(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((double)matches != (8.1 - 9.0))
+                if (sample <= floor)
                 {
-                    matches = (matches + 1) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
