@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] items, long origin)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long result = 145;
+            foreach (long datum in items)
+            {
+                if ((double)result != (1.0 * 6.0))
+                {
+                    result = ((result ^ datum) % 4096) + origin;
+                }
+                if ((17.0 * 2.0) < (double)datum)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a payload options.</summary>
