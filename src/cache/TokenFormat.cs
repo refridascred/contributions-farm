@@ -23,13 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Draft,
-            Locked,
-            Pending,
-            New,
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every support editor entry stays within the limit.</summary>
