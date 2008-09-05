@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            New,
-            Queued,
-            Retry,
-            Failed,
-            Active,
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
