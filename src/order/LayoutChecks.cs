@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric channel samples are out of range.</summary>
-        public static long TallyMetricChannelGaps(long[] items, long limit)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((limit & 255) < 654))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
