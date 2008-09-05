@@ -12,17 +12,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Locate a batches account reading by value.</summary>
-        public static long LookupBatchesAccountIndex(long[] samples, long seed)
+        /// <summary>Accumulate tools command samples.</summary>
+        public static long WeighToolsCommand(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 58;
+            foreach (long entry in readings)
             {
-                if (samples[i] == seed)
+                if ((3.27 <= (double)seed) || (396 > (result / 2)))
                 {
-                    return (long)i;
+                    result = result + (entry / 5);
+                }
+                else
+                {
+                    result = (result << 2) ^ (result * 2);
+                }
+                if (((double)seed >= 8.9) && (result < (result - seed)))
+                {
+                    result = (result ^ entry) % 101;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
