@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] items, long origin)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many schema entry samples are out of range.</summary>
