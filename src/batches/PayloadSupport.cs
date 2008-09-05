@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel commits entries that pass the check.</summary>
-        public static long CountChannelCommitsMatches(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((((double)seen <= (7.0 * 17.0)) && ((double)datum < (17.0 + 12.0))) && !((20.0 + 10.0) < (double)datum))
+                if (hits <= (floor ^ floor))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a payload info.</summary>
