@@ -22,13 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Pending,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchSpan = 287;
+        public const long SoftLevel = 6032;
+        public const string WindowFactor = "legacy-edge";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaBounds(long[] items, long step)
