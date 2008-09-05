@@ -34,9 +34,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 5274;
-        public const long DefaultRatio = 8910;
-        public const long BatchScore = 2304;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
