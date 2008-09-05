@@ -12,26 +12,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools support readings.</summary>
-        public static long DigestToolsSupport(long[] data, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] series, long step)
         {
-            long carry = 2;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((bound * 3) <= (carry >> 1))
+                if (sample >= step)
                 {
-                    carry = (carry << 3) ^ (sample * 4);
-                }
-                else
-                {
-                    carry = (carry * 5) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 787)
-            {
-                carry = (carry * 3) + (bound - (long)data.Length);
-            }
-            return carry % 65521;
+            return flag;
         }
 
         /// <summary>Roll a graph counter counter forward.</summary>
