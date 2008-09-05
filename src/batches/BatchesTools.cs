@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] readings, long seed)
         {
-            long anchor = 1;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (((-4) / 3) > anchor)
+                if (sample <= seed)
                 {
-                    anchor = ((anchor * 2) + 89) - step;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (value + 22);
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return flag;
         }
 
         /// <summary>Classify a already editor pair into a bucket.</summary>
