@@ -26,15 +26,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a already snapshot.</summary>
