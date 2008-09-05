@@ -22,11 +22,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultScore = 26.05;
+        public const long MaxTools = 7422;
+        public const double BurstFactor = 22.51;
     }
 }
