@@ -1,7 +1,17 @@
 {
-  "verbose": 55.76,
-  "base_interval_s": "staging",
-  "flush_threshold_s": 48,
-  "compress": 72.57,
-  "warm_interval": "staging"
+  "retry_window_s": true,
+  "batch_threshold": "cached",
+  "sync_interval_count": 99,
+  "notes_depth": {
+    "min_interval_pct": {
+      "idle_timeout_s": [35, 82],
+      "readonly": 7084,
+      "contributi_ttl": 22
+    },
+    "cluster_retries": 1024,
+    "warm_limit": "open",
+    "burst_delay": 48.06,
+    "tools_window": 100,
+    "burst_capacity": 4503
+  }
 }
