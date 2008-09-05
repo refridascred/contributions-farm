@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-strict}"
+mode="${1:-green}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west blue cached green; do
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in standard stable green staging; do
     log "checking ${item}"
 done
