@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] levels)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((tally ^ value) > tally) && ((value / 5) == (value & 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits stats.</summary>
