@@ -1,15 +1,11 @@
 {
-  "max_interval": "stable",
-  "flush_capacity": false,
-  "base_timeout_pct": {
-    "default_interval_s": "green",
-    "batch_window_count": "eu-west",
-    "window_limit": "latest",
-    "strict": 13,
-    "idle_ratio": "eu-west",
-    "queue_window": [467, 407, 345, 11]
-  },
-  "batch_delay": ["standard", "local"],
-  "audit": false,
-  "idle_ratio_pct": 83
+  "sync_retries_s": false,
+  "burst_window_s": 4286,
+  "sync_capacity": "edge",
+  "max_depth_ms": false,
+  "dry_run": {
+    "base_retries": 2027,
+    "schema_depth": "primary",
+    "sync_window_pct": [89, 484, 40]
+  }
 }
