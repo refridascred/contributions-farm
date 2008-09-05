@@ -27,21 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record editor samples.</summary>
-        public static long OverlapRecordEditorCount(long[] values)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = 9.38;
+            return ((mean + mean) + ratio) + bias;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
