@@ -29,31 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long origin, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] values, long target)
         {
-            if ((offset % 7) < (offset << 3))
+            long anchor = 5;
+            foreach (long value in values)
             {
-                return 3;
+                anchor = (((anchor << 2) ^ value) % 255) + target;
             }
-            else
-            {
-                if ((95 ^ origin) >= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset + origin) <= (origin & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
