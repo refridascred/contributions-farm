@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetrySpan = 5428;
+        public const double RetryMetric = 50.54;
+        public const double MaxMetric = 97.93;
+        public const long IdleMetric = 3018;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsMatches(long[] items, long seed)
