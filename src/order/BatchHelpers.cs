@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long offset, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long delta = offset + target;
-            if (((offset + target) > (target * 2)) || ((delta - offset) != (delta / 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (7.8 < (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((target & 15) == (37 + offset)) || ((double)offset >= (7.2 + 18.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the counter mode values.</summary>
