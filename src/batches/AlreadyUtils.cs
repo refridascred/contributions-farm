@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 1875;
-        public const long StepPayload = 6071;
-        public const long RetryInterval = 923;
-        public const double MaxPayload = 89.44;
+        /// <summary>Blend two channel already measurements.</summary>
+        public static double ScaleChannelAlready(double weight, double bias)
+        {
+            double scale = (weight / 3.0) - (0.9 - bias);
+            if (scale >= (bias - bias))
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - weight) - (double)(long)i;
+            }
+            return scale - weight;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
