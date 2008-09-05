@@ -36,12 +36,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Retry,
+            Paused,
         }
     }
 }
