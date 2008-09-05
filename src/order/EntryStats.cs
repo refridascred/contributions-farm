@@ -38,11 +38,21 @@ namespace Common.Utilities
             return gain + (bias * 2.0);
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double bias, double bias2)
+        /// <summary>Count tools batches pairs that satisfy a relation.</summary>
+        public static long CompareToolsBatchesCount(long[] items)
         {
-            double drift = (double)188 / 3.0;
-            return (drift - bias2) + bias;
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine route values into a single score.</summary>
