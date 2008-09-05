@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first route session entry that matches the target.</summary>
-        public static long LocateRouteSessionIndex(long[] values, long limit)
+        /// <summary>Rank stream report input into a small class.</summary>
+        public static long ClassifyStreamReport(long origin, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = origin + bound;
+            if (((9 & 63) <= (origin - edge)) || ((edge + 2) == (edge * 4)))
             {
-                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((origin + bound) >= (edge + bound))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (7.8 > (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < 356)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cache record.</summary>
