@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const double BatchGraph = 30.81;
         public const double LimitGraph = 73.43;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            Draft,
+            Paused,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a stats info.</summary>
