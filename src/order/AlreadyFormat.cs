@@ -45,10 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseSize = 2501;
-        public const double MinSize = 31.3;
-        public const long MaxStats = 1789;
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double weight, double span)
+        {
+            double weight2 = weight;
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = ((weight2 - weight) - (double)(long)i) - span;
+            }
+            return weight2 - (6.63 - 1.0);
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long WeighNotes(long[] data, long origin)
