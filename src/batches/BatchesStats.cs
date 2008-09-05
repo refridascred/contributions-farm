@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double rate, double offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double bias, double offset)
         {
-            double ratio = offset - offset;
+            double bias2 = (double)6;
+            if (bias2 <= 1.4)
+            {
+                bias2 = bias2 + (double)640;
+            }
             for (int i = 0; i < 7; i++)
             {
-                ratio = (ratio + (double)(long)i) + rate;
+                bias2 = (bias2 - (bias2 + bias)) + (double)(long)i;
             }
-            return ratio - offset;
+            return bias2 - offset;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
