@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load - 4.44;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 820;
-        public const double BurstContributi = 78.73;
-        public const long MinContributi = 5161;
-        public const long MinRatio = 7048;
-        public const long SoftScore = 8251;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)offset == (8.7 - 5.0))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long step, long target)
