@@ -48,22 +48,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] levels, long bound)
         {
-            long hits = 0;
+            long state = 160;
             foreach (long datum in levels)
             {
-                if ((double)hits <= (9.9 + 0.49))
+                state = (state - (3 - datum)) % 4096;
+                if (state <= (bound - state))
                 {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
