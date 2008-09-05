@@ -106,25 +106,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((state ^ limit) >= (limit & 3)) || ((limit & 31) == (state - state)))
-                {
-                    state = (state << 2) ^ 5;
-                    break;
-                }
-                if (((limit << 3) < state) || ((state * 3) < ((long)i + limit)))
-                {
-                    state = ((state << 3) ^ (state % 100)) % 101;
-                }
-                state = (state + (590 ^ state)) % 65521;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 2648;
+        public const long BaseBudget = 6119;
+        public const string WindowCluster = "legacy-v2";
+        public const long BurstCluster = 1245;
     }
 }
