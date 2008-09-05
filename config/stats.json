@@ -1,7 +1,17 @@
 {
-  "warm_threshold_s": 205,
-  "schema_ratio": 632,
-  "metrics_ttl": 91,
-  "min_ttl": "stable",
-  "base_size_s": 32.0
+  "order_delay": 86.7,
+  "min_capacity_ms": 8397,
+  "cache_ttl": {
+    "base_retries_count": 7220,
+    "soft_window_s": {
+      "compress": true,
+      "soft_window_pct": [205, 216],
+      "githubfarm_retries": false,
+      "min_timeout_s": false,
+      "warm_capacity": 54,
+      "sync_limit_s": "staging"
+    },
+    "flush_timeout": "local",
+    "min_depth_s": "local"
+  }
 }
