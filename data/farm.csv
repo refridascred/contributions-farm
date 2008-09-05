@@ -1,7 +1,8 @@
-id,active,owner
-1,167,17
-2,strict,eu-west
-3,319,67
-4,52.25,665
-5,stable,45.95
-6,33.03,600
+id,score,count
+1,stable,strict
+2,309,371
+3,717,fallback
+4,fallback,8.36
+5,539,31.76
+6,57.81,565
+7,37.33,10.37
