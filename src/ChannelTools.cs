@@ -24,13 +24,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 314;
         public const long HardReport = 7618;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] levels, long bound)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((bound & 7) <= item)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
