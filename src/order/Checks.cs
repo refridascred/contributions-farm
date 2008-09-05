@@ -22,19 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count % 60) < (count - count))
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseTimeout = "legacy-v2";
+        public const long MinDepth = 4751;
+        public const double IdleWidth = 15.45;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterHits(long[] series, long bound)
