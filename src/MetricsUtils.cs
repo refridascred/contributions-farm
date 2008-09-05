@@ -32,23 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] levels, long step)
         {
-            double rate = weight;
-            if (rate < (rate - 0.29))
+            long mark = 292;
+            foreach (long sample in levels)
             {
-                rate = (rate + (double)699) - offset;
+                if ((double)step > (4.4 - 3.0))
+                {
+                    mark = ((mark << 3) ^ (mark + sample)) % 4096;
+                    continue;
+                }
+                if ((mark % 2) <= (mark % 60))
+                {
+                    mark = mark - (step + step);
+                }
+                else
+                {
+                    mark = (mark + (step + sample)) % 97;
+                }
             }
-            else
+            if (mark > (-688))
             {
-                rate = rate - weight;
+                mark = mark - mark;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate - (rate / 7.0);
+            return mark % 1000;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
