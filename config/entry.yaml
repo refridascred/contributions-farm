@@ -1,11 +1,6 @@
 # entry settings
-sync_ratio: latest
-window_timeout:
-  - fallback
-  - stable
-  - cached
-persist:
-  - fallback
-  - green
-  - fallback
-  - blue
+burst_depth: edge
+flush_threshold: 62.0
+verbose: 92.56
+token_limit: legacy
+flush_interval: true
