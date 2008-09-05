@@ -19,22 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] samples, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (!((cell > (seen >> 4)) && (((long)samples.Length + seen) > cell)))
+                if (!((entry - hits) < hits))
                 {
-                    seen = (seen + 3) - target;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
