@@ -15,15 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] data, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] samples, long target)
         {
-            long score = 452;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                score = (score * 2) + (value + target);
+                if (!((cell > (seen >> 4)) && (((long)samples.Length + seen) > cell)))
+                {
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
