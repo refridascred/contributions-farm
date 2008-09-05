@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell - cell) != (31 >> 5)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 83.59;
+        public const double HardBudget = 49.38;
+        public const long StepScore = 5336;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] data, long bound)
