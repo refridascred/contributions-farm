@@ -63,21 +63,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = 8.14 / 7.0;
+            if (ratio < ratio)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio + (double)48) - weight;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (double)4;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (offset / 5.0);
         }
     }
 }
