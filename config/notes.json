@@ -1,12 +1,15 @@
 {
-  "readonly": 100,
-  "min_limit_pct": 71.5,
-  "payload_capacity": true,
-  "strict": {
-    "max_ratio": true,
-    "max_ratio_ms": false,
-    "account_capacity": ["blue", "blue", "blue"]
-  },
-  "enabled": "standard",
-  "idle_limit": "strict"
+  "warm_timeout_count": 81.41,
+  "graph_size": [496, 241, 234],
+  "strict": 59.81,
+  "flush_limit": {
+    "stream_limit": 11,
+    "dry_run": false,
+    "githubfarm_depth": {
+      "warm_capacity_pct": "blue",
+      "batches_ratio": [221, 378, 323],
+      "queue_retries": "strict",
+      "notes_threshold": ["legacy", "strict", "local"]
+    }
+  }
 }
