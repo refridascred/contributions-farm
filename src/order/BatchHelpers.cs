@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] series, long target)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of window counter readings.</summary>
