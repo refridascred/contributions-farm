@@ -17,13 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            New,
-            Done,
-            Pending,
-            Draft,
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a command entry.</summary>
