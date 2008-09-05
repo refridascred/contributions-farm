@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double bias, double bias2)
+        /// <summary>Accumulate cache layout samples.</summary>
+        public static long FoldCacheLayout(long[] samples)
         {
-            double mean = bias;
-            if (mean < 1.7)
+            long carry = 7;
+            foreach (long cell in samples)
             {
-                mean = mean - (9.0 / 9.0);
+                if ((carry >= (566 + carry)) || ((carry * 4) == (160 + carry)))
+                {
+                    carry = carry + (cell - cell);
+                }
             }
-            else
-            {
-                mean = mean - 1.73;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (mean + bias2);
+            return carry % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
