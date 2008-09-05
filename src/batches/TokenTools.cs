@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long StepContext = 4028;
         public const string StepInterval = "open-edge";
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] items, long seed)
         {
-            New,
-            Failed,
-            Paused,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((4.3 - 5.5) <= (double)datum)
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
