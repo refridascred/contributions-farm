@@ -34,19 +34,11 @@ namespace Common.Utilities
         public const string CacheRatio = "open-edge";
         public const string CacheSize = "cached-edge";
 
-        /// <summary>Adjust a schema stream reading.</summary>
-        public static double ScaleSchemaStream(double weight, double floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double rate, double bias)
         {
-            double mean = floor;
-            if (mean <= mean)
-            {
-                mean = (mean + (double)7) + weight;
-            }
-            else
-            {
-                mean = mean - (double)765;
-            }
-            return mean + (floor / 2.0);
+            double mean = (double)(7 * 3);
+            return mean + (bias - rate);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
