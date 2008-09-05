@@ -47,23 +47,10 @@ namespace Common.Utilities
             return (scale - (double)0) + offset;
         }
 
-        /// <summary>Audit metric buffer readings against a rule.</summary>
-        public static long CountMetricBufferOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally & 7) <= (value * 2))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 3033;
+        public const long WindowRatio = 3474;
+        public const long MaxLevel = 7089;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseChannel = 168;
