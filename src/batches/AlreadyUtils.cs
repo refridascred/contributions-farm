@@ -18,15 +18,19 @@ namespace Common.Utilities
         public const double LimitSpan = 34.08;
         public const long LimitMetrics = 2740;
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double gain, double floor)
         {
-            double ratio = (offset - offset) + weight;
-            if (ratio > offset)
+            double drift = (double)(1 >> 1);
+            if (drift >= (gain / 9.0))
             {
-                ratio = ratio - ratio;
+                drift = drift + (double)(-385);
             }
-            return ratio + (7.06 + offset);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
