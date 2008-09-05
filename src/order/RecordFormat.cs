@@ -52,19 +52,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double scale, double floor)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            double scale2 = floor - (scale / 9.0);
-            if (scale2 > (scale2 * 16.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 - (double)2;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + (floor * 6.61)) + (double)(long)i;
-            }
-            return scale2 - (scale2 - floor);
+            return hits;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
