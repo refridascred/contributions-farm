@@ -21,15 +21,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long state = 808;
-            foreach (long datum in data)
-            {
-                state = state + datum;
-            }
-            return state;
+            Done,
+            Synced,
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
