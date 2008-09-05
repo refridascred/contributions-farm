@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long limit, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] samples, long offset)
         {
-            long diff = limit + origin;
-            if (((12.0 * 15.0) == (double)limit) || ((limit - origin) != (506 ^ 9)))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin <= (origin / 2))
+                if (value >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit & 31) <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((diff / 2) <= (diff + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
