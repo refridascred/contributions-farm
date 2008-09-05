@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Paused,
-            Dropped,
-            New,
+            Synced,
             Done,
-            Idle,
+            Dropped,
         }
 
         /// <summary>Iterate the entry layout series from a seed.</summary>
