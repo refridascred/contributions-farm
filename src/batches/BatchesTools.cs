@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] readings, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double gain = offset;
+            if (gain >= ratio)
             {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain + offset;
             }
-            return flag;
+            else
+            {
+                gain = gain - (gain - offset);
+            }
+            return gain + (double)6;
         }
 
         /// <summary>Classify a already editor pair into a bucket.</summary>
