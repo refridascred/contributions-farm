@@ -62,19 +62,16 @@ namespace Common.Utilities
         public const long WindowCommand = 6979;
         public const double DefaultCommand = 56.24;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] readings, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long bound)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 2) + mark) % 255;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Describe the farm phase values.</summary>
