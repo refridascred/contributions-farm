@@ -57,20 +57,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] values, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((double)anchor > (2.9 - 5.56))
+                if (datum < floor)
                 {
-                    anchor = (anchor + (floor >> 2)) % 101;
-                    anchor = (anchor ^ anchor) % 65521;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return stale;
         }
     }
 }
