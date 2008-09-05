@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 5269;
-        public const long MaxDepth = 6495;
-        public const double BatchWidth = 3.54;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] levels)
+        {
+            long anchor = 72;
+            foreach (long entry in levels)
+            {
+                if (4.4 >= (double)anchor)
+                {
+                    anchor = (anchor ^ anchor) + entry;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long StepSupport(long origin)
