@@ -16,18 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Count the channel commits entries that pass the check.</summary>
+        public static long CountChannelCommitsMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((matches + matches) >= matches)
+                if ((((double)seen <= (7.0 * 17.0)) && ((double)datum < (17.0 + 12.0))) && !((20.0 + 10.0) < (double)datum))
                 {
-                    matches = (matches + 3) ^ sample;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
