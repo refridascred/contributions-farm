@@ -30,18 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] readings)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits + hits) > hits)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Find the first githubfarm notes entry that matches the target.</summary>
