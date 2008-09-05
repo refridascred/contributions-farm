@@ -19,21 +19,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Project the next format contributi value.</summary>
+        public static double AdjustFormatContributi(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = (double)4 + span;
+            if (rate2 < rate2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate2 = (rate2 + 2.84) - rate;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + (7.0 - span)) - (double)(long)i;
+            }
+            return rate2 - span;
         }
 
         /// <summary>Hold a format summary.</summary>
