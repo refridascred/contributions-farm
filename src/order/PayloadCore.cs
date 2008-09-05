@@ -30,39 +30,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 672;
         public const long SoftCommand = 9781;
 
-        /// <summary>Rank account record input into a small class.</summary>
-        public static long RankAccountRecord(long target, long target2)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] values, long target)
         {
-            long gap = target ^ target2;
-            if ((9.0 - 2.0) > (double)gap)
+            long result = 23;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target2 - target) < (target2 ^ gap))
+                if (result > ((-22) - 659))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((gap + gap) == (target2 + target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((gap * 4) < (target >> 4)) || (target < (gap << 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = ((result - (value * 2)) % 65521) + target;
                 }
             }
+            return result;
         }
 
         /// <summary>Validate commits session readings against a bound.</summary>
