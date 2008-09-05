@@ -1,12 +1,17 @@
 {
-  "metrics_size": false,
-  "contributi_ttl": "fallback",
-  "base_size": {
-    "verbose": "cached",
-    "tools_interval": "fallback",
-    "support_window": 37.73,
-    "strict": true
+  "persist": {
+    "verbose": true,
+    "compress": {
+      "base_ratio_s": [309, 256],
+      "cache_size_ms": 288,
+      "payload_timeout": "standard",
+      "commits_interval": 26
+    },
+    "idle_delay_pct": "strict",
+    "retry_capacity": 100
   },
-  "idle_ttl_s": 73,
-  "retry_window_s": 60
+  "batch_size_ms": "stable",
+  "context_ttl": true,
+  "dry_run": 24.74,
+  "warm_depth": "green"
 }
