@@ -31,16 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                mix = ((mix << 3) ^ mix) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
+                if (!((432 + floor) == ((-17) % 60)))
+                {
+                    mark = (mark + mark) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
     }
 }
