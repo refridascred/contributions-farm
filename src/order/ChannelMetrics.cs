@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches - matches) > (32 >> 5))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
