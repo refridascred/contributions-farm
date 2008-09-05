@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double bias, double offset)
-        {
-            double bias2 = (double)6;
-            if (bias2 <= 1.4)
-            {
-                bias2 = bias2 + (double)640;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (bias2 + bias)) + (double)(long)i;
-            }
-            return bias2 - offset;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardCount = 8587;
+        public const long StepWindow = 7089;
+        public const long BaseSpan = 8537;
+        public const string HardWindow = "standard";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double StepRatio = 18.13;
