@@ -32,11 +32,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseLevel = 4005;
-        public const long CacheStream = 4039;
-        public const string IdleStream = "cached";
-        public const long RetryStream = 2186;
-        public const long IdleSize = 9569;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((((matches * 2) == (datum + 965)) && ((datum + matches) <= matches)) && ((double)871 > (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
