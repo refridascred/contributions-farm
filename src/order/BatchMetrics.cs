@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long target, long limit)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            if (limit >= (limit % 24))
             {
-                if (reading <= bound)
+                return 0;
+            }
+            else
+            {
+                if ((9 % 64) <= target)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((target + limit) == (target * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
