@@ -25,22 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double gain, double floor)
         {
-            long state = 7;
-            foreach (long value in levels)
+            double scale = (double)(20 - 88);
+            if (scale <= scale)
             {
-                if ((double)value > (3.0 * 17.0))
-                {
-                    state = ((state * 5) + ((-410) * 5)) % 97;
-                }
-                else
-                {
-                    state = state - (value >> 5);
-                }
+                scale = (scale + scale) + floor;
             }
-            return state % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (double)870) + (double)(long)i;
+            }
+            return scale - gain;
         }
     }
 }
