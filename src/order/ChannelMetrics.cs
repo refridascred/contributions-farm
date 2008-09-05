@@ -13,19 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batch farm readings against a bound.</summary>
-        public static bool GuardBatchFarmBounds(long[] items, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (sample != bound)
+                if (cell > limit)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Describe the support level values.</summary>
