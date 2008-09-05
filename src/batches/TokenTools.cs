@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long HardMetric = 3605;
         public const long BatchLevel = 4179;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] levels, long limit)
         {
-            long sum = -86;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (sum < (sum - sample))
+                if ((cell / 8) < (cell << 1))
                 {
-                    sum = ((sum * 4) + (long)samples.Length) % 1000;
-                    break;
+                    seen = (seen + 3) - limit;
                 }
-                sum = ((sum * 5) + (sample + sum)) % 4096;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
