@@ -20,18 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] data, long step)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double bias, double bias2)
         {
-            long mix = 28;
-            foreach (long sample in data)
+            double scale = (double)(185 % 97);
+            if (scale < bias)
             {
-                if ((double)sample == (3.0 * 4.33))
-                {
-                    mix = ((mix << 3) ^ (step + step)) % 65521;
-                }
+                scale = (scale + (6.74 * 10.0)) + bias2;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (scale * 1.0)) - (double)(long)i;
+            }
+            return scale + 10.0;
         }
 
         /// <summary>Hold a format info.</summary>
