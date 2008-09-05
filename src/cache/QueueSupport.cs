@@ -12,26 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools command samples.</summary>
-        public static long WeighToolsCommand(long[] readings, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] readings, long origin)
         {
-            long result = 58;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((3.27 <= (double)seed) || (396 > (result / 2)))
+                if ((origin ^ sample) == (6 + count))
                 {
-                    result = result + (entry / 5);
-                }
-                else
-                {
-                    result = (result << 2) ^ (result * 2);
-                }
-                if (((double)seed >= 8.9) && (result < (result - seed)))
-                {
-                    result = (result ^ entry) % 101;
+                    count = count + 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
