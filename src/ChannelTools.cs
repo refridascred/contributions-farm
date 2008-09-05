@@ -29,9 +29,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 8879;
-        public const long DefaultSession = 4579;
-        public const double RetryFactor = 48.22;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Closed,
+            Idle,
+            Draft,
+            Active,
+        }
     }
 }
