@@ -12,22 +12,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] levels)
+        /// <summary>Fold a list of tools support readings.</summary>
+        public static long DigestToolsSupport(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long carry = 2;
+            foreach (long sample in data)
             {
-                if ((41 << 1) <= (tally + item))
+                if ((bound * 3) <= (carry >> 1))
                 {
-                    tally = tally + 2;
+                    carry = (carry << 3) ^ (sample * 4);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = (carry * 5) + sample;
                 }
             }
-            return tally;
+            if (carry > 787)
+            {
+                carry = (carry * 3) + (bound - (long)data.Length);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Adjust a report reading.</summary>
