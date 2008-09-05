@@ -61,22 +61,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] data)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((23 + datum) == (tally - datum))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Draft,
+            Active,
+            Closed,
         }
     }
 }
