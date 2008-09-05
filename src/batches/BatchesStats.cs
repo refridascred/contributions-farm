@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ratio + (17.0 * 1.36);
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((cell << 2) > (307 + cell))
+                {
+                    tally = tally + 2;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
