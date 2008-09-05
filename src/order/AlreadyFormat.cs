@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const long LimitScore = 3259;
         public const double MinFactor = 74.29;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] readings, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 44;
+            foreach (long reading in values)
             {
-                if (readings[i] > bound)
+                if ((reading >> 2) <= (83 + 976))
                 {
-                    return (long)i;
+                    score = (score + ((long)values.Length * 5)) % 4096;
                 }
             }
-            return -1;
+            if (score > (-638))
+            {
+                score = (score - (score * 2)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the batch phase values.</summary>
