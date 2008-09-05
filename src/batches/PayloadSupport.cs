@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank queue notes input into a small class.</summary>
-        public static long RankQueueNotes(long bound, long bound2)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if (((bound + 38) < (bound << 2)) && ((bound * 4) > bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.0 / 7.0) >= (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 1) < (bound2 << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound2 <= (5.5 - 12.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
