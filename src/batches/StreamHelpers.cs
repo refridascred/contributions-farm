@@ -57,27 +57,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of queue metrics entries.</summary>
-        public static long FoldQueueMetrics(long[] levels, long target)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long seed, long floor)
         {
-            long total = 0;
-            foreach (long cell in levels)
+            if (floor >= (seed / 6))
             {
-                if ((cell << 3) >= target)
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 5) >= (seed >> 5))
                 {
-                    total = (total + (cell % 12)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    total = (total ^ (total / 2)) % 255;
-                    total = total - (cell << 2);
-                }
-                if ((148 * 4) != (total + cell))
-                {
-                    total = ((total << 2) ^ 199) % 65521;
+                    if (((floor * 4) > floor) || ((floor & 7) != (seed ^ 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
