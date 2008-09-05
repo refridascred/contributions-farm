@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] readings, long offset)
+        /// <summary>Look up the position of a notes batches sample.</summary>
+        public static long SeekNotesBatchesIndex(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset << 1) <= datum)
+                if (samples[i] > target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
