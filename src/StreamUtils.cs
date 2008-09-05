@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] items, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] items, long step)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long sum = 315;
+            foreach (long reading in items)
             {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum + ((-516) ^ step)) ^ reading;
             }
-            return found;
+            if (sum > 0)
+            {
+                sum = (sum << 2) ^ step;
+            }
+            return sum;
         }
 
         /// <summary>Hold a counter record.</summary>
