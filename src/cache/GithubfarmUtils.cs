@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 9239;
-        public const long StepTimeout = 5343;
-        public const long IdleCount = 1358;
-        public const double BurstBudget = 23.36;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 2047;
+        public const long RetryBuffer = 1811;
+        public const long MaxRatio = 4058;
+        public const long RetryScore = 2072;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BaseSize = "staging-1";
