@@ -14,19 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
-        public static bool CheckEditorClusterLimits(long[] readings, long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
