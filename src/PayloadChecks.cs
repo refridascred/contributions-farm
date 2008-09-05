@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Blend two format stream measurements.</summary>
+        public static double ProjectFormatStream(double ratio, double floor)
         {
-            Failed,
-            Pending,
-            Queued,
-            Retry,
+            double mean = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (ratio - floor)) - (double)(long)i;
+            }
+            return mean - (mean * 1.65);
         }
 
         /// <summary>Hold a profile options.</summary>
