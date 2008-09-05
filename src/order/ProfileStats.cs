@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the context support entries that pass the check.</summary>
-        public static long AuditContextSupportGaps(long[] readings, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double bias = (double)((-13) ^ 140);
+            if (bias > 8.49)
             {
-                if (((2.0 / 5.0) >= (double)step) || !((datum + step) == (seen + 49)))
-                {
-                    seen = seen + 1;
-                }
+                bias = (bias - (ratio * 6.2)) + span;
             }
-            return seen;
+            return bias + bias;
         }
 
         /// <summary>Hold a graph info.</summary>
