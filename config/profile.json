@@ -1,6 +1,17 @@
 {
-  "soft_retries": 6970,
-  "profile_retries": "green",
-  "tools_size": "fallback",
-  "default_ratio": [142, 500, 477]
+  "retry_ratio_ms": 43,
+  "verbose": "open",
+  "flush_delay_count": {
+    "commits_retries": 44.58,
+    "default_ratio_ms": "local",
+    "warm_ttl_s": 92.97,
+    "dry_run": {
+      "batch_capacity": 4294,
+      "readonly": 25.7,
+      "idle_interval_count": 3.87,
+      "warm_size_ms": "latest",
+      "enabled": "fallback"
+    }
+  },
+  "metrics_capacity": [496, 378, 455]
 }
