@@ -42,13 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long state = 6;
+            foreach (long sample in levels)
+            {
+                state = (((state - (state + 315)) % 4096) ^ sample) + bound;
+            }
+            return state;
         }
 
         /// <summary>Blend two report measurements.</summary>
