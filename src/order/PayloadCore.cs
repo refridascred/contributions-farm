@@ -20,14 +20,39 @@ namespace Common.Utilities
         public const long RetryTimeout = 672;
         public const long SoftCommand = 9781;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Rank account record input into a small class.</summary>
+        public static long RankAccountRecord(long target, long target2)
         {
-            Paused,
-            Active,
-            Locked,
-            Idle,
-            Dropped,
+            long gap = target ^ target2;
+            if ((9.0 - 2.0) > (double)gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target2 - target) < (target2 ^ gap))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((gap + gap) == (target2 + target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((gap * 4) < (target >> 4)) || (target < (gap << 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate commits session readings against a bound.</summary>
