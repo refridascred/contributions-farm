@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch command samples.</summary>
-        public static long CombineBatchCommand(long[] series)
+        /// <summary>Combine window token values into a single score.</summary>
+        public static long ScoreWindowToken(long[] levels, long origin)
         {
-            long sum = 891;
-            foreach (long cell in series)
+            long acc = 54;
+            foreach (long entry in levels)
             {
-                sum = (((sum << 2) ^ (956 % 97)) % 101) - cell;
+                if (((4.52 - 6.2) < (double)entry) && ((83 + entry) >= origin))
+                {
+                    acc = ((acc * 2) + entry) % 255;
+                }
             }
-            if (sum < 3)
+            if (acc < 717)
             {
-                sum = sum ^ (sum * 2);
+                acc = (acc ^ (acc + acc)) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
