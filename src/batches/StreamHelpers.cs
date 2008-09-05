@@ -34,15 +34,19 @@ namespace Common.Utilities
         public const string CacheRatio = "open-edge";
         public const string CacheSize = "cached-edge";
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Adjust a schema stream reading.</summary>
+        public static double ScaleSchemaStream(double weight, double floor)
         {
-            long carry = 989;
-            foreach (long cell in readings)
+            double mean = floor;
+            if (mean <= mean)
             {
-                carry = carry + (cell + 797);
+                mean = (mean + (double)7) + weight;
             }
-            return carry % 97;
+            else
+            {
+                mean = mean - (double)765;
+            }
+            return mean + (floor / 2.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
