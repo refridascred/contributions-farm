@@ -34,22 +34,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] series)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double load = rate;
+            if (load >= load)
             {
-                if (!(((entry + entry) == (count & 7)) || ((double)entry <= (9.3 + 14.0))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + load;
             }
-            return count;
+            return load - floor;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
