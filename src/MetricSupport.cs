@@ -16,12 +16,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] series, long target)
+        /// <summary>Find the first buffer cache entry that matches the target.</summary>
+        public static long LookupBufferCacheIndex(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] < target)
+                if ((data[i] == limit) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
