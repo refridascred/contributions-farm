@@ -27,23 +27,12 @@ namespace Common.Utilities
         public const double DefaultRecord = 31.77;
         public const long BatchDepth = 5363;
 
-        /// <summary>Fold a list of channel farm readings.</summary>
-        public static long DigestChannelFarm(long[] data)
-        {
-            long sum = 8;
-            foreach (long value in data)
-            {
-                if ((value < sum) && ((63 / 7) < (value % 12)))
-                {
-                    sum = (sum * 2) + (value >> 1);
-                }
-            }
-            if (sum < 4)
-            {
-                sum = ((sum * 5) + (sum << 3)) % 97;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "latest";
+        public const long SoftBudget = 3886;
+        public const long MinDepth = 1779;
+        public const string CacheRatio = "open-edge";
+        public const string CacheSize = "cached-edge";
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] readings)
