@@ -39,12 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Synced,
+            Done,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit profile checks readings against a rule.</summary>
