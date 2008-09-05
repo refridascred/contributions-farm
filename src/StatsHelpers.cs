@@ -34,12 +34,38 @@ namespace Common.Utilities
         public const long BatchWindow = 2438;
         public const double BaseFactor = 29.58;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long step, long seed)
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
+            if ((345 ^ step) < (664 - seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step / 5) < seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((step - seed) >= seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(step < (step / 6)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already header.</summary>
