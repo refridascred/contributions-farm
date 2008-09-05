@@ -23,15 +23,39 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long target, long target2)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            long cur = target + target2;
+            if ((target2 >> 2) > (cur / 7))
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((double)cur >= (4.0 / 4.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target2 < (target2 / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)451 < (double)target2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
