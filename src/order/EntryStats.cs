@@ -81,32 +81,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long bound, long bound2)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] data, long origin)
         {
-            long cur = bound ^ bound2;
-            if (bound2 < (bound - cur))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((cur + bound2) >= cur)
+                if (cell >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound2 - bound2) <= (bound - bound2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
