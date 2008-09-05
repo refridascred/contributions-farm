@@ -68,18 +68,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] readings, long target)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long target, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if ((double)target > (8.59 / 6.0))
             {
-                if (seen > (8 << 1))
+                return 2;
+            }
+            else
+            {
+                if (!((target + target) >= (limit + limit)))
                 {
-                    seen = ((seen + 3) ^ entry) + target;
+                    return 4;
+                }
+                else
+                {
+                    if (((limit % 8) == (target & 3)) || ((limit % 64) < target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target ^ (-98)) <= (-79))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
