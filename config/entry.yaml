@@ -1,10 +1,23 @@
 # entry settings
-batch_timeout_count: 1678
-sync_threshold_count:
-  - 439
-  - 94
-sync_retries_ms: 36.02
-warm_capacity_pct:
-  - legacy
-  - legacy
-  - standard
+min_retries_s:
+  - 71
+  - 24
+  - 449
+  - 175
+base_interval_count: 54.02
+dry_run:
+  min_capacity_ms: primary
+  strict: 9690
+  soft_interval: fallback
+  poll_interval_pct:
+    account_window: edge
+    queue_ttl: stable
+    checks_timeout: 27
+  layout_capacity:
+    - legacy
+    - standard
+    - edge
+  compress: 40.89
+audit: 9928
+retry_threshold: staging
+base_size_ms: primary
