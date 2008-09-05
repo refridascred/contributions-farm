@@ -41,32 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long bound, long seed)
-        {
-            long delta = bound ^ seed;
-            if (delta >= (seed + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((bound + bound) > (5 * 4)) && ((seed % 64) <= delta))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (35 >= (delta % 97))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 626;
+        public const long IdleSize = 7376;
+        public const long MinLevel = 8364;
+        public const string CacheWidth = "staging";
+        public const long BurstSize = 6481;
     }
 }
