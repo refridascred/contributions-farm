@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            Paused,
+            Pending,
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Combine session values into a single score.</summary>
