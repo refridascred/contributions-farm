@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long limit)
         {
-            long acc = 9;
-            foreach (long cell in levels)
+            long offset = step ^ limit;
+            if (limit < offset)
             {
-                acc = ((acc + acc) % 255) - cell;
+                return 0;
             }
-            if (acc < 9)
+            else
             {
-                acc = ((acc * 5) + (acc & 255)) % 1000;
+                if ((double)step < (1.0 - 20.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return acc % 65521;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
