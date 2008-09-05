@@ -44,31 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window profile pair into a bucket.</summary>
-        public static long BucketWindowProfile(long seed, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            if (((7.0 / 4.0) == (double)step) && ((seed + step) > step))
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((seed * 5) > seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step & 31) != (step / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
