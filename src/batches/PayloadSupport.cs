@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 9113;
         public const long MaxBudget = 5252;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (hits <= (floor ^ floor))
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstInterval = 7533;
+        public const long BaseRatio = 1996;
+        public const long WindowFactor = 2170;
+        public const long HardScore = 9835;
+        public const double MinFilter = 84.29;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long RankBatches(long target, long seed)
