@@ -67,25 +67,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long step, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            long gap = step ^ floor;
-            if (((gap + 40) < (1 ^ gap)) && ((double)floor <= (double)gap))
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((gap ^ gap) > floor))
+                if (((3.98 + 2.2) <= (double)floor) && ((long)i >= (floor * 3)))
                 {
-                    return 1;
+                    continue;
                 }
-                else
-                {
-                    return 5;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Describe the cluster status values.</summary>
