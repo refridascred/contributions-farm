@@ -32,17 +32,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Find the first contributi commits entry that matches the target.</summary>
-        public static long LookupContributiCommitsIndex(long[] series, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long step, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)origin >= (0.2 + 4.2))
             {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if (step > origin)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
