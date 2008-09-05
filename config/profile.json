@@ -1,5 +1,5 @@
 {
-  "dry_run": 43,
-  "compress": true,
-  "max_depth_count": 31.05
+  "soft_retries_ms": ["cached", "latest", "local"],
+  "base_depth_ms": [365, 133, 152, 444],
+  "dry_run": 2238
 }
