@@ -15,20 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchSize = 695;
+        public const long IdleSpan = 458;
+        public const long SoftTimeout = 870;
+        public const double WindowSize = 25.04;
 
         /// <summary>Roll a graph counter counter forward.</summary>
         public static long RollGraphCounter(long target)
