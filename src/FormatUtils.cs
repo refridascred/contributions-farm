@@ -37,18 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] series, long limit)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((count % 97) > (count * 4)) || (799 <= (limit * 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) + sample;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine entry editor values into a single score.</summary>
