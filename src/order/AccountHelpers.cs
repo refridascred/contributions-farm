@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitTimeout = "legacy";
-        public const long IdleInterval = 7851;
-        public const string BatchSize = "legacy-1";
-        public const long MaxFactor = 9262;
-        public const long MaxCluster = 1790;
+        /// <summary>Validate support account readings against a bound.</summary>
+        public static bool ValidateSupportAccountLimits(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a report cache counter forward.</summary>
         public static long RollReportCache(long offset)
