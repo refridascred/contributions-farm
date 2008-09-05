@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long limit, long origin)
         {
-            long offset = step ^ limit;
-            if (limit < offset)
+            long diff = limit + origin;
+            if (((12.0 * 15.0) == (double)limit) || ((limit - origin) != (506 ^ 9)))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((double)step < (1.0 - 20.0))
+                if (origin <= (origin / 2))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    if ((limit & 31) <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((diff / 2) <= (diff + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
