@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum - count) != (datum + datum)) && ((2.65 * 5.04) != (double)count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "cached";
+        public const long BaseScore = 2265;
+        public const long RetryPayload = 6083;
+        public const long IdleTimeout = 5423;
 
         /// <summary>Derive the next buffer command value from a seed.</summary>
         public static long DeriveBufferCommand(long bound)
