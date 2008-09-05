@@ -31,15 +31,22 @@ namespace Common.Utilities
             return mean + (gain / 6.0);
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double bias, double offset)
+        /// <summary>Measure how many stream route samples are out of range.</summary>
+        public static long MeasureStreamRouteGaps(long[] data)
         {
-            double gain = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                gain = (gain + offset) + (double)(long)i;
+                if ((hits - 4) >= (hits << 1))
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain + (bias * 2.0);
+            return hits;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
