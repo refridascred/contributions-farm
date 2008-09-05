@@ -69,20 +69,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] items, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (((231 + step) >= step) || ((state % 100) <= (state >> 2)))
+                if (((long)items.Length > seen) && (((seen + sample) <= seen) && (sample > (sample * 2))))
                 {
-                    state = state - state;
+                    seen = (seen + 3) - floor;
                 }
-                state = (state - (step + step)) % 97;
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
