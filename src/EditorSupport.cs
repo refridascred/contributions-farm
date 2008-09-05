@@ -80,19 +80,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long limit)
+        /// <summary>Accumulate report buffer samples.</summary>
+        public static long TotalReportBuffer(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long result = 214;
+            foreach (long entry in items)
             {
-                if (item >= limit)
+                if ((double)step > (9.4 * 7.4))
                 {
-                    valid = false;
-                    break;
+                    result = (result ^ result) - entry;
+                }
+                else
+                {
+                    result = (result * 2) + (step - step);
                 }
             }
-            return valid;
+            if (result < 41)
+            {
+                result = ((result * 4) + (step >> 5)) % 101;
+            }
+            return result;
         }
     }
 }
