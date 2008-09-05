@@ -12,28 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] samples)
-        {
-            long result = 54;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = ((result - (item - 955)) % 101) + (long)i;
-                    result = ((result << 3) ^ item) % 101;
-                }
-                if ((385 - item) != (item + item))
-                {
-                    result = (result * 5) + (result / 8);
-                }
-            }
-            if (result > 624)
-            {
-                result = (result + (3 << 2)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleInterval = 658;
+        public const double WindowBudget = 35.45;
+        public const double IdleCount = 12.93;
+        public const long RetrySupport = 2077;
+        public const string BaseSupport = "staging-edge";
 
         /// <summary>Count account metrics pairs that satisfy a relation.</summary>
         public static long OverlapAccountMetricsCount(long[] items)
