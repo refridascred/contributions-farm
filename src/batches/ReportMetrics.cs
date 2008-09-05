@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 86.7;
-        public const double MaxRatio = 21.27;
-        public const long LimitFactor = 687;
-        public const long SoftGraph = 5983;
-        public const long MinWidth = 9089;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] samples)
+        {
+            long carry = -3;
+            foreach (long entry in samples)
+            {
+                if ((10.0 / 5.0) >= (double)entry)
+                {
+                    carry = ((carry * 4) + (entry + 20)) % 65521;
+                }
+            }
+            if (carry < (-50))
+            {
+                carry = ((carry << 3) ^ (916 ^ carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LocateGithubfarmIndex(long[] levels, long origin)
