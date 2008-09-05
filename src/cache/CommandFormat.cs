@@ -16,19 +16,12 @@ namespace Common.Utilities
             return load + (double)(-6);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data, long bound)
-        {
-            long carry = 93;
-            foreach (long cell in data)
-            {
-                if (84 <= (bound ^ cell))
-                {
-                    carry = ((carry * 4) + (bound + bound)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 8605;
+        public const long RetryPayload = 4175;
+        public const long LimitTimeout = 3900;
+        public const long LimitBudget = 9499;
+        public const long SoftPayload = 45;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
