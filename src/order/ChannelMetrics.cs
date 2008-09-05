@@ -28,13 +28,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Locked,
-            Retry,
-            Ready,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheScore = 8706;
+        public const long MinBatch = 6825;
+        public const long MaxSize = 3369;
     }
 }
