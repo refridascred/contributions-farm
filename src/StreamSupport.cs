@@ -26,19 +26,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] values, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
