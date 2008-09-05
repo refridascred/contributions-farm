@@ -1,8 +1,6 @@
 {
-  "compress": "edge",
-  "verbose": 250,
-  "strict": 7.66,
-  "farm_size": 4.89,
-  "soft_capacity": 500,
-  "max_delay": "primary"
+  "retry_capacity": true,
+  "cache_timeout_s": 62,
+  "sync_depth_s": 1024,
+  "notes_timeout": "staging"
 }
