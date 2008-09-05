@@ -50,15 +50,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine support format values into a single score.</summary>
