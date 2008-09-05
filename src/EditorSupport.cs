@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 26.9;
-        public const long StepCounter = 4263;
-        public const double BaseCounter = 63.59;
-        public const long BurstInterval = 8848;
-        public const long MaxFactor = 1159;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (99 < (sample + matches))
+                {
+                    matches = (matches + 1) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long bound, long step)
