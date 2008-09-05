@@ -19,12 +19,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepRatio = 18.13;
-        public const long HardBatches = 1582;
-        public const long IdleTimeout = 761;
-        public const long BurstCount = 8683;
-        public const double DefaultSpan = 24.34;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)count <= (0.9 / 7.0))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterMatches(long[] series, long origin)
