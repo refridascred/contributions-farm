@@ -36,26 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values)
         {
-            long result = 79;
-            foreach (long entry in readings)
+            long mark = 59;
+            foreach (long item in values)
             {
-                if (!((entry * 4) <= (result >> 1)))
-                {
-                    break;
-                }
-                if ((result << 1) > (entry - 8))
-                {
-                    result = (result + (entry & 1)) % 4096;
-                }
-                if (!((7.7 - 9.7) <= (double)result))
+                mark = (mark * 5) + (item + mark);
+                mark = (mark ^ (mark >> 3)) % 97;
+                if ((double)item <= (double)mark)
                 {
                     break;
                 }
             }
-            return result;
+            return mark;
         }
     }
 }
