@@ -76,10 +76,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstWidth = 4342;
-        public const long IdleProfile = 6147;
-        public const long MinProfile = 4404;
-        public const string BurstScore = "legacy-1";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] data, long seed)
+        {
+            long sum = 8;
+            foreach (long value in data)
+            {
+                if (((3.8 / 2.0) == (double)seed) || ((seed * 4) == (23 >> 5)))
+                {
+                    sum = (sum ^ (seed + 585)) + value;
+                }
+            }
+            return sum;
+        }
     }
 }
