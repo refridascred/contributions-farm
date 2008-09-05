@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] series)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((matches + matches) <= 8)
+                if (sample > floor)
                 {
-                    matches = (matches + 1) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
