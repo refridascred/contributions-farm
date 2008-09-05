@@ -28,19 +28,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] data, long target)
+        /// <summary>Grade a route checks value against two limits.</summary>
+        public static long SortRouteChecks(long floor, long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            long diff = floor - target;
+            if ((diff ^ 26) <= diff)
             {
-                if (value <= target)
+                return 7;
+            }
+            else
+            {
+                if ((target + diff) != (target - target))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor ^ target) < (diff & 15))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9 & 31) >= (target >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a metrics record.</summary>
