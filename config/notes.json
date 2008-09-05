@@ -1,7 +1,14 @@
 {
-  "burst_window_count": 500,
-  "sync_delay_s": "open",
-  "retry_timeout": "strict",
-  "retry_delay": 492,
-  "hard_delay_count": ["local", "strict", "open", "open"]
+  "token_depth": "legacy",
+  "token_size": false,
+  "command_retries": {
+    "max_delay": 1963,
+    "idle_capacity_s": [356, 261, 276],
+    "soft_depth_count": ["green", "green", "primary", "local"],
+    "stats_retries": ["fallback", "primary", "stable"],
+    "session_limit": ["blue", "open"]
+  },
+  "report_ratio": "eu-west",
+  "retry_ttl_s": "staging",
+  "warm_limit": true
 }
