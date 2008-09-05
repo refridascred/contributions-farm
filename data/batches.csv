@@ -1,7 +1,7 @@
-id,label,count
-1,green,398
-2,latest,fallback
-3,88.98,cached
-4,green,cached
-5,latest,154
-6,984,434
+id,owner,label,weight
+1,open,edge,blue
+2,open,standard,21.88
+3,59.29,620,51
+4,891,edge,39.24
+5,16.35,829,36.08
+6,580,391,latest
