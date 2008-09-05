@@ -39,22 +39,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long MeasureStreamRouteGaps(long[] data)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits - 4) >= (hits << 1))
-                {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
