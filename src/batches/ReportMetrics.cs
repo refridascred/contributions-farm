@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long carry = -3;
-            foreach (long entry in samples)
-            {
-                if ((10.0 / 5.0) >= (double)entry)
-                {
-                    carry = ((carry * 4) + (entry + 20)) % 65521;
-                }
-            }
-            if (carry < (-50))
-            {
-                carry = ((carry << 3) ^ (916 ^ carry)) % 65521;
-            }
-            return carry;
+            Pending,
+            Paused,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
