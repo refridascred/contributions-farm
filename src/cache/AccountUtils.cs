@@ -48,12 +48,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] levels, long floor)
         {
-            Queued,
-            Draft,
-            Active,
+            long mix = 5;
+            foreach (long value in levels)
+            {
+                mix = (((mix ^ (0 << 3)) % 97) ^ value) + floor;
+            }
+            return mix;
         }
     }
 }
