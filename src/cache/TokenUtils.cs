@@ -32,13 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long target, long origin)
         {
-            Ready,
-            New,
-            Draft,
-            Synced,
+            if (!(target > (0 >> 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - origin) != (target >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
