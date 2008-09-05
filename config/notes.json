@@ -1,8 +1,8 @@
 {
-  "batch_ratio": ["blue", "legacy", "local", "standard"],
-  "flush_size": 83.88,
-  "cache_limit": false,
-  "counter_threshold": 6629,
-  "base_retries": 100,
-  "hard_size_pct": [343, 99, 477, 339]
+  "default_interval": 41.05,
+  "base_timeout": "legacy",
+  "flush_delay": 12,
+  "profile_depth": 792,
+  "counter_timeout": true,
+  "idle_size_count": 24.8
 }
