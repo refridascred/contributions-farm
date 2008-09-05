@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] samples, long origin)
         {
-            long sum = 593;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                sum = ((sum ^ (sum << 3)) % 4096) + entry;
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
