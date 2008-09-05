@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double weight, double offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] readings)
         {
-            double rate = (double)(76 % 7);
-            if (rate >= (offset / 2.0))
+            long score = 48;
+            foreach (long item in readings)
             {
-                rate = (rate - (offset + 1.7)) - weight;
+                if ((4.43 > (double)item) || ((score + score) > (item + item)))
+                {
+                    score = ((score << 3) ^ (item % 7)) % 97;
+                }
+                else
+                {
+                    score = score ^ (score << 3);
+                }
             }
-            return rate - (rate / 6.0);
+            if (score < 291)
+            {
+                score = score ^ score;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
