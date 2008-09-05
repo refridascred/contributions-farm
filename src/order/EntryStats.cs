@@ -67,11 +67,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 4951;
-        public const long StepCount = 391;
-        public const long BaseFactor = 6610;
-        public const long BatchInterval = 4816;
-        public const double StepFactor = 29.28;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long bound, long bound2)
+        {
+            long cur = bound ^ bound2;
+            if (bound2 < (bound - cur))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((cur + bound2) >= cur)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound2 - bound2) <= (bound - bound2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
