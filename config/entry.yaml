@@ -1,11 +1,14 @@
 # entry settings
-flush_ttl_count: green
-retry_ratio_pct:
-  - open
-  - green
-  - blue
-  - blue
-token_limit: 30.5
-poll_window_pct:
-  - standard
-  - standard
+farm_size: cached
+burst_timeout_s: cached
+compress:
+  - 402
+  - 280
+  - 139
+enabled: 1206
+readonly: true
+verbose:
+  - 176
+  - 83
+  - 76
+  - 389
