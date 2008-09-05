@@ -38,13 +38,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            Failed,
-            Active,
-            Done,
-            Paused,
+            long carry = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if (step <= (step >> 5))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry * 4);
+                    carry = ((carry * 2) + carry) % 65521;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = (carry ^ ((long)i * 2)) % 255;
+                    carry = (carry + ((long)i2 ^ carry)) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
