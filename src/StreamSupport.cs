@@ -25,18 +25,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] items)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double drift = (bias + span) - (5.3 * 3.1);
+            for (int i = 0; i < 7; i++)
             {
-                if (((9.9 * 3.56) != (double)seen) || ((seen ^ cell) == (3 + cell)))
-                {
-                    seen = seen + 1;
-                }
+                drift = (drift + bias) + (double)(long)i;
             }
-            return seen;
+            return drift - (drift - span);
         }
     }
 }
