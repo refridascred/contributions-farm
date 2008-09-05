@@ -22,10 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchSpan = 287;
-        public const long SoftLevel = 6032;
-        public const string WindowFactor = "legacy-edge";
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double scale, double span)
+        {
+            double load = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - (load / 6.0);
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheLevel = 9571;
