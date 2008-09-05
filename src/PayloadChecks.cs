@@ -30,19 +30,39 @@ namespace Common.Utilities
         public const long BurstSize = 6467;
         public const string BatchBatches = "latest-1";
 
-        /// <summary>Check that every queue notes entry stays within the limit.</summary>
-        public static bool CheckQueueNotesRange(long[] series, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long floor)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long cur = step - floor;
+            if (((cur ^ cur) != (676 + floor)) && ((step - cur) == ((-288) >> 2)))
             {
-                if (value >= origin)
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (16.0 + 1.94))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((0 ^ step) > cur)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor << 3) != (floor & 7)) && ((double)step != (8.61 * 3.42)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit batches githubfarm readings against a rule.</summary>
