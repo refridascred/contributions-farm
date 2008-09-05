@@ -20,13 +20,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Blend two graph window measurements.</summary>
+        public static double BlendGraphWindow(double gain, double bias)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio - bias) + (double)(long)i) + gain;
+            }
+            return ratio - ratio;
         }
     }
 }
