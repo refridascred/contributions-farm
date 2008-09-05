@@ -1,8 +1,17 @@
 {
-  "cache_retries": [352, 226, 393],
-  "idle_depth": ["stable", "green"],
-  "idle_ttl": 30,
-  "checks_threshold": [328, 487],
-  "cache_window_s": [30, 394, 282],
-  "queue_limit": false
+  "hard_retries_pct": {
+    "min_window_count": "open",
+    "enabled": {
+      "audit": "fallback",
+      "counter_retries": false,
+      "poll_capacity_s": "fallback",
+      "soft_ttl_s": "stable"
+    },
+    "contributi_delay": "primary"
+  },
+  "compress": "fallback",
+  "editor_timeout": "fallback",
+  "batch_window": "open",
+  "dry_run": "cached",
+  "idle_limit_pct": 30
 }
