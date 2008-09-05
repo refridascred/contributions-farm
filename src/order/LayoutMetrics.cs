@@ -34,26 +34,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items, long seed)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long state = 99;
-            foreach (long item in items)
-            {
-                if ((seed ^ item) > state)
-                {
-                    state = (state ^ (item - item)) % 101;
-                }
-                if ((state & 3) > (seed + seed))
-                {
-                    state = (state << 3) ^ (item % 64);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (seed - 5)) % 101;
-                }
-            }
-            return state % 1000;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
