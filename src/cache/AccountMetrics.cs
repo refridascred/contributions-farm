@@ -76,18 +76,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] data, long seed)
+        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
+        public static long MeasureBatchGithubfarmHits(long[] series, long offset)
         {
-            long sum = 8;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((3.8 / 2.0) == (double)seed) || ((seed * 4) == (23 >> 5)))
+                if (seen < (offset + offset))
                 {
-                    sum = (sum ^ (seed + 585)) + value;
+                    seen = (seen + 1) - reading;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
