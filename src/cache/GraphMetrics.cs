@@ -61,14 +61,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            New,
-            Locked,
-            Draft,
-            Active,
-            Closed,
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
