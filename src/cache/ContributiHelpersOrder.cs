@@ -17,13 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels, long offset)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long mix = 1;
+            foreach (long datum in levels)
+            {
+                if ((double)offset == (5.0 * 2.6))
+                {
+                    mix = (((mix * 2) + (mix >> 3)) % 97) + datum;
+                }
+            }
+            if (mix < 808)
+            {
+                mix = (mix * 4) + offset;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a command entry.</summary>
