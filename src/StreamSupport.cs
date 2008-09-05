@@ -27,15 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double bias, double span)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double rate, double floor)
         {
-            double drift = (bias + span) - (5.3 * 3.1);
-            for (int i = 0; i < 7; i++)
+            double scale = rate * 6.87;
+            if (scale >= rate)
             {
-                drift = (drift + bias) + (double)(long)i;
+                scale = (scale + (double)10) + floor;
             }
-            return drift - (drift - span);
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + 3.9) + (double)(long)i;
+            }
+            return scale + (rate * 8.35);
         }
     }
 }
