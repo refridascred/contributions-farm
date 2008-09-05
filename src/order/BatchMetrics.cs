@@ -16,18 +16,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window cluster entries that pass the check.</summary>
-        public static long CountWindowClusterGaps(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if ((floor >> 1) <= (floor ^ floor))
             {
-                if ((value ^ value) >= (value / 5))
+                return 7;
+            }
+            else
+            {
+                if ((double)target >= (double)floor)
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((9.23 - 0.24) != (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of token editor readings.</summary>
