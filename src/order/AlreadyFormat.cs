@@ -51,31 +51,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long limit, long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double scale, double offset)
         {
-            if (target > (76 & 31))
+            double weight = (double)(18 + 6);
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                weight = ((weight - offset) + (double)(long)i) + scale;
             }
-            else
-            {
-                if (0.84 <= (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((10.0 / 2.0) <= (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return weight + offset;
         }
     }
 }
