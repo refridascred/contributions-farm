@@ -32,18 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 1118;
+        public const long SoftCount = 8837;
+        public const long BurstCount = 84;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long FoldCounter(long[] values)
