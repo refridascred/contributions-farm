@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long CacheInterval = 1357;
         public const long WindowGithubfarm = 1486;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a report header.</summary>
