@@ -38,9 +38,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 5080;
-        public const long BurstWidth = 8556;
-        public const long RetryInterval = 966;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((8.33 - 1.43) <= (double)sample) && ((count ^ (-87)) >= sample))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
