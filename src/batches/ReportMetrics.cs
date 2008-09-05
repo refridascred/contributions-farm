@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] readings, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long acc = -463;
+            foreach (long entry in values)
             {
-                if ((4.2 * 4.6) >= (double)matches)
+                if (((-193) <= ((-8) - acc)) && (9.24 >= (double)limit))
                 {
-                    matches = ((matches + 3) ^ entry) + floor;
+                    acc = (((acc << 3) ^ (624 + acc)) % 255) + entry;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc + acc)) % 1000;
                 }
             }
-            return matches;
+            if (acc < 56)
+            {
+                acc = ((acc << 2) ^ (3 / 6)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
