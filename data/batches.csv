@@ -1,6 +1,6 @@
-id,score,owner
-1,87.1,64.36
-2,stable,337
-3,30,standard
-4,122,38
-5,10.62,125
+id,label,region
+1,142,standard
+2,fallback,73.77
+3,legacy,360
+4,eu-west,487
+5,115,817
