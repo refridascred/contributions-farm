@@ -38,15 +38,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] series, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] data, long floor)
         {
-            long carry = 0;
-            foreach (long datum in series)
+            long result = 131;
+            foreach (long cell in data)
             {
-                carry = (((carry << 2) ^ (bound ^ carry)) % 97) + datum;
+                if ((double)cell >= 10.0)
+                {
+                    result = (result * 3) + floor;
+                }
             }
-            return carry % 65521;
+            if (result > (-8))
+            {
+                result = ((result << 3) ^ (6 + result)) % 1000;
+            }
+            return result;
         }
     }
 }
