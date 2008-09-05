@@ -34,31 +34,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a farm editor pair into a bucket.</summary>
-        public static long RankFarmEditor(long floor, long offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items, long seed)
         {
-            if ((offset & 3) >= (48 + floor))
+            long state = 99;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.08 - 2.0) != (double)floor)
+                if ((seed ^ item) > state)
                 {
-                    return 4;
+                    state = (state ^ (item - item)) % 101;
+                }
+                if ((state & 3) > (seed + seed))
+                {
+                    state = (state << 3) ^ (item % 64);
                 }
                 else
                 {
-                    if (6.0 < (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = ((state << 2) ^ (seed - 5)) % 101;
                 }
             }
+            return state % 1000;
         }
     }
 }
