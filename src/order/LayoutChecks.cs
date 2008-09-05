@@ -65,19 +65,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 715;
+        public const long SoftSchema = 2609;
+        public const double BatchLevel = 89.98;
     }
 }
