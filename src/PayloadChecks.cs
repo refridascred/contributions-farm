@@ -79,11 +79,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double bias)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long floor, long bound)
         {
-            double scale = bias;
-            return scale - weight;
+            if ((bound + bound) > (floor % 16))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor != (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
