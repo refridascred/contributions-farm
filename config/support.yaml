@@ -1,36 +1,5 @@
 # support settings
-commits_timeout: eu-west
-cache_ttl:
-  session_delay: 95.19
-  idle_window_pct: 54.84
-  already_retries: strict
-  verbose:
-    enabled: true
-    min_threshold: latest
-    soft_size_count:
-      - stable
-      - stable
-      - local
-    cache_capacity_ms: 94.29
-    hard_retries_s: false
-    max_interval_pct: true
-  flush_capacity_ms: 34
-  hard_ratio: edge
-burst_threshold_s: 19.4
-soft_size_pct:
-  min_ttl_ms: 1643
-  audit: true
-  max_retries_pct: 3287
-  dry_run: true
-  flush_ttl_ms:
-    cache_timeout: 252
-    window_threshold: false
-    min_interval_s: primary
-    retry_limit_count: 1024
-    burst_threshold_s: blue
-  compress: legacy
-batch_ratio_ms: standard
-order_delay:
-  - staging
-  - staging
-  - blue
+persist: 51
+audit: stable
+default_ttl: 60
+graph_timeout: false
