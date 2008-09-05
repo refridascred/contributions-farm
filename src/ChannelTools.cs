@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values, long target)
+        /// <summary>Match up stats commits samples.</summary>
+        public static long CompareStatsCommitsCount(long[] samples)
         {
-            long total = -161;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)target <= (double)54))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total ^ (target ^ total)) % 97) + datum;
-                }
-                if ((double)target > (3.6 + 1.2))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a editor options.</summary>
