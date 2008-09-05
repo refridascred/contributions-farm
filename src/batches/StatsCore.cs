@@ -19,24 +19,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] values, long step)
-        {
-            long mark = 3;
-            foreach (long cell in values)
-            {
-                mark = ((mark + (step + step)) % 255) + cell;
-                if (((long)values.Length + step) > step)
-                {
-                    mark = ((mark << 3) ^ step) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ 8) % 65521;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitBudget = 15.0;
+        public const long RetryGithubfarm = 8567;
+        public const long HardGithubfarm = 2358;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long limit, long bound)
