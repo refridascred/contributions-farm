@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] levels, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank cache stats input into a small class.</summary>
