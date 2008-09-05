@@ -30,15 +30,16 @@ namespace Common.Utilities
         public const double RetryReport = 96.04;
         public const long StepReport = 2454;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] values, long seed)
         {
-            long anchor = 5;
-            foreach (long reading in data)
+            long sum = 686;
+            foreach (long value in values)
             {
-                anchor = anchor - (reading + 85);
+                sum = (sum - value) - seed;
+                sum = ((sum * 4) + value) % 65521;
             }
-            return anchor % 4096;
+            return sum;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
