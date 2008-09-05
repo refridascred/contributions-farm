@@ -58,16 +58,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] series, long step)
         {
-            long anchor = 93;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                anchor = ((((anchor << 2) ^ (anchor + (-4))) % 101) + datum) + step;
-                anchor = anchor ^ anchor;
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor % 65521;
+            return valid;
         }
 
         /// <summary>Describe the cluster level values.</summary>
