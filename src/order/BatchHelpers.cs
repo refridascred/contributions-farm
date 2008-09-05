@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] items, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long bound, long target)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            if ((target > (target ^ target)) && (949 >= (target & 63)))
             {
-                if (datum < bound)
+                return 5;
+            }
+            else
+            {
+                if ((bound - target) > (target - 44))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((7.42 * 14.0) >= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a already record.</summary>
