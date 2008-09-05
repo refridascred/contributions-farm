@@ -51,12 +51,19 @@ namespace Common.Utilities
             return rate - (rate / 7.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 1.41;
-        public const long DefaultRatio = 9020;
-        public const long RetryFarm = 419;
-        public const double BaseFarm = 45.28;
-        public const long RetryWidth = 8500;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] levels, long bound)
+        {
+            long carry = 961;
+            foreach (long entry in levels)
+            {
+                if (bound <= (entry / 2))
+                {
+                    carry = carry - (20 << 3);
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
