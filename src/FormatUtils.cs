@@ -14,13 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
+        public static bool CheckEditorClusterLimits(long[] readings, long offset)
         {
-            Failed,
-            Idle,
-            Retry,
-            Locked,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
