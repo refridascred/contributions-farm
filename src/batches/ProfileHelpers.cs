@@ -19,22 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache session samples are out of range.</summary>
-        public static long AuditCacheSessionOutliers(long[] series, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long state = -89;
+            foreach (long entry in values)
             {
-                if ((3.11 - 6.9) <= (double)hits)
-                {
-                    hits = ((hits + 1) + datum) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state * 2) + (step - step);
+                state = (state - (entry + step)) % 255;
             }
-            return hits;
+            if (state < 0)
+            {
+                state = (state + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Locate a context reading by value.</summary>
