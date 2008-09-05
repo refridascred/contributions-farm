@@ -24,13 +24,11 @@ namespace Common.Utilities
             return rate + (3.67 + rate);
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Ready,
-            Dropped,
-            Locked,
-            Retry,
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the tools session entries that pass the check.</summary>
