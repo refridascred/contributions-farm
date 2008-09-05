@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long origin)
         {
-            New,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading / 9) == (count ^ reading)))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank token input into a small class.</summary>
