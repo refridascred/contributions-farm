@@ -39,11 +39,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            Done,
+            Active,
+            Locked,
+            Idle,
+            Paused,
         }
     }
 }
