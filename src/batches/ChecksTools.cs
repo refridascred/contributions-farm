@@ -29,12 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Count the commits editor entries that pass the check.</summary>
+        public static long AuditCommitsEditorGaps(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count < sample) || ((count * 2) <= count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
