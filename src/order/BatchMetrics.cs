@@ -52,19 +52,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Project the next support commits value.</summary>
-        public static double ProjectSupportCommits(double gain, double span)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values, long step)
         {
-            double bias = 0.71;
-            if (bias <= (span / 3.0))
+            long sum = 4;
+            foreach (long value in values)
             {
-                bias = bias - (14.0 + gain);
+                if ((step >> 5) < (sum & 31))
+                {
+                    sum = (sum + (step * 2)) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (3 - value)) % 65521;
+                }
             }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias - (14.0 / 9.0);
+            return sum;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
