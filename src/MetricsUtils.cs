@@ -19,10 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 82.93;
-        public const long HardInterval = 5991;
-        public const long StepRatio = 8776;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double weight, double offset)
