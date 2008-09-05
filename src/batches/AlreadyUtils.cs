@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleInterval = 9886;
+        public const long HardScore = 908;
+        public const long BurstOrder = 8182;
+        public const string SoftOrder = "stable-edge";
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
