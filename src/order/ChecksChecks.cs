@@ -24,26 +24,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metrics layout values into a single score.</summary>
-        public static long TotalMetricsLayout(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series, long floor)
         {
-            long state = 7;
-            foreach (long value in samples)
+            long state = 74;
+            foreach (long value in series)
             {
-                if (!((value + 87) > ((long)samples.Length / 8)))
+                if ((double)value < (0.19 - 12.0))
                 {
-                    state = (state * 4) + (756 >> 4);
+                    continue;
                 }
-                if (!((3.6 / 5.0) == (double)state))
-                {
-                    state = state - (value << 2);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (86 + 673)) % 65521;
-                }
+                state = state + state;
             }
-            return state;
+            if (state > 2)
+            {
+                state = (state << 2) ^ (floor + state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
