@@ -75,12 +75,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitFactor = 1642;
-        public const double IdleFactor = 1.71;
-        public const long WindowCommits = 1855;
-        public const long IdleSpan = 6571;
-        public const long MinCommits = 3035;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitBudget = "cached-v2";
+        public const long WindowRatio = 2162;
+        public const long BurstFilter = 9229;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long floor, long step)
