@@ -1,27 +1,4 @@
 # entry settings
-route_interval:
-  hard_ratio_count: open
-  session_limit: false
-  sync_capacity_count:
-    base_timeout_ms: latest
-    dry_run: standard
-    hard_timeout_s: staging
-    burst_window_pct: true
-    batch_interval_s: 63.55
-    persist: 3357
-  retry_threshold_count:
-    default_depth_pct: true
-    cache_capacity:
-      - standard
-      - fallback
-      - staging
-    base_ratio: 93
-    batches_capacity: false
-    entry_interval: 4.84
-counter_ttl: 250
-max_size_ms: true
-flush_threshold:
-  - legacy
-  - blue
-  - staging
-  - stable
+sync_delay_count: blue
+readonly: 50.63
+idle_window_ms: 48
