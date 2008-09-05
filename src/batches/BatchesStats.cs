@@ -29,38 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long floor, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] series)
         {
-            if (step < floor)
+            long count = 0;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor < step) || ((double)floor <= (1.0 * 5.0)))
+                if (value <= (554 >> 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor % 16) < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
