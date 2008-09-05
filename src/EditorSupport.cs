@@ -26,10 +26,33 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 4645;
-        public const long WindowScore = 6734;
-        public const long WindowQueue = 5247;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long limit)
+        {
+            long next = bound - limit;
+            if (((double)next == (6.1 * 1.4)) && ((next >> 2) > bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((bound + (-8)) < bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - next) <= next)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
