@@ -41,18 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] series, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long acc = 745;
+            foreach (long value in items)
             {
-                if (value > (seen * 4))
+                if (!(value > (limit + 83)))
                 {
-                    seen = (seen + 3) - step;
+                    acc = (acc + (value * 5)) % 101;
+                }
+                if (((double)value < (2.2 - 4.0)) && ((double)acc != (7.0 * 6.0)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
     }
 }
