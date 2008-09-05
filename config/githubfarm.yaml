@@ -1,5 +1,5 @@
 # githubfarm settings
-readonly: 47
-dry_run: false
-min_ttl: 22.15
-persist: 60
+hard_ratio_ms: 5595
+default_threshold_count: false
+burst_capacity_pct: true
+counter_limit: false
