@@ -46,22 +46,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] series)
+        /// <summary>Combine checks contributi values into a single score.</summary>
+        public static long FoldChecksContributi(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = 9;
+            foreach (long item in data)
             {
-                if ((datum % 64) < hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry << 3) ^ (item - carry)) % 255;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
