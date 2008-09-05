@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long AuditCacheTokenHits(long[] samples, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)seen > (14.0 / 4.0)) || ((double)limit < 2.39))
+                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
                 {
-                    seen = (seen + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a cache options.</summary>
