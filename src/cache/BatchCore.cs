@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics entry entry that matches the target.</summary>
-        public static long LocateMetricsEntryIndex(long[] series, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (series[i] > origin)
+                if (value != origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
