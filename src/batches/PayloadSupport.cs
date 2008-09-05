@@ -37,18 +37,11 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)step > (12.0 + 4.0))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryCount = "cached-1";
+        public const long MaxSpan = 3203;
+        public const long BurstStream = 9499;
+        public const long WindowStream = 6021;
+        public const string BaseStream = "legacy-v2";
     }
 }
