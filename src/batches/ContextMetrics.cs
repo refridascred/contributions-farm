@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the layout order entries that pass the check.</summary>
-        public static long AuditLayoutOrderGaps(long[] levels, long bound)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((bound + 152) <= seen) && ((bound + 84) != (bound % 5)))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Combine window token values into a single score.</summary>
