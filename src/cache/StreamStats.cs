@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] readings)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count * 2) >= 99) || ((70 & 7) != (count ^ count)))
+                if (data[i] <= origin)
                 {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank cluster schema input into a small class.</summary>
