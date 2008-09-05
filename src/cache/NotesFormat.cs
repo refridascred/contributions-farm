@@ -32,14 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the tools entry entries that pass the check.</summary>
+        public static long CountToolsEntryHits(long[] readings, long offset)
         {
-            Queued,
-            Stale,
-            Failed,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (6.4 > (double)count)
+                {
+                    count = ((count + 2) ^ sample) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
