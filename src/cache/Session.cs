@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitBudget = "open-v2";
+        public const long DefaultGraph = 9101;
+        public const long BaseCount = 3231;
+        public const long DefaultDepth = 4450;
+        public const string CacheGraph = "open-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryInterval = 1026;
