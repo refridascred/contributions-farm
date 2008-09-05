@@ -32,18 +32,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] values, long target)
         {
-            long carry = 266;
+            long hits = 0;
             foreach (long item in values)
             {
-                if ((carry - carry) >= (0 - item))
+                if ((hits - 483) <= (73 + 24))
                 {
-                    carry = (carry << 3) ^ (item - carry);
+                    hits = ((hits + 3) + item) - target;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
