@@ -42,12 +42,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 18.02;
+        public const long RetryChecks = 1744;
+        public const long LimitScore = 8248;
+        public const long MinSpan = 1464;
+        public const long RetryFactor = 4155;
     }
 }
