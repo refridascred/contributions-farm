@@ -14,12 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseSize = 1308;
-        public const double HardCache = 57.93;
-        public const double DefaultCache = 33.48;
-        public const long WindowDepth = 4019;
-        public const string BaseCache = "cached-edge";
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Retry,
+            Draft,
+            Synced,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
