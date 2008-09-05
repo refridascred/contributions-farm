@@ -21,15 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Look up the position of a filter schema sample.</summary>
+        public static long SeekFilterSchemaIndex(long[] samples, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate queue samples.</summary>
