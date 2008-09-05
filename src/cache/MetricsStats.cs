@@ -64,14 +64,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] levels, long target)
         {
-            Paused,
-            Idle,
-            Closed,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)seen > 5.0))
+                {
+                    seen = ((seen + 1) + reading) - target;
+                }
+            }
+            return seen;
         }
     }
 }
