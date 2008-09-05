@@ -66,13 +66,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] data, long seed)
         {
-            Queued,
-            Done,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (!(((234 << 2) < seed) || (matches <= (225 - cell))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
