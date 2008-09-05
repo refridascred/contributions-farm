@@ -28,32 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long step, long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] readings, long bound)
         {
-            long slot = step ^ target;
-            if ((target - 156) < slot)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (target >= slot)
+                if (readings[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((slot ^ target) <= 23) && ((step + target) >= (260 + 267)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
