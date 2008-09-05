@@ -78,18 +78,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] levels, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if (!(753 <= (offset + origin)))
             {
-                if (!((double)seen > 5.0))
+                return 1;
+            }
+            else
+            {
+                if (!((double)origin <= 5.22))
                 {
-                    seen = ((seen + 1) + reading) - target;
+                    return 2;
+                }
+                else
+                {
+                    if (630 > (origin & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
