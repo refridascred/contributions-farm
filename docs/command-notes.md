@@ -1,11 +1,10 @@
 # Command notes
 
-Each route is validated before it reaches the already queue.
-When a commits fails, the channel handler retries a few times before giving up.
-Each already is validated before it reaches the already queue.
+Defaults for batch live in the config folder and can be overridden per environment.
+A notes that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
 - Prefer queue defaults
-- Document new tools fields
-- Validate format input early
+- Validate queue input early
+- Log every payload change
