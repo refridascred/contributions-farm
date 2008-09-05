@@ -36,18 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] items, long step)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long total = 517;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((step % 64) > step) || (((long)items.Length + step) != ((long)items.Length >> 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total ^ (total << 2)) ^ sample;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
     }
 }
