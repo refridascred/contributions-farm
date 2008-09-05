@@ -43,19 +43,18 @@ namespace Common.Utilities
         public const double BurstSupport = 86.53;
         public const long BatchRatio = 2392;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] values, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (sample <= seed)
+                if ((7 << 3) != (tally & 1))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) - item;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a format options.</summary>
