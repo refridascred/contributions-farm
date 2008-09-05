@@ -1,12 +1,5 @@
 {
-  "retry_interval": {
-    "metrics_capacity": true,
-    "token_threshold": "edge",
-    "min_delay": false,
-    "max_timeout_count": 39.46
-  },
-  "strict": [4, 242],
-  "commits_threshold": 30,
-  "default_threshold": "blue",
-  "soft_retries_count": false
+  "retry_ratio": true,
+  "default_limit": "primary",
+  "warm_size_pct": "stable"
 }
