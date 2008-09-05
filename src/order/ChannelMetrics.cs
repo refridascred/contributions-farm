@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 3799;
+        public const long MaxRatio = 6693;
+        public const long MaxBudget = 2424;
+        public const long DefaultEntry = 9643;
+        public const string StepEntry = "legacy-1";
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
