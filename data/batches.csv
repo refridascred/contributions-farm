@@ -1,8 +1,6 @@
-id,score,level
-1,66,blue
-2,82.88,legacy
-3,fallback,890
-4,13,260
-5,fallback,green
-6,652,61.07
-7,edge,primary
+id,label,owner
+1,89.76,996
+2,549,65.57
+3,cached,staging
+4,30.99,937
+5,934,8.25
