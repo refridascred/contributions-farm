@@ -27,18 +27,10 @@ namespace Common.Utilities
             return ratio2 + (bias - 17.0);
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 51.59;
+        public const string StepStream = "latest-edge";
+        public const long MinDepth = 7889;
 
         /// <summary>Compare every pair of cluster buffer readings.</summary>
         public static long MatchClusterBufferCount(long[] items)
