@@ -18,22 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits format values into a single score.</summary>
-        public static long TallyCommitsFormat(long[] levels, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long origin)
         {
-            long score = 689;
-            foreach (long value in levels)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((9.85 - 17.0) == (double)value)
-                {
-                    score = (score * 5) + (offset - value);
-                }
-                else
-                {
-                    score = (score - (value * 3)) % 65521;
-                }
+                anchor = (anchor << 3) ^ 2;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Hold a already entry.</summary>
