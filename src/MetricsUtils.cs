@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long seed, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] items, long step)
         {
-            long offset = seed + target;
-            if (((offset - target) == (target << 3)) && ((seed + 1) != (873 / 2)))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed << 2) > (offset % 3))
+                if ((step + matches) >= (step << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 3) > (target * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 3) ^ sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up order samples.</summary>
