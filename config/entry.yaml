@@ -1,36 +1,17 @@
 # entry settings
-strict:
-  - edge
-  - open
-  - strict
-  - local
-enabled: latest
-verbose:
-  - 375
-  - 72
-  - 36
-  - 345
-readonly:
-  persist:
-    route_limit: true
-    support_window: false
-    report_delay: standard
-    report_timeout: 1024
-    schema_depth: 15
-    min_size_count: true
-  flush_interval:
-    base_limit: legacy
-    persist:
-      - edge
-      - open
-      - blue
-      - legacy
-    metrics_delay:
-      - 319
-      - 494
-      - 434
-    min_depth_pct: true
-    queue_threshold: 1305
-    compress: fallback
-  strict: 989
-  batch_ttl_s: 78.13
+soft_limit_ms:
+  poll_threshold_count: latest
+  sync_size: 56.6
+  counter_interval: 81.46
+  burst_timeout: 79
+compress: true
+editor_window:
+  retry_delay_ms: strict
+  githubfarm_window: 9337
+  buffer_ratio: false
+editor_capacity:
+  - 329
+  - 367
+  - 149
+  - 91
+batch_timeout: 29.04
