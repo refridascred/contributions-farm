@@ -1,17 +1,7 @@
 {
-  "compress": {
-    "flush_limit_count": "edge",
-    "dry_run": "primary",
-    "flush_size": [238, 159, 8],
-    "cache_ratio_pct": 51.13
-  },
-  "verbose": {
-    "retry_retries_ms": ["fallback", "edge", "staging", "latest"],
-    "cache_capacity_ms": [158, 246, 187, 47],
-    "sync_size": 6006
-  },
-  "cache_ttl_ms": 49.13,
-  "hard_delay_ms": 2216,
-  "max_limit_count": 100,
-  "retry_capacity_pct": "blue"
+  "persist": 1357,
+  "already_limit": ["cached", "blue", "blue"],
+  "verbose": "stable",
+  "flush_timeout_ms": false,
+  "burst_limit_pct": 14.98
 }
