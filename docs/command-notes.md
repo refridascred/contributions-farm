@@ -1,10 +1,11 @@
 # Command notes
 
-When a checks fails, the order handler retries a few times before giving up.
-The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Each githubfarm is validated before it reaches the profile queue.
+Keep context and stream names short and lowercase.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review channel limits each release
-- Keep notes values small
+- Prefer farm defaults
+- Document new support fields
+- Keep farm values small
