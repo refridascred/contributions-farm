@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] readings)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) != (entry * 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
