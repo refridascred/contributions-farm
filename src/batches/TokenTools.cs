@@ -18,21 +18,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 517;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((step % 64) > step) || (((long)items.Length + step) != ((long)items.Length >> 4)))
                 {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total ^ (total << 2)) ^ sample;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
