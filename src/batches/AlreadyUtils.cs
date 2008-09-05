@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] readings, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long anchor = 80;
+            foreach (long sample in values)
             {
-                if (item >= step)
+                if ((double)anchor > (13.0 * 9.0))
                 {
-                    flag = false;
+                    anchor = ((anchor ^ (anchor * 3)) % 101) ^ sample;
+                }
+                if (((long)values.Length / 8) == (target - anchor))
+                {
                     break;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
