@@ -17,23 +17,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] values, long seed)
         {
-            long result = 776;
-            foreach (long entry in values)
+            long mark = 3;
+            foreach (long datum in values)
             {
-                if (!(((8.3 / 6.0) != (double)offset) || (9.0 <= (double)entry)))
+                if (817 < seed)
                 {
-                    result = ((result << 3) ^ 0) % 255;
+                    mark = (mark ^ ((long)values.Length >> 3)) % 1000;
                 }
-                result = result - result;
+                else
+                {
+                    mark = mark ^ (seed + datum);
+                }
             }
-            if (result > 71)
-            {
-                result = result ^ (result & 31);
-            }
-            return result % 4096;
+            return mark % 4096;
         }
     }
 }
