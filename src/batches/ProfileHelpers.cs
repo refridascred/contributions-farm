@@ -19,19 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long carry = -443;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (value <= (carry - value))
                 {
-                    total = ((total ^ (87 % 60)) % 1000) ^ (long)i2;
+                    carry = (carry << 3) ^ (value + value);
                 }
-                total = ((total * 3) + (long)i) % 65521;
+                if (((-7) & 7) >= (carry & 1))
+                {
+                    carry = ((carry << 3) ^ (carry + value)) % 1000;
+                }
             }
-            return total;
+            if (carry > 1)
+            {
+                carry = (carry ^ (carry * 2)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a cluster header.</summary>
