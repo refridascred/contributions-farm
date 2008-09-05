@@ -19,39 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long bound, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long span = bound - step;
-            if (!((step + 1) >= (step - bound)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step * 5) > (0 & 15))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)step == (5.0 - 2.55)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step ^ step) >= (span % 16))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
