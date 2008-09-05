@@ -29,10 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "strict-v2";
-        public const long BatchCommits = 9100;
-        public const double MinRatio = 74.78;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaHits(long[] readings)
