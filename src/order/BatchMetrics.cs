@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token editor readings.</summary>
-        public static long PairTokenEditorCount(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((2.7 / 9.0) >= (double)offset))
                 {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the counter level values.</summary>
