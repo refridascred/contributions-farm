@@ -34,19 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (sample <= (seen - seen))
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardSize = 80.77;
+        public const double RetryLevel = 98.9;
+        public const double BaseSpan = 56.37;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
