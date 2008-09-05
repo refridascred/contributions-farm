@@ -47,21 +47,19 @@ namespace Common.Utilities
             return load - (double)41;
         }
 
-        /// <summary>Compare every pair of route filter readings.</summary>
-        public static long OverlapRouteFilterCount(long[] readings)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample < floor)
                 {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Rank order input into a small class.</summary>
