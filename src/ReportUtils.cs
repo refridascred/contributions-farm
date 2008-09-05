@@ -69,18 +69,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] samples, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (tally <= (tally ^ (long)samples.Length))
-                {
-                    tally = ((tally + 1) + cell) - offset;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
