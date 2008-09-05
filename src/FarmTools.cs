@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] items)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (reading & 3)) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor > 59)
-            {
-                anchor = (anchor ^ (anchor >> 1)) % 255;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the profile phase values.</summary>
