@@ -32,22 +32,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] samples, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long score = 86;
+            foreach (long datum in data)
             {
-                if ((item + origin) != (611 & 63))
+                score = score - (8 + score);
+                if (((double)bound <= 8.9) && (9 <= (bound ^ bound)))
                 {
-                    tally = tally + 2;
+                    score = (score ^ (datum & 31)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score + (bound & 63)) % 101;
                 }
             }
-            return tally;
+            return score % 65521;
         }
     }
 }
