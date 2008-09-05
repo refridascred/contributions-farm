@@ -26,23 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cluster commits pair into a bucket.</summary>
-        public static long BucketClusterCommits(long origin, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long target, long offset)
         {
-            long prev = origin ^ limit;
-            if ((limit >= prev) && ((double)prev > 6.23))
+            if (!((double)target > 0.81))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((prev ^ limit) < (prev & 3))
+                if ((offset + target) <= (offset + offset))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 3;
+                    return 1;
                 }
             }
         }
