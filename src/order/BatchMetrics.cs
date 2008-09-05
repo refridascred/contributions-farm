@@ -47,22 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes route readings against a rule.</summary>
-        public static long MeasureNotesRouteGaps(long[] samples)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally >> 5) < (tally ^ reading))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the entry level values.</summary>
