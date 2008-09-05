@@ -27,17 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
