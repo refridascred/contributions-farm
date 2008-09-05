@@ -39,24 +39,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a channel metrics value against two limits.</summary>
-        public static long GradeChannelMetrics(long offset, long seed)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            if ((double)offset > (17.0 * 16.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= (3.46 / 9.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] - samples[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
