@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate farm graph readings against a bound.</summary>
-        public static bool CheckFarmGraphLimits(long[] values, long target)
+        /// <summary>Count the metrics schema entries that pass the check.</summary>
+        public static long CountMetricsSchemaHits(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (reading != target)
+                if (0 < (limit % 2))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Derive the next metrics layout value from a seed.</summary>
