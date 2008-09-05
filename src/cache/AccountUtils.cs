@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardDepth = 6.31;
-        public const long MaxToken = 1419;
-        public const long DefaultToken = 4951;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string MinPayload = "cached";
