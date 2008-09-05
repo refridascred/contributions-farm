@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank counter buffer input into a small class.</summary>
-        public static long BucketCounterBuffer(long bound, long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            if ((977 / 8) >= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (3.6 + 0.3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.79 >= (0.6 / 7.0)) && ((53 / 8) >= bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a checks options.</summary>
