@@ -27,18 +27,20 @@ namespace Common.Utilities
             return ratio + (rate - offset);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] series, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (((7.1 / 9.0) > (double)datum) || ((8.4 + 14.0) <= (double)bound))
+                anchor = anchor + anchor;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    tally = tally + 3;
+                    anchor = ((anchor + (anchor >> 4)) % 255) - (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Combine checks githubfarm values into a single score.</summary>
