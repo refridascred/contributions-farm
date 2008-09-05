@@ -26,22 +26,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] data, long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long total = 0;
-            foreach (long reading in data)
-            {
-                if ((total / 6) < target)
-                {
-                    total = (total + (reading >> 1)) % 97;
-                }
-                else
-                {
-                    total = (total - (target << 1)) % 4096;
-                }
-            }
-            return total;
+            Dropped,
+            New,
+            Pending,
         }
     }
 }
