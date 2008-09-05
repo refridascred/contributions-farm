@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] items, long target)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine account values into a single score.</summary>
