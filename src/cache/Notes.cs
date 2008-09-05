@@ -35,19 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits stream readings against a bound.</summary>
-        public static bool GuardCommitsStreamLimits(long[] items, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double mean = 20.0 + (ratio * 4.0);
+            if (mean >= bias)
             {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - (double)3;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (double)30) + (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Define session limits and defaults.</summary>
