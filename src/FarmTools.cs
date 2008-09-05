@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const long SoftLevel = 6032;
         public const string WindowFactor = "legacy-edge";
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheLevel = 9571;
+        public const long CacheRatio = 1829;
+        public const long BatchCounter = 7186;
+        public const string BurstCounter = "staging-v2";
+        public const double IdleSpan = 15.79;
     }
 }
