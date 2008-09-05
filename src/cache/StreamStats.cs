@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] data)
         {
-            long score = 19;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = (score + (item - score)) % 1000;
-                if (((item - score) < item) && ((score + item) > item))
+                if ((sample + sample) < sample)
                 {
-                    score = (score - (score - score)) % 97;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
