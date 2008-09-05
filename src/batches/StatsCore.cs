@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a buffer account value against two limits.</summary>
-        public static long ClassifyBufferAccount(long seed, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] items)
         {
-            long delta = seed + floor;
-            if (((910 - seed) > (floor - seed)) || ((double)seed >= (20.0 / 4.0)))
+            long anchor = 97;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (seed - delta))
+                if (!(cell >= (anchor + anchor)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed > (floor * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed == (9.9 * 5.21))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = (anchor - (anchor << 3)) % 255;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
