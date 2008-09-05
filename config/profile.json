@@ -1,5 +1,19 @@
 {
-  "soft_size_ms": "latest",
-  "soft_limit_count": "blue",
-  "compress": 28
+  "notes_timeout": {
+    "dry_run": 12.96,
+    "sync_interval_pct": "staging",
+    "soft_interval_pct": {
+      "max_capacity": "stable",
+      "batch_threshold_s": "green",
+      "format_interval": "legacy",
+      "base_threshold_ms": "green",
+      "flush_ratio": 79
+    },
+    "entry_size": 5091
+  },
+  "base_ttl_count": 250,
+  "verbose": 80.04,
+  "warm_ratio_ms": 42,
+  "burst_retries_pct": false,
+  "cache_size_pct": "fallback"
 }
