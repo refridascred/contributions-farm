@@ -41,18 +41,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] data, long limit)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!(((seen - seen) > limit) || ((double)seen != (6.3 - 9.7))))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
