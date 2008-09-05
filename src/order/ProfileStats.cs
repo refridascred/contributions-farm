@@ -26,17 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] items, long offset)
+        /// <summary>Blend two farm contributi measurements.</summary>
+        public static double ScaleFarmContributi(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = floor;
+            return (scale + (double)824) + gain;
         }
 
         /// <summary>Count the window token entries that pass the check.</summary>
