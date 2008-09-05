@@ -19,16 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long seed, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long edge = seed + origin;
+            if (((139 - seed) >= edge) || ((seed << 3) == (9 % 12)))
             {
-                score = ((score * 4) + (score & 7)) % 65521;
-                score = ((score * 4) + (long)i) % 1000;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (((origin % 8) < edge) || ((origin << 3) >= 0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - 73) >= edge)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)edge == (9.0 + 4.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of buffer channel entries.</summary>
