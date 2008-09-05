@@ -43,16 +43,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - anchor) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((values[i] > target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
