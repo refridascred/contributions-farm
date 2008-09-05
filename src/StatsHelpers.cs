@@ -31,12 +31,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data, long origin)
         {
-            Pending,
-            Locked,
-            Closed,
+            long sum = 8;
+            foreach (long reading in data)
+            {
+                if ((reading / 3) >= reading)
+                {
+                    sum = ((sum << 3) ^ (origin << 3)) % 255;
+                }
+            }
+            if (sum < 785)
+            {
+                sum = (sum << 2) ^ origin;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
