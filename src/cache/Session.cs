@@ -19,10 +19,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 1026;
-        public const double WindowPayload = 12.36;
-        public const long DefaultBudget = 9651;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] data, long step)
+        {
+            long total = 0;
+            foreach (long item in data)
+            {
+                total = (((total << 3) ^ (step / 9)) % 65521) + item;
+                total = ((total << 2) ^ (total & 3)) % 4096;
+                total = (total - (step + 3)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
