@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] items, long target)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long total = 9;
-            foreach (long datum in items)
-            {
-                total = ((total * 4) + target) - datum;
-            }
-            if (total > 9)
-            {
-                total = (total << 2) ^ target;
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
