@@ -96,24 +96,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long floor, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long limit)
         {
-            if (floor >= bound)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor ^ 97) < 8)
+                if (((state ^ limit) >= (limit & 3)) || ((limit & 31) == (state - state)))
                 {
-                    return 2;
+                    state = (state << 2) ^ 5;
+                    break;
                 }
-                else
+                if (((limit << 3) < state) || ((state * 3) < ((long)i + limit)))
                 {
-                    return 1;
+                    state = ((state << 3) ^ (state % 100)) % 101;
                 }
+                state = (state + (590 ^ state)) % 65521;
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
     }
 }
