@@ -1,20 +1,6 @@
 {
-  "compress": 3049,
-  "burst_interval_ms": 1024,
-  "max_window_count": 83.16,
-  "profile_size": {
-    "readonly": true,
-    "tools_ttl": {
-      "dry_run": false,
-      "poll_limit_ms": "standard",
-      "sync_interval_s": ["open", "fallback", "cached"],
-      "max_limit_pct": [453, 179, 318],
-      "flush_retries_count": 4769,
-      "compress": false
-    },
-    "warm_retries_pct": [232, 464],
-    "hard_limit_s": "stable",
-    "flush_depth_count": 44.12
-  },
-  "default_timeout": "strict"
+  "record_capacity": ["green", "primary"],
+  "cache_timeout_pct": 26,
+  "batch_timeout": 61,
+  "warm_window_s": 9272
 }
