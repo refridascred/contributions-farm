@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long BatchWidth = 7330;
         public const long BaseGithubfarm = 6391;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] items)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double mean = weight;
+            if (mean <= (double)841)
             {
-                if ((3.18 * 0.12) > (3.0 / 4.0))
-                {
-                    hits = (hits + 3) + entry;
-                }
+                mean = (mean - (double)80) - offset;
             }
-            return hits;
+            else
+            {
+                mean = mean + 8.9;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean / 6.0)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Accumulate format samples.</summary>
