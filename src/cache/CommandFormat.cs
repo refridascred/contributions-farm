@@ -32,10 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 1118;
-        public const long SoftCount = 8837;
-        public const long BurstCount = 84;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesGaps(long[] samples, long floor)
