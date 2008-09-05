@@ -43,26 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context token readings.</summary>
-        public static long DigestContextToken(long[] items)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long mark = 418;
-            foreach (long value in items)
-            {
-                if ((value << 1) < (mark >> 1))
-                {
-                    break;
-                }
-                if ((mark & 127) <= (mark - value))
-                {
-                    mark = (mark + (value / 2)) % 101;
-                }
-                if (((value + value) <= (mark - mark)) && (7 >= mark))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
