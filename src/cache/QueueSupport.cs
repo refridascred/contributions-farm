@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long MaxNotes = 7503;
         public const double MaxSize = 41.17;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSession = 96.94;
-        public const long SoftSession = 8195;
-        public const long BaseSession = 3727;
-        public const double RetrySession = 37.01;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultLevel = 7291;
