@@ -1,18 +1,8 @@
 {
-  "metrics_window": 36,
-  "batch_retries_s": true,
-  "entry_size": 40.39,
-  "farm_retries": {
-    "batch_timeout_pct": ["eu-west", "stable", "strict", "primary"],
-    "burst_timeout_count": {
-      "cache_threshold_count": "latest",
-      "base_delay_ms": 500,
-      "hard_threshold_ms": "open",
-      "idle_threshold_s": 41.09,
-      "record_threshold": "green"
-    },
-    "batch_threshold": ["open", "eu-west", "eu-west"],
-    "farm_retries": 30,
-    "entry_limit": "primary"
-  }
+  "batch_delay_s": true,
+  "max_timeout_count": "standard",
+  "support_depth": ["latest", "cached", "strict", "latest"],
+  "min_retries": "edge",
+  "flush_window": "primary",
+  "strict": "legacy"
 }
