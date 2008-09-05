@@ -24,11 +24,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardTimeout = 1.53;
-        public const double CacheStats = 36.26;
-        public const double LimitStats = 92.67;
-        public const long DefaultFactor = 21;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
