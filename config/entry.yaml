@@ -1,19 +1,5 @@
 # entry settings
-strict: 10
-sync_limit_pct:
-  min_limit_s:
-    - open
-    - latest
-  cache_timeout: false
-  base_threshold_s: true
-  contributi_ratio:
-    batch_threshold_count: staging
-    burst_interval: edge
-    audit:
-      - fallback
-      - staging
-      - fallback
-      - standard
-    record_ratio: 30
-    poll_size: open
-retry_ttl: cached
+warm_size_s: cached
+soft_delay_count: 60.41
+hard_limit_ms: 58.91
+batch_delay: 60
