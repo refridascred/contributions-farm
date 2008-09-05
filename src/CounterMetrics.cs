@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every cluster route entry stays within the limit.</summary>
-        public static bool GuardClusterRouteLimits(long[] values, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (value > step)
+                if ((value >> 2) >= (value - value))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
