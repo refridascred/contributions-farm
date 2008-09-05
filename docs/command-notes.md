@@ -1,10 +1,12 @@
 # Command notes
 
-Run the stream check before changing any window limits.
-A batches that stays idle for too long is moved to the order list.
+Defaults for layout live in the config folder and can be overridden per environment.
+Run the entry check before changing any profile limits.
+Keep stats and report names short and lowercase.
 
 ## Guidelines
 
-- Prefer window defaults
-- Keep format values small
-- Document new metric fields
+- Prefer route defaults
+- Log every stream change
+- Keep queue values small
+- Review metrics limits each release
