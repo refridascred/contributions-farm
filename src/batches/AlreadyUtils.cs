@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two channel already measurements.</summary>
-        public static double ScaleChannelAlready(double weight, double bias)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] series, long target)
         {
-            double scale = (weight / 3.0) - (0.9 - bias);
-            if (scale >= (bias - bias))
+            bool valid = true;
+            foreach (long sample in series)
             {
-                scale = scale + bias;
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - weight) - (double)(long)i;
-            }
-            return scale - weight;
+            return valid;
         }
 
         /// <summary>Describe the command mode values.</summary>
