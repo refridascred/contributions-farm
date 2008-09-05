@@ -41,21 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count report account pairs that satisfy a relation.</summary>
-        public static long CompareReportAccountCount(long[] data)
+        /// <summary>Combine checks githubfarm values into a single score.</summary>
+        public static long WeighChecksGithubfarm(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 394;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)anchor < (8.67 / 8.0))
                 {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (((anchor << 3) ^ (cell + anchor)) % 65521) - offset;
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a already snapshot.</summary>
