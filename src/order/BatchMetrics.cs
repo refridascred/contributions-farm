@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] levels, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long result = 767;
+            foreach (long entry in data)
             {
-                if (datum <= bound)
+                if ((double)result < (double)entry)
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 4) + (6 + step)) % 101;
                 }
             }
-            return ok;
+            if (result > 0)
+            {
+                result = (result - step) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
