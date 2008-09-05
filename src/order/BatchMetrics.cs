@@ -55,14 +55,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] samples)
         {
-            Idle,
-            Synced,
-            Closed,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits + hits) > hits)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up batch command samples.</summary>
