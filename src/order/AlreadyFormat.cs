@@ -38,38 +38,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if ((floor ^ step) <= (step % 60))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor <= ((-58) - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor <= (5.18 - 7.11))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + step) > floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
