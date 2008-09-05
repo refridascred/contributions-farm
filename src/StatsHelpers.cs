@@ -51,11 +51,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 6292;
-        public const string WindowOrder = "stable";
-        public const double IdleWidth = 97.44;
-        public const long WindowBudget = 5595;
-        public const long SoftDepth = 1295;
+        /// <summary>Audit checks order readings against a rule.</summary>
+        public static long TallyChecksOrderGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((45 & 15) >= (sample + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
