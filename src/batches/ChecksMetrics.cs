@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long carry = 45;
-            foreach (long item in levels)
-            {
-                if ((718 + item) != (73 + item))
-                {
-                    carry = (carry + (carry + 96)) % 97;
-                    break;
-                }
-                if ((double)carry < 9.7)
-                {
-                    carry = ((carry * 5) + (item ^ carry)) % 97;
-                }
-            }
-            return carry % 97;
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
