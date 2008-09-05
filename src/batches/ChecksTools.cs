@@ -27,10 +27,15 @@ namespace Common.Utilities
             return ratio2 + (bias - 17.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 51.59;
-        public const string StepStream = "latest-edge";
-        public const long MinDepth = 7889;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Dropped,
+            Locked,
+            Active,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Compare every pair of cluster buffer readings.</summary>
         public static long MatchClusterBufferCount(long[] items)
