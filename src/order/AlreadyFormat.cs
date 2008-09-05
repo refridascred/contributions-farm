@@ -56,26 +56,13 @@ namespace Common.Utilities
             return weight2 - (6.63 - 1.0);
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] data, long origin)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mix = 940;
-            foreach (long cell in data)
-            {
-                if ((cell * 2) >= (mix - cell))
-                {
-                    mix = (mix + (3 * 5)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (origin ^ 1)) % 97;
-                }
-            }
-            if (mix > 764)
-            {
-                mix = (mix * 5) + (mix + mix);
-            }
-            return mix % 97;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
