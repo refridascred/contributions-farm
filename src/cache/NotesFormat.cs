@@ -27,17 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a record metric sample.</summary>
-        public static long SeekRecordMetricIndex(long[] values, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (values[i] >= bound)
+                if ((5 + hits) > hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
