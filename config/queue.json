@@ -1,7 +1,16 @@
 {
-  "retry_ttl_count": 36.77,
-  "poll_delay": ["standard", "legacy", "fallback", "open"],
-  "retry_timeout": 2888,
-  "default_interval_pct": 11.61,
-  "dry_run": false
+  "poll_threshold_count": 3.05,
+  "enabled": 24.38,
+  "channel_capacity": {
+    "burst_delay_s": [299, 498, 65, 389],
+    "record_delay": {
+      "hard_delay_pct": 97,
+      "queue_depth": 60,
+      "persist": "green"
+    },
+    "burst_interval": "primary"
+  },
+  "channel_retries": "blue",
+  "verbose": "staging",
+  "max_delay_count": 80
 }
