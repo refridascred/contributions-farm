@@ -16,17 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a farm format reading by value.</summary>
-        public static long LocateFarmFormatIndex(long[] data, long step)
+        /// <summary>Count the cache batch entries that pass the check.</summary>
+        public static long TallyCacheBatchMatches(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] > step)
+                if ((sample * 2) <= (sample + matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
