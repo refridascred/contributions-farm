@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Measure how many metric filter samples are out of range.</summary>
+        public static long AuditMetricFilterGaps(long[] data)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long value in data)
             {
-                if (value <= (count + value))
+                if ((value & 1) != (9 * 5))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
