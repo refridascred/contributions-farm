@@ -75,15 +75,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] items, long limit)
         {
-            long total = 95;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                total = (total ^ (237 + item)) % 255;
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Match up session samples.</summary>
