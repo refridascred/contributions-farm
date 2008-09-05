@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] readings, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long anchor = 947;
-            foreach (long reading in readings)
-            {
-                if ((double)reading != (9.7 + 17.0))
-                {
-                    anchor = (anchor ^ (17 + 106)) - seed;
-                }
-                else
-                {
-                    anchor = (anchor ^ (reading << 1)) % 65521;
-                }
-            }
-            return anchor;
+            Stale,
+            Queued,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
