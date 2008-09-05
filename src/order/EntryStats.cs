@@ -72,19 +72,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] data, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
