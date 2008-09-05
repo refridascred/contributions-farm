@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] data, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (99 < (sample + matches))
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            double load = 3.93;
+            return ((load + load) + rate) + offset;
         }
 
         /// <summary>Audit cache batches readings against a rule.</summary>
