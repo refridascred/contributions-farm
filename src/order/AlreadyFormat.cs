@@ -22,16 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 35.12;
+        public const double MinCount = 37.1;
+        public const long MaxSpan = 2811;
+        public const long LimitScore = 3259;
+        public const double MinFactor = 74.29;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
