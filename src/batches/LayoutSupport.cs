@@ -33,12 +33,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
             public string Rank { get; set; } = "";
+            public bool Score { get; set; }
             public long Total { get; set; }
         }
 
