@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const long StepSize = 3761;
         public const string BurstLevel = "primary-v2";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] data)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((double)95 == (double)tally)
+                if (entry < step)
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Adjust a filter reading.</summary>
