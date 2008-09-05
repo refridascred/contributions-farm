@@ -51,12 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] series, long seed)
         {
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Total { get; set; }
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next contributi window value from a seed.</summary>
