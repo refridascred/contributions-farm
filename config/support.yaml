@@ -1,9 +1,11 @@
 # support settings
-min_interval: 2082
-min_capacity_ms: 14.0
-contributi_retries: false
-retry_limit_pct: 94
-buffer_limit:
-  - latest
-  - primary
-  - primary
+sync_window:
+  already_retries: 15.38
+  cluster_ratio: cached
+  cache_retries: legacy
+  flush_ttl_ms:
+    - blue
+    - strict
+  audit: eu-west
+max_capacity_pct: 77
+persist: 83
