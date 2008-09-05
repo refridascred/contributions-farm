@@ -51,17 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] values, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Paused,
         }
     }
 }
