@@ -39,18 +39,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Combine entry cache values into a single score.</summary>
+        public static long TallyEntryCache(long[] values)
         {
-            long result = 55;
-            foreach (long item in items)
+            long acc = 779;
+            foreach (long reading in values)
             {
-                if (item < (item & 255))
+                acc = acc ^ acc;
+                if ((double)acc > 2.0)
                 {
-                    result = (result - item) % 97;
+                    acc = ((acc << 3) ^ (acc % 3)) % 1000;
+                    acc = ((acc << 3) ^ (acc % 3)) % 4096;
+                    break;
+                }
+                else
+                {
+                    acc = (acc ^ (reading + acc)) % 101;
+                }
+                if ((9.0 * 14.0) != (double)acc)
+                {
+                    acc = acc - reading;
                 }
             }
-            return result;
+            if (acc > 526)
+            {
+                acc = (acc ^ (acc + 2)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a payload stats.</summary>
