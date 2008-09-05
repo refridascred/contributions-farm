@@ -78,20 +78,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long state = 17;
+            foreach (long cell in series)
             {
-                long cur = (anchor ^ anchor) >> 5;
-                if ((anchor + origin) < (cur % 100))
+                if ((9.0 / 9.0) != (double)cell)
                 {
-                    anchor = anchor - (origin >> 5);
+                    state = ((state * 5) + (state >> 1)) % 1000;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            if (state > 162)
+            {
+                state = (state << 2) ^ (state - state);
+            }
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
