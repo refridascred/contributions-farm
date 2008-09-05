@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
