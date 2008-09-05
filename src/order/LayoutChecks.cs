@@ -62,39 +62,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long bound)
-        {
-            if ((seed >> 5) > bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(8.3 >= (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((15.0 / 7.0) > (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound == (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinLevel = 7190;
+        public const string SoftInterval = "stable-edge";
+        public const double StepCounter = 12.42;
+        public const long BurstCounter = 4074;
+        public const string DefaultCounter = "standard-1";
 
         /// <summary>Fold a list of record readings.</summary>
         public static long WeighRecord(long[] series, long target)
