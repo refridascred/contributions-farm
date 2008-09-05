@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Grade a record context value against two limits.</summary>
+        public static long RankRecordContext(long target, long origin)
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long next = target - origin;
+            if ((9 - (-673)) > (origin + next))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.6 + 7.9) != (double)next)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Adjust a tools reading.</summary>
