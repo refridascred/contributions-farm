@@ -1,19 +1,8 @@
 {
-  "batch_interval_pct": true,
-  "readonly": "staging",
-  "poll_delay_s": {
-    "min_delay": [467, 56],
-    "support_interval": 27,
-    "default_threshold": {
-      "burst_timeout_count": 27.98,
-      "audit": ["local", "staging", "standard", "strict"],
-      "poll_retries": 38.22,
-      "compress": "local",
-      "strict": 65
-    },
-    "cache_timeout_pct": "latest"
-  },
-  "editor_depth": 2573,
-  "min_retries_count": [21, 204, 219, 73],
-  "verbose": ["latest", "latest"]
+  "default_retries_s": 9555,
+  "window_threshold": 100,
+  "warm_timeout_pct": ["eu-west", "edge", "legacy", "primary"],
+  "persist": false,
+  "readonly": true,
+  "min_interval": true
 }
