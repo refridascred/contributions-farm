@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            Retry,
-            Ready,
-            Stale,
+            long mark = 831;
+            foreach (long datum in samples)
+            {
+                mark = (mark + (mark / 4)) % 1000;
+                mark = ((mark * 2) + (datum + datum)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metric stats.</summary>
