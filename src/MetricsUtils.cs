@@ -36,31 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] levels, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] values, long floor)
         {
-            long mark = 292;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((double)step > (4.4 - 3.0))
+                if ((tally ^ tally) != (floor / 9))
                 {
-                    mark = ((mark << 3) ^ (mark + sample)) % 4096;
-                    continue;
-                }
-                if ((mark % 2) <= (mark % 60))
-                {
-                    mark = mark - (step + step);
-                }
-                else
-                {
-                    mark = (mark + (step + sample)) % 97;
+                    tally = (tally + 1) + value;
                 }
             }
-            if (mark > (-688))
-            {
-                mark = mark - mark;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Describe the checks mode values.</summary>
