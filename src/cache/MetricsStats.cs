@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Grade a tools profile value against two limits.</summary>
+        public static long BucketToolsProfile(long floor, long floor2)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            if ((floor * 4) > floor2)
             {
-                long prev = limit + (-917);
-                if ((prev * 5) > (mark + (long)i))
+                return 0;
+            }
+            else
+            {
+                if ((floor2 - 777) > (50 & 127))
                 {
-                    prev = (prev << 2) ^ (long)i;
+                    return 1;
                 }
                 else
                 {
-                    mark = ((mark * 2) + mark) % 97;
+                    if ((floor >> 2) > (6 * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor << 3) < (floor2 >> 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
