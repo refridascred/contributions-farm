@@ -1,10 +1,6 @@
-id,count,region,rank
-1,911,61.53,primary
-2,13.01,433,324
-3,62.43,legacy,blue
-4,latest,486,45.79
-5,264,local,943
-6,36.56,358,358
-7,27,0,180
-8,525,799,open
-9,stable,840,staging
+id,count,level,state,label
+1,75,409,edge,local
+2,legacy,618,4.12,259
+3,481,67.48,183,788
+4,456,655,408,565
+5,open,0.15,5.23,617
