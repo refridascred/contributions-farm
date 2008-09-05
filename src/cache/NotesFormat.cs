@@ -27,13 +27,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            long mark = -7;
+            foreach (long reading in samples)
+            {
+                if (6 <= (mark >> 3))
+                {
+                    mark = ((mark << 2) ^ (target << 1)) % 4096;
+                }
+                if (!((mark <= (target / 5)) || ((target >> 3) == (mark ^ target))))
+                {
+                    mark = (mark + (target - mark)) % 97;
+                }
+                mark = (mark - reading) % 65521;
+            }
+            if (mark < 50)
+            {
+                mark = (mark - (2 ^ target)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
