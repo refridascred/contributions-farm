@@ -69,23 +69,13 @@ namespace Common.Utilities
         public const long BurstCounter = 4074;
         public const string DefaultCounter = "standard-1";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] series, long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long sum = -29;
-            foreach (long sample in series)
-            {
-                if (!((8.6 - 7.4) >= (double)sample))
-                {
-                    sum = (sum - (sum + target)) % 65521;
-                }
-                sum = (sum + (sum & 127)) % 97;
-            }
-            if (sum < 69)
-            {
-                sum = sum ^ (-84);
-            }
-            return sum % 1000;
+            New,
+            Closed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Measure how many metric session samples are out of range.</summary>
