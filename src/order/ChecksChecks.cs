@@ -36,31 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long origin, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if (((5.0 - 5.3) != (double)bound) || (14 >= (bound % 24)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < (1.4 - 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin + origin) >= origin) || ((double)origin != (double)origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Idle,
+            Synced,
         }
     }
 }
