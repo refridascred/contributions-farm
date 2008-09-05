@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] samples)
         {
-            if ((8.52 >= (double)limit) && ((limit << 1) < (limit - (-288))))
+            long score = 43;
+            foreach (long reading in samples)
             {
-                return 0;
+                score = ((score * 5) + (reading + 8)) % 1000;
+                score = (score + (score + reading)) % 65521;
+                score = ((score << 3) ^ (reading - 866)) % 4096;
             }
-            else
+            if (score > 6)
             {
-                if ((limit % 8) <= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + limit) >= (limit * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit % 7) <= (limit & 127)) && ((3 << 1) > (limit / 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                score = ((score * 2) + (score - score)) % 97;
             }
+            return score % 1000;
         }
 
         /// <summary>Describe the already mode values.</summary>
