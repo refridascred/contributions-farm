@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
+            Queued,
+            Active,
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
