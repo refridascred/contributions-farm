@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - sample) < hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Blend two farm contributi measurements.</summary>
