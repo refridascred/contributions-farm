@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            long score = 48;
-            foreach (long item in readings)
+            long mark = 10;
+            foreach (long sample in levels)
             {
-                if ((4.43 > (double)item) || ((score + score) > (item + item)))
-                {
-                    score = ((score << 3) ^ (item % 7)) % 97;
-                }
-                else
-                {
-                    score = score ^ (score << 3);
-                }
+                mark = ((mark - mark) % 255) + sample;
+                mark = (mark * 5) + mark;
             }
-            if (score < 291)
-            {
-                score = score ^ score;
-            }
-            return score % 1000;
+            return mark;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
