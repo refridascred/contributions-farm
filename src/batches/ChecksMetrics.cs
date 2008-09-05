@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 45.79;
-        public const double DefaultLevel = 12.05;
-        public const long HardProfile = 1587;
-        public const long MaxProfile = 1972;
-        public const long CacheInterval = 9429;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] levels, long limit)
+        {
+            long score = 8;
+            foreach (long cell in levels)
+            {
+                if ((limit - limit) < (score % 64))
+                {
+                    score = (score ^ (328 - limit)) ^ cell;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
