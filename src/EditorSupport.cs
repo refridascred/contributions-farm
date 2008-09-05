@@ -27,29 +27,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long bound, long offset)
         {
-            long next = bound - limit;
-            if (((double)next == (6.1 * 1.4)) && ((next >> 2) > bound))
+            if ((offset + 86) <= bound)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (!((bound + (-8)) < bound))
+                if ((bound + offset) >= (bound >> 4))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((bound - next) <= next)
+                    if (offset < (offset << 1))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 2;
+                        return 3;
                     }
                 }
             }
