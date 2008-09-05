@@ -1,5 +1,7 @@
 {
-  "batches_depth": 40.77,
-  "min_window_count": 100,
-  "cache_depth_ms": 53
+  "burst_window_count": 500,
+  "sync_delay_s": "open",
+  "retry_timeout": "strict",
+  "retry_delay": 492,
+  "hard_delay_count": ["local", "strict", "open", "open"]
 }
