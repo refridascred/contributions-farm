@@ -50,26 +50,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = (anchor << 2) ^ ((long)i2 + anchor);
-                    anchor = (anchor << 3) ^ 942;
-                }
-                if (1 >= floor)
-                {
-                    long delta = (long)i >> 3;
-                    anchor = ((anchor * 3) + (delta * 2)) % 4096;
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Combine support format values into a single score.</summary>
