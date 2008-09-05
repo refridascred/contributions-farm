@@ -23,10 +23,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftInterval = 1750;
-        public const long WindowChannel = 874;
-        public const string BurstChannel = "legacy-v2";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepFactor = "legacy-edge";
+        public const double MinSession = 86.61;
+        public const long HardRatio = 6209;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryBounds(long[] readings, long limit)
