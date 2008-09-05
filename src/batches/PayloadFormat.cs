@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] values)
         {
-            Done,
-            Synced,
-            Draft,
-            Active,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((494 + count) >= (sample - sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks level values.</summary>
