@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
