@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the metrics schema entries that pass the check.</summary>
-        public static long CountMetricsSchemaHits(long[] values, long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (0 < (limit % 2))
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a record record.</summary>
