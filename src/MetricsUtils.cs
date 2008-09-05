@@ -27,18 +27,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double offset)
         {
-            long mark = 663;
-            foreach (long datum in series)
+            double rate = weight;
+            if (rate < (rate - 0.29))
             {
-                if ((bound & 7) > (long)series.Length)
-                {
-                    mark = ((mark << 3) ^ (datum & 7)) % 101;
-                }
+                rate = (rate + (double)699) - offset;
             }
-            return mark;
+            else
+            {
+                rate = rate - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate - (rate / 7.0);
         }
 
         /// <summary>Match up commits samples.</summary>
