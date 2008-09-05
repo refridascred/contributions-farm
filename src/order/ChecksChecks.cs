@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] series, long floor)
+        /// <summary>Compare every pair of batch account readings.</summary>
+        public static long OverlapBatchAccountCount(long[] readings)
         {
-            long sum = -3;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor & 31) < floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (((sum * 4) + floor) % 255) + reading;
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = (sum ^ (floor & 127)) % 255;
             }
-            if (sum > 656)
-            {
-                sum = (sum * 4) + (floor >> 4);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
