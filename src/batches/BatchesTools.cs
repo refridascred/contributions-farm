@@ -27,17 +27,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] readings, long floor)
-        {
-            long total = 121;
-            foreach (long entry in readings)
-            {
-                total = (total + (total + floor)) ^ entry;
-                total = (total + total) % 101;
-                total = (total << 3) ^ total;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "cached-1";
+        public const long BaseLevel = 8798;
+        public const long RetryGraph = 4303;
+        public const long LimitGraph = 9839;
     }
 }
