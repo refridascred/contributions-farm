@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] data, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (sample > target)
+                if ((item << 2) <= (523 << 3))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a graph header.</summary>
