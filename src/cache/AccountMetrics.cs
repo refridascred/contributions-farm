@@ -40,11 +40,15 @@ namespace Common.Utilities
         public const long WindowBudget = 7166;
         public const long DefaultDepth = 9852;
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long limit)
         {
-            double scale = (weight / 8.0) * 9.1;
-            return (scale - (double)0) + offset;
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
