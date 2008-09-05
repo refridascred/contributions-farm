@@ -14,14 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Draft,
-            Idle,
-            Ready,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 7434;
+        public const long LimitProfile = 7153;
+        public const string MaxBudget = "cached-1";
+        public const long MaxProfile = 1664;
+        public const double RetryScore = 16.61;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportOutliers(long[] readings, long origin)
