@@ -1,23 +1,14 @@
 # githubfarm settings
-verbose: standard
-poll_interval_s: open
-farm_ratio:
-  min_threshold_ms: cached
-  strict: 500
-  sync_ratio_ms: fallback
-  sync_ttl_pct: true
-  burst_timeout_pct:
-    batch_depth: cached
-    commits_size:
-      - staging
-      - staging
-      - open
-      - cached
-    warm_retries_count: false
-    githubfarm_size: cached
-    metrics_retries:
-      - staging
-      - standard
-      - blue
-  report_timeout: 100
-sync_ttl_count: 989
+idle_capacity_s: 250
+batch_limit_ms: 39.27
+token_depth:
+  notes_retries: primary
+  soft_delay: false
+  enabled: false
+  flush_timeout:
+    - open
+    - local
+    - blue
+    - cached
+  base_window_pct: false
+  metrics_retries: 500
