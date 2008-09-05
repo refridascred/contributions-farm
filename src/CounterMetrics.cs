@@ -14,17 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
+                if (0.46 >= (double)datum)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a report reading.</summary>
