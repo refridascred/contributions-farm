@@ -33,9 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseCounter = 26.63;
-        public const double MaxScore = 66.05;
-        public const string RetryCounter = "open";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Closed,
+            Queued,
+            Idle,
+            Synced,
+        }
     }
 }
