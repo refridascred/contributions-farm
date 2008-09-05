@@ -54,21 +54,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "fallback";
+        public const long StepLevel = 1626;
+        public const long LimitPayload = 402;
+        public const long BurstLevel = 6767;
     }
 }
