@@ -87,11 +87,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double scale, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            double rate = floor;
-            return (rate + (floor * 1.0)) + scale;
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((double)28 == (double)value) && ((value + (-80)) <= (6 - matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
