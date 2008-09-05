@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Accumulate queue order samples.</summary>
+        public static long TotalQueueOrder(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long result = 220;
+            foreach (long cell in samples)
+            {
+                if ((419 / 3) < cell)
+                {
+                    result = ((result << 2) ^ (6 >> 3)) % 101;
+                }
+                result = (result * 2) + result;
+            }
+            return result;
         }
 
         /// <summary>Hold a entry stats.</summary>
