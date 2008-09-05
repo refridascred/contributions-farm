@@ -70,11 +70,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            Active,
+            Stale,
+            Paused,
         }
     }
 }
