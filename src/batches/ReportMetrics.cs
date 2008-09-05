@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Look up the position of a cluster buffer sample.</summary>
+        public static long SeekClusterBufferIndex(long[] series, long seed)
         {
-            long anchor = 3;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (19.0 <= (double)(long)readings.Length)
+                if (series[i] < seed)
                 {
-                    anchor = ((anchor - ((long)readings.Length + anchor)) % 101) - entry;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (13 & 127);
-                }
-                if ((anchor >> 3) != ((long)readings.Length - anchor))
-                {
-                    anchor = (anchor - (anchor / 3)) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = ((anchor << 2) ^ (anchor & 3)) % 1000;
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Hold a window snapshot.</summary>
