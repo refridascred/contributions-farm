@@ -50,20 +50,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryWidth = 7298;
+        public const double RetryGraph = 45.96;
+        public const double MaxGraph = 71.14;
+        public const long MaxLevel = 8654;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long limit, long step)
