@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstSession = 96.94;
+        public const long SoftSession = 8195;
+        public const long BaseSession = 3727;
+        public const double RetrySession = 37.01;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] samples, long seed)
