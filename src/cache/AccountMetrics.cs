@@ -76,19 +76,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            double mean = 2.22;
-            if (mean >= (mean * 6.6))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (1.32 - 1.93)) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + mean;
+            return hits;
         }
     }
 }
