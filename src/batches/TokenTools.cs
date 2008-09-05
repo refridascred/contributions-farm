@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 2391;
-        public const long CacheMetric = 6477;
-        public const long BatchTimeout = 4466;
-        public const long HardMetric = 3605;
-        public const long BatchLevel = 4179;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseContext = 62.33;
+        public const long StepContext = 4028;
+        public const string StepInterval = "open-edge";
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportGaps(long[] levels, long limit)
