@@ -23,16 +23,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftInterval = 1750;
+        public const long WindowChannel = 874;
+        public const string BurstChannel = "legacy-v2";
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryBounds(long[] readings, long limit)
