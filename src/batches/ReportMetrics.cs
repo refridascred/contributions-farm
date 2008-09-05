@@ -32,32 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values, long offset)
         {
-            long next = offset - limit;
-            if ((offset - next) > (limit * 4))
+            long result = 776;
+            foreach (long entry in values)
             {
-                return 0;
+                if (!(((8.3 / 6.0) != (double)offset) || (9.0 <= (double)entry)))
+                {
+                    result = ((result << 3) ^ 0) % 255;
+                }
+                result = result - result;
             }
-            else
+            if (result > 71)
             {
-                if ((double)offset >= (3.1 / 9.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset < limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                result = result ^ (result & 31);
             }
+            return result % 4096;
         }
     }
 }
