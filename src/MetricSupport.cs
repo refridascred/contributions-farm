@@ -16,17 +16,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Find the first buffer cache entry that matches the target.</summary>
-        public static long LookupBufferCacheIndex(long[] data, long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((data[i] == limit) && ((data[i] % 5) != 0))
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
