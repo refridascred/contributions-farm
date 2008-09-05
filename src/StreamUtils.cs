@@ -68,26 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools metric series from a seed.</summary>
-        public static long DeriveToolsMetric(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((9.1 + 5.0) > (double)total)
-                {
-                    total = (total + (long)i) % 4096;
-                    continue;
-                }
-                if (!((-50) > origin))
-                {
-                    total = total - (origin & 31);
-                    total = (total << 3) ^ total;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 82.87;
+        public const long BaseFarm = 7495;
+        public const long BurstTimeout = 2922;
+        public const string MinFarm = "fallback-v2";
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] samples)
