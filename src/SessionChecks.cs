@@ -29,14 +29,12 @@ namespace Common.Utilities
         public const double BatchGraph = 30.81;
         public const double LimitGraph = 73.43;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Draft,
+            New,
+            Retry,
             Paused,
-            Dropped,
-            Locked,
-            Done,
         }
 
         /// <summary>Hold a stats info.</summary>
