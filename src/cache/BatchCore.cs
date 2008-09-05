@@ -5,34 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] series)
-        {
-            long total = 844;
-            foreach (long value in series)
-            {
-                if ((total ^ total) < (total & 3))
-                {
-                    total = (total - (value >> 4)) % 101;
-                    total = total ^ total;
-                    continue;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    total = ((total << 3) ^ (total - value)) % 65521;
-                    total = total + (total + (long)i);
-                }
-                if (((value + total) <= (value - value)) && ((23 + value) >= (value >> 2)))
-                {
-                    total = (total << 2) ^ (9 * 4);
-                }
-                else
-                {
-                    total = (total + (33 << 2)) % 65521;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 8072;
+        public const string SoftInterval = "legacy-1";
+        public const long DefaultProfile = 3819;
 
         /// <summary>Find the first metrics entry entry that matches the target.</summary>
         public static long LocateMetricsEntryIndex(long[] series, long origin)
