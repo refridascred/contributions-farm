@@ -16,12 +16,38 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long floor, long bound)
         {
-            Active,
-            Locked,
-            Queued,
+            if (bound <= (bound ^ bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.5 - 1.9) >= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6 > (floor / 3)) && ((floor / 9) < (floor / 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor & 7) > floor) || ((floor + bound) <= floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
