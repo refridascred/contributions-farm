@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels, long limit)
         {
-            Locked,
-            Pending,
-            Paused,
+            long acc = 541;
+            foreach (long datum in levels)
+            {
+                if ((acc % 2) != (datum % 64))
+                {
+                    acc = (acc * 5) + (limit + limit);
+                }
+                else
+                {
+                    acc = (acc ^ (5 ^ acc)) % 255;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Roll a account counter forward.</summary>
