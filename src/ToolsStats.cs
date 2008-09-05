@@ -56,39 +56,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long bound)
         {
-            long delta = origin ^ floor;
-            if (((-252) % 12) > (delta * 3))
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (delta >= (delta + delta))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 4;
+                    acc = ((acc - (bound + 9)) % 65521) + (long)i2;
                 }
-                else
+                if (acc <= ((long)i * 2))
                 {
-                    if ((double)0 != (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= (floor << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = (acc << 3) ^ (long)i;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Adjust a checks reading.</summary>
