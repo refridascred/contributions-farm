@@ -1,6 +1,5 @@
 {
-  "window_ratio": "local",
-  "window_capacity": 2111,
-  "persist": true,
-  "schema_capacity": false
+  "audit": 48.24,
+  "sync_limit_ms": "primary",
+  "batch_capacity": 67
 }
