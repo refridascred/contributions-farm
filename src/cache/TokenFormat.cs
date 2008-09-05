@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] readings, long limit)
+        /// <summary>Count the token record entries that pass the check.</summary>
+        public static long AuditTokenRecordOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
+                if ((tally - tally) < tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - value) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
