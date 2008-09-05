@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long floor, long origin)
+        /// <summary>Combine tools account values into a single score.</summary>
+        public static long WeighToolsAccount(long[] items)
         {
-            long step = floor ^ origin;
-            if (!(step < (origin & 31)))
+            long score = -718;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step != (double)floor)
+                score = score + 66;
+                if ((double)value < (4.55 / 6.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + 3) > step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (3.8 < (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
