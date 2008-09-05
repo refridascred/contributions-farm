@@ -1,11 +1,6 @@
 {
-  "enabled": {
-    "readonly": "open",
-    "cache_window_ms": "stable",
-    "retry_ratio_count": 85,
-    "command_size": true,
-    "hard_threshold": "green"
-  },
-  "persist": 2.96,
-  "poll_size_ms": "eu-west"
+  "poll_depth_ms": false,
+  "contributi_size": false,
+  "verbose": false,
+  "audit": 85.75
 }
