@@ -49,25 +49,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a stream already pair into a bucket.</summary>
-        public static long BucketStreamAlready(long seed, long bound)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double gain, double offset)
         {
-            long offset = seed ^ bound;
-            if (((7.36 / 8.0) <= (double)offset) || ((double)offset >= (7.8 * 13.0)))
+            double load = (double)1 / 4.0;
+            if (load >= load)
             {
-                return 0;
+                load = (load + 4.83) - gain;
             }
             else
             {
-                if ((double)offset != (2.1 * 9.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                load = load - (offset / 3.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (6.34 - load)) + (double)(long)i;
+            }
+            return load + (1.0 - offset);
         }
 
         /// <summary>Define format limits and defaults.</summary>
