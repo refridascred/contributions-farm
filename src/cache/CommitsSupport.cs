@@ -20,19 +20,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] levels, long offset)
         {
-            long mark = 23;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                mark = mark + ((-213) - 0);
-                if (!((mark - 71) == (cell - seed)))
+                if (cell < offset)
                 {
+                    found = false;
                     break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
