@@ -29,19 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] values, long target)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
