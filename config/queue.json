@@ -1,6 +1,10 @@
 {
-  "record_capacity": ["green", "primary"],
-  "cache_timeout_pct": 26,
-  "batch_timeout": 61,
-  "warm_window_s": 9272
+  "base_ttl_pct": {
+    "profile_limit": 49.12,
+    "contributi_limit": false,
+    "persist": ["edge", "staging"]
+  },
+  "burst_timeout_pct": 2867,
+  "strict": 2.07,
+  "cache_window_count": "fallback"
 }
