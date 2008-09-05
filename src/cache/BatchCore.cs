@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long target)
+        /// <summary>Count batches format pairs that satisfy a relation.</summary>
+        public static long PairBatchesFormatCount(long[] readings)
         {
-            long slot = limit + target;
-            if ((target - (-21)) != (5 - 48))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((slot <= (target + limit)) || ((6 ^ slot) > target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit >> 4) >= (slot << 3)) || (limit < (limit & 31)))
+                    if ((readings[i] ^ readings[j]) == 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((slot + slot) != (slot * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
