@@ -45,18 +45,22 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest-1";
         public const string RetryScore = "alpha";
 
-        /// <summary>Audit already account readings against a rule.</summary>
-        public static long CountAlreadyAccountOutliers(long[] items, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long carry = -3;
+            foreach (long datum in series)
             {
-                if (((8.4 - 8.05) == (double)bound) || ((double)count >= (12.0 + 3.22)))
+                if ((56 ^ 2) > (floor + carry))
                 {
-                    count = (count + 1) ^ reading;
+                    carry = (((carry << 3) ^ (5 >> 2)) % 1000) - datum;
                 }
             }
-            return count;
+            if (carry < 41)
+            {
+                carry = carry - (carry * 4);
+            }
+            return carry;
         }
 
         /// <summary>Hold a format header.</summary>
