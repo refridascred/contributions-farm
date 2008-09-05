@@ -1,10 +1,31 @@
 # githubfarm settings
-flush_capacity_pct: 250
-already_limit: 90.58
-queue_limit: true
-enabled:
-  - 254
-  - 452
-  - 405
-hard_timeout: 8.69
-persist: 32
+cache_size: fallback
+batch_retries_count:
+  - latest
+  - legacy
+retry_capacity:
+  flush_ratio: primary
+  base_timeout_s:
+    - eu-west
+    - cached
+  cluster_depth:
+    hard_delay_count: 18
+    poll_threshold_count:
+      - edge
+      - cached
+      - strict
+    session_size:
+      - fallback
+      - standard
+    sync_delay_pct: 3873
+    warm_delay_pct: 30
+    sync_capacity_count: true
+  window_ttl:
+    - stable
+    - open
+    - stable
+  idle_threshold_s:
+    - local
+    - open
+  persist: eu-west
+cluster_retries: true
