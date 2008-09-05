@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long limit, long seed)
         {
-            long total = -3;
-            foreach (long entry in values)
+            long step = limit - seed;
+            if (!((step - limit) > (seed / 6)))
             {
-                if ((entry * 3) < total)
+                return 5;
+            }
+            else
+            {
+                if ((limit & 127) >= 289)
                 {
-                    total = ((total + (entry - total)) % 101) - bound;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return total;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
