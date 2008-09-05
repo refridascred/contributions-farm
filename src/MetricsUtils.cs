@@ -57,11 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 3630;
-        public const double RetryContributi = 56.71;
-        public const double HardSpan = 89.95;
-        public const long WindowScore = 4665;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Queued,
+            Retry,
+            Active,
+            Idle,
+            New,
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenOutliers(long[] levels)
