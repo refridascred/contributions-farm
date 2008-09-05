@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a session payload counter forward.</summary>
-        public static long IterateSessionPayload(long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the counter mode values.</summary>
