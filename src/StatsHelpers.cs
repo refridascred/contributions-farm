@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] > seed)
                 {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
