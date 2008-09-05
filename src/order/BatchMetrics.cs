@@ -31,22 +31,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] values, long step)
+        /// <summary>Compare every pair of token editor readings.</summary>
+        public static long PairTokenEditorCount(long[] samples)
         {
-            long sum = 4;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step >> 5) < (sum & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (step * 2)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (3 - value)) % 65521;
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
