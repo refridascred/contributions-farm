@@ -46,15 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] samples, long limit)
         {
-            long anchor = 30;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor ^ (long)readings.Length) % 255) ^ entry;
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
