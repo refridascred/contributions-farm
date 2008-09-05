@@ -62,15 +62,11 @@ namespace Common.Utilities
             return gain - (double)68;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 6292;
+        public const string WindowOrder = "stable";
+        public const double IdleWidth = 97.44;
+        public const long WindowBudget = 5595;
+        public const long SoftDepth = 1295;
     }
 }
