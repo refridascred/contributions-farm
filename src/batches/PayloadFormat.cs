@@ -45,11 +45,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two record githubfarm measurements.</summary>
-        public static double SmoothRecordGithubfarm(double bias, double bias2)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] readings, long target)
         {
-            double ratio = (bias2 / 4.0) * 8.2;
-            return (ratio + (7.5 * 12.0)) + bias;
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally * 4) <= (target * 4))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
