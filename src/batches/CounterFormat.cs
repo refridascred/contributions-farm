@@ -28,19 +28,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] samples, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!(origin >= 953))
+                if ((item + origin) != (611 & 63))
                 {
-                    result = (result << 2) ^ (long)i;
+                    tally = tally + 2;
                 }
-                result = ((result * 2) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
