@@ -23,11 +23,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepInterval = 36.36;
-        public const long BatchDepth = 3870;
-        public const double DefaultProfile = 7.61;
-        public const double WindowLevel = 79.24;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of farm already entries.</summary>
         public static long ScoreFarmAlready(long[] items, long seed)
