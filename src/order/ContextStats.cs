@@ -22,12 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 2849;
+        public const string IdleSpan = "stable-1";
+        public const string BurstSession = "primary";
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
