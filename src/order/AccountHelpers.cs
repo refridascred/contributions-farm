@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] series, long offset)
+        /// <summary>Check that every already context entry stays within the limit.</summary>
+        public static bool GuardAlreadyContextRange(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                if (item != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the already status values.</summary>
