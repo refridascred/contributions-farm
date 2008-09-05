@@ -1,31 +1,18 @@
 # githubfarm settings
-cache_size: fallback
-batch_retries_count:
-  - latest
-  - legacy
-retry_capacity:
-  flush_ratio: primary
-  base_timeout_s:
-    - eu-west
-    - cached
-  cluster_depth:
-    hard_delay_count: 18
-    poll_threshold_count:
-      - edge
-      - cached
-      - strict
-    session_size:
+retry_threshold:
+  record_delay: true
+  retry_depth_count: 7.29
+  cache_interval_s: 85
+  base_threshold_pct:
+    max_ratio_count: 2255
+    batch_capacity_count:
+      - primary
       - fallback
-      - standard
-    sync_delay_pct: 3873
-    warm_delay_pct: 30
-    sync_capacity_count: true
-  window_ttl:
-    - stable
-    - open
-    - stable
-  idle_threshold_s:
-    - local
-    - open
-  persist: eu-west
-cluster_retries: true
+    farm_delay: false
+  token_depth: 2004
+strict: 18.31
+warm_ratio:
+  - local
+  - staging
+max_retries_ms: true
+poll_capacity_pct: strict
