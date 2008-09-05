@@ -29,23 +29,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] values)
-        {
-            long score = 44;
-            foreach (long reading in values)
-            {
-                if ((reading >> 2) <= (83 + 976))
-                {
-                    score = (score + ((long)values.Length * 5)) % 4096;
-                }
-            }
-            if (score > (-638))
-            {
-                score = (score - (score * 2)) % 4096;
-            }
-            return score % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseSize = 2501;
+        public const double MinSize = 31.3;
+        public const long MaxStats = 1789;
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] levels)
