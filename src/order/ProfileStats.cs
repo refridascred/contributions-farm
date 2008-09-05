@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a payload options.</summary>
