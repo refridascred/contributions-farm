@@ -31,22 +31,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)step <= (5.0 * 0.53))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a metric reading.</summary>
