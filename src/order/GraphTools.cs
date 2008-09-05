@@ -79,10 +79,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 4643;
-        public const double IdleCount = 84.71;
-        public const long MinRecord = 7032;
-        public const string CacheRecord = "legacy-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "fallback";
+        public const long HardCluster = 8215;
+        public const long StepCluster = 7515;
     }
 }
