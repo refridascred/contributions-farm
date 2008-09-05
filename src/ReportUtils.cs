@@ -22,13 +22,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Failed,
+            Dropped,
             Idle,
-            Locked,
             Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
