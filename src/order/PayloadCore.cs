@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a command layout counter forward.</summary>
-        public static long RollCommandLayout(long target)
+        /// <summary>Match up contributi batch samples.</summary>
+        public static long OverlapContributiBatchCount(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result ^ (target ^ result);
-                result = ((result * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
