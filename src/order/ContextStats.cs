@@ -23,22 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] series, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((offset & 255) > matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
