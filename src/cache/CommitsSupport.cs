@@ -68,19 +68,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm contributi readings against a bound.</summary>
-        public static bool CheckGithubfarmContributiBounds(long[] levels, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long bound, long seed)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long slot = bound ^ seed;
+            if (((13 + bound) == (slot >> 5)) && ((bound * 5) >= (slot << 3)))
             {
-                if (reading <= step)
+                return 6;
+            }
+            else
+            {
+                if ((76 << 1) > (slot << 2))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (bound > (0 + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank format input into a small class.</summary>
