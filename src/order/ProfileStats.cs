@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double bias = (double)((-13) ^ 140);
-            if (bias > 8.49)
-            {
-                bias = (bias - (ratio * 6.2)) + span;
-            }
-            return bias + bias;
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
