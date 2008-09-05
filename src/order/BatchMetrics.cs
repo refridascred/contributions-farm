@@ -69,21 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)item != (5.0 * 2.29))
                 {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of order farm readings.</summary>
