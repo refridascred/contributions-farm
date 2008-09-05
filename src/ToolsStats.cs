@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items, long seed)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            long acc = 77;
+            foreach (long value in items)
+            {
+                if ((seed / 9) == (acc / 6))
+                {
+                    acc = ((acc * 4) + (acc & 1)) - value;
+                }
+            }
+            if (acc < 455)
+            {
+                acc = (acc ^ (seed << 3)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a session record.</summary>
