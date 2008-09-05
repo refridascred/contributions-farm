@@ -58,13 +58,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Audit metric buffer readings against a rule.</summary>
+        public static long CountMetricBufferOutliers(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally & 7) <= (value * 2))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
