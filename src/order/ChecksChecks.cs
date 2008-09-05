@@ -43,17 +43,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias;
+            if (gain >= (bias + 12.0))
             {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (ratio + 1.28);
             }
-            return -1;
+            return gain + gain;
         }
     }
 }
