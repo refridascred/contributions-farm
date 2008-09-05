@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
