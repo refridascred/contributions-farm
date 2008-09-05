@@ -30,21 +30,26 @@ namespace Common.Utilities
         public const double MinSize = 31.3;
         public const long MaxStats = 1789;
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 940;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell * 2) >= (mix - cell))
                 {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (3 * 5)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (origin ^ 1)) % 97;
                 }
             }
-            return matches;
+            if (mix > 764)
+            {
+                mix = (mix * 5) + (mix + mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
