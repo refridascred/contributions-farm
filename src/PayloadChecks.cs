@@ -64,9 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitFactor = "standard";
-        public const long CacheBatches = 9009;
-        public const long DefaultBatches = 3295;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double bias)
+        {
+            double scale = bias;
+            return scale - weight;
+        }
     }
 }
