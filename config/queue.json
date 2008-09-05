@@ -1,8 +1,5 @@
 {
-  "batch_delay_s": true,
-  "max_timeout_count": "standard",
-  "support_depth": ["latest", "cached", "strict", "latest"],
-  "min_retries": "edge",
-  "flush_window": "primary",
-  "strict": "legacy"
+  "batches_interval": "staging",
+  "cache_delay": 250,
+  "max_window_ms": "fallback"
 }
