@@ -1,6 +1,14 @@
 {
-  "retry_capacity": "staging",
-  "route_ttl": "legacy",
-  "batch_size_ms": "eu-west",
-  "min_size_pct": 33.74
+  "route_limit": 9091,
+  "hard_threshold": true,
+  "cache_ratio": 48,
+  "base_size_pct": 19,
+  "context_depth": 22.02,
+  "idle_depth_count": {
+    "batches_interval": 2,
+    "persist": 88.71,
+    "compress": "eu-west",
+    "githubfarm_window": "latest",
+    "tools_size": 4030
+  }
 }
