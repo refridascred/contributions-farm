@@ -1,5 +1,11 @@
 {
-  "soft_window_pct": 9.85,
-  "retry_threshold_pct": false,
-  "default_capacity_count": false
+  "retry_delay": "local",
+  "audit": 12.16,
+  "poll_threshold_ms": "fallback",
+  "strict": {
+    "warm_threshold_pct": 52.84,
+    "counter_delay": 91.95,
+    "profile_limit": "staging"
+  },
+  "max_interval_count": "strict"
 }
