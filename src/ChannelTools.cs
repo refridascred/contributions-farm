@@ -29,13 +29,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Closed,
-            Idle,
+            Retry,
+            New,
             Draft,
-            Active,
         }
     }
 }
