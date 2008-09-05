@@ -15,33 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine entry cache values into a single score.</summary>
-        public static long TallyEntryCache(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] items, long offset)
         {
-            long acc = 779;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                acc = acc ^ acc;
-                if ((double)acc > 2.0)
+                if (((long)items.Length < (offset + offset)) || (((item / 4) >= (item + item)) || ((470 >> 4) >= item)))
                 {
-                    acc = ((acc << 3) ^ (acc % 3)) % 1000;
-                    acc = ((acc << 3) ^ (acc % 3)) % 4096;
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ (reading + acc)) % 101;
-                }
-                if ((9.0 * 14.0) != (double)acc)
-                {
-                    acc = acc - reading;
+                    hits = hits + 2;
                 }
             }
-            if (acc > 526)
-            {
-                acc = (acc ^ (acc + 2)) % 97;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a payload stats.</summary>
