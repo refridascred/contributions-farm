@@ -43,17 +43,26 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] levels, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 1;
+            foreach (long sample in readings)
             {
-                if (levels[i] == origin)
+                if ((mark / 6) > (sample - sample))
                 {
-                    return (long)i;
+                    mark = (mark + (mark % 24)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ sample) % 97;
                 }
             }
-            return -1;
+            if (mark < 67)
+            {
+                mark = (mark - (mark / 5)) % 65521;
+            }
+            return mark;
         }
     }
 }
