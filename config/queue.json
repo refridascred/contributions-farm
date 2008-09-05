@@ -1,6 +1,8 @@
 {
-  "warm_limit_count": 1024,
-  "session_size": "open",
-  "cache_interval_pct": 77.52,
-  "verbose": [481, 322]
+  "batch_timeout_ms": 1024,
+  "base_timeout": "edge",
+  "poll_interval_ms": 88.83,
+  "min_retries": "green",
+  "counter_interval": false,
+  "retry_ttl_count": 39.27
 }
