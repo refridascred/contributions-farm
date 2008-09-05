@@ -1,10 +1,17 @@
 {
-  "graph_interval": "stable",
-  "metrics_window": false,
-  "order_ttl": 44.48,
-  "poll_ttl_ms": {
-    "commits_ttl": ["green", "staging", "primary"],
-    "compress": false,
-    "readonly": "strict"
-  }
+  "context_window": {
+    "retry_ttl_pct": "edge",
+    "route_size": ["green", "staging", "standard"],
+    "strict": true
+  },
+  "compress": 9632,
+  "min_timeout": {
+    "min_ttl_count": "stable",
+    "record_ratio": ["open", "eu-west"],
+    "compress": ["stable", "strict", "standard", "legacy"],
+    "soft_depth_pct": "open",
+    "warm_ttl_ms": 6799,
+    "stream_ttl": 57.1
+  },
+  "base_window": 43.0
 }
