@@ -32,15 +32,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph counter counter forward.</summary>
-        public static long RollGraphCounter(long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long limit, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            if (((double)step != (5.8 * 1.8)) || ((double)step >= (4.25 + 0.58)))
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((limit >> 3) <= (limit - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
