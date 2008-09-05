@@ -19,39 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long seed, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] items, long limit)
         {
-            long edge = seed + origin;
-            if (((139 - seed) >= edge) || ((seed << 3) == (9 % 12)))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin % 8) < edge) || ((origin << 3) >= 0))
+                if (sample >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - 73) >= edge)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)edge == (9.0 + 4.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of buffer channel entries.</summary>
