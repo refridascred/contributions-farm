@@ -46,15 +46,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine checks contributi values into a single score.</summary>
-        public static long FoldChecksContributi(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] levels, long target)
         {
-            long carry = 9;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry << 3) ^ (item - carry)) % 255;
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
