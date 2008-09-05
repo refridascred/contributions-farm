@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((seen ^ (long)items.Length) < seen)
+                if ((double)hits > (double)value)
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
