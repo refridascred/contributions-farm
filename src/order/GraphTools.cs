@@ -45,13 +45,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long bound, long offset)
         {
-            Pending,
-            Done,
-            Synced,
-            Active,
+            if ((double)414 >= (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((519 * 5) >= (bound % 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset == (double)371)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset / 6) > (14 + 87))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
