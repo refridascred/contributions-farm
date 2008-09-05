@@ -1,7 +1,7 @@
 # entry settings
-enabled: true
-retry_timeout_pct: 100
-layout_depth: true
-channel_retries: true
-max_delay: 50.16
-verbose: false
+batch_ratio_s: 93.63
+record_delay: primary
+strict: latest
+idle_limit:
+  - 275
+  - 317
