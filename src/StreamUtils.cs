@@ -74,18 +74,15 @@ namespace Common.Utilities
         public const long BurstTimeout = 2922;
         public const string MinFarm = "fallback-v2";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long total = 95;
+            foreach (long item in samples)
             {
-                if (((long)samples.Length / 7) > sample)
-                {
-                    hits = hits + 1;
-                }
+                total = (total ^ (237 + item)) % 255;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
