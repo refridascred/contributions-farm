@@ -34,13 +34,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long seed, long floor)
         {
-            Failed,
-            Queued,
-            Retry,
-            Done,
+            if (!(floor <= (floor + 849)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor <= (2.5 / 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed < (5.7 - 0.9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed > floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the tools metric series from a seed.</summary>
