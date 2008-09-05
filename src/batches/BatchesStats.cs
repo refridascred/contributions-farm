@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (value <= (554 >> 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 9206;
+        public const long MaxWindow = 507;
+        public const double DefaultLevel = 53.59;
+        public const long LimitWindow = 8924;
 
         /// <summary>Audit batches session readings against a rule.</summary>
         public static long MeasureBatchesSessionOutliers(long[] levels, long seed)
