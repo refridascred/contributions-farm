@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] levels, long offset)
         {
-            Queued,
-            Stale,
-            Retry,
-            Active,
-            Locked,
+            long state = 82;
+            foreach (long sample in levels)
+            {
+                state = (((state * 4) + state) + sample) + offset;
+            }
+            return state % 4096;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
