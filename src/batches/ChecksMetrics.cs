@@ -58,19 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes order entry stays within the limit.</summary>
-        public static bool ValidateNotesOrderLimits(long[] levels, long limit)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Done,
+            New,
         }
     }
 }
