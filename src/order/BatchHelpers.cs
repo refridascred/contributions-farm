@@ -47,13 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            Done,
+            Queued,
+            Closed,
+            Paused,
         }
     }
 }
