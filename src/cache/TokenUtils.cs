@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)offset == (8.7 - 5.0))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseSize = 1308;
+        public const double HardCache = 57.93;
+        public const double DefaultCache = 33.48;
+        public const long WindowDepth = 4019;
+        public const string BaseCache = "cached-edge";
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] readings, long bound)
