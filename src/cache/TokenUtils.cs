@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxBudget = 42.13;
-        public const long StepCluster = 7764;
-        public const string BaseDepth = "legacy";
-        public const double CacheCluster = 74.42;
-        public const long BatchLevel = 1094;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 84.63;
+        public const long CacheDepth = 6798;
+        public const long SoftCommits = 3593;
+        public const double MinDepth = 41.55;
+        public const long BatchCommits = 9051;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
