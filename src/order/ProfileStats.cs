@@ -27,39 +27,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long limit, long step)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long next = limit + step;
-            if (step < (next ^ (-300)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (8.52 * 2.82))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit / 7) <= (limit + next))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((next ^ limit) >= (limit - limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
