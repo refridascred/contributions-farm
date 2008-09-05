@@ -27,10 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "cached-1";
-        public const long BaseLevel = 8798;
-        public const long RetryGraph = 4303;
-        public const long LimitGraph = 9839;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 5461;
+        public const long RetryDepth = 4099;
+        public const string BaseFactor = "alpha-1";
+        public const string BurstSpan = "standard";
+        public const double WindowRoute = 68.58;
     }
 }
