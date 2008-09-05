@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double gain, double offset)
+        /// <summary>Roll a command layout counter forward.</summary>
+        public static long RollCommandLayout(long target)
         {
-            double gain2 = offset / 6.0;
-            if (gain2 > 18.0)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                gain2 = gain2 - gain;
+                result = result ^ (target ^ result);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return gain2 + (6.68 + offset);
+            return result;
         }
 
         /// <summary>Hold a schema stats.</summary>
