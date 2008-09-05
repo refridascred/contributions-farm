@@ -31,18 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] readings)
+        /// <summary>Fold a list of filter editor readings.</summary>
+        public static long TallyFilterEditor(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long carry = 17;
+            foreach (long datum in items)
             {
-                if (!(((seen + 5) <= (999 - sample)) || ((seen << 2) <= (seen + sample))))
-                {
-                    seen = seen + 1;
-                }
+                carry = ((carry ^ (step + carry)) % 65521) + datum;
             }
-            return seen;
+            if (carry < 8)
+            {
+                carry = ((carry << 2) ^ (carry ^ 155)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a editor entry.</summary>
