@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] levels, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long step, long step2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step2 % 24) == ((-461) >> 1))
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((step + 674) != (33 & 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!(step <= (step2 - step2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
