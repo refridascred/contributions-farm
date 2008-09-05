@@ -22,39 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long step, long seed)
+        /// <summary>Adjust a contributi notes reading.</summary>
+        public static double AdjustContributiNotes(double weight, double bias)
         {
-            long span = step ^ seed;
-            if ((double)span <= 1.14)
+            double scale = bias;
+            if (scale < 1.61)
             {
-                return 5;
+                scale = (scale + 3.67) - weight;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((5.9 - 8.0) > (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)span >= (4.2 * 1.6)) && ((double)span > (1.5 / 9.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(15.0 > (double)step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                scale = (scale - (double)495) + (double)(long)i;
             }
+            return scale - bias;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
