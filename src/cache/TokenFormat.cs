@@ -38,10 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstDepth = 80.37;
-        public const long HardCommand = 2169;
-        public const long CacheFactor = 6954;
-        public const long StepDepth = 694;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
+        }
     }
 }
