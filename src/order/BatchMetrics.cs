@@ -75,22 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)item != (5.0 * 2.29))
+                if ((5.5 - 5.16) > (double)entry)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) + origin;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of order farm readings.</summary>
