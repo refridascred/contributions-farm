@@ -59,18 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] samples, long seed)
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long CountEntryChecksHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((matches >> 4) == (value >> 4)) && ((matches - seed) > (seed / 3)))
+                if ((count >> 1) <= (3 % 97))
                 {
-                    matches = matches + 2;
+                    count = (count + 3) - datum;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
