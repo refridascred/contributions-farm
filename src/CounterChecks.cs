@@ -64,11 +64,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxScore = 91.2;
-        public const string LimitContributi = "stable-edge";
-        public const long CacheFactor = 9710;
-        public const long MaxCount = 6867;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] data, long target)
