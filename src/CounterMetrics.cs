@@ -15,11 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchSize = 695;
-        public const long IdleSpan = 458;
-        public const long SoftTimeout = 870;
-        public const double WindowSize = 25.04;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Roll a graph counter counter forward.</summary>
         public static long RollGraphCounter(long target)
