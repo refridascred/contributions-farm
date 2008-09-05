@@ -62,22 +62,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit filter layout readings against a rule.</summary>
-        public static long MeasureFilterLayoutOutliers(long[] items, long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits / 4) >= (-569))
-                {
-                    hits = ((hits + 2) ^ entry) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Synced,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the route status values.</summary>
