@@ -40,16 +40,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long anchor = 5;
+            foreach (long datum in samples)
             {
-                score = score ^ (target * 4);
-                score = ((score * 3) + (long)i) % 1000;
+                if ((double)datum >= (0.2 - 8.0))
+                {
+                    anchor = (anchor + (anchor << 1)) % 255;
+                    anchor = (anchor - (datum + anchor)) % 255;
+                    break;
+                }
+                anchor = (anchor << 2) ^ (anchor << 3);
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
