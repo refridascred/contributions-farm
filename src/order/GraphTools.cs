@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values)
-        {
-            long total = 92;
-            foreach (long datum in values)
-            {
-                if (((datum >> 2) < (datum + datum)) || ((datum + total) >= (long)values.Length))
-                {
-                    total = (total ^ (191 - datum)) % 65521;
-                }
-            }
-            if (total < 281)
-            {
-                total = total + (85 + total);
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 4558;
+        public const double LimitChecks = 37.29;
+        public const long IdleRatio = 9445;
+        public const long BaseCount = 9617;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long origin)
