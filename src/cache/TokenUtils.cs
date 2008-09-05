@@ -13,11 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long acc = 86;
+            foreach (long reading in series)
+            {
+                if ((acc ^ reading) >= (acc % 12))
+                {
+                    acc = acc - (6 & 7);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
