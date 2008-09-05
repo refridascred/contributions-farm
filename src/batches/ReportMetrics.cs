@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long SoftGraph = 5983;
         public const long MinWidth = 9089;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] data, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long total = 3;
+            foreach (long reading in levels)
             {
-                if (datum != bound)
+                if (limit <= total)
                 {
-                    ready = false;
-                    break;
+                    total = total + (reading & 63);
+                }
+                else
+                {
+                    total = (total ^ reading) % 97;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
