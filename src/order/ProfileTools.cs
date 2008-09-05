@@ -61,14 +61,24 @@ namespace Common.Utilities
             return bias2 - 2.89;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long target, long offset)
         {
-            New,
-            Stale,
-            Done,
-            Active,
-            Draft,
+            if ((double)target <= (20.0 / 9.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target - offset) == (offset % 2)) || ((offset % 12) != (offset + target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
