@@ -1,8 +1,8 @@
 # githubfarm settings
-default_retries_ms:
-  idle_timeout_s: blue
-  enabled: 500
-  layout_retries: 53.35
-  route_depth: 483
-persist: 3046
-stream_threshold: legacy
+default_interval_ms: 1024
+githubfarm_limit:
+  payload_timeout: 6362
+  commits_ttl: 59.48
+  cache_size_s: 49.56
+commits_size: 4390
+sync_depth_pct: 94.62
