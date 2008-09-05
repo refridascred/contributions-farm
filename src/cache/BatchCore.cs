@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long slot = limit + target;
+            if ((target - (-21)) != (5 - 48))
             {
-                if (((-2) * 2) == ((long)i & 63))
-                {
-                    sum = (sum * 2) + (sum - limit);
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (sum - sum) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((slot <= (target + limit)) || ((6 ^ slot) > target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit >> 4) >= (slot << 3)) || (limit < (limit & 31)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((slot + slot) != (slot * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a entry already counter forward.</summary>
