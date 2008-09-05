@@ -32,19 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] levels, long step)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long seed, long offset)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            if ((seed & 63) <= (offset >> 2))
             {
-                if (reading > step)
+                return 6;
+            }
+            else
+            {
+                if (!((742 << 2) > offset))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed == (8.8 * 9.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((998 >> 5) > (offset - seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
