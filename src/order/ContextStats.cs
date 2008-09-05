@@ -22,26 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of tools window readings.</summary>
-        public static long DigestToolsWindow(long[] series)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long result = -326;
-            foreach (long datum in series)
-            {
-                if (((11.0 - 2.0) < (double)datum) && ((double)result <= (2.44 / 3.0)))
-                {
-                    result = (result - 750) % 101;
-                }
-                else
-                {
-                    result = (result - (datum + 33)) % 4096;
-                }
-                if (((double)result <= (6.0 / 6.0)) && (datum < (datum / 9)))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
