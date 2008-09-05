@@ -30,22 +30,21 @@ namespace Common.Utilities
         public const long RetryTimeout = 672;
         public const long SoftCommand = 9781;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            long anchor = 271;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (anchor < cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - (86 - cell)) % 97;
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 2)
-            {
-                anchor = anchor + (anchor & 63);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate commits session readings against a bound.</summary>
