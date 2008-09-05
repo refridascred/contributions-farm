@@ -32,19 +32,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every support editor entry stays within the limit.</summary>
-        public static bool CheckSupportEditorRange(long[] items, long origin)
+        /// <summary>Measure how many schema entry samples are out of range.</summary>
+        public static long TallySchemaEntryHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (entry <= origin)
+                if (((double)item != (7.51 / 8.0)) && (((16.0 - 4.9) <= (double)matches) && ((double)matches < (8.22 / 9.0))))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
