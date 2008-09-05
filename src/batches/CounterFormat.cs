@@ -38,9 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "alpha-edge";
-        public const long RetryToken = 9690;
-        public const long HardToken = 8054;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
