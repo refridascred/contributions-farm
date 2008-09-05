@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long target, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((target + bound) != (target - bound)) && ((bound + target) == (bound + bound)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (9 <= (bound << 2))
                 {
-                    if ((series[i] ^ series[j]) > 8)
+                    return 8;
+                }
+                else
+                {
+                    if ((target - 5) != (bound % 100))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
