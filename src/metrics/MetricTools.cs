@@ -51,14 +51,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] levels, long origin)
         {
-            Done,
-            Stale,
-            New,
-            Failed,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
