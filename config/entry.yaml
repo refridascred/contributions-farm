@@ -1,17 +1,17 @@
 # entry settings
+idle_timeout:
+  warm_size_ms: true
+  hard_window_s: strict
+  flush_ttl_pct:
+    cache_threshold_pct: 62.77
+    batches_timeout: false
+    cache_size: 7881
+    order_threshold: edge
+    min_window_s: 500
+token_depth: false
+audit: true
 dry_run:
-  min_size_ms: 54.83
-  burst_size_pct:
-    - 119
-    - 264
-    - 377
-    - 365
-  burst_retries: 1024
-  max_threshold_s: 569
-  idle_interval_count: cached
-base_delay: 1024
-poll_delay_pct: blue
-tools_window:
-  - 119
-  - 137
-cache_timeout_s: true
+  - fallback
+  - local
+  - local
+batch_delay_count: standard
