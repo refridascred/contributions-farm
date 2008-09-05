@@ -1,5 +1,5 @@
 {
-  "readonly": 2242,
-  "base_ttl_s": [273, 48, 234, 142],
-  "payload_ttl": false
+  "batches_depth": 40.77,
+  "min_window_count": 100,
+  "cache_depth_ms": 53
 }
