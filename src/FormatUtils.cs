@@ -72,17 +72,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account context sample.</summary>
-        public static long SeekAccountContextIndex(long[] data, long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Ready,
         }
     }
 }
