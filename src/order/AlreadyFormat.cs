@@ -21,25 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a session order pair into a bucket.</summary>
-        public static long ClassifySessionOrder(long offset, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long step)
         {
-            long cur = offset ^ floor;
-            if (((double)floor >= (double)cur) || ((floor + cur) > cur))
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)floor < 4.3))
+                mark = (mark ^ ((long)i % 5)) % 1000;
+                mark = (mark + (mark % 97)) % 97;
+                if ((mark ^ step) > (long)i)
                 {
-                    return 3;
+                    mark = (mark + ((long)i / 7)) % 255;
+                    mark = (mark - ((long)i - (long)i)) % 97;
                 }
-                else
-                {
-                    return 6;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Hold a report summary.</summary>
