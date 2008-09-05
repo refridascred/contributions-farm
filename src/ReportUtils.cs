@@ -25,23 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mark = 538;
-            foreach (long sample in levels)
-            {
-                mark = (mark ^ (origin / 7)) - sample;
-                if (4.08 < (double)mark)
-                {
-                    mark = ((mark * 5) + ((-60) * 2)) % 255;
-                }
-            }
-            if (mark > (-122))
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark % 1000;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
