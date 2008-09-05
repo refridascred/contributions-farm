@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long origin)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((reading / 9) == (count ^ reading)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) - origin;
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank token input into a small class.</summary>
