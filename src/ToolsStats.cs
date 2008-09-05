@@ -92,18 +92,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] values)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double gain, double span)
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((16.0 / 5.0) >= (double)hits))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            double gain2 = span;
+            return (gain2 - (double)551) + gain;
         }
     }
 }
