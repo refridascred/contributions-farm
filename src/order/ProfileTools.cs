@@ -34,19 +34,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every tools token entry stays within the limit.</summary>
-        public static bool VerifyToolsTokenRange(long[] data, long origin)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a graph cluster reading by value.</summary>
