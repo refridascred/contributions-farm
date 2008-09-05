@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account order counter forward.</summary>
-        public static long SeriesAccountOrder(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 9343;
+        public const long WindowFarm = 3206;
+        public const double BurstFarm = 89.3;
+        public const double LimitFarm = 77.02;
+        public const string MinScore = "primary-1";
 
         /// <summary>Accumulate context samples.</summary>
         public static long FoldContext(long[] values)
