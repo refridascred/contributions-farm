@@ -1,7 +1,5 @@
 {
-  "readonly": 1024,
-  "profile_threshold": 250,
-  "profile_limit": 6214,
-  "hard_delay_ms": 63.64,
-  "idle_ratio_count": "standard"
+  "support_interval": true,
+  "default_limit": false,
+  "hard_window_count": true
 }
