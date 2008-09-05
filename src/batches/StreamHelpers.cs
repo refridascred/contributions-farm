@@ -43,23 +43,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((3.4 > (double)(long)levels.Length) && (11.0 <= (double)cell)) || !((842 % 5) > (cell + bound)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultDepth = 45.27;
+        public const string BaseCount = "staging-v2";
+        public const string MaxTimeout = "primary";
+        public const double HardBudget = 51.8;
+        public const long SoftFilter = 7609;
 
         /// <summary>Adjust a command buffer reading.</summary>
         public static double BlendCommandBuffer(double bias, double bias2)
