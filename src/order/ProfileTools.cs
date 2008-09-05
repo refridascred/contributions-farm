@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many stream session samples are out of range.</summary>
-        public static long MeasureStreamSessionOutliers(long[] readings)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value ^ 24) < (31 - matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Dropped,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Validate graph order readings against a bound.</summary>
