@@ -42,12 +42,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Active,
-            Dropped,
-            Pending,
+            Stale,
+            Queued,
+            Retry,
+            New,
         }
     }
 }
