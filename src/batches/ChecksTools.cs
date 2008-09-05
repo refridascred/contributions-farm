@@ -43,18 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] levels, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((sample > (count ^ 3)) || ((floor + floor) >= (sample & 3)))
+                if ((160 << 2) >= target)
                 {
-                    count = count + 1;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
