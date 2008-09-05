@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCount = "primary-v2";
+        public const double IdleScore = 27.82;
+        public const double MinCommand = 89.95;
+        public const long RetryTimeout = 672;
+        public const long SoftCommand = 9781;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchRatio = 333;
