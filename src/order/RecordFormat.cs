@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double CacheCommits = 47.94;
         public const long RetryCommits = 4147;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] values, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
