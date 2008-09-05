@@ -1,13 +1,7 @@
 {
-  "flush_capacity": {
-    "persist": [373, 401, 364, 257],
-    "default_size_count": false,
-    "verbose": "fallback",
-    "idle_interval_pct": 41.14
-  },
-  "sync_retries": 250,
-  "audit": 68.73,
-  "readonly": 70,
-  "warm_timeout_pct": false,
-  "poll_ratio_s": 81.44
+  "dry_run": "open",
+  "enabled": "local",
+  "audit": true,
+  "idle_capacity_pct": 94.73,
+  "cache_ratio_s": 9663
 }
