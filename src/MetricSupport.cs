@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank stream report input into a small class.</summary>
-        public static long ClassifyStreamReport(long origin, long bound)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long edge = origin + bound;
-            if (((9 & 63) <= (origin - edge)) || ((edge + 2) == (edge * 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + bound) >= (edge + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (7.8 > (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + origin) < 356)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
