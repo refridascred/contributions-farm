@@ -32,19 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] readings, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] items)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (item >= origin)
+                if (((9.9 * 3.56) != (double)seen) || ((seen ^ cell) == (3 + cell)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
