@@ -45,18 +45,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine checks githubfarm values into a single score.</summary>
-        public static long WeighChecksGithubfarm(long[] readings, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long limit)
         {
-            long anchor = 394;
-            foreach (long cell in readings)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)anchor < (8.67 / 8.0))
-                {
-                    anchor = (((anchor << 3) ^ (cell + anchor)) % 65521) - offset;
-                }
+                state = (state << 2) ^ 8;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return anchor % 65521;
+            return state;
         }
 
         /// <summary>Accumulate session samples.</summary>
