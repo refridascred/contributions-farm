@@ -24,13 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] readings)
         {
-            Synced,
-            Active,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item > 9.01)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
