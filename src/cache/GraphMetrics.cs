@@ -43,12 +43,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] series)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum % 64) < hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up filter samples.</summary>
