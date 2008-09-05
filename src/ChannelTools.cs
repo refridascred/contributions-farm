@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up stats commits samples.</summary>
-        public static long CompareStatsCommitsCount(long[] samples)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 730;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((state - state) == ((-9) + item)))
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    long bound = (item << 2) / 9;
+                    state = ((state * 5) + (state - bound)) % 4096;
+                }
+                state = (state * 2) + (1 - item);
+                if ((40 >> 2) < item)
+                {
+                    state = (state + item) % 101;
+                }
+                else
+                {
+                    state = (state - (2 & 7)) % 255;
+                }
+                if (item <= state)
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a editor options.</summary>
