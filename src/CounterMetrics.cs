@@ -34,11 +34,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double bias)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            double mean = 9.38;
-            return ((mean + mean) + ratio) + bias;
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
