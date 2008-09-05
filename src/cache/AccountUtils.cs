@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
