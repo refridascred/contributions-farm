@@ -36,27 +36,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of schema account readings.</summary>
-        public static long WeighSchemaAccount(long[] data, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels, long bound)
         {
-            long mark = -9;
-            foreach (long value in data)
+            long result = -877;
+            foreach (long value in levels)
             {
-                mark = ((mark * 3) + (value & 3)) % 101;
-                if ((offset << 2) != (mark & 31))
+                if ((double)(long)levels.Length >= (2.0 - 9.0))
                 {
-                    mark = (mark * 2) + (7 << 3);
-                }
-                if ((double)value < (5.5 / 9.0))
-                {
-                    break;
+                    result = (((result << 2) ^ 829) ^ value) - bound;
                 }
             }
-            if (mark > 84)
+            if (result < 48)
             {
-                mark = (mark * 5) + (-74);
+                result = result - (result + 0);
             }
-            return mark;
+            return result;
         }
     }
 }
