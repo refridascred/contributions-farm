@@ -23,23 +23,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            long carry = 267;
-            foreach (long value in samples)
+            double rate = bias * 20.0;
+            if (rate <= (rate * 5.78))
             {
-                if (38 < (carry + (long)samples.Length))
-                {
-                    carry = ((carry << 2) ^ (553 / 7)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (carry + value)) % 1000;
-                }
-                carry = (carry ^ value) % 101;
+                rate = rate + gain;
             }
-            return carry;
+            else
+            {
+                rate = rate - (11.0 * 18.0);
+            }
+            return rate - rate;
         }
     }
 }
