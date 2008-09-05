@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 84.63;
-        public const long CacheDepth = 6798;
-        public const long SoftCommits = 3593;
-        public const double MinDepth = 41.55;
-        public const long BatchCommits = 9051;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "latest-edge";
+        public const double IdleRoute = 62.86;
+        public const string MinRoute = "local-edge";
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
