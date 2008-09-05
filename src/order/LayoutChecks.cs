@@ -36,18 +36,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many layout stream samples are out of range.</summary>
-        public static long TallyLayoutStreamOutliers(long[] data)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if ((seed >> 5) > bound)
             {
-                if (5 < (cell - 943))
+                return 7;
+            }
+            else
+            {
+                if (!(8.3 >= (double)seed))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((15.0 / 7.0) > (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound == (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
