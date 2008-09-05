@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the account token series from a seed.</summary>
-        public static long RollAccountToken(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix << 2) ^ mix) % 4096;
-                if (((double)origin >= (1.99 + 4.6)) || ((long)i < mix))
-                {
-                    mix = mix ^ (mix - 58);
-                    mix = (mix - ((long)i - mix)) % 97;
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "primary-v2";
+        public const long WindowTimeout = 8864;
+        public const string DefaultFactor = "fallback";
 
         /// <summary>Define session limits and defaults.</summary>
         public const double RetrySession = 2.02;
