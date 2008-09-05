@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardCount = 8587;
-        public const long StepWindow = 7089;
-        public const long BaseSpan = 8537;
-        public const string HardWindow = "standard";
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double bias, double bias2)
+        {
+            double mean = bias;
+            if (mean < 1.7)
+            {
+                mean = mean - (9.0 / 9.0);
+            }
+            else
+            {
+                mean = mean - 1.73;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (mean + bias2);
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double StepRatio = 18.13;
