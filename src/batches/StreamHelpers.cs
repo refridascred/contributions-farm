@@ -27,11 +27,21 @@ namespace Common.Utilities
         public const double DefaultRecord = 31.77;
         public const long BatchDepth = 5363;
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Compare every pair of contributi graph readings.</summary>
+        public static long PairContributiGraphCount(long[] data)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
