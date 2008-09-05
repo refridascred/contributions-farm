@@ -1,12 +1,12 @@
 # support settings
-max_depth:
-  strict: 8457
-  batch_depth_pct: 57.35
-  verbose: eu-west
-flush_size:
-  - legacy
-  - cached
-base_interval: 7033
-sync_ratio_pct: 58
-min_ttl_ms: true
-command_window: 10
+audit: 92.06
+readonly: edge
+min_retries_count: 98
+cache_ratio_s:
+  retry_depth_count: true
+  entry_limit: 5306
+  default_capacity_pct: 53
+  poll_window: 1533
+  enabled: false
+  burst_ratio_pct: 9150
+stats_interval: latest
