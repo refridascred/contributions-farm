@@ -1,19 +1,9 @@
 # support settings
-poll_depth: 6809
-cache_interval_pct:
-  stats_delay:
-    - 20
-    - 499
-    - 476
-  default_ttl_s:
-    - 39
-    - 436
-  poll_interval_pct:
-    max_interval_ms: 49.73
-    cache_interval: 12.36
-    poll_ttl_ms: green
-    burst_limit_pct: true
-retry_size_ms: false
-payload_interval: false
-retry_ttl_pct: true
-entry_ttl: false
+batch_ttl_count:
+  enabled: 7363
+  idle_depth_count: 71.79
+  soft_delay_ms: true
+  persist: false
+readonly: false
+verbose: staging
+sync_capacity: standard
