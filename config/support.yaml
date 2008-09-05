@@ -1,8 +1,12 @@
 # support settings
-flush_threshold_ms: 32
-min_interval_ms:
-  - primary
-  - edge
-  - stable
-poll_window: 78.51
-poll_window_s: 71.09
+already_ratio: false
+hard_window:
+  burst_timeout_count:
+    - 61
+    - 286
+    - 8
+  base_ttl: 30
+  default_capacity: blue
+  verbose: latest
+idle_retries: blue
+burst_delay: 94.92
