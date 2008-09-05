@@ -49,12 +49,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            Retry,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
