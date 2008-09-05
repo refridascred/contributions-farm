@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a stats editor reading.</summary>
-        public static double ScaleStatsEditor(double weight, double floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            double load = weight / 6.0;
-            for (int i = 0; i < 5; i++)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                load = ((load - load) + (double)(long)i) + floor;
+                total = total - (bound * 3);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return load - 4.44;
+            return total;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
