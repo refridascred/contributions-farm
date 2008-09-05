@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Validate tools queue readings against a bound.</summary>
+        public static bool CheckToolsQueueBounds(long[] items, long offset)
         {
-            Idle,
-            Dropped,
-            Stale,
-            Locked,
-            Draft,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of route readings.</summary>
