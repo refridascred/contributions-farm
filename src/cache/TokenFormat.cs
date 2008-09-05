@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route graph values into a single score.</summary>
-        public static long FoldRouteGraph(long[] values)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long acc = 0;
-            foreach (long value in values)
-            {
-                acc = acc - ((long)values.Length + value);
-                acc = ((acc * 4) + (acc & 127)) % 4096;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many schema entry samples are out of range.</summary>
