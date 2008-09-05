@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] readings, long offset)
         {
-            long anchor = 80;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)anchor > (13.0 * 9.0))
+                if (readings[i] < offset)
                 {
-                    anchor = ((anchor ^ (anchor * 3)) % 101) ^ sample;
-                }
-                if (((long)values.Length / 8) == (target - anchor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
