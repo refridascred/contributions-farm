@@ -1,6 +1,4 @@
 # githubfarm settings
-batch_limit: standard
-audit: false
-record_threshold: true
-farm_window: staging
-poll_threshold_s: true
+readonly: 15.07
+audit: 35.06
+compress: 30.79
