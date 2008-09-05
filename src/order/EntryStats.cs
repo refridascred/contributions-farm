@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] samples, long floor)
         {
-            Active,
-            Stale,
-            Idle,
+            long anchor = 95;
+            foreach (long datum in samples)
+            {
+                if (27 > (anchor + anchor))
+                {
+                    anchor = (((anchor ^ (anchor / 9)) % 97) ^ datum) - floor;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
