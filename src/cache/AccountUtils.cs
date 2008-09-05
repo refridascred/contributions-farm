@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up session graph samples.</summary>
-        public static long MatchSessionGraphCount(long[] levels)
+        /// <summary>Project the next commits metric value.</summary>
+        public static double ProjectCommitsMetric(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = floor;
+            if (mean > floor)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - mean;
             }
-            return matches;
+            else
+            {
+                mean = mean + (6.61 / 2.0);
+            }
+            return mean - bias;
         }
 
         /// <summary>Derive the next buffer command value from a seed.</summary>
