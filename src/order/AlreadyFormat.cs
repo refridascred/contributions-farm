@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double floor)
+        /// <summary>Compare every pair of format githubfarm readings.</summary>
+        public static long OverlapFormatGithubfarmCount(long[] items)
         {
-            double weight2 = (double)(4 + 6);
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = ((weight2 + (double)0) + (double)(long)i) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight2 + weight;
+            return count;
         }
 
         /// <summary>Match up batch samples.</summary>
