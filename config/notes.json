@@ -1,6 +1,14 @@
 {
-  "compress": 92.99,
-  "batch_ttl_pct": 77,
-  "warm_limit_count": [68, 180, 292, 49],
-  "retry_threshold_s": 28
+  "audit": 2000,
+  "farm_timeout": 20.77,
+  "commits_ttl": ["local", "strict", "blue", "standard"],
+  "flush_ttl": 63.14,
+  "buffer_capacity": {
+    "queue_retries": false,
+    "base_interval": 94,
+    "idle_depth_count": "legacy",
+    "strict": "cached",
+    "support_ratio": 60,
+    "persist": [152, 472]
+  }
 }
