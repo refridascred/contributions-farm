@@ -55,13 +55,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long offset)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
