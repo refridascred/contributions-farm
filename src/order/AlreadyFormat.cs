@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of format githubfarm readings.</summary>
-        public static long OverlapFormatGithubfarmCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitRatio = 43.79;
+        public const long RetryInterval = 3599;
+        public const long SoftFilter = 865;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] values)
