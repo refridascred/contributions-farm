@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long bound, long target)
+        /// <summary>Accumulate order commits samples.</summary>
+        public static long FoldOrderCommits(long[] levels, long floor)
         {
-            if ((target > (target ^ target)) && (949 >= (target & 63)))
+            long acc = 66;
+            foreach (long sample in levels)
             {
-                return 5;
+                acc = (acc << 3) ^ (sample << 1);
+                acc = ((acc << 3) ^ (acc + floor)) % 4096;
             }
-            else
+            if (acc > 729)
             {
-                if ((bound - target) > (target - 44))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.42 * 14.0) >= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                acc = acc - floor;
             }
+            return acc;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
