@@ -1,5 +1,13 @@
 # githubfarm settings
-route_ttl: 71
-burst_ratio: 9473
-persist: cached
-burst_window_pct: true
+poll_threshold_count: blue
+max_capacity:
+  channel_window:
+    - 281
+    - 208
+  filter_threshold: false
+  burst_window: blue
+  dry_run: primary
+default_interval_pct: fallback
+batch_ratio_count: local
+batch_ttl: 6833
+flush_retries: 4216
