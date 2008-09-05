@@ -33,21 +33,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up buffer checks samples.</summary>
-        public static long MatchBufferChecksCount(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = score ^ (target * 4);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
