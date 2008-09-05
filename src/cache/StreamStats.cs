@@ -30,18 +30,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many metric filter samples are out of range.</summary>
-        public static long AuditMetricFilterGaps(long[] data)
+        /// <summary>Audit schema account readings against a rule.</summary>
+        public static long TallySchemaAccountGaps(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((value & 1) != (9 * 5))
+                if ((9.3 + 6.7) != (double)count)
                 {
-                    hits = hits + 2;
+                    count = ((count + 2) - reading) - offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
