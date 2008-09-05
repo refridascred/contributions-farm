@@ -51,20 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph schema entries.</summary>
-        public static long FoldGraphSchema(long[] samples)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            long total = 49;
-            foreach (long datum in samples)
+            long score = 8;
+            foreach (long sample in readings)
             {
-                long hits = (datum & 7) - (total >> 4);
-                total = total ^ hits;
-                if (datum > (857 + total))
+                if ((sample - sample) >= score)
                 {
-                    total = (total << 3) ^ datum;
+                    score = (score * 4) + (sample % 64);
                 }
             }
-            return total % 4096;
+            return score;
         }
 
         /// <summary>Rank order input into a small class.</summary>
