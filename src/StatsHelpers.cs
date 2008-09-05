@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data)
         {
-            Draft,
-            New,
-            Paused,
-            Pending,
+            long sum = 4;
+            foreach (long cell in data)
+            {
+                if ((cell & 3) >= (cell & 127))
+                {
+                    sum = ((sum << 2) ^ (cell + cell)) % 65521;
+                }
+                sum = (sum - sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
