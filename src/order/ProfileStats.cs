@@ -23,24 +23,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a already layout pair into a bucket.</summary>
-        public static long BucketAlreadyLayout(long offset, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] values, long limit)
         {
-            if ((4.3 - 0.64) < (double)offset)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.77 / 2.0) <= (double)offset)
+                if ((entry - seen) != (limit - limit))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
