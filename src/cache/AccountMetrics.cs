@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
