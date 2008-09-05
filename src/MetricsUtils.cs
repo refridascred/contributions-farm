@@ -47,22 +47,12 @@ namespace Common.Utilities
             return rate - (rate / 7.0);
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 1.41;
+        public const long DefaultRatio = 9020;
+        public const long RetryFarm = 419;
+        public const double BaseFarm = 45.28;
+        public const long RetryWidth = 8500;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
