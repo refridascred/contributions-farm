@@ -47,18 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches session readings against a rule.</summary>
-        public static long MeasureBatchesSessionOutliers(long[] levels, long seed)
+        /// <summary>Audit record batch readings against a rule.</summary>
+        public static long CountRecordBatchHits(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!((value + 1) == (6 - count)))
+                if (matches <= seed)
                 {
-                    count = (count + 2) - seed;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
