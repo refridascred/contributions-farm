@@ -23,19 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] items, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] data)
         {
-            long sum = 315;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                sum = (sum + ((-516) ^ step)) ^ reading;
+                if ((value >> 5) <= (-243))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum > 0)
-            {
-                sum = (sum << 2) ^ step;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a counter record.</summary>
