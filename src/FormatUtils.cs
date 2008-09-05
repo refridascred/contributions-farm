@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a channel schema reading.</summary>
-        public static double SmoothChannelSchema(double scale, double span)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double rate = span / 9.0;
-            if (rate <= (rate * 2.57))
-            {
-                rate = (rate + (span / 2.0)) - scale;
-            }
-            return rate - (double)53;
+            New,
+            Queued,
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Match up account samples.</summary>
