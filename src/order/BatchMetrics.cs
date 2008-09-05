@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "alpha-v2";
+        public const long RetryMetrics = 8611;
+        public const string MaxMetrics = "primary";
+        public const string DefaultWidth = "strict-1";
+        public const long MaxInterval = 4490;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long SortBatch(long target, long floor)
