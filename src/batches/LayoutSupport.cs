@@ -43,22 +43,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] samples)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double drift = 4.0;
+            if (drift < (double)0)
             {
-                if (matches > (matches - item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift - floor;
             }
-            return matches;
+            else
+            {
+                drift = drift + (ratio / 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
