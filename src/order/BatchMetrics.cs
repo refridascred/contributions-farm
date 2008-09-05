@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "alpha-v2";
-        public const long RetryMetrics = 8611;
-        public const string MaxMetrics = "primary";
-        public const string DefaultWidth = "strict-1";
-        public const long MaxInterval = 4490;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long SortBatch(long target, long floor)
