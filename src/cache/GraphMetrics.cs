@@ -16,18 +16,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] data)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((hits < (hits & 255)) && (((49 / 6) >= (hits - hits)) && ((hits + cell) != (hits ^ 485))))
-                {
-                    hits = hits + 2;
-                }
+                mix = (mix + (7 + mix)) % 255;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
