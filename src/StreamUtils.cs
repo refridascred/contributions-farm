@@ -61,14 +61,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 1091;
+        public const string RetryCommand = "fallback-v2";
+        public const long SoftScore = 5150;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] levels, long step)
