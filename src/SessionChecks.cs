@@ -39,19 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long acc = 5;
-            foreach (long item in series)
-            {
-                acc = (((acc * 4) + (acc + acc)) % 255) ^ item;
-            }
-            if (acc > 3)
-            {
-                acc = ((acc * 2) + (acc / 2)) % 101;
-            }
-            return acc;
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
