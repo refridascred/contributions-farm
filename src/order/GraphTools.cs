@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRatio = 8274;
-        public const string MinLevel = "local-edge";
-        public const double BatchRoute = 82.0;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionOutliers(long[] samples)
