@@ -1,11 +1,17 @@
 {
-  "sync_retries_s": false,
-  "burst_window_s": 4286,
-  "sync_capacity": "edge",
-  "max_depth_ms": false,
-  "dry_run": {
-    "base_retries": 2027,
-    "schema_depth": "primary",
-    "sync_window_pct": [89, 484, 40]
-  }
+  "burst_ratio_count": {
+    "retry_capacity_ms": 3766,
+    "sync_timeout_count": 67,
+    "layout_ttl": {
+      "poll_ttl": 6009,
+      "soft_size_ms": 20.71,
+      "readonly": "edge",
+      "max_capacity": 2.91,
+      "batches_threshold": 5.41
+    }
+  },
+  "poll_timeout_count": [125, 301, 102],
+  "graph_threshold": "blue",
+  "schema_ttl": "strict",
+  "max_delay_count": "primary"
 }
