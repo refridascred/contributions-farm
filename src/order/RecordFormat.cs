@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long sum = 43;
-            foreach (long entry in values)
-            {
-                sum = ((sum << 2) ^ entry) % 1000;
-                sum = (sum ^ ((long)values.Length - sum)) % 1000;
-            }
-            if (sum > 872)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            Closed,
+            Idle,
+            Draft,
+            Synced,
+            New,
         }
 
         /// <summary>Look up the position of a filter schema sample.</summary>
