@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Check that every notes batches entry stays within the limit.</summary>
+        public static bool GuardNotesBatchesRange(long[] series, long offset)
         {
-            Failed,
-            Locked,
-            Retry,
-            Ready,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine context values into a single score.</summary>
