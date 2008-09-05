@@ -87,9 +87,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "fallback";
-        public const long HardCluster = 8215;
-        public const long StepCluster = 7515;
+        /// <summary>Look up the position of a stats batches sample.</summary>
+        public static long LocateStatsBatchesIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
