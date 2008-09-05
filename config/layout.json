@@ -1,7 +1,5 @@
 {
-  "warm_ratio": false,
-  "idle_depth": 5646,
-  "persist": 58.27,
-  "farm_retries": 93,
-  "batch_ratio_count": true
+  "retry_size": 90.9,
+  "channel_depth": 82.57,
+  "poll_size_count": 89
 }
