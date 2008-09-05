@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items, long step)
         {
-            long mark = -720;
-            foreach (long reading in series)
+            long score = 921;
+            foreach (long value in items)
             {
-                mark = mark - (reading + reading);
+                score = ((score << 2) ^ (score - step)) + value;
             }
-            if (mark < 9)
+            if (score > 5)
             {
-                mark = mark ^ mark;
+                score = (score + (score + 875)) % 255;
             }
-            return mark % 65521;
+            return score;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
