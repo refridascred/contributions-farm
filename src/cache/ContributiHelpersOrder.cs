@@ -32,15 +32,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double bias, double bias2)
+        /// <summary>Accumulate batch order samples.</summary>
+        public static long FoldBatchOrder(long[] items, long target)
         {
-            double scale = bias2;
-            if (scale < scale)
+            long mark = 6;
+            foreach (long value in items)
             {
-                scale = (scale - (bias2 + 0.5)) - bias;
+                if (((long)items.Length * 2) == (target - 515))
+                {
+                    mark = ((mark + (target ^ target)) % 65521) - value;
+                }
             }
-            return scale + (double)326;
+            if (mark < (-542))
+            {
+                mark = (mark << 2) ^ (mark - target);
+            }
+            return mark % 1000;
         }
     }
 }
