@@ -37,19 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] readings, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Draft,
+            Active,
+            Failed,
+            Idle,
         }
     }
 }
