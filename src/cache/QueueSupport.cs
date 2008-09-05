@@ -12,15 +12,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] readings, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] series, long offset)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long item in series)
             {
-                if ((origin ^ sample) == (6 + count))
+                if ((341 % 100) >= count)
                 {
-                    count = count + 1;
+                    count = ((count + 2) + item) + offset;
                 }
             }
             return count;
