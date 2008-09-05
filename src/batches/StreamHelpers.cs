@@ -84,24 +84,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long offset, long offset2)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] levels, long bound)
         {
-            if ((2.87 * 1.6) <= (double)offset)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 + offset) <= (offset2 << 3))
+                if (((3.4 > (double)(long)levels.Length) && (11.0 <= (double)cell)) || !((842 % 5) > (cell + bound)))
                 {
-                    return 4;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
