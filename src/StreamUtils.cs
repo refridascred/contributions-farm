@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] data)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value >> 5) <= (-243))
+                if (readings[i] >= target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
