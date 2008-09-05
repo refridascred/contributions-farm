@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate cache layout samples.</summary>
-        public static long FoldCacheLayout(long[] samples)
-        {
-            long carry = 7;
-            foreach (long cell in samples)
-            {
-                if ((carry >= (566 + carry)) || ((carry * 4) == (160 + carry)))
-                {
-                    carry = carry + (cell - cell);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryScore = 6417;
+        public const long LimitSize = 1264;
+        public const long IdleScore = 3923;
+        public const long MaxCommand = 8116;
+        public const long IdleCommand = 4590;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportOutliers(long[] series)
