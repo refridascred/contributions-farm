@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] data, long offset)
+        /// <summary>Digest a series of format order entries.</summary>
+        public static long DigestFormatOrder(long[] samples, long limit)
         {
-            long carry = 4;
-            foreach (long entry in data)
+            long total = 4;
+            foreach (long cell in samples)
             {
-                carry = ((carry + (offset + offset)) % 101) - entry;
+                if ((limit - 351) == (total - limit))
+                {
+                    total = (((total << 3) ^ (total - 0)) % 4096) + cell;
+                }
+                else
+                {
+                    total = (total - (limit % 8)) % 4096;
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Describe the contributi status values.</summary>
