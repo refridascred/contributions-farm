@@ -17,23 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] items, long seed)
         {
-            long acc = 953;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((items[i] <= seed) && ((items[i] % 2) == 0))
                 {
-                    long cur = (long)i;
-                    acc = (acc + (cur + cur)) % 1000;
-                }
-                if ((double)acc > (0.14 / 3.0))
-                {
-                    acc = (acc + (entry ^ entry)) % 1000;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
