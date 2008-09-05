@@ -1,12 +1,29 @@
 # support settings
-audit: 92.06
-readonly: edge
-min_retries_count: 98
-cache_ratio_s:
-  retry_depth_count: true
-  entry_limit: 5306
-  default_capacity_pct: 53
-  poll_window: 1533
-  enabled: false
-  burst_ratio_pct: 9150
-stats_interval: latest
+compress: green
+cache_ttl_count: latest
+batch_limit:
+  order_retries: 76
+  idle_depth_s: 3868
+  queue_depth: 1024
+  audit: 1024
+  enabled: fallback
+  schema_interval: 79.08
+farm_limit:
+  flush_interval: true
+  min_depth_count:
+    idle_interval: 250
+    burst_retries:
+      - staging
+      - eu-west
+      - eu-west
+      - strict
+    strict: false
+    min_limit_s: fallback
+    command_threshold: fallback
+  retry_delay: eu-west
+  poll_delay: 100
+  soft_size_ms: 95.87
+base_retries_count:
+  report_timeout: 44.81
+  cluster_interval: local
+  compress: legacy
