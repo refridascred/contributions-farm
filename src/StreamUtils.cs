@@ -65,19 +65,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] items, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
