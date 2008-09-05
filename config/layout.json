@@ -1,6 +1,8 @@
 {
-  "persist": 70.78,
-  "verbose": 64.5,
-  "already_threshold": 1024,
-  "warm_ratio": "cached"
+  "cache_capacity_s": 52.08,
+  "buffer_limit": 7891,
+  "soft_capacity": "standard",
+  "batches_retries": 88,
+  "idle_ttl_s": true,
+  "strict": "open"
 }
