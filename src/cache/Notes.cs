@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 5.49;
-        public const string DefaultCluster = "legacy";
-        public const double IdleTimeout = 38.66;
-        public const long SoftFactor = 6745;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long floor, long target)
+        {
+            if ((target << 3) <= (89 - target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target << 3) <= 33)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((20.0 - 15.0) == (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
