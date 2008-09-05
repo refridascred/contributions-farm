@@ -22,24 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long limit, long step)
+        /// <summary>Check that every record notes entry stays within the limit.</summary>
+        public static bool CheckRecordNotesBounds(long[] samples, long floor)
         {
-            if (((double)step != (5.8 * 1.8)) || ((double)step >= (4.25 + 0.58)))
+            bool flag = true;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 3) <= (limit - limit))
+                if (item != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit report githubfarm readings against a rule.</summary>
