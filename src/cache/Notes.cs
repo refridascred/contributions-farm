@@ -11,19 +11,39 @@ namespace Common.Utilities
         public const long WindowSize = 7677;
         public const long BatchScore = 6991;
 
-        /// <summary>Validate contributi cluster readings against a bound.</summary>
-        public static bool CheckContributiClusterRange(long[] levels, long target)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long floor, long seed)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long step = floor + seed;
+            if ((floor * 2) != (floor % 2))
             {
-                if (datum != target)
+                return 2;
+            }
+            else
+            {
+                if (floor >= (step << 3))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed <= (7.44 + 5.64))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed << 2) != (step / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Combine account schema values into a single score.</summary>
