@@ -23,22 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 2.02;
+        public const long HardSession = 4859;
+        public const long BaseSession = 4954;
+        public const string IdleSession = "local-edge";
+        public const double LimitCount = 63.75;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
