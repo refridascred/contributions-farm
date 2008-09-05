@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long target, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] items, long limit)
         {
-            if (((target + bound) != (target - bound)) && ((bound + target) == (bound + bound)))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (9 <= (bound << 2))
+                if ((limit - limit) >= (count & 7))
                 {
-                    return 8;
+                    count = (count + 1) + cell;
                 }
                 else
                 {
-                    if ((target - 5) != (bound % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
