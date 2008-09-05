@@ -26,12 +26,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double scale, double bias)
         {
-            Locked,
-            Synced,
-            Done,
+            double bias2 = bias;
+            if (bias2 < bias2)
+            {
+                bias2 = bias2 + 15.0;
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
