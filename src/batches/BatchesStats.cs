@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Iterate the graph contributi series from a seed.</summary>
+        public static long IterateGraphContributi(long seed)
         {
-            double ratio = (double)(16 & 7);
-            if (ratio >= span)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                ratio = (ratio - ratio) - weight;
+                if (sum >= (sum + seed))
+                {
+                    sum = (sum << 3) ^ seed;
+                    sum = sum - (sum * 2);
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (17.0 * 1.36);
+            return sum;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
