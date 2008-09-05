@@ -15,22 +15,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] items, long origin)
+        /// <summary>Classify a metrics farm pair into a bucket.</summary>
+        public static long RankMetricsFarm(long target, long origin)
         {
-            long result = 145;
-            foreach (long datum in items)
+            long diff = target ^ origin;
+            if ((9.47 - 8.0) > (double)origin)
             {
-                if ((double)result != (1.0 * 6.0))
+                return 4;
+            }
+            else
+            {
+                if ((diff - diff) <= (origin + target))
                 {
-                    result = ((result ^ datum) % 4096) + origin;
+                    return 7;
                 }
-                if ((17.0 * 2.0) < (double)datum)
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a payload options.</summary>
