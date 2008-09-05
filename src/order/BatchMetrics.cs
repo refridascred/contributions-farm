@@ -70,19 +70,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            long mark = 8;
+            foreach (long cell in values)
             {
-                if (((3.98 + 2.2) <= (double)floor) && ((long)i >= (floor * 3)))
+                if (((-61) ^ target) < (target * 2))
                 {
-                    continue;
+                    mark = ((mark - mark) % 65521) + cell;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the cluster status values.</summary>
