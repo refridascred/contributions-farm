@@ -15,19 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] values, long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = 982;
-            foreach (long item in values)
-            {
-                anchor = (anchor + ((-769) - item)) + seed;
-            }
-            if (anchor < 66)
-            {
-                anchor = (anchor - (39 ^ 204)) % 1000;
-            }
-            return anchor % 1000;
+            Retry,
+            Idle,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a payload options.</summary>
