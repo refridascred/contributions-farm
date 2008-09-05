@@ -54,9 +54,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "cached-edge";
-        public const double StepRatio = 35.28;
-        public const long RetryChannel = 34;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
