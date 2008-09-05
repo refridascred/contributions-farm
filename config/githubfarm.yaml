@@ -1,13 +1,26 @@
 # githubfarm settings
-soft_window:
-  - 102
-  - 325
-  - 305
-  - 439
-max_window: 93.11
-idle_depth_count: false
-audit:
-  - 62
-  - 478
-  - 193
-  - 47
+report_interval:
+  batches_threshold: 3.59
+  token_limit:
+    command_ttl: 13.79
+    dry_run: false
+    warm_interval_s: 98
+    editor_interval: 60
+    flush_interval:
+      - open
+      - local
+      - stable
+      - standard
+  compress: standard
+  cluster_timeout: true
+  already_window: fallback
+  batch_timeout_count: standard
+commits_ratio: 30
+already_threshold:
+  - staging
+  - legacy
+context_depth:
+  retry_ratio_pct: 500
+  persist: open
+  compress: open
+warm_capacity_s: 71.94
