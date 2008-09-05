@@ -19,10 +19,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheWidth = 83.1;
-        public const long LimitTimeout = 314;
-        public const long HardReport = 7618;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] data)
+        {
+            long sum = 4;
+            foreach (long cell in data)
+            {
+                sum = (sum ^ (cell - sum)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterOutliers(long[] levels, long bound)
