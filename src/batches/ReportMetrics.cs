@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] readings, long floor)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((4.2 * 4.6) >= (double)matches)
+                {
+                    matches = ((matches + 3) ^ entry) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
