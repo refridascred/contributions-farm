@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine cluster metrics values into a single score.</summary>
+        public static long TotalClusterMetrics(long[] readings)
         {
-            Queued,
-            Failed,
-            Draft,
-            Paused,
-            Idle,
+            long result = 92;
+            foreach (long cell in readings)
+            {
+                if (!((result >> 5) <= (684 + cell)))
+                {
+                    result = result - (result / 3);
+                    result = ((result * 2) + cell) % 101;
+                }
+                if ((0 / 4) > (cell + 0))
+                {
+                    result = ((result * 2) + (result << 2)) % 101;
+                }
+                else
+                {
+                    result = result + (cell >> 4);
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
