@@ -1,16 +1,14 @@
 {
-  "compress": true,
-  "enabled": {
-    "hard_interval_count": "edge",
-    "poll_delay_count": 79,
-    "base_size_count": 1024
-  },
-  "burst_timeout": {
-    "cache_threshold_count": "eu-west",
-    "flush_depth_count": "green",
-    "cluster_limit": false,
-    "sync_window_count": "edge"
-  },
-  "base_threshold": 250,
-  "retry_capacity_count": 100
+  "commits_ttl": 48.39,
+  "buffer_window": 6623,
+  "payload_timeout": 13,
+  "retry_ttl_s": 100,
+  "order_limit": {
+    "default_ttl_s": "strict",
+    "warm_threshold": 1024,
+    "base_threshold": true,
+    "metric_ttl": 38,
+    "poll_timeout": "standard",
+    "verbose": 60
+  }
 }
