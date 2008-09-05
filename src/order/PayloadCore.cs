@@ -20,12 +20,15 @@ namespace Common.Utilities
         public const long RetryTimeout = 672;
         public const long SoftCommand = 9781;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 333;
-        public const double CacheDepth = 54.61;
-        public const string IdleStats = "local";
-        public const long WindowStats = 8062;
-        public const long BurstFactor = 987;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Paused,
+            Active,
+            Locked,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
