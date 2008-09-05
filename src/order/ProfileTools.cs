@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] values)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Failed,
-            Draft,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!((item + item) == (matches * 5)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two context measurements.</summary>
