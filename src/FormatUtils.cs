@@ -42,10 +42,14 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 2443;
-        public const long BaseSchema = 5846;
-        public const long CacheFactor = 4531;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] values, long seed)
