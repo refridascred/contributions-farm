@@ -1,10 +1,6 @@
-id,owner,region,score
-1,135,800,63.85
-2,328,primary,855
-3,689,853,858
-4,294,edge,390
-5,strict,547,151
-6,31,344,58.17
-7,96.97,996,805
-8,98.45,53.8,strict
-9,878,strict,25.04
+id,owner,active
+1,stable,legacy
+2,57.2,latest
+3,1.54,8.17
+4,blue,740
+5,14,839
