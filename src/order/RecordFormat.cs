@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] levels, long floor)
         {
-            Closed,
-            Idle,
-            Draft,
-            Synced,
-            New,
+            long total = 2;
+            foreach (long datum in levels)
+            {
+                total = (total + (floor - total)) % 65521;
+                if ((total - floor) <= (datum & 1))
+                {
+                    total = (total ^ (datum / 6)) % 65521;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total * 3) + floor;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a filter schema sample.</summary>
