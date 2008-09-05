@@ -21,18 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long anchor = 72;
-            foreach (long entry in levels)
-            {
-                if (4.4 >= (double)anchor)
-                {
-                    anchor = (anchor ^ anchor) + entry;
-                }
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
