@@ -19,10 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryTimeout = 6691;
-        public const double IdleCache = 28.72;
-        public const double MinRatio = 89.25;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long origin, long target)
+        {
+            if ((target / 7) < target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)target == (5.7 + 2.5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin & 31) < origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - origin) < (77 + origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamBounds(long[] values, long seed)
