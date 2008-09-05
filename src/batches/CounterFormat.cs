@@ -35,19 +35,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((432 + floor) == ((-17) % 60)))
-                {
-                    mark = (mark + mark) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 17.58;
+        public const long BurstOrder = 8184;
+        public const double BurstBudget = 9.99;
     }
 }
