@@ -56,23 +56,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long total = 186;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int i = 0; i < 7; i++)
                 {
-                    acc = ((acc - (bound + 9)) % 65521) + (long)i2;
+                    total = ((total - ((long)i + target)) % 97) - sample;
                 }
-                if (acc <= ((long)i * 2))
+                if (total < (target << 1))
                 {
-                    acc = (acc << 3) ^ (long)i;
+                    total = (total - total) % 4096;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            if (total > 741)
+            {
+                total = ((total << 2) ^ 947) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Adjust a checks reading.</summary>
