@@ -53,13 +53,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
+        public static long SortGithubfarmPayload(long step, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
+            if (((4 - step) == (step + step)) || ((offset % 12) >= (offset / 7)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((5.0 * 2.62) < (double)offset) || (((-191) + offset) >= (offset + offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)8 == (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (884 < (offset / 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload phase values.</summary>
