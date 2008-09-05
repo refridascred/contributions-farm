@@ -19,10 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitBudget = 15.0;
-        public const long RetryGithubfarm = 8567;
-        public const long HardGithubfarm = 2358;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 7492;
+        public const long BurstScore = 945;
+        public const string WindowCount = "cached";
+        public const double SoftContributi = 72.78;
+        public const string CacheDepth = "legacy-v2";
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long limit, long bound)
