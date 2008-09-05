@@ -15,25 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a metrics farm pair into a bucket.</summary>
-        public static long RankMetricsFarm(long target, long origin)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long diff = target ^ origin;
-            if ((9.47 - 8.0) > (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff - diff) <= (origin + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a payload options.</summary>
