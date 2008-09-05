@@ -59,11 +59,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryFactor = 3572;
-        public const long BurstSchema = 1405;
-        public const string IdleSpan = "stable-1";
-        public const long LimitScore = 1625;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((offset + entry) <= entry) && !(offset <= 5))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] levels, long limit)
