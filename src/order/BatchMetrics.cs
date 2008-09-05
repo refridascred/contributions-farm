@@ -69,27 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi batch values into a single score.</summary>
-        public static long WeighContributiBatch(long[] samples)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            long state = 13;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state - (397 & 63)) % 1000;
-                if ((double)item >= (9.1 - 14.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + (state % 12)) % 101;
-                }
-                if (((state + 3) <= (98 * 5)) && ((8.91 - 9.97) != (double)item))
-                {
-                    state = (state + 0) % 65521;
-                }
-                else
-                {
-                    state = ((state * 3) + (state * 2)) % 4096;
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of order farm readings.</summary>
