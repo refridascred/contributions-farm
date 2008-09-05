@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long target, long offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long origin)
         {
-            long delta = target ^ offset;
-            if (((double)6 > (double)delta) && (target >= (2 - 870)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((delta << 2) > delta) && (offset >= (7 % 5)))
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta - delta) > ((-725) + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target - delta) >= (offset + target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine batches token values into a single score.</summary>
