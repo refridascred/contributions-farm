@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double scale, double bias)
-        {
-            double rate = (scale * 3.0) / 2.0;
-            if (rate >= rate)
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (bias / 4.0)) + (double)(long)i;
-            }
-            return rate + (double)522;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchScore = 8773;
+        public const string HardGithubfarm = "standard-1";
+        public const long BatchSize = 4703;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long origin, long origin2)
