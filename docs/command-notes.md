@@ -1,14 +1,15 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-Each channel is validated before it reaches the entry queue.
+Use batch settings to tune how often layout data is refreshed.
+Keep metric and queue names short and lowercase.
+The editor report groups every metrics by payload.
 
-Each session is validated before it reaches the order queue.
-Run the payload check before changing any format limits.
+When a report fails, the token handler retries a few times before giving up.
+Run the context check before changing any profile limits.
 
 ## Guidelines
 
-- Log every metric change
-- Review counter limits each release
-- Prefer context defaults
-- Document new channel fields
+- Keep stream values small
+- Review session limits each release
+- Document new report fields
+- Prefer session defaults
