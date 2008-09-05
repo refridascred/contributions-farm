@@ -59,13 +59,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "latest-1";
+        public const long CacheRoute = 4781;
+        public const long BurstScore = 6788;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long FoldBuffer(long[] levels)
