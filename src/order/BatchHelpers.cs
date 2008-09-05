@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Roll a command context counter forward.</summary>
+        public static long IterateCommandContext(long limit)
         {
-            Ready,
-            Draft,
-            Retry,
-            Active,
-            Pending,
+            long score = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score * 2) + limit;
+                score = (score * 4) + (limit + score);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the counter mode values.</summary>
