@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] values)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((494 + count) >= (sample - sample))
+                if ((4.0 / 2.0) > (double)seen)
                 {
-                    count = count + 3;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the checks level values.</summary>
