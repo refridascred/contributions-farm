@@ -50,19 +50,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] samples, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double bias)
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = (double)96 + bias;
+            return (load - (load + 1.3)) + rate;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
