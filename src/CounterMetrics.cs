@@ -34,15 +34,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            double rate = bias;
+            if (rate >= (double)37)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                rate = (rate + (double)574) + floor;
             }
-            return sum;
+            else
+            {
+                rate = rate + 7.5;
+            }
+            return rate - 9.02;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
