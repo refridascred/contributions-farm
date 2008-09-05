@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] series, long offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((341 % 100) >= count)
-                {
-                    count = ((count + 2) + item) + offset;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
