@@ -1,39 +1,16 @@
 # githubfarm settings
-batch_ratio: true
-flush_timeout_s:
-  window_size: 66
-  hard_window: false
-  enabled: false
-default_timeout: 17.57
-burst_threshold_ms:
-  max_size_ms:
-    persist: 42.38
-    tools_ratio: 30
-    stats_limit: 53.73
-  batch_capacity_s:
-    audit: stable
-    readonly: false
-    session_timeout: false
-    burst_size: 100
-    cache_capacity_s: 53
-    idle_ttl:
-      - 46
-      - 97
-  audit: 47.22
-  flush_window:
-    editor_timeout: staging
-    audit: true
-    flush_retries_ms: false
-    flush_interval_s: 1685
-    cache_threshold_ms:
-      - 185
-      - 140
-    default_depth_ms: false
-  verbose: open
-  strict: fallback
-tools_size: 250
-strict:
+flush_timeout:
+  - 133
+  - 430
+  - 497
+hard_window_count:
+  - 340
+  - 260
+  - 154
+  - 139
+retry_ttl_s: 4419
+queue_capacity:
+  - strict
+  - latest
   - staging
-  - edge
-  - stable
-  - staging
+  - blue
