@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] levels, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin % 7) != (origin - origin))
             {
-                if (levels[i] >= seed)
+                return 6;
+            }
+            else
+            {
+                if ((2.98 - 5.0) != (double)origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
