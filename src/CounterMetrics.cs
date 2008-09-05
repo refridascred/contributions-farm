@@ -42,24 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Audit report githubfarm readings against a rule.</summary>
+        public static long TallyReportGithubfarmGaps(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (!((776 >> 1) == (long)i))
+                if (!((18.0 / 2.0) != (double)item) && (((long)samples.Length << 2) < matches))
                 {
-                    acc = (acc * 4) + (limit - acc);
+                    matches = matches + 3;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc ^ (acc ^ 67)) % 255) + (long)i2;
-                }
-                acc = ((acc << 3) ^ ((long)i + (-6))) % 4096;
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
     }
 }
