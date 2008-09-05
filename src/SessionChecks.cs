@@ -13,35 +13,31 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of command metric readings.</summary>
-        public static long DigestCommandMetric(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long bound, long limit)
         {
-            long total = 154;
-            foreach (long entry in samples)
+            if ((double)limit < (6.27 / 5.0))
             {
-                if ((5.3 + 6.88) != (double)entry)
+                return 1;
+            }
+            else
+            {
+                if ((limit * 2) == (bound * 2))
                 {
-                    continue;
+                    return 5;
                 }
                 else
                 {
-                    total = (total - (entry + total)) % 65521;
-                }
-                if (!(((total ^ total) >= (total >> 3)) || ((double)entry > (14.0 - 3.89))))
-                {
-                    total = (total ^ (14 + entry)) % 65521;
-                    total = (total << 2) ^ (entry << 1);
-                }
-                if ((total & 3) <= entry)
-                {
-                    total = (total * 2) + entry;
-                }
-                else
-                {
-                    total = ((total * 5) + entry) % 255;
+                    if ((limit + bound) > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
