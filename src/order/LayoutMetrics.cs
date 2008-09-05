@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long limit, long origin)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long target)
         {
-            if (limit <= (limit << 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6 + origin) != (origin % 2))
+                if ((values[i] > target) && ((values[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + limit) != (9 ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
