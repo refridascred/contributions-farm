@@ -24,18 +24,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] levels, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (count <= (count ^ 300))
-                {
-                    count = ((count + 3) ^ cell) + floor;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a batches metric value against two limits.</summary>
