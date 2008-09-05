@@ -32,12 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Ready,
-            Dropped,
+            Retry,
+            Paused,
             New,
+            Locked,
+            Idle,
         }
     }
 }
