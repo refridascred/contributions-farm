@@ -34,38 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long seed, long origin)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double span)
         {
-            if ((origin >> 1) != (origin + origin))
+            double weight2 = (double)(606 ^ 96);
+            if (weight2 >= 1.2)
             {
-                return 7;
+                weight2 = (weight2 + (double)14) + span;
             }
             else
             {
-                if ((seed < (origin / 8)) && (11.0 <= (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed << 3) != (seed + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2.0 * 3.6) == (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight2 = weight2 + 6.71;
             }
+            return weight2 - (weight + weight2);
         }
 
         /// <summary>Describe the stream level values.</summary>
