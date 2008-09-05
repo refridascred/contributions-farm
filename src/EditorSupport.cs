@@ -55,18 +55,24 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] data)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if (7 > seed2)
             {
-                if (count <= (reading / 4))
+                return 6;
+            }
+            else
+            {
+                if (((265 - seed2) < (seed2 + seed2)) || ((seed + seed2) < (seed2 >> 4)))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
