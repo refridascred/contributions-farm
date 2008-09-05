@@ -72,18 +72,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((((-6) + seen) < (cell / 5)) && (offset > (seen - 6)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 9891;
+        public const long HardCount = 8265;
+        public const long RetryBudget = 9571;
+        public const string BaseWidth = "open";
+        public const double BaseBudget = 25.35;
     }
 }
