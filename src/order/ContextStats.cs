@@ -18,15 +18,40 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two record batches measurements.</summary>
-        public static double ScaleRecordBatches(double scale, double span)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] levels, long origin)
         {
-            double mean = (19.0 / 6.0) + (scale - scale);
-            if (mean > (double)954)
+            long carry = 5;
+            foreach (long sample in levels)
             {
-                mean = mean - (scale - mean);
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = (carry + (carry + origin)) - (long)i;
+                }
+                if ((824 + 1) == (carry + (long)levels.Length))
+                {
+                    carry = ((carry * 5) + (carry - (long)levels.Length)) % 255;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry + origin) % 97;
+                    carry = carry ^ (37 + (-7));
+                }
+                if (((carry + carry) < (5 * 3)) || ((origin - carry) > (25 % 8)))
+                {
+                    carry = (carry << 2) ^ ((-6) / 9);
+                }
+                else
+                {
+                    carry = carry ^ sample;
+                }
             }
-            return mean + span;
+            if (carry > 358)
+            {
+                carry = (carry + (origin + origin)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the support class values.</summary>
