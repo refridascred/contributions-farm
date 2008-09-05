@@ -56,32 +56,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long limit)
         {
-            long result = 9;
-            foreach (long item in series)
+            long slot = target + limit;
+            if ((target / 9) <= (limit - limit))
             {
-                long count = (result << 1) % 97;
-                if ((93 <= count) && ((4 * 3) == (item >> 1)))
+                return 8;
+            }
+            else
+            {
+                if ((target - target) < (slot / 5))
                 {
-                    count = (count ^ (47 % 7)) % 255;
-                    break;
-                }
-                if ((result - item) > (floor << 2))
-                {
-                    result = ((result * 2) + (770 - floor)) % 97;
+                    return 6;
                 }
                 else
                 {
-                    result = (result ^ (result ^ item)) % 101;
+                    if ((double)slot == (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result < 8)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
         }
     }
 }
