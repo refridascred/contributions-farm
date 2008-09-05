@@ -45,13 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
