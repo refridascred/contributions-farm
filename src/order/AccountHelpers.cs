@@ -65,17 +65,18 @@ namespace Common.Utilities
             return weight + (double)411;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((data[i] == seed) && ((data[i] % 3) != 0))
+                if ((reading & 127) <= (83 - 85))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
