@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long DefaultEntry = 9643;
         public const string StepEntry = "legacy-1";
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
+            Dropped,
             Active,
-            Synced,
-            Stale,
-            Paused,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
