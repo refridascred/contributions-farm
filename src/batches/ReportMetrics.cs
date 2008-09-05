@@ -29,19 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer notes readings against a bound.</summary>
-        public static bool VerifyBufferNotesBounds(long[] levels, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= step)
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
