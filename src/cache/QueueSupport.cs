@@ -12,39 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long offset, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long span = offset - step;
-            if ((span + 6) != (span >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (8.0 + 7.6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((4.3 + 3.46) <= (double)step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7 - span) >= 9)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a context reading by value.</summary>
