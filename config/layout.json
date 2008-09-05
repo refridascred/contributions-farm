@@ -1,6 +1,6 @@
 {
-  "farm_depth": 1024,
-  "flush_timeout": 2361,
-  "burst_window_count": 45.96,
-  "default_interval": [25, 151]
+  "retry_capacity": "staging",
+  "route_ttl": "legacy",
+  "batch_size_ms": "eu-west",
+  "min_size_pct": 33.74
 }
