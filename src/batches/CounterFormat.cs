@@ -21,26 +21,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long seed, long limit)
         {
-            long total = 262;
-            foreach (long reading in samples)
+            if ((double)seed < 5.3)
             {
-                for (int i = 0; i < 7; i++)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < (double)13)
                 {
-                    total = ((total - origin) % 101) ^ (long)i;
-                }
-                if (((double)total != (6.8 - 2.73)) || ((reading + reading) < total))
-                {
-                    total = total - (9 - reading);
+                    return 6;
                 }
                 else
                 {
-                    total = total ^ origin;
+                    if (((seed & 3) < (seed & 7)) || ((double)seed >= (6.79 * 9.3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
