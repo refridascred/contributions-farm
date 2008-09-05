@@ -49,26 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] samples)
         {
-            long sum = 467;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((offset >> 1) >= (9 + reading))
+                if ((double)matches != (8.1 - 9.0))
                 {
-                    sum = (sum << 3) ^ sum;
-                }
-                else
-                {
-                    sum = sum + (40 & 31);
+                    matches = (matches + 1) + entry;
                 }
             }
-            if (sum < (-630))
-            {
-                sum = sum - (100 >> 1);
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
