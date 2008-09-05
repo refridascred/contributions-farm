@@ -24,17 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a filter schema sample.</summary>
-        public static long SeekFilterSchemaIndex(long[] samples, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (samples[i] == origin)
+                if (entry < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Accumulate queue samples.</summary>
