@@ -34,39 +34,18 @@ namespace Common.Utilities
         public const long BatchCommits = 9100;
         public const double MinRatio = 74.78;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] readings)
         {
-            long prev = offset + target;
-            if (!((prev / 6) > (target >> 1)))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset == (0.79 - 4.07))
+                if ((sample - 929) < sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)prev >= 2.5)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((prev + prev) >= (target + prev)) && (42 <= (offset - prev)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
