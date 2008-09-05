@@ -20,22 +20,18 @@ namespace Common.Utilities
             return rate + (double)9;
         }
 
-        /// <summary>Digest a series of profile githubfarm entries.</summary>
-        public static long CombineProfileGithubfarm(long[] samples, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] values, long offset)
         {
-            long anchor = 5;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (!(12.0 < (double)anchor))
+                if ((sample << 1) > (seen << 3))
                 {
-                    anchor = (anchor * 2) + (cell / 7);
+                    seen = (seen + 1) + offset;
                 }
             }
-            if (anchor < 432)
-            {
-                anchor = anchor - (step << 2);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
