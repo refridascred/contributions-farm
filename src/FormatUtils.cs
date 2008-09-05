@@ -15,11 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double bias2)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] data)
         {
-            double drift = bias2 - 8.0;
-            return (drift + (bias2 * 6.14)) + bias;
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((6.8 + 4.41) > (double)hits)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the editor status values.</summary>
