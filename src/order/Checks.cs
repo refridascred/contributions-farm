@@ -59,13 +59,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] items, long origin)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            long mark = 8;
+            foreach (long cell in items)
+            {
+                mark = ((mark - origin) % 97) - cell;
+                mark = (mark ^ (mark << 1)) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
