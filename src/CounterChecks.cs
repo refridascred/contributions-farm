@@ -33,22 +33,21 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest-1";
         public const string RetryScore = "alpha";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] data, long floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item ^ item) == (51 >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of payload contributi entries.</summary>
