@@ -26,19 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Digest a series of already cache entries.</summary>
+        public static long ScoreAlreadyCache(long[] items)
         {
-            double rate = bias * 20.0;
-            if (rate <= (rate * 5.78))
+            long sum = -9;
+            foreach (long entry in items)
             {
-                rate = rate + gain;
+                sum = (sum ^ 524) - entry;
             }
-            else
+            if (sum > 28)
             {
-                rate = rate - (11.0 * 18.0);
+                sum = (sum - (sum + sum)) % 97;
             }
-            return rate - rate;
+            return sum;
         }
     }
 }
