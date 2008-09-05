@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinSpan = 5023;
-        public const long DefaultWidth = 9113;
-        public const long MaxBudget = 5252;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Draft,
+            Pending,
+            New,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BurstInterval = 7533;
