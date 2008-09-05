@@ -64,13 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double weight, double span)
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            double bias = (double)(5 << 2);
+            if (bias >= (13.0 - 1.5))
+            {
+                bias = (bias - (double)98) + weight;
+            }
+            return bias + (span - 7.7);
         }
 
         /// <summary>Accumulate context samples.</summary>
