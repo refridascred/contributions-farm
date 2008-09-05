@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit stats checks readings against a rule.</summary>
-        public static long CountStatsChecksOutliers(long[] readings, long floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally <= (floor - 3)) && (floor <= (tally * 5)))
+                if (samples[i] == limit)
                 {
-                    tally = (tally + 2) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate stream tools samples.</summary>
