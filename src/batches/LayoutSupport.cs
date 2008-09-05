@@ -29,24 +29,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long limit, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values, long step)
         {
-            if ((9 >> 4) < (limit & 15))
+            long mix = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((740 < (4 + step)) && ((step + step) != (limit + limit)))
+                if (!((sample << 3) >= (step + 0)))
                 {
-                    return 6;
+                    mix = (mix ^ (mix ^ step)) % 1000;
                 }
-                else
-                {
-                    return 0;
-                }
+                mix = ((mix << 2) ^ (578 + sample)) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
