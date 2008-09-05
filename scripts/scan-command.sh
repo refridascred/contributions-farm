@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=449
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in edge fallback primary; do
+for item in strict legacy cached; do
     log "checking ${item}"
 done
