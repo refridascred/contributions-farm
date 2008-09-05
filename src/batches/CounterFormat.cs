@@ -21,15 +21,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long total = 262;
+            foreach (long reading in samples)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                for (int i = 0; i < 7; i++)
+                {
+                    total = ((total - origin) % 101) ^ (long)i;
+                }
+                if (((double)total != (6.8 - 2.73)) || ((reading + reading) < total))
+                {
+                    total = total - (9 - reading);
+                }
+                else
+                {
+                    total = total ^ origin;
+                }
             }
-            return state;
+            return total % 1000;
         }
 
         /// <summary>Accumulate profile samples.</summary>
