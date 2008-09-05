@@ -20,16 +20,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                sum = (sum + sum) % 101;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((990 + sample) != (sample >> 1))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a commits stats.</summary>
