@@ -38,17 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark - (floor << 1)) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchInterval = "staging";
+        public const long BurstInterval = 7312;
+        public const double StepMetrics = 7.38;
+        public const string DefaultMetrics = "latest-1";
+        public const string RetryScore = "alpha";
 
         /// <summary>Audit already account readings against a rule.</summary>
         public static long CountAlreadyAccountOutliers(long[] items, long bound)
