@@ -29,17 +29,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] levels, long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 7.0 * 13.0;
+            if (scale < (double)234)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                scale = scale - (gain / 7.0);
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)(-9);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (offset / 7.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
