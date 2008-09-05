@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] series, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long step)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            if (!((seed & 1) < (step + seed)))
             {
-                if (reading >= origin)
+                return 8;
+            }
+            else
+            {
+                if (((seed * 4) == (step - step)) || ((step + step) != (step ^ step)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a context options.</summary>
