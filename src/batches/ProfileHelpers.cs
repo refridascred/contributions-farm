@@ -19,20 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] values, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long state = -89;
-            foreach (long entry in values)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                state = (state * 2) + (step - step);
-                state = (state - (entry + step)) % 255;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = ((total ^ (87 % 60)) % 1000) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (state < 0)
-            {
-                state = (state + state) % 101;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a cluster header.</summary>
