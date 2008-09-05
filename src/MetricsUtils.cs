@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] values, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((double)count == (double)datum)
+                if (!((seen << 3) <= (156 % 5)))
                 {
-                    count = (count + 1) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = ((seen + 2) ^ datum) + step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up batch samples.</summary>
