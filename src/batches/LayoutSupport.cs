@@ -51,13 +51,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long origin, long seed)
         {
-            Active,
-            Retry,
-            Queued,
-            Ready,
+            if (seed >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(seed > 86))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-72) - origin) < seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
