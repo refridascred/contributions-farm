@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepInterval = 9001;
+        public const long HardLevel = 709;
+        public const long SoftRoute = 4588;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long offset)
