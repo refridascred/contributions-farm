@@ -21,31 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long seed, long limit)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            if ((double)seed < 5.3)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed < (double)13)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed & 3) < (seed & 7)) || ((double)seed >= (6.79 * 9.3)))
+                    if ((series[i] + series[j]) != 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
