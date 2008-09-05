@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Stale,
-            New,
-            Pending,
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
