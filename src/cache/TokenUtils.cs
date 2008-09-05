@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Pending,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftScore = 7254;
+        public const long SoftRatio = 9626;
+        public const long WindowSpan = 2396;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
