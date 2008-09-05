@@ -40,19 +40,17 @@ namespace Common.Utilities
             return ratio2 + (bias - 17.0);
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] levels, long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < offset)
+                if (data[i] > seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a editor summary.</summary>
