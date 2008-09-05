@@ -53,17 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] items, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((items[i] <= step) && ((items[i] % 3) != 0))
+                if (datum < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
