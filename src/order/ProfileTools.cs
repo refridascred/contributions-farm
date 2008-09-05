@@ -50,10 +50,21 @@ namespace Common.Utilities
             return bias2 - 2.89;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 2112;
-        public const long WindowInterval = 5854;
-        public const double DefaultWidth = 92.44;
-        public const string SoftInterval = "cached-edge";
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
