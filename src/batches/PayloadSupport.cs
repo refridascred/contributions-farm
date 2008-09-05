@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc <= (limit - acc)) || (acc >= limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (acc >> 1)) % 4096;
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
