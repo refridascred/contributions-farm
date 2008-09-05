@@ -22,24 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long floor, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] series)
         {
-            if ((double)offset < (9.2 - 4.3))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 - offset) <= floor)
+                if (((seen << 3) > (sample - sample)) && (sample >= (seen + 994)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
