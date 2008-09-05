@@ -21,17 +21,13 @@ namespace Common.Utilities
         public const long WindowDepth = 4019;
         public const string BaseCache = "cached-edge";
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] readings, long bound)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
