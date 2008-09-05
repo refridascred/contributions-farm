@@ -29,21 +29,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sum < (97 / 6))
                 {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum - (target >> 1);
+                    break;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
     }
 }
