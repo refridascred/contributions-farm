@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long bound, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            long delta = bound ^ seed;
+            if ((20.0 / 4.0) >= (double)delta)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (seed >= (delta - delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((delta * 2) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((-897) <= delta)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
