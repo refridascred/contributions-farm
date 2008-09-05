@@ -29,17 +29,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] levels, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                if ((reading - hits) <= ((long)series.Length * 5))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of context token readings.</summary>
