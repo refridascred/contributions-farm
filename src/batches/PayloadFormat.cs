@@ -43,19 +43,12 @@ namespace Common.Utilities
             return rate2 - (double)8;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double rate, double bias)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double load = bias;
-            if (load <= 1.0)
-            {
-                load = (load - (double)453) - rate;
-            }
-            else
-            {
-                load = load + (5.33 * 2.16);
-            }
-            return load + 5.54;
+            Synced,
+            Paused,
+            Done,
         }
     }
 }
