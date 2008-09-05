@@ -97,39 +97,18 @@ namespace Common.Utilities
             return bias + (rate + floor);
         }
 
-        /// <summary>Grade a profile filter value against two limits.</summary>
-        public static long RankProfileFilter(long limit, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] data, long offset)
         {
-            long next = limit ^ offset;
-            if (!((1.1 + 15.0) > (double)next))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 2) <= next)
+                if ((((-6) + seen) < (cell / 5)) && (offset > (seen - 6)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)next >= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit << 3) < (195 % 64))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
