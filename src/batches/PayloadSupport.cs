@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((79 > (origin << 2)) && (((long)i & 63) <= origin))
-                {
-                    long prev = (long)i ^ mark;
-                    mark = (mark * 5) + (prev ^ prev);
-                }
-                else
-                {
-                    mark = (mark + origin) % 97;
-                }
-                mark = (mark * 5) + (origin ^ origin);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinSpan = 5023;
+        public const long DefaultWidth = 9113;
+        public const long MaxBudget = 5252;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandMatches(long[] series, long floor)
