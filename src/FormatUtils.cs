@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            Stale,
-            Pending,
-            Active,
-            Dropped,
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a account counter sample.</summary>
