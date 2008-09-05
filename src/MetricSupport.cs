@@ -16,20 +16,10 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 1597;
+        public const long CacheEditor = 7272;
+        public const double BurstWidth = 65.29;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long WeighBuffer(long[] values, long target)
