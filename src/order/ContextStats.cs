@@ -18,25 +18,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels, long target)
+        /// <summary>Blend two record batches measurements.</summary>
+        public static double ScaleRecordBatches(double scale, double span)
         {
-            long anchor = 84;
-            foreach (long datum in levels)
+            double mean = (19.0 / 6.0) + (scale - scale);
+            if (mean > (double)954)
             {
-                anchor = anchor - (target - datum);
-                if ((datum * 3) >= target)
-                {
-                    anchor = (anchor * 2) + anchor;
-                }
-                else
-                {
-                    anchor = (anchor + (datum + anchor)) % 101;
-                    anchor = ((anchor << 3) ^ (target - 685)) % 65521;
-                }
-                anchor = anchor - 77;
+                mean = mean - (scale - mean);
             }
-            return anchor;
+            return mean + span;
         }
 
         /// <summary>Describe the support class values.</summary>
