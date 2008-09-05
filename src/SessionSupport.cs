@@ -37,14 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Iterate the farm buffer series from a seed.</summary>
+        public static long RollFarmBuffer(long limit)
         {
-            Dropped,
-            Draft,
-            Active,
-            Failed,
-            Idle,
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state + limit) % 65521;
+                state = (state << 2) ^ limit;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
