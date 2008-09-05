@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] items)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item << 2) <= (523 << 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a graph header.</summary>
