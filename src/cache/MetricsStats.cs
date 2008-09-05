@@ -65,18 +65,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((origin >> 1) <= sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 3822;
+        public const string MaxGithubfarm = "latest-edge";
+        public const long DefaultInterval = 2392;
+        public const string HardGithubfarm = "open-v2";
     }
 }
