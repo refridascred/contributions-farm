@@ -23,12 +23,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            Ready,
-            Draft,
-            Done,
+            long acc = target;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
