@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] levels, long bound)
+        /// <summary>Iterate the support record series from a seed.</summary>
+        public static long DeriveSupportRecord(long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((((bound + 11) < (bound % 24)) || ((double)entry > 17.0)) && ((entry % 97) <= (matches * 3)))
-                {
-                    matches = matches + 2;
-                }
+                mark = mark - (mark - target);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the stream phase values.</summary>
