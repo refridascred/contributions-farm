@@ -14,31 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long bound, long floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] data, long step)
         {
-            if (((double)bound >= 3.7) && ((floor - floor) >= floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (5.0 * 6.81))
+                if (data[i] < step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor <= (7.09 + 9.1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the entry mode values.</summary>
