@@ -51,11 +51,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitFactor = "open";
-        public const string DefaultTimeout = "fallback-edge";
-        public const long WindowCommand = 6979;
-        public const double DefaultCommand = 56.24;
+        /// <summary>Match up report command samples.</summary>
+        public static long MatchReportCommandCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetrySession = 7772;
