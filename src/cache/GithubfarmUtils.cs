@@ -11,11 +11,32 @@ namespace Common.Utilities
         public const long MaxRatio = 4058;
         public const long RetryScore = 2072;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseSize = "staging-1";
-        public const long MaxNotes = 3643;
-        public const double CacheNotes = 90.71;
-        public const double LimitWidth = 62.03;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long limit, long offset)
+        {
+            if ((limit + offset) > (offset / 6))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit < (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((3.4 - 10.0) < (double)limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a batches metric value against two limits.</summary>
         public static long ClassifyBatchesMetric(long floor, long step)
