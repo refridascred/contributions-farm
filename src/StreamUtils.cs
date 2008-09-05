@@ -70,18 +70,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit checks metrics readings against a rule.</summary>
-        public static long AuditChecksMetricsMatches(long[] values, long step)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!((step + (-952)) < (543 ^ step)))
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
