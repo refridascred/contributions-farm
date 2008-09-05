@@ -47,13 +47,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Digest a series of payload contributi entries.</summary>
+        public static long TotalPayloadContributi(long[] samples)
         {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            long total = 45;
+            foreach (long item in samples)
+            {
+                if (item >= ((long)samples.Length + total))
+                {
+                    total = (total - (item % 5)) % 97;
+                }
+                if ((total & 127) < 19)
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate context samples.</summary>
