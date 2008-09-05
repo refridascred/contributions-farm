@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] values, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (value >= seed)
+                if (cell < limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Digest a series of account entries.</summary>
