@@ -14,21 +14,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count checks account pairs that satisfy a relation.</summary>
-        public static long PairChecksAccountCount(long[] readings)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long hits = 0;
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
+                    if ((readings[i] + readings[j]) == 1)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
