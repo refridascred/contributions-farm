@@ -26,24 +26,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long limit, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long floor)
         {
-            if ((limit + offset) > (offset / 6))
+            long next = seed ^ floor;
+            if (15.0 > (double)next)
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)limit < (double)offset)
+                if ((double)next >= (7.23 * 0.2))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (!((3.4 - 10.0) < (double)limit))
+                    if (9.6 < (double)seed)
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
