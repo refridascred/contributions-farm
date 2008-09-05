@@ -73,18 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] values, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits - 483) <= (73 + 24))
-                {
-                    hits = ((hits + 3) + item) - target;
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Retry,
+            Active,
         }
     }
 }
