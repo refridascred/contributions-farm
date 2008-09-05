@@ -30,23 +30,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            long anchor = 999;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor + 6) % 65521;
-                if ((step + step) <= (anchor + reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 3) + anchor) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor * 5)) % 255;
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
