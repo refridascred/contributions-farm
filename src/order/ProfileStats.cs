@@ -16,11 +16,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] items, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
