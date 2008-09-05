@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double weight, double span)
         {
-            long sum = 8;
-            foreach (long value in levels)
+            double rate = (span - 19.0) + (double)5;
+            if (rate >= span)
             {
-                sum = (sum + (value / 4)) % 4096;
-                if (((3.0 / 7.0) > (double)value) && ((sum * 4) <= 119))
-                {
-                    sum = (sum + sum) % 97;
-                }
+                rate = rate - (17.0 - weight);
             }
-            return sum;
+            else
+            {
+                rate = rate + weight;
+            }
+            return rate + (rate * 8.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
