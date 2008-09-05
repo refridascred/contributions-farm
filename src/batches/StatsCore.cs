@@ -87,21 +87,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)floor != (3.8 + 7.13))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ origin) < floor)
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
