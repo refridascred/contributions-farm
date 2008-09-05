@@ -12,18 +12,19 @@ namespace Common.Utilities
             return ((load + load) + rate) + offset;
         }
 
-        /// <summary>Audit cache batches readings against a rule.</summary>
-        public static long TallyCacheBatchesMatches(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((reading & 15) < (-949))
+                if (!((7 - 22) != (mark / 9)))
                 {
-                    hits = hits + 1;
+                    mark = (mark * 5) + (mark + limit);
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
