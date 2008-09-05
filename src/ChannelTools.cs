@@ -30,18 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] levels, long bound)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((bound & 7) <= item)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
