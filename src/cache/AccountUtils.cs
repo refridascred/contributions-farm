@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a metrics record reading by value.</summary>
-        public static long LookupMetricsRecordIndex(long[] samples, long target)
+        /// <summary>Validate tools support readings against a bound.</summary>
+        public static bool GuardToolsSupportRange(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((samples[i] == target) && ((samples[i] % 3) != 0))
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Project the next commits metric value.</summary>
