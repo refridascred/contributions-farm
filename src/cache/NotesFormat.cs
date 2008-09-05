@@ -26,27 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long limit, long limit2)
         {
-            long mark = -7;
-            foreach (long reading in samples)
+            long delta = limit + limit2;
+            if (!((delta << 2) <= (limit2 * 4)))
             {
-                if (6 <= (mark >> 3))
-                {
-                    mark = ((mark << 2) ^ (target << 1)) % 4096;
-                }
-                if (!((mark <= (target / 5)) || ((target >> 3) == (mark ^ target))))
-                {
-                    mark = (mark + (target - mark)) % 97;
-                }
-                mark = (mark - reading) % 65521;
+                return 4;
             }
-            if (mark < 50)
+            else
             {
-                mark = (mark - (2 ^ target)) % 101;
+                if ((9.14 * 5.0) >= (double)limit2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((delta << 1) < 804)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (6.03 / 6.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
