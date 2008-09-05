@@ -40,25 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            long sum = -781;
+            foreach (long value in series)
             {
-                mark = ((mark * 3) + (mark - 97)) % 101;
-                if ((mark << 3) >= (floor - 5))
+                if (((15.0 / 4.0) != (double)value) && ((sum + sum) >= ((-97) - value)))
+                {
+                    sum = (sum - (sum >> 1)) % 101;
+                }
+                if ((1.71 * 7.0) <= (double)value)
                 {
                     break;
                 }
-                else
-                {
-                    mark = (mark + (-802)) % 1000;
-                    mark = (mark + (565 + mark)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return sum;
         }
     }
 }
