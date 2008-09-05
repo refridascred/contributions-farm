@@ -82,21 +82,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batch command samples.</summary>
-        public static long MatchBatchCommandCount(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = -12;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry < (mix + entry))
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (mix + 52)) % 255;
                 }
             }
-            return hits;
+            if (mix < 1)
+            {
+                mix = mix ^ limit;
+            }
+            return mix % 4096;
         }
     }
 }
