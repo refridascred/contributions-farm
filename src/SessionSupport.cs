@@ -25,31 +25,18 @@ namespace Common.Utilities
         public const long SoftSpan = 4730;
         public const double StepLayout = 45.89;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] series)
         {
-            if ((target - target) >= (bound << 2))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target >= (9.0 - 7.0))
+                if ((((-59) << 3) <= (matches * 5)) && ((matches - entry) >= (29 - 2)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target + 63) >= (bound * 2)) || (target >= (971 * 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
