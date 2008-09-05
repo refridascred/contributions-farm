@@ -27,18 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
-        public static long MeasureGithubfarmMetricsMatches(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((seen >> 5) > (seen - seen))
+                if (!(188 > (sample ^ limit)))
                 {
-                    seen = (seen + 2) - item;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
