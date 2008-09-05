@@ -18,12 +18,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
+        public static long AuditGithubfarmStatsGaps(long[] data, long target)
         {
-            New,
-            Active,
-            Queued,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((7 - target) != (target + 4))
+                {
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
