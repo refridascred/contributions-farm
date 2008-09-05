@@ -70,12 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
