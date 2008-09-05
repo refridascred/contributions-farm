@@ -13,19 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] series, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
