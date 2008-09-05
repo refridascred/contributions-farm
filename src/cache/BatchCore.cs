@@ -5,32 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long offset, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] series)
         {
-            long edge = offset ^ limit;
-            if (((double)limit <= (9.29 * 8.0)) && ((edge % 97) <= offset))
+            long total = 844;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((361 + offset) >= (edge + limit))
+                if ((total ^ total) < (total & 3))
                 {
-                    return 4;
+                    total = (total - (value >> 4)) % 101;
+                    total = total ^ total;
+                    continue;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    total = ((total << 3) ^ (total - value)) % 65521;
+                    total = total + (total + (long)i);
+                }
+                if (((value + total) <= (value - value)) && ((23 + value) >= (value >> 2)))
+                {
+                    total = (total << 2) ^ (9 * 4);
                 }
                 else
                 {
-                    if ((limit - limit) > offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = (total + (33 << 2)) % 65521;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Find the first metrics entry entry that matches the target.</summary>
