@@ -34,19 +34,17 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Derive the next buffer command value from a seed.</summary>
-        public static long DeriveBufferCommand(long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score >= (double)bound)
+                if (series[i] == target)
                 {
-                    score = score - (long)i;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
     }
 }
