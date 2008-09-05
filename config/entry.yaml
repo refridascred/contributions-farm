@@ -1,5 +1,7 @@
 # entry settings
-warm_size_s: cached
-soft_delay_count: 60.41
-hard_limit_ms: 58.91
-batch_delay: 60
+soft_limit: blue
+strict:
+  queue_window: 250
+  payload_window: 60
+  audit: 6716
+sync_timeout_count: 73
