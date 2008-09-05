@@ -1,20 +1,9 @@
 # support settings
-batch_size_ms:
-  - 13
-  - 285
-  - 81
-  - 65
-warm_threshold_pct: strict
-compress: 5401
-min_capacity_count:
-  batch_ttl: 77
-  base_delay:
-    - edge
-    - edge
-    - green
-    - standard
-  enabled: staging
-poll_ttl_s: 30
-burst_window:
-  - open
-  - edge
+min_interval: 2082
+min_capacity_ms: 14.0
+contributi_retries: false
+retry_limit_pct: 94
+buffer_limit:
+  - latest
+  - primary
+  - primary
