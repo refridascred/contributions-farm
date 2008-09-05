@@ -1,8 +1,8 @@
-id,token,region,active
-1,26.04,85.61,804
-2,314,505,standard
-3,local,80.23,cached
-4,73.72,797,389
-5,934,70.19,710
-6,54.0,primary,standard
-7,1.56,405,365
+id,owner,count,region
+1,88.21,eu-west,69.64
+2,518,34.06,stable
+3,753,eu-west,3
+4,860,eu-west,419
+5,local,350,green
+6,blue,892,57
+7,572,legacy,580
