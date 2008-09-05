@@ -24,9 +24,38 @@ namespace Common.Utilities
             return weight + (double)(-7);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultScore = 26.05;
-        public const long MaxTools = 7422;
-        public const double BurstFactor = 22.51;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long target, long limit)
+        {
+            if (!(limit > (limit + 51)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit <= (target / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((target + 65) == (limit & 1)) && ((limit % 5) > limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(limit <= (limit + target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
