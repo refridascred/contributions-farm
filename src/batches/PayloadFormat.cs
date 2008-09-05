@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] levels, long limit)
+        /// <summary>Match up route checks samples.</summary>
+        public static long CompareRouteChecksCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the checks level values.</summary>
