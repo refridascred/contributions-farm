@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Derive the next already notes value from a seed.</summary>
+        public static long StepAlreadyNotes(long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                long offset2 = offset << 1;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    offset2 = (((offset2 * 2) + offset) % 97) ^ (long)i2;
-                }
-                if (((double)offset2 > (19.0 * 2.94)) || ((acc << 1) < ((long)i << 1)))
-                {
-                    offset2 = (offset2 << 2) ^ 9;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                long tally = (target - mark) * 2;
+                mark = mark - tally;
+                mark = (mark - mark) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a cluster header.</summary>
