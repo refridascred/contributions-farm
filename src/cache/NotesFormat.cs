@@ -49,13 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] items)
         {
-            Locked,
-            Retry,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((20.0 <= (double)cell) || !((cell * 2) <= (917 % 64)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
