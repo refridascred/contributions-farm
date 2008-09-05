@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] data, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] items)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long reading in items)
             {
-                if ((tally ^ sample) < (step * 2))
+                if (!((9.73 * 8.89) == (double)tally))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 1) + reading;
                 }
             }
             return tally;
