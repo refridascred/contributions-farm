@@ -1,8 +1,7 @@
-id,level,label
-1,28.64,80.7
-2,13.95,cached
-3,latest,289
-4,604,staging
-5,open,latest
-6,3,55.8
-7,strict,23.72
+id,state,level,count,region
+1,open,31,75.95,1
+2,322,50.48,800,236
+3,79.39,6.65,708,18.06
+4,standard,169,544,822
+5,57.14,168,95.54,local
+6,874,5.05,489,247
