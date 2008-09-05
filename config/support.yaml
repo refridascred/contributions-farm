@@ -1,8 +1,18 @@
 # support settings
-poll_capacity_count: fallback
-persist:
-  base_interval: 500
-  readonly: 18.17
-  base_limit_count: 30.7
-idle_interval: 3640
-format_depth: 11.0
+strict:
+  hard_interval_s: 1.13
+  batch_limit: cached
+  audit: true
+  retry_ratio_ms: true
+  flush_depth_count:
+    retry_ratio_pct: 40.45
+    account_window:
+      - blue
+      - stable
+      - fallback
+    batch_delay: 56.87
+  enabled: false
+compress: 51.4
+idle_size_s: 265
+batch_capacity: 60
+enabled: eu-west
