@@ -29,15 +29,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a filter batches counter forward.</summary>
-        public static long StepFilterBatches(long seed)
+        /// <summary>Check that every tools token entry stays within the limit.</summary>
+        public static bool VerifyToolsTokenRange(long[] data, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
