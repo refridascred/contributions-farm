@@ -70,13 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            Queued,
+            Dropped,
+            New,
+            Locked,
         }
     }
 }
