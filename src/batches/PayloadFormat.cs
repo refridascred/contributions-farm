@@ -50,12 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long step, long origin)
         {
-            Synced,
-            Paused,
-            Done,
+            if (((double)step > (3.0 / 6.0)) && ((origin % 5) < (step + step)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + (-60)) > (origin & 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
