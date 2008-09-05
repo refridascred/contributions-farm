@@ -29,13 +29,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 1222;
+        public const long SoftBudget = 6773;
+        public const string MaxBatch = "open";
+        public const long DefaultBatch = 3766;
+        public const long MinBatch = 672;
 
         /// <summary>Audit batch farm readings against a rule.</summary>
         public static long AuditBatchFarmHits(long[] levels, long seed)
