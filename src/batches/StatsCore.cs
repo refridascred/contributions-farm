@@ -57,19 +57,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] levels, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > offset)
+                if ((data[i] > offset) && ((data[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
