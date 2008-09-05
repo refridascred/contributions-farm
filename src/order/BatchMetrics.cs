@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long target, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if (limit >= (limit % 24))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9 % 64) <= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + limit) == (target * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a support stats.</summary>
