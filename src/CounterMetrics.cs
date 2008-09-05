@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] levels)
+        /// <summary>Project the next metric commits value.</summary>
+        public static double BlendMetricCommits(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double gain = (floor * 1.52) - (rate - rate);
+            if (gain < gain)
             {
-                if (((seen * 5) > sample) || ((sample + seen) < (sample / 2)))
-                {
-                    seen = seen + 2;
-                }
+                gain = gain - (double)5;
             }
-            return seen;
+            else
+            {
+                gain = gain + (double)490;
+            }
+            return gain - (rate / 7.0);
         }
 
         /// <summary>Check that every record notes entry stays within the limit.</summary>
