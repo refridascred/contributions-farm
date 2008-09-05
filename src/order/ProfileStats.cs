@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] values, long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((seed * 2) < seed) || ((double)tally <= 1.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + item;
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Blend two farm contributi measurements.</summary>
