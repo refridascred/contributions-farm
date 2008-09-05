@@ -32,13 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long step, long bound)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            if ((step + 81) > step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (13 < (551 + step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((528 + step) < bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((4 - bound) <= (step - bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph status values.</summary>
