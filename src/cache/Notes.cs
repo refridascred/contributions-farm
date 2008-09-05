@@ -24,18 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account schema values into a single score.</summary>
-        public static long TallyAccountSchema(long[] samples)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] data)
         {
-            long mark = 50;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (((datum * 5) == (mark + 9)) && ((datum + mark) > (datum * 2)))
+                if ((double)95 == (double)tally)
                 {
-                    mark = (mark + (datum + 433)) % 97;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Validate commits stream readings against a bound.</summary>
