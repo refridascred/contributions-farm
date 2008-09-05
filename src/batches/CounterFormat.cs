@@ -49,14 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Check that every account buffer entry stays within the limit.</summary>
+        public static bool GuardAccountBufferRange(long[] samples, long limit)
         {
-            Pending,
-            Paused,
-            Dropped,
-            Failed,
-            Idle,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
