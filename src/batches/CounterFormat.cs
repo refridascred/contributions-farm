@@ -21,11 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long state = target;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
