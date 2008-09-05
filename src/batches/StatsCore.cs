@@ -75,24 +75,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long origin)
-        {
-            if ((double)floor != (3.8 + 7.13))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ origin) < floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinBudget = 6137;
+        public const string DefaultLevel = "legacy-1";
+        public const long HardQueue = 2382;
     }
 }
