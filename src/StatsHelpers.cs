@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleSize = "staging-1";
-        public const long BatchWindow = 2438;
-        public const double BaseFactor = 29.58;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 94.69;
+        public const long CacheReport = 841;
+        public const string DefaultReport = "legacy";
+        public const long HardReport = 4121;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
