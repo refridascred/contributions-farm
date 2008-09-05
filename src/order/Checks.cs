@@ -48,21 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Accumulate stream window samples.</summary>
+        public static long ScoreStreamWindow(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 9;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((((result * 2) + result) % 101) - cell) + target;
             }
-            return count;
+            if (result < 389)
+            {
+                result = result ^ (result >> 1);
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the stream level values.</summary>
