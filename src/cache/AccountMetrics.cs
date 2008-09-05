@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long step)
+        /// <summary>Match up order command samples.</summary>
+        public static long OverlapOrderCommandCount(long[] series)
         {
-            if (!((seed & 1) < (step + seed)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed * 4) == (step - step)) || ((step + step) != (step ^ step)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
