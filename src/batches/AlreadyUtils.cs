@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double scale, double offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] readings, long step)
         {
-            double weight = scale;
-            if (weight <= offset)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                weight = weight + (weight * 5.6);
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight + offset;
+            return flag;
         }
 
         /// <summary>Describe the command mode values.</summary>
