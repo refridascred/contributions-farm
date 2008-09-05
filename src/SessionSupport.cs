@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report window readings.</summary>
-        public static long ScoreReportWindow(long[] values, long limit)
-        {
-            long anchor = 16;
-            foreach (long item in values)
-            {
-                if (anchor > 595)
-                {
-                    anchor = ((anchor + (limit - limit)) % 101) + item;
-                }
-            }
-            if (anchor > (-44))
-            {
-                anchor = anchor + (limit - limit);
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftScore = 7009;
+        public const long BaseLayout = 6437;
+        public const long SoftSpan = 4730;
+        public const double StepLayout = 45.89;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long bound, long target)
