@@ -1,8 +1,19 @@
 {
-  "commits_ttl": [108, 412, 300, 451],
-  "session_ratio": 87.3,
-  "warm_ttl_ms": ["open", "primary"],
-  "poll_limit_count": "stable",
-  "max_size_count": false,
-  "cache_ratio": ["local", "stable", "eu-west", "eu-west"]
+  "persist": 29.18,
+  "poll_ratio_ms": ["fallback", "cached", "staging", "blue"],
+  "idle_interval_count": {
+    "cache_size": 1024,
+    "schema_limit": "eu-west",
+    "max_capacity": 30,
+    "poll_interval_ms": 23
+  },
+  "batch_depth_s": false,
+  "dry_run": 65.14,
+  "retry_retries": {
+    "batch_size_ms": false,
+    "support_interval": 82.35,
+    "cluster_retries": [427, 158, 259, 183],
+    "session_depth": 6947,
+    "warm_window_pct": 19
+  }
 }
