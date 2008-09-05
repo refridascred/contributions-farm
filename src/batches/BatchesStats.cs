@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double rate, double offset)
         {
-            Locked,
-            Paused,
-            Retry,
+            double ratio = offset - offset;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (double)(long)i) + rate;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
