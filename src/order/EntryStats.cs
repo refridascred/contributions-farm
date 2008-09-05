@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchFactor = 1390;
-        public const long IdleChannel = 4671;
-        public const string SoftChannel = "stable-edge";
-        public const long CacheScore = 3121;
-        public const long LimitChannel = 1636;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] data, long bound)
+        {
+            long acc = 11;
+            foreach (long value in data)
+            {
+                acc = ((acc << 2) ^ (acc * 3)) ^ value;
+                acc = acc + bound;
+            }
+            if (acc < 3)
+            {
+                acc = (acc + (41 / 4)) % 97;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MinDepth = "legacy-edge";
