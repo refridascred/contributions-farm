@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length + cell) <= (382 - cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Active,
         }
     }
 }
