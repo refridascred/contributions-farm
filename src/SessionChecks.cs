@@ -27,16 +27,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double rate, double offset)
-        {
-            double rate2 = rate;
-            if (rate2 > (double)1)
-            {
-                rate2 = (rate2 - (double)5) - offset;
-            }
-            return rate2 + rate2;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 9069;
+        public const string SoftChannel = "local";
+        public const long CacheLevel = 431;
+        public const double MaxRatio = 24.01;
+        public const long RetryChannel = 2403;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
