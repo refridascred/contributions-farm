@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double weight, double bias)
         {
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
+            double load = weight;
+            if (load <= 18.0)
+            {
+                load = load + (bias * 4.9);
+            }
+            return load + weight;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
