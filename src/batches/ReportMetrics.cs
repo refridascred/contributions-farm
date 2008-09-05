@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a cluster buffer sample.</summary>
-        public static long SeekClusterBufferIndex(long[] series, long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Dropped,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a window snapshot.</summary>
