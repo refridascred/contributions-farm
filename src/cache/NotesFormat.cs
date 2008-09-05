@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinFactor = "alpha-edge";
-        public const string LimitRoute = "staging-1";
-        public const double BurstRoute = 46.45;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((1.6 - 1.0) < (double)(long)levels.Length) || (((19.0 - 5.4) <= (double)count) && ((datum ^ count) >= 77)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long GradeSupport(long limit, long limit2)
