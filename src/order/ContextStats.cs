@@ -16,12 +16,10 @@ namespace Common.Utilities
         public const double IdleDepth = 1.37;
         public const long BaseSpan = 576;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 3235;
+        public const long LimitContext = 1388;
+        public const double BurstContext = 50.08;
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
