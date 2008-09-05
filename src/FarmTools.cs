@@ -26,24 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long target, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] series, long bound)
         {
-            if (!((double)target > 0.81))
+            long carry = 0;
+            foreach (long datum in series)
             {
-                return 0;
+                carry = (((carry << 2) ^ (bound ^ carry)) % 97) + datum;
             }
-            else
-            {
-                if ((offset + target) <= (offset + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry % 65521;
         }
     }
 }
