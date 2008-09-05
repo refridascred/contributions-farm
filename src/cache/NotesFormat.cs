@@ -18,18 +18,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] readings, long offset)
+        /// <summary>Combine cache farm values into a single score.</summary>
+        public static long TotalCacheFarm(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long anchor = 8;
+            foreach (long cell in levels)
             {
-                if ((737 + offset) != ((long)readings.Length * 5))
-                {
-                    hits = (hits + 1) + value;
-                }
+                anchor = ((anchor - (cell * 2)) % 1000) + step;
             }
-            return hits;
+            if (anchor > 366)
+            {
+                anchor = (anchor << 2) ^ (anchor + 13);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the tools entry entries that pass the check.</summary>
