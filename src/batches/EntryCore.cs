@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long carry = -225;
+            foreach (long sample in series)
+            {
+                carry = ((carry - (carry & 1)) % 97) ^ sample;
+            }
+            if (carry > 3)
+            {
+                carry = ((carry << 3) ^ (carry << 1)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Locate a support reading by value.</summary>
