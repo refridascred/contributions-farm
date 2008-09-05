@@ -20,13 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] data, long bound)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((long)data.Length % 100) > (bound + entry))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine filter layout values into a single score.</summary>
