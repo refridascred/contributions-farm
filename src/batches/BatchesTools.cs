@@ -37,12 +37,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate githubfarm checks readings against a bound.</summary>
+        public static bool GuardGithubfarmChecksRange(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
