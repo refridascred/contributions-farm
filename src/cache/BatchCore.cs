@@ -23,17 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] levels, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) != 0))
+                if (7.7 <= (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + entry) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many metric entry samples are out of range.</summary>
