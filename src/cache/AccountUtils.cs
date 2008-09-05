@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batches buffer entries that pass the check.</summary>
-        public static long AuditBatchesBufferMatches(long[] data)
+        /// <summary>Locate a metrics record reading by value.</summary>
+        public static long LookupMetricsRecordIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value - hits) >= hits)
+                if ((samples[i] == target) && ((samples[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next commits metric value.</summary>
