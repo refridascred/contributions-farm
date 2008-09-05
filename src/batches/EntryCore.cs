@@ -19,19 +19,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] series, long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Synced,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
