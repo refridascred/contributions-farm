@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultSpan = "cached";
-        public const string SoftTimeout = "stable";
-        public const double WindowCache = 61.48;
-        public const double SoftCache = 79.73;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchRatio = 333;
