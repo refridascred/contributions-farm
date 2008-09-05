@@ -37,31 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long limit, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            if (9 <= bound)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                result = ((result * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((-1) <= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - bound) < limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
