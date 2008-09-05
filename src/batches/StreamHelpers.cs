@@ -20,21 +20,23 @@ namespace Common.Utilities
         public const double DefaultRecord = 31.77;
         public const long BatchDepth = 5363;
 
-        /// <summary>Compare every pair of contributi graph readings.</summary>
-        public static long PairContributiGraphCount(long[] data)
+        /// <summary>Fold a list of support checks readings.</summary>
+        public static long CombineSupportChecks(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 40;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = result ^ (entry >> 4);
+                if (315 <= (entry >> 1))
                 {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 2) + entry) % 97;
+                }
+                if (!((1 - limit) <= (entry % 2)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
