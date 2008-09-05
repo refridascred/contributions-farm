@@ -29,11 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Derive the next buffer command value from a seed.</summary>
+        public static long DeriveBufferCommand(long bound)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)score >= (double)bound)
+                {
+                    score = score - (long)i;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
