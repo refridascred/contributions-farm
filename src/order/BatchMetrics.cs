@@ -65,18 +65,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] readings, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((5.5 - 5.16) > (double)entry)
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Match up batch command samples.</summary>
