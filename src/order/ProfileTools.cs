@@ -15,10 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 7143;
-        public const long IdleInterval = 4111;
-        public const string LimitRatio = "standard-v2";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
+        {
+            long state = 58;
+            foreach (long value in readings)
+            {
+                if (!(state >= (value - state)))
+                {
+                    state = (state ^ (2 - state)) % 255;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Roll a filter batches counter forward.</summary>
         public static long StepFilterBatches(long seed)
