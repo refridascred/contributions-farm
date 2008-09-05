@@ -1,14 +1,8 @@
 {
-  "route_limit": 9091,
-  "hard_threshold": true,
-  "cache_ratio": 48,
-  "base_size_pct": 19,
-  "context_depth": 22.02,
-  "idle_depth_count": {
-    "batches_interval": 2,
-    "persist": 88.71,
-    "compress": "eu-west",
-    "githubfarm_window": "latest",
-    "tools_size": 4030
-  }
+  "hard_interval_s": false,
+  "layout_interval": [94, 446],
+  "hard_ratio_s": 93,
+  "contributi_ratio": "green",
+  "already_limit": false,
+  "max_ttl_ms": "open"
 }
