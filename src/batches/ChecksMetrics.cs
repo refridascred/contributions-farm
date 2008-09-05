@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long MaxProfile = 1972;
         public const long CacheInterval = 9429;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Closed,
+            Pending,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the command state values.</summary>
