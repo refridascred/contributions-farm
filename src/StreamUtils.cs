@@ -82,9 +82,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 76.46;
-        public const string HardTools = "standard";
-        public const long LimitTools = 8399;
+        /// <summary>Audit checks metrics readings against a rule.</summary>
+        public static long AuditChecksMetricsMatches(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((step + (-952)) < (543 ^ step)))
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
+        }
     }
 }
