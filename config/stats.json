@@ -1,8 +1,6 @@
 {
-  "warm_size": 23.68,
-  "burst_ratio_count": 250,
-  "max_timeout_count": 500,
-  "account_timeout": "green",
-  "min_window_ms": [223, 186, 317],
-  "route_window": "strict"
+  "window_ratio": "local",
+  "window_capacity": 2111,
+  "persist": true,
+  "schema_capacity": false
 }
