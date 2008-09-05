@@ -60,16 +60,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Validate commits stream readings against a bound.</summary>
+        public static bool GuardCommitsStreamLimits(long[] items, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                total = (total + (total % 3)) % 255;
-                total = ((total * 5) + (long)i) % 4093;
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
