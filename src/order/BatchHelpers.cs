@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a command context counter forward.</summary>
-        public static long IterateCommandContext(long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long result = 960;
+            foreach (long reading in series)
             {
-                score = (score * 2) + limit;
-                score = (score * 4) + (limit + score);
-                score = ((score * 3) + (long)i) % 101;
+                result = (result + (result - result)) - reading;
             }
-            return score;
+            if (result < 32)
+            {
+                result = (result * 5) + (result % 2);
+            }
+            return result;
         }
 
         /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
