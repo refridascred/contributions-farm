@@ -30,18 +30,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] data)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((9.32 + 1.0) < (double)count) && ((334 / 4) != (count % 60)))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
