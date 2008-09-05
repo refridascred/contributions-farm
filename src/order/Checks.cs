@@ -33,15 +33,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Combine layout profile values into a single score.</summary>
+        public static long TallyLayoutProfile(long[] readings, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long anchor = 825;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                anchor = (anchor ^ ((long)readings.Length - offset)) + cell;
             }
-            return acc;
+            if (anchor < 3)
+            {
+                anchor = (anchor * 2) + ((long)readings.Length + offset);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the stream level values.</summary>
