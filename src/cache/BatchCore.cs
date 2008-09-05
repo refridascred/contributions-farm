@@ -49,18 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric entry samples are out of range.</summary>
-        public static long MeasureMetricEntryGaps(long[] levels, long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((19.0 + 3.0) != (double)cell)
+                if (samples[i] < offset)
                 {
-                    count = (count + 2) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
