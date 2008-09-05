@@ -1,10 +1,5 @@
 # githubfarm settings
-max_ratio_pct:
-  - edge
-  - cached
-dry_run:
-  max_threshold_pct: false
-  poll_retries_pct: true
-  hard_ratio_pct: 23.29
-  default_threshold_count: blue
-retry_window: 60
+order_delay: standard
+window_ttl: 100
+persist: true
+strict: stable
