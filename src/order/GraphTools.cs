@@ -56,14 +56,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Classify a batches notes pair into a bucket.</summary>
+        public static long BucketBatchesNotes(long step, long seed)
         {
-            Dropped,
-            Idle,
-            New,
-            Stale,
-            Active,
+            if ((seed & 255) >= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7 / 2) <= (seed - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Look up the position of a stats batches sample.</summary>
