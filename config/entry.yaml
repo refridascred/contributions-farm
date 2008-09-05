@@ -1,29 +1,25 @@
 # entry settings
-poll_size:
-  idle_ttl_s:
-    - latest
-    - edge
-    - fallback
-    - green
-  min_size_pct: cached
-  contributi_interval:
-    - 199
-    - 25
-  payload_size:
-    default_retries_ms: 97
-    base_limit: legacy
-    report_timeout: 7028
-    strict: 34.3
-    dry_run: 23
-max_depth_pct: local
-window_window: standard
-compress:
-  default_interval_count: 30
-  audit: staging
-  warm_delay_ms:
-    graph_timeout: edge
-    sync_delay: standard
-    cache_window: 15.35
-    context_retries: 26
-    cache_ratio: 15.94
-    session_threshold: legacy
+default_size:
+  readonly:
+    - legacy
+    - blue
+    - primary
+  hard_window_s: 1973
+  base_limit: legacy
+farm_window: 500
+burst_threshold:
+  - green
+  - stable
+readonly: false
+sync_interval_count:
+  stream_threshold: strict
+  checks_size:
+    counter_delay: strict
+    compress: local
+    sync_size_pct: true
+    metric_window: 46
+    min_limit_count: latest
+    support_depth: local
+  min_capacity_s: 250
+  entry_threshold: eu-west
+  graph_interval: 500
