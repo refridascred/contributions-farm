@@ -25,13 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
