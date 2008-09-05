@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the command kind values.</summary>
