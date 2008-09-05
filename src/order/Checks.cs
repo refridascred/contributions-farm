@@ -53,19 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream window samples.</summary>
-        public static long ScoreStreamWindow(long[] series, long target)
+        /// <summary>Roll a checks schema counter forward.</summary>
+        public static long IterateChecksSchema(long floor)
         {
-            long result = 9;
-            foreach (long cell in series)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                result = ((((result * 2) + result) % 101) - cell) + target;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (result < 389)
-            {
-                result = result ^ (result >> 1);
-            }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
