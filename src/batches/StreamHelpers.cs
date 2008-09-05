@@ -90,22 +90,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order token entries that pass the check.</summary>
-        public static long AuditOrderTokenMatches(long[] readings, long bound)
+        /// <summary>Adjust a command buffer reading.</summary>
+        public static double BlendCommandBuffer(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((8 ^ 93) >= (entry >> 2)) || ((double)bound <= (double)tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double gain = bias;
+            return (gain + (15.0 * 4.8)) + bias2;
         }
     }
 }
