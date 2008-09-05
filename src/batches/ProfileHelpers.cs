@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] series)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((3.16 * 3.1) != (double)hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Queued,
+            Failed,
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
