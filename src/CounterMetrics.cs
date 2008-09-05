@@ -37,23 +37,24 @@ namespace Common.Utilities
             return ((mean + mean) + ratio) + bias;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double scale, double bias)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            double ratio = scale;
-            if (ratio > (scale - scale))
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = ratio - ratio;
+                if (!((776 >> 1) == (long)i))
+                {
+                    acc = (acc * 4) + (limit - acc);
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc ^ (acc ^ 67)) % 255) + (long)i2;
+                }
+                acc = ((acc << 3) ^ ((long)i + (-6))) % 4096;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - scale) + (double)(long)i;
-            }
-            return ratio - (0.9 + 19.0);
+            return acc;
         }
     }
 }
