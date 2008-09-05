@@ -19,30 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double ratio, double span)
         {
-            long sum = 21;
-            foreach (long datum in readings)
+            double bias = (1.0 / 7.0) + (double)44;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sum - datum) != (datum - 10))
-                {
-                    sum = sum ^ (92 << 3);
-                }
-                else
-                {
-                    sum = (sum - 147) % 65521;
-                }
-                if (((long)readings.Length * 4) <= (datum - offset))
-                {
-                    break;
-                }
+                bias = ((bias + 9.29) + (double)(long)i) - span;
             }
-            if (sum > 596)
-            {
-                sum = ((sum << 2) ^ (offset + offset)) % 101;
-            }
-            return sum % 97;
+            return bias - ratio;
         }
 
         /// <summary>Accumulate editor order samples.</summary>
