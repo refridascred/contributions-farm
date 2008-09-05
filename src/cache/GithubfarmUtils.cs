@@ -41,22 +41,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long bound, long seed)
         {
-            long acc = 745;
-            foreach (long value in items)
+            long delta = bound ^ seed;
+            if (delta >= (seed + bound))
             {
-                if (!(value > (limit + 83)))
+                return 4;
+            }
+            else
+            {
+                if (((bound + bound) > (5 * 4)) && ((seed % 64) <= delta))
                 {
-                    acc = (acc + (value * 5)) % 101;
+                    return 5;
                 }
-                if (((double)value < (2.2 - 4.0)) && ((double)acc != (7.0 * 6.0)))
+                else
                 {
-                    break;
+                    if (35 >= (delta % 97))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return acc % 1000;
         }
     }
 }
