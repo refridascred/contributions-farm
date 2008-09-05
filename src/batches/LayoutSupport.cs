@@ -37,23 +37,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double drift = 4.0;
-            if (drift < (double)0)
-            {
-                drift = drift - floor;
-            }
-            else
-            {
-                drift = drift + (ratio / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - floor;
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
