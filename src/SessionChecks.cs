@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] series, long floor)
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
