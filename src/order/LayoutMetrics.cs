@@ -31,24 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series, long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long acc = -911;
-            foreach (long reading in series)
-            {
-                acc = ((acc + ((-823) - acc)) % 97) - offset;
-                acc = (acc ^ (acc - 72)) % 101;
-                if (((double)reading < (17.0 / 8.0)) && ((7.1 * 3.3) > (20.0 * 0.52)))
-                {
-                    break;
-                }
-            }
-            if (acc > 8)
-            {
-                acc = (acc - (acc + acc)) % 97;
-            }
-            return acc % 1000;
+            Stale,
+            Retry,
+            Dropped,
+            Locked,
+            Active,
         }
     }
 }
