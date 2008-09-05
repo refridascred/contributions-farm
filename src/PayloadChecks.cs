@@ -28,11 +28,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "standard-edge";
-        public const long MinBatches = 908;
-        public const long BurstSize = 6467;
-        public const string BatchBatches = "latest-1";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] values)
+        {
+            long carry = 0;
+            foreach (long reading in values)
+            {
+                if ((double)carry != (9.0 * 1.21))
+                {
+                    carry = ((carry << 2) ^ (reading % 3)) % 65521;
+                }
+            }
+            if (carry > 92)
+            {
+                carry = carry - (carry << 3);
+            }
+            return carry;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long SortSession(long step, long floor)
