@@ -1,7 +1,36 @@
 # entry settings
-batch_ratio_s: 93.63
-record_delay: primary
-strict: latest
-idle_limit:
-  - 275
-  - 317
+strict:
+  - edge
+  - open
+  - strict
+  - local
+enabled: latest
+verbose:
+  - 375
+  - 72
+  - 36
+  - 345
+readonly:
+  persist:
+    route_limit: true
+    support_window: false
+    report_delay: standard
+    report_timeout: 1024
+    schema_depth: 15
+    min_size_count: true
+  flush_interval:
+    base_limit: legacy
+    persist:
+      - edge
+      - open
+      - blue
+      - legacy
+    metrics_delay:
+      - 319
+      - 494
+      - 434
+    min_depth_pct: true
+    queue_threshold: 1305
+    compress: fallback
+  strict: 989
+  batch_ttl_s: 78.13
