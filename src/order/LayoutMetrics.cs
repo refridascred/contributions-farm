@@ -23,19 +23,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] data, long limit)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
