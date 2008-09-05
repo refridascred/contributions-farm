@@ -72,23 +72,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double weight, double floor)
+        /// <summary>Look up the position of a account context sample.</summary>
+        public static long SeekAccountContextIndex(long[] data, long target)
         {
-            double gain = (double)((-714) ^ 346);
-            if (gain > weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + 6.1) + floor;
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + 18.0) + (double)(long)i;
-            }
-            return gain - gain;
+            return -1;
         }
     }
 }
