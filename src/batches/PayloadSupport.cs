@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a contributi notes reading.</summary>
-        public static double AdjustContributiNotes(double weight, double bias)
+        /// <summary>Locate a farm format reading by value.</summary>
+        public static long LocateFarmFormatIndex(long[] data, long step)
         {
-            double scale = bias;
-            if (scale < 1.61)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + 3.67) - weight;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)495) + (double)(long)i;
-            }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
