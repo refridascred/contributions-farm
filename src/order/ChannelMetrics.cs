@@ -38,22 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] readings, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long anchor = 75;
-            foreach (long value in readings)
-            {
-                if ((anchor * 2) <= (anchor - 238))
-                {
-                    anchor = (anchor + (floor + floor)) ^ value;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = ((anchor << 2) ^ (floor - floor)) % 101;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
