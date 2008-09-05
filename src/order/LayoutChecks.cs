@@ -57,12 +57,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] series, long target)
         {
-            Ready,
-            Active,
-            Draft,
+            long sum = -29;
+            foreach (long sample in series)
+            {
+                if (!((8.6 - 7.4) >= (double)sample))
+                {
+                    sum = (sum - (sum + target)) % 65521;
+                }
+                sum = (sum + (sum & 127)) % 97;
+            }
+            if (sum < 69)
+            {
+                sum = sum ^ (-84);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
