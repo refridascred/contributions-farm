@@ -57,12 +57,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long target, long seed)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long prev = target + seed;
+            if (729 < (prev - 856))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target > (841 % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 3) >= (prev + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - target) != (prev << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
