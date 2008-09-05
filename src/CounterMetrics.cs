@@ -34,22 +34,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Roll a graph counter counter forward.</summary>
+        public static long RollGraphCounter(long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (((double)(long)samples.Length <= (double)entry) && (count <= entry))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
