@@ -43,11 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 1075;
-        public const string WindowBatches = "stable-1";
-        public const double LimitLevel = 0.96;
-        public const string StepTimeout = "open";
+        /// <summary>Measure how many layout stream samples are out of range.</summary>
+        public static long TallyLayoutStreamOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (5 < (cell - 943))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
