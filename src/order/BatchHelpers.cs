@@ -20,22 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
-        public static long AuditGithubfarmStatsGaps(long[] data, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mix = 28;
+            foreach (long sample in data)
             {
-                if ((7 - target) != (target + 4))
+                if ((double)sample == (3.0 * 4.33))
                 {
-                    matches = (matches + 2) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = ((mix << 3) ^ (step + step)) % 65521;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Accumulate window samples.</summary>
