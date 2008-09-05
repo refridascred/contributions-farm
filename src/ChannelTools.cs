@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Active,
-            Retry,
-            Synced,
+            Queued,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
