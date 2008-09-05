@@ -1,6 +1,5 @@
 {
-  "max_ttl_count": 68,
-  "retry_size_pct": 24,
-  "account_limit": ["stable", "strict"],
-  "hard_depth_ms": true
+  "verbose": 100,
+  "stream_ttl": "open",
+  "poll_window_s": [92, 341, 328, 388]
 }
