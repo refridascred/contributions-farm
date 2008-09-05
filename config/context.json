@@ -1,12 +1,10 @@
 {
-  "max_size_ms": true,
-  "hard_limit": "blue",
-  "soft_ratio_s": [192, 311, 176, 256],
-  "burst_threshold_count": {
-    "sync_retries": 50.89,
-    "strict": [54, 13, 119],
-    "buffer_retries": "edge",
-    "base_delay_pct": 87.49
+  "record_retries": ["cached", "standard", "fallback"],
+  "tools_window": 30,
+  "strict": {
+    "compress": true,
+    "default_size": true,
+    "schema_size": "stable"
   },
-  "poll_threshold_pct": ["legacy", "legacy", "edge", "fallback"]
+  "min_timeout_s": true
 }
