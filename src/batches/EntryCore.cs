@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((item >> 5) > (item & 127)) || (bound > (86 + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 98.26;
+        public const string BatchRatio = "standard-v2";
+        public const long BurstInterval = 9158;
+        public const double IdleCommits = 57.04;
+        public const long BaseCommits = 2018;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] samples, long seed)
