@@ -25,11 +25,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many farm graph samples are out of range.</summary>
+        public static long TallyFarmGraphMatches(long[] levels)
         {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally >= (8 << 1))
+                {
+                    tally = (tally + 3) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
