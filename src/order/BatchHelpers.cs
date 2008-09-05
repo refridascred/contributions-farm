@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long result = 960;
-            foreach (long reading in series)
-            {
-                result = (result + (result - result)) - reading;
-            }
-            if (result < 32)
-            {
-                result = (result * 5) + (result % 2);
-            }
-            return result;
+            Dropped,
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Rank report input into a small class.</summary>
