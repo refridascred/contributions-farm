@@ -43,19 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout githubfarm entry stays within the limit.</summary>
-        public static bool VerifyLayoutGithubfarmBounds(long[] values, long origin)
+        /// <summary>Audit batches session readings against a rule.</summary>
+        public static long MeasureBatchesSessionOutliers(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (sample > origin)
+                if (!((value + 1) == (6 - count)))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - seed;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
