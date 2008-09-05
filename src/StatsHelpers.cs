@@ -51,15 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] data)
         {
-            double gain = floor - floor;
-            if (gain >= floor)
+            long count = 0;
+            foreach (long datum in data)
             {
-                gain = (gain - (gain / 5.0)) - rate;
+                if ((datum / 6) < (count + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain - (double)68;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
