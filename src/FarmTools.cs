@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 5973;
-        public const long IdleRatio = 9525;
-        public const long BurstInterval = 7244;
-        public const long DefaultProfile = 1942;
-        public const double CacheProfile = 67.97;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((offset << 1) <= datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesMatches(long[] items, long target)
