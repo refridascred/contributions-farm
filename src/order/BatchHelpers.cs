@@ -27,14 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Stale,
-            Done,
-            Queued,
+            Pending,
+            Retry,
             Closed,
-            Paused,
+            Stale,
         }
     }
 }
