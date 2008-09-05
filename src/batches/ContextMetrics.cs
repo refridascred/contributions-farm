@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample >> 1) <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine window token values into a single score.</summary>
