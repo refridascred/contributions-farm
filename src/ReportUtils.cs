@@ -54,13 +54,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)hits <= (9.9 + 0.49))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
