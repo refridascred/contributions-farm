@@ -13,19 +13,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] levels, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long result = 726;
+            foreach (long cell in readings)
             {
-                if (datum != offset)
+                if (((7.86 + 12.0) >= (9.1 - 6.48)) || (((-8) & 255) == (cell * 4)))
                 {
-                    flag = false;
+                    result = ((result * 3) + (334 + result)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result * 3)) % 65521;
+                }
+                if ((8.3 + 14.0) == (double)cell)
+                {
                     break;
                 }
             }
-            return flag;
+            return result % 65521;
         }
 
         /// <summary>Hold a batch entry.</summary>
