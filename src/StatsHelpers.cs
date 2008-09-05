@@ -29,20 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data)
-        {
-            long sum = 4;
-            foreach (long cell in data)
-            {
-                if ((cell & 3) >= (cell & 127))
-                {
-                    sum = ((sum << 2) ^ (cell + cell)) % 65521;
-                }
-                sum = (sum - sum) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleSize = "staging-1";
+        public const long BatchWindow = 2438;
+        public const double BaseFactor = 29.58;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] levels, long target)
