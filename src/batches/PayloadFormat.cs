@@ -22,14 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Derive the next tools notes value from a seed.</summary>
+        public static long StepToolsNotes(long target)
         {
-            Idle,
-            Synced,
-            Ready,
-            Retry,
-            Closed,
+            long total = target;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total ^ (target + (long)i)) % 255;
+                total = total - 684;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Classify a support order pair into a bucket.</summary>
