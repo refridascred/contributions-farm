@@ -1,8 +1,5 @@
 {
-  "cache_delay": false,
-  "cache_ttl": ["stable", "eu-west", "open", "open"],
-  "sync_depth": [473, 456, 54, 428],
-  "retry_window_pct": 500,
-  "dry_run": 250,
-  "filter_threshold": 53.94
+  "soft_window_pct": 9.85,
+  "retry_threshold_pct": false,
+  "default_capacity_count": false
 }
