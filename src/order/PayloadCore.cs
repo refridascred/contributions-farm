@@ -16,18 +16,12 @@ namespace Common.Utilities
             return gain2 + (6.68 + offset);
         }
 
-        /// <summary>Count the cache graph entries that pass the check.</summary>
-        public static long AuditCacheGraphGaps(long[] data)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)item > (double)20)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
