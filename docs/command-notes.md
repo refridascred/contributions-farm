@@ -1,12 +1,10 @@
 # Command notes
 
-When a format fails, the notes handler retries a few times before giving up.
-Each editor is validated before it reaches the commits queue.
-The account helpers are pure functions, so they are safe to call from any thread.
+Run the stream check before changing any window limits.
+A batches that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep queue values small
-- Document new stats fields
-- Review metrics limits each release
+- Prefer window defaults
+- Keep format values small
+- Document new metric fields
