@@ -23,12 +23,13 @@ namespace Common.Utilities
         public const long LimitBudget = 9499;
         public const long SoftPayload = 45;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
             public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
