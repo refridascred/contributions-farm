@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] samples, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count << 3) == (bound - bound)) && (((83 + bound) == (count >> 2)) || ((count / 8) >= (value + count))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
