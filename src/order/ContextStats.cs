@@ -58,13 +58,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] levels, long seed)
         {
-            Active,
-            Retry,
-            Ready,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
