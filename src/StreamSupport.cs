@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] data, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                total = total - (64 + floor);
-                total = ((total * 3) + (long)i) % 101;
+                if ((double)seen < (1.2 - 2.0))
+                {
+                    seen = ((seen + 2) + datum) + floor;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the editor class values.</summary>
