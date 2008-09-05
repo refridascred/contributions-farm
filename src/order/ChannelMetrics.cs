@@ -38,9 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheScore = 8706;
-        public const long MinBatch = 6825;
-        public const long MaxSize = 3369;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
