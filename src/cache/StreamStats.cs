@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] items)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally + (long)items.Length) <= entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
