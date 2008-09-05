@@ -34,11 +34,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "open";
-        public const double StepChecks = 68.51;
-        public const double StepLevel = 0.77;
-        public const long IdleBudget = 4565;
-        public const long WindowChecks = 5520;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long offset, long origin)
+        {
+            if ((offset % 3) < 3)
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin < offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
