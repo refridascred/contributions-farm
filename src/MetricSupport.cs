@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            long mix = 5;
-            foreach (long sample in values)
+            long mix = 33;
+            foreach (long cell in samples)
             {
-                mix = (mix - mix) % 1000;
-                if (((sample + mix) <= (mix ^ (long)values.Length)) || ((mix - sample) >= mix))
+                if (((mix >> 5) == ((long)samples.Length - cell)) && ((2.9 * 12.0) != (double)cell))
                 {
-                    break;
+                    mix = ((mix << 3) ^ (mix - cell)) % 4096;
                 }
+                mix = (mix - cell) % 4096;
             }
-            if (mix > 7)
-            {
-                mix = ((mix * 4) + (mix * 2)) % 97;
-            }
-            return mix;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
