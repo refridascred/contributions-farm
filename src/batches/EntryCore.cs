@@ -28,22 +28,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] readings, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long seed, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long lane = seed ^ step;
+            if (step > (lane + seed))
             {
-                if (item < (long)readings.Length)
+                return 6;
+            }
+            else
+            {
+                if (((lane & 15) <= (step - (-68))) || ((6.2 / 2.0) <= (double)step))
                 {
-                    seen = (seen + 3) - floor;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (seed >= (step & 127))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step != (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
