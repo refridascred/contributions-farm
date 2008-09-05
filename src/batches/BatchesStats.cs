@@ -50,19 +50,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 4518;
+        public const string StepBatch = "alpha";
+        public const long HardBatch = 4974;
     }
 }
