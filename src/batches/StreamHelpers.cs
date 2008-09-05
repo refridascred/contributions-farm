@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double weight, double span)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double rate = (span - 19.0) + (double)5;
-            if (rate >= span)
-            {
-                rate = rate - (17.0 - weight);
-            }
-            else
-            {
-                rate = rate + weight;
-            }
-            return rate + (rate * 8.0);
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
