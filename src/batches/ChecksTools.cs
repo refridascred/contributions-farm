@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a schema metric pair into a bucket.</summary>
-        public static long ClassifySchemaMetric(long target, long target2)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            if (6.4 > (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.9 * 16.0) == (double)target2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
