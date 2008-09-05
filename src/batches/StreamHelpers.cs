@@ -34,13 +34,15 @@ namespace Common.Utilities
         public const long BatchEntry = 6396;
         public const double WindowScore = 20.16;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long carry = 989;
+            foreach (long cell in readings)
+            {
+                carry = carry + (cell + 797);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
