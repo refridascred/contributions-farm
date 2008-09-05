@@ -49,22 +49,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] series, long limit)
+        /// <summary>Locate a graph cluster reading by value.</summary>
+        public static long LocateGraphClusterIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((246 + 38) < (limit - tally))
+                if (series[i] <= step)
                 {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
