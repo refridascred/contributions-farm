@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double SoftMetrics = 83.68;
         public const long RetryInterval = 4834;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] values)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            long mix = 522;
+            foreach (long entry in values)
+            {
+                if (mix < (3 << 2))
+                {
+                    mix = (((mix * 3) + mix) % 65521) ^ entry;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
