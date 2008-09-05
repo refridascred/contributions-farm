@@ -55,10 +55,23 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "latest-1";
-        public const long CacheRoute = 4781;
-        public const long BurstScore = 6788;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] readings, long origin)
+        {
+            long result = 2;
+            foreach (long value in readings)
+            {
+                if ((result - result) > 40)
+                {
+                    result = (result - (result / 5)) - origin;
+                }
+                if ((value >> 2) < (value % 7))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long FoldBuffer(long[] levels)
