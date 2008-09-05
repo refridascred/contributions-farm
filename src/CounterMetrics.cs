@@ -14,18 +14,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (0.46 >= (double)datum)
+                if ((41 << 1) <= (tally + item))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Adjust a report reading.</summary>
