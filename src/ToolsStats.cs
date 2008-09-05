@@ -72,11 +72,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
