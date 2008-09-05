@@ -73,38 +73,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long step, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] levels, long offset)
         {
-            if ((step * 5) >= (7 - step))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < (0.53 + 1.28))
+                if (datum > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((6.5 * 0.6) >= (double)step) && ((double)target < 5.7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step <= (727 << 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
