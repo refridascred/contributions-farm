@@ -1,12 +1,16 @@
 # Command notes
 
-The stats module keeps schema values in sync with the route cache.
-When a cache fails, the metric handler retries a few times before giving up.
-Use tools settings to tune how often token data is refreshed.
+Defaults for order live in the config folder and can be overridden per environment.
+Use editor settings to tune how often session data is refreshed.
+The context helpers are pure functions, so they are safe to call from any thread.
+
+The stats module keeps report values in sync with the buffer cache.
+Keep farm and stream names short and lowercase.
+The queue report groups every order by counter.
 
 ## Guidelines
 
-- Document new session fields
-- Log every support change
-- Prefer schema defaults
-- Validate layout input early
+- Keep format values small
+- Review filter limits each release
+- Validate record input early
+- Prefer already defaults
