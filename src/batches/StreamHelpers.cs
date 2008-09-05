@@ -27,23 +27,12 @@ namespace Common.Utilities
         public const double DefaultRecord = 31.77;
         public const long BatchDepth = 5363;
 
-        /// <summary>Digest a series of report cache entries.</summary>
-        public static long TallyReportCache(long[] values)
-        {
-            long acc = 261;
-            foreach (long value in values)
-            {
-                if ((value / 5) == (value - acc))
-                {
-                    acc = (acc << 2) ^ (48 + value);
-                }
-                if ((value ^ acc) == (value + value))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchTimeout = 59.01;
+        public const double HardBuffer = 14.92;
+        public const double MaxBudget = 47.79;
+        public const double SoftBuffer = 62.34;
+        public const long BaseRatio = 8230;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long seed, long floor)
