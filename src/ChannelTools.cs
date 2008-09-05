@@ -33,12 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first route already entry that matches the target.</summary>
-        public static long SeekRouteAlreadyIndex(long[] values, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] < bound)
+                if (readings[i] == bound)
                 {
                     return (long)i;
                 }
