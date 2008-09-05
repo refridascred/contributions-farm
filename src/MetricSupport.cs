@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] items, long target)
         {
-            long mix = 33;
-            foreach (long cell in samples)
+            long total = 9;
+            foreach (long datum in items)
             {
-                if (((mix >> 5) == ((long)samples.Length - cell)) && ((2.9 * 12.0) != (double)cell))
-                {
-                    mix = ((mix << 3) ^ (mix - cell)) % 4096;
-                }
-                mix = (mix - cell) % 4096;
+                total = ((total * 4) + target) - datum;
             }
-            return mix % 1000;
+            if (total > 9)
+            {
+                total = (total << 2) ^ target;
+            }
+            return total;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
