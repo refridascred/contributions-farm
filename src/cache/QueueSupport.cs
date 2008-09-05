@@ -13,12 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double offset)
         {
-            Active,
-            Paused,
-            Dropped,
+            double rate2 = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - offset) + (double)(long)i;
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
