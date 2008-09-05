@@ -1,6 +1,6 @@
 {
-  "enabled": 94.55,
-  "max_ttl_ms": false,
-  "cache_retries_pct": "fallback",
-  "sync_window_pct": "cached"
+  "farm_depth": 1024,
+  "flush_timeout": 2361,
+  "burst_window_count": 45.96,
+  "default_interval": [25, 151]
 }
