@@ -63,19 +63,11 @@ namespace Common.Utilities
         public const long HardTimeout = 7502;
         public const long LimitAccount = 1515;
 
-        /// <summary>Count the filter already entries that pass the check.</summary>
-        public static long AuditFilterAlreadyHits(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((2 - limit) > (item + limit)) && (((double)item <= (0.21 * 1.97)) && ((seen << 2) >= item)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 3427;
+        public const double BaseAlready = 36.25;
+        public const double RetryAlready = 84.9;
+        public const string LimitSize = "strict";
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
