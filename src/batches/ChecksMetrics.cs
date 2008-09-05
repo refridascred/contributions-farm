@@ -41,19 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] samples, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (datum > seed)
+                if ((hits + hits) > hits)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + item;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
