@@ -1,5 +1,11 @@
 {
-  "persist": 4282,
-  "metrics_capacity": "cached",
-  "strict": [354, 346, 34]
+  "notes_threshold": 30.33,
+  "buffer_ratio": 73,
+  "base_delay": 71,
+  "burst_window_ms": {
+    "token_limit": false,
+    "strict": 1,
+    "route_retries": [353, 408, 200, 458]
+  },
+  "githubfarm_depth": "legacy"
 }
