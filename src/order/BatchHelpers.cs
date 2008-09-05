@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long offset, long target)
         {
-            long state = 849;
-            foreach (long entry in data)
+            long delta = offset + target;
+            if (((offset + target) > (target * 2)) || ((delta - offset) != (delta / 4)))
             {
-                state = (state << 3) ^ (8 + entry);
-                state = ((state * 5) + (entry + entry)) % 1000;
-                if (!(entry <= (3 + entry)))
+                return 1;
+            }
+            else
+            {
+                if (7.8 < (double)target)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((target & 15) == (37 + offset)) || ((double)offset >= (7.2 + 18.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state > 0)
-            {
-                state = state + (state - state);
-            }
-            return state % 97;
         }
 
         /// <summary>Describe the counter mode values.</summary>
