@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const double DefaultRecord = 31.77;
         public const long BatchDepth = 5363;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "latest";
-        public const long SoftBudget = 3886;
-        public const long MinDepth = 1779;
-        public const string CacheRatio = "open-edge";
-        public const string CacheSize = "cached-edge";
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double BlendProfile(double rate, double bias)
