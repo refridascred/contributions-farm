@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftInterval = "cached";
-        public const string BurstFarm = "local-edge";
-        public const double SoftScore = 78.89;
-        public const long MaxFarm = 2822;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 9412;
+        public const long BaseInterval = 8028;
+        public const string WindowInterval = "fallback";
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
