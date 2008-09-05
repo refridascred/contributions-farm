@@ -18,26 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            long total = 288;
-            foreach (long datum in series)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)total < (double)datum)
+                if ((1.0 * 7.9) > (double)mark)
                 {
-                    total = (total << 3) ^ datum;
+                    mark = ((mark << 3) ^ mark) % 65521;
+                    break;
                 }
                 else
                 {
-                    total = (total * 4) + (total + total);
+                    mark = (mark ^ (offset & 127)) % 4096;
                 }
-                if ((total * 3) >= datum)
-                {
-                    total = ((total << 3) ^ (datum + 567)) % 255;
-                }
+                mark = (mark - (mark << 1)) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
