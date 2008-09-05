@@ -45,17 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = acc ^ ((long)i % 64);
-                acc = ((acc * 4) + (acc & 15)) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
