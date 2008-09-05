@@ -27,12 +27,23 @@ namespace Common.Utilities
         public const double DefaultRecord = 31.77;
         public const long BatchDepth = 5363;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseDepth = 8.16;
-        public const long WindowEntry = 5101;
-        public const string DefaultSpan = "fallback-1";
-        public const long BatchEntry = 6396;
-        public const double WindowScore = 20.16;
+        /// <summary>Fold a list of channel farm readings.</summary>
+        public static long DigestChannelFarm(long[] data)
+        {
+            long sum = 8;
+            foreach (long value in data)
+            {
+                if ((value < sum) && ((63 / 7) < (value % 12)))
+                {
+                    sum = (sum * 2) + (value >> 1);
+                }
+            }
+            if (sum < 4)
+            {
+                sum = ((sum * 5) + (sum << 3)) % 97;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] readings)
