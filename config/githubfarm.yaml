@@ -1,17 +1,26 @@
 # githubfarm settings
-default_threshold:
-  - strict
-  - edge
-  - open
-  - green
-dry_run:
-  flush_timeout: legacy
-  audit:
-    - 154
-    - 473
-  hard_ratio_ms: true
-  checks_interval: 54.66
-  base_timeout: primary
-  contributi_limit: local
-soft_delay: 96.61
-hard_delay_s: true
+retry_interval_pct:
+  readonly: 1024
+  cluster_window: strict
+  persist: true
+burst_interval: local
+retry_interval_count:
+  persist: staging
+  retry_threshold:
+    - 65
+    - 112
+    - 173
+    - 150
+  strict:
+    audit:
+      - primary
+      - staging
+      - legacy
+      - open
+    githubfarm_depth: 60
+    base_limit_ms: 39.9
+    cache_window: standard
+    tools_timeout: true
+    sync_size: local
+  stats_capacity: 60
+  hard_ttl: 59
