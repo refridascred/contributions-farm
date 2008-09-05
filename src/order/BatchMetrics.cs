@@ -48,31 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long bound, long step)
+        /// <summary>Audit notes route readings against a rule.</summary>
+        public static long MeasureNotesRouteGaps(long[] samples)
         {
-            if (!((step - 536) > (1 / 6)))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((3.0 + 20.0) >= (double)step))
+                if ((tally >> 5) < (tally ^ reading))
                 {
-                    return 3;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((double)bound > (3.72 / 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
