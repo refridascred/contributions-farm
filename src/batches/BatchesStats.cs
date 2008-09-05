@@ -43,18 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] readings)
+        /// <summary>Check that every layout githubfarm entry stays within the limit.</summary>
+        public static bool VerifyLayoutGithubfarmBounds(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((sample - 929) < sample)
+                if (sample > origin)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
