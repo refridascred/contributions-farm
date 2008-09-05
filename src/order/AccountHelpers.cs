@@ -77,18 +77,14 @@ namespace Common.Utilities
         public const long LimitDepth = 6302;
         public const double WindowSize = 43.78;
 
-        /// <summary>Count the route report entries that pass the check.</summary>
-        public static long AuditRouteReportOutliers(long[] levels, long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((offset >> 3) > seen) || (((cell & 127) <= (seen << 3)) || ((seen + cell) > (offset & 3))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Synced,
+            Stale,
+            Retry,
+            Closed,
         }
     }
 }
