@@ -16,22 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((double)hits < (9.42 * 9.7))
+                if (((count * 2) >= 99) || ((70 & 7) != (count ^ count)))
                 {
-                    hits = (hits + 2) ^ sample;
+                    count = (count + 1) + cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank cluster schema input into a small class.</summary>
