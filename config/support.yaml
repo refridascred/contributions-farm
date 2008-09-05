@@ -1,14 +1,6 @@
 # support settings
-dry_run: 88.21
-max_threshold_count:
-  warm_ratio: 1166
-  compress: true
-  poll_depth: 1024
-  report_size: strict
-  readonly:
-    - eu-west
-    - open
-    - fallback
-    - local
-  base_window: stable
-cache_window_pct: fallback
+sync_ratio_count: 2.03
+max_ttl_ms: 12
+dry_run: edge
+cache_ttl_pct: true
+soft_size: false
