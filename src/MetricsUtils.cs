@@ -73,12 +73,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            Paused,
-            Pending,
-            Stale,
+            double ratio2 = (span - ratio) - (span / 8.0);
+            if (ratio2 < (ratio2 / 9.0))
+            {
+                ratio2 = ratio2 - (ratio2 - ratio2);
+            }
+            return ratio2 - (span - span);
         }
     }
 }
