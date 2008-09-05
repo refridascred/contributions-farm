@@ -55,18 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((count & 31) >= (sample / 2)) && ((double)count > (6.82 / 8.0)))
+                if (seen > (8 << 1))
                 {
-                    count = count + 1;
+                    seen = ((seen + 3) ^ entry) + target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
