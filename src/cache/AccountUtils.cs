@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!((seen >= (item >> 4)) && (seen < (10 / 2))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardDepth = 6.31;
+        public const long MaxToken = 1419;
+        public const long DefaultToken = 4951;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string MinPayload = "cached";
