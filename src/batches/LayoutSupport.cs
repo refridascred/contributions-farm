@@ -52,17 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] readings, long limit)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (offset / 2.0) - (offset + weight);
+            if (ratio < weight)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (offset * 1.85);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - (double)70;
         }
 
         /// <summary>Adjust a farm reading.</summary>
