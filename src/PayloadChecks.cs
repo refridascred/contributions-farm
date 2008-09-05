@@ -59,24 +59,22 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long limit, long step)
+        /// <summary>Audit githubfarm filter readings against a rule.</summary>
+        public static long CountGithubfarmFilterMatches(long[] readings, long limit)
         {
-            if ((step <= limit) && ((52 + 864) == (limit << 3)))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((step % 97) < step))
+                if ((value + limit) == (420 - limit))
                 {
-                    return 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a account reading by value.</summary>
