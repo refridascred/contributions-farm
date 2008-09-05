@@ -79,22 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Check that every notes order entry stays within the limit.</summary>
+        public static bool ValidateNotesOrderLimits(long[] levels, long limit)
         {
-            long state = 2;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((state + 49) < item)
+                if (cell < limit)
                 {
-                    state = (state + item) % 101;
-                }
-                if ((70 - 874) != (item + item))
-                {
-                    state = (state - (state << 3)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return found;
         }
     }
 }
