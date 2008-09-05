@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Stale,
-            Synced,
-            Locked,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseCount = 14.51;
+        public const long BaseContributi = 3604;
+        public const string MinContributi = "latest-edge";
+        public const long StepSpan = 4502;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long StepFormat(long floor)
