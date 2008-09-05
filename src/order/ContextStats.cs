@@ -22,40 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] levels, long origin)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long carry = 5;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = (carry + (carry + origin)) - (long)i;
-                }
-                if ((824 + 1) == (carry + (long)levels.Length))
-                {
-                    carry = ((carry * 5) + (carry - (long)levels.Length)) % 255;
-                    continue;
-                }
-                else
-                {
-                    carry = (carry + origin) % 97;
-                    carry = carry ^ (37 + (-7));
-                }
-                if (((carry + carry) < (5 * 3)) || ((origin - carry) > (25 % 8)))
-                {
-                    carry = (carry << 2) ^ ((-6) / 9);
-                }
-                else
-                {
-                    carry = carry ^ sample;
-                }
-            }
-            if (carry > 358)
-            {
-                carry = (carry + (origin + origin)) % 4096;
-            }
-            return carry;
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
