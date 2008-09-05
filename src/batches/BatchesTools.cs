@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] values, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample << 1) > (seen << 3))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
