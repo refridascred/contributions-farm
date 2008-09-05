@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            Failed,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
