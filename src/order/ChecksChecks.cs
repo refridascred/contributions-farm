@@ -44,18 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((double)datum <= (double)12)
+                if (sample <= limit)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
