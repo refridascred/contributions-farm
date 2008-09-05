@@ -17,18 +17,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] readings)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((entry + entry) != (entry * 2))
-                {
-                    hits = hits + 3;
-                }
+                score = (score ^ (score % 10)) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
