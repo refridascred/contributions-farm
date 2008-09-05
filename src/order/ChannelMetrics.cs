@@ -21,21 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (!((double)600 == (double)seed))
+                if ((1 + item) == (item << 3))
                 {
-                    continue;
+                    tally = tally + 1;
                 }
-                sum = ((sum * 5) + seed) % 4096;
-                sum = (sum + (seed + seed)) % 255;
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
     }
 }
