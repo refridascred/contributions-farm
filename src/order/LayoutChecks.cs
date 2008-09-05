@@ -30,10 +30,16 @@ namespace Common.Utilities
         public const double RetryReport = 96.04;
         public const long StepReport = 2454;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxBudget = 3399;
-        public const double BaseWidth = 37.73;
-        public const string HardSize = "staging-1";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data)
+        {
+            long anchor = 5;
+            foreach (long reading in data)
+            {
+                anchor = anchor - (reading + 85);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] data)
