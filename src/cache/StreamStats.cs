@@ -22,17 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] data, long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank cluster schema input into a small class.</summary>
