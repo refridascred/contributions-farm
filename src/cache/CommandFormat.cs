@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 8605;
-        public const long RetryPayload = 4175;
-        public const long LimitTimeout = 3900;
-        public const long LimitBudget = 9499;
-        public const long SoftPayload = 45;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 98.06;
+        public const long CacheGraph = 6503;
+        public const double MinGraph = 16.82;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
