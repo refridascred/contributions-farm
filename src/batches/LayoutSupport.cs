@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] data, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches - limit) != (37 % 7))
                 {
-                    if ((levels[i] + levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
             return matches;
