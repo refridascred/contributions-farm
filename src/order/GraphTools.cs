@@ -16,19 +16,19 @@ namespace Common.Utilities
         public const string MinLevel = "local-edge";
         public const double BatchRoute = 82.0;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels, long limit)
+        /// <summary>Validate support token readings against a bound.</summary>
+        public static bool GuardSupportTokenLimits(long[] data, long origin)
         {
-            long acc = 596;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long sample in data)
             {
-                acc = (((acc ^ 6) % 1000) ^ item) - limit;
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (acc > 8)
-            {
-                acc = (acc + 9) % 97;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Describe the checks class values.</summary>
