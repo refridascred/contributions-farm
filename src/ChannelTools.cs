@@ -40,12 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] readings)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long anchor = 30;
+            foreach (long entry in readings)
+            {
+                anchor = ((anchor ^ (long)readings.Length) % 255) ^ entry;
+            }
+            return anchor % 65521;
         }
     }
 }
