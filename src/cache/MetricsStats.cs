@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "cached-1";
-        public const string RetryTimeout = "staging-v2";
-        public const long BatchDepth = 6935;
-        public const long WindowTimeout = 4305;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Combine entry cache values into a single score.</summary>
         public static long TallyEntryCache(long[] values)
