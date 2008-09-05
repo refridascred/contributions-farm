@@ -1,7 +1,20 @@
 {
-  "burst_window_ms": [170, 287, 275],
-  "readonly": [279, 403, 324],
-  "persist": 500,
-  "hard_capacity": "strict",
-  "verbose": 91
+  "counter_threshold": "edge",
+  "min_capacity_s": 34.28,
+  "hard_threshold_ms": {
+    "sync_timeout": {
+      "strict": true,
+      "dry_run": 60,
+      "burst_ratio_ms": 5564
+    },
+    "base_depth_pct": "green",
+    "min_ttl": [136, 207],
+    "farm_ratio": {
+      "retry_depth_ms": 41.08,
+      "sync_retries_count": ["stable", "latest", "local", "eu-west"],
+      "burst_delay_count": 27.42,
+      "hard_timeout_count": ["latest", "latest", "fallback"]
+    },
+    "min_timeout": 2625
+  }
 }
