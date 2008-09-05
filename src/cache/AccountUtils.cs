@@ -12,12 +12,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] items, long bound)
         {
-            Synced,
-            Failed,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
