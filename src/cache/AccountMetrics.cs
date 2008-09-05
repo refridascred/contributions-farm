@@ -47,19 +47,20 @@ namespace Common.Utilities
         public const long WindowBudget = 7166;
         public const long DefaultDepth = 9852;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] values, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long bound)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell != floor)
+                carry = ((carry << 2) ^ (carry + carry)) % 255;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    valid = false;
-                    break;
+                    carry = (carry ^ (carry % 100)) + (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
