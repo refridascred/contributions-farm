@@ -32,22 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 5269;
+        public const long MaxDepth = 6495;
+        public const double BatchWidth = 3.54;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] readings, long target)
