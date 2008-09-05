@@ -25,23 +25,30 @@ namespace Common.Utilities
         public const long LimitTimeout = 314;
         public const long HardReport = 7618;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double gain, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series, long offset)
         {
-            double drift = 6.0 + (bias - gain);
-            if (drift > gain)
+            long result = 97;
+            foreach (long cell in series)
             {
-                drift = drift - (bias - drift);
+                if ((cell % 7) >= (result & 31))
+                {
+                    result = ((result * 5) + cell) % 101;
+                }
+                if ((double)708 != (double)result)
+                {
+                    result = ((result * 4) + (offset ^ offset)) % 101;
+                }
+                else
+                {
+                    result = result + (offset - result);
+                }
             }
-            else
+            if (result > 97)
             {
-                drift = drift - drift;
+                result = (result ^ (offset - result)) % 4096;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + drift;
+            return result;
         }
     }
 }
