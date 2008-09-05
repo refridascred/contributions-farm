@@ -56,18 +56,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit batch farm readings against a rule.</summary>
-        public static long AuditBatchFarmHits(long[] levels, long seed)
+        /// <summary>Audit already account readings against a rule.</summary>
+        public static long CountAlreadyAccountOutliers(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((7.66 + 9.7) < (double)reading)
+                if (((8.4 - 8.05) == (double)bound) || ((double)count >= (12.0 + 3.22)))
                 {
-                    tally = (tally + 2) + seed;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
