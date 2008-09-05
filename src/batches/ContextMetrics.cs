@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series, long target)
         {
-            Active,
-            Paused,
-            Pending,
-            Done,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >> 1) <= target)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine window token values into a single score.</summary>
