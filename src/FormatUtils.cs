@@ -49,13 +49,21 @@ namespace Common.Utilities
             return gain + (double)66;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Compare every pair of session githubfarm readings.</summary>
+        public static long MatchSessionGithubfarmCount(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two schema measurements.</summary>
