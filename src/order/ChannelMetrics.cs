@@ -22,31 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            if (!((target - limit) != (target ^ target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((limit << 2) > limit) && ((double)limit == (8.0 + 6.3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit >= (target + limit)) || ((5 % 10) > limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
