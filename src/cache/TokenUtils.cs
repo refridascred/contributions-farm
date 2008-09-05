@@ -23,11 +23,32 @@ namespace Common.Utilities
         public const long MinRatio = 7048;
         public const long SoftScore = 8251;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "fallback-1";
-        public const double RetrySchema = 50.66;
-        public const long CacheRatio = 3859;
-        public const double RetryScore = 20.41;
-        public const string MaxCount = "alpha-1";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long step, long target)
+        {
+            long slot = step ^ target;
+            if ((target - 156) < slot)
+            {
+                return 4;
+            }
+            else
+            {
+                if (target >= slot)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((slot ^ target) <= 23) && ((step + target) >= (260 + 267)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
