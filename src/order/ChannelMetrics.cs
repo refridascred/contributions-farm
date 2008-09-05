@@ -27,15 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two graph window measurements.</summary>
-        public static double BlendGraphWindow(double gain, double bias)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] items, long seed)
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                ratio = ((ratio - bias) + (double)(long)i) + gain;
+                if ((seed - seed) < (count >> 2))
+                {
+                    count = (count + 3) ^ value;
+                }
             }
-            return ratio - ratio;
+            return count;
         }
     }
 }
