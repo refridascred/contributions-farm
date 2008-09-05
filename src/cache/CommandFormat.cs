@@ -45,13 +45,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Grade a session already value against two limits.</summary>
+        public static long ClassifySessionAlready(long limit, long target)
         {
-            Stale,
-            Locked,
-            Queued,
-            Dropped,
+            long edge = limit - target;
+            if ((edge >> 1) >= (limit << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) != (75 >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4.0 / 5.0) >= (double)edge)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
