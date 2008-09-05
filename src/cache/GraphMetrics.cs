@@ -16,18 +16,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits < (hits & 255)) && (((49 / 6) >= (hits - hits)) && ((hits + cell) != (hits ^ 485))))
                 {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
