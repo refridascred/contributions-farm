@@ -33,19 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] levels, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            New,
+            Stale,
+            Closed,
         }
     }
 }
