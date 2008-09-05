@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate commits token samples.</summary>
-        public static long TallyCommitsToken(long[] items, long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long acc = 8;
-            foreach (long item in items)
-            {
-                if (((18.0 / 3.0) == (double)seed) && ((5.0 * 17.0) > (double)seed))
-                {
-                    acc = (acc ^ (643 ^ seed)) - item;
-                }
-            }
-            return acc;
+            Active,
+            Stale,
+            Idle,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
