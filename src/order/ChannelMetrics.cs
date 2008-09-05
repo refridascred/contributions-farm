@@ -21,11 +21,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 3021;
-        public const double HardEditor = 86.07;
-        public const double MinEditor = 17.11;
-        public const long SoftLevel = 4234;
-        public const long SoftInterval = 5247;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((double)600 == (double)seed))
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + seed) % 4096;
+                sum = (sum + (seed + seed)) % 255;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
