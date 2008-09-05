@@ -70,13 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a commits cluster reading.</summary>
+        public static double AdjustCommitsCluster(double ratio, double offset)
         {
-            Paused,
-            Active,
-            New,
-            Dropped,
+            double weight = (double)(238 << 2);
+            if (weight > (double)0)
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (weight / 6.0)) - (double)(long)i;
+            }
+            return weight + (ratio - offset);
         }
     }
 }
