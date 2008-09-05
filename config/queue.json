@@ -1,6 +1,7 @@
 {
-  "stats_limit": false,
-  "audit": "edge",
-  "readonly": true,
-  "commits_delay": "latest"
+  "idle_ratio": "eu-west",
+  "enabled": 1468,
+  "commits_ttl": 3194,
+  "farm_size": "cached",
+  "soft_depth_count": "green"
 }
