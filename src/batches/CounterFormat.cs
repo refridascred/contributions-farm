@@ -49,19 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account buffer entry stays within the limit.</summary>
-        public static bool GuardAccountBufferRange(long[] samples, long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= limit)
+                if (readings[i] < target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
