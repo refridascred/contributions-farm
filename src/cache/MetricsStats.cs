@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the cluster token entries that pass the check.</summary>
+        public static long MeasureClusterTokenHits(long[] items, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (target > (97 & 255))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine entry cache values into a single score.</summary>
