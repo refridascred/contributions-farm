@@ -36,18 +36,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long MeasureChecksTokenOutliers(long[] values, long step)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item / 9) < 9)
-                {
-                    count = (count + 3) - step;
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Retry,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
