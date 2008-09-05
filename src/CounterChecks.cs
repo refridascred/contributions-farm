@@ -38,15 +38,22 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest-1";
         public const string RetryScore = "alpha";
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] data, long floor)
         {
-            long mark = 963;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                mark = ((((mark * 2) + 36) % 101) ^ datum) + seed;
+                if ((item ^ item) == (51 >> 3))
+                {
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Digest a series of payload contributi entries.</summary>
