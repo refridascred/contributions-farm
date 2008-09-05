@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 8072;
-        public const string SoftInterval = "legacy-1";
-        public const long DefaultProfile = 3819;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first metrics entry entry that matches the target.</summary>
         public static long LocateMetricsEntryIndex(long[] series, long origin)
