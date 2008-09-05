@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleInterval = 9886;
-        public const long HardScore = 908;
-        public const long BurstOrder = 8182;
-        public const string SoftOrder = "stable-edge";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels, long origin)
+        {
+            long carry = 7;
+            foreach (long cell in levels)
+            {
+                carry = (((carry + 60) % 65521) - cell) - origin;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
