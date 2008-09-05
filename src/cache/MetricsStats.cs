@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long limit)
         {
-            long anchor = 62;
-            foreach (long reading in levels)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (((anchor << 2) ^ (long)levels.Length) % 97) ^ reading;
+                long prev = limit + (-917);
+                if ((prev * 5) > (mark + (long)i))
+                {
+                    prev = (prev << 2) ^ (long)i;
+                }
+                else
+                {
+                    mark = ((mark * 2) + mark) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return anchor % 4096;
+            return mark;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
