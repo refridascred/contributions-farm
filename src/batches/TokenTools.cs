@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long limit, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            if ((target / 4) <= (limit % 5))
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                score = (score - (long)i) % 97;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((target << 3) == (limit >> 3)) && ((limit % 7) >= 407))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + target) >= limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-64) << 3) == (limit >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
