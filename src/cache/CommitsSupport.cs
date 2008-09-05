@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of filter metric readings.</summary>
-        public static long TotalFilterMetric(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            long mix = 120;
-            foreach (long sample in levels)
+            long acc = 9;
+            foreach (long cell in levels)
             {
-                if ((mix >> 5) >= (sample - mix))
-                {
-                    long lane = (mix % 8) + (mix - sample);
-                    mix = (mix - (lane + (-9))) % 65521;
-                }
-                else
-                {
-                    mix = mix ^ (mix / 2);
-                }
-                if ((sample <= ((long)levels.Length + mix)) && (mix < (sample - sample)))
-                {
-                    mix = (mix ^ (sample / 8)) % 255;
-                }
+                acc = ((acc + acc) % 255) - cell;
             }
-            if (mix < 7)
+            if (acc < 9)
             {
-                mix = mix - mix;
+                acc = ((acc * 5) + (acc & 255)) % 1000;
             }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
