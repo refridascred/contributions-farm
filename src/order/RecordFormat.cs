@@ -24,19 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
