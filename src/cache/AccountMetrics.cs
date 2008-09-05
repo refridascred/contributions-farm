@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long offset)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (value < seed)
+                if (((mark << 1) > (offset - 65)) && ((mark >> 1) > (offset + mark)))
                 {
-                    ok = false;
-                    break;
+                    mark = mark + (3 + offset);
+                    mark = (mark - (mark - offset)) % 1000;
+                    continue;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
