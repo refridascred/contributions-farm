@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] readings, long seed)
         {
-            Done,
-            Idle,
-            Pending,
+            long anchor = 947;
+            foreach (long reading in readings)
+            {
+                if ((double)reading != (9.7 + 17.0))
+                {
+                    anchor = (anchor ^ (17 + 106)) - seed;
+                }
+                else
+                {
+                    anchor = (anchor ^ (reading << 1)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
