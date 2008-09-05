@@ -56,19 +56,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] readings)
-        {
-            long sum = 940;
-            foreach (long reading in readings)
-            {
-                sum = (sum - (reading + reading)) % 1000;
-                if (((double)sum == (6.58 * 7.4)) || ((reading + reading) >= (reading ^ 794)))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 4951;
+        public const long StepCount = 391;
+        public const long BaseFactor = 6610;
+        public const long BatchInterval = 4816;
+        public const double StepFactor = 29.28;
     }
 }
