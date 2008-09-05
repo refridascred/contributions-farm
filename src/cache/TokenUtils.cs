@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit contributi cache readings against a rule.</summary>
-        public static long CountContributiCacheMatches(long[] levels, long limit)
+        /// <summary>Derive the next metrics layout value from a seed.</summary>
+        public static long DeriveMetricsLayout(long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)(long)levels.Length >= (double)hits)
-                {
-                    hits = ((hits + 2) - value) - limit;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
