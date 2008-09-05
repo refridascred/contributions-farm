@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
