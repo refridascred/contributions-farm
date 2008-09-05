@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a record context value against two limits.</summary>
-        public static long RankRecordContext(long target, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items, long limit)
         {
-            long next = target - origin;
-            if ((9 - (-673)) > (origin + next))
+            long anchor = 32;
+            foreach (long item in items)
             {
-                return 0;
+                anchor = ((anchor - (long)items.Length) + item) + limit;
             }
-            else
-            {
-                if ((2.6 + 7.9) != (double)next)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Adjust a tools reading.</summary>
