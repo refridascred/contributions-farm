@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] data)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (((count + (-520)) <= ((-670) - count)) || ((value + count) < (968 - 57)))
+                if (value >= seed)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
