@@ -54,10 +54,39 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "fallback";
-        public const long StepLevel = 1626;
-        public const long LimitPayload = 402;
-        public const long BurstLevel = 6767;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long step, long bound)
+        {
+            long offset = step + bound;
+            if ((double)step >= 8.7)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(((-8) + offset) <= (746 + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + bound) < bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step << 1) > (step + step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
