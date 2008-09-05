@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const double LimitFarm = 77.02;
         public const string MinScore = "primary-1";
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] series)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((reading - 914) <= (reading / 8)) || ((double)(long)series.Length >= (double)167))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
