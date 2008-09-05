@@ -24,11 +24,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 1.7;
-        public const double WindowBudget = 32.23;
-        public const long DefaultBatch = 4681;
-        public const string CacheBatch = "primary-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxInterval = 3864;
+        public const long WindowRatio = 7606;
+        public const long SoftFilter = 7457;
+        public const long IdleTimeout = 2064;
+        public const long WindowFilter = 488;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
