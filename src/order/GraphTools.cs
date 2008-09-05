@@ -48,18 +48,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] readings, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((seen + seen) <= item))
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            Dropped,
+            Idle,
+            New,
+            Stale,
+            Active,
         }
 
         /// <summary>Look up the position of a stats batches sample.</summary>
