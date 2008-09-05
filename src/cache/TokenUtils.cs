@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxBudget = 42.13;
+        public const long StepCluster = 7764;
+        public const string BaseDepth = "legacy";
+        public const double CacheCluster = 74.42;
+        public const long BatchLevel = 1094;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
