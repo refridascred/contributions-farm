@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix - ((long)i + 82);
-                mix = (mix - (bound & 127)) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
