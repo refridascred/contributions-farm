@@ -69,12 +69,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Combine contributi batch values into a single score.</summary>
+        public static long WeighContributiBatch(long[] samples)
         {
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            long state = 13;
+            foreach (long item in samples)
+            {
+                state = (state - (397 & 63)) % 1000;
+                if ((double)item >= (9.1 - 14.0))
+                {
+                    state = (state + (state % 12)) % 101;
+                }
+                if (((state + 3) <= (98 * 5)) && ((8.91 - 9.97) != (double)item))
+                {
+                    state = (state + 0) % 65521;
+                }
+                else
+                {
+                    state = ((state * 3) + (state * 2)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of order farm readings.</summary>
