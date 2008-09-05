@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long SoftGraph = 5983;
         public const long MinWidth = 9089;
 
-        /// <summary>Count the stats schema entries that pass the check.</summary>
-        public static long MeasureStatsSchemaOutliers(long[] data)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
             long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(25 >= (4 ^ entry)) || ((40 + hits) >= entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
