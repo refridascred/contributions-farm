@@ -1,5 +1,7 @@
 {
-  "idle_timeout_pct": 76.44,
-  "soft_ttl_s": "fallback",
-  "verbose": false
+  "flush_interval_pct": ["strict", "staging"],
+  "idle_timeout": "open",
+  "retry_limit": 36,
+  "idle_capacity_count": 2289,
+  "batch_window": "open"
 }
