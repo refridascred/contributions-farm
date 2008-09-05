@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long target, long offset)
         {
-            Queued,
-            Active,
-            Done,
-            Dropped,
-            Stale,
+            long delta = target ^ offset;
+            if (((double)6 > (double)delta) && (target >= (2 - 870)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((delta << 2) > delta) && (offset >= (7 % 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((delta - delta) > ((-725) + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target - delta) >= (offset + target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up graph samples.</summary>
