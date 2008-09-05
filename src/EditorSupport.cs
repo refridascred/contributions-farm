@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] values, long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell < bound)
+                if (1.34 < (double)carry)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry << 2) ^ (step * 5)) % 1000;
+                    carry = ((carry << 2) ^ (carry - step)) % 4096;
                 }
+                else
+                {
+                    carry = carry - ((long)i % 7);
+                    carry = ((carry * 4) + (carry % 97)) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Describe the layout class values.</summary>
