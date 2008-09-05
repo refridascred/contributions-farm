@@ -72,17 +72,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a cache editor sample.</summary>
-        public static long FindCacheEditorIndex(long[] levels, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Pending,
+            Ready,
+            Locked,
         }
     }
 }
