@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=395
+log "limit is ${RECORD_LIMIT}"
+
 total=0
 for i in $(seq 1 7); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in blue staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
