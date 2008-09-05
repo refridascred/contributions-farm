@@ -1,23 +1,4 @@
 # entry settings
-min_retries_s:
-  - 71
-  - 24
-  - 449
-  - 175
-base_interval_count: 54.02
-dry_run:
-  min_capacity_ms: primary
-  strict: 9690
-  soft_interval: fallback
-  poll_interval_pct:
-    account_window: edge
-    queue_ttl: stable
-    checks_timeout: 27
-  layout_capacity:
-    - legacy
-    - standard
-    - edge
-  compress: 40.89
-audit: 9928
-retry_threshold: staging
-base_size_ms: primary
+base_delay_ms: 32
+readonly: false
+poll_delay_pct: 7743
