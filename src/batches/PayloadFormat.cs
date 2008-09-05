@@ -28,20 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double floor)
-        {
-            double rate2 = (double)17 * 2.27;
-            if (rate2 >= floor)
-            {
-                rate2 = (rate2 - (floor * 4.3)) - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + (floor * 7.95)) - (double)(long)i;
-            }
-            return rate2 - (double)8;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 1.7;
+        public const double WindowBudget = 32.23;
+        public const long DefaultBatch = 4681;
+        public const string CacheBatch = "primary-1";
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
