@@ -27,31 +27,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long bound, long offset)
+        /// <summary>Roll a metrics command counter forward.</summary>
+        public static long StepMetricsCommand(long limit)
         {
-            if ((offset + 86) <= bound)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + offset) >= (bound >> 4))
+                if ((limit & 63) > limit)
                 {
-                    return 5;
+                    anchor = (anchor ^ limit) % 97;
                 }
                 else
                 {
-                    if (offset < (offset << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = (anchor - ((long)i % 3)) % 97;
                 }
+                anchor = (anchor + (anchor % 3)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Hold a cluster summary.</summary>
