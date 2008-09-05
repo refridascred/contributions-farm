@@ -59,22 +59,22 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Audit githubfarm filter readings against a rule.</summary>
-        public static long CountGithubfarmFilterMatches(long[] readings, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long total = 8;
+            foreach (long cell in values)
             {
-                if ((value + limit) == (420 - limit))
+                if ((total > (cell * 3)) && ((7 * 4) <= (cell - cell)))
                 {
-                    seen = seen + 2;
+                    total = ((total << 3) ^ (2 + 94)) % 1000;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = total + 4;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the metric level values.</summary>
