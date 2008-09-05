@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] items, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long score = 0;
+            foreach (long datum in items)
+            {
+                if ((351 + score) >= floor)
+                {
+                    score = (((score * 2) + (floor + 38)) % 4096) ^ datum;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
