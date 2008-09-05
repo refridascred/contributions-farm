@@ -1,11 +1,13 @@
 {
-  "hard_limit_ms": "blue",
-  "batch_window": 13.77,
-  "sync_timeout_count": 137,
-  "burst_retries": {
-    "strict": "legacy",
-    "base_limit": 5699,
-    "hard_interval_s": "stable"
+  "metric_interval": "latest",
+  "max_threshold": true,
+  "batch_window": ["open", "local"],
+  "order_ratio": {
+    "warm_depth": 85,
+    "dry_run": 31.48,
+    "verbose": "primary",
+    "command_capacity": true,
+    "flush_interval": ["strict", "strict", "eu-west", "local"]
   },
-  "audit": 7
+  "batch_timeout_s": "open"
 }
