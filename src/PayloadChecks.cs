@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of window entry readings.</summary>
-        public static long MatchWindowEntryCount(long[] values)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the schema kind values.</summary>
