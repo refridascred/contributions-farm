@@ -1,5 +1,5 @@
 # githubfarm settings
-order_delay: standard
-window_ttl: 100
-persist: true
-strict: stable
+readonly: 47
+dry_run: false
+min_ttl: 22.15
+persist: 60
