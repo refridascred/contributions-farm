@@ -16,15 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double rate, double offset)
+        /// <summary>Look up the position of a notes session sample.</summary>
+        public static long LocateNotesSessionIndex(long[] samples, long offset)
         {
-            double ratio = rate + offset;
-            if (ratio >= (17.0 * 2.73))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - offset;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (rate - offset);
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
