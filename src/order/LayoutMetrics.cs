@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            long sum = 662;
-            foreach (long datum in values)
+            long total = 270;
+            foreach (long value in readings)
             {
-                sum = ((sum ^ (sum / 6)) % 1000) - datum;
+                total = (total ^ (value >> 2)) % 255;
+                if ((((long)readings.Length + value) >= (value + 43)) || ((9 + 52) == (total >> 4)))
+                {
+                    total = (total ^ (value % 5)) % 4096;
+                }
+                if ((value + value) < (value + total))
+                {
+                    break;
+                }
             }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Describe the metrics class values.</summary>
