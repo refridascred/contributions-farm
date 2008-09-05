@@ -1,20 +1,6 @@
 {
-  "persist": {
-    "burst_depth_ms": "strict",
-    "cluster_timeout": {
-      "burst_ttl_ms": 60,
-      "base_limit": ["open", "cached", "open", "cached"],
-      "verbose": 1841
-    },
-    "audit": 66,
-    "metric_delay": {
-      "command_interval": 30,
-      "burst_threshold": [481, 341, 20],
-      "idle_size": "blue",
-      "strict": 1024,
-      "burst_threshold_pct": "staging"
-    }
-  },
-  "hard_interval": true,
-  "burst_ratio_pct": 18.23
+  "hard_delay": "standard",
+  "contributi_retries": 5594,
+  "default_delay_count": [172, 154, 391],
+  "audit": [327, 349]
 }
