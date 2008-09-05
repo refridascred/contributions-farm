@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] samples, long bound)
         {
-            Paused,
-            Pending,
-            Locked,
-            Active,
-            Failed,
+            long total = 358;
+            foreach (long datum in samples)
+            {
+                if ((total - 70) > bound)
+                {
+                    total = (total ^ (total << 1)) ^ datum;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
