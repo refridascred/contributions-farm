@@ -26,19 +26,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every format batch entry stays within the limit.</summary>
-        public static bool GuardFormatBatchRange(long[] data, long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Dropped,
+            New,
         }
     }
 }
