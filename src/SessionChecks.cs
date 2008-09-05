@@ -15,16 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double bias, double floor)
-        {
-            double mean = bias;
-            if (mean <= (mean / 9.0))
-            {
-                mean = (mean - (double)9) - floor;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 769;
+        public const double RetryGraph = 35.83;
+        public const long MaxGraph = 1042;
+        public const double BatchGraph = 30.81;
+        public const double LimitGraph = 73.43;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] series)
