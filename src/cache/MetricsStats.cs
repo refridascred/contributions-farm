@@ -43,23 +43,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double scale, double floor)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            double ratio = (double)(900 >> 3);
-            if (ratio < floor)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio - ratio) + scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (double)7;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (double)(-7)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return count;
         }
 
         /// <summary>Check that every token batches entry stays within the limit.</summary>
