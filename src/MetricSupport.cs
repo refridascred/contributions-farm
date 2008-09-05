@@ -24,10 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSize = 8652;
-        public const string DefaultMetrics = "cached";
-        public const long SoftMetrics = 9262;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum + sum) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
