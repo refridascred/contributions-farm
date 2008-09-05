@@ -44,18 +44,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Classify a window profile pair into a bucket.</summary>
+        public static long BucketWindowProfile(long seed, long step)
         {
-            long score = 8;
-            foreach (long sample in readings)
+            if (((7.0 / 4.0) == (double)step) && ((seed + step) > step))
             {
-                if ((sample - sample) >= score)
+                return 1;
+            }
+            else
+            {
+                if (!((seed * 5) > seed))
                 {
-                    score = (score * 4) + (sample % 64);
+                    return 4;
+                }
+                else
+                {
+                    if ((step & 31) != (step / 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Rank order input into a small class.</summary>
