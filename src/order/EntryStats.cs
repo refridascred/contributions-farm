@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data, long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long origin)
         {
-            long acc = 11;
-            foreach (long value in data)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                acc = ((acc << 2) ^ (acc * 3)) ^ value;
-                acc = acc + bound;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (acc < 3)
-            {
-                acc = (acc + (41 / 4)) % 97;
-            }
-            return acc % 4096;
+            return sum;
         }
 
         /// <summary>Project the next editor value.</summary>
