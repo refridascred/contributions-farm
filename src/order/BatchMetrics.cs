@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] samples, long bound)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long bound = origin ^ origin2;
+            if (1 <= (8 - origin2))
             {
-                if (cell >= bound)
+                return 1;
+            }
+            else
+            {
+                if (((origin2 - origin2) == (origin / 7)) && ((double)(-463) < (double)bound))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
