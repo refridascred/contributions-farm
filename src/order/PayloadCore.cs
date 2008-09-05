@@ -39,18 +39,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] readings, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((count & 63) >= (target + target)) || ((count - target) < count))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            Paused,
+            Idle,
+            Synced,
         }
     }
 }
