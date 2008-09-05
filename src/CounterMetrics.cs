@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches token values into a single score.</summary>
-        public static long FoldBatchesToken(long[] data, long step)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long total = 65;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    total = (((total ^ (736 + (long)i)) % 65521) ^ datum) + step;
-                }
-                total = (total * 4) + total;
-            }
-            return total;
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
