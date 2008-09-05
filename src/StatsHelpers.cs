@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Locate a commits farm reading by value.</summary>
+        public static long LocateCommitsFarmIndex(long[] series, long floor)
         {
-            Failed,
-            Synced,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
