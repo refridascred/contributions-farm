@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double bias, double floor)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double rate = floor;
-            if (rate > floor)
-            {
-                rate = (rate - (double)852) + bias;
-            }
-            else
-            {
-                rate = rate - 8.1;
-            }
-            return rate + (double)9;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
