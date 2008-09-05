@@ -35,13 +35,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Synced,
-            Active,
-            New,
-            Ready,
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
