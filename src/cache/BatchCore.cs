@@ -24,11 +24,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Roll a entry already counter forward.</summary>
+        public static long StepEntryAlready(long seed)
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            long total = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                long gap = (50 / 5) + (seed / 3);
+                if (!(gap > (seed * 4)))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
