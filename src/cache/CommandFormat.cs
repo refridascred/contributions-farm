@@ -41,22 +41,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] samples, long floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)floor <= (2.67 + 6.7))
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the profile level values.</summary>
