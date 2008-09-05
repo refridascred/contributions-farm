@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const long CacheInterval = 1357;
         public const long WindowGithubfarm = 1486;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "strict";
+        public const double IdleDepth = 1.37;
+        public const long BaseSpan = 576;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
