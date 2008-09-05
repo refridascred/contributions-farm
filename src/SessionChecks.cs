@@ -34,13 +34,21 @@ namespace Common.Utilities
         public const double MaxRatio = 24.01;
         public const long RetryChannel = 2403;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
