@@ -47,18 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] series)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (960 <= (seen - reading))
+                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
