@@ -18,19 +18,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] values, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (reading > limit)
+                if ((737 + offset) != ((long)readings.Length * 5))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + value;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the metrics status values.</summary>
