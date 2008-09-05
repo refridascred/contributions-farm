@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long offset, long target)
         {
-            Stale,
-            Locked,
-            Retry,
-            New,
+            long span = offset ^ target;
+            if ((double)target != (19.0 - 2.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)span < 2.14))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the counter mode values.</summary>
