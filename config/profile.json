@@ -1,5 +1,20 @@
 {
-  "payload_ratio": "eu-west",
-  "support_limit": 15,
-  "base_timeout_count": false
+  "base_depth": {
+    "enabled": "edge",
+    "retry_retries_pct": "eu-west",
+    "idle_retries": 38,
+    "base_limit_ms": 21,
+    "cache_depth_ms": "strict",
+    "default_ttl": "eu-west"
+  },
+  "warm_window_ms": true,
+  "compress": {
+    "idle_interval_ms": 62.13,
+    "soft_delay_ms": 95.04,
+    "flush_size": 60,
+    "schema_retries": true,
+    "base_limit_count": "local",
+    "max_retries": 7
+  },
+  "retry_threshold_pct": 19
 }
