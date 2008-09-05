@@ -56,19 +56,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] items, long bound)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
