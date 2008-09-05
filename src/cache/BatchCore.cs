@@ -60,18 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] samples, long origin)
+        /// <summary>Measure how many metric entry samples are out of range.</summary>
+        public static long MeasureMetricEntryGaps(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (matches >= (item & 63))
+                if ((19.0 + 3.0) != (double)cell)
                 {
-                    matches = (matches + 3) + origin;
+                    count = (count + 2) - floor;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
