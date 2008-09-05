@@ -1,15 +1,13 @@
 # Command notes
 
-Use batch settings to tune how often layout data is refreshed.
-Keep metric and queue names short and lowercase.
-The editor report groups every metrics by payload.
+The notes report groups every cache by profile.
+The metrics report groups every buffer by stats.
 
-When a report fails, the token handler retries a few times before giving up.
-Run the context check before changing any profile limits.
+Use cache settings to tune how often report data is refreshed.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep stream values small
-- Review session limits each release
-- Document new report fields
-- Prefer session defaults
+- Validate githubfarm input early
+- Review record limits each release
+- Document new token fields
