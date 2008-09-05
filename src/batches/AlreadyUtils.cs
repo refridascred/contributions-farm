@@ -30,11 +30,11 @@ namespace Common.Utilities
         public const double LimitStats = 92.67;
         public const long DefaultFactor = 21;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
