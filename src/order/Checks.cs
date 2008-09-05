@@ -27,19 +27,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine layout profile values into a single score.</summary>
-        public static long TallyLayoutProfile(long[] readings, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            long anchor = 825;
-            foreach (long cell in readings)
+            double gain = floor;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor ^ ((long)readings.Length - offset)) + cell;
+                gain = (gain - weight) + (double)(long)i;
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor * 2) + ((long)readings.Length + offset);
-            }
-            return anchor % 97;
+            return gain + 5.4;
         }
 
         /// <summary>Describe the stream level values.</summary>
