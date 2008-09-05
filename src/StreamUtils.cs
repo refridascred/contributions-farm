@@ -53,11 +53,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstFarm = 82.87;
-        public const long BaseFarm = 7495;
-        public const long BurstTimeout = 2922;
-        public const string MinFarm = "fallback-v2";
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultSize = "primary-1";
+        public const long IdleTimeout = 7626;
+        public const long DefaultRecord = 2219;
+        public const long BurstCount = 5071;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long FoldChecks(long[] samples)
