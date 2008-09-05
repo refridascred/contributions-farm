@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long SoftGraph = 5983;
         public const long MinWidth = 9089;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] levels, long limit)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long total = 3;
-            foreach (long reading in levels)
-            {
-                if (limit <= total)
-                {
-                    total = total + (reading & 63);
-                }
-                else
-                {
-                    total = (total ^ reading) % 97;
-                }
-            }
-            return total;
+            Done,
+            Paused,
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Match up filter samples.</summary>
