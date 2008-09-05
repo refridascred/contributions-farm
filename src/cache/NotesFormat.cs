@@ -50,9 +50,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSpan = 7910;
-        public const long SoftSchema = 1868;
-        public const long BurstSchema = 4447;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 7.73;
+        public const long BurstCommand = 2544;
+        public const string MinCommand = "cached-1";
+        public const double StepLevel = 2.84;
     }
 }
