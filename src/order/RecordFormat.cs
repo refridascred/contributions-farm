@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] levels, long floor)
-        {
-            long total = 2;
-            foreach (long datum in levels)
-            {
-                total = (total + (floor - total)) % 65521;
-                if ((total - floor) <= (datum & 1))
-                {
-                    total = (total ^ (datum / 6)) % 65521;
-                }
-            }
-            if (total < 9)
-            {
-                total = (total * 3) + floor;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "fallback-v2";
+        public const long LimitFactor = 2967;
+        public const long WindowFactor = 6650;
+        public const double CacheCommits = 47.94;
+        public const long RetryCommits = 4147;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiRange(long[] values, long bound)
