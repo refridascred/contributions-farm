@@ -64,17 +64,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                if ((double)anchor > (2.9 - 5.56))
                 {
-                    return (long)i;
+                    anchor = (anchor + (floor >> 2)) % 101;
+                    anchor = (anchor ^ anchor) % 65521;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
