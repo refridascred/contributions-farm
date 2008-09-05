@@ -26,32 +26,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long target)
         {
-            long next = seed ^ floor;
-            if (15.0 > (double)next)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)next >= (7.23 * 0.2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (9.6 < (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a already snapshot.</summary>
