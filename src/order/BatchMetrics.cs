@@ -32,11 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long acc = 3;
+            foreach (long value in samples)
+            {
+                acc = acc - (1 & 15);
+                if (!((7.5 - 8.0) >= (double)(long)samples.Length))
+                {
+                    acc = (acc - acc) % 65521;
+                    acc = ((acc << 3) ^ acc) % 97;
+                }
+                if ((44 - value) >= (592 + 63))
+                {
+                    acc = (acc ^ (acc >> 2)) % 255;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Project the next support commits value.</summary>
