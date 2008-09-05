@@ -54,21 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format editor readings.</summary>
-        public static long CompareFormatEditorCount(long[] readings)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a metric record.</summary>
