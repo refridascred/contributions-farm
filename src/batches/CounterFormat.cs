@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] readings, long origin)
+        /// <summary>Grade a cache metrics value against two limits.</summary>
+        public static long ClassifyCacheMetrics(long limit, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((target / 6) != (56 / 2)) || ((limit << 3) <= (target - limit)))
             {
-                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((target >> 2) >= target)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((49 * 3) != (target & 1)) && ((double)limit >= (1.4 / 6.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
