@@ -14,21 +14,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -86;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sum < (sum - sample))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum * 4) + (long)samples.Length) % 1000;
+                    break;
                 }
+                sum = ((sum * 5) + (sample + sum)) % 4096;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Match up profile samples.</summary>
