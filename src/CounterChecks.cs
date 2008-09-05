@@ -74,18 +74,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data, long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long sum = 980;
-            foreach (long value in data)
-            {
-                if ((value - value) >= (target % 5))
-                {
-                    sum = sum + (value + sum);
-                }
-            }
-            return sum % 4096;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
