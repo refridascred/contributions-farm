@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((limit - limit) >= (count & 7))
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 44.11;
+        public const long SoftCount = 5812;
+        public const long CacheInterval = 1357;
+        public const long WindowGithubfarm = 1486;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long RollCluster(long offset)
