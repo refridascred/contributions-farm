@@ -1,9 +1,19 @@
 # support settings
-base_limit_count: edge
-idle_limit_pct: 30.23
-sync_delay:
-  - strict
-  - blue
-  - latest
-flush_ttl: 3205
-idle_depth_ms: false
+cache_capacity: cached
+soft_ttl:
+  warm_limit_s:
+    - 483
+    - 25
+    - 100
+  hard_timeout_count: fallback
+  dry_run: stable
+  order_interval:
+    - blue
+    - green
+    - latest
+    - eu-west
+  persist: false
+hard_capacity_ms: 33.26
+verbose: latest
+queue_capacity: 60
+cluster_ttl: blue
