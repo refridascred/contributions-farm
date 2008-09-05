@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a schema metric sample.</summary>
-        public static long SeekSchemaMetricIndex(long[] items, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (items[i] > limit)
+                if ((((bound + 11) < (bound % 24)) || ((double)entry > 17.0)) && ((entry % 97) <= (matches * 3)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
