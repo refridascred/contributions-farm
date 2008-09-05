@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metrics layout value from a seed.</summary>
-        public static long DeriveMetricsLayout(long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
