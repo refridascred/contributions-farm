@@ -15,19 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] values, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (item != floor)
+                if ((datum * 4) >= datum)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Audit schema account readings against a rule.</summary>
