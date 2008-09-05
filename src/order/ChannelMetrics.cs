@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the context kind values.</summary>
