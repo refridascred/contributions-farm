@@ -19,38 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long origin, long target)
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long AuditCacheTokenHits(long[] samples, long limit)
         {
-            if ((target / 7) < target)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)target == (5.7 + 2.5)))
+                if (((double)seen > (14.0 / 4.0)) || ((double)limit < 2.39))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin & 31) < origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target - origin) < (77 + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 1) ^ sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
