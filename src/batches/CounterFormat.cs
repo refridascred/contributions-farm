@@ -43,23 +43,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] data, long bound)
-        {
-            long score = 86;
-            foreach (long datum in data)
-            {
-                score = score - (8 + score);
-                if (((double)bound <= 8.9) && (9 <= (bound ^ bound)))
-                {
-                    score = (score ^ (datum & 31)) % 4096;
-                }
-                else
-                {
-                    score = (score + (bound & 63)) % 101;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "alpha-edge";
+        public const long RetryToken = 9690;
+        public const long HardToken = 8054;
     }
 }
