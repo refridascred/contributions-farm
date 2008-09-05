@@ -34,21 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                carry = carry + (carry + carry);
-                for (int i2 = 0; i2 < 8; i2++)
+                if (value <= (count + value))
                 {
-                    carry = ((carry + ((long)i * 4)) % 4096) ^ (long)i2;
+                    count = count + 2;
                 }
-                carry = (carry << 2) ^ (floor % 100);
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
