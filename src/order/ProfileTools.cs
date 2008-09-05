@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate tools queue readings against a bound.</summary>
-        public static bool CheckToolsQueueBounds(long[] items, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = weight * 4.0;
+            return (scale - scale) + offset;
         }
 
         /// <summary>Fold a list of route readings.</summary>
