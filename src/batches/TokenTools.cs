@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up metrics record samples.</summary>
-        public static long PairMetricsRecordCount(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target / 4) <= (limit % 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((target << 3) == (limit >> 3)) && ((limit % 7) >= 407))
                 {
-                    if ((samples[i] + samples[j]) != 6)
+                    return 5;
+                }
+                else
+                {
+                    if ((target + target) >= limit)
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-64) << 3) == (limit >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
