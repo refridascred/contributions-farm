@@ -20,22 +20,36 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long bound, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long offset)
         {
-            if (5.75 < (double)step)
+            if ((offset >= (offset + 27)) || ((offset << 2) != (offset & 1)))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (94 > (bound - step))
+                if ((origin << 1) < (origin ^ origin))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    if ((offset > origin) && ((5.1 / 4.0) <= (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((930 & 127) >= origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
