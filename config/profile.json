@@ -1,6 +1,11 @@
 {
-  "verbose": 30,
-  "burst_timeout_count": "standard",
-  "default_timeout_ms": 90,
-  "hard_threshold_s": "eu-west"
+  "metrics_retries": {
+    "base_ttl_pct": 7987,
+    "cache_retries": "latest",
+    "persist": [178, 184, 108]
+  },
+  "sync_depth_pct": 8300,
+  "batch_depth": "legacy",
+  "cache_limit": 83.58,
+  "session_interval": false
 }
