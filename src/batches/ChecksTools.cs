@@ -30,14 +30,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items, long origin)
         {
-            New,
-            Queued,
-            Failed,
-            Pending,
-            Paused,
+            long mix = 736;
+            foreach (long datum in items)
+            {
+                mix = ((mix - (datum & 7)) % 65521) + origin;
+                mix = mix ^ (mix - mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the commits class values.</summary>
