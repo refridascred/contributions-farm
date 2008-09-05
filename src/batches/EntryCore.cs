@@ -16,14 +16,19 @@ namespace Common.Utilities
         public const long MinBudget = 2509;
         public const string DefaultFactor = "standard-1";
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] values, long seed)
         {
-            Idle,
-            Synced,
-            Closed,
-            Pending,
-            Failed,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
