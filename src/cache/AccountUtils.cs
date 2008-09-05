@@ -33,17 +33,19 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long target)
+        /// <summary>Validate order graph readings against a bound.</summary>
+        public static bool GuardOrderGraphBounds(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (series[i] == target)
+                if (value <= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
