@@ -22,22 +22,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count cluster session pairs that satisfy a relation.</summary>
-        public static long OverlapClusterSessionCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 59.97;
+        public const long HardFilter = 3129;
+        public const long BaseTimeout = 9162;
 
         /// <summary>Rank record graph input into a small class.</summary>
         public static long BucketRecordGraph(long bound, long offset)
