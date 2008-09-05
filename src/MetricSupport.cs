@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 5;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix - mix) % 1000;
+                if (((sample + mix) <= (mix ^ (long)values.Length)) || ((mix - sample) >= mix))
                 {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (mix > 7)
+            {
+                mix = ((mix * 4) + (mix * 2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
