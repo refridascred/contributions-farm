@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long offset)
+        /// <summary>Combine batches batch values into a single score.</summary>
+        public static long CombineBatchesBatch(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long sum = 17;
+            foreach (long value in values)
             {
-                if (reading != offset)
+                if ((sum << 3) >= sum)
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum * 5) + (sum + value)) % 1000;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
