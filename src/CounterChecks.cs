@@ -38,18 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload metrics entries that pass the check.</summary>
-        public static long MeasurePayloadMetricsGaps(long[] levels, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((sample + seed) < (sample / 7)) && ((sample & 7) <= (seed + seen))))
+                if (samples[i] <= bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit already account readings against a rule.</summary>
