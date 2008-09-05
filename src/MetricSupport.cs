@@ -33,17 +33,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long origin, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset % 7) < (offset << 3))
             {
-                if ((data[i] >= origin) && ((data[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((95 ^ origin) >= offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset + origin) <= (origin & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
