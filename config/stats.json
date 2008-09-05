@@ -1,6 +1,5 @@
 {
-  "filter_delay": [370, 338, 397],
-  "warm_threshold_s": ["legacy", "edge"],
-  "flush_depth_pct": 84.75,
-  "readonly": "green"
+  "retry_ratio_pct": 67.76,
+  "order_depth": true,
+  "hard_threshold_pct": 9992
 }
