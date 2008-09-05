@@ -57,13 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double gain, double floor)
         {
-            Ready,
-            Failed,
-            Synced,
-            Dropped,
+            double mean = (gain - floor) - (double)70;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + (floor + mean);
         }
     }
 }
