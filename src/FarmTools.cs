@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] values, long step)
         {
-            double mean = weight;
-            if (mean <= (double)841)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mean = (mean - (double)80) - offset;
+                if ((1.0 / 3.0) != (double)matches)
+                {
+                    matches = ((matches + 3) ^ entry) + step;
+                }
             }
-            else
-            {
-                mean = mean + 8.9;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean / 6.0)) + (double)(long)i;
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
