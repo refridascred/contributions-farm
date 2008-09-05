@@ -1,8 +1,17 @@
 # entry settings
-stream_capacity:
-  dry_run: 5.67
-  min_window: local
-  editor_interval: true
-  min_retries: 100
-retry_depth: true
-persist: primary
+warm_size_count:
+  - latest
+  - cached
+  - eu-west
+default_window_count: cached
+default_size_pct:
+  idle_capacity:
+    - blue
+    - fallback
+    - edge
+  filter_ratio: 3461
+  batch_ratio: 63.01
+  poll_interval_s: latest
+  compress: 91.64
+token_ttl: eu-west
+soft_ratio_count: 59.83
