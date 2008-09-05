@@ -43,15 +43,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] items)
         {
-            double gain = bias;
-            if (gain >= (bias + 12.0))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                gain = gain - (ratio + 1.28);
+                if ((double)seen >= (double)reading)
+                {
+                    seen = seen + 3;
+                }
             }
-            return gain + gain;
+            return seen;
         }
     }
 }
