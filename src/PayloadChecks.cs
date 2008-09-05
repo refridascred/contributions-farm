@@ -65,18 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches githubfarm readings against a rule.</summary>
-        public static long MeasureBatchesGithubfarmHits(long[] data, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((11 + sample) >= seen)
-                {
-                    seen = (seen + 2) + bound;
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
