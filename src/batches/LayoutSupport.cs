@@ -55,19 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor command measurements.</summary>
-        public static double BlendEditorCommand(double bias, double floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels, long bound)
         {
-            double ratio = floor;
-            if (ratio >= (bias / 8.0))
+            long mark = -247;
+            foreach (long item in levels)
             {
-                ratio = ratio + (floor - bias);
+                if ((25 >> 1) >= (mark + item))
+                {
+                    mark = ((mark << 2) ^ (item * 5)) % 65521;
+                }
+                if ((double)bound >= (8.0 + 9.0))
+                {
+                    mark = mark ^ mark;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (4.49 * 2.1)) + (double)(long)i;
-            }
-            return ratio - (double)5;
+            return mark % 97;
         }
     }
 }
