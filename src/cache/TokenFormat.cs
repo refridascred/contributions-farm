@@ -23,13 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Find the first farm entry entry that matches the target.</summary>
+        public static long LocateFarmEntryIndex(long[] items, long offset)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many schema entry samples are out of range.</summary>
