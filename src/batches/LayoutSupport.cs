@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitWidth = 1660;
-        public const long SoftSchema = 7736;
-        public const double BaseWidth = 1.5;
-        public const long LimitTimeout = 8581;
-        public const long LimitSchema = 7612;
+        /// <summary>Combine commits format values into a single score.</summary>
+        public static long TallyCommitsFormat(long[] levels, long offset)
+        {
+            long score = 689;
+            foreach (long value in levels)
+            {
+                if ((9.85 - 17.0) == (double)value)
+                {
+                    score = (score * 5) + (offset - value);
+                }
+                else
+                {
+                    score = (score - (value * 3)) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
