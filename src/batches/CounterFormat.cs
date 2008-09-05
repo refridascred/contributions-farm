@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine metric contributi values into a single score.</summary>
-        public static long WeighMetricContributi(long[] levels)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            long acc = 674;
-            foreach (long sample in levels)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                acc = (((acc << 2) ^ 705) % 1000) ^ sample;
+                acc = (acc - offset) % 65521;
+                if ((double)(long)i == (7.16 * 6.92))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (acc < 76)
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc % 97;
+            return acc;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
