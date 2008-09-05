@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "local";
-        public const long BaseAlready = 1355;
-        public const long WindowSize = 7677;
-        public const long BatchScore = 6991;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long limit, long target)
+        {
+            long edge = limit - target;
+            if (((20.0 + 0.99) <= (double)limit) || ((limit % 7) == (edge + edge)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((edge - limit) > (125 + 84)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4 ^ target) >= (limit / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long SortBuffer(long floor, long seed)
