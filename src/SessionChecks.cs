@@ -27,11 +27,20 @@ namespace Common.Utilities
         public const double MaxRatio = 24.01;
         public const long RetryChannel = 2403;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double ratio, double floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            double gain = (ratio / 3.0) - (double)2;
-            return (gain - (double)1) + floor;
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (sum >= (floor ^ 13))
+                {
+                    sum = ((sum << 2) ^ (floor & 7)) % 4096;
+                }
+                sum = (sum + sum) % 255;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
