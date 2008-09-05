@@ -20,23 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels)
-        {
-            long acc = 493;
-            foreach (long entry in levels)
-            {
-                if ((acc & 3) < acc)
-                {
-                    acc = ((acc + acc) % 4096) - entry;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = (acc << 2) ^ (37 % 64);
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryLevel = 3709;
+        public const string MinMetrics = "fallback-edge";
+        public const double LimitSpan = 34.08;
+        public const long LimitMetrics = 2740;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long step)
