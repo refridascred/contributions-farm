@@ -47,12 +47,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Synced,
-            Locked,
-            Idle,
+            Failed,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
