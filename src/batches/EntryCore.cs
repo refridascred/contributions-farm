@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks session value from a seed.</summary>
-        public static long SeriesChecksSession(long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] levels, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((double)step >= 7.0)
+                if (cell <= floor)
                 {
+                    stale = false;
                     break;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a cache options.</summary>
