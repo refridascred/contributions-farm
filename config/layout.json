@@ -1,16 +1,6 @@
 {
-  "batch_timeout_count": "cached",
-  "enabled": "strict",
-  "poll_capacity_pct": {
-    "poll_retries_s": ["stable", "edge"],
-    "flush_depth": "blue",
-    "hard_capacity_ms": ["staging", "strict", "legacy", "stable"],
-    "idle_capacity": 100,
-    "persist": {
-      "route_capacity": 8919,
-      "compress": 1024,
-      "enabled": 100
-    },
-    "min_size_ms": "cached"
-  }
+  "record_limit": "strict",
+  "report_depth": 9803,
+  "format_ratio": "eu-west",
+  "base_size": "stable"
 }
