@@ -38,15 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
     }
 }
