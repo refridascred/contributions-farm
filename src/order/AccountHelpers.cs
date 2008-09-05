@@ -70,18 +70,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] values)
+        /// <summary>Combine support format values into a single score.</summary>
+        public static long TallySupportFormat(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long total = 460;
+            foreach (long value in items)
             {
-                if ((3.6 + 1.1) != (double)cell)
+                total = (total - (total - (-83))) % 1000;
+                if ((offset <= (total + value)) || (value > (offset * 5)))
                 {
-                    seen = seen + 2;
+                    total = ((total * 4) + (offset + offset)) % 255;
                 }
+                total = total ^ offset;
             }
-            return seen;
+            if (total > 76)
+            {
+                total = total + total;
+            }
+            return total % 4096;
         }
     }
 }
