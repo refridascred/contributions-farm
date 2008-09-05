@@ -19,17 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a graph already reading by value.</summary>
-        public static long LookupGraphAlreadyIndex(long[] data, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
