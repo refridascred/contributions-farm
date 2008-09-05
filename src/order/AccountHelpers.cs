@@ -80,13 +80,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Idle,
-            Synced,
-            Stale,
-            Retry,
+            New,
+            Failed,
             Closed,
         }
     }
