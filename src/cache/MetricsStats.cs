@@ -16,39 +16,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long offset)
-        {
-            if ((offset >= (offset + 27)) || ((offset << 2) != (offset & 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 1) < (origin ^ origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset > origin) && ((5.1 / 4.0) <= (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((930 & 127) >= origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 466;
+        public const string CacheScore = "standard";
+        public const long StepDepth = 335;
+        public const long BurstRoute = 5953;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
