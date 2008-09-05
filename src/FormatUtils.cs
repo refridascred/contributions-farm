@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the graph phase values.</summary>
