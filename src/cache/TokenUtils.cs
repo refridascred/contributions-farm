@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftScore = 7254;
-        public const long SoftRatio = 9626;
-        public const long WindowSpan = 2396;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long limit, long floor)
+        {
+            if (limit < (floor ^ 376))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit & 3) >= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (7.7 < (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
