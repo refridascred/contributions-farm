@@ -14,16 +14,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels, long offset)
-        {
-            long mark = -4;
-            foreach (long reading in levels)
-            {
-                mark = (((mark << 2) ^ (reading * 2)) % 101) - offset;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 1026;
+        public const double WindowPayload = 12.36;
+        public const long DefaultBudget = 9651;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsMatches(long[] readings, long target)
