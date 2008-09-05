@@ -28,25 +28,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank cache stats input into a small class.</summary>
-        public static long ClassifyCacheStats(long bound, long floor)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long cur = bound - floor;
-            if ((double)floor == (double)cur)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= (double)cur)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
