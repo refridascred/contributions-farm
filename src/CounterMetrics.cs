@@ -15,22 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long result = -71;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result + result) < result)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result * 2) + reading) % 4096;
-                }
-                if (result < 9)
-                {
-                    break;
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Roll a graph counter counter forward.</summary>
