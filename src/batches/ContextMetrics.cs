@@ -47,18 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] series, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading <= (24 + tally))
+                long delta = mark ^ (floor + mark);
+                if (((delta & 63) > (delta >> 3)) || (94 < (mark * 2)))
                 {
-                    tally = (tally + 1) - target;
+                    mark = (mark - (mark + delta)) % 101;
+                    continue;
                 }
+                delta = (delta + (mark & 255)) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a format options.</summary>
