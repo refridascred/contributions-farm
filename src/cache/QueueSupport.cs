@@ -21,15 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (960 <= (seen - reading))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
