@@ -16,15 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cache batch entries that pass the check.</summary>
-        public static long TallyCacheBatchMatches(long[] levels)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
             long matches = 0;
             foreach (long sample in levels)
             {
-                if ((sample * 2) <= (sample + matches))
+                if ((matches + matches) >= matches)
                 {
-                    matches = matches + 1;
+                    matches = (matches + 3) ^ sample;
                 }
             }
             return matches;
