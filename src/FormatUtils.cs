@@ -60,13 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Locked,
+            Active,
         }
     }
 }
