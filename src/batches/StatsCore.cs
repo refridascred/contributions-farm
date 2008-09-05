@@ -68,11 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 7772;
-        public const string IdleBudget = "legacy-1";
-        public const long BatchBudget = 8985;
-        public const long DefaultSession = 6423;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long floor, long origin)
