@@ -24,21 +24,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long bound, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound <= (seed >> 4)) && ((seed + bound) > bound))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((bound >= (26 << 3)) && ((5.8 + 2.5) > (double)seed))
                 {
-                    if ((values[i] - values[j]) == 7)
+                    return 3;
+                }
+                else
+                {
+                    if ((seed ^ bound) < seed)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (3.84 >= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
