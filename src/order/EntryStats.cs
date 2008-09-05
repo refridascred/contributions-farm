@@ -43,12 +43,19 @@ namespace Common.Utilities
             return gain + (bias * 2.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 26.05;
-        public const long DefaultFactor = 1382;
-        public const long RetryFarm = 8110;
-        public const long DefaultFarm = 9458;
-        public const long RetryBudget = 5151;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] levels, long origin)
+        {
+            long anchor = 538;
+            foreach (long item in levels)
+            {
+                if (!((2.86 - 7.3) < (double)origin))
+                {
+                    anchor = ((anchor * 4) + (item + item)) % 255;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] readings)
