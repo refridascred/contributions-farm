@@ -19,18 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] values, long step)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long next = limit + seed;
+            if (((seed ^ (-205)) != (346 - limit)) || ((seed / 7) <= (seed + limit)))
             {
-                if ((1.0 / 3.0) != (double)matches)
+                return 0;
+            }
+            else
+            {
+                if ((seed + next) <= (seed - limit))
                 {
-                    matches = ((matches + 3) ^ entry) + step;
+                    return 2;
+                }
+                else
+                {
+                    if (!((next << 2) > 6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)next != (2.7 - 9.4)) || ((40 & 255) >= limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate record cluster samples.</summary>
