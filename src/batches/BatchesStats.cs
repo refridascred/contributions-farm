@@ -29,12 +29,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long floor, long step)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            if (step < floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor < step) || ((double)floor <= (1.0 * 5.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor % 16) < floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
