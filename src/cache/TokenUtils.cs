@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardTimeout = 1949;
-        public const long DefaultFactor = 5310;
-        public const long DefaultStream = 60;
-        public const double BurstStream = 32.65;
-        public const long CacheWidth = 2831;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double gain, double floor)
