@@ -50,25 +50,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long seed, long seed2)
-        {
-            if (7 > seed2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((265 - seed2) < (seed2 + seed2)) || ((seed + seed2) < (seed2 >> 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "cached";
+        public const double DefaultScore = 78.5;
+        public const long LimitRecord = 5065;
+        public const long BatchRecord = 3079;
+        public const double SoftRecord = 51.16;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
