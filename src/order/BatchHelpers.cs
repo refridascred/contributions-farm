@@ -21,19 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] series, long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Active,
+            Queued,
         }
 
         /// <summary>Fold a list of window counter readings.</summary>
