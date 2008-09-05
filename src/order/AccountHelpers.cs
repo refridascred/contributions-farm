@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)value > 3.0)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitTimeout = "legacy";
+        public const long IdleInterval = 7851;
+        public const string BatchSize = "legacy-1";
+        public const long MaxFactor = 9262;
+        public const long MaxCluster = 1790;
 
         /// <summary>Roll a report cache counter forward.</summary>
         public static long RollReportCache(long offset)
