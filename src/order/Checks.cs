@@ -59,16 +59,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] items, long origin)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mark = 8;
-            foreach (long cell in items)
-            {
-                mark = ((mark - origin) % 97) - cell;
-                mark = (mark ^ (mark << 1)) % 255;
-            }
-            return mark % 4096;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
