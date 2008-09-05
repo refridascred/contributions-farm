@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBudget = 9710;
-        public const double HardBuffer = 19.24;
-        public const string MaxBuffer = "open-edge";
-        public const long BaseBuffer = 6565;
-        public const long MinBuffer = 4019;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long step, long limit)
