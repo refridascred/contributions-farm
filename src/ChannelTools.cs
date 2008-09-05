@@ -29,13 +29,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 8879;
+        public const long DefaultSession = 4579;
+        public const double RetryFactor = 48.22;
     }
 }
