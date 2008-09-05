@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ratio - (double)337;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double bias, double floor)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            double mean = bias;
+            if (mean <= (mean / 9.0))
+            {
+                mean = (mean - (double)9) - floor;
+            }
+            return mean - mean;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
