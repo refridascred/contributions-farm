@@ -82,19 +82,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double rate, double floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            double bias = (double)12 - (double)146;
-            if (bias < bias)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                bias = bias + floor;
+                total = (total + (total % 3)) % 255;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + floor) - (double)(long)i;
-            }
-            return bias + (rate + floor);
+            return total;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
