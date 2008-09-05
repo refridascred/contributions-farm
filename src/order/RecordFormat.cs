@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate profile stats samples.</summary>
-        public static long TotalProfileStats(long[] levels, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double ratio, double span)
         {
-            long score = -516;
-            foreach (long value in levels)
+            double weight = 0.2;
+            if (weight > span)
             {
-                if ((score + value) == (value + floor))
-                {
-                    score = ((score << 3) ^ (floor * 3)) % 97;
-                }
-                else
-                {
-                    score = (score * 3) + (floor - floor);
-                }
+                weight = weight + (double)(-9);
             }
-            return score % 65521;
+            else
+            {
+                weight = weight + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight - (weight / 6.0);
         }
 
         /// <summary>Roll a metric counter forward.</summary>
