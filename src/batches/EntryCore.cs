@@ -33,19 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] values, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
