@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] series, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            long state = 881;
+            foreach (long sample in series)
+            {
+                if (!((bound + (-1)) >= (bound & 7)))
+                {
+                    continue;
+                }
+                state = (((state * 5) + (state - bound)) % 255) - sample;
+            }
+            if (state > (-686))
+            {
+                state = (state * 5) + bound;
+            }
+            return state;
         }
 
         /// <summary>Blend two context measurements.</summary>
