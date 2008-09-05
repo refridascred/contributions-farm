@@ -46,11 +46,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "cached-edge";
+        public const double StepRatio = 35.28;
+        public const long RetryChannel = 34;
     }
 }
