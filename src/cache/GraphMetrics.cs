@@ -16,16 +16,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] samples, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                mix = (mix + (7 + mix)) % 255;
-                mix = ((mix * 3) + (long)i) % 97;
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
