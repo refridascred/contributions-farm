@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleLevel = 19.86;
+        public const double IdleSupport = 79.97;
+        public const long WindowSupport = 6611;
+        public const long BatchSupport = 1437;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportOutliers(long[] series, long offset)
