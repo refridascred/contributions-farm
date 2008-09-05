@@ -62,12 +62,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseWidth = 49.08;
-        public const long MaxBuffer = 5400;
-        public const string RetryWidth = "strict-edge";
-        public const long LimitDepth = 6302;
-        public const double WindowSize = 43.78;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Queued,
+            New,
+            Draft,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
