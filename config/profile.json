@@ -1,17 +1,6 @@
 {
-  "hard_retries_pct": {
-    "min_window_count": "open",
-    "enabled": {
-      "audit": "fallback",
-      "counter_retries": false,
-      "poll_capacity_s": "fallback",
-      "soft_ttl_s": "stable"
-    },
-    "contributi_delay": "primary"
-  },
-  "compress": "fallback",
-  "editor_timeout": "fallback",
-  "batch_window": "open",
-  "dry_run": "cached",
-  "idle_limit_pct": 30
+  "verbose": 30,
+  "burst_timeout_count": "standard",
+  "default_timeout_ms": 90,
+  "hard_threshold_s": "eu-west"
 }
