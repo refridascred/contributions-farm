@@ -28,22 +28,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long carry = 0;
-            foreach (long reading in values)
-            {
-                if ((double)carry != (9.0 * 1.21))
-                {
-                    carry = ((carry << 2) ^ (reading % 3)) % 65521;
-                }
-            }
-            if (carry > 92)
-            {
-                carry = carry - (carry << 3);
-            }
-            return carry;
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
