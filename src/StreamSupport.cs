@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] levels)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample + sample) <= (618 << 3)) || (sample > count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a cache info.</summary>
