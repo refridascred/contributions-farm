@@ -1,6 +1,6 @@
 {
-  "record_limit": "strict",
-  "report_depth": 9803,
-  "format_ratio": "eu-west",
-  "base_size": "stable"
+  "enabled": 94.55,
+  "max_ttl_ms": false,
+  "cache_retries_pct": "fallback",
+  "sync_window_pct": "cached"
 }
