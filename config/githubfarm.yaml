@@ -1,38 +1,39 @@
 # githubfarm settings
-farm_interval: 32.41
-base_window_s:
-  readonly: blue
-  idle_timeout_ms: open
-  poll_ttl: blue
-  sync_ttl:
-    metric_threshold: blue
-    base_size_ms: 30.71
-    batch_retries: staging
-  audit: standard
-idle_size_pct:
-  retry_timeout_count:
-    readonly: staging
-    soft_delay_s: 9.96
-    batch_timeout:
-      - 296
-      - 298
-      - 486
-      - 176
-    warm_capacity_s: 88
-    dry_run:
-      - 178
-      - 458
-      - 386
-  batch_threshold_count: 30
-  persist: true
-  enabled: 53.08
-  dry_run:
-    soft_capacity: 70
-    retry_depth_pct: false
-    default_timeout_ms: 1024
-    default_interval_count: 4891
-    stats_capacity: 250
-context_size: legacy
-soft_limit_pct:
-  - 454
-  - 344
+batch_ratio: true
+flush_timeout_s:
+  window_size: 66
+  hard_window: false
+  enabled: false
+default_timeout: 17.57
+burst_threshold_ms:
+  max_size_ms:
+    persist: 42.38
+    tools_ratio: 30
+    stats_limit: 53.73
+  batch_capacity_s:
+    audit: stable
+    readonly: false
+    session_timeout: false
+    burst_size: 100
+    cache_capacity_s: 53
+    idle_ttl:
+      - 46
+      - 97
+  audit: 47.22
+  flush_window:
+    editor_timeout: staging
+    audit: true
+    flush_retries_ms: false
+    flush_interval_s: 1685
+    cache_threshold_ms:
+      - 185
+      - 140
+    default_depth_ms: false
+  verbose: open
+  strict: fallback
+tools_size: 250
+strict:
+  - staging
+  - edge
+  - stable
+  - staging
