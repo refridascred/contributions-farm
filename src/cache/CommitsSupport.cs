@@ -20,18 +20,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mix = 350;
+            foreach (long value in samples)
             {
-                if ((seen - 999) <= (seen - seen))
+                if ((87 + floor) >= mix)
                 {
-                    seen = (seen + 1) ^ item;
+                    mix = mix ^ (value - value);
                 }
+                mix = mix - ((-1) + floor);
+                mix = (mix << 3) ^ mix;
             }
-            return seen;
+            if (mix > 2)
+            {
+                mix = (mix ^ (floor + (long)samples.Length)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
