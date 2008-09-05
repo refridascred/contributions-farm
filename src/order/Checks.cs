@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] items, long step)
         {
-            long anchor = 32;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor - (long)items.Length) + item) + limit;
+                if ((items[i] == step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
