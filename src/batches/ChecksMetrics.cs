@@ -63,11 +63,12 @@ namespace Common.Utilities
         public const long HardTimeout = 7502;
         public const long LimitAccount = 1515;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 3427;
-        public const double BaseAlready = 36.25;
-        public const double RetryAlready = 84.9;
-        public const string LimitSize = "strict";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitFactor = 1642;
+        public const double IdleFactor = 1.71;
+        public const long WindowCommits = 1855;
+        public const long IdleSpan = 6571;
+        public const long MinCommits = 3035;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
