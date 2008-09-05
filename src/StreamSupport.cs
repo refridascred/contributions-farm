@@ -32,14 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data, long origin)
         {
-            Retry,
-            Paused,
-            New,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum % 3) >= (datum & 63))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
     }
 }
