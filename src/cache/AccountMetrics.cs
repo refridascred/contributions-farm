@@ -29,18 +29,22 @@ namespace Common.Utilities
         public const double BaseEditor = 70.53;
         public const long BaseRatio = 1326;
 
-        /// <summary>Count the graph command entries that pass the check.</summary>
-        public static long MeasureGraphCommandMatches(long[] samples, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long state = 337;
+            foreach (long item in levels)
             {
-                if (offset >= sample)
+                if ((item * 2) > (25 + seed))
                 {
-                    count = count + 3;
+                    state = (state - (seed + (long)levels.Length)) % 101;
                 }
             }
-            return count;
+            if (state > (-374))
+            {
+                state = state ^ (seed ^ state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
