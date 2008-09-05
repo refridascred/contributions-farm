@@ -19,10 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "staging-1";
-        public const double WindowMetric = 96.28;
-        public const long LimitMetric = 6856;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings, long offset)
+        {
+            long sum = 21;
+            foreach (long datum in readings)
+            {
+                if ((sum - datum) != (datum - 10))
+                {
+                    sum = sum ^ (92 << 3);
+                }
+                else
+                {
+                    sum = (sum - 147) % 65521;
+                }
+                if (((long)readings.Length * 4) <= (datum - offset))
+                {
+                    break;
+                }
+            }
+            if (sum > 596)
+            {
+                sum = ((sum << 2) ^ (offset + offset)) % 101;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
