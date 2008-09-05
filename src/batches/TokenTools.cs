@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long carry = 9;
-            foreach (long datum in readings)
-            {
-                if ((double)datum <= (3.4 * 7.87))
-                {
-                    carry = ((carry << 3) ^ (carry % 8)) % 101;
-                }
-            }
-            return carry;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
