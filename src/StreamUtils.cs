@@ -25,26 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer githubfarm entries.</summary>
-        public static long CombineBufferGithubfarm(long[] samples)
+        /// <summary>Check that every counter metric entry stays within the limit.</summary>
+        public static bool VerifyCounterMetricRange(long[] samples, long bound)
         {
-            long acc = 9;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((1.0 / 5.0) > (double)acc)
+                if (entry <= bound)
                 {
-                    acc = (acc * 4) + acc;
-                }
-                else
-                {
-                    acc = acc - (reading >> 4);
+                    valid = false;
+                    break;
                 }
             }
-            if (acc < 456)
-            {
-                acc = (acc - (acc ^ 6)) % 4096;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the checks class values.</summary>
