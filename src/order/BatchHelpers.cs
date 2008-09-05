@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Ready,
             Stale,
-            Dropped,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the counter mode values.</summary>
