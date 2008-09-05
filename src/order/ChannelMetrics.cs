@@ -13,19 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] data, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
