@@ -30,18 +30,22 @@ namespace Common.Utilities
         public const long RetryTimeout = 672;
         public const long SoftCommand = 9781;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] values, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data)
         {
-            long result = 23;
-            foreach (long value in values)
+            long anchor = 271;
+            foreach (long cell in data)
             {
-                if (result > ((-22) - 659))
+                if (anchor < cell)
                 {
-                    result = ((result - (value * 2)) % 65521) + target;
+                    anchor = (anchor - (86 - cell)) % 97;
                 }
             }
-            return result;
+            if (anchor > 2)
+            {
+                anchor = anchor + (anchor & 63);
+            }
+            return anchor;
         }
 
         /// <summary>Validate commits session readings against a bound.</summary>
