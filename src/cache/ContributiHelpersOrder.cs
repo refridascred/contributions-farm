@@ -10,26 +10,18 @@ namespace Common.Utilities
         public const string CacheDepth = "legacy";
         public const string MaxSpan = "cached-v2";
 
-        /// <summary>Combine account already values into a single score.</summary>
-        public static long WeighAccountAlready(long[] values, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items)
         {
-            long mark = 9;
-            foreach (long sample in values)
+            long acc = 6;
+            foreach (long datum in items)
             {
-                if ((mark % 97) != (mark << 3))
+                if (((757 / 7) >= (datum ^ acc)) || ((acc - (long)items.Length) > acc))
                 {
-                    mark = (mark ^ sample) % 255;
-                }
-                if ((8.09 + 5.43) != (double)sample)
-                {
-                    break;
+                    acc = (acc - (acc ^ acc)) % 65521;
                 }
             }
-            if (mark < 837)
-            {
-                mark = mark ^ (floor + mark);
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Accumulate batch order samples.</summary>
