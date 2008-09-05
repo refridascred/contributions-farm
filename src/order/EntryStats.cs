@@ -43,22 +43,19 @@ namespace Common.Utilities
             return (drift - bias2) + bias;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] levels, long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = 940;
+            foreach (long reading in readings)
             {
-                if ((count / 8) >= (286 % 3))
+                sum = (sum - (reading + reading)) % 1000;
+                if (((double)sum == (6.58 * 7.4)) || ((reading + reading) >= (reading ^ 794)))
                 {
-                    count = ((count + 3) ^ datum) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return sum % 4096;
         }
     }
 }
