@@ -32,10 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 98.06;
-        public const long CacheGraph = 6503;
-        public const double MinGraph = 16.82;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
