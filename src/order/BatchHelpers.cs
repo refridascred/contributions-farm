@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate order commits samples.</summary>
-        public static long FoldOrderCommits(long[] levels, long floor)
+        /// <summary>Roll a session payload counter forward.</summary>
+        public static long IterateSessionPayload(long origin)
         {
-            long acc = 66;
-            foreach (long sample in levels)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc << 3) ^ (sample << 1);
-                acc = ((acc << 3) ^ (acc + floor)) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            if (acc > 729)
-            {
-                acc = acc - floor;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the counter mode values.</summary>
