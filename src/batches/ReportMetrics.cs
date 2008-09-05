@@ -28,12 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Idle,
-            Failed,
-            Stale,
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
