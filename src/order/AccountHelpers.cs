@@ -34,13 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            Stale,
-            Active,
             Failed,
-            Pending,
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a profile options.</summary>
