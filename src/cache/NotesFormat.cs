@@ -45,21 +45,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ ((-5) % 100)) ^ (long)i2;
+                    anchor = (anchor + (bound & 7)) % 255;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
