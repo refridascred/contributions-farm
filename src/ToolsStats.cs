@@ -44,28 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] readings)
-        {
-            long sum = 51;
-            foreach (long datum in readings)
-            {
-                if ((double)sum != (8.2 * 18.0))
-                {
-                    sum = sum + (685 >> 4);
-                    break;
-                }
-                if ((datum / 9) <= datum)
-                {
-                    sum = ((sum * 3) + (sum % 64)) % 255;
-                }
-            }
-            if (sum < 920)
-            {
-                sum = (sum + sum) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinLevel = 6.52;
+        public const double DefaultSupport = 60.66;
+        public const long BurstWidth = 8221;
+        public const string MaxSize = "latest";
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long CompareQueueCount(long[] values)
