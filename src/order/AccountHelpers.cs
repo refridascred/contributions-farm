@@ -77,19 +77,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum == (3.81 + 7.2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseWidth = 49.08;
+        public const long MaxBuffer = 5400;
+        public const string RetryWidth = "strict-edge";
+        public const long LimitDepth = 6302;
+        public const double WindowSize = 43.78;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] values)
