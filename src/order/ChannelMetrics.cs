@@ -38,11 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] readings, long floor)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            long anchor = 75;
+            foreach (long value in readings)
+            {
+                if ((anchor * 2) <= (anchor - 238))
+                {
+                    anchor = (anchor + (floor + floor)) ^ value;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = ((anchor << 2) ^ (floor - floor)) % 101;
+            }
+            return anchor;
         }
     }
 }
