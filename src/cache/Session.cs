@@ -27,22 +27,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] readings, long floor)
+        /// <summary>Find the first contributi commits entry that matches the target.</summary>
+        public static long LookupContributiCommitsIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits + floor) <= (hits - floor))
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
                 {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
