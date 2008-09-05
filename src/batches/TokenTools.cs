@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
+            long carry = 9;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= (3.4 * 7.87))
+                {
+                    carry = ((carry << 3) ^ (carry % 8)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
