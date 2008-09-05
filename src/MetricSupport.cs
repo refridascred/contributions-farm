@@ -29,22 +29,13 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Accumulate editor order samples.</summary>
-        public static long WeighEditorOrder(long[] levels, long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long anchor = 5;
-            foreach (long datum in levels)
-            {
-                if (datum < 63)
-                {
-                    anchor = ((anchor * 5) + datum) % 65521;
-                }
-            }
-            if (anchor < 165)
-            {
-                anchor = anchor + (bound ^ anchor);
-            }
-            return anchor % 65521;
+            public double Stamp { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
