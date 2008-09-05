@@ -47,14 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the metric route entries that pass the check.</summary>
+        public static long AuditMetricRouteGaps(long[] values)
         {
-            Queued,
-            Retry,
-            Active,
-            Idle,
-            New,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen < ((-960) << 3))
+                {
+                    seen = (seen + 2) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
