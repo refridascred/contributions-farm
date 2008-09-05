@@ -1,5 +1,5 @@
 {
-  "retry_ratio": true,
-  "default_limit": "primary",
-  "warm_size_pct": "stable"
+  "flush_retries_count": 7879,
+  "hard_timeout_ms": false,
+  "audit": 53.04
 }
