@@ -45,15 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
