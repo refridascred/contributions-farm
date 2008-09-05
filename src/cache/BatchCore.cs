@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count batches format pairs that satisfy a relation.</summary>
-        public static long PairBatchesFormatCount(long[] readings)
+        /// <summary>Count the metric counter entries that pass the check.</summary>
+        public static long MeasureMetricCounterGaps(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < (reading - floor))
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
