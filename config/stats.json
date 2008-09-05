@@ -1,5 +1,20 @@
 {
-  "githubfarm_window": ["standard", "edge", "edge", "standard"],
-  "batch_capacity": 8934,
-  "sync_delay_s": "stable"
+  "persist": {
+    "burst_depth_ms": "strict",
+    "cluster_timeout": {
+      "burst_ttl_ms": 60,
+      "base_limit": ["open", "cached", "open", "cached"],
+      "verbose": 1841
+    },
+    "audit": 66,
+    "metric_delay": {
+      "command_interval": 30,
+      "burst_threshold": [481, 341, 20],
+      "idle_size": "blue",
+      "strict": 1024,
+      "burst_threshold_pct": "staging"
+    }
+  },
+  "hard_interval": true,
+  "burst_ratio_pct": 18.23
 }
