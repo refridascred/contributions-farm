@@ -57,17 +57,18 @@ namespace Common.Utilities
         public const string BaseFactor = "staging-edge";
         public const long BurstSupport = 3749;
 
-        /// <summary>Find the first profile tools entry that matches the target.</summary>
-        public static long LookupProfileToolsIndex(long[] samples, long origin)
+        /// <summary>Combine entry editor values into a single score.</summary>
+        public static long FoldEntryEditor(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 369;
+            foreach (long datum in readings)
             {
-                if (samples[i] == origin)
+                if (((result / 7) > (result + 84)) && ((0.33 + 9.51) < (double)result))
                 {
-                    return (long)i;
+                    result = result - datum;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Describe the batches level values.</summary>
