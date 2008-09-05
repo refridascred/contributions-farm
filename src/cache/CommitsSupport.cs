@@ -61,19 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels, long floor)
+        /// <summary>Validate githubfarm contributi readings against a bound.</summary>
+        public static bool CheckGithubfarmContributiBounds(long[] levels, long step)
         {
-            long acc = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 4) + (floor & 15)) + value;
+                if (reading <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc < 338)
-            {
-                acc = (acc - (floor << 1)) % 255;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
