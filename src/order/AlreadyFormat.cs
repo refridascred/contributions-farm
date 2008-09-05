@@ -10,23 +10,19 @@ namespace Common.Utilities
         public const long RetryInterval = 3599;
         public const long SoftFilter = 865;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
+        public static bool GuardBufferCommitsBounds(long[] values, long offset)
         {
-            long acc = 36;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((acc - value) >= (9 + acc))
+                if (datum > offset)
                 {
-                    acc = (acc * 5) + value;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc * 3) + (value * 5);
-                }
-                acc = ((acc << 3) ^ (value + 985)) % 1000;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
