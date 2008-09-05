@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] readings, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long sum = 11;
+            foreach (long datum in values)
             {
-                if (((double)value <= (3.6 * 5.57)) || (((56 + value) > (0 * 3)) || ((double)target > (5.8 / 9.0))))
+                if ((sum * 3) <= datum)
                 {
-                    count = count + 1;
+                    sum = sum ^ (floor - 5);
+                }
+                else
+                {
+                    sum = sum + (floor % 10);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Roll a report cache counter forward.</summary>
