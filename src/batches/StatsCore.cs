@@ -51,21 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up report command samples.</summary>
-        public static long MatchReportCommandCount(long[] values)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(38 + 7);
+            if (gain <= gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - weight) + offset;
             }
-            return seen;
+            else
+            {
+                gain = gain + (4.54 + gain);
+            }
+            return gain - 8.8;
         }
 
         /// <summary>Hold a format snapshot.</summary>
