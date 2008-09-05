@@ -28,24 +28,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank cluster schema input into a small class.</summary>
-        public static long RankClusterSchema(long bound, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
         {
-            if ((double)step < 3.74)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(step < (step ^ bound)))
+                carry = carry + (carry + carry);
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 2;
+                    carry = ((carry + ((long)i * 4)) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    return 6;
-                }
+                carry = (carry << 2) ^ (floor % 100);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
