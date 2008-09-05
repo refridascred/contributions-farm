@@ -34,15 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of farm already entries.</summary>
-        public static long ScoreFarmAlready(long[] items, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = 8;
-            foreach (long cell in items)
-            {
-                acc = (((acc - acc) % 97) + cell) + seed;
-            }
-            return acc;
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
