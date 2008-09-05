@@ -22,21 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Rank cluster schema input into a small class.</summary>
