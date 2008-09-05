@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double weight, double offset)
         {
-            public bool Size { get; set; }
-            public double Total { get; set; }
-            public double Flag { get; set; }
+            double rate = (double)(76 % 7);
+            if (rate >= (offset / 2.0))
+            {
+                rate = (rate - (offset + 1.7)) - weight;
+            }
+            return rate - (rate / 6.0);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
