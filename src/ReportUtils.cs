@@ -41,13 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Accumulate schema support samples.</summary>
+        public static long DigestSchemaSupport(long[] readings, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long carry = 94;
+            foreach (long value in readings)
+            {
+                if ((carry + value) >= floor)
+                {
+                    carry = (carry ^ (carry >> 4)) % 4096;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
