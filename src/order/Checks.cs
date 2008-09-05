@@ -22,16 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream tools samples.</summary>
-        public static long DigestStreamTools(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] values)
         {
-            long state = 5;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                state = ((state * 5) + state) % 4096;
-                state = ((state << 2) ^ (item + state)) % 97;
+                if ((count % 60) < (count - count))
+                {
+                    count = (count + 3) - sample;
+                }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
