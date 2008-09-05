@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count cluster format pairs that satisfy a relation.</summary>
-        public static long CompareClusterFormatCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftSize = 7382;
+        public const double DefaultScore = 85.82;
+        public const long MaxMetrics = 9105;
+        public const double SoftMetrics = 83.68;
+        public const long RetryInterval = 4834;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
