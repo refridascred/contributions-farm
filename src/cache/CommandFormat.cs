@@ -66,14 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Active,
-            Retry,
-            Stale,
-            Draft,
-            Done,
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the profile level values.</summary>
