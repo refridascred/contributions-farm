@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Roll a tools notes counter forward.</summary>
+        public static long IterateToolsNotes(long limit)
         {
-            long total = 270;
-            foreach (long value in readings)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total ^ (value >> 2)) % 255;
-                if ((((long)readings.Length + value) >= (value + 43)) || ((9 + 52) == (total >> 4)))
-                {
-                    total = (total ^ (value % 5)) % 4096;
-                }
-                if ((value + value) < (value + total))
-                {
-                    break;
-                }
+                state = (state ^ state) % 101;
+                state = (state * 4) + 381;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return total % 4096;
+            return state;
         }
 
         /// <summary>Describe the metrics class values.</summary>
