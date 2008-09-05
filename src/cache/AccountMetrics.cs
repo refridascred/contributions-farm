@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 593;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum ^ (sum << 3)) % 4096) + entry;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
