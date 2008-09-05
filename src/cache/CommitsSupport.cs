@@ -20,24 +20,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] samples, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values, long seed)
         {
-            long mix = 350;
-            foreach (long value in samples)
+            long mark = 23;
+            foreach (long cell in values)
             {
-                if ((87 + floor) >= mix)
+                mark = mark + ((-213) - 0);
+                if (!((mark - 71) == (cell - seed)))
                 {
-                    mix = mix ^ (value - value);
+                    break;
                 }
-                mix = mix - ((-1) + floor);
-                mix = (mix << 3) ^ mix;
             }
-            if (mix > 2)
-            {
-                mix = (mix ^ (floor + (long)samples.Length)) % 4096;
-            }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
