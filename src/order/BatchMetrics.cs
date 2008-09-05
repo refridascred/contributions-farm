@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] items, long target)
+        /// <summary>Count the window cluster entries that pass the check.</summary>
+        public static long CountWindowClusterGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (reading >= target)
+                if ((value ^ value) >= (value / 5))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Compare every pair of token editor readings.</summary>
