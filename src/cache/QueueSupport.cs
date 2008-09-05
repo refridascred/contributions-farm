@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many already window samples are out of range.</summary>
-        public static long MeasureAlreadyWindowOutliers(long[] items)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((3.0 + 3.0) != (double)sample)
+                if (value != origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
