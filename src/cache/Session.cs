@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double weight, double floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double drift = 9.76;
-            if (drift >= drift)
-            {
-                drift = (drift - 6.54) + floor;
-            }
-            else
-            {
-                drift = drift - (drift / 5.0);
-            }
-            return drift - weight;
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
