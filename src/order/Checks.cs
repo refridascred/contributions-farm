@@ -19,11 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate stream tools samples.</summary>
+        public static long DigestStreamTools(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            long state = 5;
+            foreach (long item in data)
+            {
+                state = ((state * 5) + state) % 4096;
+                state = ((state << 2) ^ (item + state)) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
