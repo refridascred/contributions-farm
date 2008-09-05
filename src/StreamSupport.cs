@@ -30,9 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 2284;
-        public const double WindowRatio = 95.8;
-        public const long LimitSize = 4380;
+        /// <summary>Compare every pair of window cluster readings.</summary>
+        public static long CompareWindowClusterCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
