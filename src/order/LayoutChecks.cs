@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long target, long target2)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double rate, double floor)
         {
-            if (82 <= (target2 + target2))
+            double ratio = rate;
+            if (ratio <= (rate * 3.0))
             {
-                return 7;
+                ratio = (ratio - rate) + floor;
             }
-            else
-            {
-                if (target >= (target + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0 - target) == (target2 - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the schema status values.</summary>
