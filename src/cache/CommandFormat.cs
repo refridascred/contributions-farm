@@ -19,17 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] items, long bound)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
