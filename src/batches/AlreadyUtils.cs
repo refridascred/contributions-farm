@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels, long origin)
-        {
-            long carry = 7;
-            foreach (long cell in levels)
-            {
-                carry = (((carry + 60) % 65521) - cell) - origin;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 1875;
+        public const long StepPayload = 6071;
+        public const long RetryInterval = 923;
+        public const double MaxPayload = 89.44;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
