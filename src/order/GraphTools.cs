@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > step)
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate queue order readings against a bound.</summary>
