@@ -28,12 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                if (values[i] == origin)
                 {
                     return (long)i;
                 }
