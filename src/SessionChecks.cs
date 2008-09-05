@@ -57,18 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] data)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = 5;
+            foreach (long item in series)
             {
-                if (((long)data.Length - value) == (matches + matches))
-                {
-                    matches = matches + 2;
-                }
+                acc = (((acc * 4) + (acc + acc)) % 255) ^ item;
             }
-            return matches;
+            if (acc > 3)
+            {
+                acc = ((acc * 2) + (acc / 2)) % 101;
+            }
+            return acc;
         }
     }
 }
