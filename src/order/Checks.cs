@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit stats checks readings against a rule.</summary>
+        public static long CountStatsChecksOutliers(long[] readings, long floor)
         {
-            Queued,
-            Failed,
-            Idle,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally <= (floor - 3)) && (floor <= (tally * 5)))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph header.</summary>
