@@ -43,11 +43,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
