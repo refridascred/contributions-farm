@@ -28,22 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] readings, long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count == (5.92 * 4.0))
+                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
                 {
-                    count = ((count + 2) + sample) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
