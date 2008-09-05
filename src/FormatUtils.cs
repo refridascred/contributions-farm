@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] series)
         {
-            Synced,
-            Queued,
-            Pending,
-            Idle,
-            Locked,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally + tally) == (tally + value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
