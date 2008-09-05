@@ -37,19 +37,22 @@ namespace Common.Utilities
         public const long SoftCount = 8837;
         public const long BurstCount = 84;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] samples, long floor)
         {
-            long mark = 833;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                mark = (mark - (value ^ mark)) % 97;
+                if ((double)floor <= (2.67 + 6.7))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mark > 7)
-            {
-                mark = (mark ^ (mark & 255)) % 101;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the profile level values.</summary>
