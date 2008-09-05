@@ -24,18 +24,32 @@ namespace Common.Utilities
             return weight + 6.3;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] data, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long limit, long step)
         {
-            long mix = 307;
-            foreach (long value in data)
+            long slot = limit + step;
+            if ((double)limit < (18.0 / 6.0))
             {
-                if (!((step >> 4) <= (value & 3)))
+                return 2;
+            }
+            else
+            {
+                if ((double)slot <= (12.0 / 3.0))
                 {
-                    mix = ((mix * 5) + step) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + 26) != (step / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
