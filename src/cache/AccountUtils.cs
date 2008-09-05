@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the batches buffer entries that pass the check.</summary>
+        public static long AuditBatchesBufferMatches(long[] data)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value - hits) >= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next commits metric value.</summary>
