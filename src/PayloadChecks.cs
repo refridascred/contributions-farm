@@ -47,12 +47,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long limit, long step)
         {
-            Idle,
-            Pending,
-            Dropped,
+            if ((step <= limit) && ((52 + 864) == (limit << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((step % 97) < step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
