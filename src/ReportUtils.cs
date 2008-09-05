@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many profile contributi samples are out of range.</summary>
-        public static long AuditProfileContributiHits(long[] levels)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if ((8.52 >= (double)limit) && ((limit << 1) < (limit - (-288))))
             {
-                if (!(((double)hits >= (3.0 * 5.9)) || ((reading & 7) >= (reading + reading))))
+                return 0;
+            }
+            else
+            {
+                if ((limit % 8) <= target)
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((target + limit) >= (limit * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((limit % 7) <= (limit & 127)) && ((3 << 1) > (limit / 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the already mode values.</summary>
