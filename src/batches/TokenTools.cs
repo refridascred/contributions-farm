@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long StepContext = 4028;
         public const string StepInterval = "open-edge";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] levels, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell / 8) < (cell << 1))
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Match up profile samples.</summary>
