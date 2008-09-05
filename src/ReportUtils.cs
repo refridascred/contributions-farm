@@ -40,20 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] levels, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((long)i >> 2) <= origin)
+                if (!((step >> 4) > step))
                 {
-                    continue;
+                    tally = (tally + 2) ^ reading;
                 }
-                mark = mark - mark;
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the context level values.</summary>
