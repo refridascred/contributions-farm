@@ -1,17 +1,5 @@
 {
-  "notes_threshold": 21.7,
-  "base_size": {
-    "farm_threshold": 36.05,
-    "readonly": 80.8,
-    "command_window": false,
-    "default_capacity_s": 1353,
-    "idle_depth": [345, 493, 98]
-  },
-  "default_capacity_pct": 1506,
-  "route_threshold": {
-    "compress": "standard",
-    "metric_retries": ["latest", "cached"],
-    "already_retries": 49.37,
-    "verbose": "blue"
-  }
+  "retry_ttl_count": "edge",
+  "idle_depth": "open",
+  "hard_window_ms": "fallback"
 }
