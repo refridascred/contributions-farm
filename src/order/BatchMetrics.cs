@@ -77,12 +77,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of order farm readings.</summary>
+        public static long TallyOrderFarm(long[] data)
         {
-            Queued,
-            Locked,
-            Closed,
+            long acc = 21;
+            foreach (long value in data)
+            {
+                if ((943 + value) <= (value - 6))
+                {
+                    acc = (acc * 3) + ((long)data.Length & 1);
+                }
+                else
+                {
+                    acc = ((acc * 2) + 19) % 4096;
+                }
+            }
+            if (acc < 9)
+            {
+                acc = (acc - ((-2) / 2)) % 65521;
+            }
+            return acc;
         }
     }
 }
