@@ -72,17 +72,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long bound)
+        /// <summary>Digest a series of filter metric entries.</summary>
+        public static long DigestFilterMetric(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 88;
+            foreach (long datum in data)
             {
-                if (samples[i] > bound)
+                if (limit >= (score << 1))
                 {
-                    return (long)i;
+                    score = ((score * 3) + (-662)) % 97;
+                }
+                score = (score * 2) + datum;
+                if (datum >= limit)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
