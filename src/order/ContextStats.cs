@@ -11,10 +11,27 @@ namespace Common.Utilities
         public const long CacheInterval = 1357;
         public const long WindowGithubfarm = 1486;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "strict";
-        public const double IdleDepth = 1.37;
-        public const long BaseSpan = 576;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings)
+        {
+            long carry = 668;
+            foreach (long datum in readings)
+            {
+                if ((double)carry >= (16.0 + 5.3))
+                {
+                    carry = carry ^ (carry * 4);
+                }
+                if (((double)carry > (3.4 / 3.0)) && (7 >= (datum % 3)))
+                {
+                    break;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long SoftContext = 3235;
