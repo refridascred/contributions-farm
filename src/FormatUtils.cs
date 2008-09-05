@@ -15,22 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit already token readings against a rule.</summary>
-        public static long CountAlreadyTokenGaps(long[] levels, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((hits - hits) != (item >> 3)) || ((6.43 + 0.1) < (double)seed))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double drift = bias2 - 8.0;
+            return (drift + (bias2 * 6.14)) + bias;
         }
 
         /// <summary>Describe the editor status values.</summary>
