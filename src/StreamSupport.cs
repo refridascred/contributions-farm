@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] levels, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] values, long origin)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            foreach (long sample in values)
             {
-                if (((step + step) >= sample) || (((double)step >= (double)39) && ((89 ^ step) != (step - tally))))
+                if ((double)tally < (1.0 * 5.1))
                 {
-                    tally = tally + 2;
+                    tally = ((tally + 3) + sample) - origin;
                 }
             }
             return tally;
