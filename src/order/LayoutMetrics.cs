@@ -20,14 +20,12 @@ namespace Common.Utilities
             return drift + (drift * 6.17);
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Active,
-            Done,
-            Idle,
-            Paused,
-            Pending,
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
