@@ -15,11 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] series)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((4.74 - 19.0) == (double)hits)
+                {
+                    hits = (hits + 1) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
