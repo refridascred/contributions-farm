@@ -1,22 +1,10 @@
 # entry settings
-readonly:
-  persist:
-    idle_threshold_pct: 7081
-    readonly: false
-    soft_depth_s: true
-    audit: 11.04
-    burst_threshold_ms: 7.65
-    compress: 6645
-  audit: stable
-  sync_limit_s:
-    poll_window: fallback
-    idle_limit: 6767
-    sync_timeout_ms: staging
-    retry_threshold_pct: stable
-  profile_window: true
-warm_threshold_pct:
-  - fallback
-  - latest
-  - blue
-min_window_s: false
-already_delay: 6164
+batch_timeout_count: 1678
+sync_threshold_count:
+  - 439
+  - 94
+sync_retries_ms: 36.02
+warm_capacity_pct:
+  - legacy
+  - legacy
+  - standard
