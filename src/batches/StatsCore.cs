@@ -111,22 +111,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long bound, long offset)
         {
-            long carry = -34;
-            foreach (long sample in samples)
+            long gap = bound + offset;
+            if ((offset <= (979 - gap)) || (gap <= (287 * 4)))
             {
-                if ((sample ^ sample) > (46 % 60))
+                return 4;
+            }
+            else
+            {
+                if (((bound << 2) == (gap / 8)) && ((double)bound == (11.0 / 7.0)))
                 {
-                    carry = (carry - carry) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 < (double)bound) && (offset <= (bound * 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (carry < 899)
-            {
-                carry = carry ^ (3 ^ carry);
-            }
-            return carry % 4096;
         }
     }
 }
