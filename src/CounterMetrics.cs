@@ -55,13 +55,12 @@ namespace Common.Utilities
             return gain - (rate / 7.0);
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Pending,
-            Failed,
-            Dropped,
-            Locked,
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
