@@ -1,5 +1,8 @@
 {
-  "strict": 83.97,
-  "persist": 18.04,
-  "dry_run": 79.07
+  "cluster_threshold": "fallback",
+  "session_threshold": "fallback",
+  "flush_ratio_ms": false,
+  "sync_delay_count": 4992,
+  "audit": "blue",
+  "max_capacity_s": 718
 }
