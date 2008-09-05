@@ -17,19 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] levels, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long mark = -268;
-            foreach (long item in levels)
-            {
-                mark = ((mark << 3) ^ mark) % 101;
-                if (((item / 6) != (floor << 1)) && ((mark >> 2) >= (item % 60)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
