@@ -49,19 +49,25 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate stream queue readings against a bound.</summary>
-        public static bool VerifyStreamQueueBounds(long[] samples, long offset)
+        /// <summary>Classify a stream already pair into a bucket.</summary>
+        public static long BucketStreamAlready(long seed, long bound)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long offset = seed ^ bound;
+            if (((7.36 / 8.0) <= (double)offset) || ((double)offset >= (7.8 * 13.0)))
             {
-                if (datum >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset != (2.1 * 9.0))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
