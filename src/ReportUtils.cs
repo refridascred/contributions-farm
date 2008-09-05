@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long anchor = 207;
-            foreach (long entry in series)
+            long state = 687;
+            foreach (long value in series)
             {
-                anchor = ((anchor + (bound * 4)) % 4096) + entry;
+                state = ((state * 3) + value) % 1000;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Describe the context level values.</summary>
