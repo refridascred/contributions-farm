@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a batches layout figure with a bias.</summary>
-        public static double ProjectBatchesLayout(double bias, double floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double ratio = floor;
-            if (ratio >= (ratio * 6.0))
-            {
-                ratio = ratio + (bias + floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (ratio + floor)) + (double)(long)i;
-            }
-            return ratio - (double)337;
+            New,
+            Idle,
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Project the next entry value.</summary>
