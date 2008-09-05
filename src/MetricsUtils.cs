@@ -77,18 +77,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] levels, long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long carry = 961;
-            foreach (long entry in levels)
-            {
-                if (bound <= (entry / 2))
-                {
-                    carry = carry - (20 << 3);
-                }
-            }
-            return carry % 65521;
+            Ready,
+            Failed,
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
