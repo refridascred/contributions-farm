@@ -34,10 +34,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardScore = 4257;
-        public const double BatchCount = 52.1;
-        public const long BatchBatches = 6224;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Draft,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
