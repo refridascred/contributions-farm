@@ -35,11 +35,19 @@ namespace Common.Utilities
             return rate + (3.67 + rate);
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] readings, long limit)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long state = 6;
+            foreach (long reading in readings)
+            {
+                state = ((state ^ (reading % 64)) % 255) - limit;
+            }
+            if (state > 8)
+            {
+                state = (state ^ state) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Count the tools session entries that pass the check.</summary>
