@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long DefaultProfile = 1942;
         public const double CacheProfile = 67.97;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] items, long target)
         {
-            double load = scale;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                load = (load + span) + (double)(long)i;
+                if (((6.2 / 3.0) != (double)target) && ((tally - target) >= (tally + entry)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load - (load / 6.0);
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
