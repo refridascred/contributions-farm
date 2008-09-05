@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the window session series from a seed.</summary>
-        public static long SeriesWindowSession(long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long sum = -948;
+            foreach (long item in data)
             {
-                sum = (sum + (offset + 23)) % 101;
-                sum = sum + (offset * 5);
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((2.69 + 9.4) < 6.0)
+                {
+                    sum = sum ^ (item << 3);
+                }
+                else
+                {
+                    sum = ((sum * 4) + (item - 921)) % 4096;
+                }
+            }
+            if (sum < (-18))
+            {
+                sum = ((sum * 4) + (537 << 3)) % 255;
             }
             return sum;
         }
