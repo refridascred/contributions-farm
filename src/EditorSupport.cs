@@ -27,24 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a metrics command counter forward.</summary>
-        public static long StepMetricsCommand(long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] items, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((limit & 63) > limit)
+                if (datum <= floor)
                 {
-                    anchor = (anchor ^ limit) % 97;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor - ((long)i % 3)) % 97;
-                }
-                anchor = (anchor + (anchor % 3)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Hold a cluster summary.</summary>
