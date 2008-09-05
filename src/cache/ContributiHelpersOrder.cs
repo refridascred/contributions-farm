@@ -45,13 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Fold a list of metrics schema readings.</summary>
+        public static long TotalMetricsSchema(long[] data, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long result = -2;
+            foreach (long sample in data)
+            {
+                if ((sample > (sample - result)) || ((3.53 + 15.0) >= (double)result))
+                {
+                    result = ((result + (result ^ sample)) % 97) - limit;
+                }
+            }
+            return result % 65521;
         }
     }
 }
