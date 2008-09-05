@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] items, long origin)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Fold a list of schema account readings.</summary>
