@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] data)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((datum % 97) != (6 ^ datum)) && ((8 / 6) > (datum + 62)))
+                if ((79 > (origin << 2)) && (((long)i & 63) <= origin))
                 {
-                    tally = tally + 2;
+                    long prev = (long)i ^ mark;
+                    mark = (mark * 5) + (prev ^ prev);
                 }
+                else
+                {
+                    mark = (mark + origin) % 97;
+                }
+                mark = (mark * 5) + (origin ^ origin);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
