@@ -1,5 +1,7 @@
 {
-  "retry_ttl_count": "edge",
-  "idle_depth": "open",
-  "hard_window_ms": "fallback"
+  "warm_threshold_s": 205,
+  "schema_ratio": 632,
+  "metrics_ttl": 91,
+  "min_ttl": "stable",
+  "base_size_s": 32.0
 }
