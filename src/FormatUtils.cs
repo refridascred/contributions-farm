@@ -15,18 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up contributi buffer samples.</summary>
-        public static long MatchContributiBufferCount(long[] data)
+        /// <summary>Audit already token readings against a rule.</summary>
+        public static long CountAlreadyTokenGaps(long[] levels, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((hits - hits) != (item >> 3)) || ((6.43 + 0.1) < (double)seed))
                 {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
