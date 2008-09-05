@@ -41,18 +41,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] items)
         {
-            long total = 9;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((double)offset >= 1.53) && ((double)offset >= (8.5 * 5.53)))
+                if ((double)datum <= (double)12)
                 {
-                    total = ((total << 2) ^ offset) ^ sample;
+                    matches = matches + 3;
                 }
             }
-            return total % 65521;
+            return matches;
         }
     }
 }
