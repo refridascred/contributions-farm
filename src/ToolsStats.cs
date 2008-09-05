@@ -83,26 +83,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings, long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            long total = 186;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total - ((long)i + target)) % 97) - sample;
-                }
-                if (total < (target << 1))
-                {
-                    total = (total - total) % 4096;
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 741)
-            {
-                total = ((total << 2) ^ 947) % 4096;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Adjust a checks reading.</summary>
