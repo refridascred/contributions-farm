@@ -82,22 +82,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] levels, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long offset, long seed)
         {
-            long sum = 6;
-            foreach (long datum in levels)
+            if (((seed >> 4) < (seed << 2)) || ((1.94 * 0.2) <= (double)seed))
             {
-                if ((3.0 - 11.0) < (double)limit)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset <= (double)seed)
                 {
-                    sum = sum + (datum % 64);
+                    return 7;
                 }
                 else
                 {
-                    sum = (sum + datum) % 1000;
+                    if (seed >= (offset & 15))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed << 2) < (324 - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
