@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double weight, double bias)
+        /// <summary>Iterate the record queue series from a seed.</summary>
+        public static long DeriveRecordQueue(long origin)
         {
-            double mean = 11.0;
-            return ((mean + (mean / 2.0)) + weight) + bias;
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a farm format reading by value.</summary>
