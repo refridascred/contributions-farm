@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string CacheDepth = "legacy";
         public const string MaxSpan = "cached-v2";
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long TallyAccountBatchOutliers(long[] levels)
         {
-            long acc = 6;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (((757 / 7) >= (datum ^ acc)) || ((acc - (long)items.Length) > acc))
+                if ((reading - 4) <= (count >> 2))
                 {
-                    acc = (acc - (acc ^ acc)) % 65521;
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
