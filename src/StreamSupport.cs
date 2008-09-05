@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)seen < (1.2 - 2.0))
-                {
-                    seen = ((seen + 2) + datum) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowSize = 197;
+        public const string WindowWidth = "standard-v2";
+        public const double MaxCount = 69.22;
+        public const long SoftFactor = 934;
+        public const double MaxScore = 12.58;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
