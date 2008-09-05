@@ -38,17 +38,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] samples, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (floor << 1)) % 97;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit already account readings against a rule.</summary>
