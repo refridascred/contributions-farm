@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 4558;
-        public const double LimitChecks = 37.29;
-        public const long IdleRatio = 9445;
-        public const long BaseCount = 9617;
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRatio = 8274;
