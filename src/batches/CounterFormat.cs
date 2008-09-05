@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a cache metrics value against two limits.</summary>
-        public static long ClassifyCacheMetrics(long limit, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long limit, long origin)
         {
-            if (((target / 6) != (56 / 2)) || ((limit << 3) <= (target - limit)))
+            if (((double)(-916) > (double)origin) || ((2.0 / 3.0) < (double)limit))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((target >> 2) >= target)
+                if ((origin - limit) < origin)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (((49 * 3) != (target & 1)) && ((double)limit >= (1.4 / 6.0)))
+                    if ((limit * 5) <= (limit ^ limit))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
