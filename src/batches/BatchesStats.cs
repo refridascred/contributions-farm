@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the graph contributi series from a seed.</summary>
-        public static long IterateGraphContributi(long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] values, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = 6;
+            foreach (long entry in values)
             {
-                if (sum >= (sum + seed))
+                if (target >= 750)
                 {
-                    sum = (sum << 3) ^ seed;
-                    sum = sum - (sum * 2);
-                    break;
+                    acc = (acc - acc) + entry;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
