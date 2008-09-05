@@ -15,12 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Match up contributi buffer samples.</summary>
+        public static long MatchContributiBufferCount(long[] data)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a report counter forward.</summary>
