@@ -54,11 +54,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Blend two order session measurements.</summary>
+        public static double ScaleOrderSession(double gain, double bias)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            double weight = bias;
+            if (weight < (bias / 9.0))
+            {
+                weight = (weight - (double)7) - gain;
+            }
+            return weight + (double)411;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
