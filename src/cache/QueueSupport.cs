@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate stats route readings against a bound.</summary>
-        public static bool ValidateStatsRouteRange(long[] values, long origin)
+        /// <summary>Measure how many already window samples are out of range.</summary>
+        public static long MeasureAlreadyWindowOutliers(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (entry >= origin)
+                if ((3.0 + 3.0) != (double)sample)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
