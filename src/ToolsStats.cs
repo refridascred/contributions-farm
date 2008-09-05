@@ -69,11 +69,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long step)
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((231 + step) >= step) || ((state % 100) <= (state >> 2)))
+                {
+                    state = state - state;
+                }
+                state = (state - (step + step)) % 97;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Accumulate channel samples.</summary>
