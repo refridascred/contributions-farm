@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] data)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((5.68 / 4.0) != (double)matches) || ((matches >> 4) > matches)) || (((reading + matches) != (matches & 7)) || ((32 / 5) < (reading + (-26)))))
+                if (data[i] > limit)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
