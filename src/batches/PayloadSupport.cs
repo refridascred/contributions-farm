@@ -30,17 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] values, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] == target)
+                if ((hits % 10) < (seed ^ hits))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
