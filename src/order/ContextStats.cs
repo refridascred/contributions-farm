@@ -18,20 +18,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] values, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels, long target)
         {
-            long anchor = 8;
-            foreach (long sample in values)
+            long anchor = 84;
+            foreach (long datum in levels)
             {
-                if (target <= anchor)
+                anchor = anchor - (target - datum);
+                if ((datum * 3) >= target)
                 {
-                    anchor = ((anchor - (target * 3)) % 255) + sample;
+                    anchor = (anchor * 2) + anchor;
                 }
-            }
-            if (anchor < 88)
-            {
-                anchor = (anchor << 2) ^ (55 >> 5);
+                else
+                {
+                    anchor = (anchor + (datum + anchor)) % 101;
+                    anchor = ((anchor << 3) ^ (target - 685)) % 65521;
+                }
+                anchor = anchor - 77;
             }
             return anchor;
         }
