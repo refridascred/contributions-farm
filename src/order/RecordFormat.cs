@@ -39,20 +39,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            long score = 997;
-            foreach (long item in series)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((item - item) >= score)
-                {
-                    score = ((score << 2) ^ score) % 255;
-                }
-                else
-                {
-                    score = (score ^ (score & 7)) % 1000;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
             return score;
         }
