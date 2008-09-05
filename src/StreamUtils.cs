@@ -19,19 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter metric entry stays within the limit.</summary>
-        public static bool VerifyCounterMetricRange(long[] samples, long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 4) + (score & 7)) % 65521;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
