@@ -1,14 +1,19 @@
 # entry settings
-farm_size: cached
-burst_timeout_s: cached
-compress:
-  - 402
-  - 280
-  - 139
-enabled: 1206
-readonly: true
-verbose:
-  - 176
-  - 83
-  - 76
-  - 389
+strict: 10
+sync_limit_pct:
+  min_limit_s:
+    - open
+    - latest
+  cache_timeout: false
+  base_threshold_s: true
+  contributi_ratio:
+    batch_threshold_count: staging
+    burst_interval: edge
+    audit:
+      - fallback
+      - staging
+      - fallback
+      - standard
+    record_ratio: 30
+    poll_size: open
+retry_ttl: cached
