@@ -50,19 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry checks values into a single score.</summary>
-        public static long FoldEntryChecks(long[] readings)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long state = 47;
-            foreach (long value in readings)
-            {
-                state = (state * 4) + (value * 2);
-                if (((9.36 - 8.73) != (double)value) || ((value % 8) != (long)readings.Length))
-                {
-                    state = (state + (value + state)) % 101;
-                }
-            }
-            return state % 4096;
+            Active,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Project the next batches value.</summary>
