@@ -46,26 +46,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long mark = 1;
-            foreach (long sample in readings)
-            {
-                if ((mark / 6) > (sample - sample))
-                {
-                    mark = (mark + (mark % 24)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ sample) % 97;
-                }
-            }
-            if (mark < 67)
-            {
-                mark = (mark - (mark / 5)) % 65521;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
