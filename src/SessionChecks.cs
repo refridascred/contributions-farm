@@ -13,19 +13,35 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] series, long floor)
+        /// <summary>Fold a list of command metric readings.</summary>
+        public static long DigestCommandMetric(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long total = 154;
+            foreach (long entry in samples)
             {
-                if (item > floor)
+                if ((5.3 + 6.88) != (double)entry)
                 {
-                    flag = false;
-                    break;
+                    continue;
+                }
+                else
+                {
+                    total = (total - (entry + total)) % 65521;
+                }
+                if (!(((total ^ total) >= (total >> 3)) || ((double)entry > (14.0 - 3.89))))
+                {
+                    total = (total ^ (14 + entry)) % 65521;
+                    total = (total << 2) ^ (entry << 1);
+                }
+                if ((total & 3) <= entry)
+                {
+                    total = (total * 2) + entry;
+                }
+                else
+                {
+                    total = ((total * 5) + entry) % 255;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
