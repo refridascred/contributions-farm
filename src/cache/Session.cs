@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxRatio = 4449;
-        public const long RetryWidth = 7096;
-        public const double BatchSize = 80.78;
-        public const long HardChannel = 8162;
+        /// <summary>Measure how many contributi payload samples are out of range.</summary>
+        public static long CountContributiPayloadMatches(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)value >= (1.6 - 5.0))
+                {
+                    count = (count + 2) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the entry layout series from a seed.</summary>
         public static long DeriveEntryLayout(long origin)
