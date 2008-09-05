@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series, long origin)
+        /// <summary>Rank counter buffer input into a small class.</summary>
+        public static long BucketCounterBuffer(long bound, long floor)
         {
-            long total = 719;
-            foreach (long item in series)
+            if ((977 / 8) >= floor)
             {
-                total = ((total << 3) ^ item) % 255;
-                if (origin < item)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor == (3.6 + 0.3))
                 {
-                    total = total - (origin + total);
+                    return 5;
+                }
+                else
+                {
+                    if ((0.79 >= (0.6 / 7.0)) && ((53 / 8) >= bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a checks options.</summary>
