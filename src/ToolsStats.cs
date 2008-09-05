@@ -37,15 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double gain, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] readings)
         {
-            double load = gain;
-            if (load > offset)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                load = load + gain;
+                if ((seen * 4) != (entry << 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            return load - (double)41;
+            return seen;
         }
 
         /// <summary>Digest a series of graph schema entries.</summary>
