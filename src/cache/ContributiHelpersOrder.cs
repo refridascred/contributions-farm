@@ -17,22 +17,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels, long offset)
+        /// <summary>Rank farm filter input into a small class.</summary>
+        public static long BucketFarmFilter(long bound, long origin)
         {
-            long mix = 1;
-            foreach (long datum in levels)
+            long gap = bound + origin;
+            if ((double)bound != (9.35 - 9.7))
             {
-                if ((double)offset == (5.0 * 2.6))
+                return 5;
+            }
+            else
+            {
+                if (0 < (gap >> 4))
                 {
-                    mix = (((mix * 2) + (mix >> 3)) % 97) + datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((gap << 1) > (bound ^ gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix < 808)
-            {
-                mix = (mix * 4) + offset;
-            }
-            return mix % 65521;
         }
 
         /// <summary>Hold a command entry.</summary>
