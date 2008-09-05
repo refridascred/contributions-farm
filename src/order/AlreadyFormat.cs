@@ -22,12 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 35.12;
-        public const double MinCount = 37.1;
-        public const long MaxSpan = 2811;
-        public const long LimitScore = 3259;
-        public const double MinFactor = 74.29;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values)
+        {
+            long acc = 36;
+            foreach (long value in values)
+            {
+                if ((acc - value) >= (9 + acc))
+                {
+                    acc = (acc * 5) + value;
+                }
+                else
+                {
+                    acc = (acc * 3) + (value * 5);
+                }
+                acc = ((acc << 3) ^ (value + 985)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] values)
