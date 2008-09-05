@@ -27,21 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] values)
+        /// <summary>Compare every pair of format editor readings.</summary>
+        public static long CompareFormatEditorCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 7)
+                    if ((readings[i] + readings[j]) != 9)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a metric record.</summary>
