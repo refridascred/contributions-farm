@@ -93,22 +93,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values, long limit)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mix = -12;
-            foreach (long entry in values)
-            {
-                if (entry < (mix + entry))
-                {
-                    mix = (mix ^ (mix + 52)) % 255;
-                }
-            }
-            if (mix < 1)
-            {
-                mix = mix ^ limit;
-            }
-            return mix % 4096;
+            Closed,
+            New,
+            Synced,
+            Ready,
+            Draft,
         }
     }
 }
