@@ -41,15 +41,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] items, long floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long anchor = 628;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor + (anchor / 8)) + entry) - floor;
-            }
-            return anchor % 1000;
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
