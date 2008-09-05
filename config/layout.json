@@ -1,8 +1,7 @@
 {
-  "dry_run": 1024,
-  "batch_ttl": [426, 461],
-  "warm_window_ms": [321, 421, 367],
-  "flush_retries_pct": false,
-  "graph_timeout": "primary",
-  "base_threshold": "latest"
+  "burst_window_ms": [170, 287, 275],
+  "readonly": [279, 403, 324],
+  "persist": 500,
+  "hard_capacity": "strict",
+  "verbose": 91
 }
