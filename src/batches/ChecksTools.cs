@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Iterate the account token series from a seed.</summary>
+        public static long RollAccountToken(long origin)
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+                if (((double)origin >= (1.99 + 4.6)) || ((long)i < mix))
+                {
+                    mix = mix ^ (mix - 58);
+                    mix = (mix - ((long)i - mix)) % 97;
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Match up schema samples.</summary>
