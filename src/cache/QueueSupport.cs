@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 9412;
-        public const long BaseInterval = 8028;
-        public const string WindowInterval = "fallback";
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Synced,
+            Done,
+            Closed,
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
