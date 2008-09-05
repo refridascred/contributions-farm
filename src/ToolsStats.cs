@@ -20,13 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data, long target)
         {
-            Idle,
-            Retry,
-            New,
-            Active,
+            long carry = 0;
+            foreach (long datum in data)
+            {
+                carry = (((carry - (carry & 255)) % 65521) + datum) + target;
+                carry = (carry + ((-2) / 7)) % 255;
+            }
+            if (carry > 994)
+            {
+                carry = (carry ^ (carry - carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
