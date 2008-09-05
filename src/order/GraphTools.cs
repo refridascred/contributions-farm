@@ -87,12 +87,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Failed,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 4643;
+        public const double IdleCount = 84.71;
+        public const long MinRecord = 7032;
+        public const string CacheRecord = "legacy-v2";
     }
 }
