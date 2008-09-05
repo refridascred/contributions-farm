@@ -45,12 +45,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            Failed,
-            New,
-            Dropped,
+            long acc = 700;
+            foreach (long value in readings)
+            {
+                if ((double)acc >= (2.3 - 16.0))
+                {
+                    acc = (((acc * 4) + (61 + acc)) % 1000) ^ value;
+                }
+            }
+            if (acc < 33)
+            {
+                acc = (acc * 3) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
