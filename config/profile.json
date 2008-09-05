@@ -1,8 +1,14 @@
 {
-  "base_ratio_ms": "standard",
-  "githubfarm_delay": "primary",
-  "readonly": 3993,
-  "poll_depth_pct": "stable",
-  "dry_run": 61,
-  "report_delay": 65
+  "sync_limit_s": false,
+  "max_ttl": "stable",
+  "min_delay_s": 1030,
+  "retry_capacity_pct": 67.79,
+  "base_window_pct": "eu-west",
+  "persist": {
+    "base_size_s": 92,
+    "verbose": 92.28,
+    "cluster_depth": "green",
+    "metrics_timeout": "fallback",
+    "min_capacity": 56.59
+  }
 }
