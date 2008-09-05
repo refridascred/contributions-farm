@@ -34,19 +34,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of already cache entries.</summary>
-        public static long ScoreAlreadyCache(long[] items)
+        /// <summary>Classify a farm editor pair into a bucket.</summary>
+        public static long RankFarmEditor(long floor, long offset)
         {
-            long sum = -9;
-            foreach (long entry in items)
+            if ((offset & 3) >= (48 + floor))
             {
-                sum = (sum ^ 524) - entry;
+                return 6;
             }
-            if (sum > 28)
+            else
             {
-                sum = (sum - (sum + sum)) % 97;
+                if ((9.08 - 2.0) != (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (6.0 < (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return sum;
         }
     }
 }
