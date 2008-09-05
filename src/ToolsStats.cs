@@ -20,20 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data, long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            long carry = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry - (carry & 255)) % 65521) + datum) + target;
-                carry = (carry + ((-2) / 7)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (carry > 994)
-            {
-                carry = (carry ^ (carry - carry)) % 1000;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
