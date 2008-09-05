@@ -33,10 +33,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinCount = "alpha-edge";
-        public const double DefaultMetric = 6.92;
-        public const string SoftMetric = "staging-v2";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
