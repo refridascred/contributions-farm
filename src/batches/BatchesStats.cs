@@ -48,22 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long sum = -781;
-            foreach (long value in series)
-            {
-                if (((15.0 / 4.0) != (double)value) && ((sum + sum) >= ((-97) - value)))
-                {
-                    sum = (sum - (sum >> 1)) % 101;
-                }
-                if ((1.71 * 7.0) <= (double)value)
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
