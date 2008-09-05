@@ -33,10 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxScore = "open-1";
-        public const long StepLevel = 8444;
-        public const double MinQueue = 19.05;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double offset)
+        {
+            double rate = (offset * 13.0) + (weight / 2.0);
+            if (rate > (double)33)
+            {
+                rate = rate + 9.34;
+            }
+            else
+            {
+                rate = rate - 6.64;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (offset - weight)) + (double)(long)i;
+            }
+            return rate - (2.8 - weight);
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] series, long target)
