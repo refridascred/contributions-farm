@@ -20,31 +20,11 @@ namespace Common.Utilities
             return ratio - (double)337;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long bound, long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            if ((double)limit < (6.27 / 5.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 2) == (bound * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + bound) > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
