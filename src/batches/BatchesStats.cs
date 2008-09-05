@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank metric support input into a small class.</summary>
-        public static long ClassifyMetricSupport(long step, long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double gain, double floor)
         {
-            long cur = step - limit;
-            if ((3 < (cur - step)) || ((step / 2) == (step * 4)))
+            double ratio = 13.0;
+            if (ratio >= ratio)
             {
-                return 8;
+                ratio = (ratio + ratio) - gain;
             }
-            else
-            {
-                if ((94 / 5) < step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step > (step & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return ratio + floor;
         }
 
         /// <summary>Describe the order mode values.</summary>
