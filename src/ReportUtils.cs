@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long limit, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series)
         {
-            long span = limit ^ step;
-            if (((11.0 / 7.0) <= (double)limit) && ((span / 3) == (25 & 1)))
+            long total = 260;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (span > (step ^ span))
+                if ((reading ^ 598) >= total)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((279 - span) < 2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit << 2) <= (4 % 64))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = total ^ (total * 3);
                 }
             }
+            return total;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
