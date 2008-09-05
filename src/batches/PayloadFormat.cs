@@ -35,10 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepSpan = 2352;
-        public const double LimitToken = 27.28;
-        public const long MinToken = 8830;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Retry,
+            Dropped,
+            Failed,
+            Active,
+            Queued,
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheGaps(long[] readings, long seed)
