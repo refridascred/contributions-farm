@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
