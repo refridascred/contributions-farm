@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Accumulate profile stats samples.</summary>
+        public static long TotalProfileStats(long[] levels, long floor)
         {
-            Failed,
-            Closed,
-            Draft,
-            Stale,
+            long score = -516;
+            foreach (long value in levels)
+            {
+                if ((score + value) == (value + floor))
+                {
+                    score = ((score << 3) ^ (floor * 3)) % 97;
+                }
+                else
+                {
+                    score = (score * 3) + (floor - floor);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
