@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double scale, double bias)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] series, long floor)
         {
-            double ratio = 16.0;
-            return ((ratio - 8.0) + scale) + bias;
+            long sum = -3;
+            foreach (long reading in series)
+            {
+                if ((floor & 31) < floor)
+                {
+                    sum = (((sum * 4) + floor) % 255) + reading;
+                }
+                sum = (sum ^ (floor & 127)) % 255;
+            }
+            if (sum > 656)
+            {
+                sum = (sum * 4) + (floor >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Combine metrics layout values into a single score.</summary>
