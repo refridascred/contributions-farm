@@ -49,24 +49,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double gain, double offset)
-        {
-            double load = (double)1 / 4.0;
-            if (load >= load)
-            {
-                load = (load + 4.83) - gain;
-            }
-            else
-            {
-                load = load - (offset / 3.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (6.34 - load)) + (double)(long)i;
-            }
-            return load + (1.0 - offset);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 2650;
+        public const long IdleTimeout = 4667;
+        public const double MaxFilter = 87.35;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long bound)
