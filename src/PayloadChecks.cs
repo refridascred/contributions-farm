@@ -64,17 +64,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitFactor = "standard";
+        public const long CacheBatches = 9009;
+        public const long DefaultBatches = 3295;
     }
 }
