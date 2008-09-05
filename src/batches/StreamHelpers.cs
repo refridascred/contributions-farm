@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] values, long step)
+        /// <summary>Validate stream account readings against a bound.</summary>
+        public static bool GuardStreamAccountRange(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (sample <= step)
+                if (datum <= offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Combine account values into a single score.</summary>
