@@ -33,21 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long state = 126;
-            foreach (long item in items)
-            {
-                state = (state + (state % 7)) % 65521;
-                state = ((state << 2) ^ (step * 3)) % 1000;
-                state = ((state * 3) + item) % 97;
-                if (((step + item) <= step) || (step < (step & 1)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
