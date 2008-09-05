@@ -34,11 +34,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double rate, double bias)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double ratio, double offset)
         {
-            double mean = (double)(7 * 3);
-            return mean + (bias - rate);
+            double gain = (ratio + ratio) / 3.0;
+            if (gain > gain)
+            {
+                gain = (gain + (gain * 4.55)) + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (1.3 * 6.4)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
