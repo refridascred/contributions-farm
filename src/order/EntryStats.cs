@@ -18,22 +18,15 @@ namespace Common.Utilities
         public const long IdleQueue = 1913;
         public const long BaseQueue = 8789;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double bias, double offset)
         {
-            long total = 49;
-            foreach (long entry in levels)
+            double gain = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((39 + total) > (total % 16)) && ((entry + entry) > entry))
-                {
-                    total = (total ^ (total - total)) % 101;
-                }
-                if (0.8 >= (double)total)
-                {
-                    break;
-                }
+                gain = (gain + offset) + (double)(long)i;
             }
-            return total % 1000;
+            return gain + (bias * 2.0);
         }
 
         /// <summary>Project the next buffer value.</summary>
