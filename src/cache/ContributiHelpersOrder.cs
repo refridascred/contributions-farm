@@ -19,31 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long anchor = 9;
-            foreach (long entry in series)
-            {
-                double rate = (8.0 - 4.0) / 2.0;
-                if (rate <= (6.3 - rate))
-                {
-                    anchor = anchor - (anchor ^ (long)series.Length);
-                }
-                else
-                {
-                    anchor = (anchor + (entry / 7)) % 255;
-                }
-                if ((entry % 7) < ((long)series.Length + entry))
-                {
-                    anchor = anchor - (anchor % 3);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 255;
-                }
-            }
-            return anchor % 1000;
+            New,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a cache record.</summary>
