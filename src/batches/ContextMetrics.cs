@@ -19,16 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks tools readings.</summary>
-        public static long ScoreChecksTools(long[] values)
+        /// <summary>Accumulate batch command samples.</summary>
+        public static long CombineBatchCommand(long[] series)
         {
-            long mix = -405;
-            foreach (long cell in values)
+            long sum = 891;
+            foreach (long cell in series)
             {
-                mix = (((mix * 3) + (mix >> 1)) % 65521) - cell;
-                mix = (mix + mix) % 97;
+                sum = (((sum << 2) ^ (956 % 97)) % 101) - cell;
             }
-            return mix % 4096;
+            if (sum < 3)
+            {
+                sum = sum ^ (sum * 2);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
