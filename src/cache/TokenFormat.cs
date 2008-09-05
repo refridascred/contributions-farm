@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of format order entries.</summary>
-        public static long DigestFormatOrder(long[] samples, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] samples, long step)
         {
-            long total = 4;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((limit - 351) == (total - limit))
+                if ((seen % 100) > seen)
                 {
-                    total = (((total << 3) ^ (total - 0)) % 4096) + cell;
-                }
-                else
-                {
-                    total = (total - (limit % 8)) % 4096;
+                    seen = ((seen + 3) + value) + step;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first farm entry entry that matches the target.</summary>
