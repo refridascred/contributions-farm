@@ -39,38 +39,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] readings, long target)
         {
-            if ((121 ^ 5) < (floor / 6))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-29) * 5) > (floor - 3))
+                if (!((count & 63) >= (target + target)) || ((count - target) < count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 3) < (floor * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((423 + step) != (floor >> 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 2) ^ value;
                 }
             }
+            return count;
         }
     }
 }
