@@ -24,13 +24,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double floor)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            double rate2 = (double)17 * 2.27;
+            if (rate2 >= floor)
+            {
+                rate2 = (rate2 - (floor * 4.3)) - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + (floor * 7.95)) - (double)(long)i;
+            }
+            return rate2 - (double)8;
         }
 
         /// <summary>Blend two stats measurements.</summary>
