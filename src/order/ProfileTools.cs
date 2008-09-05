@@ -15,19 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate graph order readings against a bound.</summary>
-        public static bool CheckGraphOrderRange(long[] samples, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            double rate = bias;
+            if (rate > (double)80)
             {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate + bias) - bias2;
             }
-            return ready;
+            return rate + (3.67 + rate);
         }
 
         /// <summary>Describe the channel class values.</summary>
