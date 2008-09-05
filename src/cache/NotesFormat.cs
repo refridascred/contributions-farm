@@ -26,24 +26,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long total = 914;
-            foreach (long reading in series)
-            {
-                if (812 >= total)
-                {
-                    total = ((total * 4) + (reading * 5)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 5) + (reading + 683)) % 4096;
-                    total = (total + (total + total)) % 4096;
-                }
-                total = total - (reading & 31);
-            }
-            return total;
+            Retry,
+            Locked,
+            Failed,
+            Dropped,
+            Stale,
         }
     }
 }
