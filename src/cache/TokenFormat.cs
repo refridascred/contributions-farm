@@ -38,13 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every support editor entry stays within the limit.</summary>
+        public static bool CheckSupportEditorRange(long[] items, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
