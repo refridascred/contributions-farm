@@ -57,18 +57,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] data, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (count < value)
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
