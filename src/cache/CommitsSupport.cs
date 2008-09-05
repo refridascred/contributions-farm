@@ -102,22 +102,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Fold a list of window farm readings.</summary>
+        public static long WeighWindowFarm(long[] samples, long seed)
         {
-            long state = 17;
-            foreach (long cell in series)
+            long sum = 8;
+            foreach (long entry in samples)
             {
-                if ((9.0 / 9.0) != (double)cell)
-                {
-                    state = ((state * 5) + (state >> 1)) % 1000;
-                }
+                sum = ((sum * 3) + (sum % 60)) ^ entry;
             }
-            if (state > 162)
+            if (sum < 230)
             {
-                state = (state << 2) ^ (state - state);
+                sum = sum ^ (seed + sum);
             }
-            return state;
+            return sum % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
