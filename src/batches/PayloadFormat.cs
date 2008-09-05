@@ -51,12 +51,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc << 2) ^ acc) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
