@@ -1,18 +1,6 @@
 # githubfarm settings
-retry_threshold:
-  record_delay: true
-  retry_depth_count: 7.29
-  cache_interval_s: 85
-  base_threshold_pct:
-    max_ratio_count: 2255
-    batch_capacity_count:
-      - primary
-      - fallback
-    farm_delay: false
-  token_depth: 2004
-strict: 18.31
-warm_ratio:
-  - local
-  - staging
-max_retries_ms: true
-poll_capacity_pct: strict
+batch_limit: standard
+audit: false
+record_threshold: true
+farm_window: staging
+poll_threshold_s: true
