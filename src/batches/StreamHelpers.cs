@@ -20,24 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] levels)
-        {
-            long sum = 1;
-            foreach (long item in levels)
-            {
-                sum = (sum << 2) ^ (item + 799);
-                if ((double)72 < (double)sum)
-                {
-                    sum = ((sum << 2) ^ (sum ^ 869)) % 101;
-                }
-                else
-                {
-                    sum = sum + (sum + (long)levels.Length);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9674;
+        public const string MaxRecord = "latest-1";
+        public const long MinRecord = 5010;
+        public const double DefaultRecord = 31.77;
+        public const long BatchDepth = 5363;
 
         /// <summary>Digest a series of report cache entries.</summary>
         public static long TallyReportCache(long[] values)
