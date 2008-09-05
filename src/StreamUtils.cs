@@ -31,38 +31,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long seed, long floor)
+        /// <summary>Digest a series of buffer channel entries.</summary>
+        public static long ScoreBufferChannel(long[] series)
         {
-            if (!(floor <= (floor + 849)))
+            long mark = -445;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor <= (2.5 / 2.0))
+                if (!((double)value != (4.6 + 9.0)))
                 {
-                    return 1;
+                    mark = (mark << 2) ^ (mark + value);
                 }
                 else
                 {
-                    if ((double)seed < (5.7 - 0.9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed > floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = ((mark << 2) ^ 53) % 1000;
+                }
+                if (9.83 >= (double)mark)
+                {
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
