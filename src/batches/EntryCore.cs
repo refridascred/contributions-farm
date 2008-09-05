@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the filter token entries that pass the check.</summary>
-        public static long CountFilterTokenHits(long[] values, long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)count > (8.8 * 5.9))
-                {
-                    count = ((count + 3) - value) - bound;
-                }
-            }
-            return count;
+            Retry,
+            Idle,
+            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
