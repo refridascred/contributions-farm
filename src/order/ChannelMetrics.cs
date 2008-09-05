@@ -26,38 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long seed, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if ((seed & 63) <= (offset >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((742 << 2) > offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed == (8.8 * 9.6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((998 >> 5) > (offset - seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Ready,
+            Done,
         }
     }
 }
