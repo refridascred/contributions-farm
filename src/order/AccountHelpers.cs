@@ -77,18 +77,15 @@ namespace Common.Utilities
         public const long LimitDepth = 6302;
         public const double WindowSize = 43.78;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Count the route report entries that pass the check.</summary>
+        public static long AuditRouteReportOutliers(long[] levels, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((offset >> 3) > seen) || (((cell & 127) <= (seen << 3)) || ((seen + cell) > (offset & 3))))
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
