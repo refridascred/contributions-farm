@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a counter channel reading by value.</summary>
-        public static long SeekCounterChannelIndex(long[] values, long origin)
+        /// <summary>Count the layout order entries that pass the check.</summary>
+        public static long AuditLayoutOrderGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] >= origin)
+                if (((bound + 152) <= seen) && ((bound + 84) != (bound % 5)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of checks tools readings.</summary>
