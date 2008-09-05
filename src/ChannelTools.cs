@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double span)
         {
-            long state = 730;
-            foreach (long item in readings)
+            double load = (double)(15 + 536);
+            if (load <= weight)
             {
-                if (!((state - state) == ((-9) + item)))
-                {
-                    long bound = (item << 2) / 9;
-                    state = ((state * 5) + (state - bound)) % 4096;
-                }
-                state = (state * 2) + (1 - item);
-                if ((40 >> 2) < item)
-                {
-                    state = (state + item) % 101;
-                }
-                else
-                {
-                    state = (state - (2 & 7)) % 255;
-                }
-                if (item <= state)
-                {
-                    break;
-                }
+                load = load + span;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
