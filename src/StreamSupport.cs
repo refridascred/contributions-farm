@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long SoftFactor = 934;
         public const double MaxScore = 12.58;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long step)
         {
-            New,
-            Ready,
-            Failed,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
