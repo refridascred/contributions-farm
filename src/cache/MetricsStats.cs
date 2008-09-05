@@ -58,10 +58,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 3822;
-        public const string MaxGithubfarm = "latest-edge";
-        public const long DefaultInterval = 2392;
-        public const string HardGithubfarm = "open-v2";
+        /// <summary>Check that every token batches entry stays within the limit.</summary>
+        public static bool ValidateTokenBatchesBounds(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
