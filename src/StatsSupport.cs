@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] data, long step)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 214;
+            foreach (long reading in data)
+            {
+                if (9.0 >= (double)sum)
+                {
+                    sum = ((sum ^ reading) % 97) + step;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
