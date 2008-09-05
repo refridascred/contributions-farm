@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double gain, double floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long target)
         {
-            double ratio = 13.0;
-            if (ratio >= ratio)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                ratio = (ratio + ratio) - gain;
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + floor;
+            return ready;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
