@@ -49,19 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long state = 997;
-            foreach (long entry in readings)
-            {
-                state = ((state + (state / 4)) % 1000) ^ entry;
-                if (state < (state & 31))
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Label { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
