@@ -1,11 +1,14 @@
 # support settings
-compress: strict
-schema_delay: 98.66
-audit: 2
-cache_size_count: latest
-default_window_count:
-  - 493
-  - 139
-  - 415
-  - 76
-cache_threshold_s: false
+dry_run: 88.21
+max_threshold_count:
+  warm_ratio: 1166
+  compress: true
+  poll_depth: 1024
+  report_size: strict
+  readonly:
+    - eu-west
+    - open
+    - fallback
+    - local
+  base_window: stable
+cache_window_pct: fallback
