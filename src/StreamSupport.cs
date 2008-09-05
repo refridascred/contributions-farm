@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] levels, long step)
         {
-            New,
-            Ready,
-            Queued,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((step + step) >= sample) || (((double)step >= (double)39) && ((89 ^ step) != (step - tally))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cluster level values.</summary>
