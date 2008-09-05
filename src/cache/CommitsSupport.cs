@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -8;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = mark - (value ^ 5);
+                mark = (mark ^ (mark + value)) % 255;
+                if (((-54) / 5) > value)
                 {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark * 5) + (mark + value);
                 }
             }
-            return hits;
+            if (mark > 7)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
