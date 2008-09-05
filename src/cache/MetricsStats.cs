@@ -20,13 +20,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long seed, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
+            long gap = seed ^ bound;
+            if (((bound + gap) <= ((-7) + bound)) || ((gap & 255) >= (bound >> 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (gap < (bound ^ 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed / 8) != (bound ^ bound)) && ((35 + bound) == (seed & 15)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
