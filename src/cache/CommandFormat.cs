@@ -45,32 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session already value against two limits.</summary>
-        public static long ClassifySessionAlready(long limit, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] values)
         {
-            long edge = limit - target;
-            if ((edge >> 1) >= (limit << 1))
+            long mark = 833;
+            foreach (long value in values)
             {
-                return 2;
+                mark = (mark - (value ^ mark)) % 97;
             }
-            else
+            if (mark > 7)
             {
-                if ((limit + limit) != (75 >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.0 / 5.0) >= (double)edge)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mark = (mark ^ (mark & 255)) % 101;
             }
+            return mark;
         }
 
         /// <summary>Describe the profile level values.</summary>
