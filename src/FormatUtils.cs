@@ -54,14 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] series, long limit)
         {
-            Queued,
-            Synced,
-            Locked,
-            Active,
-            Draft,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((count % 97) > (count * 4)) || (799 <= (limit * 3)))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine entry editor values into a single score.</summary>
