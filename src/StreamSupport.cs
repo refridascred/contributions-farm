@@ -20,10 +20,9 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitInterval = "open-edge";
-        public const double CacheDepth = 55.4;
-        public const long BaseTimeout = 1837;
-        public const string MinInterval = "open";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 2284;
+        public const double WindowRatio = 95.8;
+        public const long LimitSize = 4380;
     }
 }
