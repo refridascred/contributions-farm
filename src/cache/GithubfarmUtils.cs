@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine tools batches values into a single score.</summary>
-        public static long ScoreToolsBatches(long[] samples, long limit)
+        /// <summary>Accumulate account context samples.</summary>
+        public static long DigestAccountContext(long[] samples)
         {
-            long mark = 776;
-            foreach (long cell in samples)
+            long anchor = 58;
+            foreach (long value in samples)
             {
-                mark = ((mark * 3) + (33 + cell)) % 101;
-                if ((double)cell >= (12.0 + 15.0))
+                if (!((double)anchor > (8.9 - 3.26)))
                 {
-                    mark = ((mark * 5) + (limit << 1)) % 97;
+                    anchor = ((anchor ^ (anchor + 22)) % 255) - value;
                 }
             }
-            if (mark < 12)
-            {
-                mark = mark - (limit & 127);
-            }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
