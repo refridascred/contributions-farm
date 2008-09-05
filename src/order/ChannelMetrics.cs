@@ -13,15 +13,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Combine profile already values into a single score.</summary>
+        public static long ScoreProfileAlready(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long acc = 7;
+            foreach (long sample in values)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                acc = ((acc * 5) + (acc << 3)) % 4096;
+                if ((sample >> 2) <= (acc + acc))
+                {
+                    acc = (acc + (602 - 6)) % 101;
+                }
+                if (!((sample & 31) <= 89))
+                {
+                    acc = ((acc << 2) ^ 498) % 101;
+                }
             }
-            return state;
+            return acc % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
