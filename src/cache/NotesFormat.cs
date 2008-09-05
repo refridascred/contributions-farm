@@ -18,19 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cache farm values into a single score.</summary>
-        public static long TotalCacheFarm(long[] levels, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long anchor = 8;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor - (cell * 2)) % 1000) + step;
-            }
-            if (anchor > 366)
-            {
-                anchor = (anchor << 2) ^ (anchor + 13);
-            }
-            return anchor % 97;
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Fold a list of report channel readings.</summary>
