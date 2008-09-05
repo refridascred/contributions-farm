@@ -17,13 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "fallback-1";
+        public const long HardTimeout = 6709;
+        public const double BurstDepth = 32.62;
+        public const string HardSize = "legacy-edge";
+        public const string StepLevel = "stable-1";
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesRange(long[] readings, long limit)
