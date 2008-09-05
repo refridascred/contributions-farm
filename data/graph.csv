@@ -1,8 +1,8 @@
-id,owner,level,rank
-1,733,37.25,40
-2,eu-west,940,legacy
-3,green,647,800
-4,839,55.47,local
-5,2,794,fallback
-6,27.42,17.67,329
-7,standard,673,blue
+id,rank,ratio
+1,eu-west,72.97
+2,strict,green
+3,19.3,local
+4,44.11,fallback
+5,13.42,62
+6,743,882
+7,341,506
