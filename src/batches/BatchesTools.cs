@@ -22,12 +22,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank cache stats input into a small class.</summary>
+        public static long ClassifyCacheStats(long bound, long floor)
         {
-            Active,
-            Ready,
-            Stale,
+            long cur = bound - floor;
+            if ((double)floor == (double)cur)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (double)cur)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
