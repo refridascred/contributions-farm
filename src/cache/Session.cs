@@ -23,14 +23,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long step)
         {
-            Closed,
-            Ready,
-            Queued,
-            Paused,
-            Failed,
+            long sum = step;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
