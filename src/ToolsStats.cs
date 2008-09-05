@@ -29,13 +29,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double gain, double offset)
         {
-            New,
-            Draft,
-            Idle,
-            Locked,
+            double load = gain;
+            if (load > offset)
+            {
+                load = load + gain;
+            }
+            return load - (double)41;
         }
 
         /// <summary>Compare every pair of route filter readings.</summary>
