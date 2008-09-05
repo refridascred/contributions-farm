@@ -1,24 +1,5 @@
 # githubfarm settings
-cache_delay: 61
-dry_run:
-  - cached
-  - blue
-sync_limit:
-  soft_threshold_s: 100
-  retry_timeout_ms:
-    max_timeout: 25
-    cache_ratio_pct: 14
-    warm_delay_pct: primary
-    soft_delay_pct: 55
-    dry_run: 37.29
-  flush_ttl_ms:
-    - 151
-    - 89
-    - 359
-    - 215
-  flush_delay_s:
-    - fallback
-    - cached
-    - fallback
-    - eu-west
-  route_depth: 93
+route_ttl: 71
+burst_ratio: 9473
+persist: cached
+burst_window_pct: true
