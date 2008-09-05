@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "primary-v2";
-        public const double StepSession = 62.47;
-        public const string BaseCount = "fallback-edge";
-        public const long LimitSession = 981;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] samples)
