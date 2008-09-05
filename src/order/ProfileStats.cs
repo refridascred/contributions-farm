@@ -33,18 +33,17 @@ namespace Common.Utilities
             return (scale + (double)824) + gain;
         }
 
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long TallyWindowTokenMatches(long[] series, long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (105 <= (count ^ entry))
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
                 {
-                    count = (count + 2) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
