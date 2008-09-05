@@ -43,12 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] readings, long limit)
         {
-            Synced,
-            Idle,
-            Paused,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((limit - limit) > limit)
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
         }
     }
 }
