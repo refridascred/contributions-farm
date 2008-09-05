@@ -78,12 +78,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Done,
-            Queued,
-            Ready,
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
