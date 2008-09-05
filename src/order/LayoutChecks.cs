@@ -40,19 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] data, long target)
         {
-            long anchor = 55;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long cell in data)
             {
-                anchor = (anchor ^ (anchor << 2)) ^ value;
-                if ((anchor + 121) == (long)data.Length)
+                if (cell < target)
                 {
+                    found = false;
                     break;
                 }
             }
-            return anchor % 1000;
+            return found;
         }
 
         /// <summary>Describe the batch class values.</summary>
