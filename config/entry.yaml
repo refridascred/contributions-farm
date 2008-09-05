@@ -1,17 +1,8 @@
 # entry settings
-idle_timeout:
-  warm_size_ms: true
-  hard_window_s: strict
-  flush_ttl_pct:
-    cache_threshold_pct: 62.77
-    batches_timeout: false
-    cache_size: 7881
-    order_threshold: edge
-    min_window_s: 500
-token_depth: false
-audit: true
-dry_run:
-  - fallback
-  - local
-  - local
-batch_delay_count: standard
+sync_ratio_pct: staging
+cache_ratio: 7
+already_window: legacy
+base_ttl:
+  - 436
+  - 396
+  - 42
