@@ -62,12 +62,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinLevel = 7190;
-        public const string SoftInterval = "stable-edge";
-        public const double StepCounter = 12.42;
-        public const long BurstCounter = 4074;
-        public const string DefaultCounter = "standard-1";
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
