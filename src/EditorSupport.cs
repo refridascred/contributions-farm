@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((7 - 22) != (mark / 9)))
-                {
-                    mark = (mark * 5) + (mark + limit);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
