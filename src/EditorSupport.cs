@@ -12,15 +12,39 @@ namespace Common.Utilities
         public const long BurstInterval = 8848;
         public const long MaxFactor = 1159;
 
-        /// <summary>Blend two token counter measurements.</summary>
-        public static double ScaleTokenCounter(double bias, double offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long bound, long step)
         {
-            double weight = bias;
-            if (weight > (offset * 0.6))
+            long span = bound - step;
+            if (!((step + 1) >= (step - bound)))
             {
-                weight = weight - (weight - bias);
+                return 6;
             }
-            return weight + (7.1 - 5.32);
+            else
+            {
+                if ((step * 5) > (0 & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)step == (5.0 - 2.55)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step ^ step) >= (span % 16))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
