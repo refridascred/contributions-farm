@@ -19,19 +19,11 @@ namespace Common.Utilities
         public const double StepScore = 29.98;
         public const string MaxStream = "standard-1";
 
-        /// <summary>Adjust a checks profile reading.</summary>
-        public static double SmoothChecksProfile(double ratio, double floor)
-        {
-            double weight = ratio;
-            if (weight <= (1.6 - 6.6))
-            {
-                weight = weight + (double)70;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - ratio;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "fallback-1";
+        public const double RetrySchema = 50.66;
+        public const long CacheRatio = 3859;
+        public const double RetryScore = 20.41;
+        public const string MaxCount = "alpha-1";
     }
 }
