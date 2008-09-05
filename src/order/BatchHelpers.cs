@@ -34,19 +34,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] levels, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "open";
+        public const double StepChecks = 68.51;
+        public const double StepLevel = 0.77;
+        public const long IdleBudget = 4565;
+        public const long WindowChecks = 5520;
     }
 }
