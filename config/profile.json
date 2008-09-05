@@ -1,11 +1,5 @@
 {
-  "base_interval": 86.16,
-  "route_depth": {
-    "layout_interval": "open",
-    "audit": "edge",
-    "compress": "stable",
-    "poll_threshold": "eu-west"
-  },
-  "base_depth_pct": ["blue", "stable", "legacy", "standard"],
-  "poll_ttl_ms": "edge"
+  "warm_ratio": 30,
+  "retry_delay_pct": 250,
+  "soft_ttl": "cached"
 }
