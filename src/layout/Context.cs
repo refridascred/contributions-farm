@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long origin)
+        /// <summary>Rank booking input into a small class.</summary>
+        public static long GradeBooking(long seed, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((6 + seed) >= (0 + 0))
             {
-                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((seed + origin) <= seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + seed) > (origin + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
