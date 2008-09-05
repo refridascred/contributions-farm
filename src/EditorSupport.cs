@@ -80,26 +80,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report buffer samples.</summary>
-        public static long TotalReportBuffer(long[] items, long step)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long result = 214;
-            foreach (long entry in items)
-            {
-                if ((double)step > (9.4 * 7.4))
-                {
-                    result = (result ^ result) - entry;
-                }
-                else
-                {
-                    result = (result * 2) + (step - step);
-                }
-            }
-            if (result < 41)
-            {
-                result = ((result * 4) + (step >> 5)) % 101;
-            }
-            return result;
+            Queued,
+            Done,
+            Active,
+            Paused,
         }
     }
 }
