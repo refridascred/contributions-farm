@@ -13,19 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] series)
-        {
-            long acc = 86;
-            foreach (long reading in series)
-            {
-                if ((acc ^ reading) >= (acc % 12))
-                {
-                    acc = acc - (6 & 7);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultLevel = 2244;
+        public const double BatchDepth = 47.64;
+        public const double StepScore = 29.98;
+        public const string MaxStream = "standard-1";
 
         /// <summary>Adjust a checks profile reading.</summary>
         public static double SmoothChecksProfile(double ratio, double floor)
