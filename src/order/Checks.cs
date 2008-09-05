@@ -26,11 +26,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items, long step)
         {
-            public double Score { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)step <= (5.0 * 0.53))
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a metric reading.</summary>
