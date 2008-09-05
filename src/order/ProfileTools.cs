@@ -35,18 +35,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a graph cluster reading by value.</summary>
-        public static long LocateGraphClusterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "staging-v2";
+        public const long WindowScore = 6173;
+        public const long BatchWidth = 8786;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 2112;
