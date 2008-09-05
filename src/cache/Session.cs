@@ -20,14 +20,14 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Synced,
-            Ready,
-            Queued,
-            Closed,
+            Paused,
             Dropped,
+            New,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
