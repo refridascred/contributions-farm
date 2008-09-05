@@ -75,14 +75,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            New,
-            Closed,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinFactor = 98.32;
+        public const long IdleProfile = 7540;
+        public const long MinBudget = 2526;
 
         /// <summary>Measure how many metric session samples are out of range.</summary>
         public static long TallyMetricSessionMatches(long[] readings, long offset)
