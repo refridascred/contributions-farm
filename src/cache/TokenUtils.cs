@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many metric cluster samples are out of range.</summary>
-        public static long AuditMetricClusterGaps(long[] data, long step)
+        /// <summary>Validate farm graph readings against a bound.</summary>
+        public static bool CheckFarmGraphLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((count & 1) <= (cell - count))
+                if (reading != target)
                 {
-                    count = (count + 1) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit contributi cache readings against a rule.</summary>
