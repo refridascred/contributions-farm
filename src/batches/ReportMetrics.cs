@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long SoftGraph = 5983;
         public const long MinWidth = 9089;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Count the stats schema entries that pass the check.</summary>
+        public static long MeasureStatsSchemaOutliers(long[] data)
         {
-            Done,
-            Paused,
-            Queued,
-            Active,
-            Stale,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!(25 >= (4 ^ entry)) || ((40 + hits) >= entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up filter samples.</summary>
