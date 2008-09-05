@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 7492;
-        public const long BurstScore = 945;
-        public const string WindowCount = "cached";
-        public const double SoftContributi = 72.78;
-        public const string CacheDepth = "legacy-v2";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long limit, long bound)
