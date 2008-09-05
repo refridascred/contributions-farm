@@ -36,17 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] values, long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
