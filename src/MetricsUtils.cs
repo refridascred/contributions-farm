@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank token command input into a small class.</summary>
-        public static long RankTokenCommand(long seed, long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long limit)
         {
-            long step = seed ^ floor;
-            if (step < floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step != (17.0 - 9.9))
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
