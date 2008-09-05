@@ -1,9 +1,8 @@
 {
-  "enabled": ["blue", "local", "fallback"],
-  "soft_retries_count": false,
-  "channel_timeout": {
-    "max_ttl_s": 27.33,
-    "enabled": false,
-    "retry_timeout_s": 250
-  }
+  "commits_ttl": [108, 412, 300, 451],
+  "session_ratio": 87.3,
+  "warm_ttl_ms": ["open", "primary"],
+  "poll_limit_count": "stable",
+  "max_size_count": false,
+  "cache_ratio": ["local", "stable", "eu-west", "eu-west"]
 }
