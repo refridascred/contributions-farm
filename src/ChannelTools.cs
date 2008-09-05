@@ -23,14 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Match up cluster route samples.</summary>
+        public static long CompareClusterRouteCount(long[] readings)
         {
-            Locked,
-            Stale,
-            New,
-            Idle,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record phase values.</summary>
