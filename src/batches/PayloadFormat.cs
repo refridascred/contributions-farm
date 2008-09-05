@@ -32,18 +32,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] items)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double load = bias;
+            if (load <= 1.0)
             {
-                if ((((matches * 2) == (datum + 965)) && ((datum + matches) <= matches)) && ((double)871 > (double)matches))
-                {
-                    matches = matches + 1;
-                }
+                load = (load - (double)453) - rate;
             }
-            return matches;
+            else
+            {
+                load = load + (5.33 * 2.16);
+            }
+            return load + 5.54;
         }
     }
 }
