@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine tools account values into a single score.</summary>
-        public static long WeighToolsAccount(long[] items)
+        /// <summary>Look up the position of a schema metric sample.</summary>
+        public static long SeekSchemaMetricIndex(long[] items, long limit)
         {
-            long score = -718;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score + 66;
-                if ((double)value < (4.55 / 6.0))
+                if (items[i] > limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
