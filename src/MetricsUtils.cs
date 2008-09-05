@@ -87,16 +87,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double scale, double floor)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark - (mark / 3);
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            double rate = floor;
+            return (rate + (floor * 1.0)) + scale;
         }
     }
 }
