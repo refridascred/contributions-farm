@@ -32,18 +32,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] data, long origin)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((datum % 3) >= (datum & 63))
-                {
-                    count = (count + 3) - origin;
-                }
+                mix = (mix ^ (mix - mix)) % 1000;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
     }
 }
