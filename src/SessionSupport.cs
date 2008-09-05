@@ -25,18 +25,9 @@ namespace Common.Utilities
         public const long SoftSpan = 4730;
         public const double StepLayout = 45.89;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((-59) << 3) <= (matches * 5)) && ((matches - entry) >= (29 - 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxTimeout = 297;
+        public const long MaxRatio = 7067;
+        public const double HardBatch = 25.63;
     }
 }
