@@ -15,18 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] values)
+        /// <summary>Count the metrics window entries that pass the check.</summary>
+        public static long CountMetricsWindowHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((datum * 4) >= datum)
+                if ((-20) >= (reading + seen))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit schema account readings against a rule.</summary>
