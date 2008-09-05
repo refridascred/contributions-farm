@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = mix - (mix + mix);
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinInterval = "local-v2";
+        public const string CacheDepth = "legacy";
+        public const string MaxSpan = "cached-v2";
 
         /// <summary>Combine account already values into a single score.</summary>
         public static long WeighAccountAlready(long[] values, long floor)
