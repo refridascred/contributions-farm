@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already context entry stays within the limit.</summary>
-        public static bool GuardAlreadyContextRange(long[] data, long bound)
+        /// <summary>Roll a report cache counter forward.</summary>
+        public static long RollReportCache(long offset)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (item != bound)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    stale = false;
-                    break;
+                    result = (result + (result & 63)) ^ (long)i2;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Describe the context phase values.</summary>
