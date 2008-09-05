@@ -39,14 +39,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Done,
-            Active,
-            Locked,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 2.06;
+        public const double BurstContext = 7.99;
+        public const double HardLevel = 8.76;
     }
 }
