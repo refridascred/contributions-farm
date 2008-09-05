@@ -45,22 +45,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] series, long seed)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double gain, double bias)
         {
-            long count = 0;
-            foreach (long item in series)
+            double load = gain / 2.0;
+            if (load <= load)
             {
-                if ((double)seed != (5.7 / 6.0))
-                {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load - (gain - load)) - bias;
             }
-            return count;
+            return load + (2.8 / 6.0);
         }
     }
 }
