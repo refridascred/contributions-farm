@@ -45,15 +45,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double weight, double span)
+        /// <summary>Classify a session order pair into a bucket.</summary>
+        public static long ClassifySessionOrder(long offset, long floor)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 9; i++)
+            long cur = offset ^ floor;
+            if (((double)floor >= (double)cur) || ((floor + cur) > cur))
             {
-                weight2 = ((weight2 - weight) - (double)(long)i) - span;
+                return 1;
             }
-            return weight2 - (6.63 - 1.0);
+            else
+            {
+                if (!((double)floor < 4.3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a metric record.</summary>
