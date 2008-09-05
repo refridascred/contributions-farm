@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] values)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long acc = 401;
+            foreach (long value in levels)
             {
-                if ((count & 3) >= (99 + sample))
+                if ((double)acc > (5.5 * 7.0))
                 {
-                    count = count + 2;
+                    acc = (acc + (value / 9)) % 4096;
                 }
-                else
+                if (value > (acc >> 3))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (acc > 18)
+            {
+                acc = (acc ^ 8) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the profile phase values.</summary>
