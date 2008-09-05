@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitBudget = "open-v2";
-        public const long DefaultGraph = 9101;
-        public const long BaseCount = 3231;
-        public const long DefaultDepth = 4450;
-        public const string CacheGraph = "open-v2";
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] values)
+        {
+            long sum = 4;
+            foreach (long datum in values)
+            {
+                if (!((double)sum < 6.0))
+                {
+                    sum = ((sum - sum) % 65521) + datum;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryInterval = 1026;
