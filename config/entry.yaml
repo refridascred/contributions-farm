@@ -1,5 +1,8 @@
 # entry settings
-base_depth_s: true
-default_size_s: 500
-max_threshold: true
-max_ratio_pct: false
+stream_capacity:
+  dry_run: 5.67
+  min_window: local
+  editor_interval: true
+  min_retries: 100
+retry_depth: true
+persist: primary
