@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Each githubfarm is validated before it reaches the profile queue.
-Keep context and stream names short and lowercase.
+The cache report groups every cache by batches.
+The format report groups every tools by session.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Document new support fields
+- Review token limits each release
+- Validate session input early
+- Prefer report defaults
 - Keep farm values small
