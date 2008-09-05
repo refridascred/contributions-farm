@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=314
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-open}"
+mode="${1:-local}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -18,3 +15,13 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in primary open fallback; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
