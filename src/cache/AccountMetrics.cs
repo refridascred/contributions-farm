@@ -45,10 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 3033;
-        public const long WindowRatio = 3474;
-        public const long MaxLevel = 7089;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Failed,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BurstWidth = 4342;
