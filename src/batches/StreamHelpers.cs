@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const double DefaultRecord = 31.77;
         public const long BatchDepth = 5363;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchTimeout = 59.01;
-        public const double HardBuffer = 14.92;
-        public const double MaxBudget = 47.79;
-        public const double SoftBuffer = 62.34;
-        public const long BaseRatio = 8230;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
