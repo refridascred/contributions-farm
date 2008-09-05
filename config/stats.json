@@ -1,5 +1,6 @@
 {
-  "contributi_window": 70.83,
-  "cache_threshold": 100,
-  "counter_limit": ["stable", "legacy"]
+  "max_size": 35.39,
+  "payload_size": "standard",
+  "default_retries": "strict",
+  "payload_threshold": [495, 347, 101]
 }
