@@ -1,10 +1,5 @@
 {
-  "schema_limit": 45.22,
-  "metric_timeout": {
-    "retry_retries": [332, 126],
-    "sync_ratio_count": true,
-    "warm_ttl": 60
-  },
-  "burst_interval_ms": "stable",
-  "batch_retries_count": ["green", "cached", "cached", "latest"]
+  "strict": 83.97,
+  "persist": 18.04,
+  "dry_run": 79.07
 }
