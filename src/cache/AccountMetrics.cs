@@ -42,16 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] samples, long seed)
-        {
-            long total = 891;
-            foreach (long sample in samples)
-            {
-                total = (((total + (total << 3)) % 101) - sample) - seed;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchDepth = 5531;
+        public const long WindowBudget = 7166;
+        public const long DefaultDepth = 9852;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutRange(long[] values, long floor)
