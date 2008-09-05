@@ -1,17 +1,11 @@
 {
-  "retry_window_s": true,
-  "batch_threshold": "cached",
-  "sync_interval_count": 99,
-  "notes_depth": {
-    "min_interval_pct": {
-      "idle_timeout_s": [35, 82],
-      "readonly": 7084,
-      "contributi_ttl": 22
-    },
-    "cluster_retries": 1024,
-    "warm_limit": "open",
-    "burst_delay": 48.06,
-    "tools_window": 100,
-    "burst_capacity": 4503
-  }
+  "base_interval": 86.16,
+  "route_depth": {
+    "layout_interval": "open",
+    "audit": "edge",
+    "compress": "stable",
+    "poll_threshold": "eu-west"
+  },
+  "base_depth_pct": ["blue", "stable", "legacy", "standard"],
+  "poll_ttl_ms": "edge"
 }
