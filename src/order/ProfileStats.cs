@@ -23,18 +23,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] values, long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry - seen) != (limit - limit))
+                sum = ((sum << 3) ^ (sum / 2)) % 97;
+                if ((sum >> 4) > (long)i)
                 {
-                    seen = seen + 1;
+                    sum = (sum ^ (sum / 4)) % 97;
                 }
+                if (!(sum >= (9 * 2)))
+                {
+                    sum = (sum + (sum / 7)) % 97;
+                    sum = (sum * 3) + (sum >> 5);
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Accumulate schema samples.</summary>
