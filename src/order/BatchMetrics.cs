@@ -80,26 +80,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order farm readings.</summary>
-        public static long TallyOrderFarm(long[] data)
+        /// <summary>Match up batch command samples.</summary>
+        public static long MatchBatchCommandCount(long[] items)
         {
-            long acc = 21;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((943 + value) <= (value - 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc * 3) + ((long)data.Length & 1);
-                }
-                else
-                {
-                    acc = ((acc * 2) + 19) % 4096;
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 9)
-            {
-                acc = (acc - ((-2) / 2)) % 65521;
-            }
-            return acc;
+            return hits;
         }
     }
 }
