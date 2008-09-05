@@ -14,22 +14,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] data, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (((long)data.Length % 100) > (bound + entry))
+                if (value <= seed)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
