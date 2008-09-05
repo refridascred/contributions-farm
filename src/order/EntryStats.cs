@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long limit, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            if ((limit >> 5) != (39 + 761))
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (!((13.0 + 6.2) < (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Project the next editor value.</summary>
