@@ -12,17 +12,24 @@ namespace Common.Utilities
         public const long BaseBuffer = 6565;
         public const long MinBuffer = 4019;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] readings, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long step, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)8 != (double)limit)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((2.7 * 8.0) < (double)limit)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next batch value.</summary>
