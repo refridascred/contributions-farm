@@ -68,19 +68,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long bound)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            if (9 <= bound)
             {
-                if (sample != bound)
+                return 8;
+            }
+            else
+            {
+                if ((-1) <= limit)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - bound) < limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the layout mode values.</summary>
