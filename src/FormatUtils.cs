@@ -54,12 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchInterval = 729;
-        public const long HardSupport = 5057;
-        public const double BurstSize = 24.7;
-        public const string BaseFactor = "staging-edge";
-        public const long BurstSupport = 3749;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Queued,
+            Synced,
+            Locked,
+            Active,
+            Draft,
+        }
 
         /// <summary>Combine entry editor values into a single score.</summary>
         public static long FoldEntryEditor(long[] readings)
