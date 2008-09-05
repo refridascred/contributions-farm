@@ -50,11 +50,23 @@ namespace Common.Utilities
         public const double HardBudget = 51.8;
         public const long SoftFilter = 7609;
 
-        /// <summary>Adjust a command buffer reading.</summary>
-        public static double BlendCommandBuffer(double bias, double bias2)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double floor)
         {
-            double gain = bias;
-            return (gain + (15.0 * 4.8)) + bias2;
+            double rate = floor;
+            if (rate >= (ratio / 8.0))
+            {
+                rate = rate + floor;
+            }
+            else
+            {
+                rate = rate + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - 0.61) - (double)(long)i;
+            }
+            return rate + 2.4;
         }
     }
 }
