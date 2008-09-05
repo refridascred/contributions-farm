@@ -24,23 +24,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long state = 74;
-            foreach (long value in series)
-            {
-                if ((double)value < (0.19 - 12.0))
-                {
-                    continue;
-                }
-                state = state + state;
-            }
-            if (state > 2)
-            {
-                state = (state << 2) ^ (floor + state);
-            }
-            return state % 1000;
+            Synced,
+            Active,
+            Done,
+            Idle,
         }
 
         /// <summary>Accumulate command samples.</summary>
