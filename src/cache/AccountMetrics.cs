@@ -50,10 +50,10 @@ namespace Common.Utilities
         public const long WindowRatio = 3474;
         public const long MaxLevel = 7089;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 168;
-        public const long SoftChannel = 1345;
-        public const string StepFactor = "fallback";
-        public const long SoftFactor = 6572;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstWidth = 4342;
+        public const long IdleProfile = 6147;
+        public const long MinProfile = 4404;
+        public const string BurstScore = "legacy-1";
     }
 }
