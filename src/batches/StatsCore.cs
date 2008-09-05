@@ -22,19 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] data, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long item in data)
+            long score = 29;
+            foreach (long datum in samples)
             {
-                if (item >= target)
+                if ((score >> 4) != (datum + origin))
                 {
-                    found = false;
-                    break;
+                    score = (score << 3) ^ score;
                 }
             }
-            return found;
+            if (score > 2)
+            {
+                score = ((score * 5) + origin) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
