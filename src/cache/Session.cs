@@ -30,10 +30,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitInterval = 1554;
-        public const long WindowSession = 8337;
-        public const long MaxSize = 7427;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (step <= (count << 1))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryBounds(long[] readings, long limit)
