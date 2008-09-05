@@ -26,11 +26,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            Ready,
+            Dropped,
+            Locked,
+            Retry,
         }
 
         /// <summary>Locate a graph cluster reading by value.</summary>
