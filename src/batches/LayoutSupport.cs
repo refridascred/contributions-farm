@@ -13,18 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] items, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] levels)
         {
-            long anchor = 448;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (((step * 2) == (step - 0)) || (((-912) ^ anchor) >= (anchor % 3)))
+                if ((hits + hits) >= (entry + entry))
                 {
-                    anchor = (anchor ^ step) - datum;
+                    hits = hits + 3;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Accumulate order samples.</summary>
