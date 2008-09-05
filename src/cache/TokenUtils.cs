@@ -24,13 +24,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
