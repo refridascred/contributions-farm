@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double gain, double bias)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double ratio, double bias)
         {
-            double ratio = gain;
-            return ratio + (ratio - bias);
+            double bias2 = ratio;
+            if (bias2 > 17.0)
+            {
+                bias2 = bias2 - (bias2 - bias);
+            }
+            return bias2 + (ratio - bias2);
         }
 
         /// <summary>Fold a list of window counter readings.</summary>
