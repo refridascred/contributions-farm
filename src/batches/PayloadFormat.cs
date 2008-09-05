@@ -49,32 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] readings, long seed)
         {
-            long slot = target + limit;
-            if ((target / 9) <= (limit - limit))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target - target) < (slot / 5))
+                if ((2 + hits) > (sample + seed))
                 {
-                    return 6;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((double)slot == (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
