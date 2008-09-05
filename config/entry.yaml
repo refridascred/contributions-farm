@@ -1,40 +1,17 @@
 # entry settings
-retry_threshold:
-  flush_retries_ms: 82.77
-  compress: 4218
-  dry_run: strict
-  payload_retries: true
-  min_interval_s: 12
-  burst_ratio_s: 66
-verbose:
-  batch_window_s: true
-  persist:
-    - latest
-    - legacy
-    - blue
-    - staging
-  idle_timeout:
-    - cached
-    - open
-base_timeout: blue
-account_window:
-  soft_ratio_s: 91.72
-  burst_ttl_pct:
-    - blue
-    - latest
-    - fallback
-    - strict
-  max_threshold_count:
-    readonly:
-      - 500
-      - 264
-    audit: 60
-    window_threshold: edge
-    flush_capacity_pct: 36
-  max_ttl_ms: 100
-  default_retries:
-    - 2
-    - 252
-    - 38
-    - 81
-  cache_delay_s: strict
+dry_run:
+  min_size_ms: 54.83
+  burst_size_pct:
+    - 119
+    - 264
+    - 377
+    - 365
+  burst_retries: 1024
+  max_threshold_s: 569
+  idle_interval_count: cached
+base_delay: 1024
+poll_delay_pct: blue
+tools_window:
+  - 119
+  - 137
+cache_timeout_s: true
