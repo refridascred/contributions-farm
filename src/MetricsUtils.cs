@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = seed + target;
+            if (((offset - target) == (target << 3)) && ((seed + 1) != (873 / 2)))
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((seed << 2) > (offset % 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 3) > (target * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
