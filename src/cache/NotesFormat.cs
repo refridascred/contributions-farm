@@ -36,20 +36,9 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor ^ ((-5) % 100)) ^ (long)i2;
-                    anchor = (anchor + (bound & 7)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSpan = 7910;
+        public const long SoftSchema = 1868;
+        public const long BurstSchema = 4447;
     }
 }
