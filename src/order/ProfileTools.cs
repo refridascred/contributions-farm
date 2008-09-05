@@ -24,23 +24,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of commits support readings.</summary>
-        public static long ScoreCommitsSupport(long[] readings)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long acc = 279;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((item >> 2) < acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 2) + item) % 65521;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = (acc - (item - 10)) % 101;
             }
-            if (acc > 47)
-            {
-                acc = ((acc * 2) + (acc + acc)) % 255;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
