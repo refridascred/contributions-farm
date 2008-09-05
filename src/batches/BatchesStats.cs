@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepRatio = 18.13;
+        public const long HardBatches = 1582;
+        public const long IdleTimeout = 761;
+        public const long BurstCount = 8683;
+        public const double DefaultSpan = 24.34;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterMatches(long[] series, long origin)
