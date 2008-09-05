@@ -73,18 +73,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] data, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = -5;
+            foreach (long sample in series)
             {
-                if (!(((234 << 2) < seed) || (matches <= (225 - cell))))
+                if (((mark >> 1) > (mark - 64)) || ((sample % 3) != (long)series.Length))
                 {
-                    matches = matches + 3;
+                    mark = ((mark * 2) + sample) % 101;
+                }
+                if (sample < (8 - mark))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
     }
 }
