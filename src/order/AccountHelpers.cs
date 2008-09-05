@@ -34,18 +34,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long total = 7;
-            foreach (long cell in values)
-            {
-                if ((double)cell == (17.0 + 5.6))
-                {
-                    total = ((total << 2) ^ (cell - 18)) % 65521;
-                }
-            }
-            return total;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
