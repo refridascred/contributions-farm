@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] samples, long bound)
         {
-            New,
-            Idle,
-            Synced,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((count << 3) == (bound - bound)) && (((83 + bound) == (count >> 2)) || ((count / 8) >= (value + count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
