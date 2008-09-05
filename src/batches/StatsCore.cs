@@ -65,15 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Retry,
-            Pending,
-            Closed,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitFactor = "open";
+        public const string DefaultTimeout = "fallback-edge";
+        public const long WindowCommand = 6979;
+        public const double DefaultCommand = 56.24;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterRange(long[] readings, long step)
