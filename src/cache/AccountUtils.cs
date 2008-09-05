@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "cached";
-        public const long BaseScore = 2265;
-        public const long RetryPayload = 6083;
-        public const long IdleTimeout = 5423;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "strict-edge";
+        public const long BatchScore = 4323;
+        public const long DefaultContributi = 2808;
+        public const long BatchWidth = 6830;
+        public const string BurstContributi = "primary-edge";
 
         /// <summary>Derive the next buffer command value from a seed.</summary>
         public static long DeriveBufferCommand(long bound)
