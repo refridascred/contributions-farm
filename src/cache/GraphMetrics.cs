@@ -33,24 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double offset)
-        {
-            double rate = (offset * 13.0) + (weight / 2.0);
-            if (rate > (double)33)
-            {
-                rate = rate + 9.34;
-            }
-            else
-            {
-                rate = rate - 6.64;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (offset - weight)) + (double)(long)i;
-            }
-            return rate - (2.8 - weight);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinCount = "alpha-edge";
+        public const double DefaultMetric = 6.92;
+        public const string SoftMetric = "staging-v2";
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] series, long target)
