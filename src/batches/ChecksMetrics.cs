@@ -65,13 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Count the filter already entries that pass the check.</summary>
+        public static long AuditFilterAlreadyHits(long[] levels, long limit)
         {
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((2 - limit) > (item + limit)) && (((double)item <= (0.21 * 1.97)) && ((seen << 2) >= item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine support values into a single score.</summary>
