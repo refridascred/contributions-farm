@@ -23,10 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardSpan = 70.31;
-        public const long MinBatch = 4470;
-        public const string BurstCount = "open-1";
+        /// <summary>Measure how many metric channel samples are out of range.</summary>
+        public static long TallyMetricChannelGaps(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!((limit & 255) < 654))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] values, long seed)
