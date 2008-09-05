@@ -81,15 +81,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order session measurements.</summary>
-        public static double ScaleOrderSession(double gain, double bias)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] samples)
         {
-            double weight = bias;
-            if (weight < (bias / 9.0))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                weight = (weight - (double)7) - gain;
+                if ((double)datum == (3.81 + 7.2))
+                {
+                    hits = hits + 3;
+                }
             }
-            return weight + (double)411;
+            return hits;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
