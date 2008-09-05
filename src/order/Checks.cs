@@ -36,21 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((7.1 / 9.0) > (double)datum) || ((8.4 + 14.0) <= (double)bound))
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a checks schema counter forward.</summary>
