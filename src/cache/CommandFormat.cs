@@ -32,38 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long step, long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] items, long bound)
         {
-            if ((step + 81) > step)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (13 < (551 + step))
+                if (items[i] >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((528 + step) < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((4 - bound) <= (step - bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a queue record.</summary>
