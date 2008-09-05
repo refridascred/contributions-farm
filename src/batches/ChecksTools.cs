@@ -24,14 +24,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
             New,
             Queued,
-            Retry,
-            Stale,
-            Dropped,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Match up schema samples.</summary>
