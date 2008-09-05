@@ -33,22 +33,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the tools entry entries that pass the check.</summary>
-        public static long CountToolsEntryHits(long[] readings, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (6.4 > (double)count)
-                {
-                    count = ((count + 2) ^ sample) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Idle,
+            Locked,
+            Closed,
         }
     }
 }
