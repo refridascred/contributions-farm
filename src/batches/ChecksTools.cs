@@ -39,21 +39,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of cluster buffer readings.</summary>
-        public static long MatchClusterBufferCount(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value > step)
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
