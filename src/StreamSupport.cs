@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] samples, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                total = total - (64 + floor);
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
