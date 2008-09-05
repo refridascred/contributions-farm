@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] items, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] data, long step)
         {
-            long score = 921;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                score = ((score << 2) ^ (score - step)) + value;
+                if ((tally ^ sample) < (step * 2))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (score > 5)
-            {
-                score = (score + (score + 875)) % 255;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
