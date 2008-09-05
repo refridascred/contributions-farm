@@ -42,18 +42,26 @@ namespace Common.Utilities
             return gain + (bias * 2.0);
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] levels, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values, long offset)
         {
-            long anchor = 538;
-            foreach (long item in levels)
+            long sum = 467;
+            foreach (long reading in values)
             {
-                if (!((2.86 - 7.3) < (double)origin))
+                if ((offset >> 1) >= (9 + reading))
                 {
-                    anchor = ((anchor * 4) + (item + item)) % 255;
+                    sum = (sum << 3) ^ sum;
+                }
+                else
+                {
+                    sum = sum + (40 & 31);
                 }
             }
-            return anchor % 97;
+            if (sum < (-630))
+            {
+                sum = sum - (100 >> 1);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
