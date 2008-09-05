@@ -50,10 +50,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 7.73;
-        public const long BurstCommand = 2544;
-        public const string MinCommand = "cached-1";
-        public const double StepLevel = 2.84;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Locked,
+            Retry,
+            Paused,
+            Active,
+        }
     }
 }
