@@ -33,13 +33,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] samples)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (matches > (matches - item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a farm reading.</summary>
