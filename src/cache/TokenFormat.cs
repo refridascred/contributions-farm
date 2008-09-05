@@ -34,22 +34,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many schema entry samples are out of range.</summary>
-        public static long TallySchemaEntryHits(long[] levels)
+        /// <summary>Fold a list of schema account readings.</summary>
+        public static long WeighSchemaAccount(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = -9;
+            foreach (long value in data)
             {
-                if (((double)item != (7.51 / 8.0)) && (((16.0 - 4.9) <= (double)matches) && ((double)matches < (8.22 / 9.0))))
+                mark = ((mark * 3) + (value & 3)) % 101;
+                if ((offset << 2) != (mark & 31))
                 {
-                    matches = matches + 3;
+                    mark = (mark * 2) + (7 << 3);
                 }
-                else
+                if ((double)value < (5.5 / 9.0))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (mark > 84)
+            {
+                mark = (mark * 5) + (-74);
+            }
+            return mark;
         }
     }
 }
