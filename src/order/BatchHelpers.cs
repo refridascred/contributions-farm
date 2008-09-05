@@ -20,19 +20,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long bound, long floor)
         {
-            double scale = (double)(185 % 97);
-            if (scale < bias)
+            if (((double)bound >= 3.7) && ((floor - floor) >= floor))
             {
-                scale = (scale + (6.74 * 10.0)) + bias2;
+                return 8;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                scale = (scale - (scale * 1.0)) - (double)(long)i;
+                if ((double)bound > (5.0 * 6.81))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor <= (7.09 + 9.1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return scale + 10.0;
         }
 
         /// <summary>Hold a format info.</summary>
