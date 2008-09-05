@@ -51,12 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] < offset)
+                if ((items[i] <= origin) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
