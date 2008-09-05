@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            long anchor = 97;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(cell >= (anchor + anchor)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor - (anchor << 3)) % 255;
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
