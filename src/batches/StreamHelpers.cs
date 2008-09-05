@@ -50,23 +50,19 @@ namespace Common.Utilities
         public const double HardBudget = 51.8;
         public const long SoftFilter = 7609;
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] data, long offset)
         {
-            double rate = floor;
-            if (rate >= (ratio / 8.0))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                rate = rate + floor;
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - 0.61) - (double)(long)i;
-            }
-            return rate + 2.4;
+            return ready;
         }
     }
 }
