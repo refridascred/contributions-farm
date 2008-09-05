@@ -19,20 +19,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Project the next format contributi value.</summary>
-        public static double AdjustFormatContributi(double rate, double span)
-        {
-            double rate2 = (double)4 + span;
-            if (rate2 < rate2)
-            {
-                rate2 = (rate2 + 2.84) - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + (7.0 - span)) - (double)(long)i;
-            }
-            return rate2 - span;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardTimeout = 1.53;
+        public const double CacheStats = 36.26;
+        public const double LimitStats = 92.67;
+        public const long DefaultFactor = 21;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
