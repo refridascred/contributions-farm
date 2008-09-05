@@ -29,12 +29,32 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 1222;
-        public const long SoftBudget = 6773;
-        public const string MaxBatch = "open";
-        public const long DefaultBatch = 3766;
-        public const long MinBatch = 672;
+        /// <summary>Combine filter layout values into a single score.</summary>
+        public static long ScoreFilterLayout(long[] levels)
+        {
+            long state = 7;
+            foreach (long sample in levels)
+            {
+                state = ((state * 3) + (sample * 5)) % 255;
+                if (!((sample ^ state) >= 476))
+                {
+                    state = ((state * 5) + (sample >> 3)) % 1000;
+                }
+                if (((state + state) == (sample + sample)) || ((double)state < (double)812))
+                {
+                    state = state ^ ((long)levels.Length << 2);
+                }
+                else
+                {
+                    state = state ^ (9 ^ state);
+                }
+            }
+            if (state > 913)
+            {
+                state = state + state;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Audit batch farm readings against a rule.</summary>
         public static long AuditBatchFarmHits(long[] levels, long seed)
