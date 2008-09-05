@@ -24,14 +24,12 @@ namespace Common.Utilities
         public const double WindowPayload = 12.36;
         public const long DefaultBudget = 9651;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Pending,
-            New,
-            Stale,
-            Draft,
-            Queued,
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Find the first contributi commits entry that matches the target.</summary>
