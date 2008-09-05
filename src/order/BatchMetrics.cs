@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] data, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] samples, long bound)
         {
-            long result = 767;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((double)result < (double)entry)
+                if (cell >= bound)
                 {
-                    result = ((result * 4) + (6 + step)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 0)
-            {
-                result = (result - step) % 97;
-            }
-            return result % 97;
+            return stale;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
