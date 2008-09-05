@@ -14,19 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every notes batches entry stays within the limit.</summary>
-        public static bool GuardNotesBatchesRange(long[] series, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (sample != offset)
+                if (((datum - count) != (datum + datum)) && ((2.65 * 5.04) != (double)count))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Derive the next buffer command value from a seed.</summary>
