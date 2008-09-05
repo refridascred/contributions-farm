@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a tools notes counter forward.</summary>
-        public static long IterateToolsNotes(long limit)
+        /// <summary>Scale a batch account figure with a bias.</summary>
+        public static double SmoothBatchAccount(double scale, double span)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            double drift = scale;
+            if (drift > (drift + 5.4))
             {
-                state = (state ^ state) % 101;
-                state = (state * 4) + 381;
-                state = ((state * 3) + (long)i) % 97;
+                drift = (drift - (scale + drift)) - span;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (double)32) - (double)(long)i;
+            }
+            return drift + (drift * 6.17);
         }
 
         /// <summary>Describe the metrics class values.</summary>
