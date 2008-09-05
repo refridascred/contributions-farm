@@ -16,26 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long acc = 44;
-            foreach (long reading in values)
-            {
-                if (!((double)reading < 1.83))
-                {
-                    acc = acc ^ reading;
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-            }
-            if (acc < 442)
-            {
-                acc = acc + (acc % 2);
-            }
-            return acc;
+            Draft,
+            Locked,
+            Pending,
+            New,
         }
 
         /// <summary>Check that every support editor entry stays within the limit.</summary>
