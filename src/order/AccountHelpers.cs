@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] values, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] data)
         {
-            long sum = 11;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((sum * 3) <= datum)
+                if ((double)value > 3.0)
                 {
-                    sum = sum ^ (floor - 5);
-                }
-                else
-                {
-                    sum = sum + (floor % 10);
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Roll a report cache counter forward.</summary>
