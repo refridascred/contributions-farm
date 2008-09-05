@@ -1,6 +1,8 @@
 {
-  "poll_depth_ms": false,
-  "contributi_size": false,
-  "verbose": false,
-  "audit": 85.75
+  "dry_run": 1024,
+  "batch_ttl": [426, 461],
+  "warm_window_ms": [321, 421, 367],
+  "flush_retries_pct": false,
+  "graph_timeout": "primary",
+  "base_threshold": "latest"
 }
