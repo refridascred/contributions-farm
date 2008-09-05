@@ -76,17 +76,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first metric graph entry that matches the target.</summary>
-        public static long SeekMetricGraphIndex(long[] samples, long origin)
+        /// <summary>Measure how many metric session samples are out of range.</summary>
+        public static long TallyMetricSessionMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (samples[i] == origin)
+                if ((offset << 3) >= (1 << 1))
                 {
-                    return (long)i;
+                    count = (count + 2) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
