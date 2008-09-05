@@ -1,21 +1,22 @@
 # entry settings
-batches_limit: 12.51
-window_retries: strict
-sync_retries:
-  base_delay_pct: 1024
-  cache_retries_pct: 82.83
-  enabled: standard
-  notes_window: 46.28
-  idle_capacity:
-    - 64
-    - 350
-  cache_interval_count: standard
-counter_timeout: 41
-warm_depth_s:
-  - 462
-  - 315
-  - 425
-  - 92
-flush_timeout_count:
-  - 193
-  - 465
+readonly:
+  persist:
+    idle_threshold_pct: 7081
+    readonly: false
+    soft_depth_s: true
+    audit: 11.04
+    burst_threshold_ms: 7.65
+    compress: 6645
+  audit: stable
+  sync_limit_s:
+    poll_window: fallback
+    idle_limit: 6767
+    sync_timeout_ms: staging
+    retry_threshold_pct: stable
+  profile_window: true
+warm_threshold_pct:
+  - fallback
+  - latest
+  - blue
+min_window_s: false
+already_delay: 6164
