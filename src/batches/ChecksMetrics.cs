@@ -29,12 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] samples, long seed)
         {
-            Closed,
-            Locked,
-            Queued,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
