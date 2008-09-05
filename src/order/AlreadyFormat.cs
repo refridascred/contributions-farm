@@ -38,18 +38,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many window profile samples are out of range.</summary>
-        public static long MeasureWindowProfileOutliers(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if ((floor ^ step) <= (step % 60))
             {
-                if ((long)samples.Length < sample)
+                return 2;
+            }
+            else
+            {
+                if (floor <= ((-58) - step))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor <= (5.18 - 7.11))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + step) > floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
