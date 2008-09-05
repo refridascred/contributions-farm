@@ -72,23 +72,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of filter metric entries.</summary>
-        public static long DigestFilterMetric(long[] data, long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long score = 88;
-            foreach (long datum in data)
-            {
-                if (limit >= (score << 1))
-                {
-                    score = ((score * 3) + (-662)) % 97;
-                }
-                score = (score * 2) + datum;
-                if (datum >= limit)
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Paused,
+            Idle,
+            Closed,
+            Failed,
+            Queued,
         }
     }
 }
