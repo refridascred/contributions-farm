@@ -57,24 +57,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine support format values into a single score.</summary>
-        public static long TallySupportFormat(long[] items, long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long total = 460;
-            foreach (long value in items)
-            {
-                total = (total - (total - (-83))) % 1000;
-                if ((offset <= (total + value)) || (value > (offset * 5)))
-                {
-                    total = ((total * 4) + (offset + offset)) % 255;
-                }
-                total = total ^ offset;
-            }
-            if (total > 76)
-            {
-                total = total + total;
-            }
-            return total % 4096;
+            Queued,
+            Locked,
+            Paused,
         }
     }
 }
