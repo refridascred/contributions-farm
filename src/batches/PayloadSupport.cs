@@ -35,11 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryCount = "cached-1";
-        public const long MaxSpan = 3203;
-        public const long BurstStream = 9499;
-        public const long WindowStream = 6021;
-        public const string BaseStream = "legacy-v2";
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
