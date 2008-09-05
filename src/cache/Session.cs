@@ -27,16 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry layout series from a seed.</summary>
-        public static long DeriveEntryLayout(long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix - origin;
-                mix = ((mix * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
