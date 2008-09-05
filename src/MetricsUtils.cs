@@ -73,15 +73,16 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            double ratio2 = (span - ratio) - (span / 8.0);
-            if (ratio2 < (ratio2 / 9.0))
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                ratio2 = ratio2 - (ratio2 - ratio2);
+                mark = mark - (mark / 3);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ratio2 - (span - span);
+            return mark;
         }
     }
 }
