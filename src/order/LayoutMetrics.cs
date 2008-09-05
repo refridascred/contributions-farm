@@ -18,10 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchScore = 8773;
-        public const string HardGithubfarm = "standard-1";
-        public const long BatchSize = 4703;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] series)
+        {
+            long total = 288;
+            foreach (long datum in series)
+            {
+                if ((double)total < (double)datum)
+                {
+                    total = (total << 3) ^ datum;
+                }
+                else
+                {
+                    total = (total * 4) + (total + total);
+                }
+                if ((total * 3) >= datum)
+                {
+                    total = ((total << 3) ^ (datum + 567)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long origin, long origin2)
