@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Rank format queue input into a small class.</summary>
+        public static long GradeFormatQueue(long floor, long limit)
         {
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
+            long cur = floor - limit;
+            if (((double)limit >= 5.51) && ((cur + limit) <= (limit + limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor > limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor * 4) != (limit % 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)limit > (2.0 * 9.1)) || ((10.0 / 7.0) > (double)floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account kind values.</summary>
