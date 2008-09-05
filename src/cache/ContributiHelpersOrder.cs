@@ -54,14 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] values)
         {
-            Stale,
-            Queued,
-            New,
-            Idle,
-            Draft,
+            long result = 70;
+            foreach (long item in values)
+            {
+                if (((result / 3) < (result - item)) || ((result & 15) == (item & 15)))
+                {
+                    result = result - (result / 9);
+                }
+            }
+            return result;
         }
     }
 }
