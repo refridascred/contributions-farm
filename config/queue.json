@@ -1,8 +1,7 @@
 {
-  "farm_limit": "latest",
-  "poll_limit_pct": "edge",
-  "verbose": 30.8,
-  "enabled": 5798,
-  "support_limit": [237, 426, 219],
-  "stream_depth": 57.37
+  "dry_run": true,
+  "readonly": 41.2,
+  "batch_limit": ["green", "legacy", "strict", "open"],
+  "default_ttl_pct": 30.32,
+  "githubfarm_timeout": true
 }
