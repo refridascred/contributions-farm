@@ -34,19 +34,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] series, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long limit)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor - anchor) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
     }
 }
