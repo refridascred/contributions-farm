@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "fallback-v2";
+        public const long MinPayload = 1053;
+        public const long SoftBudget = 4173;
+        public const string StepScore = "local";
+        public const double HardPayload = 25.06;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryLevel = 3709;
