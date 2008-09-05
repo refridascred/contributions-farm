@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            double weight = scale;
+            if (weight <= offset)
+            {
+                weight = weight + (weight * 5.6);
+            }
+            return weight + offset;
         }
 
         /// <summary>Describe the command mode values.</summary>
