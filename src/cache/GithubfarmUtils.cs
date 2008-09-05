@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value << 3) != (count << 3))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultFactor = 7487;
+        public const double BaseScore = 64.42;
+        public const long DefaultCounter = 8863;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long limit, long offset)
