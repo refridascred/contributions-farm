@@ -55,19 +55,13 @@ namespace Common.Utilities
             return gain - (rate / 7.0);
         }
 
-        /// <summary>Check that every record notes entry stays within the limit.</summary>
-        public static bool CheckRecordNotesBounds(long[] samples, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Failed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
