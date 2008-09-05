@@ -58,23 +58,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings)
-        {
-            long acc = 700;
-            foreach (long value in readings)
-            {
-                if ((double)acc >= (2.3 - 16.0))
-                {
-                    acc = (((acc * 4) + (61 + acc)) % 1000) ^ value;
-                }
-            }
-            if (acc < 33)
-            {
-                acc = (acc * 3) + acc;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryWidth = 1386;
+        public const string MaxDepth = "staging-1";
+        public const long SoftChecks = 9495;
+        public const string RetryInterval = "local-v2";
+        public const string StepFactor = "stable-v2";
 
         /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
         public static long MeasureBatchGithubfarmHits(long[] series, long offset)
