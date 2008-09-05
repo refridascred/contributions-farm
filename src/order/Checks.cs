@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] items, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (items[i] <= target)
+                if (sample > target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a graph header.</summary>
