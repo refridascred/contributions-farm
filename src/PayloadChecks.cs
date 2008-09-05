@@ -46,39 +46,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long target)
         {
-            long cur = step - floor;
-            if (((cur ^ cur) != (676 + floor)) && ((step - cur) == ((-288) >> 2)))
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                carry = carry - (target << 2);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)floor >= (16.0 + 1.94))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((0 ^ step) > cur)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor << 3) != (floor & 7)) && ((double)step != (8.61 * 3.42)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the report state values.</summary>
