@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Audit cache batches readings against a rule.</summary>
+        public static long TallyCacheBatchesMatches(long[] values)
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading & 15) < (-949))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
