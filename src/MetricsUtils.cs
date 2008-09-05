@@ -40,31 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] values, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            long mark = 9;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading < (floor * 3)) || (floor > (980 - (-40))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark << 2) ^ (mark + mark);
-                    break;
-                }
-                if ((floor - floor) > (floor ^ floor))
-                {
-                    mark = mark + (mark & 7);
-                }
-                else
-                {
-                    mark = mark - (20 & 127);
-                }
-                if (((3.46 - 8.2) < (double)mark) || ((reading + reading) <= (floor - 714)))
-                {
-                    break;
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
