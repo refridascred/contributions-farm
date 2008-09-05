@@ -45,22 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] levels, long bound)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits >> 1) < (bound ^ 1))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
