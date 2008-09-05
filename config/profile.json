@@ -1,19 +1,6 @@
 {
-  "verbose": {
-    "retry_timeout_s": ["primary", "fallback"],
-    "persist": 9505,
-    "poll_delay_count": 1948,
-    "min_capacity": "legacy",
-    "dry_run": true
-  },
-  "soft_delay_ms": [470, 61],
-  "warm_depth_ms": "green",
-  "sync_capacity_ms": {
-    "cache_depth": 41,
-    "burst_limit_s": [319, 424, 305],
-    "cache_delay_count": 2169,
-    "audit": 22.0,
-    "retry_capacity": "green"
-  },
-  "retry_limit": "local"
+  "soft_retries": 6970,
+  "profile_retries": "green",
+  "tools_size": "fallback",
+  "default_ratio": [142, 500, 477]
 }
