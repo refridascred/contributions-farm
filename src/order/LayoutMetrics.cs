@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a batch account figure with a bias.</summary>
-        public static double SmoothBatchAccount(double scale, double span)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long limit, long origin)
         {
-            double drift = scale;
-            if (drift > (drift + 5.4))
+            if (limit <= (limit << 2))
             {
-                drift = (drift - (scale + drift)) - span;
+                return 3;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                drift = (drift - (double)32) - (double)(long)i;
+                if ((6 + origin) != (origin % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + limit) != (9 ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return drift + (drift * 6.17);
         }
 
         /// <summary>Hold a batches stats.</summary>
