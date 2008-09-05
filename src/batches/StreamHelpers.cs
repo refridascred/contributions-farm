@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate stream account readings against a bound.</summary>
-        public static bool GuardStreamAccountRange(long[] values, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long sum = 8;
+            foreach (long value in levels)
             {
-                if (datum <= offset)
+                sum = (sum + (value / 4)) % 4096;
+                if (((3.0 / 7.0) > (double)value) && ((sum * 4) <= 119))
                 {
-                    found = false;
-                    break;
+                    sum = (sum + sum) % 97;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
