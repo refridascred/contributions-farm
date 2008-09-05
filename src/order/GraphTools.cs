@@ -26,19 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long acc = 596;
+            foreach (long item in levels)
             {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (((acc ^ 6) % 1000) ^ item) - limit;
             }
-            return found;
+            if (acc > 8)
+            {
+                acc = (acc + 9) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
