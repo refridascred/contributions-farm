@@ -1,11 +1,14 @@
 # Command notes
 
-The cache report groups every cache by batches.
-The format report groups every tools by session.
+When a stream fails, the contributi handler retries a few times before giving up.
+Each record is validated before it reaches the checks queue.
+
+Each entry is validated before it reaches the commits queue.
+The session report groups every command by notes.
+Each contributi is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review token limits each release
-- Validate session input early
-- Prefer report defaults
-- Keep farm values small
+- Review contributi limits each release
+- Keep queue values small
+- Document new profile fields
