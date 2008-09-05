@@ -32,12 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Locate a already metrics reading by value.</summary>
+        public static long LocateAlreadyMetricsIndex(long[] series, long seed)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
