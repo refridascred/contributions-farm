@@ -52,13 +52,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Dropped,
-            Closed,
-            Retry,
-            Active,
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
