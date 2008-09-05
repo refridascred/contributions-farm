@@ -33,32 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long origin, long seed)
+        /// <summary>Accumulate record cluster samples.</summary>
+        public static long CombineRecordCluster(long[] data)
         {
-            long delta = origin + seed;
-            if ((delta >> 5) <= origin)
+            long mix = 39;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)delta > (7.74 - 15.0))
+                mix = (mix - mix) % 101;
+                if (((mix << 1) != (6 + mix)) || ((value + mix) < (464 + value)))
                 {
-                    return 0;
+                    mix = (mix << 3) ^ value;
                 }
-                else
+                if ((mix - mix) <= (value - value))
                 {
-                    if ((seed & 31) == (7 - 992))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = mix - (value % 60);
                 }
             }
+            return mix;
         }
     }
 }
