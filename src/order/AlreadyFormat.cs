@@ -42,10 +42,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 35.32;
-        public const long StepOrder = 2357;
-        public const double BaseOrder = 86.58;
+        /// <summary>Measure how many window profile samples are out of range.</summary>
+        public static long MeasureWindowProfileOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((long)samples.Length < sample)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long GradeQueue(long limit, long target)
