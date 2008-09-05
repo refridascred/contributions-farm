@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long IdleRatio = 9445;
         public const long BaseCount = 9617;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (carry ^ (carry + origin)) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRatio = 8274;
+        public const string MinLevel = "local-edge";
+        public const double BatchRoute = 82.0;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TallyCluster(long[] levels, long limit)
