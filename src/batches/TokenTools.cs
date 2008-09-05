@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score - (long)i) % 97;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
