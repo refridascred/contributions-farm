@@ -82,17 +82,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long floor, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (floor >= bound)
             {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((floor ^ 97) < 8)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
