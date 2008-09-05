@@ -50,11 +50,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double bias)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] levels, long seed)
         {
-            double load = (double)96 + bias;
-            return (load - (load + 1.3)) + rate;
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
