@@ -63,11 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
