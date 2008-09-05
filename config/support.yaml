@@ -1,12 +1,18 @@
 # support settings
-already_ratio: false
-hard_window:
-  burst_timeout_count:
-    - 61
-    - 286
-    - 8
-  base_ttl: 30
-  default_capacity: blue
-  verbose: latest
-idle_retries: blue
-burst_delay: 94.92
+window_retries: 6.19
+farm_capacity: blue
+window_depth:
+  payload_timeout:
+    - legacy
+    - blue
+    - local
+    - primary
+  batch_retries: legacy
+  cache_timeout_s: blue
+  warm_size_s: 9401
+default_window:
+  - green
+  - local
+  - green
+poll_capacity_pct: 88.84
+flush_ttl: latest
