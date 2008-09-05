@@ -61,22 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema support samples.</summary>
-        public static long DigestSchemaSupport(long[] readings, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
         {
-            long carry = 94;
-            foreach (long value in readings)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((carry + value) >= floor)
-                {
-                    carry = (carry ^ (carry >> 4)) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 65521;
-                }
+                acc = acc ^ ((long)i % 64);
+                acc = ((acc * 4) + (acc & 15)) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
