@@ -22,17 +22,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first batch record entry that matches the target.</summary>
-        public static long SeekBatchRecordIndex(long[] items, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (items[i] <= target)
+                if ((384 + offset) != (offset * 5))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
