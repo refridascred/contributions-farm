@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] readings, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            long sum = 193;
-            foreach (long item in readings)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item % 3) >= (item & 7))
-                {
-                    sum = ((sum * 5) + (sum - item)) + limit;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the context kind values.</summary>
