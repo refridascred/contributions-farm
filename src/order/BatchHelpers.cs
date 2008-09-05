@@ -22,19 +22,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of window counter readings.</summary>
-        public static long DigestWindowCounter(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] levels, long floor)
         {
-            long total = -10;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                total = total + (total + entry);
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (total > 503)
-            {
-                total = (total + (548 << 3)) % 1000;
-            }
-            return total;
+            return valid;
         }
     }
 }
