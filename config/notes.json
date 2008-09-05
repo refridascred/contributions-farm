@@ -1,5 +1,15 @@
 {
-  "verbose": 100,
-  "stream_ttl": "open",
-  "poll_window_s": [92, 341, 328, 388]
+  "readonly": "legacy",
+  "flush_depth_pct": {
+    "checks_retries": true,
+    "base_delay": 60,
+    "min_timeout_pct": 250,
+    "schema_capacity": "latest",
+    "default_retries_s": 93.24,
+    "soft_depth_pct": [431, 414, 337]
+  },
+  "farm_retries": ["local", "cached", "standard"],
+  "commits_ratio": 60,
+  "commits_threshold": 63.75,
+  "default_depth": [348, 123, 417, 52]
 }
