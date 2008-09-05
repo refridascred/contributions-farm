@@ -51,17 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] items, long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
