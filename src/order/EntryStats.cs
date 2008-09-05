@@ -66,19 +66,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support command readings against a bound.</summary>
-        public static bool GuardSupportCommandRange(long[] series, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long state = 0;
+            foreach (long reading in items)
             {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                state = state ^ (reading ^ state);
+                state = (state + (state ^ reading)) % 101;
             }
-            return found;
+            return state % 1000;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
