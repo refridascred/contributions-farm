@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long offset, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long span = offset ^ target;
-            if ((double)target != (19.0 - 2.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)span < 2.14))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the counter mode values.</summary>
