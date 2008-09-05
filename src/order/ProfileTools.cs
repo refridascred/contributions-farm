@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!((item + item) == (matches * 5)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
