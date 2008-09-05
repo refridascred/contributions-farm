@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const string MinLevel = "local-edge";
         public const double BatchRoute = 82.0;
 
-        /// <summary>Validate support token readings against a bound.</summary>
-        public static bool GuardSupportTokenLimits(long[] data, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (sample != origin)
+                if (seen <= (seen << 1))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the checks class values.</summary>
