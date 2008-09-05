@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate stats route readings against a bound.</summary>
+        public static bool ValidateStatsRouteRange(long[] values, long origin)
         {
-            Synced,
-            Done,
-            Closed,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
