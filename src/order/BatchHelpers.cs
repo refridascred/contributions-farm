@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] readings, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (datum > (datum + tally))
+                if (datum < bound)
                 {
-                    tally = (tally + 2) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a already record.</summary>
