@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long BatchCache = 4430;
         public const long DefaultCache = 8127;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] levels, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mark = 538;
+            foreach (long sample in levels)
             {
-                if (!((step >> 4) > step))
+                mark = (mark ^ (origin / 7)) - sample;
+                if (4.08 < (double)mark)
                 {
-                    tally = (tally + 2) ^ reading;
+                    mark = ((mark * 5) + ((-60) * 2)) % 255;
                 }
             }
-            return tally;
+            if (mark > (-122))
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the context level values.</summary>
