@@ -34,15 +34,19 @@ namespace Common.Utilities
         public const long WindowBudget = 7166;
         public const long DefaultDepth = 9852;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] readings, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
