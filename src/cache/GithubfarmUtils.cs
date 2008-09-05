@@ -28,12 +28,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] items, long offset)
+        /// <summary>Look up the position of a support farm sample.</summary>
+        public static long SeekSupportFarmIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= offset)
+                if (items[i] == bound)
                 {
                     return (long)i;
                 }
