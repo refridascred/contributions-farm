@@ -1,14 +1,11 @@
 # support settings
-account_interval:
-  - 489
-  - 489
-  - 398
-  - 286
-strict: legacy
-account_ratio: 80.06
-cache_window: legacy
-channel_threshold:
-  - 97
-  - 285
-  - 25
-enabled: 60
+soft_interval_ms:
+  - 197
+  - 444
+  - 182
+sync_ttl_count:
+  - 494
+  - 77
+  - 202
+sync_size_count: 60
+commits_timeout: standard
