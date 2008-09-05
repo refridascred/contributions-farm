@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long floor, long floor2)
         {
-            long sum = -948;
-            foreach (long item in data)
+            long slot = floor ^ floor2;
+            if (!((375 >> 2) != (floor - floor)))
             {
-                if ((2.69 + 9.4) < 6.0)
+                return 5;
+            }
+            else
+            {
+                if ((slot + 60) >= (floor * 5))
                 {
-                    sum = sum ^ (item << 3);
+                    return 7;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (item - 921)) % 4096;
+                    return 2;
                 }
             }
-            if (sum < (-18))
-            {
-                sum = ((sum * 4) + (537 << 3)) % 255;
-            }
-            return sum;
         }
 
         /// <summary>Combine account values into a single score.</summary>
