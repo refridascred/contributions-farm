@@ -23,18 +23,12 @@ namespace Common.Utilities
         public const long BatchWindow = 2438;
         public const double BaseFactor = 29.58;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] values, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((bound % 10) < count)
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
