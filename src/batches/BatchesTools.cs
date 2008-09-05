@@ -28,19 +28,15 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Validate batch entry readings against a bound.</summary>
-        public static bool GuardBatchEntryLimits(long[] values, long seed)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
     }
 }
