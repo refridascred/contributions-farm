@@ -76,9 +76,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 715;
-        public const long SoftSchema = 2609;
-        public const double BatchLevel = 89.98;
+        /// <summary>Find the first metric graph entry that matches the target.</summary>
+        public static long SeekMetricGraphIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
