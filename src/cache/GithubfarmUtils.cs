@@ -40,11 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 626;
-        public const long IdleSize = 7376;
-        public const long MinLevel = 8364;
-        public const string CacheWidth = "staging";
-        public const long BurstSize = 6481;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Region { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
