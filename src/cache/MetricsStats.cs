@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate queue order samples.</summary>
-        public static long TotalQueueOrder(long[] samples)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            long result = 220;
-            foreach (long cell in samples)
+            long anchor = 62;
+            foreach (long reading in levels)
             {
-                if ((419 / 3) < cell)
-                {
-                    result = ((result << 2) ^ (6 >> 3)) % 101;
-                }
-                result = (result * 2) + result;
+                anchor = (((anchor << 2) ^ (long)levels.Length) % 97) ^ reading;
             }
-            return result;
+            return anchor % 4096;
         }
 
         /// <summary>Rank report input into a small class.</summary>
