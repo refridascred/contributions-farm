@@ -43,19 +43,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] values, long bound)
+        /// <summary>Iterate the tools metric series from a seed.</summary>
+        public static long DeriveToolsMetric(long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (item <= bound)
+                if ((9.1 + 5.0) > (double)total)
                 {
-                    ready = false;
-                    break;
+                    total = (total + (long)i) % 4096;
+                    continue;
                 }
+                if (!((-50) > origin))
+                {
+                    total = total - (origin & 31);
+                    total = (total << 3) ^ total;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
