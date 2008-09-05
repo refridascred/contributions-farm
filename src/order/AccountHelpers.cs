@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 3213;
+        public const long BaseChannel = 6057;
+        public const long SoftChannel = 870;
+        public const long WindowChannel = 4307;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
