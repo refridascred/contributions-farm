@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] samples)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double load = weight + floor;
+            if (load < load)
             {
-                if ((hits + hits) > (sample + hits))
-                {
-                    hits = hits + 2;
-                }
+                load = load + 7.9;
             }
-            return hits;
+            else
+            {
+                load = load + (double)(-6);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - weight) + (double)(long)i;
+            }
+            return load - 5.2;
         }
 
         /// <summary>Roll a cache token counter forward.</summary>
