@@ -20,10 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 1597;
-        public const long CacheEditor = 7272;
-        public const double BurstWidth = 65.29;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double rate, double bias)
+        {
+            double gain = (double)(14 - 597);
+            if (gain >= (double)326)
+            {
+                gain = (gain + (double)1) - bias;
+            }
+            return gain - (rate * 18.0);
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long WeighBuffer(long[] values, long target)
