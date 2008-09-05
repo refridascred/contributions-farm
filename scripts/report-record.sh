@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+RECORD_LIMIT=458
+log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in local edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-blue}"
+mode="${1:-stable}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
