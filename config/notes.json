@@ -1,24 +1,5 @@
 {
-  "sync_depth": {
-    "batch_delay_count": ["standard", "blue", "staging", "green"],
-    "poll_capacity_ms": false,
-    "hard_threshold_count": "latest",
-    "format_timeout": "staging"
-  },
-  "base_capacity_count": {
-    "record_delay": {
-      "default_capacity": [160, 33, 45],
-      "graph_window": false,
-      "poll_ratio_pct": "stable",
-      "batch_timeout": true,
-      "idle_timeout_ms": "fallback",
-      "verbose": 7.2
-    },
-    "base_ttl_s": "latest",
-    "min_window_count": true,
-    "payload_size": 6
-  },
-  "flush_delay": "strict",
-  "sync_timeout_s": 49.83,
-  "cache_timeout": false
+  "hard_threshold": 250,
+  "session_delay": 95,
+  "audit": "green"
 }
