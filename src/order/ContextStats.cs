@@ -23,10 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 2849;
-        public const string IdleSpan = "stable-1";
-        public const string BurstSession = "primary";
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((offset & 255) > matches)
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] series)
