@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            public double Total { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
