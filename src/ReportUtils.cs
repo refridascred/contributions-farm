@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long bound)
+        /// <summary>Measure how many profile contributi samples are out of range.</summary>
+        public static long AuditProfileContributiHits(long[] levels)
         {
-            if ((origin % 7) != (origin - origin))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.98 - 5.0) != (double)origin)
+                if (!(((double)hits >= (3.0 * 5.9)) || ((reading & 7) >= (reading + reading))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the already mode values.</summary>
