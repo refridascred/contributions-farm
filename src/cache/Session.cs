@@ -17,18 +17,14 @@ namespace Common.Utilities
         public const double WindowPayload = 12.36;
         public const long DefaultBudget = 9651;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] readings, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (count <= (count ^ target))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            Pending,
+            New,
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
