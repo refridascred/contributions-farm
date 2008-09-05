@@ -76,38 +76,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long offset, long seed)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double offset)
         {
-            if (((seed >> 4) < (seed << 2)) || ((1.94 * 0.2) <= (double)seed))
+            double mean = 2.22;
+            if (mean >= (mean * 6.6))
             {
-                return 8;
+                mean = (mean + (1.32 - 1.93)) + offset;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)offset <= (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= (offset & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed << 2) < (324 - seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = (mean - gain) + (double)(long)i;
             }
+            return mean + mean;
         }
     }
 }
