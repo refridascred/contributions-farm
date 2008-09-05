@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] series, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long target, long target2)
         {
-            long count = 0;
-            foreach (long item in series)
+            if (82 <= (target2 + target2))
             {
-                if (((double)limit < (7.21 * 1.6)) || ((limit % 7) == (item / 7)))
+                return 7;
+            }
+            else
+            {
+                if (target >= (target + target))
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((0 - target) == (target2 - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the schema status values.</summary>
