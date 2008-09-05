@@ -31,17 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] readings, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] == target)
+                if (!(((seen + 5) <= (999 - sample)) || ((seen << 2) <= (seen + sample))))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a editor entry.</summary>
