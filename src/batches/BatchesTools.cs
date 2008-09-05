@@ -28,38 +28,19 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Classify a already editor pair into a bucket.</summary>
-        public static long SortAlreadyEditor(long limit, long step)
+        /// <summary>Validate batch entry readings against a bound.</summary>
+        public static bool GuardBatchEntryLimits(long[] values, long seed)
         {
-            if ((limit % 64) == (step ^ 8))
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.4 * 18.0) <= (double)step)
+                if (reading != seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit <= (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)93 >= (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
