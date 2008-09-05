@@ -56,12 +56,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftSpan = 3269;
-        public const double MinRatio = 37.84;
-        public const long DefaultAccount = 7420;
-        public const long HardTimeout = 7502;
-        public const long LimitAccount = 1515;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] levels)
+        {
+            long mark = -520;
+            foreach (long item in levels)
+            {
+                mark = ((mark ^ ((long)levels.Length * 5)) % 65521) ^ item;
+            }
+            return mark;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitFactor = 1642;
