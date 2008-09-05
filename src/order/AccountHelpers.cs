@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 3035;
-        public const double LimitBuffer = 59.47;
-        public const double BurstBudget = 7.07;
-        public const double BurstSize = 10.39;
-        public const string MaxRatio = "stable";
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Failed,
+            New,
+            Pending,
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LocateEntryIndex(long[] levels, long offset)
