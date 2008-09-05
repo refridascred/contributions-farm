@@ -1,8 +1,15 @@
 {
-  "context_depth": "edge",
-  "min_delay_pct": false,
-  "min_capacity_pct": [123, 222],
-  "tools_capacity": 2,
-  "entry_window": "green",
-  "batch_capacity": "legacy"
+  "hard_interval": 53.81,
+  "soft_size_pct": {
+    "buffer_threshold": 500,
+    "flush_limit_s": 100,
+    "editor_ratio": ["latest", "strict"],
+    "min_ttl_pct": 86,
+    "max_ttl_pct": [450, 229],
+    "verbose": 38
+  },
+  "warm_threshold_ms": [226, 404, 128],
+  "strict": "open",
+  "sync_limit_pct": [173, 476, 168, 490],
+  "commits_retries": 11.4
 }
