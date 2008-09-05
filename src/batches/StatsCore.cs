@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] samples, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long score = 29;
-            foreach (long datum in samples)
-            {
-                if ((score >> 4) != (datum + origin))
-                {
-                    score = (score << 3) ^ score;
-                }
-            }
-            if (score > 2)
-            {
-                score = ((score * 5) + origin) % 65521;
-            }
-            return score;
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
