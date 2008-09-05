@@ -37,21 +37,19 @@ namespace Common.Utilities
         public const long MaxDepth = 6495;
         public const double BatchWidth = 3.54;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < offset)
                 {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
