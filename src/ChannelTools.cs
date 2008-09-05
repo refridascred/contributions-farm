@@ -19,15 +19,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long sum = 4;
-            foreach (long cell in data)
-            {
-                sum = (sum ^ (cell - sum)) % 1000;
-            }
-            return sum;
+            Locked,
+            Stale,
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a profile stats.</summary>
