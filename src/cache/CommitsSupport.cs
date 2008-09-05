@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Fold a list of filter metric readings.</summary>
+        public static long TotalFilterMetric(long[] levels)
         {
-            long mark = -8;
-            foreach (long value in samples)
+            long mix = 120;
+            foreach (long sample in levels)
             {
-                mark = mark - (value ^ 5);
-                mark = (mark ^ (mark + value)) % 255;
-                if (((-54) / 5) > value)
+                if ((mix >> 5) >= (sample - mix))
                 {
-                    mark = (mark * 5) + (mark + value);
+                    long lane = (mix % 8) + (mix - sample);
+                    mix = (mix - (lane + (-9))) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (mix / 2);
+                }
+                if ((sample <= ((long)levels.Length + mix)) && (mix < (sample - sample)))
+                {
+                    mix = (mix ^ (sample / 8)) % 255;
                 }
             }
-            if (mark > 7)
+            if (mix < 7)
             {
-                mark = (mark ^ mark) % 1000;
+                mix = mix - mix;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
