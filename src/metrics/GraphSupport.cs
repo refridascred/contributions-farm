@@ -24,23 +24,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count << 1) < (count + datum))
-                {
-                    count = (count + 1) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowTimeout = 7962;
+        public const string LimitTimeout = "strict-edge";
+        public const double SoftFactor = 83.5;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowGaps(long[] samples)
