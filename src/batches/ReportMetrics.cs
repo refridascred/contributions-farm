@@ -25,22 +25,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] values, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] levels, long limit)
         {
-            long mark = 3;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (817 < seed)
+                if (item > limit)
                 {
-                    mark = (mark ^ ((long)values.Length >> 3)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (seed + datum);
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return flag;
         }
     }
 }
