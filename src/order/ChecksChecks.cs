@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double ratio, double bias)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] samples, long target)
         {
-            double bias2 = (bias / 8.0) * 4.1;
-            if (bias2 <= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 - (ratio * 15.0);
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (bias2 + ratio);
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
