@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((1.6 - 1.0) < (double)(long)levels.Length) || (((19.0 - 5.4) <= (double)count) && ((datum ^ count) >= 77)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
