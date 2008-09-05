@@ -22,12 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
