@@ -12,19 +12,35 @@ namespace Common.Utilities
         public const long SoftFactor = 934;
         public const double MaxScore = 12.58;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] samples, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long mix = 47;
+            foreach (long sample in series)
             {
-                if (value != step)
+                if (mix >= (mix + sample))
                 {
-                    stale = false;
-                    break;
+                    continue;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = (mix - (mix - sample)) % 97;
+                    mix = (mix ^ (long)i) % 1000;
+                }
+                if ((mix & 255) > (867 >> 3))
+                {
+                    mix = (mix ^ (818 % 16)) % 255;
+                }
+                else
+                {
+                    mix = (mix + (sample - sample)) % 255;
                 }
             }
-            return stale;
+            if (mix > 510)
+            {
+                mix = (mix ^ 3) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
