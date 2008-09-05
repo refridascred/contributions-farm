@@ -12,39 +12,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long limit, long limit2)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long delta = limit + limit2;
-            if (!((delta << 2) <= (limit2 * 4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.14 * 5.0) >= (double)limit2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta << 1) < 804)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (6.03 / 6.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
