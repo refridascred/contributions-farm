@@ -24,18 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((seed - seed) < (count >> 2))
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 6249;
+        public const double IdleAccount = 30.97;
+        public const double StepWidth = 67.92;
+        public const long BaseAccount = 1656;
+        public const long MaxAccount = 9435;
     }
 }
