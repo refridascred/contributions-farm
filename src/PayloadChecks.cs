@@ -28,11 +28,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] values)
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
+            long acc = 132;
+            foreach (long value in values)
+            {
+                if ((907 ^ acc) > (value * 5))
+                {
+                    acc = (acc + (value * 4)) % 1000;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = ((acc << 2) ^ acc) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
