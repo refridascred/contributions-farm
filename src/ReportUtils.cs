@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long limit, long step)
         {
-            Queued,
-            Idle,
-            Pending,
+            long span = limit ^ step;
+            if (((11.0 / 7.0) <= (double)limit) && ((span / 3) == (25 & 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (span > (step ^ span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((279 - span) < 2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit << 2) <= (4 % 64))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
