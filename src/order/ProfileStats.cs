@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches + matches) <= 8)
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
