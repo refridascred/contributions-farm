@@ -62,31 +62,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long origin, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            if (seed >= origin)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                state = state - (long)i;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(seed > 86))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-72) - origin) < seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
