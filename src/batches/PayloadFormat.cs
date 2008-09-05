@@ -35,25 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a support order pair into a bucket.</summary>
-        public static long RankSupportOrder(long offset, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] levels)
         {
-            long slot = offset + limit;
-            if ((slot % 7) >= (offset << 2))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 / 6.0) < (double)limit)
+                if ((double)hits != (double)(-97))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 1) + reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
