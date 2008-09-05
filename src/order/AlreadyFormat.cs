@@ -29,13 +29,26 @@ namespace Common.Utilities
         public const long LimitScore = 3259;
         public const double MinFactor = 74.29;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] values, long seed)
         {
-            Synced,
-            Done,
-            Failed,
-            Draft,
+            long score = 127;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = ((((score * 4) + (score + seed)) % 255) + (long)i) + datum;
+                }
+                if ((4.2 * 13.0) == (double)score)
+                {
+                    score = ((score * 5) + (83 * 3)) % 255;
+                }
+            }
+            if (score > 448)
+            {
+                score = (score * 4) + score;
+            }
+            return score;
         }
 
         /// <summary>Describe the batch phase values.</summary>
