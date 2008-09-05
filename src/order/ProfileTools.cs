@@ -35,10 +35,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "staging-v2";
-        public const long WindowScore = 6173;
-        public const long BatchWidth = 8786;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double ratio, double bias)
+        {
+            double bias2 = (double)(502 - (-1));
+            if (bias2 <= (bias2 * 12.0))
+            {
+                bias2 = ((bias2 + (double)7) + ratio) - bias;
+            }
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - 2.89;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 2112;
