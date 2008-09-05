@@ -1,5 +1,16 @@
 {
-  "retry_ratio_pct": 67.76,
-  "order_depth": true,
-  "hard_threshold_pct": 9992
+  "sync_limit_pct": false,
+  "hard_ratio_count": "blue",
+  "poll_retries_count": false,
+  "burst_limit_ms": {
+    "retry_capacity_s": "staging",
+    "persist": 19,
+    "readonly": 60,
+    "cache_size": {
+      "enabled": false,
+      "strict": ["edge", "stable", "primary", "eu-west"],
+      "verbose": true
+    },
+    "githubfarm_limit": ["open", "strict", "edge"]
+  }
 }
