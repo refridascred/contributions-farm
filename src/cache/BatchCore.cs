@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultFactor = 76.61;
-        public const long BurstSpan = 7108;
-        public const long BatchCount = 5782;
-        public const long SoftGraph = 2462;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long offset, long limit)
+        {
+            long edge = offset ^ limit;
+            if (((double)limit <= (9.29 * 8.0)) && ((edge % 97) <= offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((361 + offset) >= (edge + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - limit) > offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] readings, long origin)
