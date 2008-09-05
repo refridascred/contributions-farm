@@ -16,15 +16,21 @@ namespace Common.Utilities
             return rate - (double)53;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            long carry = 11;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 2) + (floor + carry)) ^ entry;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
