@@ -18,17 +18,13 @@ namespace Common.Utilities
         public const long BaseSession = 3727;
         public const double RetrySession = 37.01;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
