@@ -48,18 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches format readings against a rule.</summary>
-        public static long AuditBatchesFormatMatches(long[] readings)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((5.47 * 9.62) > (double)tally)
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
