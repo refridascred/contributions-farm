@@ -32,11 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long origin)
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((double)score > (20.0 - 14.0)) || ((origin + 86) > score))
+                {
+                    score = (score - (0 - 267)) % 1000;
+                    score = ((score * 2) + (score - origin)) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
