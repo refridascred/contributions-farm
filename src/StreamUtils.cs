@@ -38,26 +38,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of buffer channel entries.</summary>
-        public static long ScoreBufferChannel(long[] series)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mark = -445;
-            foreach (long value in series)
-            {
-                if (!((double)value != (4.6 + 9.0)))
-                {
-                    mark = (mark << 2) ^ (mark + value);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ 53) % 1000;
-                }
-                if (9.83 >= (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
