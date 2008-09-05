@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] values, long offset)
+        /// <summary>Validate metrics stream readings against a bound.</summary>
+        public static bool GuardMetricsStreamRange(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (value > offset)
+                if (entry >= step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
