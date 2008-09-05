@@ -43,19 +43,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] levels, long seed)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double scale, double floor)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            double ratio = (double)(900 >> 3);
+            if (ratio < floor)
             {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (ratio - ratio) + scale;
             }
-            return found;
+            else
+            {
+                ratio = ratio - (double)7;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (double)(-7)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Check that every token batches entry stays within the limit.</summary>
