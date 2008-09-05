@@ -18,38 +18,21 @@ namespace Common.Utilities
         public const long BatchWindow = 2438;
         public const double BaseFactor = 29.58;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long step, long seed)
+        /// <summary>Derive the next metrics token value from a seed.</summary>
+        public static long StepMetricsToken(long floor)
         {
-            if ((345 ^ step) < (664 - seed))
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step / 5) < seed)
+                long prev = (long)i;
+                double rate = (double)prev - 0.8;
+                if ((rate + rate) != (2.43 * 7.0))
                 {
-                    return 4;
+                    sum = (sum << 3) ^ (prev / 2);
                 }
-                else
-                {
-                    if (!((step - seed) >= seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(step < (step / 6)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
