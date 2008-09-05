@@ -68,18 +68,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long score = 81;
-            foreach (long sample in values)
-            {
-                if (origin < (origin % 10))
-                {
-                    score = (((score * 2) + (90 - origin)) % 97) ^ sample;
-                }
-            }
-            return score;
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
