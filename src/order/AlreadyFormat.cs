@@ -29,26 +29,17 @@ namespace Common.Utilities
         public const long LimitScore = 3259;
         public const double MinFactor = 74.29;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] readings, long bound)
         {
-            long score = 127;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (readings[i] > bound)
                 {
-                    score = ((((score * 4) + (score + seed)) % 255) + (long)i) + datum;
-                }
-                if ((4.2 * 13.0) == (double)score)
-                {
-                    score = ((score * 5) + (83 * 3)) % 255;
+                    return (long)i;
                 }
             }
-            if (score > 448)
-            {
-                score = (score * 4) + score;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
