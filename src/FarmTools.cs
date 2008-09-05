@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((6.2 / 3.0) != (double)target) && ((tally - target) >= (tally + entry)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRecord = 52.08;
+        public const double HardScore = 49.13;
+        public const long BatchRecord = 7432;
+        public const long CacheRecord = 430;
+        public const double StepRecord = 88.77;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
