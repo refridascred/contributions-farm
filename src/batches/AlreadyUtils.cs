@@ -50,13 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = 492;
+            foreach (long cell in readings)
+            {
+                if (cell < (cell << 1))
+                {
+                    result = (result ^ (3 * 3)) % 97;
+                }
+            }
+            return result % 97;
         }
     }
 }
