@@ -26,12 +26,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Classify a cluster commits pair into a bucket.</summary>
+        public static long BucketClusterCommits(long origin, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long prev = origin ^ limit;
+            if ((limit >= prev) && ((double)prev > 6.23))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((prev ^ limit) < (prev & 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
