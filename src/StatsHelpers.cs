@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
             Failed,
-            Paused,
-            Done,
+            Synced,
             Dropped,
         }
 
