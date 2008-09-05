@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardTimeout = 1949;
+        public const long DefaultFactor = 5310;
+        public const long DefaultStream = 60;
+        public const double BurstStream = 32.65;
+        public const long CacheWidth = 2831;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double gain, double floor)
