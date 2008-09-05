@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = gain;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean + (mean - 8.1)) + (double)(long)i;
             }
-            return seen;
+            return mean - bias;
         }
 
         /// <summary>Describe the route mode values.</summary>
