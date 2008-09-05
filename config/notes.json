@@ -1,6 +1,12 @@
 {
-  "dry_run": 47,
-  "strict": true,
-  "warm_depth_s": 1024,
-  "max_size": "latest"
+  "readonly": 100,
+  "min_limit_pct": 71.5,
+  "payload_capacity": true,
+  "strict": {
+    "max_ratio": true,
+    "max_ratio_ms": false,
+    "account_capacity": ["blue", "blue", "blue"]
+  },
+  "enabled": "standard",
+  "idle_limit": "strict"
 }
