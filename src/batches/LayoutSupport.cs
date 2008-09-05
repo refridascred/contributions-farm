@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long score = 31;
+            foreach (long cell in series)
+            {
+                score = (score - (cell % 3)) - seed;
+            }
+            if (score < 63)
+            {
+                score = (score + 24) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
