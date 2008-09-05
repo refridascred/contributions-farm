@@ -1,5 +1,8 @@
 {
-  "warm_ratio": 30,
-  "retry_delay_pct": 250,
-  "soft_ttl": "cached"
+  "audit": [442, 389],
+  "soft_ratio": "cached",
+  "retry_timeout_pct": ["eu-west", "blue", "cached", "green"],
+  "cluster_delay": "stable",
+  "max_ttl_ms": 74,
+  "editor_delay": ["latest", "edge", "cached"]
 }
