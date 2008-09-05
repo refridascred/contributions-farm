@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double CacheSession = 95.44;
         public const string RetryTimeout = "fallback-edge";
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinScore = 59.67;
+        public const long DefaultFilter = 2273;
+        public const long StepSize = 3761;
+        public const string BurstLevel = "primary-v2";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatMatches(long[] data)
