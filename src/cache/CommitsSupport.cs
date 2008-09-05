@@ -48,12 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 3103;
-        public const long BaseAccount = 4571;
-        public const long RetryAccount = 9364;
-        public const string BurstAccount = "staging-1";
-        public const long CacheSpan = 4975;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] levels, long floor)
