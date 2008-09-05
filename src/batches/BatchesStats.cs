@@ -34,10 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardSize = 80.77;
-        public const double RetryLevel = 98.9;
-        public const double BaseSpan = 56.37;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Retry,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileBounds(long[] series, long offset)
