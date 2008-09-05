@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double span)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            double load = (double)(15 + 536);
-            if (load <= weight)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load - span;
+            return count;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
