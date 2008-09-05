@@ -1,8 +1,17 @@
 {
-  "min_window": "fallback",
-  "default_retries": 2042,
-  "format_size": 1,
-  "channel_delay": ["legacy", "staging", "open"],
-  "dry_run": "standard",
-  "profile_limit": 30
+  "sync_ttl": {
+    "report_delay": 8560,
+    "counter_retries": 250,
+    "poll_ttl": 6092,
+    "batch_capacity": 1,
+    "min_limit_s": "green"
+  },
+  "audit": 51,
+  "enabled": "cached",
+  "max_size_ms": "standard",
+  "retry_window": {
+    "max_retries": true,
+    "retry_ratio_ms": 62.34,
+    "min_delay": "legacy"
+  }
 }
