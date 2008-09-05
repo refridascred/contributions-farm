@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinCount = 8012;
-        public const string SoftSession = "alpha";
-        public const double CacheSession = 95.44;
-        public const string RetryTimeout = "fallback-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 5.49;
+        public const string DefaultCluster = "legacy";
+        public const double IdleTimeout = 38.66;
+        public const long SoftFactor = 6745;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MinScore = 59.67;
