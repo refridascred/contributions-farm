@@ -49,18 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] data, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)cell <= (20.0 - 9.21)))
-                {
-                    count = (count + 2) - floor;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
