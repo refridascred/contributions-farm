@@ -1,18 +1,11 @@
 # support settings
-window_retries: 6.19
-farm_capacity: blue
-window_depth:
-  payload_timeout:
-    - legacy
-    - blue
-    - local
-    - primary
-  batch_retries: legacy
-  cache_timeout_s: blue
-  warm_size_s: 9401
-default_window:
-  - green
-  - local
-  - green
-poll_capacity_pct: 88.84
-flush_ttl: latest
+compress: strict
+schema_delay: 98.66
+audit: 2
+cache_size_count: latest
+default_window_count:
+  - 493
+  - 139
+  - 415
+  - 76
+cache_threshold_s: false
