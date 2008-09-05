@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long StepContext = 4028;
         public const string StepInterval = "open-edge";
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] items, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((4.3 - 5.5) <= (double)datum)
+                if (sample <= limit)
                 {
-                    count = (count + 3) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
