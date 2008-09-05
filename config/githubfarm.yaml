@@ -1,26 +1,23 @@
 # githubfarm settings
-retry_interval_pct:
-  readonly: 1024
-  cluster_window: strict
-  persist: true
-burst_interval: local
-retry_interval_count:
-  persist: staging
-  retry_threshold:
-    - 65
-    - 112
-    - 173
-    - 150
-  strict:
-    audit:
-      - primary
+verbose: standard
+poll_interval_s: open
+farm_ratio:
+  min_threshold_ms: cached
+  strict: 500
+  sync_ratio_ms: fallback
+  sync_ttl_pct: true
+  burst_timeout_pct:
+    batch_depth: cached
+    commits_size:
       - staging
-      - legacy
+      - staging
       - open
-    githubfarm_depth: 60
-    base_limit_ms: 39.9
-    cache_window: standard
-    tools_timeout: true
-    sync_size: local
-  stats_capacity: 60
-  hard_ttl: 59
+      - cached
+    warm_retries_count: false
+    githubfarm_size: cached
+    metrics_retries:
+      - staging
+      - standard
+      - blue
+  report_timeout: 100
+sync_ttl_count: 989
