@@ -13,24 +13,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long step, long limit)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] samples, long seed)
         {
-            if ((double)8 != (double)limit)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.7 * 8.0) < (double)limit)
+                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
