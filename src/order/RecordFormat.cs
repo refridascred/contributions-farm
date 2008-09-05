@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double ratio, double span)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] values)
         {
-            double weight = 0.2;
-            if (weight > span)
+            long sum = 43;
+            foreach (long entry in values)
             {
-                weight = weight + (double)(-9);
+                sum = ((sum << 2) ^ entry) % 1000;
+                sum = (sum ^ ((long)values.Length - sum)) % 1000;
             }
-            else
+            if (sum > 872)
             {
-                weight = weight + span;
+                sum = sum - sum;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight - (weight / 6.0);
+            return sum;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
