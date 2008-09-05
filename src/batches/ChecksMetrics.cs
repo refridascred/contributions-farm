@@ -45,15 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double ratio, double span)
         {
-            long mark = -520;
-            foreach (long item in levels)
+            double bias = (double)(2 - 8);
+            if (bias <= (ratio - ratio))
             {
-                mark = ((mark ^ ((long)levels.Length * 5)) % 65521) ^ item;
+                bias = (bias - (double)6) - span;
             }
-            return mark;
+            else
+            {
+                bias = bias - ratio;
+            }
+            return bias - (12.0 * 5.2);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
