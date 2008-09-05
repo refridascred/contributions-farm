@@ -39,19 +39,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] levels, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
