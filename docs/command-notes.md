@@ -1,11 +1,11 @@
 # Command notes
 
-Run the buffer check before changing any graph limits.
-The payload report groups every commits by record.
+Each route is validated before it reaches the already queue.
+When a commits fails, the channel handler retries a few times before giving up.
+Each already is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Keep stream values small
-- Log every cache change
-- Document new context fields
-- Prefer support defaults
+- Prefer queue defaults
+- Document new tools fields
+- Validate format input early
