@@ -23,12 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 2106;
-        public const long RetryWidth = 4382;
-        public const long MinReport = 9040;
-        public const double RetryReport = 96.04;
-        public const long StepReport = 2454;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardSpan = 70.31;
+        public const long MinBatch = 4470;
+        public const string BurstCount = "open-1";
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] values, long seed)
