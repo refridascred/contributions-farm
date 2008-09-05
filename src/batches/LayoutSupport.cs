@@ -51,15 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double gain, double floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            double mean = (gain - floor) - (double)70;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + (floor + mean);
+            Active,
+            Retry,
+            Queued,
+            Ready,
         }
     }
 }
