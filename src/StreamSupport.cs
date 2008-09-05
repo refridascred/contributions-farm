@@ -35,12 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Check that every format batch entry stays within the limit.</summary>
+        public static bool GuardFormatBatchRange(long[] data, long step)
         {
-            Closed,
-            Synced,
-            Stale,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
