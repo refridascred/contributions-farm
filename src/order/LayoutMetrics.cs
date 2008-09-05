@@ -13,13 +13,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a route tools reading.</summary>
+        public static double ProjectRouteTools(double ratio, double bias)
         {
-            Queued,
-            Active,
-            Dropped,
-            Paused,
+            double weight = ratio;
+            if (weight <= (double)56)
+            {
+                weight = (weight + ratio) + bias;
+            }
+            return weight + (double)(-7);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
