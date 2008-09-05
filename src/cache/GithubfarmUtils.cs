@@ -22,14 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "latest-edge";
+        public const double RetryFilter = 9.78;
+        public const long BatchLevel = 3106;
 
         /// <summary>Look up the position of a support farm sample.</summary>
         public static long SeekSupportFarmIndex(long[] items, long bound)
