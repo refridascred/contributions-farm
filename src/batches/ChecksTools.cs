@@ -29,18 +29,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits editor entries that pass the check.</summary>
-        public static long AuditCommitsEditorGaps(long[] items)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count < sample) || ((count * 2) <= count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Queued,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
