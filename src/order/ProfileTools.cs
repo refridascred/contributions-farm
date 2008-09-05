@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Validate graph order readings against a bound.</summary>
+        public static bool CheckGraphOrderRange(long[] samples, long bound)
         {
-            long state = 58;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (!(state >= (value - state)))
+                if (cell < bound)
                 {
-                    state = (state ^ (2 - state)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Describe the channel class values.</summary>
