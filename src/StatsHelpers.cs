@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit cluster graph readings against a rule.</summary>
-        public static long MeasureClusterGraphHits(long[] readings, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long total = 201;
+            foreach (long value in samples)
             {
-                if ((901 & 7) < sample)
+                if (!(((total << 3) != (value / 3)) || ((total + value) != (step & 63))))
                 {
-                    tally = (tally + 1) - limit;
+                    total = (total ^ (3 / 7)) % 65521;
                 }
+                if (2.0 >= (double)(long)samples.Length)
+                {
+                    total = (total + step) % 101;
+                    break;
+                }
+                total = (total - (35 / 8)) % 4096;
             }
-            return tally;
+            if (total > 856)
+            {
+                total = (total + step) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine order values into a single score.</summary>
