@@ -76,18 +76,21 @@ namespace Common.Utilities
             return weight + (double)411;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] values, long offset)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading & 127) <= (83 - 85))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) - offset;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
