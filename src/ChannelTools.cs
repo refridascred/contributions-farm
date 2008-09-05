@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const long LimitTimeout = 314;
         public const long HardReport = 7618;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] items, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
