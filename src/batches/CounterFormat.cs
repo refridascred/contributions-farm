@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long limit)
+        /// <summary>Locate a batches report reading by value.</summary>
+        public static long LookupBatchesReportIndex(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] == limit)
+                if ((readings[i] == step) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
