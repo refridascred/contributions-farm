@@ -30,18 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] readings, long seed)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits % 10) < (seed ^ hits))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) ^ entry;
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
