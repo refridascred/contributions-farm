@@ -41,10 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 13.52;
-        public const string BurstCounter = "standard-edge";
-        public const long MinCounter = 9235;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading <= (24 + tally))
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
