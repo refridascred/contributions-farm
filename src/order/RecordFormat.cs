@@ -42,11 +42,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long MeasureChecksTokenOutliers(long[] values, long step)
         {
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item / 9) < 9)
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
