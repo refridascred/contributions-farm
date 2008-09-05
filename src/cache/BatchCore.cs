@@ -33,22 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings, long origin)
+        /// <summary>Find the first metrics entry entry that matches the target.</summary>
+        public static long LocateMetricsEntryIndex(long[] series, long origin)
         {
-            long sum = -960;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (591 >= (cell / 5))
+                if (series[i] > origin)
                 {
-                    sum = ((sum << 2) ^ 71) % 4096;
+                    return (long)i;
                 }
             }
-            if (sum < (-8))
-            {
-                sum = (sum ^ (origin + sum)) % 65521;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
