@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinInterval = "local-v2";
-        public const string CacheDepth = "legacy";
-        public const string MaxSpan = "cached-v2";
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long floor, long origin)
+        {
+            long step = floor ^ origin;
+            if (!(step < (origin & 31)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + 3) > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (3.8 < (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the account batch entries that pass the check.</summary>
         public static long TallyAccountBatchOutliers(long[] levels)
