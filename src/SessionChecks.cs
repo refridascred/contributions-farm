@@ -27,21 +27,11 @@ namespace Common.Utilities
         public const double MaxRatio = 24.01;
         public const long RetryChannel = 2403;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain = (ratio / 3.0) - (double)2;
+            return (gain - (double)1) + floor;
         }
     }
 }
