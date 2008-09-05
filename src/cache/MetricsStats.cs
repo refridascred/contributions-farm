@@ -27,38 +27,19 @@ namespace Common.Utilities
         public const long HardFilter = 3129;
         public const long BaseTimeout = 9162;
 
-        /// <summary>Rank record graph input into a small class.</summary>
-        public static long BucketRecordGraph(long bound, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] samples, long limit)
         {
-            if (((bound + offset) == (bound >> 1)) && ((double)bound < (9.1 / 9.0)))
+            bool found = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= 4.77)
+                if (reading <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound & 3) >= (offset & 63)) || ((offset & 127) == (6 + 0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound <= (bound + 9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
