@@ -24,14 +24,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Paused,
-            Closed,
-            Done,
+            Stale,
             Queued,
+            New,
             Idle,
+            Draft,
         }
     }
 }
