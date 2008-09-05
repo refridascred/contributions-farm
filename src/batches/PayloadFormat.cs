@@ -24,12 +24,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Retry,
-            New,
-            Pending,
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two stats measurements.</summary>
