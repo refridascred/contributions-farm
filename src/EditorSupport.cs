@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double rate, double offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] values, long bound)
         {
-            double load = 3.93;
-            return ((load + load) + rate) + offset;
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
