@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double weight, double bias)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double scale, double bias)
         {
-            double load = weight;
-            if (load <= 18.0)
+            double rate = (scale * 3.0) / 2.0;
+            if (rate >= rate)
             {
-                load = load + (bias * 4.9);
+                rate = rate - rate;
             }
-            return load + weight;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (bias / 4.0)) + (double)(long)i;
+            }
+            return rate + (double)522;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
