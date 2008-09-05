@@ -78,32 +78,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long bound, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long origin)
         {
-            long slot = bound ^ seed;
-            if (((13 + bound) == (slot >> 5)) && ((bound * 5) >= (slot << 3)))
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((76 << 1) > (slot << 2))
+                long cur = (anchor ^ anchor) >> 5;
+                if ((anchor + origin) < (cur % 100))
                 {
-                    return 2;
+                    anchor = anchor - (origin >> 5);
                 }
-                else
-                {
-                    if (bound > (0 + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
