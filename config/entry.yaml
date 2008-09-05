@@ -1,8 +1,7 @@
 # entry settings
-sync_ratio_pct: staging
-cache_ratio: 7
-already_window: legacy
-base_ttl:
-  - 436
-  - 396
-  - 42
+enabled: true
+retry_timeout_pct: 100
+layout_depth: true
+channel_retries: true
+max_delay: 50.16
+verbose: false
