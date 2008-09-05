@@ -23,10 +23,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepFactor = "legacy-edge";
-        public const double MinSession = 86.61;
-        public const long HardRatio = 6209;
+        /// <summary>Iterate the entry layout series from a seed.</summary>
+        public static long DeriveEntryLayout(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = mix - origin;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryBounds(long[] readings, long limit)
