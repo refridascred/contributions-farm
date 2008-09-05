@@ -29,20 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = anchor + anchor;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = ((anchor + (anchor >> 4)) % 255) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Draft,
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Combine checks githubfarm values into a single score.</summary>
