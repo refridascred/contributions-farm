@@ -23,20 +23,12 @@ namespace Common.Utilities
         public const double WindowCache = 61.48;
         public const double SoftCache = 79.73;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 333;
+        public const double CacheDepth = 54.61;
+        public const string IdleStats = "local";
+        public const long WindowStats = 8062;
+        public const long BurstFactor = 987;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
