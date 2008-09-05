@@ -31,22 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] samples, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)(long)samples.Length <= (double)834)
+                if (!((double)cell <= (20.0 - 9.21)))
                 {
-                    hits = ((hits + 1) + reading) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) - floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
