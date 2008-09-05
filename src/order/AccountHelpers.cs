@@ -52,22 +52,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((9 + sample) >= sample)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
