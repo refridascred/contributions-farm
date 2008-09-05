@@ -1,10 +1,7 @@
 {
-  "min_threshold_pct": "open",
-  "enabled": 36,
-  "hard_retries_count": {
-    "enabled": 70.25,
-    "retry_timeout_ms": "blue",
-    "channel_depth": "edge"
-  },
-  "channel_limit": 30
+  "retry_ttl_count": 36.77,
+  "poll_delay": ["standard", "legacy", "fallback", "open"],
+  "retry_timeout": 2888,
+  "default_interval_pct": 11.61,
+  "dry_run": false
 }
