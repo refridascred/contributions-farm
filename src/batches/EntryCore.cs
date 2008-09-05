@@ -47,17 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long origin)
+        /// <summary>Combine entry checks values into a single score.</summary>
+        public static long FoldEntryChecks(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 47;
+            foreach (long value in readings)
             {
-                if ((series[i] >= origin) && ((series[i] % 2) == 0))
+                state = (state * 4) + (value * 2);
+                if (((9.36 - 8.73) != (double)value) || ((value % 8) != (long)readings.Length))
                 {
-                    return (long)i;
+                    state = (state + (value + state)) % 101;
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Hold a order stats.</summary>
