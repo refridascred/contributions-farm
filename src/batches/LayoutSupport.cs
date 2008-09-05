@@ -65,22 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels, long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long mark = -247;
-            foreach (long item in levels)
-            {
-                if ((25 >> 1) >= (mark + item))
-                {
-                    mark = ((mark << 2) ^ (item * 5)) % 65521;
-                }
-                if ((double)bound >= (8.0 + 9.0))
-                {
-                    mark = mark ^ mark;
-                }
-            }
-            return mark % 97;
+            Ready,
+            Failed,
+            Synced,
+            Dropped,
         }
     }
 }
