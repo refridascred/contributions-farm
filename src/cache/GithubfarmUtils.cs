@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next already notes value from a seed.</summary>
-        public static long StepAlreadyNotes(long target)
+        /// <summary>Digest a series of window contributi entries.</summary>
+        public static long TotalWindowContributi(long[] data, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            long carry = 595;
+            foreach (long datum in data)
             {
-                long tally = (target - mark) * 2;
-                mark = mark - tally;
-                mark = (mark - mark) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
+                carry = carry - (datum + carry);
             }
-            return mark;
+            if (carry > (-739))
+            {
+                carry = carry - (floor % 100);
+            }
+            return carry;
         }
 
         /// <summary>Hold a cluster header.</summary>
