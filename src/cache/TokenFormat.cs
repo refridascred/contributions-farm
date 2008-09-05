@@ -22,21 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(matches <= bound))
                 {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of schema account readings.</summary>
