@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((datum >= (datum - matches)) || ((datum % 16) >= matches))
+                if (sample > limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the checks level values.</summary>
