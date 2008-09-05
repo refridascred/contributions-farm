@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "primary-edge";
-        public const long HardReport = 533;
-        public const double MaxDepth = 89.3;
-        public const double WindowReport = 6.25;
-        public const long LimitReport = 3646;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 2391;
+        public const long CacheMetric = 6477;
+        public const long BatchTimeout = 4466;
+        public const long HardMetric = 3605;
+        public const long BatchLevel = 4179;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] samples)
