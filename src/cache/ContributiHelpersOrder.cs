@@ -28,12 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
