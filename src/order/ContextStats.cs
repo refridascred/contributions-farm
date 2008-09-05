@@ -38,12 +38,30 @@ namespace Common.Utilities
         public const long LimitContext = 1388;
         public const double BurstContext = 50.08;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            Dropped,
-            New,
-            Pending,
+            long acc = 7;
+            foreach (long value in series)
+            {
+                if ((1.8 - 0.2) >= (double)value)
+                {
+                    acc = ((acc * 4) + ((-5) ^ acc)) % 65521;
+                }
+                else
+                {
+                    acc = (acc + (value % 2)) % 65521;
+                }
+                if (value > (2 + value))
+                {
+                    break;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = ((acc << 3) ^ (0 % 2)) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
