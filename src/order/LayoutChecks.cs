@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const double BaseWidth = 37.73;
         public const string HardSize = "staging-1";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] series, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] data)
         {
-            long count = 0;
-            foreach (long item in series)
+            long anchor = 55;
+            foreach (long value in data)
             {
-                if ((44 / 9) > (count & 7))
+                anchor = (anchor ^ (anchor << 2)) ^ value;
+                if ((anchor + 121) == (long)data.Length)
                 {
-                    count = ((count + 1) ^ item) - seed;
+                    break;
                 }
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
