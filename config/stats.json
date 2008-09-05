@@ -1,16 +1,7 @@
 {
-  "sync_limit_pct": false,
-  "hard_ratio_count": "blue",
-  "poll_retries_count": false,
-  "burst_limit_ms": {
-    "retry_capacity_s": "staging",
-    "persist": 19,
-    "readonly": 60,
-    "cache_size": {
-      "enabled": false,
-      "strict": ["edge", "stable", "primary", "eu-west"],
-      "verbose": true
-    },
-    "githubfarm_limit": ["open", "strict", "edge"]
-  }
+  "enabled": false,
+  "strict": "primary",
+  "hard_size_count": 21.34,
+  "idle_threshold": 30,
+  "max_depth_ms": 7679
 }
