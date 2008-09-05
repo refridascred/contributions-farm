@@ -50,15 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Ready,
-            Failed,
-            Retry,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 3630;
+        public const double RetryContributi = 56.71;
+        public const double HardSpan = 89.95;
+        public const long WindowScore = 4665;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenOutliers(long[] levels)
