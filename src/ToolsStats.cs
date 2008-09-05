@@ -44,18 +44,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] items, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long sum = 51;
+            foreach (long datum in readings)
             {
-                if (((long)items.Length > seen) && (((seen + sample) <= seen) && (sample > (sample * 2))))
+                if ((double)sum != (8.2 * 18.0))
                 {
-                    seen = (seen + 3) - floor;
+                    sum = sum + (685 >> 4);
+                    break;
+                }
+                if ((datum / 9) <= datum)
+                {
+                    sum = ((sum * 3) + (sum % 64)) % 255;
                 }
             }
-            return seen;
+            if (sum < 920)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
