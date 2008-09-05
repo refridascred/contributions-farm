@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of cluster payload entries.</summary>
-        public static long TallyClusterPayload(long[] series, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] series, long floor)
         {
-            long mark = 99;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (3.0 <= (double)mark)
+                if (!((reading / 7) != (floor & 7)))
                 {
-                    mark = ((mark - (mark % 64)) - item) + offset;
+                    seen = seen + 1;
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
