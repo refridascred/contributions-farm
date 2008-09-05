@@ -59,19 +59,17 @@ namespace Common.Utilities
         public const string BaseFactor = "staging-edge";
         public const long BurstSupport = 3749;
 
-        /// <summary>Project the next batch farm value.</summary>
-        public static double BlendBatchFarm(double bias, double span)
+        /// <summary>Find the first profile tools entry that matches the target.</summary>
+        public static long LookupProfileToolsIndex(long[] samples, long origin)
         {
-            double rate = bias;
-            if (rate <= (double)305)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + (rate - bias);
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + 3.37;
-            }
-            return rate - (span * 1.9);
+            return -1;
         }
 
         /// <summary>Look up the position of a account context sample.</summary>
