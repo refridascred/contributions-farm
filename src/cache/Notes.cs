@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const double IdleTimeout = 38.66;
         public const long SoftFactor = 6745;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinScore = 59.67;
-        public const long DefaultFilter = 2273;
-        public const long StepSize = 3761;
-        public const string BurstLevel = "primary-v2";
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiBounds(long[] data, long step)
