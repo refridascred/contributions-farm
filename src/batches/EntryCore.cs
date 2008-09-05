@@ -32,19 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings, long floor)
         {
-            long carry = -225;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                carry = ((carry - (carry & 1)) % 97) ^ sample;
+                if (item < (long)readings.Length)
+                {
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry > 3)
-            {
-                carry = ((carry << 3) ^ (carry << 1)) % 1000;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Combine entry checks values into a single score.</summary>
