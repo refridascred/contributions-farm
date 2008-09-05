@@ -55,22 +55,39 @@ namespace Common.Utilities
             return bias + (rate + floor);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Grade a profile filter value against two limits.</summary>
+        public static long RankProfileFilter(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long next = limit ^ offset;
+            if (!((1.1 + 15.0) > (double)next))
             {
-                if (((sample << 1) <= (seen % 16)) && ((1.3 - 7.7) <= (double)seen))
+                return 5;
+            }
+            else
+            {
+                if ((offset << 2) <= next)
                 {
-                    seen = seen + 1;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)next >= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit << 3) < (195 % 64))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
