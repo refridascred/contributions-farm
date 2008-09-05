@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches report reading by value.</summary>
-        public static long LookupBatchesReportIndex(long[] readings, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Synced,
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Roll a format counter forward.</summary>
