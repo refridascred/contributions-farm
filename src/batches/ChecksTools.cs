@@ -29,14 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Dropped,
-            Locked,
-            Active,
             Failed,
-            Pending,
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
