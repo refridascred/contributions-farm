@@ -50,38 +50,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long bound, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] readings, long step)
         {
-            if ((double)414 >= (double)bound)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((519 * 5) >= (bound % 7))
+                if (!((seen + seen) <= item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset == (double)371)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset / 6) > (14 + 87))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 3) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a stats batches sample.</summary>
