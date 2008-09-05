@@ -37,15 +37,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] levels, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
