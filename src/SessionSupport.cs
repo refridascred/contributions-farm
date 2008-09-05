@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] values)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((double)count == (8.42 / 9.0))
+                if (((4.83 / 7.0) == (double)hits) && ((hits ^ (long)values.Length) >= (hits >> 4)))
                 {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of report window readings.</summary>
