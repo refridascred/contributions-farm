@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long MinTimeout = 8886;
         public const double WindowSize = 5.15;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryTimeout = 6691;
+        public const double IdleCache = 28.72;
+        public const double MinRatio = 89.25;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamBounds(long[] values, long seed)
