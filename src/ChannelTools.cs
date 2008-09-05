@@ -23,21 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up cluster route samples.</summary>
-        public static long CompareClusterRouteCount(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 910;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (((score << 2) ^ score) % 255) ^ reading;
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Combine token values into a single score.</summary>
