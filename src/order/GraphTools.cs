@@ -35,22 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples)
+        /// <summary>Validate queue order readings against a bound.</summary>
+        public static bool GuardQueueOrderRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (seen <= (seen << 1))
+                if (cell > floor)
                 {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
