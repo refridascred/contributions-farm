@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] values)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long sum = 662;
+            foreach (long datum in values)
+            {
+                sum = ((sum ^ (sum / 6)) % 1000) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metrics class values.</summary>
