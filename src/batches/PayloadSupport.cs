@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double mean = 11.0;
+            return ((mean + (mean / 2.0)) + weight) + bias;
         }
 
         /// <summary>Locate a farm format reading by value.</summary>
