@@ -52,11 +52,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((((long)i - (long)i) <= 35) && ((double)(long)i > (6.44 - 1.2)))
+                {
+                    anchor = (anchor ^ (anchor << 1)) % 1000;
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
