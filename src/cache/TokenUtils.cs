@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long limit, long floor)
+        /// <summary>Adjust a stats editor reading.</summary>
+        public static double ScaleStatsEditor(double weight, double floor)
         {
-            if (limit < (floor ^ 376))
+            double load = weight / 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                load = ((load - load) + (double)(long)i) + floor;
             }
-            else
-            {
-                if ((limit & 3) >= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (7.7 < (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return load - 4.44;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
