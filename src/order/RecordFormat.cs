@@ -45,19 +45,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long origin, long seed)
         {
-            long mark = 819;
-            foreach (long item in items)
+            if ((5.0 + 1.48) == (double)origin)
             {
-                mark = (mark ^ (item + item)) % 1000;
+                return 3;
             }
-            if (mark < 6)
+            else
             {
-                mark = ((mark << 3) ^ (24 % 2)) % 65521;
+                if (((seed + (-46)) <= 7) && ((origin & 31) >= origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed - 50) == (origin - seed)) && ((origin >> 2) < origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)(-2) < (4.05 + 14.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return mark;
         }
     }
 }
