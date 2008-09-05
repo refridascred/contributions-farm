@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the schema notes entries that pass the check.</summary>
-        public static long MeasureSchemaNotesMatches(long[] data, long seed)
+        /// <summary>Rank token command input into a small class.</summary>
+        public static long RankTokenCommand(long seed, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long step = seed ^ floor;
+            if (step < floor)
             {
-                if ((seed ^ sample) >= (count ^ sample))
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (17.0 - 9.9))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up order samples.</summary>
