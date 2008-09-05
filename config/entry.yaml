@@ -1,7 +1,5 @@
 # entry settings
-soft_limit: blue
-strict:
-  queue_window: 250
-  payload_window: 60
-  audit: 6716
-sync_timeout_count: 73
+base_depth_s: true
+default_size_s: 500
+max_threshold: true
+max_ratio_pct: false
