@@ -23,22 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] levels)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long entry in levels)
             {
-                if (!((entry - hits) < hits))
+                if (entry <= ((-475) + 980))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit filter payload readings against a rule.</summary>
