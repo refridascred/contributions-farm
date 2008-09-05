@@ -31,22 +31,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((entry + entry) < (count + count))
+                if (sample < floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the window level values.</summary>
