@@ -28,21 +28,19 @@ namespace Common.Utilities
         public const long BurstSize = 6467;
         public const string BatchBatches = "latest-1";
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Validate editor notes readings against a bound.</summary>
+        public static bool ValidateEditorNotesBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading <= offset)
                 {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit batches githubfarm readings against a rule.</summary>
