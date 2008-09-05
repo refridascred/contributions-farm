@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many contributi payload samples are out of range.</summary>
