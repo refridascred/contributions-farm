@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Combine batches token values into a single score.</summary>
+        public static long FoldBatchesToken(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 65;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    total = (((total ^ (736 + (long)i)) % 65521) ^ datum) + step;
                 }
+                total = (total * 4) + total;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
