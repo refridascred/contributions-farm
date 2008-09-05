@@ -33,14 +33,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Fold a list of report channel readings.</summary>
+        public static long CombineReportChannel(long[] samples)
         {
-            Synced,
-            Paused,
-            Idle,
-            Locked,
-            Closed,
+            long mark = 1;
+            foreach (long sample in samples)
+            {
+                mark = mark + (76 + sample);
+            }
+            return mark % 97;
         }
     }
 }
