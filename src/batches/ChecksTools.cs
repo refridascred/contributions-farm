@@ -55,16 +55,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] items, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            long mix = 736;
-            foreach (long datum in items)
+            long acc = 1;
+            foreach (long cell in readings)
             {
-                mix = ((mix - (datum & 7)) % 65521) + origin;
-                mix = mix ^ (mix - mix);
+                if (!((5 >> 2) >= (acc << 3)))
+                {
+                    acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
+                }
+                if (cell > (acc + cell))
+                {
+                    break;
+                }
             }
-            return mix % 1000;
+            return acc % 65521;
         }
 
         /// <summary>Describe the route level values.</summary>
