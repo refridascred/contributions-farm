@@ -1,5 +1,10 @@
 {
-  "warm_retries_count": "eu-west",
-  "githubfarm_ratio": false,
-  "readonly": 38.38
+  "min_threshold_pct": "open",
+  "enabled": 36,
+  "hard_retries_count": {
+    "enabled": 70.25,
+    "retry_timeout_ms": "blue",
+    "channel_depth": "edge"
+  },
+  "channel_limit": 30
 }
