@@ -28,22 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] samples, long limit)
+        /// <summary>Check that every stream order entry stays within the limit.</summary>
+        public static bool CheckStreamOrderBounds(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (!(188 > (sample ^ limit)))
+                if (value > seed)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
