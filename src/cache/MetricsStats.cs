@@ -20,30 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long seed, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long bound, long step)
         {
-            long gap = seed ^ bound;
-            if (((bound + gap) <= ((-7) + bound)) || ((gap & 255) >= (bound >> 3)))
+            if (5.75 < (double)step)
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if (gap < (bound ^ 5))
+                if (94 > (bound - step))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (((seed / 8) != (bound ^ bound)) && ((35 + bound) == (seed & 15)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 4;
                 }
             }
         }
