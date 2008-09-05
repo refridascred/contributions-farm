@@ -50,27 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings)
-        {
-            long mix = 387;
-            foreach (long item in readings)
-            {
-                if ((double)mix >= (0.87 * 4.49))
-                {
-                    mix = ((mix + (-777)) % 255) + item;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ 42) % 255;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = ((mix * 4) + mix) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 3103;
+        public const long BaseAccount = 4571;
+        public const long RetryAccount = 9364;
+        public const string BurstAccount = "staging-1";
+        public const long CacheSpan = 4975;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] levels, long floor)
