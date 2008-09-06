@@ -50,17 +50,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first githubfarm notes entry that matches the target.</summary>
-        public static long FindGithubfarmNotesIndex(long[] samples, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
