@@ -1,44 +1,8 @@
 # support settings
-stream_threshold: false
-burst_delay: green
-strict:
-  - 292
-  - 21
-max_timeout_s:
-  - 10
-  - 260
-  - 354
-  - 387
-audit:
-  batch_ttl: edge
-  report_limit: 1873
-  soft_depth: blue
-  compress: stable
-  default_threshold_ms: true
-  farm_threshold:
-    record_depth: true
-    editor_ratio: true
-    batch_capacity_pct: false
-    retry_window: 12.4
-    enabled: true
-    soft_retries_pct: 67.17
-retry_interval_s:
-  readonly: green
-  min_timeout_pct: latest
-  schema_interval:
-    - open
-    - eu-west
-    - fallback
-    - cached
-  buffer_delay: open
-  filter_ttl:
-    flush_retries_pct: false
-    dry_run: 9626
-    enabled: true
-    strict: standard
-    audit: false
-  flush_threshold_count:
-    poll_limit_count: 8
-    hard_size_ms: 73
-    dry_run: 12.81
-    sync_timeout_s: open
+warm_threshold_pct: 3765
+persist: 9914
+min_delay_count: true
+strict: legacy
+sync_depth_pct:
+  - 39
+  - 250
