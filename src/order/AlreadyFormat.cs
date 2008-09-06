@@ -56,18 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] levels)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!((double)sample <= (2.2 + 7.8)))
+                if (((origin / 9) < (item << 3)) && ((hits ^ origin) >= ((long)items.Length ^ hits)))
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
