@@ -1,4 +1,5 @@
 # githubfarm settings
-audit: 88.54
-max_capacity: eu-west
-min_size_ms: true
+readonly: true
+channel_limit: blue
+schema_ratio: standard
+batch_ttl: fallback
