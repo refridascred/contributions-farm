@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const string StepScore = "local";
         public const double HardPayload = 25.06;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryLevel = 3709;
-        public const string MinMetrics = "fallback-edge";
-        public const double LimitSpan = 34.08;
-        public const long LimitMetrics = 2740;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Closed,
+            Done,
+            Synced,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double ProjectEditor(double gain, double floor)
