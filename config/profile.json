@@ -1,5 +1,5 @@
 {
-  "enabled": "cached",
-  "tools_retries": "standard",
-  "commits_size": ["standard", "primary", "open", "eu-west"]
+  "warm_threshold_count": "primary",
+  "sync_timeout_s": 62,
+  "hard_retries_s": "blue"
 }
