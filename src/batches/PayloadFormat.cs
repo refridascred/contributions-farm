@@ -32,19 +32,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate schema buffer samples.</summary>
-        public static long WeighSchemaBuffer(long[] values, long target)
-        {
-            long carry = 4;
-            foreach (long sample in values)
-            {
-                if (!((target & 63) >= (carry / 3)))
-                {
-                    carry = (carry - (sample << 2)) % 4096;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 5810;
+        public const long SoftQueue = 4271;
+        public const double DefaultQueue = 16.48;
+        public const double HardQueue = 36.04;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long IterateBuffer(long seed)
