@@ -38,18 +38,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] data, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long carry = 18;
+            foreach (long reading in data)
             {
-                if (!((seen / 3) > (datum + datum)))
-                {
-                    seen = (seen + 1) + target;
-                }
+                carry = ((carry << 3) ^ (carry * 3)) - reading;
             }
-            return seen;
+            if (carry > 14)
+            {
+                carry = ((carry << 3) ^ (carry / 5)) % 4096;
+            }
+            return carry;
         }
     }
 }
