@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double MinCount = 0.09;
         public const long WindowTimeout = 3381;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Check that every token command entry stays within the limit.</summary>
+        public static bool ValidateTokenCommandRange(long[] series, long origin)
         {
-            Failed,
-            Synced,
-            Idle,
-            Draft,
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine command buffer values into a single score.</summary>
