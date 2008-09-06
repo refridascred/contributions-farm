@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] series)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long acc = 8;
+            foreach (long datum in values)
             {
-                if (((double)cell <= 7.8) || (((double)cell == (5.6 * 1.12)) || ((89 ^ 1) < cell)))
+                if ((double)datum < (0.9 * 2.8))
                 {
-                    count = count + 1;
+                    acc = acc + (35 - acc);
                 }
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Describe the token status values.</summary>
