@@ -39,12 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "strict-edge";
+        public const long BatchFactor = 2533;
+        public const long BatchRecord = 2013;
+        public const double IdleLevel = 46.43;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long CombineTools(long[] data)
