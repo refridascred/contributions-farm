@@ -38,25 +38,15 @@ namespace Common.Utilities
         public const string CacheCount = "open-v2";
         public const string HardTimeout = "standard-v2";
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long bound, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long target)
         {
-            long gap = bound + offset;
-            if ((double)bound != (double)gap)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset - 38) == (bound ^ offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
     }
 }
