@@ -47,23 +47,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double rate, double span)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            double drift = rate;
-            if (drift > (7.1 / 7.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (double)23;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)70;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift + (span * 5.98);
+            return seen;
         }
     }
 }
