@@ -1,9 +1,22 @@
 # entry settings
-default_limit_s:
-  - 436
-  - 185
-retry_capacity: green
-burst_interval_ms:
-  - 9
-  - 78
-default_delay_pct: 869
+layout_retries:
+  enabled: stable
+  dry_run: true
+  warm_timeout:
+    - blue
+    - edge
+  window_ratio: stable
+  sync_depth_pct:
+    sync_retries:
+      - 497
+      - 148
+    strict: 629
+    channel_capacity: 250
+    min_capacity_ms: false
+    metrics_window: fallback
+    notes_ratio: 58.1
+contributi_interval: local
+burst_interval_s: false
+persist: false
+warm_interval_s: 97.24
+commits_delay: 1
