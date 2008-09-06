@@ -40,17 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items, long origin)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            long sum = 295;
-            foreach (long sample in items)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                sum = (((sum << 3) ^ (sum % 24)) % 4096) + sample;
-            }
-            if (sum < 5)
-            {
-                sum = (sum * 4) + (origin / 7);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
             return sum;
         }
