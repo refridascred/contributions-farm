@@ -1,23 +1,5 @@
 # githubfarm settings
-farm_interval:
-  compress: 1024
-  window_interval: staging
-  sync_timeout:
-    - edge
-    - blue
-    - open
-    - green
-  retry_window_pct:
-    soft_window_ms: false
-    hard_interval_ms: false
-    sync_timeout_count: stable
-  batch_timeout:
-    - 30
-    - 243
-  warm_ttl_ms: 94
-dry_run:
-  - edge
-  - strict
-  - blue
-  - cached
-strict: 60
+githubfarm_limit: standard
+warm_depth_ms: 30
+dry_run: 37.03
+token_timeout: 1024
