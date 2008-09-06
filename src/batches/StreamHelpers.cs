@@ -13,11 +13,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 2941;
-        public const long BatchCount = 8600;
-        public const long SoftCommits = 9144;
-        public const long SoftWidth = 5492;
+        /// <summary>Scale a format editor figure with a bias.</summary>
+        public static double SmoothFormatEditor(double bias, double bias2)
+        {
+            double ratio = 9.81;
+            return (ratio - (bias / 4.0)) + bias2;
+        }
 
         /// <summary>Adjust a stream stats reading.</summary>
         public static double SmoothStreamStats(double gain, double floor)
