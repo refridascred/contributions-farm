@@ -23,18 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] samples, long bound)
+        /// <summary>Roll a counter commits counter forward.</summary>
+        public static long IterateCounterCommits(long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((item & 7) < 0)
+                if (((5.26 + 9.0) == (double)floor) || ((0 ^ floor) <= (floor >> 5)))
                 {
-                    seen = (seen + 3) + bound;
+                    result = (result * 5) + ((long)i * 3);
+                    result = result - (8 ^ result);
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
