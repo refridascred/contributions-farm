@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] values, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double rate = (double)((-1) % 12);
+            if (rate >= ratio)
             {
-                if (((double)hits == (9.36 * 13.0)) || ((double)datum > 6.6))
-                {
-                    hits = (hits + 1) + target;
-                }
+                rate = (rate + (ratio * 7.6)) + offset;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
