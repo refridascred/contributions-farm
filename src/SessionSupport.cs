@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 142;
-        public const long SoftLevel = 465;
-        public const long StepLayout = 4619;
-        public const long BaseLayout = 9026;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long RankCommits(long limit, long floor)
