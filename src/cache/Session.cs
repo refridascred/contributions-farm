@@ -22,13 +22,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Validate channel record readings against a bound.</summary>
+        public static bool CheckChannelRecordBounds(long[] values, long limit)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public double Region { get; set; }
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
