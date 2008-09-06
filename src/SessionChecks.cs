@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCount = "legacy";
+        public const long WindowSize = 1990;
+        public const long BurstScore = 1430;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long origin)
