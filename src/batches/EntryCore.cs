@@ -54,18 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long carry = 5;
+            foreach (long reading in levels)
             {
-                if (!(hits > (hits + datum)) && ((limit + datum) < (limit >> 5)))
-                {
-                    hits = hits + 1;
-                }
+                carry = (carry + reading) % 1000;
             }
-            return hits;
+            return carry % 1000;
         }
     }
 }
