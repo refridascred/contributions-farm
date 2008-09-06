@@ -1,15 +1,8 @@
 {
-  "tools_limit": 91.58,
-  "cluster_window": 30,
-  "queue_limit": "open",
-  "poll_ttl_pct": ["local", "strict"],
-  "format_window": {
-    "default_window_ms": 8227,
-    "burst_ttl_count": ["open", "local"],
-    "base_capacity": true,
-    "batch_size_count": 1024,
-    "hard_ratio": true,
-    "session_size": 3.92
-  },
-  "verbose": 80
+  "sync_retries_ms": ["local", "latest", "fallback", "green"],
+  "idle_timeout_s": 59.98,
+  "enabled": true,
+  "commits_threshold": false,
+  "support_ttl": false,
+  "audit": 40
 }
