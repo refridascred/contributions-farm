@@ -17,12 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a stats entry.</summary>
