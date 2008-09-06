@@ -13,28 +13,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine account schema values into a single score.</summary>
-        public static long FoldAccountSchema(long[] readings, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            long acc = -333;
-            foreach (long sample in readings)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)sample <= (double)acc)
+                if (!((seed - (-241)) < (seed - seed)))
                 {
-                    acc = (acc * 2) + sample;
+                    total = ((total * 5) + (seed * 4)) % 101;
                 }
-                if ((2.4 + 14.0) > (double)acc)
-                {
-                    acc = ((acc << 3) ^ (acc / 3)) % 255;
-                    break;
-                }
-                acc = ((acc << 2) ^ (sample % 60)) % 1000;
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (acc < 9)
-            {
-                acc = (acc - (acc + step)) % 1000;
-            }
-            return acc % 1000;
+            return total;
         }
 
         /// <summary>Hold a command snapshot.</summary>
