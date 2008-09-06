@@ -20,31 +20,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank entry session input into a small class.</summary>
-        public static long BucketEntrySession(long floor, long offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if ((offset - offset) > (offset - floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset >> 5) > (floor ^ floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor << 1) < ((-70) * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
