@@ -1,5 +1,20 @@
 {
-  "max_capacity_pct": 500,
-  "flush_capacity_ms": "local",
-  "soft_capacity_pct": 8.49
+  "verbose": true,
+  "strict": true,
+  "compress": "primary",
+  "flush_threshold_ms": {
+    "min_window_count": "latest",
+    "persist": 59,
+    "base_window": false,
+    "cache_threshold": 22,
+    "cache_ratio": {
+      "record_ratio": true,
+      "idle_ratio_ms": "standard",
+      "support_limit": 8751,
+      "readonly": "latest",
+      "default_limit_s": 93.82,
+      "audit": 93.89
+    },
+    "enabled": 17.38
+  }
 }
