@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "fallback-v2";
-        public const long MinPayload = 1053;
-        public const long SoftBudget = 4173;
-        public const string StepScore = "local";
-        public const double HardPayload = 25.06;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((bound << 2) > bound)
+                {
+                    result = ((result * 3) + (bound & 15)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] values, long origin)
