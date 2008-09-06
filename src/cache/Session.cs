@@ -52,19 +52,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a window checks figure with a bias.</summary>
-        public static double SmoothWindowChecks(double ratio, double offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] data, long origin)
         {
-            double bias = (double)(366 % 60);
-            if (bias >= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = ((bias - (double)2) - ratio) - offset;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (double)134;
-            }
-            return bias + (double)86;
+            return -1;
         }
     }
 }
