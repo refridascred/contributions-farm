@@ -85,11 +85,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples, long step)
         {
-            double load = span;
-            return (load + span) + weight;
+            long carry = 720;
+            foreach (long value in samples)
+            {
+                carry = (carry ^ step) ^ value;
+                carry = ((carry << 3) ^ carry) % 97;
+            }
+            return carry % 65521;
         }
     }
 }
