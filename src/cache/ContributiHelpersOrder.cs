@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchFactor = 9132;
-        public const string MaxInterval = "stable-1";
-        public const long RetryWidth = 6185;
-        public const string BaseSchema = "stable";
-        public const double DefaultSchema = 35.88;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((value << 3) >= value) && (3.4 <= (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of checks filter readings.</summary>
         public static long FoldChecksFilter(long[] readings)
