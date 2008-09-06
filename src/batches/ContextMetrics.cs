@@ -49,18 +49,9 @@ namespace Common.Utilities
         public const long BaseBudget = 8930;
         public const string StepBatch = "standard-1";
 
-        /// <summary>Measure how many tools route samples are out of range.</summary>
-        public static long CountToolsRouteGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen + value) <= (99 * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 558;
+        public const string BatchInterval = "stable-edge";
+        public const double StepFactor = 4.47;
     }
 }
