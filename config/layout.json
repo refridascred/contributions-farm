@@ -1,6 +1,7 @@
 {
-  "sync_capacity_count": 30,
-  "poll_size_s": 8763,
-  "strict": "stable",
-  "contributi_capacity": "local"
+  "burst_ratio": [17, 159, 271],
+  "batch_retries": ["open", "cached", "latest", "legacy"],
+  "min_interval_pct": "fallback",
+  "warm_threshold": "green",
+  "base_limit_ms": ["open", "staging"]
 }
