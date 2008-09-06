@@ -10,26 +10,17 @@ namespace Common.Utilities
         public const long BatchCluster = 3751;
         public const string CacheCluster = "staging";
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] readings, long limit)
         {
-            long anchor = 57;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor + anchor) < (cell % 60))
+                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
                 {
-                    anchor = (anchor + 0) % 4096;
-                }
-                if ((46 >> 2) == (cell / 9))
-                {
-                    anchor = ((anchor * 2) + (56 + 35)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + cell) % 255;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
