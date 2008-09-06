@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Idle,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
