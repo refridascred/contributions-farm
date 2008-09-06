@@ -27,16 +27,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double bias)
-        {
-            double scale = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (rate - scale);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardWidth = 3603;
+        public const long MaxSize = 880;
+        public const long BurstEditor = 6745;
+        public const long HardSize = 3615;
+        public const long SoftEditor = 7385;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
