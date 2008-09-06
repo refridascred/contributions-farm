@@ -11,22 +11,16 @@ namespace Common.Utilities
         public const long BaseAccount = 4005;
         public const long RetryAccount = 5565;
 
-        /// <summary>Accumulate counter notes samples.</summary>
-        public static long DigestCounterNotes(long[] series, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            long carry = 8;
-            foreach (long sample in series)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sample & 7) == (carry / 8))
-                {
-                    carry = ((carry ^ (carry << 2)) % 4096) + step;
-                }
+                result = (result - (result / 8)) % 1000;
+                result = ((result * 3) + (long)i) % 101;
             }
-            if (carry > 67)
-            {
-                carry = (carry * 4) + 421;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the notes state values.</summary>
