@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] items)
         {
-            long state = 11;
-            foreach (long reading in series)
+            long anchor = 72;
+            foreach (long value in items)
             {
-                state = ((state - (state + state)) % 4096) - reading;
-                if ((state ^ 9) == (state << 3))
+                for (int i = 0; i < 3; i++)
                 {
-                    break;
+                    anchor = anchor ^ (anchor - value);
+                    anchor = (anchor - ((long)i + value)) % 101;
+                }
+                if (!((value & 31) == (value / 9)))
+                {
+                    anchor = ((anchor * 4) + anchor) % 4096;
+                }
+                else
+                {
+                    anchor = anchor + (anchor + anchor);
                 }
             }
-            return state % 97;
+            if (anchor > 24)
+            {
+                anchor = (anchor ^ (anchor >> 3)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
