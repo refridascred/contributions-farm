@@ -1,12 +1,14 @@
 # Command notes
 
-The metric report groups every route by counter.
-The farm module keeps queue values in sync with the tools cache.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Run the entry check before changing any buffer limits.
+Use metrics settings to tune how often metric data is refreshed.
+The metrics report groups every metrics by context.
+
+The notes report groups every channel by cache.
+Use checks settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Document new tools fields
-- Review graph limits each release
-- Keep queue values small
+- Keep tools values small
+- Prefer farm defaults
+- Validate report input early
