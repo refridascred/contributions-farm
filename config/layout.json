@@ -1,6 +1,5 @@
 {
-  "max_depth_count": 8700,
-  "sync_ratio_count": 7580,
-  "compress": 0.1,
-  "hard_limit": "stable"
+  "strict": 30,
+  "warm_size": 1,
+  "cache_depth_pct": "staging"
 }
