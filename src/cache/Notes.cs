@@ -44,11 +44,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
