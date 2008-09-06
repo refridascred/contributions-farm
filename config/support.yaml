@@ -1,15 +1,8 @@
 # support settings
-metrics_delay: true
-idle_timeout_count: local
-window_size: fallback
-hard_delay_count:
-  - fallback
-  - standard
+batch_limit: 29.92
+persist:
+  - stable
+  - legacy
+  - legacy
   - edge
-default_interval_count: 16.83
-verbose:
-  audit: 2.87
-  notes_timeout: strict
-  readonly: open
-  idle_ttl_ms: legacy
-  base_threshold_ms: primary
+poll_ttl: 23.97
