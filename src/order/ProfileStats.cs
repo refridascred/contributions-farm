@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
