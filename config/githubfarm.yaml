@@ -1,7 +1,4 @@
 # githubfarm settings
-payload_delay: 60.96
-hard_limit_count: fallback
-flush_timeout: 60
-batch_timeout: strict
-enabled: cached
-min_limit: 91.5
+idle_window_count: blue
+poll_capacity: false
+sync_threshold: 4008
