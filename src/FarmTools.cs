@@ -24,16 +24,11 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double weight, double bias)
-        {
-            double gain = weight;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain - (1.0 + gain)) + (double)(long)i) + bias;
-            }
-            return gain - (double)9;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSize = 953;
+        public const string MinProfile = "staging-v2";
+        public const long StepSize = 6693;
+        public const string IdleProfile = "latest-v2";
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] items, long origin)
