@@ -24,20 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double offset)
-        {
-            double ratio = (offset + 13.0) / 8.0;
-            if (ratio <= (ratio - 12.0))
-            {
-                ratio = ratio + (double)9;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio + 3.23;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxSize = 59.87;
+        public const string DefaultBatch = "staging";
+        public const long DefaultBudget = 4588;
+        public const long MaxBatch = 2403;
+        public const string RetryBatch = "cached";
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double weight, double bias)
