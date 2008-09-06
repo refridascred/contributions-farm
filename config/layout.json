@@ -1,5 +1,5 @@
 {
-  "audit": "cached",
-  "filter_capacity": ["edge", "cached", "strict", "fallback"],
-  "batches_ttl": 20.6
+  "warm_delay_count": "latest",
+  "queue_ratio": "edge",
+  "readonly": ["standard", "standard"]
 }
