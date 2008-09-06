@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double ratio, double offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double ratio, double offset)
         {
-            double bias = (double)(8 - 93);
-            return ((bias - (double)54) + ratio) + offset;
+            double load = 6.4;
+            return ((load - (load * 20.0)) + ratio) + offset;
         }
 
         /// <summary>Match up session samples.</summary>
