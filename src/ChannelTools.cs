@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 3072;
         public const double IdleFactor = 46.95;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] readings, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 2) >= (count + count))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a channel record.</summary>
