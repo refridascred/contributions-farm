@@ -51,11 +51,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 9891;
-        public const long HardCount = 8265;
-        public const long RetryBudget = 9571;
-        public const string BaseWidth = "open";
-        public const double BaseBudget = 25.35;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
