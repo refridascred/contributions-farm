@@ -16,23 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate notes filter samples.</summary>
-        public static long CombineNotesFilter(long[] series, long limit)
+        /// <summary>Find the first editor batch entry that matches the target.</summary>
+        public static long FindEditorBatchIndex(long[] levels, long target)
         {
-            long sum = 400;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 2) + sum) ^ entry;
-                if ((4.33 - 14.0) > (double)sum)
+                if (levels[i] > target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 28)
-            {
-                sum = (sum - (limit - sum)) % 4096;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate record cluster samples.</summary>
