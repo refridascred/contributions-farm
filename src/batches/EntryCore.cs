@@ -54,16 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                acc = acc - (acc & 63);
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (!(hits > (hits + datum)) && ((limit + datum) < (limit >> 5)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
