@@ -14,12 +14,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSize = 2927;
-        public const double BaseBudget = 8.05;
-        public const long IdleFilter = 3876;
-        public const string DefaultFilter = "open-1";
-        public const long LimitFilter = 9458;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total << 2) ^ 28;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchInterval = "staging";
