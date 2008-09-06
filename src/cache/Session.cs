@@ -19,18 +19,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] items, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (tally >= (tally % 97))
+                if ((entry - entry) <= (6 * 4))
                 {
-                    tally = ((tally + 2) + item) - step;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
