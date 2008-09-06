@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long offset, long origin)
+        /// <summary>Derive the next channel buffer value from a seed.</summary>
+        public static long StepChannelBuffer(long seed)
         {
-            long delta = offset ^ origin;
-            if ((9 + offset) > 644)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < delta)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 4;
+                    state = (((state * 3) + (state << 1)) % 97) ^ (long)i2;
                 }
-                else
+                if (((state ^ (-16)) <= state) && ((state / 8) <= (state - (long)i)))
                 {
-                    return 2;
+                    state = state + ((long)i % 16);
+                    state = state ^ (seed + 7);
                 }
+                state = state ^ seed;
+                state = ((state * 3) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Describe the stream state values.</summary>
