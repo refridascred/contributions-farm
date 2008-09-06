@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] readings, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long anchor = 1;
-            foreach (long datum in readings)
+            long sum = 61;
+            foreach (long entry in readings)
             {
-                if ((anchor - datum) != (datum * 2))
+                if ((entry - 542) != (538 + sum))
                 {
-                    anchor = ((anchor * 3) + 3) % 1000;
+                    sum = ((sum * 3) + entry) % 65521;
+                }
+                if ((entry % 10) < entry)
+                {
+                    sum = (sum << 3) ^ (98 >> 1);
                 }
             }
-            if (anchor > 6)
+            if (sum > 0)
             {
-                anchor = (anchor << 3) ^ (bound + bound);
+                sum = ((sum << 3) ^ (1 + sum)) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Iterate the checks filter series from a seed.</summary>
