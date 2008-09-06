@@ -1,6 +1,8 @@
-id,label,ratio,token
-1,36,blue,41.54
-2,58.29,530,904
-3,86.53,1.56,89.59
-4,open,11.15,local
-5,249,216,626
+id,token,count,level
+1,71.86,15.58,284
+2,primary,standard,61.33
+3,standard,latest,26.38
+4,889,35.86,295
+5,edge,31.61,596
+6,59,58.39,830
+7,latest,staging,494
