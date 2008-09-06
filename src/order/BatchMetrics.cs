@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 26.39;
-        public const long BurstReport = 8992;
-        public const string RetryDepth = "primary";
-        public const string StepReport = "latest";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 89.56;
+        public const double WindowWidth = 66.41;
+        public const string HardBuffer = "fallback-edge";
+        public const double SoftSize = 27.67;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MaxTimeout = 439;
