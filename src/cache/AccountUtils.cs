@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long offset)
         {
-            long mark = 33;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.68 / 9.0) == (double)mark)
+                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
                 {
-                    mark = ((mark - (mark << 2)) % 255) - reading;
+                    return (long)i;
                 }
             }
-            if (mark < 3)
-            {
-                mark = (mark << 3) ^ (mark / 9);
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Project the next commits metric value.</summary>
