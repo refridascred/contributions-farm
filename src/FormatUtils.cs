@@ -37,39 +37,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank profile route input into a small class.</summary>
-        public static long BucketProfileRoute(long step, long target)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long diff = step - target;
-            if (diff < (diff & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)diff > (0.01 / 9.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step >> 2) <= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (diff >= (diff + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit order counter readings against a rule.</summary>
