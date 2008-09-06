@@ -39,14 +39,25 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long target, long origin)
         {
-            Paused,
-            Queued,
-            Dropped,
-            Done,
-            Ready,
+            long offset = target - origin;
+            if ((7.2 - 6.0) < (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset - 11) != (offset + target)) && ((8.0 - 5.2) != (double)origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
