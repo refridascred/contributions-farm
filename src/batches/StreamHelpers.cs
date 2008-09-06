@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Closed,
-            Queued,
-            Done,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultSize = 25.16;
+        public const double LimitStream = 5.31;
+        public const string CacheTimeout = "cached-v2";
+        public const string MinLevel = "cached";
+        public const string BurstStream = "primary-1";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long target, long seed)
