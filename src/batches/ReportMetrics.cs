@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long MaxLevel = 5934;
         public const long StepContext = 898;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] data)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] series)
         {
             long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(124 <= seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) ^ value;
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
