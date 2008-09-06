@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] readings)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((count + cell) >= (count >> 3))
-                {
-                    count = count + 2;
-                }
+                result = ((result * 2) + seed) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate context samples.</summary>
