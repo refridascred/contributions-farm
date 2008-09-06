@@ -1,5 +1,5 @@
 {
-  "filter_delay": "stable",
-  "batch_window": "strict",
-  "dry_run": true
+  "min_threshold_s": 30,
+  "warm_interval": true,
+  "stream_threshold": "stable"
 }
