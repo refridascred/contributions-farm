@@ -53,12 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitWidth = 6483;
-        public const long HardScore = 8233;
-        public const string MaxNotes = "staging-1";
-        public const long LimitInterval = 5211;
-        public const long IdleNotes = 1669;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits + datum) > (datum + datum))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] readings)
