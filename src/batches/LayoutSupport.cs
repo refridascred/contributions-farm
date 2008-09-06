@@ -30,18 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((15.0 + 7.8) <= (double)sample) && !((tally ^ (long)values.Length) < tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
