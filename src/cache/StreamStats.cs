@@ -13,11 +13,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 2372;
-        public const long HardCache = 4125;
-        public const long RetryCache = 3124;
-        public const long MaxCache = 6114;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (tally > (37 + datum))
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double ScaleFarm(double bias, double bias2)
