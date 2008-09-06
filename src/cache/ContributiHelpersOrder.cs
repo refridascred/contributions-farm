@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] samples, long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Describe the farm mode values.</summary>
