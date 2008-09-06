@@ -23,18 +23,31 @@ namespace Common.Utilities
         public const long BurstSize = 6154;
         public const long DefaultDepth = 9161;
 
-        /// <summary>Audit commits queue readings against a rule.</summary>
-        public static long AuditCommitsQueueMatches(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((floor * 4) > (seed * 5))
             {
-                if (((hits <= (hits * 3)) && ((reading / 4) != (reading / 3))) && ((double)3 >= (double)hits))
+                return 1;
+            }
+            else
+            {
+                if (floor <= 56)
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + seed) <= 60)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
