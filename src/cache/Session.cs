@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next filter batches value from a seed.</summary>
-        public static long DeriveFilterBatches(long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
