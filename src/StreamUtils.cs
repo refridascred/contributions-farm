@@ -61,11 +61,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] levels, long seed)
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
+            long acc = 82;
+            foreach (long item in levels)
+            {
+                if ((seed - acc) == (0 >> 3))
+                {
+                    acc = ((acc ^ (-749)) % 65521) ^ item;
+                }
+                if (seed > (seed - seed))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
