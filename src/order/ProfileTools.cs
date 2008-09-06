@@ -54,19 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] readings, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] levels)
         {
-            long state = 6;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                state = ((state ^ (reading % 64)) % 255) - limit;
+                if (771 >= value)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (state > 8)
-            {
-                state = (state ^ state) % 101;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
