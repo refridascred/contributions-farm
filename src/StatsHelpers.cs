@@ -45,22 +45,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data, long origin)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] series, long limit)
         {
-            long sum = 8;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading / 3) >= reading)
+                if (series[i] >= limit)
                 {
-                    sum = ((sum << 3) ^ (origin << 3)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum < 785)
-            {
-                sum = (sum << 2) ^ origin;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Roll a metrics batch counter forward.</summary>
