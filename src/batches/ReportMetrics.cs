@@ -52,21 +52,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long limit, long limit2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = limit + limit2;
+            if ((limit + (-2)) < (lane - 277))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((lane / 9) <= (304 * 4))
                 {
-                    if ((samples[i] - samples[j]) == 0)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit >= (double)lane)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((23 - (-46)) >= (limit + limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
