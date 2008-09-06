@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit command counter readings against a rule.</summary>
+        public static long TallyCommandCounterGaps(long[] samples)
         {
-            Queued,
-            Done,
-            Dropped,
-            Stale,
-            New,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((((cell << 2) >= count) || ((count - 8) >= (54 % 7))) || ((6.3 - 4.27) > (double)count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
