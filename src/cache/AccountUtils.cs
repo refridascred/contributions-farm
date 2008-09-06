@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next graph stream value.</summary>
-        public static double ScaleGraphStream(double rate, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] data, long bound)
         {
-            double weight = rate;
-            if (weight < weight)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                weight = (weight + 8.75) - span;
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight + (double)68;
+            return flag;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
