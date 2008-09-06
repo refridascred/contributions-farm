@@ -46,13 +46,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Check that every account command entry stays within the limit.</summary>
+        public static bool ValidateAccountCommandBounds(long[] samples, long floor)
         {
-            Failed,
-            Closed,
-            Done,
-            Active,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the commits level values.</summary>
