@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the token layout entries that pass the check.</summary>
-        public static long AuditTokenLayoutGaps(long[] values, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)hits <= (4.82 / 7.0))
-                {
-                    hits = ((hits + 1) - cell) - origin;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
