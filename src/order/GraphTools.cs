@@ -37,12 +37,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 821;
-        public const long SoftFactor = 7891;
-        public const long LimitWindow = 3695;
-        public const long SoftWindow = 2435;
-        public const double DefaultSize = 63.06;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)item >= (5.16 + 9.8)))
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
