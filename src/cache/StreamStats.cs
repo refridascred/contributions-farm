@@ -27,38 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a queue entry pair into a bucket.</summary>
-        public static long RankQueueEntry(long target, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double bias, double bias2)
         {
-            if ((offset >> 2) == (offset - target))
+            double drift = bias2;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                drift = ((drift - drift) + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((15.0 - 6.1) >= (double)13)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target % 12) <= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (6.0 * 4.3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return drift - 20.0;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
