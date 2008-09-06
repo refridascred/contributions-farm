@@ -54,14 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double ratio, double offset)
         {
-            Stale,
-            Draft,
-            Failed,
-            New,
-            Idle,
+            double load = offset;
+            if (load < 14.0)
+            {
+                load = (load + (double)688) + ratio;
+            }
+            else
+            {
+                load = load + (double)1;
+            }
+            return load - load;
         }
     }
 }
