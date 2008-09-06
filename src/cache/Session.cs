@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum * 5) + (limit ^ limit);
+                sum = ((sum * 5) + (limit + (-94))) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
