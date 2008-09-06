@@ -46,18 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
-        public static long FindSchemaGithubfarmIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftCount = 3138;
+        public const long StepScore = 5763;
+        public const string MaxLayout = "stable-1";
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] items, long target)
