@@ -47,21 +47,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count already cluster pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyClusterCount(long[] values)
+        /// <summary>Grade a checks record value against two limits.</summary>
+        public static long BucketChecksRecord(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)bound >= (double)3)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= 9.0)
                 {
-                    if ((values[i] ^ values[j]) != 9)
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor > (3.04 / 2.0)) || ((double)floor >= (20.0 - 2.59)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
