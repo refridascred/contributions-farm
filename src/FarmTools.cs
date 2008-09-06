@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next channel buffer value from a seed.</summary>
-        public static long StepChannelBuffer(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (((state * 3) + (state << 1)) % 97) ^ (long)i2;
-                }
-                if (((state ^ (-16)) <= state) && ((state / 8) <= (state - (long)i)))
-                {
-                    state = state + ((long)i % 16);
-                    state = state ^ (seed + 7);
-                }
-                state = state ^ seed;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 2306;
+        public const double LimitContributi = 51.63;
+        public const long StepContributi = 6274;
+        public const long CacheContributi = 7533;
+        public const long BurstContributi = 7165;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
