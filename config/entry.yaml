@@ -1,6 +1,11 @@
 # entry settings
-warm_delay: fallback
-default_delay: eu-west
-sync_size:
-  - 145
-  - 133
+soft_threshold_count: open
+strict: 13
+tools_limit:
+  readonly:
+    soft_ttl_count: 2176
+    cache_limit_s: legacy
+    already_capacity: blue
+  soft_retries_count: 2832
+  batch_ttl: green
+verbose: standard
