@@ -1,15 +1,11 @@
 {
-  "min_timeout": false,
-  "dry_run": 21,
-  "soft_timeout_pct": false,
-  "base_ratio_s": {
-    "retry_ttl": "staging",
-    "cache_delay_s": "edge",
-    "batch_delay_count": {
-      "hard_interval_ms": "legacy",
-      "idle_limit_s": "cached",
-      "flush_limit_count": 500,
-      "farm_retries": "eu-west"
-    }
+  "retry_ttl_ms": "cached",
+  "warm_size": 500,
+  "commits_retries": 95,
+  "stream_ratio": {
+    "strict": "open",
+    "route_size": ["open", "local"],
+    "min_delay_ms": "primary",
+    "min_capacity_count": "eu-west"
   }
 }
