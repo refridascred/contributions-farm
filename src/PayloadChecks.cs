@@ -64,19 +64,13 @@ namespace Common.Utilities
         public const long LimitLevel = 1712;
         public const long HardCount = 7663;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] values, long limit)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Stale,
+            Idle,
+            Active,
         }
     }
 }
