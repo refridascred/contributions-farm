@@ -56,13 +56,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Queued,
-            Pending,
-            Paused,
-            Active,
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
