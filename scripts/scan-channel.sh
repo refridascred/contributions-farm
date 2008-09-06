@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict eu-west primary legacy; do
-    log "checking ${item}"
-done
+mode="${1:-strict}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
