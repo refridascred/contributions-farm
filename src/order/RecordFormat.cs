@@ -52,11 +52,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 5728;
-        public const long IdleCluster = 1682;
-        public const double HardCluster = 34.83;
-        public const long LimitSize = 2489;
-        public const string MaxLevel = "latest-v2";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = anchor - (floor + floor);
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
