@@ -43,17 +43,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 2192;
         public const long LimitInterval = 8937;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Look up the position of a contributi token sample.</summary>
