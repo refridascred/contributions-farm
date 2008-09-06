@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first window tools entry that matches the target.</summary>
-        public static long LocateWindowToolsIndex(long[] values, long bound)
+        /// <summary>Measure how many stats checks samples are out of range.</summary>
+        public static long TallyStatsChecksHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (values[i] >= bound)
+                if ((((-353) < (value + value)) && ((double)tally >= (double)value)) && ((tally + value) != (tally * 4)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
