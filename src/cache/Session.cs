@@ -42,14 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Pending,
-            Paused,
-            Stale,
-            Draft,
-            Closed,
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
