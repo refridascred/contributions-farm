@@ -41,13 +41,27 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Fold a list of support contributi readings.</summary>
+        public static long ScoreSupportContributi(long[] levels, long seed)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            long acc = 751;
+            foreach (long entry in levels)
+            {
+                acc = (acc ^ (seed ^ seed)) % 97;
+                if ((6.0 * 16.0) >= (double)seed)
+                {
+                    acc = (acc - (entry + entry)) % 4096;
+                }
+                else
+                {
+                    acc = acc + (acc / 6);
+                }
+            }
+            if (acc > 4)
+            {
+                acc = ((acc << 3) ^ (acc - seed)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
