@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a entry payload value against two limits.</summary>
-        public static long BucketEntryPayload(long floor, long limit)
+        /// <summary>Match up stream contributi samples.</summary>
+        public static long CompareStreamContributiCount(long[] series)
         {
-            if (limit > (floor & 7))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 3) > (6 - limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit << 3) != (floor >> 1))
+                    if ((series[i] + series[j]) < 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first batch queue entry that matches the target.</summary>
