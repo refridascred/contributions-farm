@@ -19,13 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            Ready,
-            Draft,
-            Active,
-            Queued,
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((mix ^ origin) != ((long)i - origin))
+                {
+                    mix = ((mix << 2) ^ (mix & 127)) % 4096;
+                    break;
+                }
+                if (!((2.85 / 5.0) != (double)origin))
+                {
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the record mode values.</summary>
