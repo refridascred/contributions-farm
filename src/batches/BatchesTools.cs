@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "standard-edge";
-        public const long HardCount = 2951;
-        public const long BaseInterval = 6051;
-        public const long CacheMetrics = 7698;
-        public const string RetryMetrics = "standard-1";
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
