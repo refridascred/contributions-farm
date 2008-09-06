@@ -1,7 +1,7 @@
 {
-  "dry_run": "edge",
-  "max_retries_s": ["local", "local", "blue"],
-  "idle_ttl": [201, 268, 146, 90],
-  "audit": "green",
-  "token_depth": ["edge", "primary", "primary"]
+  "flush_ratio_pct": "edge",
+  "batch_capacity_pct": true,
+  "strict": "primary",
+  "counter_window": 21,
+  "warm_size_pct": "eu-west"
 }
