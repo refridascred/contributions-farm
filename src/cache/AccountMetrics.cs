@@ -62,14 +62,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Idle,
-            Queued,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 89.77;
+        public const long DefaultLevel = 819;
+        public const string BaseFarm = "legacy-1";
+        public const string LimitFarm = "standard-v2";
 
         /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
         public static long MeasureBatchGithubfarmHits(long[] series, long offset)
