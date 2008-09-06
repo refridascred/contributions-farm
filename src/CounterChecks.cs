@@ -13,13 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] samples, long offset)
         {
-            Done,
-            Synced,
-            Stale,
-            New,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
