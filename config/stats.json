@@ -1,6 +1,5 @@
 {
-  "retry_capacity": true,
-  "cache_timeout_s": 62,
-  "sync_depth_s": 1024,
-  "notes_timeout": "staging"
+  "max_ratio_s": "strict",
+  "min_threshold": 35.41,
+  "readonly": 69
 }
