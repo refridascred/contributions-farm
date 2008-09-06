@@ -64,17 +64,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long target)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
