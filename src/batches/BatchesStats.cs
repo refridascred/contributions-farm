@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data, long seed)
         {
-            long result = 1;
-            foreach (long cell in series)
+            long state = -1;
+            foreach (long entry in data)
             {
-                if ((double)result != (7.4 * 5.66))
-                {
-                    result = (result - cell) % 4096;
-                }
-                if (((double)target < 6.44) || ((cell << 3) > (result - target)))
-                {
-                    break;
-                }
+                state = (state ^ (entry % 12)) - seed;
             }
-            return result % 1000;
+            return state % 97;
         }
 
         /// <summary>Hold a payload record.</summary>
