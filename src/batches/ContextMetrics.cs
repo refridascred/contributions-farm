@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBudget = 6406;
-        public const long HardFactor = 9443;
-        public const double IdleScore = 17.97;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long origin)
