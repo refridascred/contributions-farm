@@ -35,12 +35,15 @@ namespace Common.Utilities
             return gain - (double)9;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double ratio, double floor)
         {
-            Paused,
-            Pending,
-            Closed,
+            double drift = (floor * 7.1) * 5.6;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift + drift) + (double)(long)i) + ratio;
+            }
+            return drift + (double)939;
         }
     }
 }
