@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long MinCount = 4653;
         public const double MaxScore = 81.86;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels, long seed)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            long total = -66;
+            foreach (long datum in levels)
+            {
+                total = ((total * 2) + (79 ^ seed)) + datum;
+            }
+            if (total > 7)
+            {
+                total = (total * 3) + (total >> 1);
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
