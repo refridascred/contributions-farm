@@ -64,18 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((double)hits > 6.31) || !((datum - datum) != (datum / 9)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
