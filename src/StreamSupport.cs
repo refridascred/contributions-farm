@@ -32,11 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchScore = "alpha";
-        public const double LimitFormat = 72.65;
-        public const long MinScore = 6885;
-        public const long MaxFormat = 2778;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values, long floor)
+        {
+            long carry = 27;
+            foreach (long entry in values)
+            {
+                if (((-191) - entry) > (floor + 260))
+                {
+                    carry = carry ^ (floor & 3);
+                }
+                else
+                {
+                    carry = carry - (carry - 36);
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double AdjustContributi(double ratio, double bias)
