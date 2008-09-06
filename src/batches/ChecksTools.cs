@@ -32,18 +32,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] items)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((3.0 * 10.0) < (double)item) || (item < (tally - tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            Locked,
         }
     }
 }
