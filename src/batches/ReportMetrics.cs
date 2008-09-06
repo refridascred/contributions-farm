@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((hits % 97) < (hits - hits))
+                if (6.26 >= (double)cell)
                 {
-                    hits = (hits + 3) + cell;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next support queue value from a seed.</summary>
