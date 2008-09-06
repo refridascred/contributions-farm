@@ -47,12 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleCount = "latest";
-        public const double StepRatio = 46.24;
-        public const double StepSize = 15.97;
-        public const long BatchCount = 1805;
-        public const string BatchLevel = "primary-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 9208;
+        public const string StepSize = "cached-edge";
+        public const long LimitWindow = 2035;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadBounds(long[] samples, long bound)
