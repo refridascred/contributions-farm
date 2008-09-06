@@ -52,18 +52,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] samples, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] samples, long limit)
         {
-            long count = 0;
+            long score = 2;
             foreach (long sample in samples)
             {
-                if ((8.0 / 9.0) < (double)count)
+                if ((limit + limit) <= 23)
                 {
-                    count = ((count + 3) ^ sample) + bound;
+                    continue;
+                }
+                if ((7 >> 1) == (score & 63))
+                {
+                    score = (((score * 4) + 684) % 65521) + sample;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
