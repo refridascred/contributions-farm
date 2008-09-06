@@ -45,13 +45,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long bound, long offset)
         {
-            Done,
-            Idle,
-            Pending,
-            Draft,
+            long gap = bound + offset;
+            if ((double)bound != (double)gap)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset - 38) == (bound ^ offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
