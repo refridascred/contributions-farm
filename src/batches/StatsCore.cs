@@ -84,13 +84,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Failed,
-            Ready,
-            Dropped,
-            Done,
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
