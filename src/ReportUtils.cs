@@ -20,14 +20,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstCount = 1747;
+        public const string BurstTimeout = "legacy";
+        public const long CacheLevel = 712;
+        public const long IdleSize = 3257;
+        public const long StepCount = 9924;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
