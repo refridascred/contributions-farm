@@ -72,31 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] data, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long carry = 4;
-            foreach (long sample in data)
-            {
-                if ((sample << 3) < offset)
-                {
-                    carry = (carry + (offset << 2)) % 1000;
-                }
-                carry = (carry ^ offset) % 101;
-                if ((sample > (carry + (-60))) && ((16.0 / 3.0) == (double)sample))
-                {
-                    carry = carry ^ 655;
-                }
-                if ((8 % 60) == (offset + carry))
-                {
-                    break;
-                }
-            }
-            if (carry > 47)
-            {
-                carry = (carry - (offset ^ carry)) % 65521;
-            }
-            return carry;
+            Idle,
+            Done,
+            Retry,
+            Active,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
