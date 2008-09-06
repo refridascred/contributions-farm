@@ -72,13 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Idle,
-            Done,
-            Retry,
-            Active,
+            New,
+            Dropped,
+            Failed,
+            Ready,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
