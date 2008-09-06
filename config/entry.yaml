@@ -1,7 +1,12 @@
 # entry settings
-batch_timeout: 74.71
-audit: false
-hard_window_pct: 6578
-base_depth: 2.93
-max_window_s: open
-flush_interval_s: false
+readonly: eu-west
+hard_limit:
+  - 295
+  - 6
+strict:
+  min_interval_pct:
+    - blue
+    - eu-west
+  verbose: false
+  base_capacity_ms: latest
+  sync_ratio_ms: true
