@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate layout filter readings against a bound.</summary>
-        public static bool VerifyLayoutFilterBounds(long[] values, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (sample >= origin)
+                if (matches > (cell >> 4))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a filter summary.</summary>
