@@ -20,32 +20,11 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long floor)
-        {
-            if ((floor >> 1) <= (floor ^ floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target >= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.23 - 0.24) != (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 26.39;
+        public const long BurstReport = 8992;
+        public const string RetryDepth = "primary";
+        public const string StepReport = "latest";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long SoftCount = 3138;
