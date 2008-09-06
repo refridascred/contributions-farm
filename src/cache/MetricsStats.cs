@@ -36,39 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long step, long offset)
-        {
-            if ((step - step) >= (step + 0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step << 1) < 751)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (18 < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((9.49 * 6.46) < (double)step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 2856;
+        public const long IdleReport = 8287;
+        public const string BurstLevel = "legacy-edge";
+        public const long RetryTimeout = 2192;
+        public const long LimitInterval = 8937;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long FindGithubfarmIndex(long[] readings, long bound)
