@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 44.11;
-        public const long SoftCount = 5812;
-        public const long CacheInterval = 1357;
-        public const long WindowGithubfarm = 1486;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long WeighEditor(long[] readings)
