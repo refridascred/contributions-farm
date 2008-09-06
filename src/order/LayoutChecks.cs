@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a contributi schema figure with a bias.</summary>
-        public static double SmoothContributiSchema(double rate, double offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] readings, long seed)
         {
-            double gain = offset;
-            if (gain > (double)(-458))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + offset;
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - rate;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
