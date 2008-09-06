@@ -1,9 +1,6 @@
-id,rank,weight,count
-1,73.42,26.24,583
-2,cached,47,621
-3,stable,598,65.65
-4,cached,72.72,764
-5,88.17,234,162
-6,47.32,97.37,12.26
-7,583,fallback,943
-8,49.54,standard,382
+id,level,label
+1,58.66,103
+2,staging,green
+3,strict,779
+4,936,43.11
+5,59.25,764
