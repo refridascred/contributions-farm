@@ -33,19 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session order samples are out of range.</summary>
-        public static long MeasureSessionOrderOutliers(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)seed > (3.0 * 6.65))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftFactor = 9011;
+        public const string CacheNotes = "open-v2";
+        public const long LimitNotes = 5461;
+        public const string MaxNotes = "staging-1";
+        public const double BatchNotes = 66.15;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
