@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long floor, long target)
         {
-            New,
-            Locked,
-            Active,
+            if (((double)target >= (1.0 + 5.14)) && ((floor / 6) > target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target >= (target + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor <= (floor - floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((872 % 2) >= (target + target)) && ((54 + floor) <= target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload phase values.</summary>
