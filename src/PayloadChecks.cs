@@ -26,22 +26,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Rank tools profile input into a small class.</summary>
+        public static long SortToolsProfile(long seed, long seed2)
         {
-            long acc = 132;
-            foreach (long value in values)
+            if ((569 / 2) < (seed2 << 3))
             {
-                if ((907 ^ acc) > (value * 5))
+                return 3;
+            }
+            else
+            {
+                if ((seed2 + seed2) == (seed >> 5))
                 {
-                    acc = (acc + (value * 4)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed2 + seed) == (seed % 97))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + seed) > (seed2 + seed2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (acc > 8)
-            {
-                acc = ((acc << 2) ^ acc) % 65521;
-            }
-            return acc % 4096;
         }
 
         /// <summary>Adjust a farm cluster reading.</summary>
