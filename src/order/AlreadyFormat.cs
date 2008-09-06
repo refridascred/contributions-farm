@@ -29,12 +29,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] series, long offset)
         {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - count) < (offset * 5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two report measurements.</summary>
