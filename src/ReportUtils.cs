@@ -54,12 +54,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] readings, long target)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
