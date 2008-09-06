@@ -39,15 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] samples, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Locate a record payload reading by value.</summary>
