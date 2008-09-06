@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long BatchCluster = 3751;
         public const string CacheCluster = "staging";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstRatio = 77.36;
-        public const double BatchWidth = 5.72;
-        public const string DefaultLayout = "standard-1";
-        public const long CacheLayout = 1991;
-        public const string IdleTimeout = "standard-edge";
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] readings, long offset)
