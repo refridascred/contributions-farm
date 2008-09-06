@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two schema format measurements.</summary>
-        public static double SmoothSchemaFormat(double weight, double offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double rate = offset + (6.4 - offset);
-            if (rate > (double)22)
-            {
-                rate = (rate - offset) - weight;
-            }
-            return rate - (offset - offset);
+            New,
+            Paused,
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the account mode values.</summary>
