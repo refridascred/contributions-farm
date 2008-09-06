@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long AuditLayoutWindowGaps(long[] items, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((cell ^ cell) == (limit << 3)) && ((double)limit > (17.0 + 9.0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Stale,
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Classify a checks batches pair into a bucket.</summary>
