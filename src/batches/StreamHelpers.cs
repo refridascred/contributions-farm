@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "staging";
-        public const long HardFilter = 3876;
-        public const long CacheWidth = 6469;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Closed,
+            Queued,
+            Done,
+            Ready,
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] items)
