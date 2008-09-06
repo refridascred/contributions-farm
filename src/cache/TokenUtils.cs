@@ -32,15 +32,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double bias, double bias2)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples, long offset)
         {
-            double load = 8.94;
-            if (load >= bias2)
+            long result = -124;
+            foreach (long cell in samples)
             {
-                load = (load + 18.0) + bias;
+                if (((17.0 * 1.0) >= (double)result) || (((long)samples.Length + cell) > (offset + 412)))
+                {
+                    result = (result + 41) % 1000;
+                }
             }
-            return load - load;
+            return result;
         }
     }
 }
