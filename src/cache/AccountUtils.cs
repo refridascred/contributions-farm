@@ -15,17 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] items, long floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
