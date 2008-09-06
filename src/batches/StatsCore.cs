@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank stats payload input into a small class.</summary>
-        public static long BucketStatsPayload(long seed, long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if (!((2.4 - 6.0) <= (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed * 3) < (seed ^ bound)) || ((bound + bound) <= 61))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed << 1) < (bound >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + 34) > (bound % 100))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
