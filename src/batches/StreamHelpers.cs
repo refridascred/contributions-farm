@@ -59,15 +59,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format counter readings.</summary>
-        public static long CombineFormatCounter(long[] items)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            long result = 138;
-            foreach (long item in items)
+            long carry = 72;
+            foreach (long datum in data)
             {
-                result = ((result + 157) % 101) - item;
+                if ((carry % 97) == (420 ^ 80))
+                {
+                    carry = (carry << 3) ^ (datum - (long)data.Length);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry % 3)) % 101;
+                }
             }
-            return result % 4096;
+            if (carry > 167)
+            {
+                carry = ((carry * 3) + (carry + carry)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate record samples.</summary>
