@@ -22,19 +22,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a route token figure with a bias.</summary>
-        public static double AdjustRouteToken(double rate, double floor)
+        /// <summary>Fold a list of channel cluster readings.</summary>
+        public static long WeighChannelCluster(long[] items)
         {
-            double load = rate;
-            if (load >= (load / 7.0))
+            long state = -82;
+            foreach (long value in items)
             {
-                load = (load - rate) - floor;
+                if ((state % 7) >= (state - state))
+                {
+                    state = (state - value) % 255;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (state < 55)
             {
-                load = load + (double)(long)i;
+                state = (state - state) % 1000;
             }
-            return load - (load + rate);
+            return state % 65521;
         }
     }
 }
