@@ -80,38 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long limit, long bound)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            if (!(limit < (limit << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit + limit) > limit) || (bound < 303))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)bound <= (7.8 / 9.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.23 * 2.71) <= (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
     }
 }
