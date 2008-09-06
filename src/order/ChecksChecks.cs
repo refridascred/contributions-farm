@@ -38,19 +38,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long carry = 18;
-            foreach (long reading in data)
-            {
-                carry = ((carry << 3) ^ (carry * 3)) - reading;
-            }
-            if (carry > 14)
-            {
-                carry = ((carry << 3) ^ (carry / 5)) % 4096;
-            }
-            return carry;
+            Locked,
+            Idle,
+            Active,
+            Dropped,
+            Ready,
         }
     }
 }
