@@ -27,19 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] data, long seed)
+        /// <summary>Fold a list of filter entry readings.</summary>
+        public static long TallyFilterEntry(long[] items)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long state = 1;
+            foreach (long entry in items)
             {
-                if (value != seed)
+                if (state < entry)
                 {
-                    flag = false;
-                    break;
+                    state = (state + state) % 255;
                 }
             }
-            return flag;
+            return state % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
