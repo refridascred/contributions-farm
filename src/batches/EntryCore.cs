@@ -69,19 +69,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] series, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = acc - (acc & 63);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
     }
 }
