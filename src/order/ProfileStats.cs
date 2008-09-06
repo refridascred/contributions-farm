@@ -27,18 +27,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] readings)
+        /// <summary>Match up layout support samples.</summary>
+        public static long MatchLayoutSupportCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item / 5) > 1)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
