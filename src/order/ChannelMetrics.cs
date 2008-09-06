@@ -13,12 +13,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Classify a checks batches pair into a bucket.</summary>
+        public static long GradeChecksBatches(long offset, long seed)
         {
-            Dropped,
-            Active,
-            Locked,
+            long delta = offset ^ seed;
+            if (((delta % 7) != (seed - 103)) || (3 < (seed + offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((delta >> 1) < (delta + seed)) && (offset < (delta - offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - seed) >= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed + offset) <= delta)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
