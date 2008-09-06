@@ -40,21 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= seed)
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
