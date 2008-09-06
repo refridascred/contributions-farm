@@ -1,8 +1,10 @@
 {
-  "payload_ttl": false,
-  "enabled": "legacy",
-  "editor_window": true,
-  "default_ratio_s": "primary",
-  "sync_delay_ms": "cached",
-  "sync_threshold_count": 73
+  "token_depth": false,
+  "default_timeout_pct": {
+    "default_interval": [394, 194, 191],
+    "batch_interval": [296, 116],
+    "base_size_count": "fallback",
+    "cache_delay_count": [288, 219, 320]
+  },
+  "sync_timeout_pct": "standard"
 }
