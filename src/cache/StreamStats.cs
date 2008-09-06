@@ -54,16 +54,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double bias, double bias2)
-        {
-            double drift = bias2;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) - bias;
-            }
-            return drift - 20.0;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "fallback-v2";
+        public const double RetryBatches = 87.39;
+        public const long SoftTimeout = 9944;
+        public const long HardScore = 3548;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] values, long limit)
