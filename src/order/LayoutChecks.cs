@@ -21,21 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 28;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total + (value % 100)) % 255;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
