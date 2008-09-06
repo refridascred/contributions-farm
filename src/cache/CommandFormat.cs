@@ -57,19 +57,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate metrics cluster readings against a bound.</summary>
-        public static bool CheckMetricsClusterLimits(long[] levels, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (value <= origin)
+                if ((entry % 3) > (tally / 3))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
