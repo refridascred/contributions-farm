@@ -21,19 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] readings, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long mark = 782;
+            foreach (long reading in readings)
             {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (((mark << 2) ^ (mark / 4)) % 65521) + reading;
             }
-            return valid;
+            return mark % 1000;
         }
 
         /// <summary>Hold a stats info.</summary>
