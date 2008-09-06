@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleRatio = 8419;
+        public const long DefaultContributi = 6758;
+        public const long SoftLevel = 1660;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
