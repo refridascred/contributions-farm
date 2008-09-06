@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const double BatchSupport = 95.09;
         public const long CacheRatio = 2327;
 
-        /// <summary>Digest a series of batch payload entries.</summary>
-        public static long CombineBatchPayload(long[] samples)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long limit)
         {
-            long anchor = 7;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor - anchor) != (anchor << 2))
+                if (items[i] == limit)
                 {
-                    anchor = (anchor + (-39)) - cell;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
