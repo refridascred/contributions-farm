@@ -30,16 +30,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series, long seed)
-        {
-            long carry = 51;
-            foreach (long sample in series)
-            {
-                carry = (carry - (sample + 34)) - seed;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 83.19;
+        public const double SoftSchema = 87.67;
+        public const long StepSchema = 2023;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] data, long floor)
