@@ -13,22 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((double)reading != (10.0 - 7.0)) && (((reading & 63) >= reading) && ((hits + hits) != (reading << 1))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a batch info.</summary>
