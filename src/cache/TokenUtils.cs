@@ -24,32 +24,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long step2)
+        /// <summary>Digest a series of queue channel entries.</summary>
+        public static long ScoreQueueChannel(long[] levels)
         {
-            long edge = step + step2;
-            if (((step2 + 526) > edge) && (edge <= 485))
+            long acc = 470;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (620 <= (step2 % 7))
+                if (((acc + cell) > acc) || ((double)acc > (10.0 / 9.0)))
                 {
-                    return 3;
+                    acc = (acc * 5) + cell;
+                }
+                acc = ((acc << 3) ^ 6) % 1000;
+                if ((acc ^ acc) > (cell % 8))
+                {
+                    acc = (acc + (cell % 2)) % 97;
                 }
                 else
                 {
-                    if ((step2 >> 3) > 54)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = ((acc << 2) ^ (cell + cell)) % 4096;
                 }
             }
+            return acc;
         }
     }
 }
