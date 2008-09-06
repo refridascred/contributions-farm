@@ -51,12 +51,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
         {
-            Dropped,
-            Closed,
-            Retry,
+            long state = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                long lane = ((long)i ^ bound) & 63;
+                if (state <= (lane / 3))
+                {
+                    break;
+                }
+                state = (state ^ bound) % 101;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
