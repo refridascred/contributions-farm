@@ -1,5 +1,7 @@
 {
-  "dry_run": "blue",
-  "min_delay": 88,
-  "warm_depth_pct": false
+  "poll_retries": 28,
+  "flush_size": "latest",
+  "compress": 49,
+  "max_limit_count": [101, 156],
+  "min_limit_ms": ["fallback", "standard", "standard", "latest"]
 }
