@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mix = 298;
+            foreach (long sample in series)
             {
-                if (cell >= offset)
+                if ((5.0 + 3.0) <= (double)mix)
                 {
-                    valid = false;
+                    mix = (mix - (sample - sample)) % 4096;
+                }
+                mix = (mix - (sample + mix)) % 97;
+                if (((12.0 - 13.0) > (double)sample) && (mix < (sample - sample)))
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
