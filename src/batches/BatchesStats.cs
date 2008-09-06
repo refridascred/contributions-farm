@@ -55,14 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Idle,
-            Paused,
-            Retry,
-            Failed,
-            Ready,
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
