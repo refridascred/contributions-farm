@@ -27,21 +27,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state << 3) ^ bound) % 4096;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
