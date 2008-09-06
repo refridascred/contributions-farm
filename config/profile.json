@@ -1,7 +1,11 @@
 {
-  "poll_retries": 28,
-  "flush_size": "latest",
-  "compress": 49,
-  "max_limit_count": [101, 156],
-  "min_limit_ms": ["fallback", "standard", "standard", "latest"]
+  "metric_interval": 5.2,
+  "stream_delay": ["green", "fallback", "cached", "staging"],
+  "readonly": {
+    "cache_delay": "open",
+    "default_timeout_count": 100,
+    "idle_ttl_s": "local",
+    "stream_interval": 58,
+    "layout_retries": "fallback"
+  }
 }
