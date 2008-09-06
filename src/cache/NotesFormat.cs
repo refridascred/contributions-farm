@@ -39,39 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long target, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long slot = target ^ seed;
-            if (slot >= (target - slot))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.6 - 2.0) < (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target >= 2.45)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target >> 1) <= (seed + seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            New,
+            Pending,
+            Retry,
         }
     }
 }
