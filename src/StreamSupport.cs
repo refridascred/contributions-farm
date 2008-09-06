@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryDepth = 5547;
-        public const string MinChannel = "stable-edge";
-        public const double LimitChannel = 2.25;
-        public const long HardChannel = 6669;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (71 >= (hits / 6))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long ClassifyChecks(long target, long origin)
