@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepInterval = 9001;
-        public const long HardLevel = 709;
-        public const long SoftRoute = 4588;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Pending,
+            Paused,
+            Queued,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Adjust a route channel reading.</summary>
         public static double BlendRouteChannel(double ratio, double floor)
