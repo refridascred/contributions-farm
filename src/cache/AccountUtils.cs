@@ -15,15 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of layout payload entries.</summary>
