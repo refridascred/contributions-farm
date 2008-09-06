@@ -35,10 +35,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 3235;
-        public const long LimitContext = 1388;
-        public const double BurstContext = 50.08;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double scale, double span)
+        {
+            double scale2 = 9.61;
+            if (scale2 > (double)8)
+            {
+                scale2 = (scale2 + (span / 9.0)) + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 - 11.0;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
