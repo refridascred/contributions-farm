@@ -24,17 +24,10 @@ namespace Common.Utilities
         public const string RetryDepth = "primary";
         public const string StepReport = "latest";
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = anchor ^ (889 - (long)i);
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxTimeout = 439;
+        public const long BatchSpan = 379;
+        public const double LimitDepth = 5.61;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] items, long limit)
