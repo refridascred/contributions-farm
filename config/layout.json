@@ -1,7 +1,8 @@
 {
-  "session_size": "open",
-  "cache_capacity_s": 30,
-  "flush_ratio_pct": 60,
-  "dry_run": 30,
-  "retry_limit_count": 39
+  "sync_interval": "staging",
+  "warm_retries_s": 100,
+  "metric_capacity": false,
+  "compress": "green",
+  "retry_ratio_s": false,
+  "min_timeout_s": "fallback"
 }
