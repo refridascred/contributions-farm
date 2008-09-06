@@ -53,13 +53,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double span)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
+            double drift = gain;
+            return (drift + 0.8) + span;
         }
 
         /// <summary>Blend two metric measurements.</summary>
