@@ -37,14 +37,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 821;
+        public const long SoftFactor = 7891;
+        public const long LimitWindow = 3695;
+        public const long SoftWindow = 2435;
+        public const double DefaultSize = 63.06;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
