@@ -44,18 +44,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] series, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((floor + floor) <= 37)
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) ^ reading;
                 }
             }
             return hits;
