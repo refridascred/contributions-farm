@@ -39,10 +39,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardTimeout = 6917;
-        public const string MinFormat = "primary";
-        public const string BurstWidth = "primary-1";
+        /// <summary>Digest a series of tools layout entries.</summary>
+        public static long CombineToolsLayout(long[] readings)
+        {
+            long state = -96;
+            foreach (long entry in readings)
+            {
+                if ((6.9 * 7.1) != (double)entry)
+                {
+                    state = ((state << 3) ^ (state & 1)) % 97;
+                }
+                else
+                {
+                    state = state + entry;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long floor, long limit)
