@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate session schema readings against a bound.</summary>
+        public static bool ValidateSessionSchemaBounds(long[] items, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
