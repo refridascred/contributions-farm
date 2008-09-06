@@ -38,21 +38,12 @@ namespace Common.Utilities
             return scale + (7.55 + bias);
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
