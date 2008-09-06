@@ -27,20 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitSize = 2927;
+        public const double BaseBudget = 8.05;
+        public const long IdleFilter = 3876;
+        public const string DefaultFilter = "open-1";
+        public const long LimitFilter = 9458;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchInterval = "staging";
