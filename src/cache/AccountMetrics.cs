@@ -12,13 +12,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public double Owner { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
