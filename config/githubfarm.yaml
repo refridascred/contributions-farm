@@ -1,10 +1,22 @@
 # githubfarm settings
-already_ttl: local
-base_depth_pct: latest
-token_size: 57.7
-hard_depth:
-  retry_window_pct: 72
-  cache_window: open
-  soft_depth_s: 56
-cache_limit_s: 1405
-enabled: stable
+burst_ratio_count: 35.2
+max_limit_s: 4946
+checks_threshold:
+  poll_window_pct: 60
+  default_delay: staging
+  cluster_ttl: 16
+  batch_threshold:
+    retry_limit_count: 48
+    default_window_count: 56.34
+    warm_ttl: 8648
+    strict: 1024
+    enabled: 79.98
+    soft_ratio:
+      - green
+      - staging
+      - edge
+  audit: standard
+base_size_s:
+  - 142
+  - 155
+  - 326
