@@ -15,39 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long limit)
+        /// <summary>Count the support account entries that pass the check.</summary>
+        public static long TallySupportAccountOutliers(long[] data)
         {
-            long slot = seed ^ limit;
-            if ((limit / 7) == (seed % 16))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((400 ^ limit) >= slot)
+                if (datum < (159 - 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 3) <= 0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5.0 - 3.2) > (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a queue entry pair into a bucket.</summary>
