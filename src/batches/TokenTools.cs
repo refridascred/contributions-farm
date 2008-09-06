@@ -10,12 +10,26 @@ namespace Common.Utilities
         public const double CacheDepth = 58.73;
         public const long IdleCount = 2224;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 5633;
-        public const double MaxCount = 25.25;
-        public const long MaxDepth = 195;
-        public const double HardStats = 73.57;
-        public const string DefaultFactor = "local-v2";
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long floor, long floor2)
+        {
+            long step = floor - floor2;
+            if ((step / 9) >= (step - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor2) != (step >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
