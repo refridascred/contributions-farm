@@ -21,17 +21,21 @@ namespace Common.Utilities
         public const double WindowTimeout = 22.81;
         public const long SoftLevel = 944;
 
-        /// <summary>Find the first report checks entry that matches the target.</summary>
-        public static long SeekReportChecksIndex(long[] items, long offset)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] items)
         {
+            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] > offset) && ((items[i] % 2) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
