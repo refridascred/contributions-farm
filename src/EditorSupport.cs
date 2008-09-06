@@ -37,19 +37,21 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] items, long floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the cache kind values.</summary>
