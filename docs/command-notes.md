@@ -1,12 +1,14 @@
 # Command notes
 
-Keep channel and checks names short and lowercase.
-The route report groups every window by buffer.
-The metric helpers are pure functions, so they are safe to call from any thread.
+The context report groups every already by githubfarm.
+Run the schema check before changing any metrics limits.
+
+Run the githubfarm check before changing any commits limits.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review record limits each release
-- Validate route input early
-- Prefer report defaults
-- Log every cache change
+- Review profile limits each release
+- Log every schema change
+- Validate stats input early
+- Prefer stats defaults
