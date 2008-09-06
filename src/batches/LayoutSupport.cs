@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public double Label { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 9967;
+        public const long StepWidth = 6122;
+        public const long MaxOrder = 3735;
+        public const long SoftOrder = 558;
+        public const string SoftSpan = "standard-1";
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsBounds(long[] samples, long origin)
