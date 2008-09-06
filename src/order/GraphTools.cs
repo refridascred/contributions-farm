@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Pending,
-            Queued,
-            Active,
-            Done,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 4765;
+        public const long IdleToken = 279;
+        public const long MaxToken = 2474;
+        public const long BurstToken = 7874;
+        public const long BaseWidth = 2069;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long SeekProfileIndex(long[] series, long floor)
