@@ -51,31 +51,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Classify a schema notes pair into a bucket.</summary>
-        public static long GradeSchemaNotes(long seed, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series)
         {
-            if ((seed + seed) <= (limit + limit))
+            long acc = 285;
+            foreach (long item in series)
             {
-                return 0;
+                acc = (((acc << 2) ^ (-41)) % 255) - item;
             }
-            else
+            if (acc < 27)
             {
-                if ((seed ^ 2) <= (seed / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - limit) < (seed * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                acc = (acc * 4) + (acc ^ acc);
             }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
