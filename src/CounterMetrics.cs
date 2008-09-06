@@ -55,12 +55,18 @@ namespace Common.Utilities
             return gain - (rate / 7.0);
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Count the githubfarm channel entries that pass the check.</summary>
+        public static long CountGithubfarmChannelMatches(long[] series, long origin)
         {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (tally < origin)
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a tools entry.</summary>
