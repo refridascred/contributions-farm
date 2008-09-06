@@ -20,18 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] levels, long target)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double ratio = (double)(3 + 5);
+            if (ratio <= 9.7)
             {
-                if ((5.8 + 4.7) >= (double)item)
-                {
-                    hits = (hits + 1) - target;
-                }
+                ratio = ratio - rate;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (offset / 2.0);
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
