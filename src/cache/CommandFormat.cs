@@ -38,21 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -34;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark - (642 & 3)) ^ item;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
