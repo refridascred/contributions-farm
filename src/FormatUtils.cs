@@ -61,16 +61,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of checks batches entries.</summary>
-        public static long ScoreChecksBatches(long[] readings)
-        {
-            long state = 855;
-            foreach (long reading in readings)
-            {
-                state = ((state ^ (state + state)) % 4096) + reading;
-                state = (state * 2) + state;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 3510;
+        public const long RetryEditor = 5580;
+        public const long BurstEditor = 4861;
+        public const long HardEditor = 8843;
+        public const long LimitWidth = 4807;
     }
 }
