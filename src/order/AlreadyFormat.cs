@@ -66,18 +66,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count * 2) >= count)
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 6905;
+        public const long LimitReport = 7522;
+        public const double IdleReport = 96.65;
+        public const long MaxInterval = 5671;
     }
 }
