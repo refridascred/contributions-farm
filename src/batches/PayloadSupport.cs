@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Ready,
-            Closed,
-            Retry,
-            Queued,
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
