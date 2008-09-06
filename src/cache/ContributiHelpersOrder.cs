@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftWidth = 3381;
-        public const long HardBudget = 8208;
-        public const long WindowWidth = 4706;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchFactor = 9132;
+        public const string MaxInterval = "stable-1";
+        public const long RetryWidth = 6185;
+        public const string BaseSchema = "stable";
+        public const double DefaultSchema = 35.88;
 
         /// <summary>Fold a list of checks filter readings.</summary>
         public static long FoldChecksFilter(long[] readings)
