@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Iterate the checks filter series from a seed.</summary>
+        public static long StepChecksFilter(long origin)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor << 3) ^ (long)i;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
