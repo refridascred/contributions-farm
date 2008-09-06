@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every graph editor entry stays within the limit.</summary>
-        public static bool VerifyGraphEditorBounds(long[] items, long seed)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
