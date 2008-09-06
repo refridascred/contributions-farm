@@ -36,13 +36,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] readings, long target)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the already kind values.</summary>
