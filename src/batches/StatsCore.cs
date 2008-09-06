@@ -75,17 +75,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] samples, long offset)
+        /// <summary>Audit record notes readings against a rule.</summary>
+        public static long AuditRecordNotesHits(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (samples[i] < offset)
+                if (4.8 < (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + entry) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
