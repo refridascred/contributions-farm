@@ -20,19 +20,18 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Check that every report editor entry stays within the limit.</summary>
-        public static bool ValidateReportEditorLimits(long[] values, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (entry > origin)
+                if ((double)(long)data.Length <= (double)matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Rank farm schema input into a small class.</summary>
