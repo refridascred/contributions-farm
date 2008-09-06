@@ -61,13 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] readings, long seed)
         {
-            Draft,
-            Pending,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((4 << 1) != (seen ^ 7)) && (((seed - (long)readings.Length) >= (6 << 1)) || (seen >= seed)))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
