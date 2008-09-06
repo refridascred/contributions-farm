@@ -1,6 +1,12 @@
 {
-  "base_ttl_pct": 927,
-  "readonly": ["primary", "primary"],
-  "soft_window_pct": [291, 417, 58, 159],
-  "soft_interval_pct": "standard"
+  "notes_interval": 48.31,
+  "max_delay_s": "cached",
+  "audit": {
+    "flush_interval_pct": 17.68,
+    "audit": true,
+    "cache_window_pct": "primary",
+    "enabled": 7787,
+    "burst_timeout": "cached",
+    "verbose": 56.27
+  }
 }
