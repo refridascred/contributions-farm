@@ -25,17 +25,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a format stream sample.</summary>
-        public static long FindFormatStreamIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftFactor = 4658;
+        public const string BaseLevel = "fallback";
+        public const long MaxCount = 9483;
     }
 }
