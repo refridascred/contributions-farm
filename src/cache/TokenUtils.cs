@@ -31,13 +31,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] levels, long target)
         {
-            Idle,
-            Draft,
-            Stale,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
