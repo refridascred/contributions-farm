@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "staging";
+        public const long HardFilter = 3876;
+        public const long CacheWidth = 6469;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] items)
