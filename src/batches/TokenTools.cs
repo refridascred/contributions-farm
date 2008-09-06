@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long AuditWindowTokenHits(long[] values)
         {
-            Locked,
-            Stale,
-            Queued,
-            Draft,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((8.86 / 3.0) < (double)tally)
+                {
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
