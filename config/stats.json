@@ -1,8 +1,19 @@
 {
-  "hard_capacity_pct": "eu-west",
-  "max_ttl": 87,
-  "burst_ratio": 9339,
-  "strict": 500,
-  "default_limit_pct": 7923,
-  "burst_ratio_count": 60
+  "buffer_interval": false,
+  "min_interval_pct": 100,
+  "sync_depth_count": {
+    "batches_timeout": "fallback",
+    "min_ttl_s": [371, 73, 231],
+    "retry_retries_ms": 5.08,
+    "batch_depth_pct": {
+      "dry_run": 84,
+      "base_interval_ms": "cached",
+      "tools_limit": "strict",
+      "flush_limit": true
+    },
+    "queue_interval": "stable",
+    "readonly": true
+  },
+  "filter_ratio": false,
+  "burst_ttl": 30
 }
