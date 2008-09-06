@@ -74,10 +74,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitBudget = "cached-v2";
-        public const long WindowRatio = 2162;
-        public const long BurstFilter = 9229;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long floor, long step)
