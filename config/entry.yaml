@@ -1,25 +1,4 @@
 # entry settings
-base_threshold_pct: staging
-strict: staging
-profile_depth: staging
-hard_threshold_pct: local
-already_delay:
-  readonly: 7864
-  base_depth_pct:
-    dry_run: true
-    warm_limit_pct: 60
-    burst_size_ms: true
-    default_retries_pct: blue
-    readonly: 53
-    min_timeout_pct: 67.53
-  support_size:
-    - 112
-    - 20
-    - 445
-    - 360
-  burst_ttl: false
-  layout_ttl:
-    - 297
-    - 440
-    - 18
-    - 9
+dry_run: true
+default_delay_count: 100
+default_threshold: 2686
