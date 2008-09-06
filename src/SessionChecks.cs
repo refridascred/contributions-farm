@@ -49,15 +49,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long offset, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            if ((double)offset <= (2.0 / 6.0))
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((limit << 1) < (limit >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
