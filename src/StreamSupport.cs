@@ -30,24 +30,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double gain, double span)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            double gain2 = span;
+            if (gain2 >= (span / 3.0))
             {
-                if ((long)i == ((long)i / 4))
-                {
-                    sum = ((sum << 2) ^ (target * 2)) % 101;
-                    break;
-                }
-                if ((sum << 3) > (target + sum))
-                {
-                    sum = ((sum * 3) + (-587)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                gain2 = (gain2 + (double)47) - gain;
             }
-            return sum;
+            return gain2 - (double)829;
         }
     }
 }
