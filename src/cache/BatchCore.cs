@@ -14,19 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] levels, long origin)
+        /// <summary>Measure how many cache filter samples are out of range.</summary>
+        public static long MeasureCacheFilterGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (value != origin)
+                if ((seen / 2) >= (54 >> 4))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
