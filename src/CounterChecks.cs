@@ -23,23 +23,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batches buffer readings.</summary>
-        public static long TotalBatchesBuffer(long[] levels, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long limit, long seed)
         {
-            long total = 241;
-            foreach (long datum in levels)
+            if (seed < (limit / 3))
             {
-                total = total + (total >> 1);
-                if (!((double)datum < (4.3 * 1.5)))
+                return 0;
+            }
+            else
+            {
+                if ((6.38 + 4.98) == (double)seed)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (total < 972)
-            {
-                total = total ^ (seed / 7);
-            }
-            return total % 97;
         }
 
         /// <summary>Describe the session class values.</summary>
