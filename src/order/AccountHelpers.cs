@@ -46,19 +46,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (hits > (1 & 255))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftLevel = 7558;
+        public const double DefaultTimeout = 9.39;
+        public const long MinMetrics = 2241;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
