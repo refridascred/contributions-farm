@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (sample >= (count ^ sample))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Look up the position of a profile stats sample.</summary>
