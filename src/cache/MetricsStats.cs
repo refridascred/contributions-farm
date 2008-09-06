@@ -56,11 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 92.54;
-        public const double RetryCount = 79.85;
-        public const long BatchSize = 9360;
-        public const double SoftCommand = 87.76;
-        public const double MaxCommand = 94.71;
+        /// <summary>Look up the position of a contributi token sample.</summary>
+        public static long LookupContributiTokenIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
