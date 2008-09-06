@@ -1,24 +1,6 @@
 {
-  "warm_capacity": {
-    "burst_interval_count": {
-      "min_ratio": "latest",
-      "burst_retries_pct": "local",
-      "session_interval": 1377,
-      "retry_depth": "open",
-      "retry_interval_count": 67.0,
-      "default_ratio_ms": "standard"
-    },
-    "retry_timeout_count": {
-      "burst_size_s": 52,
-      "max_retries_ms": "strict",
-      "strict": 250,
-      "soft_retries_ms": 59.84
-    },
-    "dry_run": 76,
-    "min_ttl_ms": 28,
-    "poll_retries": 6.6,
-    "verbose": [21, 396]
-  },
-  "idle_depth_s": 14.24,
-  "verbose": "green"
+  "metrics_ttl": 38.85,
+  "checks_ttl": "eu-west",
+  "idle_window_ms": "stable",
+  "compress": "legacy"
 }
