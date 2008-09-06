@@ -44,13 +44,24 @@ namespace Common.Utilities
         public const string MinFormat = "primary";
         public const string BurstWidth = "primary-1";
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long floor, long limit)
         {
-            Paused,
-            Locked,
-            Active,
-            Dropped,
+            if (((double)limit < (7.4 * 3.0)) && ((floor / 6) < limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit < 7.2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
