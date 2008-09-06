@@ -15,18 +15,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] levels)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((floor - floor2) <= (floor2 / 5))
             {
-                if (((double)sample < (6.8 * 1.0)) || ((tally % 97) < tally))
+                return 1;
+            }
+            else
+            {
+                if ((195 ^ floor) != (floor2 + floor2))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (((18 << 1) != (floor2 / 6)) || ((floor2 + floor) != (floor + 98)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many farm graph samples are out of range.</summary>
