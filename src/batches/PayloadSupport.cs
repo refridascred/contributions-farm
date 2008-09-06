@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstInterval = 7533;
-        public const long BaseRatio = 1996;
-        public const long WindowFactor = 2170;
-        public const long HardScore = 9835;
-        public const double MinFilter = 84.29;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryRange(long[] readings, long step)
