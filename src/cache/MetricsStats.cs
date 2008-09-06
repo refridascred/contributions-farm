@@ -70,15 +70,22 @@ namespace Common.Utilities
             return ratio - (bias + bias);
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
+            long score = 39;
+            foreach (long reading in data)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((759 / 3) >= reading)
+                {
+                    score = (score ^ (300 + reading)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (reading / 7)) % 101;
+                }
             }
-            return mark;
+            return score;
         }
     }
 }
