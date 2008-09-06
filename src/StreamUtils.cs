@@ -18,31 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long step, long seed)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if ((step / 9) <= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed >> 5) <= (seed - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + 1) >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
