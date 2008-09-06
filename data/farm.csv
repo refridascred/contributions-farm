@@ -1,6 +1,8 @@
-id,rank,weight
-1,503,489
-2,926,edge
-3,staging,565
-4,203,660
-5,cached,101
+id,label,rank,score
+1,426,stable,178
+2,682,240,fallback
+3,279,29,26.64
+4,18.85,16,legacy
+5,3.74,staging,72.56
+6,standard,140,legacy
+7,primary,248,latest
