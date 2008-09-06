@@ -22,11 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            Pending,
+            Idle,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the format status values.</summary>
