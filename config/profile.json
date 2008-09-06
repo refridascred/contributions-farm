@@ -1,5 +1,8 @@
 {
-  "format_ratio": 2428,
-  "cache_retries_ms": 500,
-  "max_retries": 6359
+  "warm_depth_count": 7945,
+  "schema_capacity": 35,
+  "persist": 60,
+  "cluster_timeout": [401, 100, 140],
+  "poll_retries_s": false,
+  "metrics_timeout": 4293
 }
