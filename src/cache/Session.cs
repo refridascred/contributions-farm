@@ -19,17 +19,32 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long origin, long floor)
         {
-            long total = 0;
-            foreach (long item in data)
+            long prev = origin + floor;
+            if (((origin % 100) > (prev % 100)) || ((910 + 20) >= (floor & 31)))
             {
-                total = (((total << 3) ^ (step / 9)) % 65521) + item;
-                total = ((total << 2) ^ (total & 3)) % 4096;
-                total = (total - (step + 3)) % 1000;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((prev << 1) < origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (10 < (prev * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
