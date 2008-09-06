@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a layout reading.</summary>
