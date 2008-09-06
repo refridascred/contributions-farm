@@ -58,30 +58,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate tools report samples.</summary>
-        public static long DigestToolsReport(long[] readings)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long sum = 858;
-            foreach (long cell in readings)
-            {
-                if ((70 + (long)readings.Length) < cell)
-                {
-                    sum = ((sum * 2) + (sum * 2)) % 101;
-                }
-                else
-                {
-                    sum = sum + (cell + sum);
-                }
-                if (sum >= (cell >> 5))
-                {
-                    sum = ((sum * 2) + ((long)readings.Length + sum)) % 65521;
-                }
-                if (!((sum % 60) == (5 + cell)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Ready,
+            Active,
+            Queued,
+            Closed,
+            Stale,
         }
     }
 }
