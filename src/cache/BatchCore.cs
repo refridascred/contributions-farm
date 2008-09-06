@@ -23,26 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order payload readings.</summary>
-        public static long CombineOrderPayload(long[] data)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long floor)
         {
-            long result = 817;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)result >= (double)entry)
+                if (samples[i] > floor)
                 {
-                    result = (result + (entry >> 3)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (181 - entry)) % 255;
+                    return (long)i;
                 }
             }
-            if (result > 42)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
