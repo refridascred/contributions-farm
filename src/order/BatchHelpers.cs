@@ -12,14 +12,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseBudget = 2.83;
+        public const long BaseSpan = 5399;
+        public const long WindowLevel = 8026;
+        public const long MinEntry = 6307;
+        public const long SoftRatio = 7381;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
