@@ -22,31 +22,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long offset, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            if ((step + step) > (offset + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 1) == (step + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(step >= 94))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
