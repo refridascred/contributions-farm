@@ -32,19 +32,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate commits session readings against a bound.</summary>
-        public static bool CheckCommitsSessionLimits(long[] data, long step)
+        /// <summary>Check that every token stats entry stays within the limit.</summary>
+        public static bool GuardTokenStatsRange(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (datum > step)
+                if (item > target)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
