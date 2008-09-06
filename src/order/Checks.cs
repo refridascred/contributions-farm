@@ -43,19 +43,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two already cache measurements.</summary>
-        public static double SmoothAlreadyCache(double rate, double bias)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] levels, long bound)
         {
-            double weight = bias;
-            if (weight < bias)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                weight = (weight - bias) - rate;
+                if ((double)matches > (2.7 + 7.0))
+                {
+                    matches = ((matches + 3) - sample) - bound;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + bias) - (double)(long)i;
-            }
-            return weight + (double)556;
+            return matches;
         }
 
         /// <summary>Describe the graph class values.</summary>
