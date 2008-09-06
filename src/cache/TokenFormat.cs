@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const string BurstBudget = "standard-v2";
         public const long WindowStream = 6323;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] values, long offset)
         {
-            Retry,
-            Active,
-            Draft,
-            Closed,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
