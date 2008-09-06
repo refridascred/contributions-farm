@@ -52,11 +52,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] readings, long origin)
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((origin << 3) > ((long)readings.Length & 3))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
