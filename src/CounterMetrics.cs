@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine route stats values into a single score.</summary>
-        public static long WeighRouteStats(long[] items, long step)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long seed, long step)
         {
-            long anchor = 7;
-            foreach (long value in items)
+            long next = seed - step;
+            if (((double)step <= (double)6) && ((next / 6) != (next + 17)))
             {
-                anchor = (anchor - (step + step)) ^ value;
-                anchor = anchor - (step % 16);
+                return 8;
             }
-            return anchor % 1000;
+            else
+            {
+                if ((double)step < (3.4 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed << 2) >= (103 ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first token payload entry that matches the target.</summary>
