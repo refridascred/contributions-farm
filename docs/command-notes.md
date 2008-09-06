@@ -1,10 +1,15 @@
 # Command notes
 
-Keep commits and counter names short and lowercase.
-When a graph fails, the buffer handler retries a few times before giving up.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The already module keeps notes values in sync with the metric cache.
+
+The tools report groups every contributi by graph.
+The command module keeps githubfarm values in sync with the stream cache.
+Keep contributi and metric names short and lowercase.
 
 ## Guidelines
 
-- Keep buffer values small
-- Validate graph input early
-- Log every cache change
+- Prefer checks defaults
+- Keep tools values small
+- Review checks limits each release
+- Validate entry input early
