@@ -73,12 +73,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] values, long limit)
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
