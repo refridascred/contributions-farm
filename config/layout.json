@@ -1,7 +1,21 @@
 {
-  "burst_ratio": [17, 159, 271],
-  "batch_retries": ["open", "cached", "latest", "legacy"],
-  "min_interval_pct": "fallback",
-  "warm_threshold": "green",
-  "base_limit_ms": ["open", "staging"]
+  "enabled": 6,
+  "cache_ratio": {
+    "profile_timeout": "eu-west",
+    "sync_window_count": 25.24,
+    "hard_timeout_count": "staging",
+    "readonly": [193, 281, 81, 392],
+    "soft_delay": true
+  },
+  "soft_threshold_pct": {
+    "cache_ttl": "stable",
+    "min_threshold": 30,
+    "retry_size_ms": 4524,
+    "warm_capacity": 1024,
+    "base_timeout_ms": 5252,
+    "hard_retries": true
+  },
+  "max_interval": false,
+  "filter_threshold": 58,
+  "burst_interval_ms": 31.81
 }
