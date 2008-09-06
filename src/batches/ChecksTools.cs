@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const double StepScore = 70.23;
         public const long LimitCommand = 3663;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((entry / 4) > (87 - (-4))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first metrics profile entry that matches the target.</summary>
