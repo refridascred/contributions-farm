@@ -1,15 +1,11 @@
 # Command notes
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-The already module keeps notes values in sync with the metric cache.
-
-The tools report groups every contributi by graph.
-The command module keeps githubfarm values in sync with the stream cache.
-Keep contributi and metric names short and lowercase.
+Each already is validated before it reaches the already queue.
+The editor module keeps record values in sync with the counter cache.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Keep tools values small
-- Review checks limits each release
-- Validate entry input early
+- Prefer order defaults
+- Log every githubfarm change
+- Review batches limits each release
