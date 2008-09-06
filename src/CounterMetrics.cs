@@ -20,12 +20,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxSize = 59.87;
-        public const string DefaultBatch = "staging";
-        public const long DefaultBudget = 4588;
-        public const long MaxBatch = 2403;
-        public const string RetryBatch = "cached";
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long floor)
+        {
+            long bound = target ^ floor;
+            if ((target & 3) <= (target ^ 9))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target * 3) < (floor << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)target <= (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double weight, double bias)
