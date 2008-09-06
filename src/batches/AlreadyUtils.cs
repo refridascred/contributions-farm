@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] readings, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] series)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (datum < origin)
+                if ((long)series.Length > (tally - entry))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
