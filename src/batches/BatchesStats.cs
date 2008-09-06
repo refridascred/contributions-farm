@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const long LimitWidth = 3112;
         public const long MaxRatio = 7842;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long target)
+        /// <summary>Audit schema already readings against a rule.</summary>
+        public static long AuditSchemaAlreadyHits(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (item < target)
+                if ((offset * 4) >= (datum - datum))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the profile kind values.</summary>
