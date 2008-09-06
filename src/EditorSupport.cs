@@ -44,25 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long target, long origin)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            long step = target + origin;
-            if ((double)3 > (double)step)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((99 >= (target + target)) && ((origin ^ step) <= target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
