@@ -34,15 +34,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
