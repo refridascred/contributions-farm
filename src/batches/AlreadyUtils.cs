@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate batches already readings against a bound.</summary>
-        public static bool GuardBatchesAlreadyRange(long[] series, long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            double weight = (2.63 - ratio) - (9.6 * 15.0);
+            for (int i = 0; i < 3; i++)
             {
-                if (reading >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = ((weight + (ratio / 7.0)) + (double)(long)i) + floor;
             }
-            return valid;
+            return weight + 4.06;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
