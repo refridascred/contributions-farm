@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a window buffer pair into a bucket.</summary>
-        public static long GradeWindowBuffer(long bound, long floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            if (!((49 + floor) == (floor + bound)))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound + 470) != (floor >> 3)) && ((bound - bound) != (floor % 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >> 2) != (bound + floor))
+                    if ((samples[i] ^ samples[j]) == 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((367 & 255) < (bound >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next batches value.</summary>
