@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double CacheCommits = 47.94;
         public const long RetryCommits = 4147;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Blend two batches channel measurements.</summary>
+        public static double BlendBatchesChannel(double rate, double floor)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            double rate2 = (double)(2 + (-30));
+            if (rate2 > (rate - rate2))
+            {
+                rate2 = (rate2 + (rate2 * 5.2)) + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - (rate + rate2)) - (double)(long)i;
+            }
+            return rate2 - (rate * 5.9);
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
