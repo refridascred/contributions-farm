@@ -86,21 +86,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Adjust a githubfarm metric reading.</summary>
+        public static double AdjustGithubfarmMetric(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double ratio2 = span;
+            return (ratio2 - ratio2) + ratio;
         }
     }
 }
