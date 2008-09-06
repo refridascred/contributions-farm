@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long seed)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate route samples.</summary>
