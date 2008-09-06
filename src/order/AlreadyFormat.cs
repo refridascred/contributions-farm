@@ -28,18 +28,14 @@ namespace Common.Utilities
         public const long HardWidth = 6977;
         public const double RetryInterval = 65.08;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] values, long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum > (1.2 * 1.0))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
