@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the commits channel entries that pass the check.</summary>
-        public static long CountCommitsChannelHits(long[] samples, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((datum >> 3) < hits)
+                if (item <= floor)
                 {
-                    hits = (hits + 2) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
