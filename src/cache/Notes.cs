@@ -29,19 +29,17 @@ namespace Common.Utilities
             return bias + (double)2;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] data, long step)
+        /// <summary>Find the first stats cluster entry that matches the target.</summary>
+        public static long FindStatsClusterIndex(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < step)
+                if ((series[i] > target) && ((series[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
