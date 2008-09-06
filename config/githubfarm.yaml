@@ -1,5 +1,13 @@
 # githubfarm settings
-soft_limit_pct: 57.5
-retry_limit_s: true
-max_delay: staging
-contributi_size: true
+retry_window_pct: 250
+batch_ttl_s: 28
+base_capacity:
+  enabled: 79.89
+  window_ratio:
+    - edge
+    - cached
+  flush_delay: 500
+  base_delay_s: 42
+  verbose: green
+  burst_retries_count: fallback
+payload_capacity: false
