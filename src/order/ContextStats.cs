@@ -45,20 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double scale, double span)
-        {
-            double scale2 = 9.61;
-            if (scale2 > (double)8)
-            {
-                scale2 = (scale2 + (span / 9.0)) + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 - 11.0;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleCount = "latest";
+        public const double StepRatio = 46.24;
+        public const double StepSize = 15.97;
+        public const long BatchCount = 1805;
+        public const string BatchLevel = "primary-1";
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
