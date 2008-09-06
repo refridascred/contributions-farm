@@ -14,20 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double ratio, double span)
-        {
-            double drift = ratio;
-            if (drift > (15.0 * 7.3))
-            {
-                drift = drift + (drift * 8.3);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (span * 8.2)) + (double)(long)i;
-            }
-            return drift + ratio;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBudget = "primary-1";
+        public const long RetryScore = 5700;
+        public const long IdleBuffer = 3945;
+        public const long CacheBuffer = 5328;
+        public const string BaseBuffer = "fallback-1";
 
         /// <summary>Combine command buffer values into a single score.</summary>
         public static long FoldCommandBuffer(long[] series)
