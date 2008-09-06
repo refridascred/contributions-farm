@@ -27,21 +27,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardTimeout = 4424;
+        public const long RetryBudget = 6330;
+        public const long BurstRecord = 2930;
+        public const string IdleTimeout = "strict-1";
+        public const double WindowRecord = 52.64;
     }
 }
