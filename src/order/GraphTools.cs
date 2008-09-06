@@ -20,25 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long seed, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            long step = seed ^ origin;
-            if ((step > seed) || (step > seed))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + seed) > step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate queue order readings against a bound.</summary>
