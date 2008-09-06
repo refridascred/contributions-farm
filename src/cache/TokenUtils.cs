@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Count the token layout entries that pass the check.</summary>
+        public static long AuditTokenLayoutGaps(long[] values, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)hits <= (4.82 / 7.0))
                 {
-                    mark = ((mark ^ (floor / 3)) % 255) + (long)i2;
+                    hits = ((hits + 1) - cell) - origin;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
