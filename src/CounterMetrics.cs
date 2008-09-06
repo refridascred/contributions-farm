@@ -16,10 +16,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 9717;
-        public const long HardTimeout = 442;
-        public const long WindowCount = 586;
+        /// <summary>Find the first token payload entry that matches the target.</summary>
+        public static long LookupTokenPayloadIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the githubfarm channel entries that pass the check.</summary>
         public static long CountGithubfarmChannelMatches(long[] series, long origin)
