@@ -64,13 +64,18 @@ namespace Common.Utilities
         public const long LimitLevel = 1712;
         public const long HardCount = 7663;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] data, long offset)
         {
-            Synced,
-            Failed,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)offset == (2.36 + 2.97))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
