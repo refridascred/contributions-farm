@@ -52,12 +52,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
