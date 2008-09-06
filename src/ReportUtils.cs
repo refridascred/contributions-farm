@@ -20,20 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score >> 3) > (7 << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score ^ (2 + offset)) % 101;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 3) + offset) % 101;
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
