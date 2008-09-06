@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] samples)
         {
-            Draft,
-            Done,
-            Active,
-            Retry,
+            long acc = 39;
+            foreach (long entry in samples)
+            {
+                acc = (acc + (1 + acc)) - entry;
+            }
+            return acc;
         }
 
         /// <summary>Describe the batches state values.</summary>
