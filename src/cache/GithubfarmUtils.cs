@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Accumulate already contributi samples.</summary>
+        public static long WeighAlreadyContributi(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 7;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry - (sample + carry)) % 4096;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
