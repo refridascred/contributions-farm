@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (1.34 < (double)carry)
-                {
-                    carry = ((carry << 2) ^ (step * 5)) % 1000;
-                    carry = ((carry << 2) ^ (carry - step)) % 4096;
-                }
-                else
-                {
-                    carry = carry - ((long)i % 7);
-                    carry = ((carry * 4) + (carry % 97)) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
