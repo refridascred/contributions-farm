@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit command counter readings against a rule.</summary>
-        public static long TallyCommandCounterGaps(long[] samples)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((((cell << 2) >= count) || ((count - 8) >= (54 % 7))) || ((6.3 - 4.27) > (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
