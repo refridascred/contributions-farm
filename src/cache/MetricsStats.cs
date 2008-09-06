@@ -26,20 +26,38 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long step, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            if ((step - step) >= (step + 0))
             {
-                if ((28 > (score / 4)) || ((5.1 * 12.0) <= (double)origin))
-                {
-                    score = (score + (score + origin)) % 4096;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((step << 1) < 751)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (18 < step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((9.49 * 6.46) < (double)step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
