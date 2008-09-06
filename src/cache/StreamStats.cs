@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] values, long step)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 2372;
+        public const long HardCache = 4125;
+        public const long RetryCache = 3124;
+        public const long MaxCache = 6114;
 
         /// <summary>Project the next farm value.</summary>
         public static double ScaleFarm(double bias, double bias2)
