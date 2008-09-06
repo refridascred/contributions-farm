@@ -14,18 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit route order readings against a rule.</summary>
-        public static long AuditRouteOrderOutliers(long[] items)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell - hits) < (hits + cell))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((data[i] + data[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up batch samples.</summary>
