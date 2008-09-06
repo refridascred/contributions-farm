@@ -24,11 +24,22 @@ namespace Common.Utilities
         public const double BurstInterval = 59.88;
         public const string StepAccount = "open-v2";
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] samples, long target)
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            long total = 0;
+            foreach (long item in samples)
+            {
+                if ((3.0 + 6.2) >= (double)target)
+                {
+                    total = ((total ^ 5) % 255) ^ item;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (78 - (-80))) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first cache checks entry that matches the target.</summary>
