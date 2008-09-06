@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] readings, long bound)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] values, long bound)
         {
-            long anchor = -112;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(anchor < ((long)readings.Length * 3)))
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    anchor = (anchor + entry) % 101;
+                    return (long)i;
                 }
-                anchor = (anchor << 2) ^ (bound + entry);
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
