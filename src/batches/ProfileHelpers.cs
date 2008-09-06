@@ -41,13 +41,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseInterval = "stable-v2";
+        public const string LimitScore = "latest-v2";
+        public const double IdleScore = 94.15;
+        public const long MinWindow = 3187;
+        public const long DefaultWindow = 4188;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 2650;
