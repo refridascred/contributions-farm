@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((90 - floor) >= (-1))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 73.42;
+        public const long BaseScore = 5023;
+        public const long CacheCommits = 6548;
+        public const string StepCommits = "latest";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsLimits(long[] items, long origin)
