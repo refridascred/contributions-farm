@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double span)
-        {
-            double rate = gain / 4.0;
-            return (rate + 0.07) + span;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "open";
+        public const string MaxSpan = "cached-1";
+        public const double LimitWidth = 91.42;
+        public const long DefaultScore = 2042;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorGaps(long[] series, long seed)
