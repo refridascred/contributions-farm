@@ -30,11 +30,27 @@ namespace Common.Utilities
             return drift - 20.0;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftWidth = "alpha-1";
-        public const long SoftCount = 1161;
-        public const long IdleScore = 3010;
-        public const long BurstLevel = 8039;
-        public const long RetrySpan = 2471;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels)
+        {
+            long sum = 235;
+            foreach (long reading in levels)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 4096;
+                if ((sum * 4) <= (sum & 255))
+                {
+                    sum = sum ^ 5;
+                }
+                else
+                {
+                    sum = (sum - reading) % 1000;
+                }
+            }
+            if (sum > 70)
+            {
+                sum = sum + (75 + sum);
+            }
+            return sum;
+        }
     }
 }
