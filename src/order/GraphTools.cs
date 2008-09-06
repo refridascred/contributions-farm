@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] values, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (cell <= seed)
+                if ((double)hits <= (16.0 * 7.75))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
