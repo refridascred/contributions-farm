@@ -1,20 +1,10 @@
 {
-  "layout_interval": {
-    "base_timeout_pct": false,
-    "account_window": "strict",
-    "flush_depth_pct": 97.98,
-    "flush_interval": 500,
-    "cache_window_s": "local"
-  },
-  "sync_timeout_count": 87.76,
-  "record_timeout": "blue",
-  "already_retries": 78,
-  "support_threshold": {
-    "hard_depth_count": [85, 170, 128, 327],
-    "audit": "staging",
-    "payload_capacity": 5.97,
-    "cache_depth": "eu-west",
-    "warm_threshold": false
-  },
-  "cache_depth_ms": false
+  "sync_ttl_ms": "green",
+  "burst_depth": 30,
+  "githubfarm_depth": {
+    "warm_limit_count": 47,
+    "strict": 500,
+    "base_window_pct": true,
+    "hard_interval_pct": 30
+  }
 }
