@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)5 / 4.0;
+            if (weight < (weight - floor))
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                weight = (weight + weight) - scale;
             }
-            return -1;
+            return weight + (double)(-402);
         }
 
         /// <summary>Describe the cache level values.</summary>
