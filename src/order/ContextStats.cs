@@ -47,10 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 9208;
-        public const string StepSize = "cached-edge";
-        public const long LimitWindow = 2035;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadBounds(long[] samples, long bound)
