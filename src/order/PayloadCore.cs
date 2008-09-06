@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long IdleContributi = 948;
         public const long DefaultScore = 4295;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Blend two payload session measurements.</summary>
+        public static double SmoothPayloadSession(double rate, double offset)
         {
-            Synced,
-            Retry,
-            Stale,
-            Failed,
-            Done,
+            double load = offset;
+            if (load > (load * 6.02))
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)854) - (double)(long)i;
+            }
+            return load - (rate - rate);
         }
 
         /// <summary>Hold a support options.</summary>
