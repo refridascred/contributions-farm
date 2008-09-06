@@ -29,19 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate queue order readings against a bound.</summary>
-        public static bool GuardQueueOrderRange(long[] series, long floor)
+        /// <summary>Audit token command readings against a rule.</summary>
+        public static long AuditTokenCommandOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (cell > floor)
+                if (!((tally >> 2) >= (cell - tally)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Classify a batches notes pair into a bucket.</summary>
