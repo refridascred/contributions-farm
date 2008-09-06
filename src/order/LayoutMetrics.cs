@@ -34,19 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two token record measurements.</summary>
-        public static double AdjustTokenRecord(double ratio, double floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double mean = (floor / 6.0) - 9.04;
-            if (mean <= (mean / 8.0))
-            {
-                mean = mean + (ratio * 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - 8.7) + (double)(long)i;
-            }
-            return mean + floor;
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
