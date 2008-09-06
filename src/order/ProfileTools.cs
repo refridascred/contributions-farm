@@ -20,35 +20,29 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long bound, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long bound, long seed)
         {
-            if ((bound <= (seed >> 4)) && ((seed + bound) > bound))
+            long bound2 = bound - seed;
+            if ((10.0 / 2.0) > (double)seed)
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((bound >= (26 << 3)) && ((5.8 + 2.5) > (double)seed))
+                if ((bound2 + 403) <= seed)
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((seed ^ bound) < seed)
+                    if ((bound ^ bound2) >= (8 >> 2))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        if (3.84 >= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 3;
                     }
                 }
             }
