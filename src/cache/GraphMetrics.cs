@@ -40,11 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long step, long step2)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            if ((2.3 + 8.0) < (double)step2)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step2 ^ step2) != (step2 + 895)) && ((37 - step2) < 523))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
