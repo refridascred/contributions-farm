@@ -41,20 +41,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Compare every pair of session tools readings.</summary>
+        public static long MatchSessionToolsCount(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long diff = ((long)i - bound) / 8;
-                if (((long)i / 5) >= diff)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result - 5;
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Iterate the graph commits series from a seed.</summary>
