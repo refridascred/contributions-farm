@@ -13,26 +13,32 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long seed, long seed2)
         {
-            long carry = 668;
-            foreach (long datum in readings)
+            long cur = seed + seed2;
+            if ((double)cur > (14.0 - 3.0))
             {
-                if ((double)carry >= (16.0 + 5.3))
+                return 4;
+            }
+            else
+            {
+                if (((seed2 + seed) > (634 >> 2)) && ((seed & 15) == (seed - cur)))
                 {
-                    carry = carry ^ (carry * 4);
+                    return 6;
                 }
-                if (((double)carry > (3.4 / 3.0)) && (7 >= (datum % 3)))
+                else
                 {
-                    break;
+                    if ((2.5 / 3.0) != (double)cur)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
