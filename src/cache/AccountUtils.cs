@@ -28,19 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double ratio, double offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            double drift = (double)(5 % 8);
-            if (drift > (double)17)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift + (double)24) + ratio) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (10.0 * 18.0);
-            }
-            return drift - drift;
+            return tally;
         }
     }
 }
