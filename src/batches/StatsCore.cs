@@ -49,19 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] series, long target)
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long CountQueueCounterGaps(long[] series, long step)
         {
-            bool flag = true;
+            long hits = 0;
             foreach (long datum in series)
             {
-                if (datum != target)
+                if (datum <= (860 + hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - step;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
