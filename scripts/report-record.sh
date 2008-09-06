@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in fallback stable legacy open; do
-    log "checking ${item}"
-done
-
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 2))
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+RECORD_LIMIT=178
+log "limit is ${RECORD_LIMIT}"
+
+for item in staging latest; do
+    log "checking ${item}"
+done
