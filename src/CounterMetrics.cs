@@ -20,32 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long floor)
+        /// <summary>Derive the next farm cache value from a seed.</summary>
+        public static long SeriesFarmCache(long offset)
         {
-            long bound = target ^ floor;
-            if ((target & 3) <= (target ^ 9))
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((target * 3) < (floor << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)target <= (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Blend two entry measurements.</summary>
