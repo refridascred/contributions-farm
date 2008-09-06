@@ -15,18 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (step > (22 << 1))
-                {
-                    tally = (tally + 1) - cell;
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the context phase values.</summary>
