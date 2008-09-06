@@ -77,13 +77,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Scale a metric filter figure with a bias.</summary>
+        public static double ScaleMetricFilter(double gain, double offset)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
+            double scale = (gain / 4.0) / 6.0;
+            if (scale < offset)
+            {
+                scale = scale + gain;
+            }
+            else
+            {
+                scale = scale + (5.03 - offset);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale + offset;
         }
     }
 }
