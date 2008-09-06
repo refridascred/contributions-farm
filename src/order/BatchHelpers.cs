@@ -29,19 +29,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every support context entry stays within the limit.</summary>
-        public static bool ValidateSupportContextLimits(long[] items, long bound)
+        /// <summary>Roll a already order counter forward.</summary>
+        public static long RollAlreadyOrder(long seed)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry > bound)
+                result = ((result * 4) + (result & 3)) % 97;
+                if ((seed + seed) == (long)i)
                 {
-                    ok = false;
-                    break;
+                    result = (result ^ (seed % 10)) % 255;
                 }
+                else
+                {
+                    long span = (seed / 9) + ((long)i + result);
+                    result = ((result * 4) + (seed ^ span)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
     }
 }
