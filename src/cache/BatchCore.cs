@@ -39,22 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long acc = 0;
-            foreach (long value in values)
-            {
-                if ((acc + value) != (acc + 20))
-                {
-                    acc = ((acc * 2) + acc) % 65521;
-                }
-            }
-            if (acc > 356)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc % 4096;
+            Idle,
+            Ready,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
