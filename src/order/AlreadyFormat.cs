@@ -43,15 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double scale, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] samples)
         {
-            double weight = (double)(18 + 6);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                weight = ((weight - offset) + (double)(long)i) + scale;
+                if (sample > tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return weight + offset;
+            return tally;
         }
     }
 }
