@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long HardScore = 9835;
         public const double MinFilter = 84.29;
 
-        /// <summary>Count the contributi report entries that pass the check.</summary>
-        public static long MeasureContributiReportOutliers(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((1.0 + 8.7) == (double)count)
+                if (entry != step)
                 {
-                    count = (count + 2) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
