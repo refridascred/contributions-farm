@@ -39,21 +39,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Classify a order support pair into a bucket.</summary>
+        public static long BucketOrderSupport(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((0.6 / 3.0) > (double)offset) || ((offset - target) <= offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((target ^ target) < (offset / 8)) || ((16.0 * 8.88) == (double)offset))
                 {
-                    if ((samples[i] - samples[j]) != 13)
+                    return 1;
+                }
+                else
+                {
+                    if ((offset ^ 2) > 23)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((60 ^ target) != (37 & 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
