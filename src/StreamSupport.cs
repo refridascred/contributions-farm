@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinWidth = "legacy-v2";
-        public const double MaxRoute = 97.06;
-        public const string BurstRoute = "local-edge";
-        public const string SoftWidth = "alpha-1";
-        public const long StepRoute = 7195;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchScore = "alpha";
+        public const double LimitFormat = 72.65;
+        public const long MinScore = 6885;
+        public const long MaxFormat = 2778;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double AdjustContributi(double ratio, double bias)
