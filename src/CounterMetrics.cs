@@ -29,18 +29,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm channel entries that pass the check.</summary>
-        public static long CountGithubfarmChannelMatches(long[] series, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long next = origin ^ bound;
+            if ((bound <= (origin >> 1)) || ((4.0 - 20.0) == (double)origin))
             {
-                if (tally < origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)next == (double)8)
                 {
-                    tally = (tally + 2) - sample;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a tools entry.</summary>
