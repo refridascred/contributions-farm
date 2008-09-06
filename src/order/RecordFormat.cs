@@ -34,21 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
