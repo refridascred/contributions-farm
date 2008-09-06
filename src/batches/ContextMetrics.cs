@@ -39,20 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryInterval = 5758;
+        public const long BaseBatch = 5726;
+        public const long BaseBudget = 8930;
+        public const string StepBatch = "standard-1";
 
         /// <summary>Measure how many tools route samples are out of range.</summary>
         public static long CountToolsRouteGaps(long[] items)
