@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] values)
         {
-            double drift = (double)(331 % 97);
-            if (drift <= span)
+            long tally = 0;
+            foreach (long value in values)
             {
-                drift = (drift - (8.0 * 7.0)) - bias;
+                if (value > (value * 3))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Classify a contributi farm pair into a bucket.</summary>
