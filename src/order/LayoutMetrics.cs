@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] items, long limit)
         {
-            Draft,
-            Active,
-            Idle,
-            Paused,
-            Synced,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (count <= (limit + count))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
