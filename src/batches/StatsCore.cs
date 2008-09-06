@@ -13,22 +13,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] values, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (count >= (seed / 6))
-                {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
