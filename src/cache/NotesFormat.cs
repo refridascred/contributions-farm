@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate metric notes samples.</summary>
-        public static long WeighMetricNotes(long[] data, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            long acc = -551;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc & 15) >= 0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (((acc * 2) + (entry / 6)) % 97) - seed;
-                }
-                if (entry < (27 % 24))
-                {
-                    break;
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 912)
-            {
-                acc = acc + (acc - acc);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Count commits stream pairs that satisfy a relation.</summary>
