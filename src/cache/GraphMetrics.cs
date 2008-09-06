@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long limit, long offset)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            long delta = limit + offset;
+            if ((86 + limit) <= (offset / 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((delta * 5) >= (limit - 76)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - offset) >= delta)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6.0 <= (double)offset) || ((offset + offset) <= offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
