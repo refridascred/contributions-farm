@@ -60,19 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((46 * 5) == (limit % 64))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseScore = "strict-v2";
+        public const long RetryRatio = 4231;
+        public const long DefaultBudget = 1845;
+        public const long MaxInterval = 1050;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] items)
