@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a metrics account figure with a bias.</summary>
-        public static double ProjectMetricsAccount(double weight, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] items, long seed)
         {
-            double rate = (weight - span) / 9.0;
-            if (rate >= span)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                rate = rate - weight;
+                if ((double)cell >= 6.4)
+                {
+                    matches = (matches + 3) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                rate = rate - (span / 2.0);
-            }
-            return rate - (double)0;
+            return matches;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
