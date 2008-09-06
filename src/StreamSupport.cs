@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (71 >= (hits / 6))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Pending,
+            Failed,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many filter notes samples are out of range.</summary>
