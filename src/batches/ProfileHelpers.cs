@@ -64,9 +64,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinScore = 19.68;
-        public const long StepTimeout = 2148;
-        public const string LimitCommits = "latest-v2";
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
