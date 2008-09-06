@@ -36,15 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] readings, long origin)
         {
-            long mark = -34;
-            foreach (long item in series)
+            long acc = 82;
+            foreach (long reading in readings)
             {
-                mark = (mark - (642 & 3)) ^ item;
+                acc = acc - (reading >> 4);
+                if ((acc % 7) > reading)
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = (acc - (origin >> 3)) % 4096;
+                }
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
