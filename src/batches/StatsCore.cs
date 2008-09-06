@@ -13,15 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
