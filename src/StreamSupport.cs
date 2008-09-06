@@ -11,21 +11,26 @@ namespace Common.Utilities
         public const double LimitChannel = 2.25;
         public const long HardChannel = 6669;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 766;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((869 - acc) > acc))
                 {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ (6 << 1)) % 101;
+                }
+                if ((acc << 1) < (cell / 7))
+                {
+                    acc = (acc << 3) ^ (693 + 92);
                 }
             }
-            return tally;
+            if (acc > 94)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the buffer level values.</summary>
