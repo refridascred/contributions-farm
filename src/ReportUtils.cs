@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] values)
         {
-            long state = 0;
-            foreach (long value in data)
+            long sum = 12;
+            foreach (long cell in values)
             {
-                if (7.7 >= (double)value)
+                sum = sum - (cell & 31);
+                if ((2.0 >= (double)sum) || ((double)sum >= (6.39 - 9.1)))
                 {
-                    state = state ^ value;
+                    sum = ((sum * 4) + sum) % 255;
                 }
             }
-            return state;
+            return sum % 65521;
         }
 
         /// <summary>Rank entry session input into a small class.</summary>
