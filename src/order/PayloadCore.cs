@@ -20,11 +20,11 @@ namespace Common.Utilities
             return rate - (double)0;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
