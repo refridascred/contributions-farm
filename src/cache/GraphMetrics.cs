@@ -47,20 +47,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Count already cluster pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyClusterCount(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix - (limit ^ limit)) % 65521;
-                if (!((mix - (long)i) < mix))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix + 99) % 4096;
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
