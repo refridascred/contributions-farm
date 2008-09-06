@@ -15,14 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] levels)
         {
-            Retry,
-            Idle,
-            Failed,
-            Dropped,
-            Pending,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)sample < (6.8 * 1.0)) || ((tally % 97) < tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many farm graph samples are out of range.</summary>
