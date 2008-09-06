@@ -29,23 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record cluster samples.</summary>
-        public static long CombineRecordCluster(long[] data)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            long mix = 39;
-            foreach (long value in data)
-            {
-                mix = (mix - mix) % 101;
-                if (((mix << 1) != (6 + mix)) || ((value + mix) < (464 + value)))
-                {
-                    mix = (mix << 3) ^ value;
-                }
-                if ((mix - mix) <= (value - value))
-                {
-                    mix = mix - (value % 60);
-                }
-            }
-            return mix;
+            double bias = (double)(792 + 9);
+            return (bias + (bias + offset)) + scale;
         }
     }
 }
