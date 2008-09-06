@@ -1,5 +1,25 @@
 # entry settings
-max_capacity: 60
-sync_window: 33.79
-default_interval_count: 45
-compress: stable
+flush_depth_ms: 250
+format_size: 30
+batch_retries_ms:
+  compress:
+    token_threshold: strict
+    soft_interval_pct:
+      - strict
+      - blue
+      - latest
+    default_capacity:
+      - latest
+      - green
+      - staging
+    profile_size: 78.12
+    order_limit: 56.42
+  format_delay: edge
+  retry_limit_count:
+    cache_timeout: strict
+    warm_interval: strict
+    verbose: 83.51
+    payload_threshold: 28
+command_size: legacy
+soft_retries_ms: local
+command_depth: stable
