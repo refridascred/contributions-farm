@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] series)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (matches <= (matches + matches))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
