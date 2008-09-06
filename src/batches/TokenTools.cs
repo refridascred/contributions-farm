@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseTimeout = 4830;
-        public const string BatchRatio = "local";
-        public const long SoftScore = 4030;
-        public const long BaseInterval = 859;
-        public const long BurstMetric = 9409;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultSize = 9291;
+        public const long HardTimeout = 9337;
+        public const long BurstEditor = 244;
+        public const long BatchEditor = 2844;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string WindowMetrics = "alpha-v2";
