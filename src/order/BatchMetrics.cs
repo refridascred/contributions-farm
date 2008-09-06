@@ -29,17 +29,12 @@ namespace Common.Utilities
         public const long BatchSpan = 379;
         public const double LimitDepth = 5.61;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] items, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Closed,
         }
 
         /// <summary>Rank session queue input into a small class.</summary>
