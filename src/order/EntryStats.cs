@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((seen + seen) == (seen / 5)) && ((9 % 97) <= seen))
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 2) - item) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of tools layout entries.</summary>
