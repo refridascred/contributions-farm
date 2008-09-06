@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const long DefaultMetrics = 1342;
         public const double StepRatio = 43.1;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Blend two token record measurements.</summary>
+        public static double AdjustTokenRecord(double ratio, double floor)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            double mean = (floor / 6.0) - 9.04;
+            if (mean <= (mean / 8.0))
+            {
+                mean = mean + (ratio * 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - 8.7) + (double)(long)i;
+            }
+            return mean + floor;
         }
     }
 }
