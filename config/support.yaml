@@ -1,31 +1,17 @@
 # support settings
-cache_size:
-  poll_depth_pct:
-    buffer_limit:
-      - strict
-      - edge
-    base_size_count: open
-    account_depth: 29.16
-    contributi_ttl: 60
-    default_delay_pct: latest
-  soft_threshold_pct:
-    cache_limit_s: open
-    metrics_limit: staging
-    sync_interval: true
-    stats_window: latest
-    sync_ratio: standard
-  checks_timeout:
-    max_timeout_count: 12.17
-    batch_ratio_count: 87.25
-    flush_threshold_ms: latest
-    dry_run:
-      - 385
-      - 233
-      - 465
-      - 221
-    queue_timeout: 100
-    idle_interval: true
-checks_ttl:
-  - primary
-  - legacy
-default_ttl: local
+context_size:
+  flush_delay_ms:
+    max_ratio_ms: 250
+    dry_run: 9180
+    readonly: 51.31
+    min_interval_s: 76.92
+  enabled:
+    support_threshold: 1024
+    verbose: green
+    retry_ratio: 36.72
+  min_limit_s: primary
+  soft_depth_pct: 8546
+  cache_ratio_ms: 100
+  retry_interval_ms: 50.46
+idle_timeout: 1.2
+max_threshold_s: local
