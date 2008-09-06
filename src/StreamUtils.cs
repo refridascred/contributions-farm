@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] samples)
+        /// <summary>Validate context layout readings against a bound.</summary>
+        public static bool ValidateContextLayoutRange(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (matches > (cell >> 4))
+                if (entry < bound)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a filter summary.</summary>
