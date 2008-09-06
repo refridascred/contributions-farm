@@ -12,19 +12,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] data, long floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Locked,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
