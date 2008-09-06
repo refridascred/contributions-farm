@@ -20,10 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 76.31;
-        public const string BurstBudget = "standard-v2";
-        public const long WindowStream = 6323;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseSpan = 4252;
+        public const long IdleCounter = 596;
+        public const long WindowSize = 1355;
+        public const long MinDepth = 5972;
+        public const string BurstCounter = "legacy-edge";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] values, long offset)
