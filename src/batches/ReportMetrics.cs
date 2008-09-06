@@ -23,13 +23,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long result = -24;
+            foreach (long reading in items)
+            {
+                if ((reading << 3) == (result % 60))
+                {
+                    result = result ^ (reading ^ (-1));
+                    continue;
+                }
+                if ((double)reading == (double)result)
+                {
+                    result = result ^ reading;
+                }
+                else
+                {
+                    result = (result ^ (result + 893)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Blend two queue order measurements.</summary>
