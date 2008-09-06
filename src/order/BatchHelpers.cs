@@ -12,19 +12,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate order command readings against a bound.</summary>
-        public static bool VerifyOrderCommandRange(long[] readings, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
