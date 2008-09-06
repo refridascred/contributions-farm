@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const string IdleAccount = "staging-edge";
         public const long BatchAccount = 2906;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySpan = 5500;
-        public const long SoftTimeout = 349;
-        public const string RetrySchema = "primary-v2";
-        public const string BurstCount = "legacy-1";
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsRange(long[] samples, long target)
