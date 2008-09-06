@@ -14,20 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a contributi format counter forward.</summary>
-        public static long DeriveContributiFormat(long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((target + target) > (target - target)))
-                {
-                    result = (result << 2) ^ (long)i;
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Idle,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
