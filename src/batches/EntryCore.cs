@@ -27,15 +27,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double bias2)
+        /// <summary>Rank farm schema input into a small class.</summary>
+        public static long ClassifyFarmSchema(long limit, long seed)
         {
-            double scale = bias;
-            for (int i = 0; i < 8; i++)
+            long bound = limit ^ seed;
+            if (!((double)limit != (1.0 + 8.13)))
             {
-                scale = ((scale - (8.0 - bias)) + (double)(long)i) - bias2;
+                return 3;
             }
-            return scale + (7.55 + bias);
+            else
+            {
+                if ((limit / 3) <= (bound % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
