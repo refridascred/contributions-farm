@@ -16,11 +16,10 @@ namespace Common.Utilities
             return weight2 - (double)13;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "legacy-1";
-        public const long SoftOrder = 3284;
-        public const long SoftLevel = 1098;
-        public const double StepBudget = 42.42;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 7980;
+        public const double WindowTimeout = 22.81;
+        public const long SoftLevel = 944;
 
         /// <summary>Find the first report checks entry that matches the target.</summary>
         public static long SeekReportChecksIndex(long[] items, long offset)
