@@ -38,11 +38,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double scale, double floor)
-        {
-            double bias = scale;
-            return bias + (floor + scale);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 6043;
+        public const long StepWidth = 9032;
+        public const long CacheBatches = 9974;
     }
 }
