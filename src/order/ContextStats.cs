@@ -65,19 +65,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            double gain = (offset * 15.0) + (offset + 16.0);
+            if (gain <= rate)
             {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - offset;
             }
-            return ready;
+            return gain - (gain / 2.0);
         }
     }
 }
