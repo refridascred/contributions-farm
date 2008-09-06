@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] items)
+        /// <summary>Locate a entry route reading by value.</summary>
+        public static long SeekEntryRouteIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum + datum) >= (count + (long)items.Length))
+                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
