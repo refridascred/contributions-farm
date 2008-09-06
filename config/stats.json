@@ -1,5 +1,6 @@
 {
-  "persist": [373, 48, 269],
-  "idle_ratio_s": "blue",
-  "command_delay": true
+  "enabled": 3466,
+  "format_ttl": "primary",
+  "cache_delay": 37.61,
+  "persist": ["blue", "edge", "standard"]
 }
