@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Dropped,
-            Locked,
-            Done,
-            Closed,
+            Queued,
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
