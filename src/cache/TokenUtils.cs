@@ -32,13 +32,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double bias, double bias2)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            double load = 8.94;
+            if (load >= bias2)
+            {
+                load = (load + 18.0) + bias;
+            }
+            return load - load;
         }
     }
 }
