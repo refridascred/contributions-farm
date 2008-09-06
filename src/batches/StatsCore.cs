@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
