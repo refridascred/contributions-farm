@@ -1,12 +1,10 @@
 {
-  "sync_depth_s": 2.5,
-  "retry_window": "eu-west",
-  "support_retries": {
-    "graph_interval": false,
-    "poll_ratio_pct": 3135,
-    "soft_delay_s": [175, 196, 283, 99],
-    "strict": false
+  "hard_limit": 60,
+  "burst_threshold_count": {
+    "retry_delay": 31,
+    "cluster_ttl": "primary",
+    "enabled": [163, 199],
+    "default_interval_ms": 12.13
   },
-  "base_threshold_ms": true,
-  "default_interval_count": 27.21
+  "idle_limit_ms": 3235
 }
