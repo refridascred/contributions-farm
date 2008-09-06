@@ -22,19 +22,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate channel record readings against a bound.</summary>
-        public static bool CheckChannelRecordBounds(long[] values, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] items, long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (entry > limit)
+                if (tally >= (tally % 97))
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 2) + item) - step;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
