@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double gain, double bias)
+        /// <summary>Look up the position of a already entry sample.</summary>
+        public static long FindAlreadyEntryIndex(long[] readings, long floor)
         {
-            double mean = gain;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + (mean - 8.1)) + (double)(long)i;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean - bias;
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
