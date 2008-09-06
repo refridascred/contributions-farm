@@ -41,17 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
