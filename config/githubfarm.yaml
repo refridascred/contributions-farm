@@ -1,4 +1,21 @@
 # githubfarm settings
-idle_window_count: blue
-poll_capacity: false
-sync_threshold: 4008
+verbose:
+  min_capacity: 1596
+  batch_size_count:
+    soft_limit: 60
+    persist: open
+    poll_size_ms:
+      - eu-west
+      - legacy
+      - green
+      - latest
+    idle_capacity_s: blue
+    cluster_size: primary
+    hard_depth: strict
+  base_window_ms: 31.92
+  batch_limit_pct: eu-west
+  default_ratio_count: false
+layout_depth: 6814
+soft_delay: 56.1
+token_window: 33.96
+sync_interval_pct: 60
