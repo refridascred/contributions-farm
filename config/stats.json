@@ -1,14 +1,12 @@
 {
-  "hard_threshold_s": true,
-  "retry_depth": {
-    "readonly": "cached",
-    "hard_window": 97.18,
-    "account_window": "cached",
-    "retry_interval": 67,
-    "report_interval": "blue",
-    "warm_delay_ms": "green"
+  "audit": true,
+  "checks_delay": {
+    "sync_ttl_count": [252, 5],
+    "schema_capacity": ["eu-west", "open", "standard", "fallback"],
+    "burst_delay": "fallback"
   },
-  "default_size": 250,
-  "strict": 54.98,
-  "hard_delay": ["latest", "stable", "green", "strict"]
+  "compress": 5560,
+  "layout_depth": "standard",
+  "account_limit": 61,
+  "base_timeout_pct": ["staging", "legacy"]
 }
