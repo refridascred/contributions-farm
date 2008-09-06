@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a stats account reading by value.</summary>
-        public static long LookupStatsAccountIndex(long[] levels, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long target, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = target - origin;
+            if (4.1 > (double)step)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((step + 56) < step)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the checks filter series from a seed.</summary>
