@@ -20,18 +20,21 @@ namespace Common.Utilities
             return load - (scale / 8.0);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] levels)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell < 8.5)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
