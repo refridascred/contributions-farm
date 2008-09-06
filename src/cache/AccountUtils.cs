@@ -15,22 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the queue report entries that pass the check.</summary>
-        public static long AuditQueueReportMatches(long[] items, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((548 + matches) < (floor + floor))
+                if (value != bound)
                 {
-                    matches = (matches + 1) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Digest a series of layout payload entries.</summary>
