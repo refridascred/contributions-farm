@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 4030;
+        public const long SoftLayout = 5774;
+        public const long DefaultSize = 3686;
+        public const string CacheScore = "local-v2";
+        public const string BurstCount = "standard-1";
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
