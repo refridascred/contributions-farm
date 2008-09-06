@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            Stale,
-            Retry,
-            New,
+            double bias2 = bias - (bias * 2.48);
+            if (bias2 > (bias / 3.0))
+            {
+                bias2 = bias2 + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - 3.3) + (double)(long)i;
+            }
+            return bias2 + (bias2 - bias);
         }
 
         /// <summary>Describe the metric status values.</summary>
