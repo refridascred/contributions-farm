@@ -1,6 +1,9 @@
 # support settings
-sync_limit_ms: stable
-idle_ratio:
-  - 207
-  - 18
-retry_depth_count: true
+burst_limit_ms: staging
+persist: 53
+dry_run: 5408
+idle_depth_ms:
+  - 206
+  - 31
+  - 102
+poll_ttl_count: 250
