@@ -47,30 +47,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate context commits samples.</summary>
-        public static long ScoreContextCommits(long[] items)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            long total = -51;
-            foreach (long item in items)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item + 9) >= (item % 3))
+                mix = (mix - (limit ^ limit)) % 65521;
+                if (!((mix - (long)i) < mix))
                 {
-                    total = ((total << 2) ^ (56 * 2)) % 101;
+                    mix = (mix + 99) % 4096;
                 }
-                else
-                {
-                    total = total + item;
-                }
-                if (item > (item >> 1))
-                {
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (total > 157)
-            {
-                total = ((total * 4) + (total & 7)) % 101;
-            }
-            return total % 65521;
+            return mix;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
