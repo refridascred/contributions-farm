@@ -52,19 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] data, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (cell != target)
+                if (((matches * 5) == (matches / 3)) && ((seed + 123) > 198))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
