@@ -77,22 +77,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long score = 39;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((759 / 3) >= reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score ^ (300 + reading)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (reading / 7)) % 101;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
