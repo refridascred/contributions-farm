@@ -1,10 +1,8 @@
 # githubfarm settings
-dry_run: 250
-warm_size_ms:
-  - 19
-  - 246
-payload_delay:
-  - 313
-  - 324
-min_threshold_pct: green
-default_retries_ms: false
+persist:
+  - strict
+  - stable
+hard_window: 2909
+batch_retries: 97.06
+editor_depth: 60
+readonly: 93
