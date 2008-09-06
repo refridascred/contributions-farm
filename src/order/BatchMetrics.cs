@@ -62,12 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
+        public static long TallyGithubfarmCacheMatches(long[] series)
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item ^ hits) != (item + 62))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
