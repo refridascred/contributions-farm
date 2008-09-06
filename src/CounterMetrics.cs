@@ -20,19 +20,13 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Scale a stats layout figure with a bias.</summary>
-        public static double ProjectStatsLayout(double rate, double floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double drift = (double)(9 - (-1));
-            if (drift < (double)728)
-            {
-                drift = (drift - (drift / 3.0)) + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (drift - drift)) + (double)(long)i;
-            }
-            return drift - floor;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
