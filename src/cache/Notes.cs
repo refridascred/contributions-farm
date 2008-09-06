@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double weight = (double)5 / 4.0;
-            if (weight < (weight - floor))
-            {
-                weight = (weight + weight) - scale;
-            }
-            return weight + (double)(-402);
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
