@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long CacheFactor = 8104;
         public const string BaseRatio = "fallback-edge";
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Count the graph metric entries that pass the check.</summary>
+        public static long MeasureGraphMetricGaps(long[] samples)
         {
-            long sum = 83;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                sum = ((sum << 2) ^ reading) % 101;
+                if ((count & 15) >= (count - count))
+                {
+                    count = (count + 1) - value;
+                }
             }
-            if (sum > 287)
-            {
-                sum = (sum + (sum << 3)) % 1000;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Match up layout support samples.</summary>
