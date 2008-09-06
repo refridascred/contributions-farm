@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Look up the position of a editor counter sample.</summary>
+        public static long FindEditorCounterIndex(long[] levels, long floor)
         {
-            Pending,
-            Failed,
-            Closed,
-            Active,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many filter notes samples are out of range.</summary>
