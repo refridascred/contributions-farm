@@ -50,12 +50,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Locate a record payload reading by value.</summary>
+        public static long FindRecordPayloadIndex(long[] readings, long limit)
         {
-            Synced,
-            Draft,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the already status values.</summary>
