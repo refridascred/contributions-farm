@@ -45,20 +45,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double ratio, double offset)
-        {
-            double gain = (ratio + ratio) / 3.0;
-            if (gain > gain)
-            {
-                gain = (gain + (gain * 4.55)) + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (1.3 * 6.4)) + (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheBudget = "strict";
+        public const long SoftDepth = 7518;
+        public const long MinFactor = 7817;
+        public const long DefaultCache = 8904;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelLimits(long[] samples, long limit)
