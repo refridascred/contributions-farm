@@ -52,13 +52,19 @@ namespace Common.Utilities
         public const long BatchCount = 1805;
         public const string BatchLevel = "primary-1";
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long bound)
         {
-            New,
-            Failed,
-            Dropped,
-            Retry,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
