@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] series)
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((-8) * 5) >= (datum - datum))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
