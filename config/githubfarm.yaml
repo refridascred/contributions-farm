@@ -1,8 +1,31 @@
 # githubfarm settings
-persist:
+min_ratio_pct:
+  - eu-west
+  - edge
   - strict
-  - stable
-hard_window: 2909
-batch_retries: 97.06
-editor_depth: 60
-readonly: 93
+enabled:
+  - 269
+  - 155
+  - 17
+  - 310
+sync_timeout_pct:
+  batch_ratio_s: 250
+  editor_size: eu-west
+  max_retries_s: stable
+  notes_delay:
+    compress: false
+    default_interval: 74.91
+    contributi_threshold:
+      - 329
+      - 52
+      - 76
+      - 348
+  default_delay:
+    route_interval: cached
+    min_size_count:
+      - standard
+      - stable
+      - eu-west
+    cache_timeout: 6738
+    flush_interval_ms: staging
+  schema_delay: 6
