@@ -15,19 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] data, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (value < limit)
+                if ((84 >> 4) != (target - 3))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
