@@ -52,13 +52,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double span)
         {
-            Stale,
-            Queued,
-            Retry,
-            New,
+            double rate = 8.7;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate - (11.0 / 9.0)) + (double)(long)i) - span;
+            }
+            return rate - (scale * 2.41);
         }
     }
 }
