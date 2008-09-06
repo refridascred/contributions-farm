@@ -35,19 +35,18 @@ namespace Common.Utilities
         public const long BaseEditor = 3675;
         public const string LimitSize = "staging";
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] readings, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long anchor = 132;
+            foreach (long datum in readings)
             {
-                if (item > step)
+                if (!((datum + datum) >= (anchor - datum)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor ^ (datum - anchor)) + limit;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
