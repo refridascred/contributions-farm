@@ -41,11 +41,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 18.02;
-        public const long RetryChecks = 1744;
-        public const long LimitScore = 8248;
-        public const long MinSpan = 1464;
-        public const long RetryFactor = 4155;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
