@@ -1,25 +1,19 @@
 # support settings
-soft_timeout_s: true
-burst_delay: local
-buffer_delay:
-  sync_timeout_ms:
-    - edge
-    - open
-    - latest
-    - latest
-  sync_ttl_count: 513
-  command_ratio:
-    default_window_pct:
-      - local
-      - fallback
-    dry_run: 6116
-    idle_ratio: true
-  queue_depth:
-    - fallback
-    - fallback
-    - standard
-  batch_size: 250
-  poll_timeout: 31.26
-batch_depth_s: true
-enabled: legacy
-default_retries: stable
+min_capacity: 4220
+filter_size:
+  batch_ttl: standard
+  base_size_ms: 500
+  default_timeout: true
+  strict: true
+  base_retries_ms:
+    order_interval: 7165
+    soft_depth_pct: green
+    counter_ttl:
+      - blue
+      - cached
+    hard_capacity_s: 72
+    compress: 42.28
+    strict:
+      - 407
+      - 490
+hard_ttl_s: open
