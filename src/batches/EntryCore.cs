@@ -34,25 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm schema input into a small class.</summary>
-        public static long ClassifyFarmSchema(long limit, long seed)
+        /// <summary>Count the checks layout entries that pass the check.</summary>
+        public static long TallyChecksLayoutGaps(long[] samples, long target)
         {
-            long bound = limit ^ seed;
-            if (!((double)limit != (1.0 + 8.13)))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit / 3) <= (bound % 60))
+                if ((double)target >= (1.0 * 2.89))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 1) ^ item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
