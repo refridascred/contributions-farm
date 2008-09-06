@@ -22,14 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Derive the next checks batch value from a seed.</summary>
+        public static long StepChecksBatch(long target)
         {
-            Closed,
-            New,
-            Done,
-            Idle,
-            Retry,
+            long state = target;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state << 3) ^ ((long)i + target)) % 255;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Derive the next cache support value from a seed.</summary>
