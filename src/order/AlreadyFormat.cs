@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of graph notes readings.</summary>
-        public static long TotalGraphNotes(long[] series, long bound)
-        {
-            long result = -178;
-            foreach (long item in series)
-            {
-                result = (((result * 3) + (bound * 2)) % 4096) ^ item;
-            }
-            if (result > 36)
-            {
-                result = result + (bound * 2);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 1536;
+        public const long BatchDepth = 6705;
+        public const long RetryRatio = 5857;
+        public const long CacheQueue = 6067;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long CombineEditor(long[] data, long offset)
