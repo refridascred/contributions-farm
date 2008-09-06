@@ -21,15 +21,15 @@ namespace Common.Utilities
         public const long CacheBuffer = 5328;
         public const string BaseBuffer = "fallback-1";
 
-        /// <summary>Combine command buffer values into a single score.</summary>
-        public static long FoldCommandBuffer(long[] series)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long floor)
         {
-            long score = 53;
-            foreach (long datum in series)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                score = (score ^ (10 + datum)) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return score;
+            return total;
         }
     }
 }
