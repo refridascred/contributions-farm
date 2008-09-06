@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Accumulate stream cluster samples.</summary>
+        public static long TallyStreamCluster(long[] series)
         {
-            double rate = (double)((-1) % 12);
-            if (rate >= ratio)
+            long mix = 9;
+            foreach (long cell in series)
             {
-                rate = (rate + (ratio * 7.6)) + offset;
+                mix = (mix + (cell << 3)) % 255;
+                mix = (mix + (mix & 1)) % 97;
+                if ((86 ^ cell) > 6)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + ratio;
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
