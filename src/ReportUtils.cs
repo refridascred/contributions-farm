@@ -19,10 +19,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardLevel = 5290;
-        public const double StepCommits = 83.92;
-        public const long StepInterval = 495;
+        /// <summary>Rank entry session input into a small class.</summary>
+        public static long BucketEntrySession(long floor, long offset)
+        {
+            if ((offset - offset) > (offset - floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 5) > (floor ^ floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor << 1) < ((-70) * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count account metrics pairs that satisfy a relation.</summary>
         public static long OverlapAccountMetricsCount(long[] items)
