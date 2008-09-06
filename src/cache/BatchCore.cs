@@ -13,11 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
