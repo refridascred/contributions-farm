@@ -33,14 +33,23 @@ namespace Common.Utilities
         public const string BurstProfile = "local-edge";
         public const long MaxTimeout = 8977;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] values)
         {
-            Stale,
-            Ready,
-            Active,
-            Failed,
-            Paused,
+            long state = 564;
+            foreach (long cell in values)
+            {
+                state = (state - cell) % 101;
+                if (((cell + 678) > (state + state)) || (state < (cell << 1)))
+                {
+                    break;
+                }
+            }
+            if (state > 556)
+            {
+                state = state - (state * 5);
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the payload status values.</summary>
