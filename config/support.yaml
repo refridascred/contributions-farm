@@ -1,12 +1,4 @@
 # support settings
-max_window_pct: 30
-poll_retries_s: 82.8
-burst_ttl_s:
-  compress: 44.87
-  batch_delay: 60
-  idle_size: 88.71
-  counter_retries:
-    audit: 250
-    idle_window_count: 8253
-    commits_timeout: blue
-cache_threshold: 6743
+burst_capacity_pct: 775
+entry_ttl: false
+warm_delay: open
