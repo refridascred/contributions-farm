@@ -33,19 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double weight, double offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] series, long floor)
         {
-            double gain = (double)(38 + 7);
-            if (gain <= gain)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                gain = (gain - weight) + offset;
+                if (!(((floor << 3) > (cell << 1)) || ((65 >> 5) >= (floor - cell))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                gain = gain + (4.54 + gain);
-            }
-            return gain - 8.8;
+            return tally;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
