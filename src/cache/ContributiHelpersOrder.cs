@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the support record series from a seed.</summary>
-        public static long DeriveSupportRecord(long target)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = mark - (mark - target);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Derive the next stream editor value from a seed.</summary>
