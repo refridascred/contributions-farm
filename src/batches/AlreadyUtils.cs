@@ -39,23 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((acc % 60) <= ((long)i & 127))
-                {
-                    acc = ((acc * 3) + (bound * 5)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 2) + (bound * 5);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
