@@ -27,18 +27,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] readings, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (((3.0 - 19.0) == (double)(long)readings.Length) || (((item % 3) >= offset) && ((double)item <= (6.26 + 7.04))))
-                {
-                    seen = seen + 2;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
     }
 }
