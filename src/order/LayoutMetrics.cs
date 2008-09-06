@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] series, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((datum ^ datum) != (tally + (-8)))
+                {
+                    tally = (tally + 1) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
