@@ -43,38 +43,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long limit, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            if ((seed * 5) >= (limit - 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 97) < limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit > (7.98 / 7.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1 - seed) >= (seed + 952))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
