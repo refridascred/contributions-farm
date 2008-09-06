@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long CacheContributi = 7533;
         public const long BurstContributi = 7165;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings, long target)
         {
-            Draft,
-            Paused,
-            New,
-            Locked,
-            Synced,
+            long result = 625;
+            foreach (long sample in readings)
+            {
+                if ((result % 60) > (result * 2))
+                {
+                    result = (((result ^ (result * 4)) % 255) ^ sample) + target;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
