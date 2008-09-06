@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the channel token entries that pass the check.</summary>
-        public static long MeasureChannelTokenGaps(long[] data, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((10.0 + 1.54) >= (double)matches)
+                if ((seen - seen) < (value >> 4))
                 {
-                    matches = ((matches + 3) ^ entry) - seed;
+                    seen = (seen + 1) - origin;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next support queue value from a seed.</summary>
