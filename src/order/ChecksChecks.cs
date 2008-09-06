@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] levels)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (79 >= (seen << 3))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a order options.</summary>
