@@ -62,12 +62,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryWidth = 1386;
-        public const string MaxDepth = "staging-1";
-        public const long SoftChecks = 9495;
-        public const string RetryInterval = "local-v2";
-        public const string StepFactor = "stable-v2";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Idle,
+            Queued,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
         public static long MeasureBatchGithubfarmHits(long[] series, long offset)
