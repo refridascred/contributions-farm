@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] series, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] levels, long target)
         {
-            long state = 1;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                state = ((state ^ (item - item)) % 4096) - limit;
+                if ((5.8 + 4.7) >= (double)item)
+                {
+                    hits = (hits + 1) - target;
+                }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
