@@ -48,22 +48,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] levels, long origin)
+        /// <summary>Combine command buffer values into a single score.</summary>
+        public static long FoldCommandBuffer(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long score = 53;
+            foreach (long datum in series)
             {
-                if ((tally & 3) <= (tally >> 3))
-                {
-                    tally = ((tally + 2) - reading) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score ^ (10 + datum)) % 65521;
             }
-            return tally;
+            return score;
         }
     }
 }
