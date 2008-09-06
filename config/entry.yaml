@@ -1,6 +1,6 @@
 # entry settings
-burst_depth: edge
-flush_threshold: 62.0
-verbose: 92.56
-token_limit: legacy
-flush_interval: true
+sync_delay_s: 35.51
+soft_size_pct: true
+stats_ttl: primary
+burst_delay_count: 82
+idle_size: latest
