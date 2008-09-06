@@ -73,19 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream cluster readings against a bound.</summary>
-        public static bool CheckStreamClusterBounds(long[] values, long floor)
+        /// <summary>Audit order counter readings against a rule.</summary>
+        public static long TallyOrderCounterMatches(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (value < floor)
+                if (19.0 <= (double)sample)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
