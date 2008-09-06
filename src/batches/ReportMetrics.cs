@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long DigestQueueBuffer(long[] data, long seed)
         {
-            Active,
-            Done,
-            Queued,
-            Retry,
+            long result = 1;
+            foreach (long sample in data)
+            {
+                if (!((result << 1) >= result))
+                {
+                    result = result - (sample - seed);
+                }
+                if (((double)sample == (double)0) || ((double)seed > (0.59 + 20.0)))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Project the next layout value.</summary>
