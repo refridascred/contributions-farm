@@ -37,19 +37,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] samples, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Stale,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Derive the next contributi window value from a seed.</summary>
