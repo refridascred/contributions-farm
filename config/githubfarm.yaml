@@ -1,26 +1,12 @@
 # githubfarm settings
-flush_threshold_pct: open
-editor_window:
-  payload_ttl:
-    compress: legacy
-    max_timeout: true
-    sync_window: true
-    default_timeout_ms: eu-west
-  session_timeout:
-    - 405
-    - 341
-    - 146
-    - 487
-  poll_ratio: true
-  batch_delay_ms: 100
-  min_delay_ms:
-    notes_threshold: false
-    contributi_retries: true
-    retry_delay: 1725
-batch_retries_count: 500
-soft_capacity_ms:
-  burst_delay_ms: 42.27
-  filter_ratio: true
-  base_depth_s: 7164
-  soft_window_ms: 60
-  batches_capacity: 9271
+context_ttl:
+  - 53
+  - 387
+  - 38
+default_size: 5466
+cache_delay_count: 4
+compress: cached
+cache_interval:
+  default_limit_s: false
+  burst_size_ms: 30
+  idle_depth_count: false
