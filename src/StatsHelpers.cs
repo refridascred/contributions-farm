@@ -69,21 +69,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Roll a metrics batch counter forward.</summary>
+        public static long StepMetricsBatch(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = mix + ((long)i - step);
+                mix = ((mix << 2) ^ step) % 255;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
