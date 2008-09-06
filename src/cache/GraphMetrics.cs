@@ -75,18 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics farm readings against a rule.</summary>
-        public static long TallyMetricsFarmMatches(long[] data, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((target - 511) == (target - hits))
+                if ((26 * 3) >= matches)
                 {
-                    hits = (hits + 2) + datum;
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
