@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] readings)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches - value) < (matches + matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
