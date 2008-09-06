@@ -27,14 +27,18 @@ namespace Common.Utilities
         public const string RetryDepth = "primary";
         public const string StepReport = "latest";
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the window tools entries that pass the check.</summary>
+        public static long CountWindowToolsHits(long[] values)
         {
-            Done,
-            Synced,
-            Locked,
-            Closed,
-            Ready,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((926 <= reading) && (hits >= reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine stream schema values into a single score.</summary>
