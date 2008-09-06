@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] values)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (value > (value * 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
