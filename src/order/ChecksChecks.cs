@@ -15,18 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] samples, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!((seed + seed) <= (tally - 103)))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
