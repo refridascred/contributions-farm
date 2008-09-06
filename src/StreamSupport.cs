@@ -20,35 +20,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples)
-        {
-            long anchor = 58;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = (((anchor << 3) ^ ((long)samples.Length - anchor)) % 255) - (long)i;
-                }
-                if (!((250 + anchor) < anchor))
-                {
-                    anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 97;
-                }
-                if (!((double)anchor < (15.0 + 8.0)))
-                {
-                    anchor = anchor + (anchor >> 3);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor / 8)) % 1000;
-                }
-                if ((item + 6) < item)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinWidth = "legacy-v2";
+        public const double MaxRoute = 97.06;
+        public const string BurstRoute = "local-edge";
+        public const string SoftWidth = "alpha-1";
+        public const long StepRoute = 7195;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TotalFilter(long[] levels, long bound)
