@@ -46,21 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account metrics pairs that satisfy a relation.</summary>
-        public static long OverlapAccountMetricsCount(long[] items)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
