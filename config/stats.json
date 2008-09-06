@@ -1,19 +1,7 @@
 {
-  "buffer_interval": false,
-  "min_interval_pct": 100,
-  "sync_depth_count": {
-    "batches_timeout": "fallback",
-    "min_ttl_s": [371, 73, 231],
-    "retry_retries_ms": 5.08,
-    "batch_depth_pct": {
-      "dry_run": 84,
-      "base_interval_ms": "cached",
-      "tools_limit": "strict",
-      "flush_limit": true
-    },
-    "queue_interval": "stable",
-    "readonly": true
-  },
-  "filter_ratio": false,
-  "burst_ttl": 30
+  "max_timeout": "green",
+  "compress": 64.77,
+  "hard_delay_s": 1024,
+  "soft_interval": "open",
+  "readonly": [251, 72, 325]
 }
