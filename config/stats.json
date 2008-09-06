@@ -1,8 +1,7 @@
 {
-  "idle_size_pct": "edge",
-  "cluster_interval": 45,
-  "support_window": 250,
-  "retry_window_pct": 88.98,
-  "max_ratio": 250,
-  "soft_threshold_s": 500
+  "min_window_s": "local",
+  "idle_ttl_pct": [71, 132, 366],
+  "warm_size_ms": 50.82,
+  "cache_ttl_pct": 37.24,
+  "cluster_threshold": true
 }
