@@ -40,22 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cluster batch entries that pass the check.</summary>
-        public static long MeasureClusterBatchOutliers(long[] readings)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((value / 2) >= value)
+                if (cell >= step)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
