@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] series, long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count & 63) >= (datum >> 2))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit route cache readings against a rule.</summary>
