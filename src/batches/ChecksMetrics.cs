@@ -25,38 +25,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double ratio, double floor)
         {
-            if ((step + target) < (step + step))
+            double scale = ratio + ratio;
+            if (scale < (floor * 1.2))
             {
-                return 8;
+                scale = scale + floor;
             }
             else
             {
-                if (((double)step <= 7.6) && ((double)49 < (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step & 31) < (step - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step == (0.5 + 7.41))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                scale = scale - 15.0;
             }
+            return scale + floor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
