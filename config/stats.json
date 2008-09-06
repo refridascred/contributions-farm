@@ -1,5 +1,14 @@
 {
-  "idle_ttl_count": 40.88,
-  "idle_retries_s": ["green", "edge", "eu-west", "staging"],
-  "farm_delay": "primary"
+  "hard_threshold_s": true,
+  "retry_depth": {
+    "readonly": "cached",
+    "hard_window": 97.18,
+    "account_window": "cached",
+    "retry_interval": 67,
+    "report_interval": "blue",
+    "warm_delay_ms": "green"
+  },
+  "default_size": 250,
+  "strict": 54.98,
+  "hard_delay": ["latest", "stable", "green", "strict"]
 }
