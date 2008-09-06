@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long limit)
         {
-            Paused,
-            Active,
-            Pending,
-            New,
+            long total = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
