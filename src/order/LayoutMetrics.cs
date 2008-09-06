@@ -39,31 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long floor, long seed)
-        {
-            if ((floor * 4) > (seed * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor <= 56)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + seed) <= 60)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 7570;
+        public const long MaxRatio = 2540;
+        public const long IdleFormat = 6759;
+        public const long HardFormat = 7027;
     }
 }
