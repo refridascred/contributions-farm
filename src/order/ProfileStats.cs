@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long bound)
+        /// <summary>Locate a route filter reading by value.</summary>
+        public static long LocateRouteFilterIndex(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
