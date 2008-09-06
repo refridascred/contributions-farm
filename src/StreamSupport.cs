@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a context session counter forward.</summary>
-        public static long SeriesContextSession(long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long limit, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            if ((318 - offset) >= (limit >> 2))
             {
-                sum = (sum + origin) % 97;
-                sum = ((sum * 3) + origin) % 255;
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((13.0 - 2.0) <= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7.0 / 7.0) > (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
