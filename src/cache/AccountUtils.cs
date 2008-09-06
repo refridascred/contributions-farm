@@ -35,19 +35,11 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Validate order graph readings against a bound.</summary>
-        public static bool GuardOrderGraphBounds(long[] levels, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
