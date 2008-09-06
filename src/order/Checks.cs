@@ -40,18 +40,31 @@ namespace Common.Utilities
         public const double BaseWidth = 33.44;
         public const string StepBatches = "staging-edge";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] levels, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if ((double)limit2 == (16.0 * 3.94))
             {
-                if ((double)matches > (2.7 + 7.0))
+                return 7;
+            }
+            else
+            {
+                if (6.8 <= (double)limit2)
                 {
-                    matches = ((matches + 3) - sample) - bound;
+                    return 4;
+                }
+                else
+                {
+                    if ((269 + limit) <= limit2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a counter info.</summary>
