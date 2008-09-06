@@ -72,21 +72,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes support readings.</summary>
-        public static long PairNotesSupportCount(long[] readings)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) == 4)
+                    if ((data[i] ^ data[j]) > 1)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
