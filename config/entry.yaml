@@ -1,8 +1,7 @@
 # entry settings
-schema_limit: 95
-idle_ratio_ms: strict
-entry_limit:
-  - 450
-  - 306
-hard_threshold: edge
-persist: 94.9
+order_threshold:
+  session_depth: open
+  payload_ttl: cached
+  soft_capacity: 82.19
+route_retries: cached
+payload_ttl: 8257
