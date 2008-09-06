@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseLevel = 7758;
-        public const long BaseTimeout = 4945;
-        public const long StepFilter = 7816;
-        public const double BurstRatio = 82.68;
-        public const double MinSize = 26.19;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
