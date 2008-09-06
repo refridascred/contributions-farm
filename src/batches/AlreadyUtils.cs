@@ -31,18 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long result = 1;
+            foreach (long sample in series)
             {
-                if ((datum & 3) <= datum)
+                if (!((0.11 - 9.0) < (double)result))
                 {
-                    hits = hits + 3;
+                    result = ((result + 92) % 97) + sample;
                 }
             }
-            return hits;
+            if (result > 969)
+            {
+                result = ((result << 3) ^ (result + result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of cache order entries.</summary>
