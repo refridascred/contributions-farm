@@ -13,26 +13,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] values, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long state = -801;
-            foreach (long entry in values)
-            {
-                if ((state % 5) >= 0)
-                {
-                    state = (state * 4) + (entry << 3);
-                }
-                if ((state ^ target) != (entry << 2))
-                {
-                    break;
-                }
-            }
-            if (state < 60)
-            {
-                state = (state * 2) + (state << 3);
-            }
-            return state;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
