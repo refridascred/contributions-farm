@@ -34,19 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes counter measurements.</summary>
-        public static double ProjectNotesCounter(double scale, double span)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double scale2 = scale + (scale + scale);
-            if (scale2 < span)
-            {
-                scale2 = scale2 - scale2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - (scale2 - span)) - (double)(long)i;
-            }
-            return scale2 - 0.1;
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Blend two already cache measurements.</summary>
