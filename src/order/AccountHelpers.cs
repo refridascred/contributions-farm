@@ -14,12 +14,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstTimeout = 742;
+        public const long MaxScore = 1307;
+        public const string WindowBatches = "alpha-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double LimitProfile = 81.49;
