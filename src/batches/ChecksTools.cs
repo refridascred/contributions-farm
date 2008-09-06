@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const double StepScore = 70.23;
         public const long LimitCommand = 3663;
 
-        /// <summary>Audit notes entry readings against a rule.</summary>
-        public static long MeasureNotesEntryMatches(long[] values)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long entry in values)
+            foreach (long entry in items)
             {
-                if (((tally + entry) <= (tally << 3)) || !(entry > tally))
+                if (!((entry / 4) > (87 - (-4))))
                 {
                     tally = tally + 3;
                 }
