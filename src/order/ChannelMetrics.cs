@@ -15,39 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a checks batches pair into a bucket.</summary>
-        public static long GradeChecksBatches(long offset, long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long delta = offset ^ seed;
-            if (((delta % 7) != (seed - 103)) || (3 < (seed + offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((delta >> 1) < (delta + seed)) && (offset < (delta - offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - seed) >= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed + offset) <= delta)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
