@@ -14,19 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] values, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] series, long seed)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long cell in series)
             {
-                if (((8 << 3) <= (origin - origin)) && ((origin / 6) <= (entry & 7)))
+                if (((cell - seen) >= (seen / 3)) || ((seen > (seen + cell)) || ((cell - seed) != (seen - seen))))
                 {
                     seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
                 }
             }
             return seen;
