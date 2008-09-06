@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 9402;
-        public const string SoftFactor = "cached-1";
-        public const long BurstAccount = 3931;
-        public const double SoftCount = 93.93;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (item < (9 - (long)levels.Length))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
