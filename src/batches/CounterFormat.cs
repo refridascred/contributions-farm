@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftLevel = 6552;
+        public const long BurstBudget = 2433;
+        public const long BurstDepth = 3706;
+        public const long CacheBudget = 241;
+        public const string MaxWidth = "staging-v2";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] series, long offset)
