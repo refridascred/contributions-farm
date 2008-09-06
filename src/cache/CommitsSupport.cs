@@ -10,39 +10,11 @@ namespace Common.Utilities
         public const long LimitGraph = 4560;
         public const double StepCount = 81.72;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long step2)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long edge = step ^ step2;
-            if (step >= (step2 & 15))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((edge * 5) < step2) && (((-90) + step) > (step2 ^ edge)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge << 1) != (step / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step + step2) <= 299)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
