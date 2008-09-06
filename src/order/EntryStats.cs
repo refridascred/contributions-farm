@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mix / 6) < (bound * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = (mix - 7) ^ (long)i2;
-                    mix = (mix - ((long)i + (long)i)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of tools layout entries.</summary>
