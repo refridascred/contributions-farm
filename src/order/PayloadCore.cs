@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinLevel = 7.18;
-        public const double LimitLevel = 73.31;
-        public const double DefaultContributi = 6.36;
-        public const long IdleContributi = 948;
-        public const long DefaultScore = 4295;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two payload session measurements.</summary>
         public static double SmoothPayloadSession(double rate, double offset)
