@@ -32,11 +32,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 6838;
-        public const string IdleSpan = "alpha";
-        public const long BurstAlready = 5033;
-        public const double CacheInterval = 35.54;
-        public const double DefaultAlready = 22.8;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long step2)
+        {
+            long edge = step + step2;
+            if (((step2 + 526) > edge) && (edge <= 485))
+            {
+                return 5;
+            }
+            else
+            {
+                if (620 <= (step2 % 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 >> 3) > 54)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
