@@ -44,12 +44,13 @@ namespace Common.Utilities
         public const string BurstBudget = "standard-v2";
         public const long WindowStream = 6323;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
+            Retry,
+            Active,
+            Draft,
+            Closed,
         }
     }
 }
