@@ -60,19 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token batches entry stays within the limit.</summary>
-        public static bool ValidateTokenBatchesBounds(long[] samples, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long step)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
     }
 }
