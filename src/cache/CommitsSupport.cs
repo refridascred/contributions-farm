@@ -81,19 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer queue value.</summary>
-        public static double AdjustBufferQueue(double rate, double floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series, long floor)
         {
-            double mean = rate;
-            if (mean < 20.0)
+            long result = 842;
+            foreach (long value in series)
             {
-                mean = (mean + (double)4) + floor;
+                result = ((result - value) % 4096) - floor;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (rate + 7.15);
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
