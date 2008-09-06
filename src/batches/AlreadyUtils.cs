@@ -35,11 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] data)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum & 3) <= datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of cache order entries.</summary>
