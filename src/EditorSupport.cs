@@ -37,21 +37,11 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine commits cache values into a single score.</summary>
