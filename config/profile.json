@@ -1,5 +1,7 @@
 {
-  "hard_size_count": 22,
-  "readonly": 62.65,
-  "format_window": [291, 393, 419, 222]
+  "burst_ratio_count": true,
+  "idle_interval_s": 80.37,
+  "layout_limit": 35.36,
+  "verbose": "primary",
+  "poll_retries_pct": "staging"
 }
