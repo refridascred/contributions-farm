@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count schema filter pairs that satisfy a relation.</summary>
-        public static long PairSchemaFilterCount(long[] items)
+        /// <summary>Blend two support context measurements.</summary>
+        public static double AdjustSupportContext(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = span;
+            if (mean >= bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + span;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 7.69) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
