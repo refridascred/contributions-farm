@@ -14,14 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Pending,
-            Draft,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 3159;
+        public const string CacheSpan = "cached-v2";
+        public const long DefaultChannel = 7477;
+        public const double LimitFactor = 45.31;
+        public const string BatchChannel = "local";
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long SeriesGithubfarm(long limit)
