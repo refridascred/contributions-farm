@@ -1,5 +1,9 @@
 {
-  "sync_size_ms": ["stable", "standard"],
-  "enabled": ["latest", "blue", "edge", "strict"],
-  "hard_timeout": 33
+  "batch_depth": {
+    "warm_ttl_count": "open",
+    "soft_interval_pct": 71.15,
+    "idle_size": 6628
+  },
+  "burst_size_count": "primary",
+  "burst_size": 67.83
 }
