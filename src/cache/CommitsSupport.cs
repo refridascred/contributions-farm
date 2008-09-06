@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total << 3) ^ (total ^ target);
-                total = (total * 4) + (target % 10);
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 4491;
+        public const long LimitGraph = 4560;
+        public const double StepCount = 81.72;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
