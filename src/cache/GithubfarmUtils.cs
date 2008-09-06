@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate already contributi samples.</summary>
-        public static long WeighAlreadyContributi(long[] values)
-        {
-            long carry = 7;
-            foreach (long sample in values)
-            {
-                carry = (carry - (sample + carry)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepBudget = 1047;
+        public const string IdleWidth = "staging-edge";
+        public const long BurstRecord = 5339;
+        public const long DefaultScore = 3691;
+        public const long MinScore = 4431;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsMatches(long[] readings)
