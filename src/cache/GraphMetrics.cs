@@ -64,20 +64,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 41.52;
+        public const long LimitRatio = 7735;
+        public const string DefaultSpan = "staging-v2";
+        public const string LimitSize = "cached-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepCount = 18.59;
