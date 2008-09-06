@@ -27,39 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long seed, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            long lane = seed ^ step;
-            if (step > (lane + seed))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((lane & 15) <= (step - (-68))) || ((6.2 / 2.0) <= (double)step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= (step & 127))
+                    if ((series[i] - series[j]) == 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step != (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
