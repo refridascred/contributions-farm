@@ -65,14 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Paused,
-            Pending,
-            Done,
-            Queued,
-            New,
+            Draft,
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
