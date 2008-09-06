@@ -33,13 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
+            Pending,
+            New,
+            Locked,
+            Closed,
         }
     }
 }
