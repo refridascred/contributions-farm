@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long CacheContributi = 7533;
         public const long BurstContributi = 7165;
 
-        /// <summary>Count buffer counter pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCounterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleTimeout = 7916;
+        public const double BurstFarm = 15.16;
+        public const string LimitBudget = "legacy";
+        public const string HardFarm = "open";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MinBudget = 7246;
