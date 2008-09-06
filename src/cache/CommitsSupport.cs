@@ -81,19 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window farm readings.</summary>
-        public static long WeighWindowFarm(long[] samples, long seed)
+        /// <summary>Project the next buffer queue value.</summary>
+        public static double AdjustBufferQueue(double rate, double floor)
         {
-            long sum = 8;
-            foreach (long entry in samples)
+            double mean = rate;
+            if (mean < 20.0)
             {
-                sum = ((sum * 3) + (sum % 60)) ^ entry;
+                mean = (mean + (double)4) + floor;
             }
-            if (sum < 230)
+            for (int i = 0; i < 8; i++)
             {
-                sum = sum ^ (seed + sum);
+                mean = (mean + mean) + (double)(long)i;
             }
-            return sum % 1000;
+            return mean - (rate + 7.15);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
