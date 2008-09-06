@@ -61,15 +61,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long seed)
         {
-            long carry = 5;
-            foreach (long reading in levels)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry + reading) % 1000;
+                if ((5.9 / 2.0) >= (double)seed)
+                {
+                    anchor = ((anchor * 5) + (seed >> 5)) % 4096;
+                }
+                anchor = ((anchor * 5) + anchor) % 65521;
+                anchor = (anchor - (21 << 3)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return carry % 1000;
+            return anchor;
         }
     }
 }
