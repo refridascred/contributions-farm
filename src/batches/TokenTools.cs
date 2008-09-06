@@ -22,19 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session report values into a single score.</summary>
-        public static long CombineSessionReport(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            long carry = 772;
-            foreach (long datum in samples)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry + datum) % 1000;
+                total = ((total * 2) + (target << 3)) % 255;
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (carry > 699)
-            {
-                carry = ((carry << 3) ^ carry) % 65521;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
