@@ -37,15 +37,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] levels, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] values, long origin)
         {
-            long mix = 178;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                mix = ((mix - 230) + datum) + offset;
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
