@@ -71,25 +71,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long origin, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] items, long floor)
         {
-            long diff = origin + limit;
-            if ((double)origin != (3.71 - 8.0))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((8.0 * 7.4) <= (double)origin) || (diff >= (357 + limit)))
+                if ((seen / 9) < (seen * 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    seen = ((seen + 2) + reading) - floor;
                 }
             }
+            return seen;
         }
     }
 }
