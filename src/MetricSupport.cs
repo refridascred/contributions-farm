@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double rate, double bias)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] values, long seed)
         {
-            double gain = (double)(14 - 597);
-            if (gain >= (double)326)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                gain = (gain + (double)1) - bias;
+                if (sample <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - (rate * 18.0);
+            return flag;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
