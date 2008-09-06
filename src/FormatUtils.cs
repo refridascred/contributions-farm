@@ -28,12 +28,14 @@ namespace Common.Utilities
         public const long WindowRatio = 6540;
         public const long BurstCache = 4488;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            New,
-            Locked,
             Dropped,
+            Closed,
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Match up payload samples.</summary>
