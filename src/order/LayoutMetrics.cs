@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 5585;
-        public const long StepCount = 1061;
-        public const long StepWidth = 1611;
-        public const long CacheSize = 5079;
-        public const long MaxBudget = 135;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardCount = 822;
+        public const double BurstSpan = 19.04;
+        public const long SoftFarm = 4865;
+        public const double StepDepth = 23.82;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long BucketProfile(long floor, long floor2)
