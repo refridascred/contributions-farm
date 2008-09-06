@@ -1,35 +1,31 @@
 # support settings
-dry_run: true
-buffer_window:
-  persist: stable
-  idle_delay_ms: 17.23
-  context_limit: fallback
-  retry_ttl_ms:
-    already_limit: 10.08
-    filter_threshold:
-      - legacy
-      - eu-west
-      - cached
-      - open
-    persist: 9870
-    soft_window_pct: 16.78
-  verbose:
-    compress:
-      - local
-      - fallback
-      - staging
-      - local
-    burst_delay_ms: false
-    hard_interval_pct: 36.41
-    poll_window: 65.39
-    persist:
-      - 337
-      - 74
-  retry_interval: legacy
-hard_capacity: false
-idle_ratio: local
-idle_limit:
-  - local
-  - stable
-  - latest
-idle_interval: 33
+cache_size:
+  poll_depth_pct:
+    buffer_limit:
+      - strict
+      - edge
+    base_size_count: open
+    account_depth: 29.16
+    contributi_ttl: 60
+    default_delay_pct: latest
+  soft_threshold_pct:
+    cache_limit_s: open
+    metrics_limit: staging
+    sync_interval: true
+    stats_window: latest
+    sync_ratio: standard
+  checks_timeout:
+    max_timeout_count: 12.17
+    batch_ratio_count: 87.25
+    flush_threshold_ms: latest
+    dry_run:
+      - 385
+      - 233
+      - 465
+      - 221
+    queue_timeout: 100
+    idle_interval: true
+checks_ttl:
+  - primary
+  - legacy
+default_ttl: local
