@@ -62,16 +62,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            if ((16.0 + 3.2) != (double)limit)
             {
-                state = (state << 2) ^ 8;
-                state = ((state * 5) + (long)i) % 97;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((limit % 2) < (limit >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 5) == (72 >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step >= (step - (-210))) || ((0 ^ step) <= (step - step)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
