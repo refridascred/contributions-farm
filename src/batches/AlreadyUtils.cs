@@ -46,19 +46,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] series, long floor)
         {
-            long carry = -150;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                carry = (carry ^ carry) ^ reading;
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry > 789)
-            {
-                carry = (carry + (step >> 4)) % 65521;
-            }
-            return carry;
+            return ok;
         }
     }
 }
