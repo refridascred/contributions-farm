@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)bound > (2.14 + 5.67))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
