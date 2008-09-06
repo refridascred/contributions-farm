@@ -14,12 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] values, long origin)
         {
-            Done,
-            Stale,
-            Paused,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((8 << 3) <= (origin - origin)) && ((origin / 6) <= (entry & 7)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
