@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] samples, long offset)
+        /// <summary>Find the first batch queue entry that matches the target.</summary>
+        public static long FindBatchQueueIndex(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= offset)
+                if (values[i] >= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
