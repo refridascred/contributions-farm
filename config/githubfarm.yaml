@@ -1,5 +1,18 @@
 # githubfarm settings
-audit: strict
-flush_depth_ms: legacy
-enabled: true
-already_depth: latest
+poll_window_pct:
+  layout_window: 100
+  readonly: 49.29
+  profile_timeout: false
+  base_limit_ms:
+    - 263
+    - 359
+  metric_ratio: 53.43
+batch_interval_s: 60
+graph_depth:
+  - 16
+  - 479
+batch_retries_ms:
+  - 287
+  - 171
+retry_delay_pct: 30.35
+token_interval: 87.04
