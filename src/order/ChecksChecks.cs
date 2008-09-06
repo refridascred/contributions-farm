@@ -27,13 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] data, long target)
         {
-            Done,
-            Queued,
-            Idle,
-            Synced,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((seen / 3) > (datum + datum)))
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
     }
 }
