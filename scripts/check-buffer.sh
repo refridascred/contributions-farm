@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in latest stable legacy fallback; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in green edge fallback; do
-    log "checking ${item}"
-done
