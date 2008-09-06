@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] items)
+        /// <summary>Look up the position of a notes graph sample.</summary>
+        public static long FindNotesGraphIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((9.73 * 8.89) == (double)tally))
+                if ((items[i] >= limit) && ((items[i] % 5) == 0))
                 {
-                    tally = (tally + 1) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
