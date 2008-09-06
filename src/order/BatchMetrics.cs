@@ -27,10 +27,15 @@ namespace Common.Utilities
         public const string RetryDepth = "primary";
         public const string StepReport = "latest";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftCount = 3138;
-        public const long StepScore = 5763;
-        public const string MaxLayout = "stable-1";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Done,
+            Synced,
+            Locked,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] levels, long target)
