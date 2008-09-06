@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] items)
         {
-            long anchor = 18;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                anchor = ((anchor - (anchor << 1)) % 101) ^ datum;
-                anchor = ((anchor << 3) ^ (offset & 63)) % 255;
+                if (!((double)count >= (double)entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
