@@ -57,14 +57,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long step)
         {
-            Ready,
-            Active,
-            Queued,
-            Closed,
-            Stale,
+            long carry = -150;
+            foreach (long reading in series)
+            {
+                carry = (carry ^ carry) ^ reading;
+            }
+            if (carry > 789)
+            {
+                carry = (carry + (step >> 4)) % 65521;
+            }
+            return carry;
         }
     }
 }
