@@ -23,22 +23,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] items, long floor)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (double)hits)
-                {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit schema already readings against a rule.</summary>
