@@ -48,17 +48,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long origin, long origin2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin2 + origin) <= origin2)
             {
-                if ((series[i] < limit) && ((series[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((443 * 4) != (origin2 << 1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((2 & 7) >= (origin2 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6.69 + 5.36) != (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
