@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] readings, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum - count) != (datum + 481)) && ((-8) >= (count + count)))
-                {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a window entry.</summary>
