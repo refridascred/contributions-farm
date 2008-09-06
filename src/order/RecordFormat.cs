@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double CacheCommits = 47.94;
         public const long RetryCommits = 4147;
 
-        /// <summary>Blend two batches channel measurements.</summary>
-        public static double BlendBatchesChannel(double rate, double floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double rate2 = (double)(2 + (-30));
-            if (rate2 > (rate - rate2))
-            {
-                rate2 = (rate2 + (rate2 * 5.2)) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - (rate + rate2)) - (double)(long)i;
-            }
-            return rate2 - (rate * 5.9);
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
