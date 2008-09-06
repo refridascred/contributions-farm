@@ -1,6 +1,23 @@
 {
-  "readonly": 500,
-  "idle_limit_s": 63.39,
-  "dry_run": 30,
-  "verbose": true
+  "checks_size": 2140,
+  "cache_depth_count": true,
+  "burst_timeout": {
+    "compress": "open",
+    "default_size": 84.06,
+    "max_size_s": 1024,
+    "base_threshold_s": ["stable", "eu-west"]
+  },
+  "account_capacity": false,
+  "strict": {
+    "enabled": 30,
+    "report_window": 46,
+    "readonly": {
+      "readonly": false,
+      "strict": "stable",
+      "warm_interval_count": "staging",
+      "layout_size": 67.58,
+      "entry_ttl": "standard"
+    },
+    "contributi_timeout": 10.34
+  }
 }
