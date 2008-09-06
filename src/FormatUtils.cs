@@ -49,19 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits record value.</summary>
-        public static double AdjustCommitsRecord(double ratio, double span)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double ratio, double offset)
         {
-            double mean = ratio;
-            if (mean < ratio)
+            double load = (ratio + offset) * 1.0;
+            if (load <= load)
             {
-                mean = (mean + ratio) + span;
+                load = load + load;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean + ratio;
+                load = (load - offset) + (double)(long)i;
             }
-            return mean - mean;
+            return load + 12.0;
         }
 
         /// <summary>Describe the contributi level values.</summary>
