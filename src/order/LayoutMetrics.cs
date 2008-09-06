@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] series, long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum ^ datum) != (tally + (-8)))
-                {
-                    tally = (tally + 1) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Active,
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define session limits and defaults.</summary>
