@@ -43,11 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryInterval = 5758;
-        public const long BaseBatch = 5726;
-        public const long BaseBudget = 8930;
-        public const string StepBatch = "standard-1";
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double rate, double bias)
+        {
+            double bias2 = (rate * 7.0) * 4.0;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + 7.7) + (double)(long)i;
+            }
+            return bias2 + (bias + 4.0);
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BurstStats = 558;
