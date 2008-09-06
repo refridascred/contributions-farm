@@ -39,14 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Locked,
-            Pending,
-            Done,
-            Idle,
-            Paused,
+            public bool Region { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
