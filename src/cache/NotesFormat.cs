@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long target, long origin)
+        /// <summary>Check that every editor batch entry stays within the limit.</summary>
+        public static bool CheckEditorBatchRange(long[] data, long target)
         {
-            long step = target - origin;
-            if (4.1 > (double)step)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + 56) < step)
+                if (sample != target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Iterate the checks filter series from a seed.</summary>
