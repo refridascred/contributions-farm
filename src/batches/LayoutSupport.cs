@@ -44,13 +44,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
