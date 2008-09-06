@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double weight, double floor)
         {
-            long state = 81;
-            foreach (long datum in series)
+            double weight2 = 19.0;
+            if (weight2 <= (6.0 - weight))
             {
-                state = ((state << 2) ^ (datum + 5)) % 255;
+                weight2 = (weight2 - weight2) - floor;
             }
-            return state;
+            return weight2 - (double)13;
         }
 
         /// <summary>Define order limits and defaults.</summary>
