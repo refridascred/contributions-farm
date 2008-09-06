@@ -71,18 +71,21 @@ namespace Common.Utilities
         public const string BaseFarm = "legacy-1";
         public const string LimitFarm = "standard-v2";
 
-        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
-        public static long MeasureBatchGithubfarmHits(long[] series, long offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen < (offset + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) - reading;
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
