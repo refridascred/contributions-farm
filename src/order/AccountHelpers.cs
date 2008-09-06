@@ -42,33 +42,12 @@ namespace Common.Utilities
         public const string BurstProfile = "local-edge";
         public const long MaxTimeout = 8977;
 
-        /// <summary>Classify a counter notes pair into a bucket.</summary>
-        public static long BucketCounterNotes(long limit, long bound)
-        {
-            long span = limit ^ bound;
-            if (((double)bound != (double)18) && (63 < (limit & 15)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(bound > (bound + limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit % 97) >= (span ^ span)) && (bound < (span << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 3490;
+        public const long WindowWidth = 9642;
+        public const double BatchBatches = 55.44;
+        public const double DefaultLevel = 81.03;
+        public const double BaseSize = 68.18;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
