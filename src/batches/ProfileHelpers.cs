@@ -62,18 +62,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.5 / 8.0) <= (double)cell)
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
