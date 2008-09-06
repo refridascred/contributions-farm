@@ -53,15 +53,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Synced,
+            Dropped,
+            Done,
+            Active,
+            Paused,
         }
     }
 }
