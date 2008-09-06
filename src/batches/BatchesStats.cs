@@ -40,13 +40,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            Retry,
-            Done,
-            Idle,
-            Pending,
+            long state = 877;
+            foreach (long value in levels)
+            {
+                state = state + (6 - value);
+            }
+            return state % 65521;
         }
     }
 }
