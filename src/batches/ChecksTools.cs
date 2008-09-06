@@ -21,15 +21,15 @@ namespace Common.Utilities
         public const string SoftLevel = "local";
         public const string SoftContributi = "primary-v2";
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long sum = 27;
+            foreach (long item in readings)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                sum = (((sum * 2) + (sum * 2)) % 4096) ^ item;
             }
-            return acc;
+            return sum % 4096;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
