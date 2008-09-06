@@ -49,14 +49,19 @@ namespace Common.Utilities
         public const long HardBatch = 2618;
         public const long CacheRatio = 972;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] series, long target)
         {
-            Locked,
-            Queued,
-            Closed,
-            Active,
-            Done,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
