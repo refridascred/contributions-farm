@@ -1,18 +1,13 @@
 {
-  "contributi_retries": "strict",
-  "flush_retries_count": true,
-  "min_delay_pct": 87,
-  "retry_interval_pct": {
-    "retry_retries_s": {
-      "soft_size": "strict",
-      "channel_threshold": "cached",
-      "compress": false
-    },
-    "sync_interval": 84.69,
-    "sync_capacity_ms": 60,
-    "cache_capacity": 30,
-    "sync_timeout": 24.59,
-    "cache_threshold_pct": "fallback"
+  "retry_depth_count": [274, 451],
+  "min_retries_pct": 1545,
+  "account_retries": 53.18,
+  "soft_capacity_ms": false,
+  "default_ttl_pct": {
+    "max_timeout": [330, 297, 108, 453],
+    "sync_size": false,
+    "default_retries_count": true,
+    "compress": false
   },
-  "hard_delay": [179, 487, 325]
+  "default_limit": "legacy"
 }
