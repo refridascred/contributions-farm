@@ -47,17 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] series, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 93;
+            foreach (long datum in levels)
             {
-                if (series[i] <= step)
+                if (datum > (datum + datum))
                 {
-                    return (long)i;
+                    result = (result * 4) + result;
+                }
+                else
+                {
+                    result = result + 432;
                 }
             }
-            return -1;
+            if (result > 907)
+            {
+                result = (result - (result % 100)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
