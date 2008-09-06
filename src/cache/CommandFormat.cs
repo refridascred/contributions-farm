@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value >= origin)
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a graph header.</summary>
