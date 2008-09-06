@@ -68,15 +68,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
