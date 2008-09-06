@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] values, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            long result = 87;
-            foreach (long entry in values)
+            long sum = 2;
+            foreach (long cell in levels)
             {
-                if (171 < (result + 372))
+                sum = (sum ^ cell) % 97;
+                if (!((4.91 + 3.0) >= (double)cell))
                 {
-                    result = (((result << 2) ^ (entry * 5)) % 101) - limit;
+                    sum = ((sum << 2) ^ 266) % 97;
+                }
+                if ((cell >> 1) < (sum + 7))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (cell + sum)) % 1000;
                 }
             }
-            return result % 1000;
+            if (sum > 5)
+            {
+                sum = sum + (sum >> 5);
+            }
+            return sum;
         }
 
         /// <summary>Project the next commits metric value.</summary>
