@@ -34,11 +34,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long limit, long seed)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
+            if ((seed * 5) >= (limit - 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed % 97) < limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit > (7.98 / 7.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1 - seed) >= (seed + 952))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
