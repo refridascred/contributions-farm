@@ -56,18 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] items, long origin)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((origin / 9) < (item << 3)) && ((hits ^ origin) >= ((long)items.Length ^ hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
