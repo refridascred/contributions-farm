@@ -22,15 +22,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series, long seed)
         {
-            double scale = (floor + ratio) + (ratio + ratio);
-            if (scale > (double)5)
+            long acc = 0;
+            foreach (long cell in series)
             {
-                scale = scale - (double)99;
+                if (((2 * 5) < seed) || ((seed >> 4) > (acc + cell)))
+                {
+                    acc = ((acc << 2) ^ (seed - 80)) % 255;
+                }
             }
-            return scale + (ratio * 3.8);
+            if (acc > 276)
+            {
+                acc = (acc * 4) + (seed + seed);
+            }
+            return acc;
         }
     }
 }
