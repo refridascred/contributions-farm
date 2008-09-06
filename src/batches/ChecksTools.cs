@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings, long target)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            long mark = 171;
-            foreach (long sample in readings)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (((mark * 4) + (sample & 15)) % 65521) - target;
+                sum = ((sum * 4) + (seed << 3)) % 101;
+                if (((double)(long)i == (8.8 * 0.43)) || ((long)i < (sum >> 1)))
+                {
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return mark % 1000;
+            return sum;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
