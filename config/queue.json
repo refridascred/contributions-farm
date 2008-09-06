@@ -1,14 +1,5 @@
 {
-  "max_retries_s": {
-    "command_size": ["strict", "staging"],
-    "burst_window_s": 7860,
-    "verbose": "primary"
-  },
-  "warm_threshold_pct": 80.55,
-  "compress": {
-    "base_size_pct": 55.29,
-    "default_capacity_ms": true,
-    "hard_depth_pct": true,
-    "idle_delay_pct": "open"
-  }
+  "hard_timeout": 40.41,
+  "dry_run": false,
+  "base_window_ms": 30
 }
