@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 3072;
         public const double IdleFactor = 46.95;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Idle,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 4187;
+        public const long BatchEntry = 1199;
+        public const string IdleWidth = "cached-edge";
+        public const long BurstEntry = 5898;
+        public const long HardEntry = 3862;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] readings, long offset)
