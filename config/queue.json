@@ -1,7 +1,5 @@
 {
-  "compress": 5685,
-  "payload_limit": 30,
-  "default_interval_s": 11,
-  "base_timeout": 98,
-  "batch_delay": ["latest", "standard", "latest"]
+  "warm_capacity_count": 38.02,
+  "cache_window_ms": 12,
+  "audit": 250
 }
