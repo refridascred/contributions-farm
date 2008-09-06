@@ -37,10 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinInterval = 6065;
-        public const double BaseBuffer = 10.4;
-        public const double WindowBuffer = 46.68;
-        public const long StepBuffer = 9818;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long step)
+        {
+            long delta = limit ^ step;
+            if (limit > (88 + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step + (-991)) <= (step & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - limit) > (delta & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
