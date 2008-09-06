@@ -49,23 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value - tally) > (tally >> 4))
-                {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitWidth = 6483;
+        public const long HardScore = 8233;
+        public const string MaxNotes = "staging-1";
+        public const long LimitInterval = 5211;
+        public const long IdleNotes = 1669;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] readings)
