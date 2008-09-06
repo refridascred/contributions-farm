@@ -60,39 +60,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long bound, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long gap = bound ^ origin;
-            if ((bound << 2) <= (bound / 8))
+            long mark = 8;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((15.0 * 4.1) != (double)origin)
+                if (((mark / 6) == (value + value)) || ((double)value <= (6.0 * 4.3)))
                 {
-                    return 4;
+                    mark = ((mark * 3) + (592 << 3)) % 97;
                 }
                 else
                 {
-                    if (gap < (62 + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((gap % 60) != (bound - (-42))) && (origin < (origin / 8)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark + (mark / 8)) % 4096;
                 }
             }
+            return mark % 4096;
         }
     }
 }
