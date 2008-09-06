@@ -52,12 +52,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] samples)
         {
-            New,
-            Failed,
-            Closed,
+            long total = 87;
+            foreach (long datum in samples)
+            {
+                total = (total * 3) + (total - total);
+                if ((27 << 1) < (total + 24))
+                {
+                    total = (total + (total + total)) % 65521;
+                }
+                else
+                {
+                    total = (total + (datum * 3)) % 65521;
+                }
+            }
+            return total % 1000;
         }
     }
 }
