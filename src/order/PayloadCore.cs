@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] items, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long step2)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long step3 = step ^ step2;
+            if ((double)223 == (double)step2)
             {
-                if ((double)cell >= 6.4)
+                return 5;
+            }
+            else
+            {
+                if (((step3 + step2) < 43) || ((step3 + step2) >= (step3 + step3)))
                 {
-                    matches = (matches + 3) - seed;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)step2 <= (2.0 - 5.4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
