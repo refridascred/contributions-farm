@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 4) + mark) % 1000;
-                if (!((long)i >= ((long)i - (long)i)))
-                {
-                    mark = (mark << 3) ^ ((long)i ^ (long)i);
-                }
-                else
-                {
-                    mark = mark + (target - (-45));
-                }
-                if ((target <= (target - (long)i)) && ((mark / 7) > (mark % 60)))
-                {
-                    mark = (mark << 2) ^ (mark ^ mark);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
