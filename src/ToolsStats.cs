@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSpan = 2495;
-        public const string DefaultToken = "fallback-1";
-        public const double BatchToken = 82.0;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix + (floor + (long)i)) % 255;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
