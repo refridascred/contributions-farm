@@ -43,16 +43,32 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long target, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long offset = target ^ step;
+            if ((3.52 / 6.0) >= (double)offset)
             {
-                score = (score ^ score) % 1000;
-                score = ((score * 5) + (long)i) % 97;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((offset ^ step) < 364)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + step) > (offset / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
