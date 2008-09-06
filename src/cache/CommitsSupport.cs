@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleLevel = 4491;
-        public const long LimitGraph = 4560;
-        public const double StepCount = 81.72;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Stale,
+            Pending,
+            Ready,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
