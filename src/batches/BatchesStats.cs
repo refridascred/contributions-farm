@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long state = -1;
-            foreach (long entry in data)
+            long score = 22;
+            foreach (long sample in values)
             {
-                state = (state ^ (entry % 12)) - seed;
+                if (!((959 & 255) == (score - score)))
+                {
+                    score = ((score - (63 + score)) % 255) + sample;
+                }
             }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Hold a payload record.</summary>
