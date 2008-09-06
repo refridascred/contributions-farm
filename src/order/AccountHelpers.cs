@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 4;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > (12.0 * 2.1))
+                {
+                    mix = mix - (datum >> 3);
+                }
+                else
+                {
+                    mix = mix - (datum + 9);
+                }
+            }
+            if (mix < 187)
+            {
+                mix = (mix + (6 / 2)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
