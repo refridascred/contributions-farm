@@ -60,20 +60,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double floor)
-        {
-            double ratio = (double)807 / 5.0;
-            if (ratio <= floor)
-            {
-                ratio = ratio + gain;
-            }
-            else
-            {
-                ratio = ratio - gain;
-            }
-            return ratio + (5.92 + ratio);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "latest-1";
+        public const double BurstWidth = 44.09;
+        public const long HardInterval = 4329;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long seed)
