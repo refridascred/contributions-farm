@@ -43,21 +43,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count graph editor pairs that satisfy a relation.</summary>
-        public static long PairGraphEditorCount(long[] series)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (rate / 7.0) / 3.0;
+            if (ratio > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio - ratio;
             }
-            return count;
+            else
+            {
+                ratio = ratio + (ratio - ratio);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (double)(-4)) + (double)(long)i;
+            }
+            return ratio - (bias + bias);
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
