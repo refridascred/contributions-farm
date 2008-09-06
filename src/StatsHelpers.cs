@@ -73,20 +73,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the graph commits series from a seed.</summary>
-        public static long StepGraphCommits(long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (series[i] < floor)
                 {
-                    result = (result ^ (seed & 255)) ^ (long)i2;
-                    result = ((result * 3) + result) % 65521;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
     }
 }
