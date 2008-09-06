@@ -1,11 +1,14 @@
 {
-  "retry_ttl_ms": "cached",
-  "warm_size": 500,
-  "commits_retries": 95,
-  "stream_ratio": {
-    "strict": "open",
-    "route_size": ["open", "local"],
-    "min_delay_ms": "primary",
-    "min_capacity_count": "eu-west"
-  }
+  "graph_ttl": {
+    "persist": 48,
+    "support_size": "strict",
+    "batch_capacity": {
+      "payload_capacity": "cached",
+      "min_timeout_pct": 4248,
+      "idle_size": 4570
+    }
+  },
+  "poll_retries_count": 17,
+  "audit": 18.27,
+  "warm_timeout_ms": 7121
 }
