@@ -12,38 +12,18 @@ namespace Common.Utilities
         public const string MinLevel = "cached";
         public const string BurstStream = "primary-1";
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long seed)
+        /// <summary>Count the buffer commits entries that pass the check.</summary>
+        public static long MeasureBufferCommitsHits(long[] values, long origin)
         {
-            if ((6.0 * 1.0) >= (double)seed)
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + seed) > (3 - (-8)))
+                if ((matches / 6) < (origin - item))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.6 * 4.56) == (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target > (seed ^ 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
