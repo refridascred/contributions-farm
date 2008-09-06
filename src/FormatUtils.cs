@@ -38,21 +38,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate stream cluster readings against a bound.</summary>
