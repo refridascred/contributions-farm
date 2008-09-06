@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Paused,
-            Failed,
-            Retry,
+            Active,
             Idle,
-            Queued,
+            Locked,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
