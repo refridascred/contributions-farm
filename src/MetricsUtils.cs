@@ -14,18 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the session cluster entries that pass the check.</summary>
-        public static long CountSessionClusterMatches(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (matches > (matches % 10))
+                if ((double)target < (double)66)
                 {
-                    matches = (matches + 3) + item;
+                    count = (count + 1) + value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the editor mode values.</summary>
