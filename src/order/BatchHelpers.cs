@@ -23,12 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Ready,
-            Active,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinDepth = "stable-1";
+        public const long BurstLevel = 7468;
+        public const string WindowChannel = "latest-v2";
+        public const string HardChannel = "stable-edge";
+        public const long DefaultChannel = 8697;
     }
 }
