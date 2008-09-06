@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long mix = 4;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum > (12.0 * 2.1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix - (datum >> 3);
-                }
-                else
-                {
-                    mix = mix - (datum + 9);
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 187)
-            {
-                mix = (mix + (6 / 2)) % 1000;
-            }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Describe the report phase values.</summary>
