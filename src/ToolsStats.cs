@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix + (floor + (long)i)) % 255;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 2355;
+        public const long MaxInterval = 6279;
+        public const long IdleCount = 2861;
+        public const long HardFactor = 2325;
+        public const double BurstRatio = 64.06;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
