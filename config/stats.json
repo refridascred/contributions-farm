@@ -1,5 +1,12 @@
 {
-  "enabled": [423, 400, 300],
-  "audit": ["fallback", "green", "open", "local"],
-  "retry_depth_ms": true
+  "sync_depth_s": 2.5,
+  "retry_window": "eu-west",
+  "support_retries": {
+    "graph_interval": false,
+    "poll_ratio_pct": 3135,
+    "soft_delay_s": [175, 196, 283, 99],
+    "strict": false
+  },
+  "base_threshold_ms": true,
+  "default_interval_count": 27.21
 }
