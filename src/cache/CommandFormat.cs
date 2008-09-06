@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] data, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((double)target < (double)hits)
+                if ((208 + step) == (long)samples.Length)
                 {
-                    hits = (hits + 3) - cell;
+                    seen = (seen + 2) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine payload stream values into a single score.</summary>
