@@ -37,17 +37,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long target)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
