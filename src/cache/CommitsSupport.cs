@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const long BaseEditor = 3675;
         public const string LimitSize = "staging";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((17.0 - 4.76) != (double)matches)
+                if (item > step)
                 {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Accumulate notes samples.</summary>
