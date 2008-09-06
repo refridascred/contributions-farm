@@ -22,21 +22,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Locked,
+            Retry,
         }
     }
 }
