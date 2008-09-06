@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Closed,
-            Stale,
-            Ready,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 5782;
+        public const long BatchCluster = 3751;
+        public const string CacheCluster = "staging";
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
