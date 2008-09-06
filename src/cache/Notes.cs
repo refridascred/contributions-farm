@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long target)
         {
-            Closed,
-            Pending,
-            Locked,
-            Retry,
+            long score = target;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score - ((long)i / 4)) % 101;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
