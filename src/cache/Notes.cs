@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
             Closed,
-            Done,
-            Stale,
             Pending,
-            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
