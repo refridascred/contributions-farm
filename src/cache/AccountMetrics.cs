@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double weight, double floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double load = weight + floor;
-            if (load < load)
-            {
-                load = load + 7.9;
-            }
-            else
-            {
-                load = load + (double)(-6);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load - 5.2;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a cache token counter forward.</summary>
