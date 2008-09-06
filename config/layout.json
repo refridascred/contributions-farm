@@ -1,5 +1,7 @@
 {
-  "dry_run": 250,
-  "flush_limit_ms": "staging",
-  "notes_delay": [457, 52]
+  "cache_limit": 1633,
+  "window_window": "local",
+  "notes_interval": "standard",
+  "soft_window": true,
+  "warm_threshold": "staging"
 }
