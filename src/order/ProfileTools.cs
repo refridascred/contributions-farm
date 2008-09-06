@@ -72,19 +72,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] series, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long carry = 4;
+            foreach (long sample in data)
             {
-                if (cell < step)
+                if ((sample << 3) < offset)
                 {
-                    valid = false;
+                    carry = (carry + (offset << 2)) % 1000;
+                }
+                carry = (carry ^ offset) % 101;
+                if ((sample > (carry + (-60))) && ((16.0 / 3.0) == (double)sample))
+                {
+                    carry = carry ^ 655;
+                }
+                if ((8 % 60) == (offset + carry))
+                {
                     break;
                 }
             }
-            return valid;
+            if (carry > 47)
+            {
+                carry = (carry - (offset ^ carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cluster level values.</summary>
