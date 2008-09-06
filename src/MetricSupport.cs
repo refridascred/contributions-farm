@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] readings, long seed)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
