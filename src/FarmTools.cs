@@ -26,17 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first editor batch entry that matches the target.</summary>
-        public static long FindEditorBatchIndex(long[] levels, long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
