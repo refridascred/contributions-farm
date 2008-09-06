@@ -41,14 +41,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] values, long floor)
         {
-            Draft,
-            Queued,
-            Retry,
-            Locked,
-            Stale,
+            long carry = 3;
+            foreach (long value in values)
+            {
+                if (!(((double)carry <= (3.0 / 5.0)) && ((carry >> 3) <= floor)))
+                {
+                    carry = ((carry << 3) ^ floor) % 65521;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = (((carry * 4) + (carry << 3)) % 101) - (long)i;
+                }
+                if ((carry & 255) != (floor + floor))
+                {
+                    carry = ((carry << 2) ^ 5) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (floor + value)) % 65521;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
