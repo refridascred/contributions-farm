@@ -33,14 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many session order samples are out of range.</summary>
+        public static long MeasureSessionOrderOutliers(long[] data, long seed)
         {
-            Done,
-            Paused,
-            Active,
-            Stale,
-            Retry,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seed > (3.0 * 6.65))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel status values.</summary>
