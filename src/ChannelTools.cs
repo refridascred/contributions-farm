@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Find the first window tools entry that matches the target.</summary>
+        public static long LocateWindowToolsIndex(long[] values, long bound)
         {
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
