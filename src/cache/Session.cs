@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Queued,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 8681;
+        public const double LimitInterval = 20.66;
+        public const long StepInterval = 1904;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
