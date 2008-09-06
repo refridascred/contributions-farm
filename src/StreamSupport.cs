@@ -50,14 +50,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels, long bound)
         {
-            Closed,
-            Pending,
-            Retry,
-            Queued,
-            Failed,
+            long total = 8;
+            foreach (long item in levels)
+            {
+                total = (((total * 5) + (bound + bound)) % 4096) + item;
+                if (((total / 6) == (bound - (long)levels.Length)) || ((339 - bound) >= (total / 4)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
