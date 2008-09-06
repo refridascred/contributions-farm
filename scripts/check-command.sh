@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging edge; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in fallback open latest; do
     log "checking ${item}"
 done
-
-mode="${1:-cached}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
