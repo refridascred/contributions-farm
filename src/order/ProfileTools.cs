@@ -54,18 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] samples)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((92 >> 4) >= seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the payload class values.</summary>
