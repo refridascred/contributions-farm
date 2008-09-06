@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of context window entries.</summary>
