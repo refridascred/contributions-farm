@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] samples)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((double)value > 10.0) || ((15.0 / 3.0) <= (double)value))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate context commits samples.</summary>
