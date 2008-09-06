@@ -32,22 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values, long floor)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long carry = 27;
-            foreach (long entry in values)
-            {
-                if (((-191) - entry) > (floor + 260))
-                {
-                    carry = carry ^ (floor & 3);
-                }
-                else
-                {
-                    carry = carry - (carry - 36);
-                }
-            }
-            return carry % 1000;
+            Ready,
+            Pending,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
