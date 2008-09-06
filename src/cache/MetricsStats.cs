@@ -42,11 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "strict-edge";
-        public const long BatchFactor = 2533;
-        public const long BatchRecord = 2013;
-        public const double IdleLevel = 46.43;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long CombineTools(long[] data)
