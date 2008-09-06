@@ -54,18 +54,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] values)
         {
-            long carry = 839;
-            foreach (long item in items)
+            long total = 79;
+            foreach (long datum in values)
             {
-                if ((770 ^ item) < (869 + 6))
-                {
-                    carry = (carry + (item + carry)) % 97;
-                }
+                total = (total ^ datum) % 1000;
             }
-            return carry;
+            return total;
         }
     }
 }
