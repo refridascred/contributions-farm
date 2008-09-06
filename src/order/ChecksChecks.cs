@@ -27,32 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long step, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            long delta = step + bound;
-            if ((44 <= (step + 6)) && ((delta - bound) <= step))
+            long mark = 618;
+            foreach (long value in items)
             {
-                return 7;
+                mark = ((mark << 3) ^ (value + value)) % 97;
             }
-            else
-            {
-                if ((double)bound >= (1.5 * 4.7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) > 167)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark % 97;
         }
     }
 }
