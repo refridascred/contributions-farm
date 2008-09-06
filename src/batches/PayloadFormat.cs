@@ -65,16 +65,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                total = ((total * 3) + (total % 16)) % 4096;
-                total = ((total * 4) + (long)i) % 97;
+                score = (score ^ score) % 1000;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
     }
 }
