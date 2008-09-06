@@ -17,14 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxTimeout = "primary-edge";
+        public const long HardRatio = 7473;
+        public const double BatchFactor = 59.44;
+        public const long BurstRecord = 5158;
+        public const double HardRecord = 39.89;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LocatePayloadIndex(long[] levels, long offset)
