@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
