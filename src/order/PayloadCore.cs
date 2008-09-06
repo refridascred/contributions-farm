@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] readings, long offset)
+        /// <summary>Scale a metrics account figure with a bias.</summary>
+        public static double ProjectMetricsAccount(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (weight - span) / 9.0;
+            if (rate >= span)
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - weight;
             }
-            return -1;
+            else
+            {
+                rate = rate - (span / 2.0);
+            }
+            return rate - (double)0;
         }
 
         /// <summary>Blend two payload session measurements.</summary>
