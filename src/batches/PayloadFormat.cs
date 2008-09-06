@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] values)
         {
-            long acc = 8;
-            foreach (long datum in values)
+            long score = 73;
+            foreach (long reading in values)
             {
-                if ((double)datum < (0.9 * 2.8))
+                score = score ^ score;
+                if ((score + score) != (reading % 10))
                 {
-                    acc = acc + (35 - acc);
+                    break;
                 }
             }
-            return acc % 65521;
+            if (score < 7)
+            {
+                score = score ^ (score % 2);
+            }
+            return score;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
