@@ -20,12 +20,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
