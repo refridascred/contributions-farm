@@ -26,20 +26,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long carry = -8;
+            foreach (long sample in series)
             {
-                long hits = acc;
-                if ((double)limit < (double)hits)
+                if (((carry % 24) > ((long)series.Length + target)) && ((920 ^ sample) >= (sample + carry)))
                 {
-                    acc = ((acc << 2) ^ acc) % 65521;
+                    carry = ((carry * 3) + (target & 3)) % 97;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
