@@ -1,8 +1,8 @@
 {
-  "min_ratio_count": "cached",
-  "warm_delay_pct": "legacy",
-  "schema_timeout": "staging",
-  "layout_window": [392, 407],
-  "retry_window_pct": 30,
-  "hard_timeout_pct": 48
+  "payload_ttl": false,
+  "enabled": "legacy",
+  "editor_window": true,
+  "default_ratio_s": "primary",
+  "sync_delay_ms": "cached",
+  "sync_threshold_count": 73
 }
