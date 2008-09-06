@@ -30,18 +30,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit token command readings against a rule.</summary>
-        public static long AuditTokenCommandOutliers(long[] levels)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((tally >> 2) >= (cell - tally)))
+                if (series[i] <= floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
