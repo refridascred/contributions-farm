@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long IdleContributi = 5559;
         public const long MinContributi = 5424;
 
-        /// <summary>Adjust a route checks reading.</summary>
-        public static double AdjustRouteChecks(double gain, double bias)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double bias2 = (double)(97 % 7);
-            return (bias2 - gain) + bias;
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Accumulate context samples.</summary>
