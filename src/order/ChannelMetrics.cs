@@ -19,17 +19,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (data[i] < target)
+                if (((3.0 - 19.0) == (double)(long)readings.Length) || (((item % 3) >= offset) && ((double)item <= (6.26 + 7.04))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
