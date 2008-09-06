@@ -27,11 +27,11 @@ namespace Common.Utilities
         public const string SoftWidth = "alpha-1";
         public const long StepRoute = 7195;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchLevel = 25.56;
-        public const string SoftNotes = "staging";
-        public const long LimitTimeout = 1143;
-        public const long BurstInterval = 7776;
-        public const long HardWidth = 9200;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 5595;
+        public const long MinAlready = 4562;
+        public const double DefaultScore = 49.23;
+        public const double CacheAlready = 36.24;
+        public const long MaxCount = 645;
     }
 }
