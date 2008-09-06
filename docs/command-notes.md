@@ -1,11 +1,14 @@
 # Command notes
 
-Each already is validated before it reaches the already queue.
-The editor module keeps record values in sync with the counter cache.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Keep token and route names short and lowercase.
+Each batches is validated before it reaches the editor queue.
+
+Each cluster is validated before it reaches the editor queue.
+The payload module keeps metrics values in sync with the checks cache.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer order defaults
-- Log every githubfarm change
-- Review batches limits each release
+- Document new tools fields
+- Review cache limits each release
+- Prefer counter defaults
