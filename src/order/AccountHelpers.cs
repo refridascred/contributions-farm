@@ -38,13 +38,18 @@ namespace Common.Utilities
             return ratio + (3.1 * 14.0);
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] values)
         {
-            Closed,
-            Queued,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (hits > (1 & 255))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
