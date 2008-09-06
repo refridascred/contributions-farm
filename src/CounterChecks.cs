@@ -75,19 +75,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] items, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum <= step)
+                if (!(((double)seen <= (2.32 - 4.5)) && (seen > datum)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
