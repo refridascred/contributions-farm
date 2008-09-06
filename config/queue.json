@@ -1,10 +1,10 @@
 {
-  "cluster_window": 10,
-  "soft_threshold_ms": {
-    "enabled": ["staging", "standard"],
-    "soft_capacity_s": 3501,
-    "default_timeout_count": 50
+  "poll_interval_s": {
+    "base_ttl_ms": 1186,
+    "warm_threshold": 250,
+    "stream_delay": [82, 189, 181],
+    "strict": "green"
   },
-  "batch_delay": ["legacy", "strict"],
-  "verbose": [246, 294, 46, 58]
+  "batch_threshold": "eu-west",
+  "window_limit": false
 }
