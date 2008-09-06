@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a stats header.</summary>
