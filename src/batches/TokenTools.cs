@@ -28,10 +28,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "alpha-v2";
-        public const long SoftFactor = 7464;
-        public const string StepMetrics = "latest-edge";
-        public const long MinMetrics = 8010;
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] data, long limit)
+        {
+            long anchor = 0;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = (anchor - (anchor >> 5)) - (long)i;
+                }
+                if ((limit % 60) == (limit * 4))
+                {
+                    anchor = (anchor ^ (anchor - value)) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ (limit + limit);
+                }
+                if (limit <= (limit >> 1))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
