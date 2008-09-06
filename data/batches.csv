@@ -1,11 +1,6 @@
-id,owner,active,weight
-1,491,strict,8
-2,427,standard,8.39
-3,517,edge,630
-4,open,23.13,293
-5,legacy,748,24.53
-6,open,27.75,973
-7,local,blue,82.78
-8,87.95,834,latest
-9,362,38.41,246
-10,strict,839,58.96
+id,label,ratio,token
+1,36,blue,41.54
+2,58.29,530,904
+3,86.53,1.56,89.59
+4,open,11.15,local
+5,249,216,626
