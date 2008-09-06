@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "legacy-v2";
+        public const long IdleRatio = 1222;
+        public const long WindowContext = 3578;
+        public const long MaxLevel = 5934;
+        public const long StepContext = 898;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] readings, long floor)
