@@ -28,12 +28,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long step, long limit)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            long edge = step ^ limit;
+            if ((limit * 5) <= (limit >> 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step >= 4.7)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step > (edge ^ edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a farm cluster reading.</summary>
