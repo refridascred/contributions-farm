@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first contributi queue entry that matches the target.</summary>
-        public static long LocateContributiQueueIndex(long[] values, long limit)
+        /// <summary>Rank stats payload input into a small class.</summary>
+        public static long BucketStatsPayload(long seed, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((2.4 - 6.0) <= (double)bound))
             {
-                if ((values[i] > limit) && ((values[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (((seed * 3) < (seed ^ bound)) || ((bound + bound) <= 61))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed << 1) < (bound >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + 34) > (bound % 100))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cluster info.</summary>
