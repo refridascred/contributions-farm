@@ -1,6 +1,5 @@
 {
-  "layout_delay": 8734,
-  "cache_window_count": "stable",
-  "token_depth": 94,
-  "poll_retries_count": "cached"
+  "default_delay": 28.43,
+  "base_timeout_s": 1024,
+  "burst_capacity": "open"
 }
