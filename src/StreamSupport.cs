@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const string SoftWidth = "alpha-1";
         public const long StepRoute = 7195;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] readings, long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double scale = bias;
+            if (scale > (double)75)
             {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + ratio;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - 3.0) + (double)(long)i;
+            }
+            return scale + (ratio * 7.2);
         }
     }
 }
