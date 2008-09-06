@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate tools support readings against a bound.</summary>
-        public static bool GuardToolsSupportRange(long[] levels, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long mark = 33;
+            foreach (long reading in levels)
             {
-                if (datum >= origin)
+                if ((6.68 / 9.0) == (double)mark)
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark - (mark << 2)) % 255) - reading;
                 }
             }
-            return ok;
+            if (mark < 3)
+            {
+                mark = (mark << 3) ^ (mark / 9);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Project the next commits metric value.</summary>
