@@ -23,15 +23,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double offset)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double rate2 = rate / 7.0;
-            if (rate2 > rate2)
-            {
-                rate2 = rate2 - (offset + rate);
-            }
-            return rate2 + (double)8;
+            Draft,
+            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
