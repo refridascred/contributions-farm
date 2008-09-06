@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double weight, double floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double mean = 2.32;
-            if (mean <= (floor / 5.0))
-            {
-                mean = mean - (floor + floor);
-            }
-            return mean - weight;
+            Failed,
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
