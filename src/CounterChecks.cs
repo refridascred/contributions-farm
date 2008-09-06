@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Fold a list of checks account readings.</summary>
+        public static long ScoreChecksAccount(long[] series)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long carry = 49;
+            foreach (long datum in series)
+            {
+                if ((7.1 * 5.05) == (double)datum)
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 4096;
+                }
+                else
+                {
+                    carry = carry - (22 & 63);
+                }
+            }
+            if (carry < 11)
+            {
+                carry = (carry - (carry % 100)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
