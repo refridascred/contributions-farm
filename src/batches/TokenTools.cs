@@ -32,30 +32,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] data, long limit)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            long anchor = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - (anchor >> 5)) - (long)i;
-                }
-                if ((limit % 60) == (limit * 4))
-                {
-                    anchor = (anchor ^ (anchor - value)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ (limit + limit);
-                }
-                if (limit <= (limit >> 1))
-                {
-                    break;
+                    if ((series[i] - series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
