@@ -26,11 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowTimeout = 2847;
-        public const long HardEditor = 1968;
-        public const long BatchRatio = 5861;
-        public const long WindowEditor = 1888;
-        public const string WindowCount = "local-v2";
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state - (state % 24)) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
