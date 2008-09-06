@@ -83,18 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch buffer readings.</summary>
-        public static long ScoreBatchBuffer(long[] readings)
+        /// <summary>Iterate the farm command series from a seed.</summary>
+        public static long DeriveFarmCommand(long seed)
         {
-            long carry = 30;
-            foreach (long entry in readings)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(carry >= entry))
+                if (mix <= seed)
                 {
-                    carry = (carry ^ (carry + carry)) % 255;
+                    continue;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
     }
 }
