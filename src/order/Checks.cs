@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Dropped,
-            Locked,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 44.1;
+        public const double SoftRatio = 53.23;
+        public const double MaxDepth = 61.23;
+        public const long StepDepth = 4107;
+        public const double MaxFactor = 55.94;
 
         /// <summary>Grade a already command value against two limits.</summary>
         public static long RankAlreadyCommand(long bound, long bound2)
