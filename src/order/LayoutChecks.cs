@@ -53,22 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if ((6 - target) == (target >> 2))
             {
-                if ((double)reading <= (11.0 / 6.0))
+                return 0;
+            }
+            else
+            {
+                if ((target - 33) < (4 << 2))
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((double)step > (1.7 - 8.19)) && ((step << 1) < step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
