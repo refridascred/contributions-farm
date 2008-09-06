@@ -61,19 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Describe the format status values.</summary>
