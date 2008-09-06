@@ -26,17 +26,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] items, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] > limit) && ((items[i] % 5) == 0))
+                if ((28 > (score / 4)) || ((5.1 * 12.0) <= (double)origin))
                 {
-                    return (long)i;
+                    score = (score + (score + origin)) % 4096;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
