@@ -1,22 +1,26 @@
 # entry settings
-layout_retries:
-  enabled: stable
-  dry_run: true
-  warm_timeout:
-    - blue
-    - edge
-  window_ratio: stable
-  sync_depth_pct:
-    sync_retries:
-      - 497
-      - 148
-    strict: 629
-    channel_capacity: 250
-    min_capacity_ms: false
-    metrics_window: fallback
-    notes_ratio: 58.1
-contributi_interval: local
-burst_interval_s: false
-persist: false
-warm_interval_s: 97.24
-commits_delay: 1
+strict: 32.32
+base_interval_pct:
+  max_capacity_ms:
+    warm_threshold_pct: 38.22
+    metrics_limit: 75.64
+    flush_delay: 100
+  checks_retries: 100
+  base_ttl_pct: eu-west
+  idle_delay_count: true
+  readonly: 30
+  warm_window_count:
+    sync_capacity_ms: true
+    readonly: 5639
+    hard_ratio: true
+    cache_threshold_count: 23.62
+    base_window_count: 444
+    flush_threshold_count: cached
+persist: 30
+max_threshold_s: false
+queue_limit:
+  verbose: false
+  token_window: 53
+  profile_size: 60
+  batch_depth_count: 60
+  soft_size_pct: 250
