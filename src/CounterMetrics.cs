@@ -24,18 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first token payload entry that matches the target.</summary>
-        public static long LookupTokenPayloadIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardFactor = 47;
+        public const long BatchFactor = 8735;
+        public const long LimitWidth = 3837;
+        public const string BatchContributi = "open-edge";
+        public const long CacheContributi = 4595;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
