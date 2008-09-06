@@ -1,11 +1,15 @@
 {
-  "metric_interval": 5.2,
-  "stream_delay": ["green", "fallback", "cached", "staging"],
-  "readonly": {
-    "cache_delay": "open",
-    "default_timeout_count": 100,
-    "idle_ttl_s": "local",
-    "stream_interval": 58,
-    "layout_retries": "fallback"
-  }
+  "tools_limit": 91.58,
+  "cluster_window": 30,
+  "queue_limit": "open",
+  "poll_ttl_pct": ["local", "strict"],
+  "format_window": {
+    "default_window_ms": 8227,
+    "burst_ttl_count": ["open", "local"],
+    "base_capacity": true,
+    "batch_size_count": 1024,
+    "hard_ratio": true,
+    "session_size": 3.92
+  },
+  "verbose": 80
 }
