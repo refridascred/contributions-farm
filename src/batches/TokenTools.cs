@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] values, long origin)
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((origin & 127) < cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
