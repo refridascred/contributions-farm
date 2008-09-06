@@ -19,19 +19,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a batches payload figure with a bias.</summary>
-        public static double SmoothBatchesPayload(double bias, double bias2)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            double scale = bias2;
-            if (scale >= (double)16)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - 3.0;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (bias * 1.0)) - (double)(long)i;
-            }
-            return scale + bias2;
+            return matches;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
