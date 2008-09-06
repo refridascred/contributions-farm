@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] series, long seed)
         {
-            long mark = 10;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mark = ((mark - mark) % 255) + sample;
-                mark = (mark * 5) + mark;
+                if ((double)matches > (20.0 + 8.0))
+                {
+                    matches = ((matches + 3) ^ datum) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
