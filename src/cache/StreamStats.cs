@@ -23,18 +23,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the support account entries that pass the check.</summary>
-        public static long TallySupportAccountOutliers(long[] data)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (datum < (159 - 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Stale,
+            Dropped,
+            Paused,
+            Retry,
         }
 
         /// <summary>Classify a queue entry pair into a bucket.</summary>
