@@ -1,11 +1,11 @@
 # entry settings
-soft_threshold_count: open
-strict: 13
-tools_limit:
-  readonly:
-    soft_ttl_count: 2176
-    cache_limit_s: legacy
-    already_capacity: blue
-  soft_retries_count: 2832
-  batch_ttl: green
-verbose: standard
+retry_size_ms: fallback
+min_ttl: 100
+profile_ttl:
+  - edge
+  - latest
+  - blue
+  - local
+enabled: true
+flush_ratio_s: 500
+window_delay: legacy
