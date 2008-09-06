@@ -20,13 +20,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
