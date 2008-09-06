@@ -53,21 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Locate a batch filter reading by value.</summary>
+        public static long FindBatchFilterIndex(long[] values, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long lane = ((long)i ^ bound) & 63;
-                if (state <= (lane / 3))
+                if ((values[i] >= limit) && ((values[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                state = (state ^ bound) % 101;
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
     }
 }
