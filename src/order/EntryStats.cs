@@ -49,17 +49,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items)
-        {
-            long state = 0;
-            foreach (long reading in items)
-            {
-                state = state ^ (reading ^ state);
-                state = (state + (state ^ reading)) % 101;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 4551;
+        public const long IdleCommand = 2141;
+        public const double SoftCommand = 50.57;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionHits(long[] data)
