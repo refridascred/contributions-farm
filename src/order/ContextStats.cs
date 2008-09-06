@@ -48,17 +48,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] values, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = floor + seed;
+            if ((double)diff > (3.0 * 6.5))
             {
-                if ((values[i] >= bound) && ((values[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) < 4)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed << 2) <= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
