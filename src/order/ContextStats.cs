@@ -28,15 +28,26 @@ namespace Common.Utilities
         public const long BaseAlready = 4245;
         public const long MinLevel = 7499;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double rate, double offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series, long offset)
         {
-            double gain = (offset * 15.0) + (offset + 16.0);
-            if (gain <= rate)
+            long total = 132;
+            foreach (long sample in series)
             {
-                gain = gain - offset;
+                for (int i = 0; i < 11; i++)
+                {
+                    total = (total - (total + sample)) ^ (long)i;
+                }
+                if (((sample >> 2) > (total - total)) && ((double)total != (double)160))
+                {
+                    total = ((total * 3) + (offset & 127)) % 255;
+                }
             }
-            return gain - (gain / 2.0);
+            if (total < (-41))
+            {
+                total = ((total << 2) ^ offset) % 97;
+            }
+            return total % 4096;
         }
     }
 }
