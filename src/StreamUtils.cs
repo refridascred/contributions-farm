@@ -79,22 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] levels, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] data)
         {
-            long acc = 82;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((seed - acc) == (0 >> 3))
+                if ((((reading ^ tally) >= (tally / 2)) && ((2.9 - 0.5) <= (double)tally)) || !(reading > (reading & 7)))
                 {
-                    acc = ((acc ^ (-749)) % 65521) ^ item;
-                }
-                if (seed > (seed - seed))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
