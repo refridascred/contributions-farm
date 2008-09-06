@@ -37,18 +37,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] data)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((((4.12 * 2.0) <= (0.24 - 5.17)) && ((20 % 8) == (value + seen))) && (((seen - value) < (seen ^ value)) || ((seen % 3) < value)))
+                if (reading > limit)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
