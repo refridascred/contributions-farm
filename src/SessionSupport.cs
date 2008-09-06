@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Match up layout route samples.</summary>
+        public static long PairLayoutRouteCount(long[] series)
         {
-            long acc = 184;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (((acc << 3) ^ acc) % 101) + sample;
-                acc = (acc - (661 % 100)) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc < 809)
-            {
-                acc = (acc * 2) + (acc & 255);
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
