@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 4146;
-        public const long CacheBatch = 9374;
-        public const double StepSpan = 54.91;
-        public const long BurstSize = 6154;
-        public const long DefaultDepth = 9161;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item & 7) < 0)
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long ClassifyCommits(long floor, long seed)
