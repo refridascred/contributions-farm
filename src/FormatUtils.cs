@@ -38,22 +38,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Rank profile route input into a small class.</summary>
+        public static long BucketProfileRoute(long step, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long diff = step - target;
+            if (diff < (diff & 31))
             {
-                if (!((reading + count) <= (count + reading)))
+                return 0;
+            }
+            else
+            {
+                if ((double)diff > (0.01 / 9.0))
                 {
-                    count = count + 3;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((step >> 2) <= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (diff >= (diff + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate stream cluster readings against a bound.</summary>
