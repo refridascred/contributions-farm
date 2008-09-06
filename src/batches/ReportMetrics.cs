@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] values, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((target & 1) < entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Project the next layout value.</summary>
