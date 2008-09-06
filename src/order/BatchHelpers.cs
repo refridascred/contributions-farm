@@ -12,12 +12,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseBudget = 2.83;
-        public const long BaseSpan = 5399;
-        public const long WindowLevel = 8026;
-        public const long MinEntry = 6307;
-        public const long SoftRatio = 7381;
+        /// <summary>Check that every support cluster entry stays within the limit.</summary>
+        public static bool GuardSupportClusterRange(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string SoftInterval = "fallback-1";
