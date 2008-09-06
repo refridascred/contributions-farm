@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine editor buffer values into a single score.</summary>
-        public static long TallyEditorBuffer(long[] levels, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] items, long step)
         {
-            long carry = 235;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long value in items)
             {
-                carry = ((carry + (step * 5)) % 1000) ^ datum;
-                carry = (carry + (carry * 2)) % 255;
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry % 97;
+            return ready;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
