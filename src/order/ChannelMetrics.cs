@@ -20,23 +20,11 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data, long limit)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long sum = -930;
-            foreach (long reading in data)
-            {
-                sum = sum + sum;
-                if (2.69 < (double)reading)
-                {
-                    sum = (sum ^ (limit - sum)) % 4096;
-                }
-            }
-            if (sum < 77)
-            {
-                sum = sum - (736 ^ limit);
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit window readings against a rule.</summary>
