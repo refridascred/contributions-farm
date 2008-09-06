@@ -32,19 +32,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] series, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long total = 324;
+            foreach (long cell in samples)
             {
-                if (cell >= step)
+                if (((total * 2) >= total) || (cell > (110 - 51)))
                 {
-                    flag = false;
-                    break;
+                    total = ((total << 3) ^ total) + limit;
                 }
+                else
+                {
+                    total = ((total * 5) + (842 + total)) % 1000;
+                }
+                total = (total ^ 9) % 255;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
