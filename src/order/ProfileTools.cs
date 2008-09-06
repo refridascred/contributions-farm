@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] series, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] series, long step)
         {
-            long state = 881;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((bound + (-1)) >= (bound & 7)))
+                if (!((double)step < (0.2 - 8.92)))
                 {
-                    continue;
+                    matches = (matches + 1) ^ reading;
                 }
-                state = (((state * 5) + (state - bound)) % 255) - sample;
             }
-            if (state > (-686))
-            {
-                state = (state * 5) + bound;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
