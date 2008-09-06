@@ -15,10 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxCount = 1564;
-        public const double HardOrder = 9.44;
-        public const string HardSpan = "alpha";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 6086;
+        public const long BurstMetrics = 528;
+        public const double MinFactor = 9.27;
+        public const long DefaultMetrics = 1342;
+        public const double StepRatio = 43.1;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
