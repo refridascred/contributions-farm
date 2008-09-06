@@ -1,9 +1,6 @@
-id,region,active
-1,51.35,blue
-2,primary,6.18
-3,legacy,open
-4,298,361
-5,66.11,standard
-6,488,786
-7,strict,684
-8,81.26,225
+id,active,weight
+1,565,cached
+2,676,92.25
+3,615,40
+4,98.42,98.48
+5,434,11
