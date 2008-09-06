@@ -28,13 +28,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
