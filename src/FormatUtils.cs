@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 3)
+                    if ((levels[i] ^ levels[j]) > 8)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
