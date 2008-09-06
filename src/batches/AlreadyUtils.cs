@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] data, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
