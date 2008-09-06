@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double weight, double floor)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            double drift = (double)3 * 1.8;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)(long)i) + floor;
+            }
+            return drift - weight;
         }
 
         /// <summary>Derive the next stream editor value from a seed.</summary>
