@@ -42,19 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((floor + floor) <= 37)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 8835;
+        public const long SoftEditor = 365;
+        public const long SoftFactor = 2491;
+        public const long MaxEditor = 71;
+        public const long BaseDepth = 4372;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] readings)
