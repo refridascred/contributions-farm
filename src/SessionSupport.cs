@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items, long offset)
         {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = 18;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor - (anchor << 1)) % 101) ^ datum;
+                anchor = ((anchor << 3) ^ (offset & 63)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
