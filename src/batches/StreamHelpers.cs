@@ -28,19 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stream stats reading.</summary>
-        public static double SmoothStreamStats(double gain, double floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] series, long floor)
         {
-            double load = gain;
-            if (load <= load)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                load = (load - (7.5 - gain)) - floor;
+                if ((double)matches > (4.1 - 4.0))
+                {
+                    matches = ((matches + 2) + entry) + floor;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (load - gain);
+            return matches;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
