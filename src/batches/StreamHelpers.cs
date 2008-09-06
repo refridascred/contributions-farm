@@ -46,17 +46,24 @@ namespace Common.Utilities
             return load - (load - gain);
         }
 
-        /// <summary>Iterate the queue route series from a seed.</summary>
-        public static long DeriveQueueRoute(long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long floor, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            if ((double)floor > (6.5 + 7.18))
             {
-                acc = (acc * 3) + acc;
-                acc = (acc ^ (bound - bound)) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((origin >= (origin >> 1)) || ((origin % 3) <= (origin % 10)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
