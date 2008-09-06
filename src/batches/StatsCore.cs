@@ -84,13 +84,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] samples, long offset)
         {
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
