@@ -71,18 +71,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] data, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long step, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long delta = step + target;
+            if ((delta < target) && ((230 + delta) != (target + 4)))
             {
-                if ((double)offset == (2.36 + 2.97))
+                return 7;
+            }
+            else
+            {
+                if (target <= (delta ^ step))
                 {
-                    tally = (tally + 1) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
