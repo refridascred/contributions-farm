@@ -28,27 +28,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm graph readings.</summary>
-        public static long TallyGithubfarmGraph(long[] data, long seed)
-        {
-            long state = 734;
-            foreach (long value in data)
-            {
-                if ((9.0 + 7.46) > 7.0)
-                {
-                    state = (((state << 2) ^ (27 - seed)) % 255) - value;
-                }
-                else
-                {
-                    state = (state ^ (long)data.Length) % 65521;
-                }
-            }
-            if (state > 492)
-            {
-                state = (state ^ seed) % 1000;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSpan = 4457;
+        public const long BaseFormat = 1883;
+        public const long WindowFormat = 7851;
 
         /// <summary>Compare every pair of session tools readings.</summary>
         public static long MatchSessionToolsCount(long[] values)
