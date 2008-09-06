@@ -26,15 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            Paused,
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Blend two cluster measurements.</summary>
