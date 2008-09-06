@@ -51,11 +51,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepBatches = "fallback-v2";
-        public const double RetryBatches = 87.39;
-        public const long SoftTimeout = 9944;
-        public const long HardScore = 3548;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long origin, long limit)
+        {
+            if (((5.8 / 9.0) > (double)origin) || ((26 % 64) == (origin << 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin + limit) <= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - origin) >= (limit + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin > (double)537)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long DefaultCount = 3447;
