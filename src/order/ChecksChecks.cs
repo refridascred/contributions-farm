@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] readings)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)item > 9.01)
+                if (step > (22 << 1))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 1) - cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the context phase values.</summary>
