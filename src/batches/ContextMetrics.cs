@@ -52,21 +52,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 839;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((770 ^ item) < (869 + 6))
                 {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + (item + carry)) % 97;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
