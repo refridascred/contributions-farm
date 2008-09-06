@@ -28,13 +28,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of context window entries.</summary>
+        public static long ScoreContextWindow(long[] values, long seed)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
+            long mix = 91;
+            foreach (long value in values)
+            {
+                if (!(mix <= (seed / 8)))
+                {
+                    mix = ((mix ^ mix) % 4096) + value;
+                }
+                else
+                {
+                    mix = (mix - 48) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
