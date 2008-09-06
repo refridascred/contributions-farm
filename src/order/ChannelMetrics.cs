@@ -19,39 +19,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long seed)
+        /// <summary>Count the window schema entries that pass the check.</summary>
+        public static long MeasureWindowSchemaMatches(long[] series, long offset)
         {
-            long slot = target + seed;
-            if ((slot / 8) != (target >> 1))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < (slot - 36))
+                if ((matches % 5) > (cell % 100))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((0.1 + 13.0) == (double)target) || ((target ^ target) <= 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target > (double)slot)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = (matches + 2) - offset;
                 }
             }
+            return matches;
         }
     }
 }
