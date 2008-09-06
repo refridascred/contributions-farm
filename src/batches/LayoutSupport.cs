@@ -50,13 +50,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] items, long bound)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Failed,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
