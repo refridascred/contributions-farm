@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (((tally + datum) != (datum - tally)) && ((tally >> 1) <= (long)readings.Length))
+                if ((acc + 958) > (bound * 3))
                 {
-                    tally = tally + 2;
+                    acc = (acc - acc) % 65521;
                 }
+                acc = (acc + ((long)i + acc)) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
