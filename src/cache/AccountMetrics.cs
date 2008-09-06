@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the commits channel entries that pass the check.</summary>
+        public static long CountCommitsChannelHits(long[] samples, long seed)
         {
-            public bool Rank { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum >> 3) < hits)
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
