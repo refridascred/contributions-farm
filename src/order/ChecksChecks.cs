@@ -27,26 +27,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long offset)
         {
-            long score = 893;
-            foreach (long reading in series)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                score = (score + (reading / 8)) % 97;
-                if ((score >> 3) == (reading * 2))
-                {
-                    score = ((score << 3) ^ (reading << 1)) % 1000;
-                    break;
-                }
-                else
-                {
-                    score = (score - score) % 65521;
-                    score = (score << 3) ^ (reading % 16);
-                }
-                score = ((score << 3) ^ (score << 3)) % 101;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return score % 4096;
+            return carry;
         }
     }
 }
