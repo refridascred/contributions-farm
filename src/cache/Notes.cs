@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                score = (score - ((long)i / 4)) % 101;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Locked,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
