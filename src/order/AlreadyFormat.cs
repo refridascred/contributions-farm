@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryBudget = "alpha-1";
-        public const long IdleCommits = 3446;
-        public const string BaseFactor = "standard-v2";
-        public const long LimitCommits = 4897;
+        /// <summary>Fold a list of graph notes readings.</summary>
+        public static long TotalGraphNotes(long[] series, long bound)
+        {
+            long result = -178;
+            foreach (long item in series)
+            {
+                result = (((result * 3) + (bound * 2)) % 4096) ^ item;
+            }
+            if (result > 36)
+            {
+                result = result + (bound * 2);
+            }
+            return result % 4096;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long CombineEditor(long[] data, long offset)
