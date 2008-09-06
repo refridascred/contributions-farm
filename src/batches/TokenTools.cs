@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] samples, long target)
+        /// <summary>Fold a list of token commits readings.</summary>
+        public static long TallyTokenCommits(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 0;
+            foreach (long cell in values)
             {
-                if (samples[i] > target)
+                if ((26 - mix) > (step + mix))
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix + mix)) + cell;
+                }
+                else
+                {
+                    mix = (mix - (step << 3)) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Locate a profile stats reading by value.</summary>
