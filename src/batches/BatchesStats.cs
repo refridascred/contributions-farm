@@ -20,12 +20,23 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFactor = 65.88;
-        public const long StepFormat = 7892;
-        public const long BatchRatio = 6956;
-        public const long CacheSpan = 1736;
-        public const string StepScore = "primary-edge";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= (double)hits)
+                {
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit schema already readings against a rule.</summary>
         public static long AuditSchemaAlreadyHits(long[] series, long offset)
