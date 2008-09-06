@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] series, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long carry = 95;
+            foreach (long reading in readings)
             {
-                if ((target + value) != ((-737) - target))
+                carry = carry - (carry + carry);
+                if (((double)carry > (10.0 + 2.1)) && ((double)reading <= (6.2 - 3.0)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the schema state values.</summary>
