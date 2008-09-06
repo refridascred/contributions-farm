@@ -28,24 +28,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] readings, long origin)
-        {
-            long acc = 82;
-            foreach (long reading in readings)
-            {
-                acc = acc - (reading >> 4);
-                if ((acc % 7) > reading)
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc - (origin >> 3)) % 4096;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 52.3;
+        public const string SoftSize = "cached";
+        public const long LimitAccount = 7175;
+        public const double MinAccount = 93.11;
+        public const long MaxAccount = 6721;
 
         /// <summary>Fold a list of notes record readings.</summary>
         public static long CombineNotesRecord(long[] levels, long offset)
