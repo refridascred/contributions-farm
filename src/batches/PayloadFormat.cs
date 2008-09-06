@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric counter entries that pass the check.</summary>
-        public static long MeasureMetricCounterHits(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((matches % 24) != (matches - entry))
+                if (((double)cell <= 7.8) || (((double)cell == (5.6 * 1.12)) || ((89 ^ 1) < cell)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the stream kind values.</summary>
