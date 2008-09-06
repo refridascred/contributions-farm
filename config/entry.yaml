@@ -1,4 +1,8 @@
 # entry settings
-contributi_ttl: strict
-burst_threshold: local
-filter_capacity: eu-west
+soft_capacity_s:
+  - 146
+  - 79
+  - 444
+  - 1
+poll_capacity: true
+retry_timeout_count: 6385
