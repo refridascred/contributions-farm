@@ -1,20 +1,7 @@
 {
-  "verbose": true,
-  "strict": true,
-  "compress": "primary",
-  "flush_threshold_ms": {
-    "min_window_count": "latest",
-    "persist": 59,
-    "base_window": false,
-    "cache_threshold": 22,
-    "cache_ratio": {
-      "record_ratio": true,
-      "idle_ratio_ms": "standard",
-      "support_limit": 8751,
-      "readonly": "latest",
-      "default_limit_s": 93.82,
-      "audit": 93.89
-    },
-    "enabled": 17.38
-  }
+  "idle_interval_pct": 88.93,
+  "base_ratio_ms": 9166,
+  "enabled": 500,
+  "sync_depth_pct": [140, 283],
+  "strict": "green"
 }
