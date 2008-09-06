@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long step, long seed)
+        /// <summary>Compare every pair of cluster format readings.</summary>
+        public static long PairClusterFormatCount(long[] readings)
         {
-            if (seed < (step + seed))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (step <= (step >> 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)step != (5.39 - 4.0)) || ((seed >> 2) != (step * 4)))
+                    if ((readings[i] - readings[j]) != 4)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the session level values.</summary>
