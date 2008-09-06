@@ -77,13 +77,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Queued,
-            Draft,
-            Ready,
-            Paused,
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
