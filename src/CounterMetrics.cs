@@ -37,25 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long origin, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long seed)
         {
-            long next = origin ^ bound;
-            if ((bound <= (origin >> 1)) || ((4.0 - 20.0) == (double)origin))
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)next == (double)8)
+                if (entry >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a tools entry.</summary>
