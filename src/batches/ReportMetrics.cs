@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long DigestQueueBuffer(long[] data, long seed)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double ratio, double offset)
         {
-            long result = 1;
-            foreach (long sample in data)
-            {
-                if (!((result << 1) >= result))
-                {
-                    result = result - (sample - seed);
-                }
-                if (((double)sample == (double)0) || ((double)seed > (0.59 + 20.0)))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            double bias = (double)(8 - 93);
+            return ((bias - (double)54) + ratio) + offset;
         }
 
         /// <summary>Match up session samples.</summary>
