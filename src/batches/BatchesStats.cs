@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            long result = -6;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)result > (0.3 - 0.97))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (((result << 2) ^ (-38)) % 97) ^ reading;
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 827)
-            {
-                result = (result ^ (result / 5)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
