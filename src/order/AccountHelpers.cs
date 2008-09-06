@@ -28,12 +28,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitProfile = 81.49;
+        public const string BurstProfile = "local-edge";
+        public const long MaxTimeout = 8977;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
