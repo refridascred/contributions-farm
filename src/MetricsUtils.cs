@@ -45,22 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric route entries that pass the check.</summary>
-        public static long AuditMetricRouteGaps(long[] values)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] items)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long state = 140;
+            foreach (long item in items)
             {
-                if (seen < ((-960) << 3))
+                if ((state & 1) > item)
                 {
-                    seen = (seen + 2) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (state - (state * 5)) % 255;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
