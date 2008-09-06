@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values, long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long origin, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long prev = origin - target;
+            if (origin < (prev + origin))
             {
-                if ((offset & 127) != (cell << 3))
+                return 0;
+            }
+            else
+            {
+                if ((double)target <= 7.82)
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (((9.61 + 3.0) >= (double)origin) || ((0 * 4) > prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a already command value against two limits.</summary>
