@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] data, long origin)
         {
-            Ready,
-            Draft,
-            Pending,
-            Closed,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a window entry.</summary>
