@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] levels, long floor)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + entry) <= (90 + entry))
-                {
-                    tally = (tally + 2) + floor;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
