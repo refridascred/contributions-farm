@@ -28,23 +28,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            double bias = (double)5 / 4.0;
-            if (bias > bias)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = ((bias + bias) - ratio) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (7.0 / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - 8.0;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
