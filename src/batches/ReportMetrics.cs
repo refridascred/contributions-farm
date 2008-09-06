@@ -18,22 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] series)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((bound + step) <= (bound - bound))
             {
-                if ((4.74 - 19.0) == (double)hits)
+                return 3;
+            }
+            else
+            {
+                if (bound <= (121 & 127))
                 {
-                    hits = (hits + 1) - cell;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)bound < (3.0 - 1.1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound * 3) > (step - 812))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
