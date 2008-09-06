@@ -39,22 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] readings)
+        /// <summary>Find the first metrics profile entry that matches the target.</summary>
+        public static long LocateMetricsProfileIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.3 * 14.0) == (double)item)
+                if (series[i] >= bound)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
