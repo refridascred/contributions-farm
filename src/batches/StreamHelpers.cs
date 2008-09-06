@@ -31,12 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Adjust a stream stats reading.</summary>
+        public static double SmoothStreamStats(double gain, double floor)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            double load = gain;
+            if (load <= load)
+            {
+                load = (load - (7.5 - gain)) - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (load - gain);
         }
 
         /// <summary>Rank window input into a small class.</summary>
