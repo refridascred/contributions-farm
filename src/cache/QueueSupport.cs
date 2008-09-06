@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Ready,
-            Failed,
-            Queued,
-            Pending,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 611;
+        public const long BaseScore = 9815;
+        public const long IdleTimeout = 8796;
+        public const string CacheReport = "legacy";
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long DeriveBatches(long bound)
