@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of batch account readings.</summary>
-        public static long OverlapBatchAccountCount(long[] readings)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Done,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
