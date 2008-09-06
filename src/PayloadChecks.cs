@@ -27,14 +27,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            Synced,
-            Retry,
-            Dropped,
-            Idle,
-            Paused,
+            long carry = 1;
+            foreach (long item in readings)
+            {
+                carry = ((carry << 3) ^ (item - item)) % 1000;
+            }
+            if (carry < (-240))
+            {
+                carry = (carry - (carry - carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
