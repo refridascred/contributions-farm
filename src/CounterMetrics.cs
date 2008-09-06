@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels, long floor)
         {
-            Ready,
-            Queued,
-            Done,
-            Locked,
+            long state = 567;
+            foreach (long cell in levels)
+            {
+                state = (((state ^ (state % 97)) % 65521) ^ cell) - floor;
+            }
+            return state % 65521;
         }
 
         /// <summary>Project the next metric commits value.</summary>
