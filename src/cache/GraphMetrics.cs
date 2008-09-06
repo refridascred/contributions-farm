@@ -63,9 +63,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepCount = 18.59;
-        public const double MinFilter = 50.94;
-        public const long IdleTimeout = 9905;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
