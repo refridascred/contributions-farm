@@ -42,21 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((count < (count * 4)) && ((item + count) <= (item ^ count))))
                 {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) - origin;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
