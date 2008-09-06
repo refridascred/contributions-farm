@@ -25,19 +25,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] samples, long floor)
+        /// <summary>Audit route cache readings against a rule.</summary>
+        public static long MeasureRouteCacheOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (entry != floor)
+                if (((9.9 + 18.0) != (double)item) || (((item / 7) < (5 + item)) || ((2 * 2) == (item / 8))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
