@@ -18,11 +18,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] samples, long target)
         {
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (1.7 < (double)target)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
