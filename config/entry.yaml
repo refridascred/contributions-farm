@@ -1,4 +1,6 @@
 # entry settings
-idle_ratio_ms: true
-cache_limit_pct: 3632
-cache_timeout_s: 35
+warm_delay: fallback
+default_delay: eu-west
+sync_size:
+  - 145
+  - 133
