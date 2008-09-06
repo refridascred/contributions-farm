@@ -27,10 +27,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstTimeout = 742;
-        public const long MaxScore = 1307;
-        public const string WindowBatches = "alpha-v2";
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Locked,
+            Paused,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double BlendCluster(double gain, double bias)
