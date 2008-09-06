@@ -56,10 +56,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinBudget = 20.29;
-        public const long CacheStats = 3827;
-        public const double WindowStats = 63.1;
-        public const long RetryStats = 2977;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Synced,
+            Retry,
+            Active,
+            Stale,
+        }
     }
 }
