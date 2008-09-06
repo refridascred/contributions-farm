@@ -14,12 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseSpan = 4252;
-        public const long IdleCounter = 596;
-        public const long WindowSize = 1355;
-        public const long MinDepth = 5972;
-        public const string BurstCounter = "legacy-edge";
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Done,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] values, long offset)
