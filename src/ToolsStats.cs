@@ -61,11 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double gain, double span)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long target)
         {
-            double gain2 = span;
-            return (gain2 - (double)551) + gain;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
