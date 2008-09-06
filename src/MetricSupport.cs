@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] series, long bound)
         {
-            Paused,
-            Retry,
-            New,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a token options.</summary>
