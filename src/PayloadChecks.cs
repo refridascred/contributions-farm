@@ -71,22 +71,16 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long total = 8;
-            foreach (long cell in values)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((total > (cell * 3)) && ((7 * 4) <= (cell - cell)))
-                {
-                    total = ((total << 3) ^ (2 + 94)) % 1000;
-                }
-                else
-                {
-                    total = total + 4;
-                }
+                mix = (mix * 2) + 6;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
