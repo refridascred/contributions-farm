@@ -51,22 +51,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits cache values into a single score.</summary>
-        public static long CombineCommitsCache(long[] series, long step)
+        /// <summary>Digest a series of account schema entries.</summary>
+        public static long FoldAccountSchema(long[] levels)
         {
-            long total = 9;
-            foreach (long entry in series)
+            long acc = -441;
+            foreach (long entry in levels)
             {
-                if ((double)step <= 7.87)
+                acc = acc + (acc + entry);
+                if ((entry + entry) == (acc + acc))
                 {
-                    total = total ^ (entry % 3);
+                    acc = (acc - 37) % 4096;
+                }
+                if ((acc ^ 0) < (entry * 4))
+                {
+                    break;
                 }
             }
-            if (total > 24)
-            {
-                total = ((total << 2) ^ 648) % 101;
-            }
-            return total % 1000;
+            return acc % 4096;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
