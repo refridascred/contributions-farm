@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] values, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long state = 81;
+            foreach (long datum in series)
             {
-                if ((5.0 < (double)cell) || (500 >= (cell >> 3)))
-                {
-                    tally = (tally + 2) - seed;
-                }
+                state = ((state << 2) ^ (datum + 5)) % 255;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
