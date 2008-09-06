@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Paused,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 8560;
+        public const double CacheContributi = 76.81;
+        public const long RetryContributi = 6837;
+        public const long HardCount = 1459;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] items, long target)
