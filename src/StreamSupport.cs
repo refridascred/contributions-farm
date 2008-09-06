@@ -31,21 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
