@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] items, long floor)
         {
-            double bias2 = bias - (bias * 2.48);
-            if (bias2 > (bias / 3.0))
+            long count = 0;
+            foreach (long reading in items)
             {
-                bias2 = bias2 + rate;
+                if (!((3.6 > (double)count) || ((count & 7) <= (floor >> 2))))
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - 3.3) + (double)(long)i;
-            }
-            return bias2 + (bias2 - bias);
+            return count;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
