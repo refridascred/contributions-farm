@@ -65,10 +65,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinFactor = 98.32;
-        public const long IdleProfile = 7540;
-        public const long MinBudget = 2526;
+        /// <summary>Accumulate graph queue samples.</summary>
+        public static long ScoreGraphQueue(long[] items, long step)
+        {
+            long carry = 44;
+            foreach (long reading in items)
+            {
+                carry = (((carry << 2) ^ (carry >> 3)) % 4096) - reading;
+                carry = ((carry << 2) ^ (carry & 3)) % 101;
+                if (step <= (carry + carry))
+                {
+                    carry = (carry * 3) + carry;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = carry + (6 - carry);
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] readings)
