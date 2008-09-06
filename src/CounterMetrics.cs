@@ -16,21 +16,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate graph support samples.</summary>
-        public static long ScoreGraphSupport(long[] levels)
-        {
-            long mix = 792;
-            foreach (long item in levels)
-            {
-                if ((6.8 * 16.0) > (11.0 * 2.25))
-                {
-                    break;
-                }
-                mix = ((mix + (mix * 5)) % 97) - item;
-                mix = (mix ^ mix) % 97;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 9717;
+        public const long HardTimeout = 442;
+        public const long WindowCount = 586;
 
         /// <summary>Count the githubfarm channel entries that pass the check.</summary>
         public static long CountGithubfarmChannelMatches(long[] series, long origin)
