@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            Draft,
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Roll a contributi format counter forward.</summary>
