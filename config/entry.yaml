@@ -1,6 +1,9 @@
 # entry settings
-sync_delay_s: 35.51
-soft_size_pct: true
-stats_ttl: primary
-burst_delay_count: 82
-idle_size: latest
+default_limit_s:
+  - 436
+  - 185
+retry_capacity: green
+burst_interval_ms:
+  - 9
+  - 78
+default_delay_pct: 869
