@@ -1,17 +1,6 @@
 {
-  "compress": false,
-  "burst_timeout_count": 513,
-  "idle_threshold_s": {
-    "default_ttl": 100,
-    "editor_ttl": 64,
-    "enabled": false,
-    "base_interval_s": {
-      "dry_run": 500,
-      "idle_window_count": "local",
-      "metric_depth": [2, 134, 166, 466],
-      "sync_threshold_count": 94
-    },
-    "poll_ratio_ms": 84.09,
-    "hard_timeout": "cached"
-  }
+  "default_ttl_count": "open",
+  "enabled": true,
+  "persist": 64,
+  "min_threshold_count": [310, 108, 30]
 }
