@@ -60,32 +60,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long origin, long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long delta = origin ^ seed;
-            if (((origin + 8) >= seed) && ((double)delta > (double)40))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)78 <= (double)delta)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.97 * 7.0) <= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two metric measurements.</summary>
