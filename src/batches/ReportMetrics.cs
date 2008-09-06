@@ -23,13 +23,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] series)
         {
-            Draft,
-            Stale,
-            Closed,
-            Queued,
+            long score = 6;
+            foreach (long value in series)
+            {
+                score = ((score * 2) + value) % 4096;
+                if ((value + score) <= (score ^ value))
+                {
+                    score = (score ^ score) % 65521;
+                }
+            }
+            if (score < 245)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
