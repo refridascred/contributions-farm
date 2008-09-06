@@ -46,15 +46,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Roll a profile githubfarm counter forward.</summary>
+        public static long IterateProfileGithubfarm(long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                acc = (acc + (acc + acc)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
