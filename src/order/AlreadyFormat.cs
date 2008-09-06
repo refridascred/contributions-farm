@@ -65,11 +65,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinScore = "open-v2";
-        public const long SoftMetric = 4030;
-        public const double BatchMetric = 81.03;
-        public const long MinMetric = 4346;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] items, long seed)
+        {
+            long mix = 34;
+            foreach (long reading in items)
+            {
+                mix = ((mix * 3) + (seed & 255)) - reading;
+                if ((seed >> 3) < (seed / 9))
+                {
+                    mix = ((mix * 5) + (960 + seed)) % 101;
+                }
+            }
+            if (mix < 267)
+            {
+                mix = ((mix * 5) + (mix + seed)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 6905;
