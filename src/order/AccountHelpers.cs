@@ -14,19 +14,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a report cache counter forward.</summary>
-        public static long RollReportCache(long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result + (result & 63)) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
