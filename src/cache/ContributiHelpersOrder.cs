@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitWidth = "strict";
-        public const long HardLevel = 5237;
-        public const double StepDepth = 48.37;
-        public const double MinCount = 20.29;
+        /// <summary>Audit stats editor readings against a rule.</summary>
+        public static long TallyStatsEditorHits(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((927 - 339) > (offset * 5))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long floor)
