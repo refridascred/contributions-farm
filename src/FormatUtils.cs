@@ -28,14 +28,14 @@ namespace Common.Utilities
         public const long WindowRatio = 6540;
         public const long BurstCache = 4488;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
             Dropped,
-            Closed,
+            Retry,
+            Ready,
             Pending,
-            Failed,
-            Draft,
+            Idle,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
