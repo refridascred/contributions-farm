@@ -57,22 +57,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultBudget = "latest";
+        public const double BatchCount = 34.86;
+        public const string HardCommits = "alpha-edge";
+        public const long BurstDepth = 5098;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderLimits(long[] data, long origin)
