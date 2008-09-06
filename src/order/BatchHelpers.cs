@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count the batch account entries that pass the check.</summary>
+        public static long AuditBatchAccountOutliers(long[] data)
         {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((899 - count) >= (item + 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
