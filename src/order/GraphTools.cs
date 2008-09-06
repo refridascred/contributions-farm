@@ -20,13 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Idle,
-            Failed,
-            Stale,
-            Retry,
+            Pending,
+            Queued,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Audit token command readings against a rule.</summary>
