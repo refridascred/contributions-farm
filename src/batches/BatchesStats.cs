@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string IdleAccount = "staging-edge";
         public const long BatchAccount = 2906;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryChecks = 58.05;
+        public const string SoftDepth = "latest-v2";
+        public const double CacheChecks = 58.69;
+        public const long LimitWidth = 3112;
+        public const long MaxRatio = 7842;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsRange(long[] samples, long target)
