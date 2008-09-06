@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support context measurements.</summary>
-        public static double AdjustSupportContext(double bias, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] samples)
         {
-            double mean = span;
-            if (mean >= bias)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                mean = mean + span;
+                if (((double)value > 10.0) || ((15.0 / 3.0) <= (double)value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 7.69) - (double)(long)i;
-            }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Accumulate context commits samples.</summary>
