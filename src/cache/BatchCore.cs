@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer batch entries.</summary>
-        public static long ScoreBufferBatch(long[] data)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long acc = 22;
-            foreach (long entry in data)
-            {
-                acc = ((acc << 2) ^ 53) + entry;
-                if ((398 % 100) < (acc * 4))
-                {
-                    acc = (acc ^ (acc << 3)) % 255;
-                }
-            }
-            return acc;
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
