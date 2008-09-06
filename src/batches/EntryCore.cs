@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double BurstRatio = 82.68;
         public const double MinSize = 26.19;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] values)
+        /// <summary>Validate command filter readings against a bound.</summary>
+        public static bool VerifyCommandFilterRange(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((entry + entry) != (tally - tally))
+                if (reading < target)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Rank order input into a small class.</summary>
