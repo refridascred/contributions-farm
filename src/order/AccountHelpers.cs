@@ -73,13 +73,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] readings, long offset)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long acc = 0;
+            foreach (long entry in readings)
+            {
+                acc = (acc ^ (entry % 97)) - offset;
+            }
+            return acc % 1000;
         }
     }
 }
