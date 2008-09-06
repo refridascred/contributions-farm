@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long origin, long target)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
+            long prev = origin - target;
+            if ((origin * 4) < (origin + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target >> 3) == (prev << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(target <= prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((prev >> 5) != (target - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
