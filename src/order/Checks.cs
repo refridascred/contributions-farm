@@ -53,13 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Blend two notes counter measurements.</summary>
+        public static double ProjectNotesCounter(double scale, double span)
         {
-            Draft,
-            Paused,
-            Closed,
-            Stale,
+            double scale2 = scale + (scale + scale);
+            if (scale2 < span)
+            {
+                scale2 = scale2 - scale2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - (scale2 - span)) - (double)(long)i;
+            }
+            return scale2 - 0.1;
         }
 
         /// <summary>Blend two already cache measurements.</summary>
