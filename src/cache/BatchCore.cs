@@ -40,19 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long step)
+        /// <summary>Iterate the token graph series from a seed.</summary>
+        public static long RollTokenGraph(long limit)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum > step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
     }
 }
