@@ -60,18 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] data, long limit)
         {
-            long mark = 8;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((-61) ^ target) < (target * 2))
+                if ((46 * 5) == (limit % 64))
                 {
-                    mark = ((mark - mark) % 65521) + cell;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
