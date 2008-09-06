@@ -32,19 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] series, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (value != step)
+                if (((3.0 * 10.0) < (double)item) || (item < (tally - tally)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
