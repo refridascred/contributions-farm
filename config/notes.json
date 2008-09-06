@@ -1,5 +1,7 @@
 {
-  "strict": 250,
-  "contributi_ratio": 54.53,
-  "notes_interval": true
+  "idle_retries_s": "staging",
+  "base_size_s": 85.5,
+  "profile_capacity": true,
+  "soft_depth_pct": 7901,
+  "enabled": ["local", "green", "green", "latest"]
 }
