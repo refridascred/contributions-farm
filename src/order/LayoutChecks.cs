@@ -21,14 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            Stale,
-            Closed,
-            Queued,
-            Retry,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
