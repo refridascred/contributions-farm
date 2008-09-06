@@ -63,22 +63,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] items)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= (seen + 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
