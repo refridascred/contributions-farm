@@ -20,14 +20,10 @@ namespace Common.Utilities
         public const double HardOrder = 9.44;
         public const string HardSpan = "alpha";
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Stale,
-            Retry,
-            Dropped,
-            Locked,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 2768;
+        public const long WindowBudget = 9937;
+        public const long MaxSize = 2763;
+        public const string RetryScore = "open-1";
     }
 }
