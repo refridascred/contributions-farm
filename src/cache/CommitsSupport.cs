@@ -40,18 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 9246;
+        public const string BaseSchema = "standard-v2";
+        public const long SoftSize = 2112;
+        public const string HardSchema = "fallback";
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long BucketQueue(long target, long limit)
