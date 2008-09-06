@@ -66,12 +66,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many counter account samples are out of range.</summary>
+        public static long TallyCounterAccountOutliers(long[] data)
         {
-            Stale,
-            Locked,
-            Active,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value % 12) <= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
