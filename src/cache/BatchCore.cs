@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long floor)
+        /// <summary>Digest a series of buffer batch entries.</summary>
+        public static long ScoreBufferBatch(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 22;
+            foreach (long entry in data)
             {
-                if (samples[i] > floor)
+                acc = ((acc << 2) ^ 53) + entry;
+                if ((398 % 100) < (acc * 4))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc << 3)) % 255;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
