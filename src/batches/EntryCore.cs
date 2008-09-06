@@ -27,21 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = bias;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = ((scale - (8.0 - bias)) + (double)(long)i) - bias2;
             }
-            return seen;
+            return scale + (7.55 + bias);
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
