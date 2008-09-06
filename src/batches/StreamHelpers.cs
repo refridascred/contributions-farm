@@ -39,18 +39,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many order cache samples are out of range.</summary>
-        public static long TallyOrderCacheGaps(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((((count >> 4) == (695 >> 4)) && ((entry + entry) != ((-14) + 94))) && (((count ^ entry) <= (count % 7)) || ((double)entry != (double)count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
