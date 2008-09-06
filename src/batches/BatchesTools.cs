@@ -23,20 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 78.72;
+        public const string CacheChannel = "latest-1";
+        public const long MinChannel = 6794;
+        public const double StepChannel = 7.05;
+        public const string DefaultScore = "primary-1";
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
