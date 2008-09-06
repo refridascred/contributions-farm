@@ -22,18 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftSize = 5415;
+        public const long SoftTimeout = 21;
+        public const string HardCommits = "stable-edge";
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
