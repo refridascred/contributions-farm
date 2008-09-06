@@ -23,23 +23,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            long score = 6;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 2) + value) % 4096;
-                if ((value + score) <= (score ^ value))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ score) % 65521;
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 245)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
