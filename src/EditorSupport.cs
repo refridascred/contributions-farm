@@ -51,23 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account schema entries.</summary>
-        public static long FoldAccountSchema(long[] levels)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long acc = -441;
-            foreach (long entry in levels)
-            {
-                acc = acc + (acc + entry);
-                if ((entry + entry) == (acc + acc))
-                {
-                    acc = (acc - 37) % 4096;
-                }
-                if ((acc ^ 0) < (entry * 4))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
