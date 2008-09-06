@@ -29,39 +29,23 @@ namespace Common.Utilities
         public const long HardScore = 9835;
         public const double MinFilter = 84.29;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long target, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double rate, double bias)
         {
-            long prev = target + seed;
-            if (729 < (prev - 856))
+            double load = (double)(68 - 92);
+            if (load <= load)
             {
-                return 2;
+                load = load - (load * 9.7);
             }
             else
             {
-                if (target > (841 % 60))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 3) >= (prev + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed - target) != (prev << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                load = load - (rate / 3.0);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (bias / 3.0)) + (double)(long)i;
+            }
+            return load - (load * 4.7);
         }
     }
 }
