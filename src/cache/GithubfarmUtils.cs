@@ -35,17 +35,38 @@ namespace Common.Utilities
         public const double SoftSchema = 87.67;
         public const long StepSchema = 2023;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] data, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((floor << 3) < target) && ((floor << 3) <= (floor + 6)))
             {
-                if ((data[i] >= floor) && ((data[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor <= (3.0 + 7.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.0 / 6.0) <= (1.89 * 2.9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((7.2 / 2.0) < (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
