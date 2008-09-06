@@ -17,13 +17,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] levels, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long offset)
         {
             bool valid = true;
-            foreach (long sample in levels)
+            foreach (long cell in levels)
             {
-                if (sample != floor)
+                if (cell >= offset)
                 {
                     valid = false;
                     break;
