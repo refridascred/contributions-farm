@@ -1,9 +1,12 @@
 # support settings
-batch_ttl_count:
-  enabled: 7363
-  idle_depth_count: 71.79
-  soft_delay_ms: true
-  persist: false
-readonly: false
-verbose: staging
-sync_capacity: standard
+batch_timeout: primary
+sync_delay_pct: 79.78
+retry_window_s:
+  compress: 8.47
+  sync_threshold:
+    farm_ttl: stable
+    verbose: 500
+    idle_ttl_pct: primary
+    compress: 30
+  batch_retries_ms: staging
+  sync_ttl_ms: 16.36
