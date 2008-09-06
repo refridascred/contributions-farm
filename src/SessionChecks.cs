@@ -20,12 +20,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 769;
-        public const double RetryGraph = 35.83;
-        public const long MaxGraph = 1042;
-        public const double BatchGraph = 30.81;
-        public const double LimitGraph = 73.43;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state << 3) ^ ((long)i2 + state)) % 1000;
+                }
+                if ((origin >> 5) >= (long)i)
+                {
+                    state = (state + (origin * 4)) % 65521;
+                    state = (state + (9 ^ state)) % 255;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Count the cluster batch entries that pass the check.</summary>
         public static long MeasureClusterBatchOutliers(long[] readings)
