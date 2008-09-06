@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long limit, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] levels)
         {
-            long diff = limit ^ target;
-            if (limit >= (diff >> 3))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < (limit ^ 94))
+                if ((cell & 3) >= (tally % 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the channel cache series from a seed.</summary>
