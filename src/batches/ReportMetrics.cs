@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryContext = "legacy-v2";
-        public const long IdleRatio = 1222;
-        public const long WindowContext = 3578;
-        public const long MaxLevel = 5934;
-        public const long StepContext = 898;
+        /// <summary>Count the channel token entries that pass the check.</summary>
+        public static long MeasureChannelTokenGaps(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((10.0 + 1.54) >= (double)matches)
+                {
+                    matches = ((matches + 3) ^ entry) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long CompareWindowCount(long[] series)
