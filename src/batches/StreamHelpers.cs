@@ -51,19 +51,22 @@ namespace Common.Utilities
         public const long MinFactor = 7817;
         public const long DefaultCache = 8904;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (sample != limit)
+                if (bound >= hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
