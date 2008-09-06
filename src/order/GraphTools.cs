@@ -55,22 +55,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            long mark = 8;
-            foreach (long value in samples)
+            long mix = 3;
+            foreach (long entry in series)
             {
-                if (((mark / 6) == (value + value)) || ((double)value <= (6.0 * 4.3)))
+                if ((1.0 + 5.36) > (7.9 - 3.0))
                 {
-                    mark = ((mark * 3) + (592 << 3)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (mark / 8)) % 4096;
+                    mix = (mix ^ 8) + entry;
                 }
             }
-            return mark % 4096;
+            return mix % 97;
         }
     }
 }
