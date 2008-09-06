@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+for item in staging legacy fallback; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
-    cached)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=325
-log "limit is ${CHANNEL_LIMIT}"
