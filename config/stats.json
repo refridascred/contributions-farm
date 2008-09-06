@@ -1,12 +1,6 @@
 {
-  "audit": true,
-  "checks_delay": {
-    "sync_ttl_count": [252, 5],
-    "schema_capacity": ["eu-west", "open", "standard", "fallback"],
-    "burst_delay": "fallback"
-  },
-  "compress": 5560,
-  "layout_depth": "standard",
-  "account_limit": 61,
-  "base_timeout_pct": ["staging", "legacy"]
+  "payload_interval": "strict",
+  "batch_limit_s": 42,
+  "readonly": false,
+  "soft_size_ms": "blue"
 }
