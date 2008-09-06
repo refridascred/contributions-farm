@@ -44,10 +44,14 @@ namespace Common.Utilities
         public const string MinFormat = "primary";
         public const string BurstWidth = "primary-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 4551;
-        public const long IdleCommand = 2141;
-        public const double SoftCommand = 50.57;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Paused,
+            Locked,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionHits(long[] data)
