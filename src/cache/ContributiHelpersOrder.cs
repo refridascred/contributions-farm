@@ -27,11 +27,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardTimeout = 4424;
-        public const long RetryBudget = 6330;
-        public const long BurstRecord = 2930;
-        public const string IdleTimeout = "strict-1";
-        public const double WindowRecord = 52.64;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
