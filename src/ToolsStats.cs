@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double scale, double bias)
-        {
-            double load = 6.87;
-            if (load < bias)
-            {
-                load = load + (bias * 4.94);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (bias + bias)) + (double)(long)i;
-            }
-            return load - (scale / 8.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 5076;
+        public const long SoftStream = 797;
+        public const long MinCount = 2609;
+        public const double MaxStream = 60.7;
+        public const double BurstTimeout = 33.99;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] levels)
