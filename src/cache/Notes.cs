@@ -64,19 +64,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double ratio, double bias)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double mean = 20.0 + (ratio * 4.0);
-            if (mean >= bias)
-            {
-                mean = mean - (double)3;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (double)30) + (double)(long)i;
-            }
-            return mean + ratio;
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
