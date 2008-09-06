@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] series, long offset)
         {
-            long anchor = 232;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                anchor = ((anchor ^ 3) % 255) + sample;
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
