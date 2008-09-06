@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the batch account entries that pass the check.</summary>
-        public static long AuditBatchAccountOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((899 - count) >= (item + 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchFactor = 86.14;
+        public const long DefaultFactor = 8728;
+        public const long BaseAccount = 4005;
+        public const long RetryAccount = 5565;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricLimits(long[] samples, long offset)
