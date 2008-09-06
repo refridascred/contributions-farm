@@ -1,14 +1,16 @@
 {
-  "graph_ttl": {
-    "persist": 48,
-    "support_size": "strict",
-    "batch_capacity": {
-      "payload_capacity": "cached",
-      "min_timeout_pct": 4248,
-      "idle_size": 4570
-    }
+  "metrics_timeout": 77,
+  "enabled": ["primary", "legacy", "standard", "eu-west"],
+  "soft_retries_pct": "fallback",
+  "metrics_capacity": {
+    "already_capacity": "fallback",
+    "enabled": 60,
+    "payload_size": 33.8
   },
-  "poll_retries_count": 17,
-  "audit": 18.27,
-  "warm_timeout_ms": 7121
+  "burst_capacity": {
+    "graph_threshold": 100,
+    "cache_window_count": 25,
+    "farm_size": 3874,
+    "max_size_s": "cached"
+  }
 }
