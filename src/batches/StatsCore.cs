@@ -76,13 +76,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Dropped,
-            Closed,
-            Synced,
+            Draft,
+            Idle,
+            Stale,
             Failed,
+            Done,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
