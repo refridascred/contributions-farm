@@ -5,35 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Roll a checks profile counter forward.</summary>
+        public static long StepChecksProfile(long seed)
         {
-            long acc = 41;
-            foreach (long item in levels)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((acc - acc) == (item << 3)))
-                {
-                    acc = (acc - (59 % 16)) % 97;
-                    acc = ((acc * 4) + (item % 24)) % 4096;
-                }
-                if (((long)levels.Length & 255) > (42 + acc))
-                {
-                    acc = ((acc * 4) + (acc & 7)) % 97;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                if (3.2 > (double)item)
-                {
-                    acc = acc - acc;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (acc > 11)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc % 65521;
+            return sum;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
