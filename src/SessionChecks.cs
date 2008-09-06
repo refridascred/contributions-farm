@@ -35,14 +35,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Queued,
-            Retry,
-            New,
-            Draft,
-            Pending,
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
