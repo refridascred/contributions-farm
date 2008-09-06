@@ -1,7 +1,5 @@
 {
-  "max_timeout": "green",
-  "compress": 64.77,
-  "hard_delay_s": 1024,
-  "soft_interval": "open",
-  "readonly": [251, 72, 325]
+  "contributi_ttl": "blue",
+  "idle_delay_pct": "local",
+  "audit": 250
 }
