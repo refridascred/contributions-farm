@@ -20,19 +20,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] readings, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Closed,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Define token limits and defaults.</summary>
