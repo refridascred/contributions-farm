@@ -28,19 +28,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache report readings against a bound.</summary>
-        public static bool CheckCacheReportRange(long[] readings, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 5) + (274 ^ origin)) % 65521;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
