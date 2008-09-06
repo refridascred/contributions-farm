@@ -66,25 +66,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long span = step + target;
-            if ((target - span) > target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((span + target) > ((-999) & 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Pending,
+            Dropped,
+            Failed,
         }
     }
 }
