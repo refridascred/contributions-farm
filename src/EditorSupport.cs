@@ -31,14 +31,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] readings, long bound)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Retry,
-            Failed,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((9.6 + 7.0) <= (double)cell)
+                {
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
