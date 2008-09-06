@@ -63,13 +63,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Failed,
-            Active,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBudget = 1643;
+        public const double BurstBuffer = 5.18;
+        public const double LimitBudget = 26.87;
+        public const long MinBuffer = 198;
+        public const long BaseBuffer = 3298;
     }
 }
