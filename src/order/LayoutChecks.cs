@@ -35,17 +35,16 @@ namespace Common.Utilities
         public const double BaseToken = 48.69;
         public const long DefaultToken = 7790;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] levels, long target)
+        /// <summary>Derive the next githubfarm profile value from a seed.</summary>
+        public static long SeriesGithubfarmProfile(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                result = (result - (target >> 5)) % 255;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
