@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Count layout route pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutRouteCount(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
