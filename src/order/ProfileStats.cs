@@ -34,21 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up layout support samples.</summary>
-        public static long MatchLayoutSupportCount(long[] levels)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
