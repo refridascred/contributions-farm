@@ -31,15 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Dropped,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
