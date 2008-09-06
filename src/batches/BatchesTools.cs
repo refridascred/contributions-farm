@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const double WindowSize = 46.39;
         public const double StepChecks = 3.16;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long origin)
         {
-            long result = -72;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result + result) % 1000) ^ sample;
+                if ((data[i] < origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank report already input into a small class.</summary>
