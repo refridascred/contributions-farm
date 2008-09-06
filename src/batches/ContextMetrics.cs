@@ -30,17 +30,18 @@ namespace Common.Utilities
         public const string MaxSize = "local";
         public const string BurstInterval = "latest-v2";
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] levels, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] == offset)
+                if ((double)78 > (double)reading)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ 92) % 65521;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Blend two batches measurements.</summary>
