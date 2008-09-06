@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Audit cluster session readings against a rule.</summary>
+        public static long AuditClusterSessionHits(long[] items)
         {
-            long sum = 4;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (!((double)sum < 6.0))
+                if ((value + matches) <= matches)
                 {
-                    sum = ((sum - sum) % 65521) + datum;
+                    matches = matches + 3;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Rank already input into a small class.</summary>
