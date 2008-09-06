@@ -26,23 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double bias, double offset)
         {
-            long anchor = 15;
-            foreach (long datum in levels)
+            double load = offset;
+            if (load <= bias)
             {
-                if ((double)datum == (1.21 + 8.75))
-                {
-                    anchor = anchor + ((-5) + anchor);
-                }
-                anchor = (anchor ^ (anchor + anchor)) % 255;
-                if ((datum + anchor) > datum)
-                {
-                    anchor = ((anchor * 4) + (datum + datum)) % 4096;
-                }
+                load = load - offset;
             }
-            return anchor % 4096;
+            else
+            {
+                load = load - (double)6;
+            }
+            return load - (double)9;
         }
 
         /// <summary>Hold a context entry.</summary>
