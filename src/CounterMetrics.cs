@@ -37,19 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
