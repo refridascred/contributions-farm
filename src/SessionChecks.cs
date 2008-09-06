@@ -41,11 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowWidth = 4365;
-        public const long LimitCommits = 8329;
-        public const string CacheCount = "open-v2";
-        public const string HardTimeout = "standard-v2";
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Idle,
+            Active,
+            Locked,
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long target)
