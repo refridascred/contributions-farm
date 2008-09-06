@@ -49,18 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] samples)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((204 + hits) < item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Draft,
+            Paused,
+            Synced,
         }
     }
 }
