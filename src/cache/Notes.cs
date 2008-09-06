@@ -14,19 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double span)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] data, long floor)
         {
-            double bias = span / 3.0;
-            if (bias >= span)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias + bias) + rate;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + 3.6) + (double)(long)i;
-            }
-            return bias + (double)2;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
