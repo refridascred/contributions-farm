@@ -60,18 +60,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] items, long floor)
+        /// <summary>Accumulate session batches samples.</summary>
+        public static long FoldSessionBatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long total = 627;
+            foreach (long cell in series)
             {
-                if ((seen / 9) < (seen * 5))
-                {
-                    seen = ((seen + 2) + reading) - floor;
-                }
+                total = ((total + (origin * 3)) % 255) - cell;
+                total = (total * 5) + (7 % 24);
             }
-            return seen;
+            return total % 4096;
         }
     }
 }
