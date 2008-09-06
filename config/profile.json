@@ -1,7 +1,5 @@
 {
-  "burst_ratio_count": true,
-  "idle_interval_s": 80.37,
-  "layout_limit": 35.36,
-  "verbose": "primary",
-  "poll_retries_pct": "staging"
+  "verbose": "legacy",
+  "route_size": "primary",
+  "burst_size": ["legacy", "primary"]
 }
