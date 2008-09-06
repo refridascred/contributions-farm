@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((double)matches == (7.5 / 6.0)) && ((matches / 9) <= sample))
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxTimeout = 778;
+        public const long RetryAccount = 843;
+        public const string IdleAccount = "staging-edge";
+        public const long BatchAccount = 2906;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetrySpan = 5500;
