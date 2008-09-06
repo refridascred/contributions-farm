@@ -60,18 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] levels, long bound)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= (0 * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + bound;
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
