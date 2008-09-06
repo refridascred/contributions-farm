@@ -44,21 +44,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen & 7) > seen)
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
