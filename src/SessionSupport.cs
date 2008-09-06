@@ -22,16 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long origin, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long lane = origin + bound;
+            if (((double)bound < (13.0 + 11.0)) || (8.05 <= (double)lane))
             {
-                acc = (acc - (long)i) % 65521;
-                acc = ((acc * 2) + (long)i) % 101;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (!((origin * 4) > origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound * 5) == (lane % 16)) && ((lane + 70) >= (origin - bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session summary.</summary>
