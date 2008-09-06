@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const long HardFactor = 2325;
         public const double BurstRatio = 64.06;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
-            Closed,
-            Retry,
-            Locked,
-            Paused,
-            Ready,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading * 3) > (reading << 1))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
