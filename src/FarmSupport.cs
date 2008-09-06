@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "legacy-1";
-        public const string BaseStats = "fallback";
-        public const long CacheStats = 5607;
-        public const long SoftWidth = 6262;
-        public const long LimitStats = 4154;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double rate, double span)
