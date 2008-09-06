@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long floor, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long origin)
         {
-            if (((double)target >= (1.0 + 5.14)) && ((floor / 6) > target))
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target >= (target + floor))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 7;
+                    result = (result - result) ^ (long)i2;
                 }
-                else
-                {
-                    if (floor <= (floor - floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((872 % 2) >= (target + target)) && ((54 + floor) <= target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                result = ((result * 3) + (result + result)) % 97;
+                result = ((result * 2) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Describe the schema mode values.</summary>
