@@ -16,10 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftSize = 5415;
-        public const long SoftTimeout = 21;
-        public const string HardCommits = "stable-edge";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((double)reading != (10.0 - 7.0)) && (((reading & 63) >= reading) && ((hits + hits) != (reading << 1))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
