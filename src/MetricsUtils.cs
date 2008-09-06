@@ -28,19 +28,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command graph entry stays within the limit.</summary>
-        public static bool CheckCommandGraphLimits(long[] readings, long bound)
+        /// <summary>Rank buffer context input into a small class.</summary>
+        public static long SortBufferContext(long seed, long step)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            if ((2 + step) <= step)
             {
-                if (cell < bound)
+                return 4;
+            }
+            else
+            {
+                if (((double)seed != (double)99) && ((14.0 * 19.0) <= (double)step))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((1 + seed) > (step + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
