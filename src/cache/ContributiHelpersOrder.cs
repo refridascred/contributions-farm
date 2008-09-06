@@ -37,22 +37,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] series, long seed)
-        {
-            long acc = 0;
-            foreach (long cell in series)
-            {
-                if (((2 * 5) < seed) || ((seed >> 4) > (acc + cell)))
-                {
-                    acc = ((acc << 2) ^ (seed - 80)) % 255;
-                }
-            }
-            if (acc > 276)
-            {
-                acc = (acc * 4) + (seed + seed);
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 3.89;
+        public const long MaxBudget = 9307;
+        public const double StepLevel = 18.77;
+        public const long SoftBatches = 7238;
     }
 }
