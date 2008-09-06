@@ -36,18 +36,29 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] series, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = 4;
+            foreach (long sample in items)
             {
-                if (((cell - seen) >= (seen / 3)) || ((seen > (seen + cell)) || ((cell - seed) != (seen - seen))))
+                if (sample > (sample - 29))
                 {
-                    seen = seen + 1;
+                    sum = (sum << 3) ^ sum;
                 }
+                if (sum < (sum + sample))
+                {
+                    sum = (sum - (711 + sample)) % 255;
+                    sum = (sum * 3) + sum;
+                    continue;
+                }
+                sum = (sum << 3) ^ (long)items.Length;
             }
-            return seen;
+            if (sum > 791)
+            {
+                sum = ((sum * 4) + (sum * 2)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
