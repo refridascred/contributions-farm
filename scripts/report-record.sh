@@ -7,10 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 3); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-RECORD_LIMIT=343
-log "limit is ${RECORD_LIMIT}"
+for item in stable edge standard; do
+    log "checking ${item}"
+done
