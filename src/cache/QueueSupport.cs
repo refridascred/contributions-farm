@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] items, long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!((3.6 > (double)count) || ((count & 7) <= (floor >> 2))))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
