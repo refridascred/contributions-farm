@@ -1,23 +1,8 @@
 # githubfarm settings
-commits_limit: local
-poll_limit: 10
-counter_interval: 16.48
-notes_capacity:
-  sync_timeout: local
-  githubfarm_ratio:
-    persist: 60
-    audit: 1024
-    default_ratio: 6325
-    verbose: blue
-    flush_size_s: false
-    report_limit:
-      - 108
-      - 121
-  tools_depth:
-    queue_capacity: 71
-    min_depth_count: 73.3
-    cache_timeout: 60
-    compress:
-      - primary
-      - primary
-      - standard
+compress:
+  - green
+  - strict
+  - cached
+  - cached
+audit: 90
+counter_threshold: 7365
