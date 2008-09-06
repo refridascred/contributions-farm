@@ -58,11 +58,18 @@ namespace Common.Utilities
         public const double BurstWidth = 44.09;
         public const long HardInterval = 4329;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowWidth = 15.08;
-        public const double RetryDepth = 36.98;
-        public const long LimitLevel = 1712;
-        public const long HardCount = 7663;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksOutliers(long[] data, long offset)
