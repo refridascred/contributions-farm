@@ -36,11 +36,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string CacheBudget = "strict";
-        public const long SoftDepth = 7518;
-        public const long MinFactor = 7817;
-        public const long DefaultCache = 8904;
+        /// <summary>Measure how many order cache samples are out of range.</summary>
+        public static long TallyOrderCacheGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((((count >> 4) == (695 >> 4)) && ((entry + entry) != ((-14) + 94))) && (((count ^ entry) <= (count % 7)) || ((double)entry != (double)count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesMatches(long[] values, long bound)
