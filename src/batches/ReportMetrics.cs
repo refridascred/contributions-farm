@@ -33,13 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long bound)
         {
-            Queued,
-            New,
-            Stale,
-            Closed,
+            long anchor = 125;
+            foreach (long item in values)
+            {
+                if ((item ^ anchor) > (anchor + item))
+                {
+                    anchor = anchor ^ (98 >> 1);
+                }
+                else
+                {
+                    anchor = (anchor ^ (bound + anchor)) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
