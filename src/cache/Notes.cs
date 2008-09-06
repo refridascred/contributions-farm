@@ -52,21 +52,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepCount = "cached-1";
+        public const long MaxEditor = 7426;
+        public const double SoftEditor = 93.38;
+        public const string HardTimeout = "strict";
     }
 }
