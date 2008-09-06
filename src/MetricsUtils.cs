@@ -31,21 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a layout info.</summary>
