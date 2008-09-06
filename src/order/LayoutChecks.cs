@@ -16,38 +16,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long floor, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] readings, long floor)
         {
-            if (bound <= (bound ^ bound))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.5 - 1.9) >= (double)bound)
+                if (item > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((6 > (floor / 3)) && ((floor / 9) < (floor / 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor & 7) > floor) || ((floor + bound) <= floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
