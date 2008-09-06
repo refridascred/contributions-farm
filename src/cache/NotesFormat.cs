@@ -22,21 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count commits stream pairs that satisfy a relation.</summary>
-        public static long CompareCommitsStreamCount(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((seen - (long)levels.Length) >= seen)
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
