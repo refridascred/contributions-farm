@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] items, long limit)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long carry = 0;
+            foreach (long reading in items)
+            {
+                if ((390 << 3) != (limit * 3))
+                {
+                    carry = ((carry ^ 3) % 255) ^ reading;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry ^ (carry % 12)) % 4096;
+                }
+                if ((limit + carry) >= carry)
+                {
+                    carry = carry + 298;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the queue status values.</summary>
