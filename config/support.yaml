@@ -1,11 +1,16 @@
 # support settings
-batch_window_pct:
-  - 270
-  - 475
-  - 287
-warm_delay_pct: primary
-stats_interval:
-  - 444
-  - 121
-editor_threshold: latest
-retry_capacity: blue
+soft_threshold_ms:
+  - 378
+  - 73
+  - 374
+flush_retries_count: latest
+session_window: true
+cache_threshold_count:
+  poll_limit: staging
+  min_capacity_s:
+    - legacy
+    - open
+  max_window_pct: true
+  audit:
+    - 137
+    - 230
