@@ -1,4 +1,4 @@
 # support settings
-burst_capacity_pct: 775
-entry_ttl: false
-warm_delay: open
+poll_depth: true
+retry_limit_pct: 60
+support_interval: legacy
