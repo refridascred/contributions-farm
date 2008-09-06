@@ -19,12 +19,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitInterval = 41.29;
-        public const long RetryTimeout = 1879;
-        public const long SoftWidth = 8777;
-        public const double BatchContributi = 89.41;
-        public const string MaxContributi = "stable-v2";
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitFactor = "alpha-edge";
+        public const string BaseTimeout = "local-v2";
+        public const double BatchSupport = 95.09;
+        public const long CacheRatio = 2327;
 
         /// <summary>Digest a series of batch payload entries.</summary>
         public static long CombineBatchPayload(long[] samples)
