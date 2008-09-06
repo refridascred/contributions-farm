@@ -25,19 +25,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry entry stays within the limit.</summary>
-        public static bool CheckOrderEntryLimits(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "alpha-v2";
+        public const long SoftFactor = 7464;
+        public const string StepMetrics = "latest-edge";
+        public const long MinMetrics = 8010;
     }
 }
