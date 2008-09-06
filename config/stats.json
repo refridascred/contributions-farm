@@ -1,6 +1,17 @@
 {
-  "strict": 69,
-  "default_window_s": 1172,
-  "default_interval_count": 73,
-  "readonly": "blue"
+  "sync_interval_pct": false,
+  "verbose": {
+    "verbose": 96.23,
+    "warm_timeout": 3571,
+    "min_window": {
+      "hard_depth_count": false,
+      "sync_timeout_pct": [395, 382, 28],
+      "flush_window": 15,
+      "channel_size": [402, 157, 221],
+      "soft_limit_s": false,
+      "max_timeout": 19
+    }
+  },
+  "batch_threshold": "edge",
+  "warm_threshold": false
 }
