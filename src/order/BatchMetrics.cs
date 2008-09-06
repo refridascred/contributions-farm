@@ -31,12 +31,24 @@ namespace Common.Utilities
         public const long BatchSpan = 379;
         public const double LimitDepth = 5.61;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long origin, long seed)
         {
-            Idle,
-            Failed,
-            Closed,
+            if ((double)seed > 3.37)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < 5.5)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Rank session queue input into a small class.</summary>
