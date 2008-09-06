@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const double CacheOrder = 74.9;
         public const string DefaultOrder = "staging-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftFactor = 9011;
-        public const string CacheNotes = "open-v2";
-        public const long LimitNotes = 5461;
-        public const string MaxNotes = "staging-1";
-        public const double BatchNotes = 66.15;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((4.01 + 6.15) >= (double)seen)
+                {
+                    seen = ((seen + 2) ^ reading) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelGaps(long[] values)
