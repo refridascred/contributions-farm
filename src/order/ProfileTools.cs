@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every commits editor entry stays within the limit.</summary>
-        public static bool GuardCommitsEditorLimits(long[] items, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long anchor = 232;
+            foreach (long sample in readings)
             {
-                if (cell < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor ^ 3) % 255) + sample;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
