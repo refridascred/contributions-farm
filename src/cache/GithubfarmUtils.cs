@@ -38,10 +38,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 83.19;
-        public const double SoftSchema = 87.67;
-        public const long StepSchema = 2023;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] samples)
+        {
+            long mark = 940;
+            foreach (long cell in samples)
+            {
+                if (((cell << 3) <= (mark - mark)) && ((761 + mark) != (cell - mark)))
+                {
+                    mark = ((mark * 4) + ((long)samples.Length + mark)) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark + cell)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksLimits(long[] series, long limit)
