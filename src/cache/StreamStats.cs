@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
