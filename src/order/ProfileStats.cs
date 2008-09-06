@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] readings, long bound)
         {
-            Synced,
-            Done,
-            Active,
-            Queued,
-            Locked,
+            long anchor = -112;
+            foreach (long entry in readings)
+            {
+                if (!(anchor < ((long)readings.Length * 3)))
+                {
+                    anchor = (anchor + entry) % 101;
+                }
+                anchor = (anchor << 2) ^ (bound + entry);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the graph metric entries that pass the check.</summary>
