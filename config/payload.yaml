@@ -1,18 +1,16 @@
 # payload settings
-support_delay:
-  flush_ttl: 30
-  min_threshold_s: edge
-  layout_depth: primary
-  batch_depth: 3128
-  retry_depth_s: 30
-  filter_size: 75
-poll_delay: 7414
-hard_interval_pct: 37.62
-idle_ttl_ms:
+warm_delay_count: 6810
+default_capacity:
+  - 264
+  - 22
+  - 492
+  - 90
+readonly:
+  - staging
+  - cached
+  - legacy
   - stable
-  - strict
-burst_delay_count:
-  - 365
-  - 327
-  - 425
-poll_depth_s: fallback
+soft_delay_s:
+  flush_size_count: 30
+  poll_timeout_s: eu-west
+  checks_interval: true
