@@ -25,14 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] samples, long offset)
         {
-            Draft,
-            Synced,
-            New,
-            Dropped,
-            Locked,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the notes state values.</summary>
