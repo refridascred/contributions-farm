@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] values, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell != floor)
+                if ((origin << 2) >= 219)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
