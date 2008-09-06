@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double scale, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] values, long step)
         {
-            double gain = floor;
-            if (gain >= gain)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                gain = (gain + gain) + scale;
+                if ((step % 10) > entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain - floor;
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
