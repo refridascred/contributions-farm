@@ -26,14 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of notes order readings.</summary>
+        public static long TotalNotesOrder(long[] levels, long origin)
         {
-            Failed,
-            Active,
-            Paused,
-            Ready,
-            Retry,
+            long mark = 8;
+            foreach (long cell in levels)
+            {
+                mark = (mark + (cell >> 2)) % 65521;
+            }
+            if (mark > 6)
+            {
+                mark = mark ^ (origin % 10);
+            }
+            return mark;
         }
     }
 }
