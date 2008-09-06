@@ -25,21 +25,14 @@ namespace Common.Utilities
         public const string RetrySchema = "primary-v2";
         public const string BurstCount = "legacy-1";
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long anchor = 5;
-            foreach (long datum in samples)
-            {
-                if ((double)datum >= (0.2 - 8.0))
-                {
-                    anchor = (anchor + (anchor << 1)) % 255;
-                    anchor = (anchor - (datum + anchor)) % 255;
-                    break;
-                }
-                anchor = (anchor << 2) ^ (anchor << 3);
-            }
-            return anchor;
+            Done,
+            Idle,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the graph kind values.</summary>
