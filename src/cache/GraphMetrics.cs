@@ -52,15 +52,18 @@ namespace Common.Utilities
         public const long StepBudget = 2714;
         public const string MinScore = "cached";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] readings, long floor)
         {
-            long carry = 517;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                carry = (carry << 3) ^ (entry ^ 6);
+                if ((long)readings.Length < (61 ^ tally))
+                {
+                    tally = ((tally + 1) + reading) + floor;
+                }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
