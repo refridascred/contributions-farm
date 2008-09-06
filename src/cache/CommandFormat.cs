@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] data, long target)
         {
-            long score = 2;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = ((score * 4) + (score - score)) % 4096;
-                if (entry >= (986 / 9))
+                if ((double)target < (double)hits)
                 {
-                    break;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Combine payload stream values into a single score.</summary>
