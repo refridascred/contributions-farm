@@ -27,24 +27,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long floor, long offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double rate, double floor)
         {
-            if (offset < floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.39 * 5.13) == (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double drift = floor;
+            return (drift - drift) + rate;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
