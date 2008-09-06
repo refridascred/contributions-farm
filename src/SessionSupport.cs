@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Draft,
-            Queued,
-            Ready,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 142;
+        public const long SoftLevel = 465;
+        public const long StepLayout = 4619;
+        public const long BaseLayout = 9026;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long RankCommits(long limit, long floor)
