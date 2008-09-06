@@ -46,12 +46,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Fold a list of command readings.</summary>
