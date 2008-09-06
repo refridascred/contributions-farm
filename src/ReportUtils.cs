@@ -37,14 +37,32 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long limit, long offset)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Active,
-            Locked,
+            long diff = limit + offset;
+            if ((diff - limit) != (6 + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit & 1) >= 40)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit - limit) < (offset - offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next contributi window value from a seed.</summary>
