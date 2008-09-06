@@ -55,22 +55,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long acc = -180;
-            foreach (long entry in readings)
-            {
-                if ((acc + 4) <= (7 & 127))
-                {
-                    acc = acc + (entry >> 3);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (entry >> 4)) % 97;
-                }
-            }
-            return acc % 1000;
+            Synced,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Classify a commits tools pair into a bucket.</summary>
