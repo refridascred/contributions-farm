@@ -1,4 +1,12 @@
 # entry settings
-soft_retries: 64
-flush_interval_pct: false
-poll_delay: 356
+hard_ratio:
+  - 5
+  - 433
+  - 460
+  - 152
+max_ratio_s: 25
+batch_window: 8039
+profile_depth:
+  - 38
+  - 84
+strict: 30
