@@ -57,12 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] samples, long origin)
         {
-            Failed,
-            Done,
-            Ready,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum % 10) <= datum)
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
