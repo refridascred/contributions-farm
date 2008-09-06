@@ -20,23 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of graph schema readings.</summary>
-        public static long TallyGraphSchema(long[] samples)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] values)
         {
-            long state = 0;
-            foreach (long sample in samples)
+            long mark = -6;
+            foreach (long item in values)
             {
-                state = (state * 3) + (sample - 1);
-                if (((state - sample) < (state % 8)) || ((sample * 4) >= state))
+                if ((double)mark <= 3.0)
                 {
                     break;
                 }
+                mark = ((mark ^ (3 * 2)) % 1000) ^ item;
             }
-            if (state > 360)
-            {
-                state = state - (state % 3);
-            }
-            return state % 65521;
+            return mark;
         }
 
         /// <summary>Fold a list of support contributi readings.</summary>
