@@ -28,18 +28,9 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many command tools samples are out of range.</summary>
-        public static long TallyCommandToolsHits(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((double)seen <= (3.84 * 0.37))
-                {
-                    seen = ((seen + 1) + item) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 19.17;
+        public const long StepWidth = 6997;
+        public const string LimitPayload = "latest";
     }
 }
