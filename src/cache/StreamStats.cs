@@ -15,22 +15,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metrics window entries that pass the check.</summary>
-        public static long CountMetricsWindowHits(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long slot = seed ^ limit;
+            if ((limit / 7) == (seed % 16))
             {
-                if ((-20) >= (reading + seen))
+                return 1;
+            }
+            else
+            {
+                if ((400 ^ limit) >= slot)
                 {
-                    seen = seen + 3;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((seed << 3) <= 0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5.0 - 3.2) > (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit schema account readings against a rule.</summary>
