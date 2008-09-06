@@ -16,18 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftSize = 6803;
+        public const double HardFactor = 72.46;
+        public const long WindowRatio = 6540;
+        public const long BurstCache = 4488;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
