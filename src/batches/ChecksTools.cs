@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const double StepScore = 70.23;
         public const long LimitCommand = 3663;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
