@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
