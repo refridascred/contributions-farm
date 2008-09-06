@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many report route samples are out of range.</summary>
-        public static long AuditReportRouteGaps(long[] levels, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count / 9) > (reading * 2))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            Closed,
+            Done,
+            Stale,
+            Pending,
+            Draft,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
