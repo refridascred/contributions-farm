@@ -14,19 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Rank format tools input into a small class.</summary>
+        public static long BucketFormatTools(long limit, long floor)
         {
-            long mark = -6;
-            foreach (long item in values)
+            if ((8.4 - 3.26) < (double)limit)
             {
-                if ((double)mark <= 3.0)
-                {
-                    break;
-                }
-                mark = ((mark ^ (3 * 2)) % 1000) ^ item;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((floor * 3) < (floor % 24))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of support contributi readings.</summary>
