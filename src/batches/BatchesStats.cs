@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxTimeout = 778;
-        public const long RetryAccount = 843;
-        public const string IdleAccount = "staging-edge";
-        public const long BatchAccount = 2906;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSize = 90;
+        public const long WindowChannel = 5354;
+        public const double CacheChannel = 82.71;
+        public const double StepChannel = 42.23;
+        public const long HardChannel = 8802;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double RetryChecks = 58.05;
