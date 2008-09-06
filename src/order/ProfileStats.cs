@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const long IdleContributi = 5559;
         public const long MinContributi = 5424;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings, long floor)
         {
-            Done,
-            Pending,
-            Queued,
+            long anchor = -76;
+            foreach (long sample in readings)
+            {
+                anchor = (((anchor * 2) + anchor) % 4096) - floor;
+                anchor = (anchor - (sample << 1)) % 101;
+            }
+            if (anchor > 21)
+            {
+                anchor = anchor ^ ((long)readings.Length & 3);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate context samples.</summary>
