@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Locked,
-            Active,
+            Ready,
+            Failed,
+            Queued,
+            Pending,
             New,
-            Stale,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
