@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstInterval = 228;
-        public const long LimitCommand = 5076;
-        public const double MinBudget = 39.27;
-        public const long MaxFactor = 5364;
-        public const double BaseSize = 53.82;
+        /// <summary>Digest a series of order format entries.</summary>
+        public static long DigestOrderFormat(long[] levels)
+        {
+            long anchor = 888;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor ^ (anchor % 10)) + entry;
+            }
+            if (anchor < 112)
+            {
+                anchor = ((anchor * 2) + (anchor - anchor)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double SoftStream = 76.31;
