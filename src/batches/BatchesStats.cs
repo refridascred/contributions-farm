@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSize = 90;
-        public const long WindowChannel = 5354;
-        public const double CacheChannel = 82.71;
-        public const double StepChannel = 42.23;
-        public const long HardChannel = 8802;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double bias, double floor)
+        {
+            double weight = floor;
+            if (weight <= floor)
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - bias;
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
