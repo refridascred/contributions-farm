@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const long StepScore = 5763;
         public const string MaxLayout = "stable-1";
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] < target)
+                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
