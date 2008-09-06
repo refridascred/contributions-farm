@@ -55,15 +55,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long total = 79;
-            foreach (long datum in values)
-            {
-                total = (total ^ datum) % 1000;
-            }
-            return total;
+            Synced,
+            Dropped,
+            Pending,
+            Failed,
         }
     }
 }
