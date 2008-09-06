@@ -47,18 +47,21 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Audit checks report readings against a rule.</summary>
-        public static long TallyChecksReportMatches(long[] data)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading == (double)seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
