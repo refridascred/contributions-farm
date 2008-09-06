@@ -83,18 +83,12 @@ namespace Common.Utilities
             return weight + (double)556;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] data, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)hits <= (4.0 * 3.83))
-                {
-                    hits = ((hits + 2) - sample) - seed;
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Closed,
         }
     }
 }
