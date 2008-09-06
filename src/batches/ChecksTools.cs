@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 9562;
-        public const double MaxCommand = 89.16;
-        public const double StepScore = 70.23;
-        public const long LimitCommand = 3663;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultCount = "stable-1";
+        public const string SoftLevel = "local";
+        public const string SoftContributi = "primary-v2";
 
         /// <summary>Roll a record counter forward.</summary>
         public static long RollRecord(long offset)
