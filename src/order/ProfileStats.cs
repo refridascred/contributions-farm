@@ -27,18 +27,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many already cluster samples are out of range.</summary>
-        public static long AuditAlreadyClusterMatches(long[] items)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((double)count <= (3.74 - 5.0)) || (((19.0 * 6.0) <= (double)reading) || ((double)count >= (8.2 * 5.66))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            Draft,
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
