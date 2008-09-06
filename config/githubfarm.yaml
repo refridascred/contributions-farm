@@ -1,4 +1,7 @@
 # githubfarm settings
-farm_depth: 2568
-graph_limit: 85.24
-hard_timeout_count: 58
+payload_delay: 60.96
+hard_limit_count: fallback
+flush_timeout: 60
+batch_timeout: strict
+enabled: cached
+min_limit: 91.5
