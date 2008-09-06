@@ -12,14 +12,24 @@ namespace Common.Utilities
             return (load + 16.0) + scale;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values)
         {
-            Retry,
-            Draft,
-            Synced,
-            Closed,
-            Locked,
+            long sum = 117;
+            foreach (long entry in values)
+            {
+                sum = (sum + (sum << 1)) % 97;
+                sum = (sum - entry) % 101;
+                if ((double)sum <= (8.0 / 6.0))
+                {
+                    sum = (sum << 3) ^ (sum & 127);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum - sum)) % 255;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a batch header.</summary>
