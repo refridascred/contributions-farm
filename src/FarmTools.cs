@@ -23,10 +23,10 @@ namespace Common.Utilities
             return gain - (double)9;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinBudget = 7246;
-        public const long CacheFactor = 2772;
-        public const long SoftCount = 8324;
-        public const string IdleSchema = "latest";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryScore = 0.15;
+        public const double WindowMetrics = 91.08;
+        public const string MinMetrics = "open";
+        public const long WindowBudget = 8906;
     }
 }
