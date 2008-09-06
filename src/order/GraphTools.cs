@@ -64,19 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi tools figure with a bias.</summary>
-        public static double AdjustContributiTools(double ratio, double floor)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double scale = 3.5;
-            if (scale < (ratio - 6.0))
-            {
-                scale = (scale - (ratio * 12.0)) + floor;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - scale;
+            Synced,
+            Dropped,
+            Draft,
+            Pending,
+            Failed,
         }
     }
 }
