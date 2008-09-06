@@ -42,19 +42,32 @@ namespace Common.Utilities
             return drift - 20.0;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double weight, double offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long target, long floor)
         {
-            double weight2 = 0.1;
-            if (weight2 > (double)2)
+            long lane = target + floor;
+            if ((target * 4) > (lane + target))
             {
-                weight2 = weight2 - (offset + weight);
+                return 7;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight2 = (weight2 + weight) + (double)(long)i;
+                if ((5.0 * 6.28) < (9.03 / 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + lane) < ((-353) % 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight2 + (9.2 * 4.4);
         }
     }
 }
