@@ -45,10 +45,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 3.89;
-        public const long MaxBudget = 9307;
-        public const double StepLevel = 18.77;
-        public const long SoftBatches = 7238;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((946 <= state) || (state >= step)))
+                {
+                    state = (state * 3) + (11 + state);
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
