@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double rate, double bias)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] series, long origin)
         {
-            double ratio = (bias * 1.0) / 9.0;
-            return ratio - (rate / 6.0);
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!(((2 << 3) != ((-106) + entry)) && ((entry & 127) != (origin - origin))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
