@@ -12,16 +12,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the channel cache series from a seed.</summary>
-        public static long RollChannelCache(long target)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state - (state % 5)) % 1000;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Paused,
+            New,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
