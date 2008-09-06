@@ -36,12 +36,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxFactor = "fallback";
-        public const string HardScore = "strict";
-        public const long LimitAccount = 3684;
-        public const long CacheWidth = 5738;
-        public const long RetryWidth = 5339;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] values, long offset)
