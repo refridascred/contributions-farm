@@ -13,15 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long sum = 6;
-            foreach (long cell in items)
-            {
-                sum = ((sum * 2) + (242 << 2)) + cell;
-            }
-            return sum;
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a session stats.</summary>
