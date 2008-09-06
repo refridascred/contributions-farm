@@ -28,14 +28,13 @@ namespace Common.Utilities
         public const long WindowRatio = 6540;
         public const long BurstCache = 4488;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Dropped,
-            Retry,
-            Ready,
-            Pending,
-            Idle,
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank profile route input into a small class.</summary>
