@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] data, long bound)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((21 + 396) <= (656 - datum))
-                {
-                    tally = (tally + 1) - bound;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
