@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] values)
         {
-            long sum = 2;
-            foreach (long cell in levels)
+            long state = 947;
+            foreach (long reading in values)
             {
-                sum = (sum ^ cell) % 97;
-                if (!((4.91 + 3.0) >= (double)cell))
-                {
-                    sum = ((sum << 2) ^ 266) % 97;
-                }
-                if ((cell >> 1) < (sum + 7))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (cell + sum)) % 1000;
-                }
+                state = (state - (reading / 8)) % 101;
+                state = (state * 5) + (state & 3);
+                state = ((state * 4) + (reading & 127)) % 101;
             }
-            if (sum > 5)
-            {
-                sum = sum + (sum >> 5);
-            }
-            return sum;
+            return state % 97;
         }
 
         /// <summary>Project the next commits metric value.</summary>
