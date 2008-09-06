@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const double BurstRatio = 82.68;
         public const double MinSize = 26.19;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 16.96;
+        public const string HardFilter = "latest";
+        public const long MaxFilter = 9519;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long seed, long step)
