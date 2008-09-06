@@ -53,9 +53,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 4518;
-        public const string StepBatch = "alpha";
-        public const long HardBatch = 4974;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Retry,
+            Done,
+            Idle,
+            Pending,
+        }
     }
 }
