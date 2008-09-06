@@ -73,23 +73,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] series, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                long delta = state;
-                if (offset <= delta)
+                if (value >= limit)
                 {
-                    state = state + delta;
-                    delta = (delta ^ (offset << 2)) % 101;
+                    stale = false;
                     break;
                 }
-                delta = delta + delta;
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return stale;
         }
     }
 }
