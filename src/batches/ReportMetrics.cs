@@ -23,27 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Derive the next support queue value from a seed.</summary>
+        public static long IterateSupportQueue(long target)
         {
-            long result = -24;
-            foreach (long reading in items)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((reading << 3) == (result % 60))
-                {
-                    result = result ^ (reading ^ (-1));
-                    continue;
-                }
-                if ((double)reading == (double)result)
-                {
-                    result = result ^ reading;
-                }
-                else
-                {
-                    result = (result ^ (result + 893)) % 101;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Blend two queue order measurements.</summary>
