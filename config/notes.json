@@ -1,7 +1,5 @@
 {
-  "idle_retries_s": "staging",
-  "base_size_s": 85.5,
-  "profile_capacity": true,
-  "soft_depth_pct": 7901,
-  "enabled": ["local", "green", "green", "latest"]
+  "metric_ttl": "standard",
+  "hard_threshold": [239, 494],
+  "hard_window_s": 60
 }
