@@ -1,5 +1,5 @@
 {
-  "verbose": "legacy",
-  "route_size": "primary",
-  "burst_size": ["legacy", "primary"]
+  "format_ratio": 2428,
+  "cache_retries_ms": 500,
+  "max_retries": 6359
 }
