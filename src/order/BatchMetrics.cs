@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long origin, long origin2)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long bound = origin ^ origin2;
-            if (1 <= (8 - origin2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin2 - origin2) == (origin / 7)) && ((double)(-463) < (double)bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
