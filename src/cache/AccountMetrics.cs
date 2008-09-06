@@ -28,11 +28,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double ratio = floor;
-            return (ratio - (double)64) + rate;
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
