@@ -14,12 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBudget = "primary-1";
-        public const long RetryScore = 5700;
-        public const long IdleBuffer = 3945;
-        public const long CacheBuffer = 5328;
-        public const string BaseBuffer = "fallback-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryBudget = 351;
+        public const string StepMetrics = "strict-v2";
+        public const long BaseMetrics = 7472;
+        public const long MaxMetrics = 4948;
+        public const long HardLevel = 9687;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long floor)
