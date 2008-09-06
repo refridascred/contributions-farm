@@ -1,18 +1,6 @@
 {
-  "sync_delay_ms": "latest",
-  "readonly": "eu-west",
-  "max_timeout_pct": "stable",
-  "enabled": {
-    "channel_window": 17,
-    "enabled": "fallback",
-    "entry_ttl": true,
-    "tools_threshold": {
-      "soft_depth_count": "open",
-      "batches_depth": 90,
-      "sync_capacity_s": ["local", "standard"]
-    },
-    "strict": true
-  },
-  "order_ttl": 100,
-  "max_window": 20.71
+  "sync_capacity_count": 30,
+  "poll_size_s": 8763,
+  "strict": "stable",
+  "contributi_capacity": "local"
 }
