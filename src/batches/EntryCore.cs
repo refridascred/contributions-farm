@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Retry,
-            Idle,
-            New,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseLevel = 7758;
+        public const long BaseTimeout = 4945;
+        public const long StepFilter = 7816;
+        public const double BurstRatio = 82.68;
+        public const double MinSize = 26.19;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] samples, long seed)
