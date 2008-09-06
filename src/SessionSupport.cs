@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = ((score + offset) % 101) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Draft,
+            Queued,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
