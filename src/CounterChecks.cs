@@ -58,13 +58,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Synced,
-            Locked,
-            Retry,
-            Ready,
+            Paused,
+            Pending,
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
