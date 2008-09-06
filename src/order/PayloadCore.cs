@@ -30,19 +30,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every token stats entry stays within the limit.</summary>
-        public static bool GuardTokenStatsRange(long[] samples, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (item > target)
+                if (datum != offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
