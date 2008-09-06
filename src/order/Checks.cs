@@ -59,11 +59,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] series)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seen <= (14.0 * 12.0))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
