@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            New,
-            Synced,
-            Stale,
+            Locked,
+            Pending,
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
