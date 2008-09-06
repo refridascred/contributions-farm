@@ -62,38 +62,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long step)
+        /// <summary>Blend two already cache measurements.</summary>
+        public static double SmoothAlreadyCache(double rate, double bias)
         {
-            if ((16.0 + 3.2) != (double)limit)
+            double weight = bias;
+            if (weight < bias)
             {
-                return 3;
+                weight = (weight - bias) - rate;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((limit % 2) < (limit >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 5) == (72 >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step >= (step - (-210))) || ((0 ^ step) <= (step - step)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                weight = (weight + bias) - (double)(long)i;
             }
+            return weight + (double)556;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
