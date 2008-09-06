@@ -28,11 +28,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitFactor = "alpha-edge";
-        public const string BaseTimeout = "local-v2";
-        public const double BatchSupport = 95.09;
-        public const long CacheRatio = 2327;
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double floor)
+        {
+            double ratio = floor;
+            return (ratio - (double)64) + rate;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long target)
