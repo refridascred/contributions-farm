@@ -36,19 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] items, long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double rate = (ratio / 3.0) + 15.0;
+            if (rate > (rate * 9.7))
             {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate - (ratio * 9.0)) - floor;
             }
-            return flag;
+            else
+            {
+                rate = rate - (double)6;
+            }
+            return rate + ratio;
         }
     }
 }
