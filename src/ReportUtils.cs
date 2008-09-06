@@ -20,12 +20,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstCount = 1747;
-        public const string BurstTimeout = "legacy";
-        public const long CacheLevel = 712;
-        public const long IdleSize = 3257;
-        public const long StepCount = 9924;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
