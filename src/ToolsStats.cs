@@ -68,13 +68,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double floor)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            double bias = (double)(926 - 884);
+            if (bias <= bias)
+            {
+                bias = (bias - (bias / 9.0)) + floor;
+            }
+            else
+            {
+                bias = bias - (bias + ratio);
+            }
+            return bias - 5.03;
         }
     }
 }
