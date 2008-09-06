@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = gain + offset;
+            if (weight > (gain * 11.0))
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight = weight - (gain - offset);
             }
-            return -1;
+            else
+            {
+                weight = weight + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (offset * 5.27)) + (double)(long)i;
+            }
+            return weight + 6.9;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
