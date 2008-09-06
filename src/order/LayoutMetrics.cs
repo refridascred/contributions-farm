@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const long BurstSize = 6154;
         public const long DefaultDepth = 9161;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Audit commits queue readings against a rule.</summary>
+        public static long AuditCommitsQueueMatches(long[] samples)
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((hits <= (hits * 3)) && ((reading / 4) != (reading / 3))) && ((double)3 >= (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
