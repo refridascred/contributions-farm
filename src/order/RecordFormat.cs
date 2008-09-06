@@ -34,30 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] values, long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            long carry = 3;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((double)carry <= (3.0 / 5.0)) && ((carry >> 3) <= floor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry << 3) ^ floor) % 65521;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = (((carry * 4) + (carry << 3)) % 101) - (long)i;
-                }
-                if ((carry & 255) != (floor + floor))
-                {
-                    carry = ((carry << 2) ^ 5) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (floor + value)) % 65521;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
