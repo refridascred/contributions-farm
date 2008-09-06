@@ -40,18 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] data, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (!((count < (count * 4)) && ((item + count) <= (item ^ count))))
+                if (item > limit)
                 {
-                    count = (count + 3) - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
