@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank batches route input into a small class.</summary>
-        public static long ClassifyBatchesRoute(long seed, long seed2)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            long delta = seed + seed2;
-            if (!((seed2 + delta) < 8))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(seed2 <= (seed + delta)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a channel options.</summary>
