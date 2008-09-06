@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 9843;
-        public const double CacheSpan = 73.92;
-        public const long WindowProfile = 1702;
-        public const long DefaultProfile = 7494;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] readings)
+        {
+            long total = 688;
+            foreach (long item in readings)
+            {
+                if ((total * 5) >= item)
+                {
+                    total = ((total << 2) ^ ((-80) >> 3)) % 4096;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
