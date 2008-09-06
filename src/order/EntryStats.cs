@@ -58,17 +58,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel route entry that matches the target.</summary>
-        public static long FindChannelRouteIndex(long[] items, long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long limit, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!(limit < (limit << 1)))
             {
-                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if (((limit + limit) > limit) || (bound < 303))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)bound <= (7.8 / 9.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.23 * 2.71) <= (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
