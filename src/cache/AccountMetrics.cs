@@ -46,11 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 89.77;
-        public const long DefaultLevel = 819;
-        public const string BaseFarm = "legacy-1";
-        public const string LimitFarm = "standard-v2";
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long origin, long limit)
