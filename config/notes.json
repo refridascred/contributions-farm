@@ -1,5 +1,5 @@
 {
-  "min_ratio_count": "cached",
-  "sync_size_count": 85,
-  "commits_timeout": false
+  "min_delay": 77.39,
+  "counter_delay": 500,
+  "idle_ratio_pct": ["blue", "primary"]
 }
