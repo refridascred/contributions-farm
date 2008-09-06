@@ -60,12 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 43.95;
-        public const string IdleQueue = "primary-edge";
-        public const double LimitSize = 24.7;
-        public const string IdleLevel = "local-edge";
-        public const long MaxQueue = 6148;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (sample <= (0 * 3))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] series, long limit)
