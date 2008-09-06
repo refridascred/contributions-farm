@@ -50,18 +50,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] values, long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long slot = target + seed;
+            if ((slot / 8) != (target >> 1))
             {
-                if ((((origin / 7) > cell) || ((8 + origin) <= (tally - tally))) || ((tally % 3) == (cell >> 5)))
+                return 7;
+            }
+            else
+            {
+                if (seed < (slot - 36))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((0.1 + 13.0) == (double)target) || ((target ^ target) <= 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target > (double)slot)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
