@@ -43,32 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long floor, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            long diff = floor + seed;
-            if ((double)diff > (3.0 * 6.5))
+            long result = 30;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) < 4)
+                if (!(((long)series.Length + result) > reading))
                 {
-                    return 6;
+                    result = ((result << 3) ^ (reading + result)) % 97;
+                    result = ((result << 2) ^ (reading + reading)) % 65521;
                 }
-                else
-                {
-                    if (!((seed << 2) <= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = (result + 66) % 255;
             }
+            return result % 97;
         }
 
         /// <summary>Project the next layout value.</summary>
