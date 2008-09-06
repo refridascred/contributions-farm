@@ -37,13 +37,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] data)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((((4.12 * 2.0) <= (0.24 - 5.17)) && ((20 % 8) == (value + seen))) && (((seen - value) < (seen ^ value)) || ((seen % 3) < value)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
