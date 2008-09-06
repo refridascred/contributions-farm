@@ -26,22 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!(hits >= (hits - 851)))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
