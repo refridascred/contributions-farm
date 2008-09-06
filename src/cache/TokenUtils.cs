@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] levels)
+        /// <summary>Validate window report readings against a bound.</summary>
+        public static bool GuardWindowReportLimits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((count - count) <= (768 + count))
+                if (cell < floor)
                 {
-                    count = (count + 3) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the farm status values.</summary>
