@@ -13,12 +13,29 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9674;
-        public const string MaxRecord = "latest-1";
-        public const long MinRecord = 5010;
-        public const double DefaultRecord = 31.77;
-        public const long BatchDepth = 5363;
+        /// <summary>Combine account schema values into a single score.</summary>
+        public static long FoldAccountSchema(long[] readings, long step)
+        {
+            long acc = -333;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (double)acc)
+                {
+                    acc = (acc * 2) + sample;
+                }
+                if ((2.4 + 14.0) > (double)acc)
+                {
+                    acc = ((acc << 3) ^ (acc / 3)) % 255;
+                    break;
+                }
+                acc = ((acc << 2) ^ (sample % 60)) % 1000;
+            }
+            if (acc < 9)
+            {
+                acc = (acc - (acc + step)) % 1000;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Fold a list of support checks readings.</summary>
         public static long CombineSupportChecks(long[] data, long limit)
