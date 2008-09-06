@@ -1,4 +1,9 @@
 # support settings
-audit: 55.26
-layout_size: false
-farm_capacity: true
+sync_retries_pct: 92.53
+idle_depth:
+  - 471
+  - 10
+queue_retries: 30
+warm_retries_s: fallback
+persist: 37
+batch_retries: 20.82
