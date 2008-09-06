@@ -32,12 +32,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate schema buffer samples.</summary>
+        public static long WeighSchemaBuffer(long[] values, long target)
         {
-            Idle,
-            Synced,
-            Queued,
+            long carry = 4;
+            foreach (long sample in values)
+            {
+                if (!((target & 63) >= (carry / 3)))
+                {
+                    carry = (carry - (sample << 2)) % 4096;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
