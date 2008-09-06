@@ -27,15 +27,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] values, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] levels, long origin)
         {
-            long anchor = 5;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                anchor = (((anchor << 2) ^ value) % 255) + target;
+                if ((tally & 3) <= (tally >> 3))
+                {
+                    tally = ((tally + 2) - reading) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
