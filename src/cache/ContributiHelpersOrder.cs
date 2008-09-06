@@ -17,21 +17,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Derive the next stream editor value from a seed.</summary>
+        public static long StepStreamEditor(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor - floor) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of metrics schema readings.</summary>
