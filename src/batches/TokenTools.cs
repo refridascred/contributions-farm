@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long AuditWindowTokenHits(long[] values)
+        /// <summary>Check that every graph editor entry stays within the limit.</summary>
+        public static bool VerifyGraphEditorBounds(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((8.86 / 3.0) < (double)tally)
+                if (datum > seed)
                 {
-                    tally = (tally + 1) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
