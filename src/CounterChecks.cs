@@ -23,16 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] levels, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            long mark = 74;
+            foreach (long entry in levels)
             {
-                total = (total << 2) ^ 28;
-                total = ((total * 5) + (long)i) % 101;
+                if (!((bound >> 5) < (entry * 5)))
+                {
+                    mark = mark - bound;
+                }
+                mark = (mark + (bound << 3)) % 97;
             }
-            return total;
+            return mark % 97;
         }
 
         /// <summary>Describe the session class values.</summary>
