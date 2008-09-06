@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long floor)
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long AuditLayoutWindowGaps(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (items[i] > floor)
+                if (((cell ^ cell) == (limit << 3)) && ((double)limit > (17.0 + 9.0)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a checks batches pair into a bucket.</summary>
