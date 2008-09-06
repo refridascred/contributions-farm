@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] values, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            double load = 8.1;
+            if (load >= (double)(-309))
             {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - floor;
             }
-            return stale;
+            else
+            {
+                load = load - load;
+            }
+            return load - gain;
         }
 
         /// <summary>Derive the next farm cache value from a seed.</summary>
