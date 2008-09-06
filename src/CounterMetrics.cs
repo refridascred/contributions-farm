@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] data, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] values, long target)
         {
-            long anchor = -9;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                anchor = ((anchor << 3) ^ (anchor ^ bound)) % 255;
-                if (((-1) ^ anchor) <= (9 >> 3))
+                if (cell >= target)
                 {
-                    anchor = (anchor ^ (reading >> 3)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (reading - anchor)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
