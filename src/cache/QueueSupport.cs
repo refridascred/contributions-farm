@@ -36,32 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long step)
+        /// <summary>Scale a route token figure with a bias.</summary>
+        public static double AdjustRouteToken(double rate, double floor)
         {
-            long delta = limit ^ step;
-            if (limit > (88 + step))
+            double load = rate;
+            if (load >= (load / 7.0))
             {
-                return 4;
+                load = (load - rate) - floor;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((step + (-991)) <= (step & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - limit) > (delta & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                load = load + (double)(long)i;
             }
+            return load - (load + rate);
         }
     }
 }
