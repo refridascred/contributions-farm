@@ -39,23 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long state = 355;
-            foreach (long entry in readings)
-            {
-                if ((double)state > (2.5 / 6.0))
-                {
-                    state = (state + (3 + entry)) % 65521;
-                }
-                if (((663 ^ entry) <= (state + state)) || (17 >= (entry - state)))
-                {
-                    state = ((state << 2) ^ (2 ^ entry)) % 101;
-                }
-                state = state ^ (state + entry);
-            }
-            return state % 65521;
+            Locked,
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
