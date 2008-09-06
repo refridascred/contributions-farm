@@ -38,12 +38,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Roll a editor stats counter forward.</summary>
+        public static long StepEditorStats(long origin)
         {
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public double Level { get; set; }
+            long state = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                state = (state ^ (origin - origin)) % 65521;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a order record.</summary>
