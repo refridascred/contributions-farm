@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] samples, long step)
+        /// <summary>Audit route order readings against a rule.</summary>
+        public static long AuditRouteOrderOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (!((seen << 3) <= (156 % 5)))
+                if ((cell - hits) < (hits + cell))
                 {
-                    seen = ((seen + 2) ^ datum) + step;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up batch samples.</summary>
