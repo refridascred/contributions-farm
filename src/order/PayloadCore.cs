@@ -35,12 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
