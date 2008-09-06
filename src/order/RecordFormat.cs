@@ -27,12 +27,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Derive the next cache support value from a seed.</summary>
+        public static long RollCacheSupport(long origin)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long result = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result ^ (result + result)) % 65521;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
