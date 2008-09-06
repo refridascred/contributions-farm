@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 15.47;
-        public const long RetryBuffer = 1943;
-        public const double MinBuffer = 46.71;
-        public const double DefaultBuffer = 73.67;
-        public const long IdleBuffer = 5022;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long step, long seed)
+        {
+            if ((step / 9) <= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed >> 5) <= (seed - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + 1) >= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenLimits(long[] samples, long floor)
