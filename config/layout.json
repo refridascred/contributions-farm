@@ -1,5 +1,13 @@
 {
-  "default_interval": "legacy",
-  "poll_interval": 250,
-  "readonly": "cached"
+  "sync_capacity_ms": [457, 312, 39],
+  "persist": false,
+  "base_retries": 83,
+  "burst_interval": {
+    "enabled": 30,
+    "hard_size_s": "strict",
+    "strict": "stable",
+    "dry_run": "local"
+  },
+  "min_window_count": 8673,
+  "default_ttl_ms": "primary"
 }
