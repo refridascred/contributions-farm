@@ -74,17 +74,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already commits sample.</summary>
-        public static long LookupAlreadyCommitsIndex(long[] readings, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark - (mark + seed)) % 1000;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
