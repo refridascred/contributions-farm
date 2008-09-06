@@ -22,17 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 2) + (target << 3)) % 255;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseTimeout = 4830;
+        public const string BatchRatio = "local";
+        public const long SoftScore = 4030;
+        public const long BaseInterval = 859;
+        public const long BurstMetric = 9409;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string WindowMetrics = "alpha-v2";
