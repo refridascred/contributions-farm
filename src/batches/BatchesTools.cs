@@ -23,28 +23,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report already input into a small class.</summary>
-        public static long RankReportAlready(long bound, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long bound, long seed)
         {
-            if ((bound % 10) > (seed << 3))
+            long diff = bound - seed;
+            if ((bound >> 3) >= seed)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (!((bound << 2) > (seed & 3)))
+                if ((bound + bound) >= bound)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)seed >= (10.0 * 4.88))
+                    if ((696 + seed) < (diff << 1))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 5;
+                        return 8;
                     }
                 }
             }
