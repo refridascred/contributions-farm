@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every editor batch entry stays within the limit.</summary>
-        public static bool CheckEditorBatchRange(long[] data, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long anchor = 1;
+            foreach (long datum in readings)
             {
-                if (sample != target)
+                if ((anchor - datum) != (datum * 2))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor * 3) + 3) % 1000;
                 }
             }
-            return stale;
+            if (anchor > 6)
+            {
+                anchor = (anchor << 3) ^ (bound + bound);
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the checks filter series from a seed.</summary>
