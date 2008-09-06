@@ -14,15 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long mark = 19;
+            foreach (long reading in samples)
             {
-                total = ((total * 5) + (long)i) % 97;
+                mark = (mark - limit) ^ reading;
+                if ((long)samples.Length > (1 << 1))
+                {
+                    break;
+                }
             }
-            return total;
+            if (mark < 0)
+            {
+                mark = mark - (236 & 3);
+            }
+            return mark;
         }
 
         /// <summary>Scale a route token figure with a bias.</summary>
