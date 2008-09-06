@@ -47,32 +47,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long bound, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] items, long bound)
         {
-            long edge = bound ^ seed;
-            if (((2.97 + 9.0) != (double)bound) || ((979 & 255) <= (seed / 6)))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (6.8 <= (double)bound)
+                if (((double)cell < (double)557) && ((matches << 2) <= (bound % 12)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed + edge) < (edge + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
