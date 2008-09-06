@@ -57,11 +57,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Iterate the graph commits series from a seed.</summary>
+        public static long StepGraphCommits(long seed)
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            long result = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = (result ^ (seed & 255)) ^ (long)i2;
+                    result = ((result * 3) + result) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
