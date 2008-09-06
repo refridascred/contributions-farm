@@ -21,25 +21,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((step - step) == (3 * 2))
-                {
-                    result = (result ^ ((-25) >> 5)) % 255;
-                    result = result - (step & 7);
-                    break;
-                }
-                else
-                {
-                    result = result + (step ^ result);
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Retry,
+            Failed,
+            Idle,
+            Closed,
         }
     }
 }
