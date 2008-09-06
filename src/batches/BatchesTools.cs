@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double WindowSize = 46.39;
         public const double StepChecks = 3.16;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Validate already context readings against a bound.</summary>
+        public static bool VerifyAlreadyContextBounds(long[] readings, long limit)
         {
-            long acc = -44;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((8 <= (entry & 3)) || ((0.6 + 6.3) != (double)acc))
+                if (cell <= limit)
                 {
-                    acc = (acc * 2) + (entry + entry);
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 160)
-            {
-                acc = (acc - (acc ^ 15)) % 65521;
-            }
-            return acc % 4096;
+            return found;
         }
 
         /// <summary>Rank report already input into a small class.</summary>
