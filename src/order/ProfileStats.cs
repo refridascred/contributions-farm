@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 438;
-        public const long BatchAccount = 8980;
-        public const long HardWidth = 9532;
-        public const long CacheFactor = 8104;
-        public const string BaseRatio = "fallback-edge";
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Synced,
+            Done,
+            Active,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Count the graph metric entries that pass the check.</summary>
         public static long MeasureGraphMetricGaps(long[] samples)
