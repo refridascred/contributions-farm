@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first order report entry that matches the target.</summary>
-        public static long LocateOrderReportIndex(long[] data, long seed)
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long CombineCacheEditor(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 81;
+            foreach (long reading in data)
             {
-                if (data[i] <= seed)
+                if ((reading >> 1) >= (long)data.Length)
                 {
-                    return (long)i;
+                    anchor = anchor + (317 / 4);
                 }
+                anchor = anchor + (anchor % 60);
             }
-            return -1;
+            if (anchor < 5)
+            {
+                anchor = (anchor + (44 << 1)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a filter summary.</summary>
