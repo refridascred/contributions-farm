@@ -85,11 +85,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] samples, long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
