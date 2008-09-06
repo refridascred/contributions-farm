@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of contributi layout entries.</summary>
-        public static long TotalContributiLayout(long[] values)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long total = 2;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) > (total / 2))
-                {
-                    total = (total - (total * 3)) % 255;
-                }
-                if (!((double)total <= (7.2 / 4.0)))
-                {
-                    total = (total ^ (total / 5)) % 97;
-                }
-            }
-            if (total < 596)
-            {
-                total = (total * 3) + (total + total);
-            }
-            return total;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
