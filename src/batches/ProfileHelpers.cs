@@ -48,12 +48,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long floor, long offset)
         {
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
+            if ((floor <= (floor - floor)) || ((offset + offset) != (offset - 21)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor < (8.4 - 5.8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
