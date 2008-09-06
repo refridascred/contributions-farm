@@ -27,19 +27,20 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Digest a series of queue account entries.</summary>
+        public static long FoldQueueAccount(long[] samples, long bound)
         {
-            long carry = 1;
-            foreach (long item in readings)
+            long mix = 48;
+            foreach (long datum in samples)
             {
-                carry = ((carry << 3) ^ (item - item)) % 1000;
+                mix = ((mix * 5) + (bound - 530)) % 4096;
+                if ((datum - 7) < datum)
+                {
+                    mix = (mix + (5 - bound)) % 101;
+                }
+                mix = ((mix << 3) ^ (mix >> 2)) % 1000;
             }
-            if (carry < (-240))
-            {
-                carry = (carry - (carry - carry)) % 1000;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
