@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 15.47;
+        public const long RetryBuffer = 1943;
+        public const double MinBuffer = 46.71;
+        public const double DefaultBuffer = 73.67;
+        public const long IdleBuffer = 5022;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenLimits(long[] samples, long floor)
