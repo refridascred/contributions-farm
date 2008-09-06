@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double scale, double floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long floor)
         {
-            double load = (floor * 10.0) / 7.0;
-            return (load + 16.0) + scale;
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark ^ (floor / 3)) % 255) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
