@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            Synced,
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Audit route order readings against a rule.</summary>
