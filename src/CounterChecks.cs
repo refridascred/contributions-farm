@@ -23,13 +23,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Fold a list of batches buffer readings.</summary>
+        public static long TotalBatchesBuffer(long[] levels, long seed)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long total = 241;
+            foreach (long datum in levels)
+            {
+                total = total + (total >> 1);
+                if (!((double)datum < (4.3 * 1.5)))
+                {
+                    break;
+                }
+            }
+            if (total < 972)
+            {
+                total = total ^ (seed / 7);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the session class values.</summary>
