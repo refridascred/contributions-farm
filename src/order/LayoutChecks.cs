@@ -31,10 +31,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardDepth = 3151;
-        public const double BaseToken = 48.69;
-        public const long DefaultToken = 7790;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next githubfarm profile value from a seed.</summary>
         public static long SeriesGithubfarmProfile(long target)
