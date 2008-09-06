@@ -21,11 +21,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
+            Draft,
+            Idle,
+            Active,
+            Paused,
+            New,
         }
     }
 }
