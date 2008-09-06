@@ -48,11 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
