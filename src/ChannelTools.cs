@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 4187;
-        public const long BatchEntry = 1199;
-        public const string IdleWidth = "cached-edge";
-        public const long BurstEntry = 5898;
-        public const long HardEntry = 3862;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a format stream sample.</summary>
         public static long FindFormatStreamIndex(long[] items, long target)
