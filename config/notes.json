@@ -1,5 +1,6 @@
 {
-  "strict": 6,
-  "contributi_threshold": "stable",
-  "poll_limit_ms": "blue"
+  "layout_delay": 8734,
+  "cache_window_count": "stable",
+  "token_depth": 94,
+  "poll_retries_count": "cached"
 }
