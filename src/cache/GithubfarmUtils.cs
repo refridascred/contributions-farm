@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
