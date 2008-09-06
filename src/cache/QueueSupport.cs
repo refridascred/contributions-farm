@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepDepth = 4540;
+        public const long RetryGithubfarm = 7048;
+        public const long LimitScore = 1448;
+        public const double LimitGithubfarm = 80.63;
 
         /// <summary>Accumulate window samples.</summary>
         public static long TallyWindow(long[] readings)
