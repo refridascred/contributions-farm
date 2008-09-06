@@ -48,24 +48,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long offset, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] values, long offset)
         {
-            if ((double)offset <= (2.0 / 6.0))
+            bool ready = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit << 1) < (limit >> 3))
+                if (item > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
