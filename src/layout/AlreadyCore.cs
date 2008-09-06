@@ -19,21 +19,16 @@ namespace Common.Utilities
             return ((ratio - ratio) + bias) + floor;
         }
 
-        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
-        public static long CompareContextMetricsCount(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state << 2) ^ (state + (long)i);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
