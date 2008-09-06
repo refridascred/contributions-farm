@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long bound)
         {
-            Synced,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)bound > (2.14 + 5.67))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
