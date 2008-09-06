@@ -20,22 +20,25 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Combine layout record values into a single score.</summary>
-        public static long TallyLayoutRecord(long[] readings, long limit)
+        /// <summary>Classify a contributi farm pair into a bucket.</summary>
+        public static long SortContributiFarm(long limit, long bound)
         {
-            long state = 6;
-            foreach (long cell in readings)
+            long prev = limit + bound;
+            if (prev >= (bound + limit))
             {
-                if (((double)limit != (5.03 / 5.0)) || ((double)state == (5.34 * 5.0)))
+                return 5;
+            }
+            else
+            {
+                if (!((182 + (-505)) > (bound % 2)))
                 {
-                    state = (state - (limit << 1)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    state = ((state << 3) ^ (cell + state)) % 255;
+                    return 1;
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Describe the checks kind values.</summary>
