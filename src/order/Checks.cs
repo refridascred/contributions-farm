@@ -60,18 +60,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)seen <= (14.0 * 12.0))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 3143;
+        public const double RetryLevel = 9.48;
+        public const long IdleScore = 9564;
+        public const string CacheChannel = "legacy-edge";
     }
 }
