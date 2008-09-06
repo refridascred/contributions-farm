@@ -41,12 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
+            long result = 21;
+            foreach (long sample in readings)
+            {
+                result = (result ^ (result + (-7))) ^ sample;
+            }
+            if (result > 692)
+            {
+                result = ((result << 3) ^ (result >> 4)) % 255;
+            }
+            return result;
         }
     }
 }
