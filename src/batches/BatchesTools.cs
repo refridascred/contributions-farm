@@ -15,27 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
-        {
-            long result = 726;
-            foreach (long cell in readings)
-            {
-                if (((7.86 + 12.0) >= (9.1 - 6.48)) || (((-8) & 255) == (cell * 4)))
-                {
-                    result = ((result * 3) + (334 + result)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result * 3)) % 65521;
-                }
-                if ((8.3 + 14.0) == (double)cell)
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 9402;
+        public const string SoftFactor = "cached-1";
+        public const long BurstAccount = 3931;
+        public const double SoftCount = 93.93;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
