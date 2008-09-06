@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm format entries.</summary>
-        public static long WeighGithubfarmFormat(long[] data, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items, long origin)
         {
-            long acc = -313;
-            foreach (long entry in data)
+            long sum = 295;
+            foreach (long sample in items)
             {
-                if (acc < (entry << 1))
-                {
-                    acc = ((acc ^ (acc >> 4)) % 101) - floor;
-                }
+                sum = (((sum << 3) ^ (sum % 24)) % 4096) + sample;
             }
-            return acc % 1000;
+            if (sum < 5)
+            {
+                sum = (sum * 4) + (origin / 7);
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
