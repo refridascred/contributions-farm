@@ -1,4 +1,8 @@
 # entry settings
-base_window_s: 90
-flush_retries_pct: 49
-soft_timeout_s: primary
+persist:
+  - 227
+  - 111
+  - 366
+  - 170
+compress: cached
+checks_ratio: blue
