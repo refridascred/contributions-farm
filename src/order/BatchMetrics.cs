@@ -76,11 +76,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a githubfarm metric reading.</summary>
-        public static double AdjustGithubfarmMetric(double ratio, double span)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            double ratio2 = span;
-            return (ratio2 - ratio2) + ratio;
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
