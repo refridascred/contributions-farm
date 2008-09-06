@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long target, long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long delta = target ^ limit;
-            if ((delta + delta) >= (limit / 6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5 * 3) >= (delta + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target / 8) >= (delta + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((delta ^ target) <= (target & 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
