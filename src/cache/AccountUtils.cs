@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] samples, long step)
         {
-            New,
-            Idle,
-            Locked,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)step > 12.0)
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
