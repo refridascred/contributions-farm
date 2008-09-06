@@ -53,11 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] values, long step)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
