@@ -43,13 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Active,
-            Idle,
-            Dropped,
-            Stale,
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
