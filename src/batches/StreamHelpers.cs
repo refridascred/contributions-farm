@@ -43,24 +43,21 @@ namespace Common.Utilities
             return load - (load - gain);
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long floor, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            if ((double)floor > (6.5 + 7.18))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin >= (origin >> 1)) || ((origin % 3) <= (origin % 10)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
