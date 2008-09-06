@@ -14,11 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultSize = 9291;
-        public const long HardTimeout = 9337;
-        public const long BurstEditor = 244;
-        public const long BatchEditor = 2844;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count + cell) >= (count >> 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string WindowMetrics = "alpha-v2";
