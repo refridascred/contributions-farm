@@ -21,15 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] readings, long bound)
         {
-            long total = 28;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                total = (total + (value % 100)) % 255;
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Hold a stats info.</summary>
