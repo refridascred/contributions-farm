@@ -95,19 +95,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate batch cache readings against a bound.</summary>
-        public static bool ValidateBatchCacheRange(long[] levels, long origin)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long bound)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return ok;
+            return carry;
         }
     }
 }
