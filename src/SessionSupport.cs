@@ -21,22 +21,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] series, long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)count > (7.63 + 4.0))
-                {
-                    count = ((count + 2) - value) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc - (long)i) % 65521;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
