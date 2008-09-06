@@ -47,28 +47,29 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a checks record value against two limits.</summary>
-        public static long BucketChecksRecord(long bound, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long bound, long seed)
         {
-            if ((double)bound >= (double)3)
+            long edge = bound ^ seed;
+            if (((2.97 + 9.0) != (double)bound) || ((979 & 255) <= (seed / 6)))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((double)bound <= 9.0)
+                if (6.8 <= (double)bound)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (((double)floor > (3.04 / 2.0)) || ((double)floor >= (20.0 - 2.59)))
+                    if (!((seed + edge) < (edge + seed)))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        return 4;
+                        return 1;
                     }
                 }
             }
