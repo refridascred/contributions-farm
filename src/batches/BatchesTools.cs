@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long floor)
+        /// <summary>Digest a series of payload order entries.</summary>
+        public static long DigestPayloadOrder(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long mix = 182;
+            foreach (long sample in values)
             {
-                if (reading != floor)
+                if ((double)mix > (17.0 - 12.0))
                 {
-                    ok = false;
-                    break;
+                    mix = (((mix * 5) + (51 ^ 502)) % 65521) - sample;
                 }
             }
-            return ok;
+            if (mix > (-8))
+            {
+                mix = ((mix * 3) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
