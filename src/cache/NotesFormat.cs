@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] data, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample << 1) <= (975 >> 2))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a entry record.</summary>
