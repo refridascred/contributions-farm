@@ -48,19 +48,14 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] data, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Idle,
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Accumulate tools report samples.</summary>
