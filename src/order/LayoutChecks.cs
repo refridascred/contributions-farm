@@ -48,12 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 2932;
-        public const string BatchRatio = "staging";
-        public const long BaseFactor = 9023;
-        public const long LimitSession = 5707;
-        public const long BatchSize = 7545;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] readings)
