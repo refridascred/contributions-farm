@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Locked,
             Paused,
-            Closed,
+            Retry,
             Queued,
         }
 
