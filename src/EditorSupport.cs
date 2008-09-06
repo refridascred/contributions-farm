@@ -65,17 +65,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first cache checks entry that matches the target.</summary>
-        public static long FindCacheChecksIndex(long[] items, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
