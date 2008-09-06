@@ -26,10 +26,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxTimeout = 439;
-        public const long BatchSpan = 379;
-        public const double LimitDepth = 5.61;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                long hits = acc;
+                if ((double)limit < (double)hits)
+                {
+                    acc = ((acc << 2) ^ acc) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long SortCommits(long origin, long seed)
