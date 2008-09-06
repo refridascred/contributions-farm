@@ -10,18 +10,23 @@ namespace Common.Utilities
         public const long BatchCluster = 3751;
         public const string CacheCluster = "staging";
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data, long limit)
         {
-            long mark = 311;
-            foreach (long datum in series)
+            long sum = -930;
+            foreach (long reading in data)
             {
-                if (datum > (datum - 5))
+                sum = sum + sum;
+                if (2.69 < (double)reading)
                 {
-                    mark = (mark - (datum * 2)) % 1000;
+                    sum = (sum ^ (limit - sum)) % 4096;
                 }
             }
-            return mark % 97;
+            if (sum < 77)
+            {
+                sum = sum - (736 ^ limit);
+            }
+            return sum;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
