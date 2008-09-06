@@ -54,22 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] samples)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry + entry) <= (entry << 3)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            New,
+            Draft,
         }
 
         /// <summary>Rank session input into a small class.</summary>
