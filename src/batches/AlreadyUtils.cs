@@ -48,19 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 5846;
+        public const string BaseBudget = "latest-v2";
+        public const long WindowLayout = 4396;
+        public const double WindowRatio = 78.84;
+        public const string StepFactor = "legacy-v2";
     }
 }
