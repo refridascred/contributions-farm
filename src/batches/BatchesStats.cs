@@ -30,18 +30,30 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit schema already readings against a rule.</summary>
-        public static long AuditSchemaAlreadyHits(long[] series, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long state = 21;
+            foreach (long datum in data)
             {
-                if ((offset * 4) >= (datum - datum))
+                if (state >= (state + state))
                 {
-                    count = count + 2;
+                    state = state + seed;
+                }
+                if ((seed + (-222)) < (398 ^ seed))
+                {
+                    state = (state + (2 + datum)) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (state << 3)) % 101;
+                }
+                if (seed < 10)
+                {
+                    break;
                 }
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Hold a support summary.</summary>
