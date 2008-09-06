@@ -47,20 +47,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 7965;
+        public const string DefaultRatio = "primary-1";
+        public const long RetrySpan = 3025;
+        public const long BatchMetric = 4499;
 
         /// <summary>Accumulate format samples.</summary>
         public static long DigestFormat(long[] levels)
