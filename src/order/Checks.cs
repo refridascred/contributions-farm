@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] data, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Active,
+            Pending,
+            New,
         }
 
         /// <summary>Combine support values into a single score.</summary>
