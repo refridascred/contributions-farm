@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 1536;
-        public const long BatchDepth = 6705;
-        public const long RetryRatio = 5857;
-        public const long CacheQueue = 6067;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Ready,
+            Idle,
+            Synced,
+            Draft,
+            Active,
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportRange(long[] data, long limit)
