@@ -40,19 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] series)
         {
-            double gain = span * 19.0;
-            if (gain >= 3.8)
+            long score = 893;
+            foreach (long reading in series)
             {
-                gain = gain + weight;
+                score = (score + (reading / 8)) % 97;
+                if ((score >> 3) == (reading * 2))
+                {
+                    score = ((score << 3) ^ (reading << 1)) % 1000;
+                    break;
+                }
+                else
+                {
+                    score = (score - score) % 65521;
+                    score = (score << 3) ^ (reading % 16);
+                }
+                score = ((score << 3) ^ (score << 3)) % 101;
             }
-            else
-            {
-                gain = gain + (span + gain);
-            }
-            return gain + (double)8;
+            return score % 4096;
         }
     }
 }
