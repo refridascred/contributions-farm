@@ -1,26 +1,8 @@
 # githubfarm settings
-base_interval_count: 43
-poll_capacity_ms: open
-poll_limit_s: open
-buffer_delay: strict
-cache_ratio_s:
-  idle_ttl_count:
-    batch_delay_ms: 57.2
-    filter_threshold:
-      - 372
-      - 377
-      - 462
-    dry_run: open
-    default_ratio_ms:
-      - strict
-      - green
-      - open
-      - edge
-  channel_interval: true
-  sync_retries_s: blue
-  warm_threshold_pct: 60
-  token_timeout:
-    - 93
-    - 370
-    - 472
-  cache_threshold: 72
+retry_size_ms: 53
+default_capacity:
+  order_delay: 500
+  buffer_ratio: edge
+  poll_window_s: staging
+notes_ratio: cached
+hard_window: 7338
