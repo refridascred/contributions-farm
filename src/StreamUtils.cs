@@ -52,10 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 1091;
-        public const string RetryCommand = "fallback-v2";
-        public const long SoftScore = 5150;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultRatio = 889;
+        public const long DefaultStats = 9762;
+        public const long LimitWidth = 7188;
+        public const double WindowScore = 62.09;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] levels, long step)
