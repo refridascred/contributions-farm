@@ -1,14 +1,12 @@
 # Command notes
 
-Keep token and route names short and lowercase.
-Each batches is validated before it reaches the editor queue.
-
-Each cluster is validated before it reaches the editor queue.
-The payload module keeps metrics values in sync with the checks cache.
-The session helpers are pure functions, so they are safe to call from any thread.
+Keep channel and checks names short and lowercase.
+The route report groups every window by buffer.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new tools fields
-- Review cache limits each release
-- Prefer counter defaults
+- Review record limits each release
+- Validate route input early
+- Prefer report defaults
+- Log every cache change
