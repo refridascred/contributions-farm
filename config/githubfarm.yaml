@@ -1,13 +1,7 @@
 # githubfarm settings
-retry_window_pct: 250
-batch_ttl_s: 28
-base_capacity:
-  enabled: 79.89
-  window_ratio:
-    - edge
-    - cached
-  flush_delay: 500
-  base_delay_s: 42
-  verbose: green
-  burst_retries_count: fallback
-payload_capacity: false
+metric_retries:
+  - 284
+  - 495
+  - 108
+warm_capacity_s: true
+min_retries_count: stable
