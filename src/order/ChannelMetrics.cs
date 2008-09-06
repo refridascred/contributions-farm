@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long BatchCluster = 3751;
         public const string CacheCluster = "staging";
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 311;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum > (datum - 5))
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - (datum * 2)) % 1000;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
