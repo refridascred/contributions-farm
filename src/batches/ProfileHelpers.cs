@@ -56,12 +56,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] levels, long floor)
         {
-            Retry,
-            Ready,
-            Dropped,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count << 3) < (-59))
+                {
+                    count = ((count + 3) + cell) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
