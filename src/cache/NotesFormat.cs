@@ -19,21 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
