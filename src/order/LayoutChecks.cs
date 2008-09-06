@@ -49,24 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph queue samples.</summary>
-        public static long ScoreGraphQueue(long[] items, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] levels, long limit)
         {
-            long carry = 44;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                carry = (((carry << 2) ^ (carry >> 3)) % 4096) - reading;
-                carry = ((carry << 2) ^ (carry & 3)) % 101;
-                if (step <= (carry + carry))
+                if ((value - tally) > (tally >> 4))
                 {
-                    carry = (carry * 3) + carry;
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry > 7)
-            {
-                carry = carry + (6 - carry);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
