@@ -75,19 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm cluster reading.</summary>
-        public static double ScaleFarmCluster(double rate, double offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double floor)
         {
-            double mean = offset / 8.0;
-            if (mean < (mean - 1.0))
+            double ratio = (double)807 / 5.0;
+            if (ratio <= floor)
             {
-                mean = mean + offset;
+                ratio = ratio + gain;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean + (rate / 4.0)) + (double)(long)i;
+                ratio = ratio - gain;
             }
-            return mean + offset;
+            return ratio + (5.92 + ratio);
         }
 
         /// <summary>Roll a profile counter forward.</summary>
