@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate session schema readings against a bound.</summary>
-        public static bool ValidateSessionSchemaBounds(long[] items, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (sample < seed)
+                if (!((sample > 431) || (9.41 >= (double)seed)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
