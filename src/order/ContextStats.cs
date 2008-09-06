@@ -47,13 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] samples, long floor)
         {
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((floor + floor) < floor)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
