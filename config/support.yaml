@@ -1,10 +1,36 @@
 # support settings
-idle_threshold:
-  format_threshold: cached
-  min_size_ms:
-    - 496
-    - 153
-    - 217
-  readonly: standard
-default_depth_s: 52
-flush_depth: 2528
+min_size_pct: 36
+default_retries:
+  idle_retries_pct: false
+  burst_delay:
+    dry_run:
+      - latest
+      - latest
+    min_ttl_ms: 8718
+    filter_ratio: standard
+    hard_window_count: 1582
+    session_size: false
+    retry_capacity: cached
+  min_threshold_pct:
+    warm_window: cached
+    poll_timeout_count: staging
+    compress: local
+    cluster_ratio:
+      - cached
+      - primary
+  schema_size:
+    compress: stable
+    dry_run: 1430
+    idle_timeout_pct: 7.19
+compress: primary
+verbose: 1024
+base_interval_s:
+  default_size_s: false
+  schema_timeout: 500
+  checks_interval:
+    - staging
+    - local
+    - legacy
+    - primary
+  cache_retries_ms: eu-west
+enabled: 6991
