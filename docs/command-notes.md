@@ -1,11 +1,14 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the channel list.
-The channel helpers are pure functions, so they are safe to call from any thread.
-Keep cluster and queue names short and lowercase.
+Run the profile check before changing any payload limits.
+The checks module keeps window values in sync with the notes cache.
+
+The token module keeps buffer values in sync with the counter cache.
+The stream report groups every contributi by buffer.
 
 ## Guidelines
 
-- Keep metric values small
-- Log every schema change
-- Prefer githubfarm defaults
+- Keep stats values small
+- Prefer editor defaults
+- Review counter limits each release
+- Log every metric change
