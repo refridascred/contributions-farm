@@ -15,10 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstScore = 6958;
-        public const double CacheOrder = 74.9;
-        public const string DefaultOrder = "staging-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "local-edge";
+        public const long SoftDepth = 5700;
+        public const long RetrySize = 9649;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] samples, long bound)
