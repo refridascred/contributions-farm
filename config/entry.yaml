@@ -1,4 +1,5 @@
 # entry settings
-dry_run: true
-default_delay_count: 100
-default_threshold: 2686
+max_capacity: 60
+sync_window: 33.79
+default_interval_count: 45
+compress: stable
