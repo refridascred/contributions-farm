@@ -32,11 +32,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!(((double)sample == (20.0 + 9.21)) || ((8 - step) >= step)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
