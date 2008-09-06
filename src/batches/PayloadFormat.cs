@@ -32,11 +32,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 5810;
-        public const long SoftQueue = 4271;
-        public const double DefaultQueue = 16.48;
-        public const double HardQueue = 36.04;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((((double)entry > 6.6) || ((seen + 37) > ((long)data.Length ^ seed))) || (entry <= seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long IterateBuffer(long seed)
