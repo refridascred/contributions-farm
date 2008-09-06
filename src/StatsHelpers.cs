@@ -27,22 +27,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] items, long origin)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long anchor = 2;
-            foreach (long value in items)
-            {
-                if ((origin << 2) < (value - anchor))
-                {
-                    anchor = (anchor * 5) + (anchor + value);
-                }
-            }
-            if (anchor < 853)
-            {
-                anchor = (anchor - (anchor << 1)) % 101;
-            }
-            return anchor;
+            Idle,
+            Stale,
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
