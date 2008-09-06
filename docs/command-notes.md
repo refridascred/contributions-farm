@@ -1,11 +1,11 @@
 # Command notes
 
-Each notes is validated before it reaches the checks queue.
-The filter module keeps route values in sync with the schema cache.
+Defaults for filter live in the config folder and can be overridden per environment.
+A token that stays idle for too long is moved to the profile list.
+The payload report groups every already by batch.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Document new session fields
-- Keep counter values small
-- Review profile limits each release
+- Document new farm fields
+- Keep notes values small
+- Log every notes change
