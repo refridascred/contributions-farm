@@ -13,13 +13,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items)
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long mix = -32;
+            foreach (long sample in items)
+            {
+                if ((double)0 < (double)sample)
+                {
+                    mix = ((mix * 5) + (5 ^ sample)) % 101;
+                }
+            }
+            if (mix > (-58))
+            {
+                mix = mix ^ (mix << 3);
+            }
+            return mix;
         }
 
         /// <summary>Adjust a stream stats reading.</summary>
