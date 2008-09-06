@@ -35,18 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = 8;
+            foreach (long cell in readings)
             {
-                if ((20.0 <= (double)cell) || !((cell * 2) <= (917 % 64)))
+                mix = ((mix * 2) + (cell + 46)) % 97;
+                if ((mix - mix) >= (554 - cell))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
