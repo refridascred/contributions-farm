@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] readings, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((bound << 2) > bound)
+                if (datum < origin)
                 {
-                    result = ((result * 3) + (bound & 15)) % 4096;
+                    found = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
