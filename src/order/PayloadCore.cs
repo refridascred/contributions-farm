@@ -20,11 +20,26 @@ namespace Common.Utilities
             return rate - (double)0;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings, long offset)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long anchor = 707;
+            foreach (long cell in readings)
+            {
+                if ((anchor % 100) < (anchor * 4))
+                {
+                    anchor = ((anchor ^ (144 + offset)) % 1000) + cell;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+            }
+            if (anchor < (-75))
+            {
+                anchor = (anchor + (offset & 7)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a support options.</summary>
