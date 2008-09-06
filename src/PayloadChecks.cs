@@ -27,20 +27,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of queue account entries.</summary>
-        public static long FoldQueueAccount(long[] samples, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long floor, long offset)
         {
-            long mix = 48;
-            foreach (long datum in samples)
+            if (offset < floor)
             {
-                mix = ((mix * 5) + (bound - 530)) % 4096;
-                if ((datum - 7) < datum)
-                {
-                    mix = (mix + (5 - bound)) % 101;
-                }
-                mix = ((mix << 3) ^ (mix >> 2)) % 1000;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((6.39 * 5.13) == (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
