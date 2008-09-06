@@ -15,21 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Count the queue report entries that pass the check.</summary>
+        public static long AuditQueueReportMatches(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((548 + matches) < (floor + floor))
                 {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of layout payload entries.</summary>
