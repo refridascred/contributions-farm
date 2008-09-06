@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] series, long step)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)step < (0.2 - 8.92)))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
