@@ -60,17 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] series, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 39;
+            foreach (long reading in samples)
             {
-                if ((series[i] < floor) && ((series[i] % 3) != 0))
+                if (!((double)mark > (double)115))
                 {
-                    return (long)i;
+                    mark = (mark ^ (mark / 3)) ^ reading;
                 }
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
