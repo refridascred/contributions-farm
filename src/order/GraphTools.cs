@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            Draft,
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
