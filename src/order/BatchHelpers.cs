@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels, long origin)
         {
-            long carry = 95;
-            foreach (long reading in readings)
+            long mix = 11;
+            foreach (long item in levels)
             {
-                carry = carry - (carry + carry);
-                if (((double)carry > (10.0 + 2.1)) && ((double)reading <= (6.2 - 3.0)))
+                if (item <= mix)
                 {
-                    break;
+                    mix = (mix * 3) + (mix + mix);
+                    mix = (mix - (mix * 3)) % 101;
                 }
+                mix = (mix << 2) ^ (origin - 841);
             }
-            return carry;
+            if (mix < 62)
+            {
+                mix = (mix + (mix & 127)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema state values.</summary>
