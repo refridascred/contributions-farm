@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many stats checks samples are out of range.</summary>
-        public static long TallyStatsChecksHits(long[] levels)
+        /// <summary>Grade a entry payload value against two limits.</summary>
+        public static long BucketEntryPayload(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (limit > (floor & 7))
             {
-                if ((((-353) < (value + value)) && ((double)tally >= (double)value)) && ((tally + value) != (tally * 4)))
+                return 0;
+            }
+            else
+            {
+                if ((limit * 3) > (6 - limit))
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit << 3) != (floor >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
