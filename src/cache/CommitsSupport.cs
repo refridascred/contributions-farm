@@ -47,18 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data, long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((floor > (floor - matches)) && ((double)(-62) <= (double)reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of stream entries.</summary>
