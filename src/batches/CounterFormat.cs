@@ -35,12 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long offset, long step)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            if ((step - offset) == (step + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset <= (offset - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset >= (step << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((151 - offset) == (offset - step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
