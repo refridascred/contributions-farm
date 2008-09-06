@@ -27,19 +27,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series, long bound)
-        {
-            long mix = 54;
-            foreach (long reading in series)
-            {
-                if ((double)bound == (double)mix)
-                {
-                    mix = mix + (reading & 1);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinFactor = 4081;
+        public const double BurstDepth = 57.24;
+        public const long CacheReport = 32;
 
         /// <summary>Blend two support cluster measurements.</summary>
         public static double BlendSupportCluster(double rate, double bias)
