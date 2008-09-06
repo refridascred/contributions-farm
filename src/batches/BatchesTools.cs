@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 78.72;
-        public const string CacheChannel = "latest-1";
-        public const long MinChannel = 6794;
-        public const double StepChannel = 7.05;
-        public const string DefaultScore = "primary-1";
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Dropped,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
