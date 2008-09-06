@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long anchor = 409;
+            foreach (long item in data)
             {
-                if (((value << 3) >= value) && (3.4 <= (double)seen))
+                if ((double)(long)data.Length != (double)1)
                 {
-                    seen = seen + 3;
+                    anchor = (anchor << 3) ^ (seed ^ seed);
+                }
+                if ((81 % 12) == ((-11) + item))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor < 59)
+            {
+                anchor = anchor - (anchor / 5);
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of checks filter readings.</summary>
