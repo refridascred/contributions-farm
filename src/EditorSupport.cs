@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long RetryCache = 7908;
         public const long BaseDepth = 2539;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long seed)
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a report header.</summary>
