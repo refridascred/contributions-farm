@@ -1,8 +1,8 @@
 {
-  "sync_retries_ms": ["local", "latest", "fallback", "green"],
-  "idle_timeout_s": 59.98,
-  "enabled": true,
-  "commits_threshold": false,
-  "support_ttl": false,
-  "audit": 40
+  "compress": 96.1,
+  "base_delay_s": true,
+  "base_delay_pct": "cached",
+  "strict": ["latest", "green"],
+  "readonly": "green",
+  "base_window_pct": false
 }
