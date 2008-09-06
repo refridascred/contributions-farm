@@ -1,6 +1,5 @@
 {
-  "enabled": 3466,
-  "format_ttl": "primary",
-  "cache_delay": 37.61,
-  "persist": ["blue", "edge", "standard"]
+  "idle_ttl_count": 40.88,
+  "idle_retries_s": ["green", "edge", "eu-west", "staging"],
+  "farm_delay": "primary"
 }
