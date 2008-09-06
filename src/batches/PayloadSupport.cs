@@ -13,12 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 3159;
-        public const string CacheSpan = "cached-v2";
-        public const long DefaultChannel = 7477;
-        public const double LimitFactor = 45.31;
-        public const string BatchChannel = "local";
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportBounds(long[] data, long step)
