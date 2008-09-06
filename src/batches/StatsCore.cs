@@ -59,22 +59,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit record notes readings against a rule.</summary>
-        public static long AuditRecordNotesHits(long[] values, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (4.8 < (double)matches)
+                if (entry <= (seen + 4))
                 {
-                    matches = ((matches + 2) + entry) + target;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
