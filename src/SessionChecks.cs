@@ -27,12 +27,22 @@ namespace Common.Utilities
         public const double BatchGraph = 30.81;
         public const double LimitGraph = 73.43;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the cluster batch entries that pass the check.</summary>
+        public static long MeasureClusterBatchOutliers(long[] readings)
         {
-            Done,
-            Idle,
-            Synced,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value / 2) >= value)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel summary.</summary>
