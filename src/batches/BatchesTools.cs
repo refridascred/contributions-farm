@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Dropped,
-            Stale,
-            Closed,
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
