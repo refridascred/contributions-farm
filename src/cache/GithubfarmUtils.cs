@@ -57,22 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] series, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double scale = bias;
+            if (scale > (scale + scale))
             {
-                if (((matches * 5) == (matches / 3)) && ((seed + 123) > 198))
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale - (6.4 / 5.0)) - offset;
             }
-            return matches;
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale - (double)6;
         }
     }
 }
