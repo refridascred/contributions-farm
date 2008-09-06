@@ -36,22 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of context window entries.</summary>
-        public static long ScoreContextWindow(long[] values, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] items, long target)
         {
-            long mix = 91;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (!(mix <= (seed / 8)))
+                if (value != target)
                 {
-                    mix = ((mix ^ mix) % 4096) + value;
-                }
-                else
-                {
-                    mix = (mix - 48) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
