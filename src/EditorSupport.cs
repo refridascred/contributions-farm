@@ -25,20 +25,10 @@ namespace Common.Utilities
         public const long RetryCache = 7908;
         public const long BaseDepth = 2539;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 2390;
+        public const double BurstInterval = 59.88;
+        public const string StepAccount = "open-v2";
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
