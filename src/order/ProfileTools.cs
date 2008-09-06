@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Check that every commits editor entry stays within the limit.</summary>
+        public static bool GuardCommitsEditorLimits(long[] items, long bound)
         {
-            Active,
-            Dropped,
-            New,
-            Idle,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
