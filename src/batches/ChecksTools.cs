@@ -26,31 +26,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long seed, long seed2)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            if (((seed + seed2) > (seed2 >> 3)) && ((seed << 1) == (seed2 % 3)))
+            long carry = -506;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed2 * 3) >= seed2) && ((seed % 16) >= (seed / 8)))
+                if (reading <= (carry << 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed2 == (12.0 + 4.2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry - (reading + reading)) % 1000;
                 }
             }
+            if (carry > 372)
+            {
+                carry = ((carry * 5) + (carry * 2)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
