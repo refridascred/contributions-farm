@@ -75,11 +75,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
