@@ -23,17 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Look up the position of a profile stats sample.</summary>
+        public static long SeekProfileStatsIndex(long[] series, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result << 2) ^ (result + result);
-                result = (result * 2) + (result + result);
-                result = ((result * 5) + (long)i) % 1000;
+                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
