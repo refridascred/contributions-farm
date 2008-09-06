@@ -12,24 +12,23 @@ namespace Common.Utilities
         public const long StepDepth = 4107;
         public const double MaxFactor = 55.94;
 
-        /// <summary>Grade a already command value against two limits.</summary>
-        public static long RankAlreadyCommand(long bound, long bound2)
+        /// <summary>Fold a list of graph schema readings.</summary>
+        public static long TallyGraphSchema(long[] samples)
         {
-            if ((bound - (-631)) > (bound << 3))
+            long state = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) > bound)
+                state = (state * 3) + (sample - 1);
+                if (((state - sample) < (state % 8)) || ((sample * 4) >= state))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            if (state > 360)
+            {
+                state = state - (state % 3);
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a filter stats.</summary>
