@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long mark = 55;
-            foreach (long datum in samples)
-            {
-                if ((double)mark <= (3.2 - 1.0))
-                {
-                    mark = (mark + mark) ^ datum;
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
