@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] values, long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits + item) != (item * 2))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the filter state values.</summary>
