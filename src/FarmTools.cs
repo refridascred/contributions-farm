@@ -16,11 +16,14 @@ namespace Common.Utilities
             return rate - (offset - offset);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSize = 953;
-        public const string MinProfile = "staging-v2";
-        public const long StepSize = 6693;
-        public const string IdleProfile = "latest-v2";
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Draft,
+            Queued,
+            Retry,
+            Done,
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] items, long origin)
