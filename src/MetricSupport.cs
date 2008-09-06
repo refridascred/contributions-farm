@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] values, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (sample <= seed)
+                if (sample <= floor)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
