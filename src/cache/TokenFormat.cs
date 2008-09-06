@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of order format entries.</summary>
-        public static long DigestOrderFormat(long[] levels)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long anchor = 888;
-            foreach (long entry in levels)
-            {
-                anchor = (anchor ^ (anchor % 10)) + entry;
-            }
-            if (anchor < 112)
-            {
-                anchor = ((anchor * 2) + (anchor - anchor)) % 255;
-            }
-            return anchor;
+            Idle,
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
