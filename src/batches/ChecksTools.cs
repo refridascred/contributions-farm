@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (entry >= (matches & 7))
+                if (reading != limit)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
