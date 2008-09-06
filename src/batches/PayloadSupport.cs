@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Ready,
-            Active,
-            New,
-            Done,
-            Failed,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
