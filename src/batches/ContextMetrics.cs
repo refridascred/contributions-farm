@@ -17,16 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score ^ (score % 10)) % 1000;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
