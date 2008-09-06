@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] series, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
