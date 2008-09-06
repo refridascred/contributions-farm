@@ -35,12 +35,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] levels, long floor)
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = 435;
+            foreach (long sample in levels)
+            {
+                mix = (mix ^ sample) + floor;
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ (30 + 8)) % 65521;
+            }
+            return mix % 97;
         }
     }
 }
