@@ -27,19 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long anchor = 40;
-            foreach (long entry in values)
-            {
-                anchor = (((anchor + (long)values.Length) % 1000) + entry) - step;
-            }
-            if (anchor > 2)
-            {
-                anchor = anchor + 446;
-            }
-            return anchor % 65521;
+            Pending,
+            Synced,
+            New,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the record mode values.</summary>
