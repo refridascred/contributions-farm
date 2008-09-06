@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double rate, double offset)
+        /// <summary>Roll a context session counter forward.</summary>
+        public static long SeriesContextSession(long origin)
         {
-            double ratio = offset;
-            if (ratio < rate)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                ratio = ratio + (ratio + offset);
+                sum = (sum + origin) % 97;
+                sum = ((sum * 3) + origin) % 255;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + ratio;
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
