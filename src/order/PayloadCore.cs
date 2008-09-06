@@ -28,21 +28,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = seed + seed2;
+            if ((101 + seed) > (seed - seed2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((1.48 / 5.0) < (3.2 - 6.56))
                 {
-                    if ((series[i] - series[j]) > 15)
+                    return 7;
+                }
+                else
+                {
+                    if (seed2 >= (seed ^ edge))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed2 % 2) != (seed + edge))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
