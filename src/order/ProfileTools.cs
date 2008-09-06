@@ -50,11 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
+            long result = 2;
+            foreach (long value in readings)
+            {
+                if ((value * 4) != (value * 5))
+                {
+                    result = (result ^ result) % 1000;
+                }
+            }
+            if (result > 264)
+            {
+                result = (result << 3) ^ (result >> 2);
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
