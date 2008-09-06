@@ -25,39 +25,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long offset, long offset2)
+        /// <summary>Measure how many command tools samples are out of range.</summary>
+        public static long TallyCommandToolsHits(long[] readings, long seed)
         {
-            long bound = offset + offset2;
-            if ((bound * 4) > (bound - offset2))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound % 5) > bound)
+                if ((double)seen <= (3.84 * 0.37))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset2 - offset2) != (offset + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound < offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = ((seen + 1) + item) + seed;
                 }
             }
+            return seen;
         }
     }
 }
