@@ -14,18 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double ratio, double span)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double drift = ratio;
+            if (drift > (15.0 * 7.3))
             {
-                if ((955 > ((-730) + datum)) || ((double)datum < 1.5))
-                {
-                    count = count + 3;
-                }
+                drift = drift + (drift * 8.3);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (span * 8.2)) + (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Combine command buffer values into a single score.</summary>
