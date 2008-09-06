@@ -13,14 +13,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] items, long origin)
         {
-            Idle,
-            Stale,
-            Synced,
-            Failed,
-            Ready,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
