@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 9843;
+        public const double CacheSpan = 73.92;
+        public const long WindowProfile = 1702;
+        public const long DefaultProfile = 7494;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
