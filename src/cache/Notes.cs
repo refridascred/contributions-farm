@@ -62,21 +62,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
+                    if ((readings[i] ^ readings[j]) != 6)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
