@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of format stream readings.</summary>
-        public static long CompareFormatStreamCount(long[] samples)
+        /// <summary>Blend two support cluster measurements.</summary>
+        public static double ProjectSupportCluster(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)67 - (1.9 * 18.0);
+            if (weight > rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight - rate) - bias;
             }
-            return tally;
+            else
+            {
+                weight = weight - (double)9;
+            }
+            return weight + rate;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
