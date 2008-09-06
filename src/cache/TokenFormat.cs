@@ -23,19 +23,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] values, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return valid;
+            return total;
         }
     }
 }
