@@ -56,14 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] levels)
         {
-            Paused,
-            Active,
-            Dropped,
-            Stale,
-            Retry,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample <= (2.2 + 7.8)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
