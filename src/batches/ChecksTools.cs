@@ -43,11 +43,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftBudget = 47.85;
-        public const long CacheReport = 7688;
-        public const double BurstReport = 33.43;
-        public const long WindowInterval = 7507;
-        public const long WindowReport = 6566;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((5.3 * 14.0) == (double)item)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
