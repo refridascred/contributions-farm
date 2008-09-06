@@ -1,17 +1,4 @@
 # entry settings
-min_delay_s:
-  idle_retries:
-    - 109
-    - 201
-    - 230
-    - 278
-  sync_threshold: standard
-  verbose: green
-  queue_depth: 30
-  flush_window_s:
-    - primary
-    - local
-    - fallback
-  poll_depth_s: 92.2
-min_limit: 57
-payload_limit: 12.42
+soft_retries: 64
+flush_interval_pct: false
+poll_delay: 356
