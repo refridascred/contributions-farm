@@ -1,8 +1,6 @@
-id,state,token,weight
-1,edge,430,40.65
-2,blue,72.62,743
-3,open,14.56,44.63
-4,30.5,42.04,blue
-5,staging,fallback,74.66
-6,latest,320,edge
-7,green,legacy,581
+id,token,count
+1,43.76,599
+2,35.74,147
+3,46.39,85.53
+4,67.26,652
+5,22.99,edge
