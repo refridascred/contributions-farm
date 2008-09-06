@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mark = 171;
+            foreach (long sample in readings)
             {
-                if ((double)seen >= (double)sample)
-                {
-                    seen = seen + 1;
-                }
+                mark = (((mark * 4) + (sample & 15)) % 65521) - target;
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
