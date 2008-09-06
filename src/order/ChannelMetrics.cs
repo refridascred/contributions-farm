@@ -10,13 +10,26 @@ namespace Common.Utilities
         public const long BatchCluster = 3751;
         public const string CacheCluster = "staging";
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] items)
         {
-            Stale,
-            Ready,
-            Dropped,
-            New,
+            long anchor = 57;
+            foreach (long cell in items)
+            {
+                if ((anchor + anchor) < (cell % 60))
+                {
+                    anchor = (anchor + 0) % 4096;
+                }
+                if ((46 >> 2) == (cell / 9))
+                {
+                    anchor = ((anchor * 2) + (56 + 35)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + cell) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
