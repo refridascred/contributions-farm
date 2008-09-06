@@ -48,13 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
