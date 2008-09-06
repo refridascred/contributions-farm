@@ -40,11 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 9246;
-        public const string BaseSchema = "standard-v2";
-        public const long SoftSize = 2112;
-        public const string HardSchema = "fallback";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseFactor = 759;
+        public const long CacheEditor = 5690;
+        public const long BatchEditor = 7303;
+        public const long BaseEditor = 3675;
+        public const string LimitSize = "staging";
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long BucketQueue(long target, long limit)
