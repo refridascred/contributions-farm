@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 4263;
+        public const string IdleLevel = "staging-v2";
+        public const long MaxLevel = 2034;
+        public const long IdleBatch = 5802;
 
         /// <summary>Grade a already command value against two limits.</summary>
         public static long RankAlreadyCommand(long bound, long bound2)
