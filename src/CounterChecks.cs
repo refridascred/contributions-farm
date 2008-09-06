@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double SoftMetrics = 83.68;
         public const long RetryInterval = 4834;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mix = 522;
-            foreach (long entry in values)
-            {
-                if (mix < (3 << 2))
-                {
-                    mix = (((mix * 3) + mix) % 65521) ^ entry;
-                }
-            }
-            return mix % 65521;
+            Done,
+            Synced,
+            Stale,
+            New,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
