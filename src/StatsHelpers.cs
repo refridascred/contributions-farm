@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Digest a series of contributi layout entries.</summary>
+        public static long TotalContributiLayout(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 2;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum - datum) > (total / 2))
                 {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (total * 3)) % 255;
+                }
+                if (!((double)total <= (7.2 / 4.0)))
+                {
+                    total = (total ^ (total / 5)) % 97;
                 }
             }
-            return tally;
+            if (total < 596)
+            {
+                total = (total * 3) + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
