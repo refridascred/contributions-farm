@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long offset, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] levels, long floor)
         {
-            if ((double)offset > (7.0 + 11.0))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (offset + seed))
+                if ((entry + entry) <= (90 + entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + 657) <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset >> 3) <= (offset / 4)) && (seed >= (seed ^ offset)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 2) + floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine format values into a single score.</summary>
