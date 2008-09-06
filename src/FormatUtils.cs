@@ -37,12 +37,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Look up the position of a already command sample.</summary>
+        public static long FindAlreadyCommandIndex(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit order counter readings against a rule.</summary>
