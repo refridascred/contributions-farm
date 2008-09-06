@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a layout buffer reading.</summary>
-        public static double ScaleLayoutBuffer(double bias, double span)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double mean = (double)847 + (bias * 3.81);
-            if (mean < bias)
-            {
-                mean = (mean - (7.0 - bias)) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 9.25) - (double)(long)i;
-            }
-            return mean - (double)379;
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
