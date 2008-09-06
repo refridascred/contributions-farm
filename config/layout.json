@@ -1,7 +1,8 @@
 {
-  "warm_depth_s": 30,
-  "min_timeout_s": 60,
-  "cache_delay_pct": "edge",
-  "min_limit_count": "green",
-  "profile_threshold": 1024
+  "cache_threshold_pct": false,
+  "min_threshold_ms": "eu-west",
+  "poll_timeout_pct": "primary",
+  "base_interval": "staging",
+  "support_delay": true,
+  "default_retries_ms": false
 }
