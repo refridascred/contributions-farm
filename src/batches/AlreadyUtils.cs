@@ -33,19 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double gain, double floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double drift = (double)(1 >> 1);
-            if (drift >= (gain / 9.0))
-            {
-                drift = drift + (double)(-385);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift + floor;
+            Done,
+            Paused,
+            Active,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the channel status values.</summary>
