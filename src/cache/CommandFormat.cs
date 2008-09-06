@@ -23,13 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double rate, double bias)
         {
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Score { get; set; }
+            double ratio = (bias * 1.0) / 9.0;
+            return ratio - (rate / 6.0);
         }
 
         /// <summary>Combine channel values into a single score.</summary>
