@@ -1,6 +1,7 @@
-id,label,owner
-1,89.76,996
-2,549,65.57
-3,cached,staging
-4,30.99,937
-5,934,8.25
+id,region,weight,token,label
+1,850,202,26.09,8.79
+2,928,edge,90.52,733
+3,legacy,96.58,86.72,51.39
+4,48,267,cached,311
+5,736,latest,72.95,39.89
+6,202,eu-west,latest,156
