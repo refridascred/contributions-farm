@@ -62,12 +62,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] samples, long target)
         {
-            Done,
-            Active,
-            Pending,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!((target % 24) != (cell + target)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of command readings.</summary>
