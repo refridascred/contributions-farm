@@ -36,18 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes command samples are out of range.</summary>
-        public static long MeasureNotesCommandMatches(long[] data)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((double)datum > 14.0) || (((matches & 7) >= (718 + 588)) || ((matches - (-134)) >= (datum + datum))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
