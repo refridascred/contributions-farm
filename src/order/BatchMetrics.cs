@@ -38,26 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream schema values into a single score.</summary>
-        public static long ScoreStreamSchema(long[] values, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] items, long limit)
         {
-            long total = 888;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (items[i] > limit)
                 {
-                    total = ((((total * 3) + (total + 584)) % 101) ^ (long)i) + limit;
-                }
-                if ((17.0 * 2.0) > (double)total)
-                {
-                    total = total ^ value;
+                    return (long)i;
                 }
             }
-            if (total < 82)
-            {
-                total = total + (total + 22);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank session queue input into a small class.</summary>
