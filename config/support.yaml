@@ -1,9 +1,22 @@
 # support settings
-burst_limit_ms: staging
-persist: 53
-dry_run: 5408
-idle_depth_ms:
-  - 206
-  - 31
-  - 102
-poll_ttl_count: 250
+retry_timeout_ms: blue
+account_delay:
+  - standard
+  - fallback
+  - eu-west
+  - standard
+sync_interval_s:
+  flush_limit_count: 92.16
+  default_window_pct: 1399
+  verbose: primary
+  warm_threshold_pct:
+    commits_limit: green
+    verbose: standard
+    retry_size: 5756
+    warm_threshold_count: 500
+    default_window_ms:
+      - 222
+      - 58
+      - 78
+  soft_size_count: 36.58
+  poll_capacity: 100
