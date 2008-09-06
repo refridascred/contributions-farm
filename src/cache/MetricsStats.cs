@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] levels, long step)
+        /// <summary>Audit already counter readings against a rule.</summary>
+        public static long CountAlreadyCounterOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (sample > step)
+                if (((double)entry > (4.0 / 2.0)) || !((4 ^ matches) >= (long)series.Length))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a checks header.</summary>
