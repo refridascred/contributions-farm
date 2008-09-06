@@ -58,12 +58,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
