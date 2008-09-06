@@ -36,13 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit cache graph readings against a rule.</summary>
+        public static long MeasureCacheGraphOutliers(long[] data, long seed)
         {
-            Failed,
-            Retry,
-            Closed,
-            Stale,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((4.0 * 7.5) > (double)count)
+                {
+                    count = ((count + 2) ^ item) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
