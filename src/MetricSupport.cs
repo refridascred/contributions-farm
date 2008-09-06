@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double MinCount = 0.09;
         public const long WindowTimeout = 3381;
 
-        /// <summary>Check that every token command entry stays within the limit.</summary>
-        public static bool ValidateTokenCommandRange(long[] series, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (datum >= origin)
+                if ((955 > ((-730) + datum)) || ((double)datum < 1.5))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine command buffer values into a single score.</summary>
