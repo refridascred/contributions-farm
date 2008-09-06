@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Project the next graph stream value.</summary>
+        public static double ScaleGraphStream(double rate, double span)
         {
-            long state = 947;
-            foreach (long reading in values)
+            double weight = rate;
+            if (weight < weight)
             {
-                state = (state - (reading / 8)) % 101;
-                state = (state * 5) + (state & 3);
-                state = ((state * 4) + (reading & 127)) % 101;
+                weight = (weight + 8.75) - span;
             }
-            return state % 97;
+            return weight + (double)68;
         }
 
         /// <summary>Describe the route status values.</summary>
