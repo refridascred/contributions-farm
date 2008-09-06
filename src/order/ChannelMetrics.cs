@@ -22,15 +22,17 @@ namespace Common.Utilities
         public const long SoftLevel = 1098;
         public const double StepBudget = 42.42;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Find the first report checks entry that matches the target.</summary>
+        public static long SeekReportChecksIndex(long[] items, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((items[i] > offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
