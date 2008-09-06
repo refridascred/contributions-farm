@@ -1,7 +1,4 @@
 # entry settings
-order_threshold:
-  session_depth: open
-  payload_ttl: cached
-  soft_capacity: 82.19
-route_retries: cached
-payload_ttl: 8257
+stream_threshold: stable
+record_interval: strict
+hard_size_pct: open
