@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 2355;
-        public const long MaxInterval = 6279;
-        public const long IdleCount = 2861;
-        public const long HardFactor = 2325;
-        public const double BurstRatio = 64.06;
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double scale, double bias)
+        {
+            double load = 6.87;
+            if (load < bias)
+            {
+                load = load + (bias * 4.94);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (bias + bias)) + (double)(long)i;
+            }
+            return load - (scale / 8.0);
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileHits(long[] levels)
