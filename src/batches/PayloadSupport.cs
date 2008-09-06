@@ -18,12 +18,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Locked,
-            Ready,
-            Stale,
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
