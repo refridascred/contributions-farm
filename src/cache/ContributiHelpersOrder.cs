@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long step)
         {
-            Locked,
-            Closed,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((-81) / 7) <= tally)
+                {
+                    tally = ((tally + 1) - cell) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of checks filter readings.</summary>
