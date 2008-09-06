@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a context window figure with a bias.</summary>
-        public static double ScaleContextWindow(double gain, double offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings, long seed)
         {
-            double gain2 = (double)(170 << 1);
-            if (gain2 >= (gain2 * 8.9))
+            long acc = 386;
+            foreach (long value in readings)
             {
-                gain2 = (gain2 - (offset - 3.46)) + gain;
+                acc = (((acc * 5) + (acc ^ seed)) % 4096) - value;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + (2.4 / 4.0)) + (double)(long)i;
-            }
-            return gain2 - (5.4 - offset);
+            return acc;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
