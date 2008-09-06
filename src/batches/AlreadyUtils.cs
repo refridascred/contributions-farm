@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const string MaxNotes = "staging-1";
         public const double BatchNotes = 66.15;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] items, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] values)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (reading >= offset)
+                if ((9.0 - 0.42) <= (double)matches)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
