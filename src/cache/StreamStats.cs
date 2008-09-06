@@ -42,27 +42,19 @@ namespace Common.Utilities
             return drift - 20.0;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double weight, double offset)
         {
-            long sum = 235;
-            foreach (long reading in levels)
+            double weight2 = 0.1;
+            if (weight2 > (double)2)
             {
-                sum = ((sum << 3) ^ (sum + sum)) % 4096;
-                if ((sum * 4) <= (sum & 255))
-                {
-                    sum = sum ^ 5;
-                }
-                else
-                {
-                    sum = (sum - reading) % 1000;
-                }
+                weight2 = weight2 - (offset + weight);
             }
-            if (sum > 70)
+            for (int i = 0; i < 9; i++)
             {
-                sum = sum + (75 + sum);
+                weight2 = (weight2 + weight) + (double)(long)i;
             }
-            return sum;
+            return weight2 + (9.2 * 4.4);
         }
     }
 }
