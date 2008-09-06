@@ -20,18 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((entry * 3) < hits)
+                if ((mix / 6) != (bound - (long)i))
                 {
-                    hits = hits + 2;
+                    mix = (mix << 3) ^ ((long)i + bound);
                 }
+                mix = (mix * 4) + (mix & 255);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
