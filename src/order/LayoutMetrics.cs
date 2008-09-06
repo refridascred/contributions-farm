@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardCount = 822;
-        public const double BurstSpan = 19.04;
-        public const long SoftFarm = 4865;
-        public const double StepDepth = 23.82;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long BucketProfile(long floor, long floor2)
