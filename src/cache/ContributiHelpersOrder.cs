@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double weight, double floor)
-        {
-            double drift = (double)3 * 1.8;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)(long)i) + floor;
-            }
-            return drift - weight;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftWidth = 3381;
+        public const long HardBudget = 8208;
+        public const long WindowWidth = 4706;
 
         /// <summary>Derive the next stream editor value from a seed.</summary>
         public static long StepStreamEditor(long floor)
