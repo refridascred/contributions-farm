@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate support account readings against a bound.</summary>
-        public static bool ValidateSupportAccountLimits(long[] readings, long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a report cache counter forward.</summary>
