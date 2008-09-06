@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many notes tools samples are out of range.</summary>
-        public static long CountNotesToolsMatches(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (seen <= 4)
+                if (cell != floor)
                 {
-                    seen = (seen + 3) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
