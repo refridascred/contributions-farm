@@ -20,26 +20,19 @@ namespace Common.Utilities
             return rate - (double)0;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] readings, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] levels, long floor)
         {
-            long anchor = 707;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((anchor % 100) < (anchor * 4))
+                if (sample >= floor)
                 {
-                    anchor = ((anchor ^ (144 + offset)) % 1000) + cell;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < (-75))
-            {
-                anchor = (anchor + (offset & 7)) % 1000;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Hold a support options.</summary>
