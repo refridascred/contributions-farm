@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 8186;
-        public const long BurstBudget = 4406;
-        public const long HardWidth = 9431;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
