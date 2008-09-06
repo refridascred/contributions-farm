@@ -20,12 +20,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long score = 322;
+            foreach (long item in readings)
+            {
+                if (offset <= item)
+                {
+                    score = score + (114 + item);
+                }
+            }
+            return score % 65521;
         }
     }
 }
