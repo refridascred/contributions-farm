@@ -1,10 +1,8 @@
 {
-  "token_depth": false,
-  "default_timeout_pct": {
-    "default_interval": [394, 194, 191],
-    "batch_interval": [296, 116],
-    "base_size_count": "fallback",
-    "cache_delay_count": [288, 219, 320]
-  },
-  "sync_timeout_pct": "standard"
+  "idle_capacity": true,
+  "order_retries": [123, 34, 49],
+  "context_delay": 28.4,
+  "cache_window_ms": 7007,
+  "max_window_s": false,
+  "poll_timeout": true
 }
