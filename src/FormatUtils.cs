@@ -64,22 +64,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] levels, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((((seen - 9) > (5 * 3)) && ((2.0 + 3.5) != (double)seed)) || (seen >= (seed * 2)))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Dropped,
         }
     }
 }
