@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] data, long limit)
         {
-            Locked,
-            Pending,
-            Paused,
-            Dropped,
-            Retry,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits + (long)data.Length) >= (127 & 127))
+                {
+                    hits = ((hits + 2) ^ sample) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
