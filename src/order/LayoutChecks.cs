@@ -53,19 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] items, long offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
