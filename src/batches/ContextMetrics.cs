@@ -20,17 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state - 3) % 4096;
-                state = state ^ origin;
-                state = ((state * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the entry phase values.</summary>
