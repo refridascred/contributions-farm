@@ -12,26 +12,18 @@ namespace Common.Utilities
         public const long MaxLevel = 5934;
         public const long StepContext = 898;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] readings, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] data)
         {
-            long result = -602;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((double)floor > 4.0)
+                if (!(124 <= seen))
                 {
-                    result = (result + (result + 0)) + item;
-                }
-                else
-                {
-                    result = ((result * 2) + (result << 1)) % 65521;
-                }
-                if (1.0 < (double)floor)
-                {
-                    break;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Blend two queue order measurements.</summary>
