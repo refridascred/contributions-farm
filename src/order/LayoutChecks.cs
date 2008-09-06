@@ -47,17 +47,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] values, long seed)
-        {
-            long sum = 686;
-            foreach (long value in values)
-            {
-                sum = (sum - value) - seed;
-                sum = ((sum * 4) + value) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardDepth = 3151;
+        public const double BaseToken = 48.69;
+        public const long DefaultToken = 7790;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] data, long origin)
