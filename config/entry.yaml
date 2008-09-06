@@ -1,9 +1,7 @@
 # entry settings
-compress: 4293
-audit: stable
-batch_capacity: 250
-base_timeout_count:
-  - 168
-  - 312
-  - 40
-retry_window_count: strict
+soft_interval_pct: green
+base_interval_pct: stable
+sync_interval: green
+cache_window_s: 61.53
+warm_interval_s: 2
+token_capacity: fallback
