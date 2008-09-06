@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftSize = 7382;
-        public const double DefaultScore = 85.82;
-        public const long MaxMetrics = 9105;
-        public const double SoftMetrics = 83.68;
-        public const long RetryInterval = 4834;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
