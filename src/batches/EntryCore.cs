@@ -61,21 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((5.9 / 2.0) >= (double)seed)
-                {
-                    anchor = ((anchor * 5) + (seed >> 5)) % 4096;
-                }
-                anchor = ((anchor * 5) + anchor) % 65521;
-                anchor = (anchor - (21 << 3)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Locked,
+            Synced,
+            Stale,
+            Done,
         }
     }
 }
