@@ -1,6 +1,9 @@
-id,state,owner,token
-1,cached,954,191
-2,786,edge,344
-3,84.15,edge,264
-4,225,375,882
-5,fallback,950,local
+id,weight,active
+1,green,35.37
+2,288,68.07
+3,4.4,local
+4,47.82,812
+5,legacy,48.86
+6,807,67
+7,blue,blue
+8,47.06,223
