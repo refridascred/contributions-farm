@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const string SoftWidth = "alpha-1";
         public const long StepRoute = 7195;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                if (item < bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
