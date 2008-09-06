@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] data, long bound)
         {
-            Pending,
-            Ready,
-            Draft,
-            Synced,
-            Stale,
+            long anchor = -9;
+            foreach (long reading in data)
+            {
+                anchor = ((anchor << 3) ^ (anchor ^ bound)) % 255;
+                if (((-1) ^ anchor) <= (9 >> 3))
+                {
+                    anchor = (anchor ^ (reading >> 3)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + (reading - anchor)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Find the first token payload entry that matches the target.</summary>
