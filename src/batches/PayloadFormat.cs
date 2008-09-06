@@ -33,11 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 3778;
-        public const double CacheNotes = 25.24;
-        public const long IdleRatio = 1274;
-        public const double RetryRatio = 65.98;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Idle,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double DefaultChecks = 18.02;
