@@ -27,11 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 25.83;
-        public const string DefaultSchema = "primary-v2";
-        public const long BurstWidth = 4980;
-        public const string StepFactor = "alpha-v2";
+        /// <summary>Count commits stream pairs that satisfy a relation.</summary>
+        public static long CompareCommitsStreamCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] data, long bound)
