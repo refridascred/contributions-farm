@@ -1,26 +1,9 @@
 # entry settings
-strict: 32.32
-base_interval_pct:
-  max_capacity_ms:
-    warm_threshold_pct: 38.22
-    metrics_limit: 75.64
-    flush_delay: 100
-  checks_retries: 100
-  base_ttl_pct: eu-west
-  idle_delay_count: true
-  readonly: 30
-  warm_window_count:
-    sync_capacity_ms: true
-    readonly: 5639
-    hard_ratio: true
-    cache_threshold_count: 23.62
-    base_window_count: 444
-    flush_threshold_count: cached
-persist: 30
-max_threshold_s: false
-queue_limit:
-  verbose: false
-  token_window: 53
-  profile_size: 60
-  batch_depth_count: 60
-  soft_size_pct: 250
+compress: 4293
+audit: stable
+batch_capacity: 250
+base_timeout_count:
+  - 168
+  - 312
+  - 40
+retry_window_count: strict
