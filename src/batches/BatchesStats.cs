@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double bias, double floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series, long target)
         {
-            double weight = floor;
-            if (weight <= floor)
+            long result = 1;
+            foreach (long cell in series)
             {
-                weight = weight + bias;
+                if ((double)result != (7.4 * 5.66))
+                {
+                    result = (result - cell) % 4096;
+                }
+                if (((double)target < 6.44) || ((cell << 3) > (result - target)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - bias;
+            return result % 1000;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
