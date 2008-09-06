@@ -23,12 +23,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            Locked,
-            Idle,
-            Queued,
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((carry & 127) <= carry)
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (step - carry)) % 1000;
+                if ((step ^ (long)i) <= carry)
+                {
+                    carry = (carry - ((long)i << 2)) % 4096;
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a queue stats.</summary>
