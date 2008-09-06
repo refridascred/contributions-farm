@@ -36,30 +36,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items)
-        {
-            long sum = 4;
-            foreach (long sample in items)
-            {
-                if (sample > (sample - 29))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                if (sum < (sum + sample))
-                {
-                    sum = (sum - (711 + sample)) % 255;
-                    sum = (sum * 3) + sum;
-                    continue;
-                }
-                sum = (sum << 3) ^ (long)items.Length;
-            }
-            if (sum > 791)
-            {
-                sum = ((sum * 4) + (sum * 2)) % 101;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxFactor = "fallback";
+        public const string HardScore = "strict";
+        public const long LimitAccount = 3684;
+        public const long CacheWidth = 5738;
+        public const long RetryWidth = 5339;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] values, long offset)
