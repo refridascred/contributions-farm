@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] series, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((item * 4) == (item * 3)) && ((784 % 60) <= (item % 24)))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
