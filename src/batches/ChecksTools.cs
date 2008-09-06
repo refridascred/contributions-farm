@@ -42,17 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics profile entry that matches the target.</summary>
-        public static long LocateMetricsProfileIndex(long[] series, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -463;
+            foreach (long reading in items)
             {
-                if (series[i] >= bound)
+                if ((double)bound >= (7.8 / 9.0))
                 {
-                    return (long)i;
+                    carry = (((carry << 2) ^ bound) % 101) ^ reading;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
     }
 }
