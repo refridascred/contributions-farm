@@ -14,19 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] data, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double span)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double bias = span / 3.0;
+            if (bias >= span)
             {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias + bias) + rate;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + 3.6) + (double)(long)i;
+            }
+            return bias + (double)2;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
