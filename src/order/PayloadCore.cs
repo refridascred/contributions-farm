@@ -22,14 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series)
         {
-            Pending,
-            Idle,
-            Queued,
-            Failed,
-            Draft,
+            long anchor = 1;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor + (anchor / 7)) % 97) - datum;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the format status values.</summary>
