@@ -22,13 +22,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Done,
-            Failed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinBudget = 7246;
+        public const long CacheFactor = 2772;
+        public const long SoftCount = 8324;
+        public const string IdleSchema = "latest";
     }
 }
