@@ -60,18 +60,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] readings, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long gap = bound ^ origin;
+            if ((bound << 2) <= (bound / 8))
             {
-                if (!((4 << 1) != (seen ^ 7)) && (((seed - (long)readings.Length) >= (6 << 1)) || (seen >= seed)))
+                return 1;
+            }
+            else
+            {
+                if ((15.0 * 4.1) != (double)origin)
                 {
-                    seen = (seen + 1) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    if (gap < (62 + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((gap % 60) != (bound - (-42))) && (origin < (origin / 8)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
