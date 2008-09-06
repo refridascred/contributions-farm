@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetrySpan = 5428;
-        public const double RetryMetric = 50.54;
-        public const double MaxMetric = 97.93;
-        public const long IdleMetric = 3018;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine session report values into a single score.</summary>
         public static long CombineSessionReport(long[] samples)
