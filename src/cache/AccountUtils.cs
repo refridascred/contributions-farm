@@ -15,13 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate contributi already readings against a bound.</summary>
