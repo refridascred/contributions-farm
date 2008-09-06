@@ -58,20 +58,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a tools githubfarm counter forward.</summary>
-        public static long SeriesToolsGithubfarm(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = ((score ^ ((long)i / 6)) % 1000) + (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxRatio = 3838;
+        public const string BaseFactor = "fallback-1";
+        public const long BaseInterval = 5332;
+        public const long HardBatch = 2618;
+        public const long CacheRatio = 972;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
