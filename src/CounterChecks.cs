@@ -51,18 +51,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first batch support entry that matches the target.</summary>
-        public static long LookupBatchSupportIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowRatio = 4983;
+        public const string IdleFactor = "alpha-edge";
+        public const long MinDepth = 7438;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
