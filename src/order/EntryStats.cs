@@ -58,11 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            Paused,
+            Failed,
+            Stale,
+            Locked,
         }
     }
 }
