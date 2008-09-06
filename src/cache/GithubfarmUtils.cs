@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepBudget = 1047;
-        public const string IdleWidth = "staging-edge";
-        public const long BurstRecord = 5339;
-        public const long DefaultScore = 3691;
-        public const long MinScore = 4431;
+        /// <summary>Rank batches route input into a small class.</summary>
+        public static long ClassifyBatchesRoute(long seed, long seed2)
+        {
+            long delta = seed + seed2;
+            if (!((seed2 + delta) < 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(seed2 <= (seed + delta)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsMatches(long[] readings)
