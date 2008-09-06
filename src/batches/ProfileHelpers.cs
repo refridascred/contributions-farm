@@ -48,24 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long floor, long offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if ((floor <= (floor - floor)) || ((offset + offset) != (offset - 21)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor < (8.4 - 5.8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
