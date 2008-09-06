@@ -1,5 +1,17 @@
 {
-  "retry_size": 90.9,
-  "channel_depth": 82.57,
-  "poll_size_count": 89
+  "idle_timeout": "eu-west",
+  "context_interval": {
+    "compress": [401, 130, 428],
+    "readonly": 500,
+    "stream_window": 5.93,
+    "default_window_ms": ["cached", "strict", "stable"],
+    "batch_delay_pct": {
+      "soft_threshold_s": "stable",
+      "format_delay": 45,
+      "batch_ttl_pct": false,
+      "readonly": 77
+    },
+    "sync_window": "staging"
+  },
+  "max_interval": 73.67
 }
