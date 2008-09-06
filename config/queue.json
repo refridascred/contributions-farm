@@ -1,15 +1,6 @@
 {
-  "burst_delay_ms": [104, 488, 4, 496],
-  "editor_delay": {
-    "graph_capacity": "latest",
-    "warm_capacity": "open",
-    "profile_interval": {
-      "compress": 9728,
-      "soft_threshold_s": 5463,
-      "sync_threshold_pct": "local",
-      "strict": 44
-    },
-    "schema_window": 17.81
-  },
-  "stream_limit": "standard"
+  "stream_retries": 250,
+  "tools_delay": ["primary", "green"],
+  "batch_delay_s": "stable",
+  "layout_retries": 30
 }
