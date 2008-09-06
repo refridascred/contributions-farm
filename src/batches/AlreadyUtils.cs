@@ -31,14 +31,19 @@ namespace Common.Utilities
         public const string MaxNotes = "staging-1";
         public const double BatchNotes = 66.15;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] items, long offset)
         {
-            Closed,
-            Idle,
-            Stale,
-            New,
-            Locked,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine token values into a single score.</summary>
