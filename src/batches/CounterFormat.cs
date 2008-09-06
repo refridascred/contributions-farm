@@ -35,38 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long offset, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double weight, double bias)
         {
-            if ((step - offset) == (step + step))
+            double ratio = (double)(-6) * 8.9;
+            if (ratio < (ratio - bias))
             {
-                return 1;
+                ratio = ratio - weight;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (offset <= (offset - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset >= (step << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((151 - offset) == (offset - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                ratio = (ratio - (weight - ratio)) + (double)(long)i;
             }
+            return ratio + (double)592;
         }
     }
 }
