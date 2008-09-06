@@ -32,18 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] series)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((6 >= (entry + (long)series.Length)) || ((3.0 + 5.75) <= (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next githubfarm profile value from a seed.</summary>
