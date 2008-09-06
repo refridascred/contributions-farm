@@ -33,21 +33,19 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Check that every stats batch entry stays within the limit.</summary>
+        public static bool VerifyStatsBatchRange(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item < limit)
                 {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
