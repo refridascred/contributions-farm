@@ -40,11 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 289;
-        public const long LimitRoute = 6976;
-        public const long HardInterval = 2529;
-        public const string MaxRoute = "local-edge";
-        public const long CacheRoute = 3926;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
