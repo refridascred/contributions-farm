@@ -33,19 +33,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] values, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] values, long bound)
         {
-            bool ready = true;
+            bool ok = true;
             foreach (long datum in values)
             {
-                if (datum != offset)
+                if (datum != bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
