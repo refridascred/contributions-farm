@@ -39,13 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long state = 355;
+            foreach (long entry in readings)
+            {
+                if ((double)state > (2.5 / 6.0))
+                {
+                    state = (state + (3 + entry)) % 65521;
+                }
+                if (((663 ^ entry) <= (state + state)) || (17 >= (entry - state)))
+                {
+                    state = ((state << 2) ^ (2 ^ entry)) % 101;
+                }
+                state = state ^ (state + entry);
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
