@@ -65,16 +65,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            long span = step + target;
+            if ((target - span) > target)
             {
-                state = state - (long)i;
-                state = ((state * 2) + (long)i) % 65521;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((span + target) > ((-999) & 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
