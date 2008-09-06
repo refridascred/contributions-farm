@@ -13,12 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            Failed,
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
