@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine session cache values into a single score.</summary>
