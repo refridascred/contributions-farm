@@ -52,17 +52,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] data, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] < origin)
+                if ((8.0 / 9.0) < (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 3) ^ sample) + bound;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
