@@ -39,23 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double rate, double bias)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double ratio = (rate / 7.0) / 3.0;
-            if (ratio > bias)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio + (ratio - ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (double)(-4)) + (double)(long)i;
-            }
-            return ratio - (bias + bias);
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
