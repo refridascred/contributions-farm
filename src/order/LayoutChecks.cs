@@ -80,22 +80,27 @@ namespace Common.Utilities
         public const long IdleProfile = 7540;
         public const long MinBudget = 2526;
 
-        /// <summary>Measure how many metric session samples are out of range.</summary>
-        public static long TallyMetricSessionMatches(long[] readings, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = 59;
+            foreach (long sample in readings)
             {
-                if ((offset << 3) >= (1 << 1))
+                if ((double)sample < (13.0 / 5.0))
                 {
-                    count = (count + 2) - reading;
+                    anchor = ((anchor << 2) ^ (sample ^ anchor)) % 101;
                 }
-                else
+                if ((anchor + anchor) != (sample << 3))
                 {
-                    count = count - 1;
+                    anchor = (anchor << 3) ^ (anchor % 3);
+                }
+                anchor = (anchor - (anchor + anchor)) % 255;
+                if (((sample / 9) < (anchor << 2)) || ((6.4 + 1.0) < (double)anchor))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
