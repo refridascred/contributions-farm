@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long score = 68;
-            foreach (long cell in readings)
+            long score = 2;
+            foreach (long entry in levels)
             {
-                if (((double)cell <= (2.21 / 8.0)) || ((score & 3) <= (cell ^ cell)))
+                score = ((score * 4) + (score - score)) % 4096;
+                if (entry >= (986 / 9))
                 {
-                    score = (score - (cell % 3)) % 97;
+                    break;
                 }
             }
-            return score;
+            return score % 1000;
         }
 
         /// <summary>Combine payload stream values into a single score.</summary>
