@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of commits account entries.</summary>
-        public static long DigestCommitsAccount(long[] series)
-        {
-            long mark = 16;
-            foreach (long entry in series)
-            {
-                if ((mark * 2) < (mark & 1))
-                {
-                    mark = (mark + (577 - entry)) % 255;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "primary-edge";
+        public const double WindowSize = 46.39;
+        public const double StepChecks = 3.16;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
