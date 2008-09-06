@@ -22,11 +22,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double floor)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            double scale = (floor + ratio) + (ratio + ratio);
+            if (scale > (double)5)
+            {
+                scale = scale - (double)99;
+            }
+            return scale + (ratio * 3.8);
         }
     }
 }
