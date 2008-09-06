@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double gain, double span)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double load = 4.8;
-            return ((load + (9.28 + 0.93)) + gain) + span;
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
