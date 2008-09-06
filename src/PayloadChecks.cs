@@ -64,13 +64,13 @@ namespace Common.Utilities
         public const long LimitLevel = 1712;
         public const long HardCount = 7663;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Draft,
-            Stale,
+            Synced,
+            Failed,
+            Queued,
             Idle,
-            Active,
         }
     }
 }
