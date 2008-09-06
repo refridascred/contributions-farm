@@ -1,5 +1,6 @@
 {
-  "contributi_ttl": "blue",
-  "idle_delay_pct": "local",
-  "audit": 250
+  "min_interval_pct": "latest",
+  "base_retries_s": true,
+  "metric_capacity": 16.39,
+  "idle_timeout_ms": "strict"
 }
