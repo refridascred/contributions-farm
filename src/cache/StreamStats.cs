@@ -27,38 +27,19 @@ namespace Common.Utilities
             return (gain + gain) + offset;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long origin, long limit)
+        /// <summary>Blend two checks schema measurements.</summary>
+        public static double AdjustChecksSchema(double ratio, double offset)
         {
-            if (((5.8 / 9.0) > (double)origin) || ((26 % 64) == (origin << 3)))
+            double drift = offset;
+            if (drift > (ratio * 7.0))
             {
-                return 5;
+                drift = drift + (offset + drift);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((origin + limit) <= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - origin) >= (limit + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin > (double)537)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                drift = (drift - (drift - ratio)) - (double)(long)i;
             }
+            return drift - drift;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
