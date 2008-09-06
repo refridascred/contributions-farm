@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 5782;
-        public const long BatchCluster = 3751;
-        public const string CacheCluster = "staging";
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double floor)
+        {
+            double bias = (gain / 6.0) / 7.0;
+            if (bias > gain)
+            {
+                bias = bias + (floor - floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (bias / 3.0)) + (double)(long)i;
+            }
+            return bias - gain;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] data, long limit)
