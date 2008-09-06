@@ -44,10 +44,12 @@ namespace Common.Utilities
             return gain - (double)9;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryScore = 0.15;
-        public const double WindowMetrics = 91.08;
-        public const string MinMetrics = "open";
-        public const long WindowBudget = 8906;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Paused,
+            Pending,
+            Closed,
+        }
     }
 }
