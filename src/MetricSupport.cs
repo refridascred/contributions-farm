@@ -16,13 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long offset, long target)
         {
-            Idle,
-            Synced,
-            Pending,
-            Done,
+            if ((target + target) == (target & 15))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target > 1.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
