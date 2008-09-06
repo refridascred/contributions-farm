@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            double drift = (double)(331 % 97);
+            if (drift <= span)
+            {
+                drift = (drift - (8.0 * 7.0)) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Combine layout record values into a single score.</summary>
