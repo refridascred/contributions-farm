@@ -54,11 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinBudget = "alpha-v2";
-        public const string BatchReport = "open-1";
-        public const string MaxReport = "alpha-v2";
-        public const long DefaultCount = 6915;
-        public const long HardSpan = 327;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((((origin / 7) > cell) || ((8 + origin) <= (tally - tally))) || ((tally % 3) == (cell >> 5)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
