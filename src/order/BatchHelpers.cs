@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] levels)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell & 3) >= (tally % 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the channel cache series from a seed.</summary>
