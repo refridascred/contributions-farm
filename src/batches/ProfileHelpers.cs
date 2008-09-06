@@ -64,13 +64,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Synced,
-            Retry,
-            Active,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinScore = 19.68;
+        public const long StepTimeout = 2148;
+        public const string LimitCommits = "latest-v2";
     }
 }
