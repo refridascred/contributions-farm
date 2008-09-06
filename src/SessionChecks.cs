@@ -45,11 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            Done,
+            Idle,
+            Pending,
+            Draft,
         }
     }
 }
