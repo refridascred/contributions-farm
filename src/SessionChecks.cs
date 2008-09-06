@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of channel already readings.</summary>
-        public static long DigestChannelAlready(long[] data)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long state = 69;
-            foreach (long sample in data)
-            {
-                state = (state ^ state) + sample;
-            }
-            if (state > 62)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state % 65521;
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
