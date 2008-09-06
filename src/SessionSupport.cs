@@ -12,39 +12,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long limit, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] series, long floor)
         {
-            long gap = limit ^ floor;
-            if ((0 - floor) > (limit - 6))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor >> 5) > (limit - 5)) && ((14.0 / 7.0) >= (double)floor))
+                if ((double)count > (7.63 + 4.0))
                 {
-                    return 0;
+                    count = ((count + 2) - value) + floor;
                 }
                 else
                 {
-                    if (!(limit <= ((-19) % 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(gap <= limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
