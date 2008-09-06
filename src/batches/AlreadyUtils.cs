@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] data, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
