@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 4263;
-        public const string IdleLevel = "staging-v2";
-        public const long MaxLevel = 2034;
-        public const long IdleBatch = 5802;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((offset & 127) != (cell << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a already command value against two limits.</summary>
         public static long RankAlreadyCommand(long bound, long bound2)
