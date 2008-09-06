@@ -58,17 +58,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a metrics batch counter forward.</summary>
-        public static long StepMetricsBatch(long step)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = mix + ((long)i - step);
-                mix = ((mix << 2) ^ step) % 255;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
