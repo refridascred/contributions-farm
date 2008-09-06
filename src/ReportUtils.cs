@@ -53,32 +53,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long limit, long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long diff = limit + offset;
-            if ((diff - limit) != (6 + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit & 1) >= 40)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit - limit) < (offset - offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
