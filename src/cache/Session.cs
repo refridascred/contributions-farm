@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit cluster session readings against a rule.</summary>
-        public static long AuditClusterSessionHits(long[] items)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value + matches) <= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Rank already input into a small class.</summary>
