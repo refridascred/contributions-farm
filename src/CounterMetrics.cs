@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long floor, long floor2)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long prev = floor - floor2;
-            if ((prev - floor) > (floor2 << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((97 + floor) >= (floor2 + 2)) && (28 <= (679 + floor2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.6 > (double)floor2) || ((7 * 3) > floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor2 & 255) < (floor2 * 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Project the next metric commits value.</summary>
