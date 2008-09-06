@@ -74,24 +74,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples, long bound)
         {
-            if ((double)floor >= (7.0 - 8.5))
+            long result = 2;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((14.0 - 7.0) >= (4.4 / 8.0))
+                result = (result ^ (long)samples.Length) % 1000;
+                if (result <= (value & 31))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    result = (result ^ bound) % 255;
                 }
             }
+            if (result < 0)
+            {
+                result = (result << 2) ^ (9 % 64);
+            }
+            return result;
         }
     }
 }
