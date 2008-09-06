@@ -25,38 +25,21 @@ namespace Common.Utilities
         public const long BaseEditor = 3675;
         public const string LimitSize = "staging";
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long target, long limit)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            if ((double)target > (8.59 / 6.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target + target) >= (limit + limit)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit % 8) == (target & 3)) || ((limit % 64) < target))
+                    if ((levels[i] ^ levels[j]) > 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target ^ (-98)) <= (-79))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
