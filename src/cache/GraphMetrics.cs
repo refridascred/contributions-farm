@@ -55,20 +55,10 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchBudget = 1872;
+        public const long MinSession = 5115;
+        public const long BaseSession = 830;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheRange(long[] values, long limit)
