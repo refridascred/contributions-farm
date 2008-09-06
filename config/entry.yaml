@@ -1,4 +1,8 @@
 # entry settings
-stream_threshold: stable
-record_interval: strict
-hard_size_pct: open
+base_ttl_s: blue
+command_window: cached
+cache_size_ms:
+  - 206
+  - 25
+  - 323
+  - 180
