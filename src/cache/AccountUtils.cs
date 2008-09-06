@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] data, long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Idle,
+            Locked,
+            Failed,
+            Synced,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
