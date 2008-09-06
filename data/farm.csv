@@ -1,8 +1,7 @@
-id,label,rank,score
-1,426,stable,178
-2,682,240,fallback
-3,279,29,26.64
-4,18.85,16,legacy
-5,3.74,staging,72.56
-6,standard,140,legacy
-7,primary,248,latest
+id,score,active,level,state
+1,fallback,502,42.19,local
+2,970,782,41.22,22.08
+3,26.38,local,484,72.89
+4,491,701,legacy,11.84
+5,753,stable,79.43,662
+6,165,548,655,58.17
