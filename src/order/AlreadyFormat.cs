@@ -31,19 +31,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] levels, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long limit)
         {
-            long total = 3;
-            foreach (long item in levels)
+            long lane = target - limit;
+            if ((limit * 2) > (target / 3))
             {
-                total = (total ^ bound) + item;
+                return 8;
             }
-            if (total < 57)
+            else
             {
-                total = (total + (bound / 7)) % 97;
+                if ((double)limit != (14.0 + 6.98))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)lane <= 7.28))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Accumulate counter samples.</summary>
