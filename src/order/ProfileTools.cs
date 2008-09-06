@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the batches farm entries that pass the check.</summary>
-        public static long MeasureBatchesFarmGaps(long[] data)
+        /// <summary>Scale a context window figure with a bias.</summary>
+        public static double ScaleContextWindow(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double gain2 = (double)(170 << 1);
+            if (gain2 >= (gain2 * 8.9))
             {
-                if (0.1 <= (double)(long)data.Length)
-                {
-                    hits = (hits + 2) - value;
-                }
+                gain2 = (gain2 - (offset - 3.46)) + gain;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + (2.4 / 4.0)) + (double)(long)i;
+            }
+            return gain2 - (5.4 - offset);
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
