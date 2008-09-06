@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Locate a stats account reading by value.</summary>
+        public static long LookupStatsAccountIndex(long[] levels, long floor)
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits info.</summary>
