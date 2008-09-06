@@ -1,14 +1,14 @@
 # Command notes
 
-Run the entry check before changing any buffer limits.
-Use metrics settings to tune how often metric data is refreshed.
-The metrics report groups every metrics by context.
+The command report groups every tools by batches.
+The tools module keeps report values in sync with the command cache.
 
-The notes report groups every channel by cache.
-Use checks settings to tune how often stream data is refreshed.
+The editor module keeps route values in sync with the session cache.
+A stream that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Keep tools values small
-- Prefer farm defaults
-- Validate report input early
+- Keep metric values small
+- Validate already input early
+- Log every order change
+- Document new cluster fields
