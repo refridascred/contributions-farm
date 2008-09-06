@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((double)seen >= (double)sample)
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
