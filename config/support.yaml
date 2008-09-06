@@ -1,12 +1,11 @@
 # support settings
-batch_timeout: primary
-sync_delay_pct: 79.78
-retry_window_s:
-  compress: 8.47
-  sync_threshold:
-    farm_ttl: stable
-    verbose: 500
-    idle_ttl_pct: primary
-    compress: 30
-  batch_retries_ms: staging
-  sync_ttl_ms: 16.36
+batch_window_pct:
+  - 270
+  - 475
+  - 287
+warm_delay_pct: primary
+stats_interval:
+  - 444
+  - 121
+editor_threshold: latest
+retry_capacity: blue
