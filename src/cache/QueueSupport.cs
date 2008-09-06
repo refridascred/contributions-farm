@@ -28,14 +28,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Draft,
-            Idle,
-            Active,
-            Paused,
-            New,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinInterval = 6065;
+        public const double BaseBuffer = 10.4;
+        public const double WindowBuffer = 46.68;
+        public const long StepBuffer = 9818;
     }
 }
