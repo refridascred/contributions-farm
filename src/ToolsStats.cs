@@ -45,11 +45,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinLevel = 6.52;
-        public const double DefaultSupport = 60.66;
-        public const long BurstWidth = 8221;
-        public const string MaxSize = "latest";
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((double)floor != (double)(long)i))
+                {
+                    state = state ^ floor;
+                    state = state + (floor << 3);
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long RollGraph(long target)
