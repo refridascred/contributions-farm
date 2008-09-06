@@ -42,12 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 8835;
-        public const long SoftEditor = 365;
-        public const long SoftFactor = 2491;
-        public const long MaxEditor = 71;
-        public const long BaseDepth = 4372;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Failed,
+            Pending,
+            Locked,
+            Active,
+            Draft,
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] readings)
