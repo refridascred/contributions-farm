@@ -56,12 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public bool Count { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinScore = "open-v2";
+        public const long SoftMetric = 4030;
+        public const double BatchMetric = 81.03;
+        public const long MinMetric = 4346;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 6905;
