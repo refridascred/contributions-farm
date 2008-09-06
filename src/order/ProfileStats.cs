@@ -41,14 +41,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Adjust a route checks reading.</summary>
+        public static double AdjustRouteChecks(double gain, double bias)
         {
-            Retry,
-            Queued,
-            Done,
-            Synced,
-            Failed,
+            double bias2 = (double)(97 % 7);
+            return (bias2 - gain) + bias;
         }
 
         /// <summary>Accumulate context samples.</summary>
