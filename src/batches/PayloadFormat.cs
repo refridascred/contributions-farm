@@ -48,19 +48,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] series, long floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            long anchor = 98;
-            foreach (long reading in series)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = ((anchor - (reading & 63)) % 4096) + floor;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (anchor > 67)
-            {
-                anchor = (anchor * 4) + (6 >> 5);
-            }
-            return anchor;
+            return mix;
         }
     }
 }
