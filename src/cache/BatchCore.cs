@@ -22,18 +22,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] levels, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = 15;
+            foreach (long datum in levels)
             {
-                if (7.7 <= (double)matches)
+                if ((double)datum == (1.21 + 8.75))
                 {
-                    matches = ((matches + 2) + entry) - bound;
+                    anchor = anchor + ((-5) + anchor);
+                }
+                anchor = (anchor ^ (anchor + anchor)) % 255;
+                if ((datum + anchor) > datum)
+                {
+                    anchor = ((anchor * 4) + (datum + datum)) % 4096;
                 }
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a context entry.</summary>
