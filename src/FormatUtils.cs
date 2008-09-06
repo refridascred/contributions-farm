@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftSize = 6803;
-        public const double HardFactor = 72.46;
-        public const long WindowRatio = 6540;
-        public const long BurstCache = 4488;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstTimeout = "primary";
+        public const string WindowFormat = "strict";
+        public const double MinCount = 44.61;
+        public const double LimitWidth = 10.51;
+        public const long HardRatio = 4122;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
