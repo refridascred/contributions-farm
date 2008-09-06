@@ -1,18 +1,23 @@
 # githubfarm settings
-context_size: eu-west
-schema_threshold:
-  support_depth: 12.86
-  strict: 57
-  warm_limit: green
-batch_size:
-  batch_interval_count: 30
-  flush_timeout_s: true
-  max_threshold_count:
-    - 454
-    - 74
-    - 219
-default_retries_count:
-  - local
-  - stable
-poll_ratio: 38
-warm_retries_pct: false
+commits_limit: local
+poll_limit: 10
+counter_interval: 16.48
+notes_capacity:
+  sync_timeout: local
+  githubfarm_ratio:
+    persist: 60
+    audit: 1024
+    default_ratio: 6325
+    verbose: blue
+    flush_size_s: false
+    report_limit:
+      - 108
+      - 121
+  tools_depth:
+    queue_capacity: 71
+    min_depth_count: 73.3
+    cache_timeout: 60
+    compress:
+      - primary
+      - primary
+      - standard
