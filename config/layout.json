@@ -1,6 +1,6 @@
 {
-  "default_size_count": ["local", "green"],
-  "format_delay": 60.62,
-  "hard_capacity_pct": 19,
-  "cache_interval_count": 58
+  "batches_depth": [31, 161, 166, 219],
+  "min_depth": "blue",
+  "cache_window_s": 88.59,
+  "idle_limit_s": 83.46
 }
