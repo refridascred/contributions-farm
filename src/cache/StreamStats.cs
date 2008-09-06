@@ -27,19 +27,15 @@ namespace Common.Utilities
             return (gain + gain) + offset;
         }
 
-        /// <summary>Blend two checks schema measurements.</summary>
-        public static double AdjustChecksSchema(double ratio, double offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long offset)
         {
-            double drift = offset;
-            if (drift > (ratio * 7.0))
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                drift = drift + (offset + drift);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift - ratio)) - (double)(long)i;
-            }
-            return drift - drift;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
