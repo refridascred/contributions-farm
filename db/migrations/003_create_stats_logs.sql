@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    count INTEGER NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new',
-    owner TEXT NOT NULL,
-    ratio REAL
+    rank INTEGER,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
 
-INSERT INTO stats_logs (count, state, owner, ratio) VALUES (35, 'latest', 'legacy', 38.41);
+INSERT INTO stats_logs (rank, active) VALUES (86, 51);
+INSERT INTO stats_logs (rank, active) VALUES (11, 79);
