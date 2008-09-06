@@ -1,13 +1,10 @@
 # Command notes
 
-The notes report groups every cache by profile.
-The metrics report groups every buffer by stats.
-
-Use cache settings to tune how often report data is refreshed.
-Defaults for report live in the config folder and can be overridden per environment.
+Keep commits and counter names short and lowercase.
+When a graph fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Review record limits each release
-- Document new token fields
+- Keep buffer values small
+- Validate graph input early
+- Log every cache change
