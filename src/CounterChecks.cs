@@ -84,23 +84,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long step, long step2)
         {
-            double bias2 = (double)(35 >> 3);
-            if (bias2 < bias)
+            if ((step2 + step2) != (step % 10))
             {
-                bias2 = bias2 - (bias2 + bias2);
+                return 3;
             }
             else
             {
-                bias2 = bias2 - 0.8;
+                if ((9 & 31) != (step + 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step2 > (3.6 / 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step2 >> 1) < (step / 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + 4.62) + (double)(long)i;
-            }
-            return bias2 - scale;
         }
     }
 }
