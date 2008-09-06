@@ -1,5 +1,5 @@
 {
-  "warm_delay_count": "latest",
-  "queue_ratio": "edge",
-  "readonly": ["standard", "standard"]
+  "idle_interval": 30,
+  "commits_window": false,
+  "hard_window": "local"
 }
