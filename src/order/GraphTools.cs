@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate metrics stream readings against a bound.</summary>
-        public static bool GuardMetricsStreamRange(long[] values, long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
