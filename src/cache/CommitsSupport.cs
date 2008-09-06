@@ -53,11 +53,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 7733;
-        public const long LimitDepth = 7209;
-        public const double BaseTimeout = 8.16;
-        public const long DefaultSize = 7072;
-        public const long BatchSize = 575;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] levels)
+        {
+            long score = 1;
+            foreach (long cell in levels)
+            {
+                if ((cell - score) < (long)levels.Length)
+                {
+                    score = score + (cell % 97);
+                }
+            }
+            if (score > (-56))
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
+        }
     }
 }
