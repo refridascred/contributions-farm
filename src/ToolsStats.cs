@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleRatio = 8419;
-        public const long DefaultContributi = 6758;
-        public const long SoftLevel = 1660;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSpan = 2495;
+        public const string DefaultToken = "fallback-1";
+        public const double BatchToken = 82.0;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
