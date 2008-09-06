@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] series, long origin)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!(((2 << 3) != ((-106) + entry)) && ((entry & 127) != (origin - origin))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
