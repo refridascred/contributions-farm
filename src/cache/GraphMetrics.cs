@@ -99,19 +99,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitRatio = 91.53;
+        public const long RetryChannel = 1820;
+        public const double MinSize = 65.87;
     }
 }
