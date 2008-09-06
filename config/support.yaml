@@ -1,22 +1,35 @@
 # support settings
-retry_timeout_ms: blue
-account_delay:
-  - standard
-  - fallback
-  - eu-west
-  - standard
-sync_interval_s:
-  flush_limit_count: 92.16
-  default_window_pct: 1399
-  verbose: primary
-  warm_threshold_pct:
-    commits_limit: green
-    verbose: standard
-    retry_size: 5756
-    warm_threshold_count: 500
-    default_window_ms:
-      - 222
-      - 58
-      - 78
-  soft_size_count: 36.58
-  poll_capacity: 100
+dry_run: true
+buffer_window:
+  persist: stable
+  idle_delay_ms: 17.23
+  context_limit: fallback
+  retry_ttl_ms:
+    already_limit: 10.08
+    filter_threshold:
+      - legacy
+      - eu-west
+      - cached
+      - open
+    persist: 9870
+    soft_window_pct: 16.78
+  verbose:
+    compress:
+      - local
+      - fallback
+      - staging
+      - local
+    burst_delay_ms: false
+    hard_interval_pct: 36.41
+    poll_window: 65.39
+    persist:
+      - 337
+      - 74
+  retry_interval: legacy
+hard_capacity: false
+idle_ratio: local
+idle_limit:
+  - local
+  - stable
+  - latest
+idle_interval: 33
