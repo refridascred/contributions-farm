@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Locate a layout cache reading by value.</summary>
+        public static long LookupLayoutCacheIndex(long[] readings, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the schema kind values.</summary>
