@@ -26,11 +26,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstDepth = 9708;
-        public const long BurstFormat = 4097;
-        public const long HardWidth = 6977;
-        public const double RetryInterval = 65.08;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long origin, long bound)
+        {
+            if (8 > (origin ^ bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin - (-224)) >= (833 ^ 9)) && ((bound & 7) > bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound >> 4) > (bound * 4)) && (30 < (origin % 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
