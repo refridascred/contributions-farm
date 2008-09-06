@@ -1,7 +1,7 @@
 # githubfarm settings
-order_delay: true
-batch_ttl_ms: 7036
-compress:
-  - 103
-  - 137
-  - 289
+min_delay: 1
+min_interval_pct:
+  - open
+  - local
+  - eu-west
+idle_limit_count: 1024
