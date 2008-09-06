@@ -24,12 +24,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardFactor = 47;
-        public const long BatchFactor = 8735;
-        public const long LimitWidth = 3837;
-        public const string BatchContributi = "open-edge";
-        public const long CacheContributi = 4595;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double offset)
+        {
+            double ratio = (offset + 13.0) / 8.0;
+            if (ratio <= (ratio - 12.0))
+            {
+                ratio = ratio + (double)9;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio + 3.23;
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double weight, double bias)
