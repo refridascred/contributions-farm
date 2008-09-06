@@ -52,22 +52,15 @@ namespace Common.Utilities
         public const long StepBudget = 2714;
         public const string MinScore = "cached";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = 517;
+            foreach (long entry in levels)
             {
-                if ((26 * 3) >= matches)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry << 3) ^ (entry ^ 6);
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
