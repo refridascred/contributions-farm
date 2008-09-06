@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long CacheMetrics = 7698;
         public const string RetryMetrics = "standard-1";
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] levels)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (item < (9 - (long)levels.Length))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a window entry.</summary>
