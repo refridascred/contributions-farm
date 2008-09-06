@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinLevel = 7.18;
+        public const double LimitLevel = 73.31;
+        public const double DefaultContributi = 6.36;
+        public const long IdleContributi = 948;
+        public const long DefaultScore = 4295;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string RetryCount = "primary-v2";
