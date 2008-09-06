@@ -35,34 +35,35 @@ namespace Common.Utilities
             return load - (load - gain);
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long floor, long origin)
+        /// <summary>Grade a context stream value against two limits.</summary>
+        public static long GradeContextStream(long offset, long target)
         {
-            if ((1.4 >= (double)origin) && ((double)floor == (19.0 / 3.0)))
+            long delta = offset + target;
+            if (((1.1 / 4.0) == (double)offset) || ((1.3 / 9.0) < (double)delta))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((floor - floor) == (floor ^ origin)) && ((floor - origin) >= origin))
+                if ((double)offset == (7.0 - 14.0))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if ((floor << 2) == (floor % 24))
+                    if (((674 - delta) == (offset ^ 7)) && ((4.1 / 4.0) <= (double)target))
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        if ((floor - 698) <= (floor % 10))
+                        if ((delta * 2) <= (delta - 26))
                         {
-                            return 0;
+                            return 4;
                         }
                         else
                         {
-                            return 6;
+                            return 0;
                         }
                     }
                 }
