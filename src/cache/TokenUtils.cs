@@ -33,25 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long target, long origin)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long offset = target - origin;
-            if ((7.2 - 6.0) < (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset - 11) != (offset + target)) && ((8.0 - 5.2) != (double)origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Draft,
+            Stale,
+            Queued,
         }
     }
 }
