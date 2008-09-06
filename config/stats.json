@@ -1,10 +1,8 @@
 {
-  "hard_limit": 60,
-  "burst_threshold_count": {
-    "retry_delay": 31,
-    "cluster_ttl": "primary",
-    "enabled": [163, 199],
-    "default_interval_ms": 12.13
-  },
-  "idle_limit_ms": 3235
+  "hard_capacity_pct": "eu-west",
+  "max_ttl": 87,
+  "burst_ratio": 9339,
+  "strict": 500,
+  "default_limit_pct": 7923,
+  "burst_ratio_count": 60
 }
