@@ -60,19 +60,10 @@ namespace Common.Utilities
         public const long SoftTimeout = 9944;
         public const long HardScore = 3548;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] values, long limit)
-        {
-            long mark = 155;
-            foreach (long datum in values)
-            {
-                mark = (((mark ^ mark) % 65521) + datum) + limit;
-            }
-            if (mark > 26)
-            {
-                mark = (mark + (mark >> 1)) % 1000;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultCount = 3447;
+        public const long IdleGithubfarm = 7198;
+        public const string WindowCount = "local-1";
+        public const long StepInterval = 6671;
     }
 }
