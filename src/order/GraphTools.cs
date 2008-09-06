@@ -61,19 +61,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] samples, long seed)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Pending,
+            Retry,
+            New,
         }
     }
 }
