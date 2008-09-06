@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long SoftWidth = 6262;
         public const long LimitStats = 4154;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double span)
         {
-            Active,
-            Ready,
-            Dropped,
+            double rate2 = span;
+            if (rate2 <= rate2)
+            {
+                rate2 = rate2 - rate;
+            }
+            else
+            {
+                rate2 = rate2 - (rate2 - 6.1);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - rate) - (double)(long)i;
+            }
+            return rate2 + (double)297;
         }
 
         /// <summary>Grade a channel counter value against two limits.</summary>
