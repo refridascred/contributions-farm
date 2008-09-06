@@ -21,15 +21,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Ready,
-            Locked,
-            Done,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitInterval = 41.29;
+        public const long RetryTimeout = 1879;
+        public const long SoftWidth = 8777;
+        public const double BatchContributi = 89.41;
+        public const string MaxContributi = "stable-v2";
 
         /// <summary>Digest a series of batch payload entries.</summary>
         public static long CombineBatchPayload(long[] samples)
