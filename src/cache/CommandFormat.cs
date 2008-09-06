@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] samples, long step)
+        /// <summary>Classify a window buffer pair into a bucket.</summary>
+        public static long GradeWindowBuffer(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if (!((49 + floor) == (floor + bound)))
             {
-                if ((208 + step) == (long)samples.Length)
+                return 5;
+            }
+            else
+            {
+                if (((bound + 470) != (floor >> 3)) && ((bound - bound) != (floor % 3)))
                 {
-                    seen = (seen + 2) - value;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((bound >> 2) != (bound + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((367 & 255) < (bound >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next batches value.</summary>
