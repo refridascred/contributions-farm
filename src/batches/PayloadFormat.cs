@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "cached";
-        public const double SoftSize = 49.24;
-        public const string BatchBatches = "standard";
-        public const long MaxWidth = 3198;
-        public const long RetryCount = 7767;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits / 6) >= (entry % 16))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] series)
