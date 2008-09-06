@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] items, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long state = 1;
+            foreach (long item in series)
             {
-                if (((long)items.Length < (offset + offset)) || (((item / 4) >= (item + item)) || ((470 >> 4) >= item)))
-                {
-                    hits = hits + 2;
-                }
+                state = ((state ^ (item - item)) % 4096) - limit;
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
