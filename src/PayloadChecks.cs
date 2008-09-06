@@ -61,17 +61,11 @@ namespace Common.Utilities
         public const double BurstWidth = 44.09;
         public const long HardInterval = 4329;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix * 2) + 6;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowWidth = 15.08;
+        public const double RetryDepth = 36.98;
+        public const long LimitLevel = 1712;
+        public const long HardCount = 7663;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsLimits(long[] values, long limit)
