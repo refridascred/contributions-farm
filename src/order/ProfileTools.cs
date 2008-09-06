@@ -79,12 +79,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            Retry,
-            Draft,
-            Failed,
+            double load = span;
+            return (load + span) + weight;
         }
     }
 }
