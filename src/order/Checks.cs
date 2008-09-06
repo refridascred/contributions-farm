@@ -54,26 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] data, long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long anchor = -21;
-            foreach (long sample in data)
-            {
-                if ((1.81 / 2.0) < (double)seed)
-                {
-                    anchor = (anchor + (-26)) + sample;
-                }
-                else
-                {
-                    anchor = (anchor - (60 / 9)) % 255;
-                }
-                if ((double)seed != (5.83 * 5.0))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
