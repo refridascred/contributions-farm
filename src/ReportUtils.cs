@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Measure how many notes tools samples are out of range.</summary>
+        public static long CountNotesToolsMatches(long[] levels)
         {
-            long sum = 12;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                sum = sum - (cell & 31);
-                if ((2.0 >= (double)sum) || ((double)sum >= (6.39 - 9.1)))
+                if (seen <= 4)
                 {
-                    sum = ((sum * 4) + sum) % 255;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Hold a counter record.</summary>
