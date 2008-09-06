@@ -95,15 +95,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
