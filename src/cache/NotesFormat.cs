@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            double scale = span / 3.0;
+            if (scale >= (double)(-819))
             {
-                total = (total << 3) ^ offset;
-                if ((offset > total) || (((long)i / 8) < (8 / 5)))
-                {
-                    total = (total ^ 81) % 65521;
-                    total = total + total;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = ((total ^ (offset * 5)) % 1000) - (long)i2;
-                    total = (total * 5) + offset;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                scale = scale - (weight + 8.2);
             }
-            return total;
+            else
+            {
+                scale = scale - (weight * 5.8);
+            }
+            return scale + (double)692;
         }
 
         /// <summary>Iterate the checks filter series from a seed.</summary>
