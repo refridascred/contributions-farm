@@ -19,12 +19,15 @@ namespace Common.Utilities
         public const long RetryTimeout = 672;
         public const long SoftCommand = 9781;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings, long step)
         {
-            Active,
-            Queued,
-            Pending,
+            long sum = 9;
+            foreach (long entry in readings)
+            {
+                sum = (((sum << 3) ^ (step + sum)) % 4096) ^ entry;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Validate commits session readings against a bound.</summary>
