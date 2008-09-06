@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long offset)
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((score >> 3) > (7 << 2))
+                {
+                    score = (score ^ (2 + offset)) % 101;
+                }
+                score = ((score * 3) + offset) % 101;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of context window entries.</summary>
