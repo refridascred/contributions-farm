@@ -31,11 +31,19 @@ namespace Common.Utilities
         public const string BatchContributi = "open-edge";
         public const long CacheContributi = 4595;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double weight, double bias)
         {
-            public double Rank { get; set; }
-            public double Count { get; set; }
+            double scale = (double)(41 & 31);
+            if (scale <= (scale + scale))
+            {
+                scale = scale + (bias / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (weight + bias)) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
