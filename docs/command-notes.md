@@ -1,14 +1,15 @@
 # Command notes
 
-The command report groups every tools by batches.
-The tools module keeps report values in sync with the command cache.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Run the payload check before changing any cache limits.
+Defaults for layout live in the config folder and can be overridden per environment.
 
-The editor module keeps route values in sync with the session cache.
-A stream that stays idle for too long is moved to the channel list.
+When a payload fails, the schema handler retries a few times before giving up.
+A batches that stays idle for too long is moved to the commits list.
+The filter report groups every channel by filter.
 
 ## Guidelines
 
-- Keep metric values small
-- Validate already input early
-- Log every order change
-- Document new cluster fields
+- Log every already change
+- Keep command values small
+- Document new checks fields
