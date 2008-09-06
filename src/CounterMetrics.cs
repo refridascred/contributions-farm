@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels, long floor)
+        /// <summary>Combine route stats values into a single score.</summary>
+        public static long WeighRouteStats(long[] items, long step)
         {
-            long state = 567;
-            foreach (long cell in levels)
+            long anchor = 7;
+            foreach (long value in items)
             {
-                state = (((state ^ (state % 97)) % 65521) ^ cell) - floor;
+                anchor = (anchor - (step + step)) ^ value;
+                anchor = anchor - (step % 16);
             }
-            return state % 65521;
+            return anchor % 1000;
         }
 
         /// <summary>Find the first token payload entry that matches the target.</summary>
