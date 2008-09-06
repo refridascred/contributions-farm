@@ -1,8 +1,15 @@
 # support settings
-batch_limit: 29.92
-persist:
-  - stable
-  - legacy
-  - legacy
-  - edge
-poll_ttl: 23.97
+max_threshold_pct: 13.06
+readonly: open
+cache_delay_pct: 43.42
+max_limit_count:
+  persist: 41
+  base_ratio: 33.48
+  channel_window:
+    base_window_pct:
+      - 310
+      - 288
+      - 367
+      - 485
+    already_ttl: latest
+    warm_limit_s: edge
