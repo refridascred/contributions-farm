@@ -16,12 +16,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 6086;
-        public const long BurstMetrics = 528;
-        public const double MinFactor = 9.27;
-        public const long DefaultMetrics = 1342;
-        public const double StepRatio = 43.1;
+        /// <summary>Audit cache stats readings against a rule.</summary>
+        public static long CountCacheStatsHits(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (1.7 <= (double)origin)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two token record measurements.</summary>
         public static double AdjustTokenRecord(double ratio, double floor)
