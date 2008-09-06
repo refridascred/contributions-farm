@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long origin, long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long prev = origin - target;
-            if (origin < (prev + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target <= 7.82)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((9.61 + 3.0) >= (double)origin) || ((0 * 4) > prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Grade a already command value against two limits.</summary>
