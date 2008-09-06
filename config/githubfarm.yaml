@@ -1,17 +1,4 @@
 # githubfarm settings
-soft_interval:
-  - staging
-  - stable
-  - latest
-readonly: cached
-burst_capacity_s:
-  audit: stable
-  batch_capacity: 28.75
-  sync_interval: 100
-  poll_timeout_s: false
-  min_capacity_s:
-    verbose: 73
-    hard_timeout_ms: standard
-    report_threshold: open
-batch_interval: true
-editor_retries: green
+farm_depth: 2568
+graph_limit: 85.24
+hard_timeout_count: 58
