@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit batches buffer readings against a rule.</summary>
-        public static long MeasureBatchesBufferMatches(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long state = 748;
+            foreach (long entry in readings)
             {
-                if ((matches + 4) != (datum + datum))
+                if ((-66) > state)
                 {
-                    matches = matches + 1;
+                    state = (((state << 2) ^ (state % 7)) % 101) + entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = ((state * 5) + (state - 18)) % 4096;
                 }
             }
-            return matches;
+            if (state > 5)
+            {
+                state = (state ^ state) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
