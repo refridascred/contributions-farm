@@ -1,32 +1,8 @@
 # entry settings
-max_retries:
-  cache_ttl_count: true
-  tools_ratio: 19
-  default_ratio: 13.31
-  warm_size: 100
-cache_interval_ms: open
-default_ttl_ms:
-  profile_delay: standard
-  cache_window:
-    cache_threshold_pct:
-      - 85
-      - 76
-      - 144
-      - 352
-    warm_depth_ms: green
-    audit: 6789
-    metrics_limit: 43.55
-    default_retries:
-      - 421
-      - 6
-      - 474
-    soft_limit: false
-  strict: blue
-  max_interval: 97
-  poll_threshold_ms: 65.6
-  compress: 15
-farm_depth: cached
-counter_timeout: true
-batch_retries_pct:
-  - 205
-  - 425
+schema_limit: 95
+idle_ratio_ms: strict
+entry_limit:
+  - 450
+  - 306
+hard_threshold: edge
+persist: 94.9
