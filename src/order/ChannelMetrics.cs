@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BatchCluster = 3751;
         public const string CacheCluster = "staging";
 
-        /// <summary>Audit contributi farm readings against a rule.</summary>
-        public static long AuditContributiFarmOutliers(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum << 1) < matches)
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstRatio = 77.36;
+        public const double BatchWidth = 5.72;
+        public const string DefaultLayout = "standard-1";
+        public const long CacheLayout = 1991;
+        public const string IdleTimeout = "standard-edge";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] readings, long offset)
