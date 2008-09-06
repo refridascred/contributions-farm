@@ -1,6 +1,20 @@
 {
-  "stream_retries": 250,
-  "tools_delay": ["primary", "green"],
-  "batch_delay_s": "stable",
-  "layout_retries": 30
+  "layout_interval": {
+    "base_timeout_pct": false,
+    "account_window": "strict",
+    "flush_depth_pct": 97.98,
+    "flush_interval": 500,
+    "cache_window_s": "local"
+  },
+  "sync_timeout_count": 87.76,
+  "record_timeout": "blue",
+  "already_retries": 78,
+  "support_threshold": {
+    "hard_depth_count": [85, 170, 128, 327],
+    "audit": "staging",
+    "payload_capacity": 5.97,
+    "cache_depth": "eu-west",
+    "warm_threshold": false
+  },
+  "cache_depth_ms": false
 }
