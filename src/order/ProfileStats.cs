@@ -51,20 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the support graph series from a seed.</summary>
-        public static long SeriesSupportGraph(long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] data, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                sum = (sum << 2) ^ ((long)i ^ 46);
-                for (int i2 = 0; i2 < 6; i2++)
+                if (item >= seed)
                 {
-                    sum = ((sum + 0) % 97) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return ready;
         }
     }
 }
