@@ -27,11 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 94.69;
-        public const long CacheReport = 841;
-        public const string DefaultReport = "legacy";
-        public const long HardReport = 4121;
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long FindClusterIndex(long[] samples, long limit)
