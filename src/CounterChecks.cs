@@ -67,38 +67,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long step, long step2)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] items, long step)
         {
-            if ((step2 + step2) != (step % 10))
+            bool ok = true;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9 & 31) != (step + 15))
+                if (datum <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step2 > (3.6 / 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step2 >> 1) < (step / 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
