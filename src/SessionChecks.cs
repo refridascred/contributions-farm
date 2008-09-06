@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] items, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (sample < limit)
                 {
-                    sum = sum + (long)i2;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum << 2) ^ target) % 97;
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
