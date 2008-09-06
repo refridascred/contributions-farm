@@ -43,21 +43,21 @@ namespace Common.Utilities
         public const long BurstWidth = 8221;
         public const string MaxSize = "latest";
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)target < 1.65) || (7.61 >= (double)target))
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (mix << 1)) % 4096;
                 }
+                mix = (mix ^ (target ^ (long)i)) % 1000;
+                mix = ((mix * 5) + (target * 4)) % 4096;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
