@@ -1,5 +1,5 @@
 {
-  "warm_capacity_count": 38.02,
-  "cache_window_ms": 12,
-  "audit": 250
+  "idle_ttl": false,
+  "cluster_depth": 60,
+  "strict": "blue"
 }
