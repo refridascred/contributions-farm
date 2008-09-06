@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values)
         {
-            Stale,
-            Draft,
-            New,
-            Locked,
-            Active,
+            long sum = 22;
+            foreach (long cell in values)
+            {
+                if (!((double)cell == (6.29 - 2.09)))
+                {
+                    sum = (sum ^ sum) % 97;
+                }
+            }
+            if (sum < 59)
+            {
+                sum = (sum + ((-3) >> 5)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the support account entries that pass the check.</summary>
