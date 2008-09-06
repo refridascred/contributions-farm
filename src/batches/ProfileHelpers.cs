@@ -60,11 +60,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Validate report stream readings against a bound.</summary>
+        public static bool ValidateReportStreamRange(long[] samples, long target)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
