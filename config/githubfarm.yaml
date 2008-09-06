@@ -1,15 +1,23 @@
 # githubfarm settings
-context_capacity: 74.59
-already_window: 100
-hard_timeout_count: 58.79
-readonly:
-  cache_size: 69.95
-  base_ratio:
-    hard_delay_s: false
-    audit: 2359
-    notes_delay: green
-  max_capacity_s:
-    - 110
-    - 318
-    - 48
-    - 226
+flush_interval:
+  - 206
+  - 115
+  - 432
+  - 283
+layout_threshold: edge
+cache_retries_ms: 10
+cache_timeout: edge
+retry_window:
+  hard_ttl_s:
+    burst_retries_count: 9317
+    soft_limit_pct: 80
+    poll_size_pct: legacy
+    idle_timeout_s: eu-west
+    retry_interval_ms: stable
+  flush_window_s:
+    soft_size: 76.2
+    sync_delay: 3686
+    cache_ratio: stable
+  burst_interval_ms: 60
+  soft_timeout_count: true
+readonly: 60
