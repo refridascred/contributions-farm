@@ -34,16 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultBudget = 1142;
+        public const long BurstSpan = 9333;
+        public const long BaseTimeout = 1709;
+        public const string BurstStream = "staging-v2";
+        public const long DefaultStream = 1211;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long DeriveChecks(long floor)
