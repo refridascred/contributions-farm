@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long offset, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double weight, double floor)
         {
-            if ((target + target) == (target & 15))
+            double mean = 2.32;
+            if (mean <= (floor / 5.0))
             {
-                return 4;
+                mean = mean - (floor + floor);
             }
-            else
-            {
-                if ((double)target > 1.0)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mean - weight;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
