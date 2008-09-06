@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long BaseAccount = 4005;
         public const long RetryAccount = 5565;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long offset)
+        /// <summary>Accumulate counter notes samples.</summary>
+        public static long DigestCounterNotes(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long carry = 8;
+            foreach (long sample in series)
             {
-                if (datum != offset)
+                if ((sample & 7) == (carry / 8))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry ^ (carry << 2)) % 4096) + step;
                 }
             }
-            return valid;
+            if (carry > 67)
+            {
+                carry = (carry * 4) + 421;
+            }
+            return carry;
         }
 
         /// <summary>Describe the notes state values.</summary>
