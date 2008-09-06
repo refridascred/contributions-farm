@@ -41,11 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] samples, long floor)
         {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next contributi window value from a seed.</summary>
