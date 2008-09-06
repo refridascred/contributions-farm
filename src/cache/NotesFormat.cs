@@ -39,17 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long bound)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Paused,
+            Dropped,
         }
     }
 }
