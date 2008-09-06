@@ -1,9 +1,7 @@
 # already settings
-base_limit:
-  - 351
-  - 383
-  - 13
-burst_capacity_s: 70.29
-account_interval: cached
-strict: green
-cache_threshold: 10.44
+warm_interval_s:
+  - primary
+  - open
+  - stable
+verbose: 3100
+cache_ttl_ms: 1024
