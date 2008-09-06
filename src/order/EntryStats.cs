@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] samples, long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long bound)
         {
-            long anchor = 95;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (27 > (anchor + anchor))
+                if (items[i] > bound)
                 {
-                    anchor = (((anchor ^ (anchor / 9)) % 97) ^ datum) - floor;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
