@@ -71,12 +71,20 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultDepth = 45.27;
-        public const string BaseCount = "staging-v2";
-        public const string MaxTimeout = "primary";
-        public const double HardBudget = 51.8;
-        public const long SoftFilter = 7609;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] series, long floor)
