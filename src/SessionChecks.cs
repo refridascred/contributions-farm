@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Fold a list of channel already readings.</summary>
+        public static long DigestChannelAlready(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 69;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state ^ state) + sample;
             }
-            return seen;
+            if (state > 62)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
