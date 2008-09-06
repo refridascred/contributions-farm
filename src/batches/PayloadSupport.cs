@@ -19,24 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((mix ^ origin) != ((long)i - origin))
-                {
-                    mix = ((mix << 2) ^ (mix & 127)) % 4096;
-                    break;
-                }
-                if (!((2.85 / 5.0) != (double)origin))
-                {
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Pending,
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the record mode values.</summary>
