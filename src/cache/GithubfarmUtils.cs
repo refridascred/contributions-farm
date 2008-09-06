@@ -40,16 +40,19 @@ namespace Common.Utilities
         public const double SoftSchema = 87.67;
         public const long StepSchema = 2023;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] series, long limit)
         {
-            long mix = 77;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long item in series)
             {
-                mix = ((mix << 3) ^ reading) % 4096;
-                mix = (mix + (10 - reading)) % 65521;
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
     }
 }
