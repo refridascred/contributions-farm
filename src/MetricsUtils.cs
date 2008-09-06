@@ -52,22 +52,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((double)28 == (double)value) && ((value + (-80)) <= (6 - matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Closed,
+            Retry,
         }
     }
 }
