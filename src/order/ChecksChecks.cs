@@ -19,25 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi farm pair into a bucket.</summary>
-        public static long SortContributiFarm(long limit, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long prev = limit + bound;
-            if (prev >= (bound + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((182 + (-505)) > (bound % 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Stale,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
