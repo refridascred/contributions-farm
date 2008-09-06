@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long seed, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long next = seed - step;
-            if (((double)step <= (double)6) && ((next / 6) != (next + 17)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < (3.4 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed << 2) >= (103 ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Find the first token payload entry that matches the target.</summary>
