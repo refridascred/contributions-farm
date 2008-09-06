@@ -26,15 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double scale, double bias)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double bias2 = bias;
-            if (bias2 < bias2)
-            {
-                bias2 = bias2 + 15.0;
-            }
-            return bias2 - scale;
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Match up entry samples.</summary>
