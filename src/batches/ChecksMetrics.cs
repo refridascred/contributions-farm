@@ -39,18 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((item & 63) <= item)
+                if (cell < (count << 1))
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
