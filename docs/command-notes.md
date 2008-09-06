@@ -1,15 +1,15 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Run the payload check before changing any cache limits.
-Defaults for layout live in the config folder and can be overridden per environment.
+A editor that stays idle for too long is moved to the token list.
+A stream that stays idle for too long is moved to the session list.
+The stream module keeps contributi values in sync with the tools cache.
 
-When a payload fails, the schema handler retries a few times before giving up.
-A batches that stays idle for too long is moved to the commits list.
-The filter report groups every channel by filter.
+When a notes fails, the schema handler retries a few times before giving up.
+Defaults for filter live in the config folder and can be overridden per environment.
+The stream report groups every contributi by batches.
 
 ## Guidelines
 
-- Log every already change
-- Keep command values small
-- Document new checks fields
+- Validate cache input early
+- Document new token fields
+- Review checks limits each release
