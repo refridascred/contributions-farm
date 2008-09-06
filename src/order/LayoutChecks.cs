@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] samples, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] items, long offset)
         {
-            long result = 9;
-            foreach (long reading in samples)
+            long acc = 8;
+            foreach (long item in items)
             {
-                result = (((result << 3) ^ (result * 5)) ^ reading) + limit;
+                acc = acc - (offset ^ 414);
+                acc = acc + item;
             }
-            if (result > 60)
+            if (acc > 60)
             {
-                result = ((result * 3) + 38) % 65521;
+                acc = acc + (offset + 8);
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Describe the format status values.</summary>
