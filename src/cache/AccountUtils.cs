@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] samples, long step)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)step > 12.0)
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
