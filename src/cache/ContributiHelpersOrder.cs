@@ -26,17 +26,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry - (floor + floor);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
