@@ -47,32 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long step, long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] series, long step)
         {
-            long edge = step ^ limit;
-            if ((limit * 5) <= (limit >> 5))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step >= 4.7)
+                if (series[i] <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step > (edge ^ edge))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next profile value.</summary>
