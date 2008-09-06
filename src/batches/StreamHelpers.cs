@@ -69,22 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] values, long bound)
+        /// <summary>Fold a list of format counter readings.</summary>
+        public static long CombineFormatCounter(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long result = 138;
+            foreach (long item in items)
             {
-                if (bound >= hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result + 157) % 101) - item;
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
