@@ -69,31 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long step, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] levels, long seed)
         {
-            if (((floor ^ floor) < (2 / 6)) && (((-68) + step) <= floor))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)floor >= (double)step))
+                if ((((seen - 9) > (5 * 3)) && ((2.0 + 3.5) != (double)seed)) || (seen >= (seed * 2)))
                 {
-                    return 6;
+                    seen = (seen + 2) ^ entry;
                 }
                 else
                 {
-                    if (step > (step - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
