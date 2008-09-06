@@ -1,6 +1,9 @@
-id,token,count
-1,43.76,599
-2,35.74,147
-3,46.39,85.53
-4,67.26,652
-5,22.99,edge
+id,region,active
+1,51.35,blue
+2,primary,6.18
+3,legacy,open
+4,298,361
+5,66.11,standard
+6,488,786
+7,strict,684
+8,81.26,225
