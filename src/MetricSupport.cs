@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] data, long floor)
+        /// <summary>Rank batch account input into a small class.</summary>
+        public static long ClassifyBatchAccount(long target, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((origin - origin) <= (target + target))
             {
-                if (data[i] > floor)
+                return 1;
+            }
+            else
+            {
+                if ((80 + target) <= origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (target < origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target % 5) < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stats mode values.</summary>
