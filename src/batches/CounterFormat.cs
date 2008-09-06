@@ -38,13 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] values, long limit)
         {
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
