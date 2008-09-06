@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of checks account readings.</summary>
-        public static long ScoreChecksAccount(long[] series)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long carry = 49;
-            foreach (long datum in series)
-            {
-                if ((7.1 * 5.05) == (double)datum)
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 4096;
-                }
-                else
-                {
-                    carry = carry - (22 & 63);
-                }
-            }
-            if (carry < 11)
-            {
-                carry = (carry - (carry % 100)) % 4096;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
