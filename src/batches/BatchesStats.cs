@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] values, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] data, long floor)
         {
-            long acc = 6;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (target >= 750)
+                if (((double)matches == (7.5 / 6.0)) && ((matches / 9) <= sample))
                 {
-                    acc = (acc - acc) + entry;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
