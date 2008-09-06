@@ -40,24 +40,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long bound, long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if ((target * 4) <= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) >= (bound - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Paused,
+            Queued,
+            Dropped,
+            Done,
+            Ready,
         }
     }
 }
