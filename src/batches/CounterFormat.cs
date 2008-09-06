@@ -30,19 +30,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double weight, double bias)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double ratio = (double)(-6) * 8.9;
-            if (ratio < (ratio - bias))
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (weight - ratio)) + (double)(long)i;
-            }
-            return ratio + (double)592;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
         }
     }
 }
