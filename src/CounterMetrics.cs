@@ -31,19 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double weight, double bias)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long target)
         {
-            double scale = (double)(41 & 31);
-            if (scale <= (scale + scale))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (bias / 5.0);
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (weight + bias)) + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
