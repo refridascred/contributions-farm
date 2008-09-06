@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Blend two schema format measurements.</summary>
+        public static double SmoothSchemaFormat(double weight, double offset)
         {
-            double weight = scale;
-            if (weight > (5.6 + span))
+            double rate = offset + (6.4 - offset);
+            if (rate > (double)22)
             {
-                weight = weight - weight;
+                rate = (rate - offset) - weight;
             }
-            else
-            {
-                weight = weight + (weight * 14.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + scale;
+            return rate - (offset - offset);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
