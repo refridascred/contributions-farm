@@ -65,25 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi window value from a seed.</summary>
-        public static long RollContributiWindow(long floor)
+        /// <summary>Look up the position of a already commits sample.</summary>
+        public static long LookupAlreadyCommitsIndex(long[] readings, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
                 {
-                    carry = (carry ^ floor) - (long)i2;
-                    carry = carry + (floor / 2);
+                    return (long)i;
                 }
-                if ((((long)i << 3) <= carry) || ((double)floor != (8.0 - 4.0)))
-                {
-                    carry = (carry ^ (278 * 3)) % 65521;
-                }
-                carry = carry + (long)i;
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
     }
 }
