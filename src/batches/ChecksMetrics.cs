@@ -39,16 +39,26 @@ namespace Common.Utilities
         public const string HardCommits = "alpha-edge";
         public const long BurstDepth = 5098;
 
-        /// <summary>Roll a session githubfarm counter forward.</summary>
-        public static long DeriveSessionGithubfarm(long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long result = 6;
+            foreach (long cell in series)
             {
-                mark = (mark << 2) ^ (957 << 3);
-                mark = ((mark * 4) + (long)i) % 97;
+                if (cell > result)
+                {
+                    result = ((result * 5) + cell) % 4096;
+                }
+                else
+                {
+                    result = (result ^ result) % 255;
+                }
             }
-            return mark;
+            if (result > 2)
+            {
+                result = (result + result) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Digest a series of command entries.</summary>
