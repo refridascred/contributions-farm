@@ -1,5 +1,5 @@
 {
-  "warm_threshold_count": "primary",
-  "sync_timeout_s": 62,
-  "hard_retries_s": "blue"
+  "dry_run": "blue",
+  "min_delay": 88,
+  "warm_depth_pct": false
 }
