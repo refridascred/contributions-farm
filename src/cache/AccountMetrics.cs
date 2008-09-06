@@ -53,15 +53,11 @@ namespace Common.Utilities
         public const string BaseFarm = "legacy-1";
         public const string LimitFarm = "standard-v2";
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double ratio, double offset)
-        {
-            double bias = offset;
-            if (bias < (bias * 3.89))
-            {
-                bias = bias + (ratio / 6.0);
-            }
-            return bias - bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheTimeout = 4.2;
+        public const string SoftSize = "primary-v2";
+        public const string BaseScore = "staging-edge";
+        public const long SoftBudget = 4134;
+        public const double MinDepth = 15.44;
     }
 }
