@@ -20,11 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftScore = 7009;
-        public const long BaseLayout = 6437;
-        public const long SoftSpan = 4730;
-        public const double StepLayout = 45.89;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MaxTimeout = 297;
