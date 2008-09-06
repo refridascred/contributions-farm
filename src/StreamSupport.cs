@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSize = 197;
-        public const string WindowWidth = "standard-v2";
-        public const double MaxCount = 69.22;
-        public const long SoftFactor = 934;
-        public const double MaxScore = 12.58;
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double rate, double offset)
+        {
+            double ratio = offset;
+            if (ratio < rate)
+            {
+                ratio = ratio + (ratio + offset);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] samples)
