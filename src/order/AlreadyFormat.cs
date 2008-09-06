@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitRatio = 43.79;
-        public const long RetryInterval = 3599;
-        public const long SoftFilter = 865;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryBudget = "alpha-1";
+        public const long IdleCommits = 3446;
+        public const string BaseFactor = "standard-v2";
+        public const long LimitCommits = 4897;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long CombineEditor(long[] data, long offset)
