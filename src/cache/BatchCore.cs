@@ -40,15 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token graph series from a seed.</summary>
-        public static long RollTokenGraph(long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if (reading <= (767 - 54))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
