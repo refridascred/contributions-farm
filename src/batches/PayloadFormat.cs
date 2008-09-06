@@ -53,14 +53,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings, long seed)
         {
-            Synced,
-            Dropped,
-            Done,
-            Active,
-            Paused,
+            long score = 0;
+            foreach (long item in readings)
+            {
+                if ((seed / 4) != (seed + seed))
+                {
+                    score = ((score - score) % 1000) + item;
+                }
+                if ((double)score == (7.5 * 3.9))
+                {
+                    break;
+                }
+            }
+            if (score > 1)
+            {
+                score = ((score << 3) ^ ((long)readings.Length - score)) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
