@@ -39,38 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a order support pair into a bucket.</summary>
-        public static long BucketOrderSupport(long offset, long target)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            if (((0.6 / 3.0) > (double)offset) || ((offset - target) <= offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target ^ target) < (offset / 8)) || ((16.0 * 8.88) == (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset ^ 2) > 23)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((60 ^ target) != (37 & 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
