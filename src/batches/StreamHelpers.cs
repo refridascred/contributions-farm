@@ -46,39 +46,17 @@ namespace Common.Utilities
             return load - (load - gain);
         }
 
-        /// <summary>Grade a context stream value against two limits.</summary>
-        public static long GradeContextStream(long offset, long target)
+        /// <summary>Iterate the queue route series from a seed.</summary>
+        public static long DeriveQueueRoute(long bound)
         {
-            long delta = offset + target;
-            if (((1.1 / 4.0) == (double)offset) || ((1.3 / 9.0) < (double)delta))
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                acc = (acc * 3) + acc;
+                acc = (acc ^ (bound - bound)) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)offset == (7.0 - 14.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((674 - delta) == (offset ^ 7)) && ((4.1 / 4.0) <= (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((delta * 2) <= (delta - 26))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of format counter readings.</summary>
