@@ -64,12 +64,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] data, long seed)
         {
-            Synced,
-            Locked,
-            Closed,
+            long anchor = -21;
+            foreach (long sample in data)
+            {
+                if ((1.81 / 2.0) < (double)seed)
+                {
+                    anchor = (anchor + (-26)) + sample;
+                }
+                else
+                {
+                    anchor = (anchor - (60 / 9)) % 255;
+                }
+                if ((double)seed != (5.83 * 5.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
