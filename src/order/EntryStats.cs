@@ -36,13 +36,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Classify a token payload pair into a bucket.</summary>
+        public static long SortTokenPayload(long limit, long floor)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            if ((floor * 2) < (floor + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor >> 2) < (floor << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit >> 1) == (limit & 63))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit % 16) < (0 ^ limit)) || ((limit + floor) >= floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
