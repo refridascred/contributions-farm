@@ -37,19 +37,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((946 <= state) || (state >= step)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state * 3) + (11 + state);
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
     }
 }
