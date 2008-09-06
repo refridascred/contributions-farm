@@ -20,15 +20,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Find the first already batch entry that matches the target.</summary>
+        public static long LookupAlreadyBatchIndex(long[] values, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
