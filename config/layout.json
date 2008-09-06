@@ -1,5 +1,5 @@
 {
-  "min_threshold_s": 30,
-  "warm_interval": true,
-  "stream_threshold": "stable"
+  "dry_run": 250,
+  "flush_limit_ms": "staging",
+  "notes_delay": [457, 52]
 }
