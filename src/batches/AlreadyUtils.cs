@@ -46,19 +46,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] series, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long bound)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum != floor)
+                if ((acc % 60) <= ((long)i & 127))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 3) + (bound * 5)) % 255;
                 }
+                else
+                {
+                    acc = (acc * 2) + (bound * 5);
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return ok;
+            return acc;
         }
     }
 }
