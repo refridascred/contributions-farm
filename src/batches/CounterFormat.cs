@@ -36,17 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] values, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
