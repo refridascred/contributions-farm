@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const long HardWidth = 6977;
         public const double RetryInterval = 65.08;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] series, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] values, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((entry - count) < (offset * 5))
+                if ((double)datum > (1.2 * 1.0))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) - step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
