@@ -56,11 +56,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 5846;
-        public const string BaseBudget = "latest-v2";
-        public const long WindowLayout = 4396;
-        public const double WindowRatio = 78.84;
-        public const string StepFactor = "legacy-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 7026;
+        public const long MinBatch = 6072;
+        public const double StepBatch = 68.46;
+        public const long BurstWidth = 9007;
     }
 }
