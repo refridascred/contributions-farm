@@ -36,23 +36,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double gain, double bias)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] values, long origin)
         {
-            double ratio = (double)(6 + 954);
-            if (ratio < (bias * 5.54))
+            long mix = 41;
+            foreach (long entry in values)
             {
-                ratio = ratio - (bias / 3.0);
+                mix = ((mix * 2) + entry) % 65521;
+                if (((double)mix < (7.2 * 1.22)) || (origin < ((long)values.Length + mix)))
+                {
+                    mix = (mix - (54 + entry)) % 4096;
+                }
             }
-            else
-            {
-                ratio = ratio - (gain - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio + (3.1 * 14.0);
+            return mix;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
