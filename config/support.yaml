@@ -1,19 +1,6 @@
 # support settings
-min_capacity: 4220
-filter_size:
-  batch_ttl: standard
-  base_size_ms: 500
-  default_timeout: true
-  strict: true
-  base_retries_ms:
-    order_interval: 7165
-    soft_depth_pct: green
-    counter_ttl:
-      - blue
-      - cached
-    hard_capacity_s: 72
-    compress: 42.28
-    strict:
-      - 407
-      - 490
-hard_ttl_s: open
+cache_ratio_s: 30
+batch_limit_count: 2
+flush_retries: standard
+audit: 28
+metric_window: 2338
