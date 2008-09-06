@@ -14,17 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                if ((entry / 2) >= (count + count))
                 {
-                    return (long)i;
+                    count = (count + 2) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a channel record.</summary>
