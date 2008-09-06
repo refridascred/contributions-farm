@@ -79,15 +79,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double bias, double span)
-        {
-            double drift = span;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (bias * 7.42)) - (double)(long)i;
-            }
-            return drift - span;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepCount = 18.59;
+        public const double MinFilter = 50.94;
+        public const long IdleTimeout = 9905;
     }
 }
