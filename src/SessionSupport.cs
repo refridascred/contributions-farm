@@ -15,19 +15,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] series, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long limit, long floor)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long gap = limit ^ floor;
+            if ((0 - floor) > (limit - 6))
             {
-                if (value < offset)
+                return 3;
+            }
+            else
+            {
+                if (((floor >> 5) > (limit - 5)) && ((14.0 / 7.0) >= (double)floor))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!(limit <= ((-19) % 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(gap <= limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
