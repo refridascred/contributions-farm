@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Scale a route token figure with a bias.</summary>
