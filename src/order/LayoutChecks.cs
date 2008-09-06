@@ -61,23 +61,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long seed)
         {
-            long bound = step ^ target;
-            if ((double)target == (10.0 + 12.0))
+            if (target <= (seed & 15))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (((-122) + step) <= (bound << 1))
+                if (((seed & 3) != (target << 3)) && ((1.31 + 8.2) == (double)target))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((target + seed) >= (seed << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
