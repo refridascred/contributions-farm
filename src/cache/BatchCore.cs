@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (result - result) ^ (long)i2;
-                }
-                result = ((result * 3) + (result + result)) % 97;
-                result = ((result * 2) + (long)i) % 101;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Describe the schema mode values.</summary>
