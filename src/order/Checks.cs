@@ -14,25 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank format tools input into a small class.</summary>
-        public static long BucketFormatTools(long limit, long floor)
-        {
-            if ((8.4 - 3.26) < (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 3) < (floor % 24))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftSize = 37.9;
+        public const string MinRatio = "primary";
+        public const double CacheInterval = 28.77;
+        public const long CacheEditor = 3118;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
