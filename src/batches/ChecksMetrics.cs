@@ -36,15 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] readings)
+        /// <summary>Measure how many notes command samples are out of range.</summary>
+        public static long MeasureNotesCommandMatches(long[] data)
         {
             long matches = 0;
-            foreach (long item in readings)
+            foreach (long datum in data)
             {
-                if (item < matches)
+                if (((double)datum > 14.0) || (((matches & 7) >= (718 + 588)) || ((matches - (-134)) >= (datum + datum))))
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
