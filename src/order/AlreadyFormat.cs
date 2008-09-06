@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long RetryRatio = 5857;
         public const long CacheQueue = 6067;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] data, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] data, long limit)
         {
-            long score = -91;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long value in data)
             {
-                score = ((score << 2) ^ offset) + cell;
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
