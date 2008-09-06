@@ -23,21 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a counter commits counter forward.</summary>
-        public static long IterateCounterCommits(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((5.26 + 9.0) == (double)floor) || ((0 ^ floor) <= (floor >> 5)))
-                {
-                    result = (result * 5) + ((long)i * 3);
-                    result = result - (8 ^ result);
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 5585;
+        public const long StepCount = 1061;
+        public const long StepWidth = 1611;
+        public const long CacheSize = 5079;
+        public const long MaxBudget = 135;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 7570;
