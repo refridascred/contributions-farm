@@ -44,18 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a support farm sample.</summary>
-        public static long SeekSupportFarmIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 8737;
+        public const double CacheAlready = 88.21;
+        public const long MaxRatio = 2457;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] data, long floor)
