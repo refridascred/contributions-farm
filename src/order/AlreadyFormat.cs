@@ -31,31 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long origin, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] levels, long bound)
         {
-            if (8 > (origin ^ bound))
+            long total = 3;
+            foreach (long item in levels)
             {
-                return 0;
+                total = (total ^ bound) + item;
             }
-            else
+            if (total < 57)
             {
-                if (((origin - (-224)) >= (833 ^ 9)) && ((bound & 7) > bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound >> 4) > (bound * 4)) && (30 < (origin % 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                total = (total + (bound / 7)) % 97;
             }
+            return total;
         }
 
         /// <summary>Accumulate counter samples.</summary>
