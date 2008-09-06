@@ -20,10 +20,19 @@ namespace Common.Utilities
         public const double HardOrder = 9.44;
         public const string HardSpan = "alpha";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 2768;
-        public const long WindowBudget = 9937;
-        public const long MaxSize = 2763;
-        public const string RetryScore = "open-1";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
