@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items, long seed)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long acc = 77;
-            foreach (long value in items)
-            {
-                if ((seed / 9) == (acc / 6))
-                {
-                    acc = ((acc * 4) + (acc & 1)) - value;
-                }
-            }
-            if (acc < 455)
-            {
-                acc = (acc ^ (seed << 3)) % 101;
-            }
-            return acc % 4096;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
