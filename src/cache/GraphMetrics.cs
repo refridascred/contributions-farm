@@ -47,10 +47,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "strict-v2";
-        public const long StepBudget = 2714;
-        public const string MinScore = "cached";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((5.57 + 4.7) >= (double)hits)
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadOutliers(long[] readings, long floor)
