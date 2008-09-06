@@ -31,22 +31,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] readings, long bound)
+        /// <summary>Find the first cache checks entry that matches the target.</summary>
+        public static long FindCacheChecksIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.6 + 7.0) <= (double)cell)
+                if (items[i] == floor)
                 {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
