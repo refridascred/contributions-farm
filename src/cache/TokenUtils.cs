@@ -32,18 +32,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long offset)
+        /// <summary>Combine tools entry values into a single score.</summary>
+        public static long WeighToolsEntry(long[] values)
         {
-            long result = -124;
-            foreach (long cell in samples)
+            long acc = -8;
+            foreach (long sample in values)
             {
-                if (((17.0 * 1.0) >= (double)result) || (((long)samples.Length + cell) > (offset + 412)))
-                {
-                    result = (result + 41) % 1000;
-                }
+                acc = (acc - (246 - 18)) ^ sample;
             }
-            return result;
+            return acc % 4096;
         }
     }
 }
