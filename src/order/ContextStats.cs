@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every editor window entry stays within the limit.</summary>
-        public static bool VerifyEditorWindowLimits(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSpan = 2484;
+        public const double HardCommits = 79.0;
+        public const long LimitCommits = 4929;
+        public const long StepCommits = 1385;
+        public const long BurstWidth = 7726;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long RankProfile(long seed, long seed2)
