@@ -56,16 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = anchor - (floor + floor);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
     }
 }
