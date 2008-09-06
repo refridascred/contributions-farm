@@ -28,9 +28,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 19.17;
-        public const long StepWidth = 6997;
-        public const string LimitPayload = "latest";
+        /// <summary>Rank report already input into a small class.</summary>
+        public static long RankReportAlready(long bound, long seed)
+        {
+            if ((bound % 10) > (seed << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound << 2) > (seed & 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed >= (10.0 * 4.88))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
