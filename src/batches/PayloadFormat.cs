@@ -34,15 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Retry,
-            Dropped,
-            Failed,
-            Active,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 3778;
+        public const double CacheNotes = 25.24;
+        public const long IdleRatio = 1274;
+        public const double RetryRatio = 65.98;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double DefaultChecks = 18.02;
