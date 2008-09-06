@@ -29,18 +29,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metrics schema readings.</summary>
-        public static long TotalMetricsSchema(long[] data, long limit)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double rate, double bias)
         {
-            long result = -2;
-            foreach (long sample in data)
+            double bias2 = bias;
+            if (bias2 <= (bias - rate))
             {
-                if ((sample > (sample - result)) || ((3.53 + 15.0) >= (double)result))
-                {
-                    result = ((result + (result ^ sample)) % 97) - limit;
-                }
+                bias2 = bias2 - (double)24;
             }
-            return result % 65521;
+            else
+            {
+                bias2 = bias2 - (6.2 * 9.32);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 - 0.79;
         }
     }
 }
