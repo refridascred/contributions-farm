@@ -42,19 +42,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            double scale = bias;
-            if (scale > (double)75)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                scale = scale + ratio;
+                if ((step - step) == (3 * 2))
+                {
+                    result = (result ^ ((-25) >> 5)) % 255;
+                    result = result - (step & 7);
+                    break;
+                }
+                else
+                {
+                    result = result + (step ^ result);
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - 3.0) + (double)(long)i;
-            }
-            return scale + (ratio * 7.2);
+            return result;
         }
     }
 }
