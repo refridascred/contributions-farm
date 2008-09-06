@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Derive the next tools commits value from a seed.</summary>
+        public static long RollToolsCommits(long seed)
         {
-            Ready,
-            Idle,
-            Done,
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = mark + (seed + mark);
+                mark = (mark * 2) + (seed >> 2);
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
