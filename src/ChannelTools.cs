@@ -20,18 +20,10 @@ namespace Common.Utilities
         public const long BurstEntry = 5898;
         public const long HardEntry = 3862;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings, long offset)
-        {
-            long score = 322;
-            foreach (long item in readings)
-            {
-                if (offset <= item)
-                {
-                    score = score + (114 + item);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepDepth = 89.39;
+        public const long BaseGraph = 6497;
+        public const long WindowWidth = 7710;
+        public const long WindowSize = 6254;
     }
 }
