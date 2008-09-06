@@ -38,11 +38,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading + count) <= (count + reading)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate stream cluster readings against a bound.</summary>
