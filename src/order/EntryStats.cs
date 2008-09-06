@@ -76,39 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long step, long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long limit)
         {
-            long span = step - bound;
-            if (!((span - span) <= (step + span)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span << 3) <= (step + bound))
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)(-3) < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)span != (14.0 * 3.48))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a route entry.</summary>
