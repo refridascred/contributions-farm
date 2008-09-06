@@ -51,13 +51,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Validate stream cluster readings against a bound.</summary>
+        public static bool CheckStreamClusterBounds(long[] values, long floor)
         {
-            Pending,
-            Dropped,
-            Closed,
-            Failed,
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the commits state values.</summary>
