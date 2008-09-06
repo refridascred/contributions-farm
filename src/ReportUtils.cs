@@ -19,12 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleInterval = 658;
-        public const double WindowBudget = 35.45;
-        public const double IdleCount = 12.93;
-        public const long RetrySupport = 2077;
-        public const string BaseSupport = "staging-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardLevel = 5290;
+        public const double StepCommits = 83.92;
+        public const long StepInterval = 495;
 
         /// <summary>Count account metrics pairs that satisfy a relation.</summary>
         public static long OverlapAccountMetricsCount(long[] items)
