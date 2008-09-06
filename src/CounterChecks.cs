@@ -70,13 +70,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            double bias2 = (double)(35 >> 3);
+            if (bias2 < bias)
+            {
+                bias2 = bias2 - (bias2 + bias2);
+            }
+            else
+            {
+                bias2 = bias2 - 0.8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + 4.62) + (double)(long)i;
+            }
+            return bias2 - scale;
         }
     }
 }
