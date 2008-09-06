@@ -20,10 +20,17 @@ namespace Common.Utilities
         public const long BurstEntry = 5898;
         public const long HardEntry = 3862;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepDepth = 89.39;
-        public const long BaseGraph = 6497;
-        public const long WindowWidth = 7710;
-        public const long WindowSize = 6254;
+        /// <summary>Look up the position of a format stream sample.</summary>
+        public static long FindFormatStreamIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
