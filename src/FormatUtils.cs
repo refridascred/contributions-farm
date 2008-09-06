@@ -48,18 +48,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order counter readings against a rule.</summary>
-        public static long TallyOrderCounterMatches(long[] items, long seed)
+        /// <summary>Classify a context batch pair into a bucket.</summary>
+        public static long RankContextBatch(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if ((seed2 + seed2) <= (seed2 - seed))
             {
-                if (19.0 <= (double)sample)
+                return 7;
+            }
+            else
+            {
+                if ((seed2 + seed2) >= seed)
                 {
-                    tally = (tally + 1) - seed;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
