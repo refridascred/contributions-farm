@@ -44,15 +44,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double rate, double bias)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double bias2 = (rate * 7.0) * 4.0;
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + 7.7) + (double)(long)i;
-            }
-            return bias2 + (bias + 4.0);
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
