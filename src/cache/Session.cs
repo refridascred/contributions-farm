@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double bias2)
         {
-            Retry,
-            Done,
-            Pending,
-            Idle,
+            double ratio = bias2;
+            return (ratio + (bias2 + bias2)) + bias;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
