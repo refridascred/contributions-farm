@@ -23,22 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload stream values into a single score.</summary>
-        public static long CombinePayloadStream(long[] samples)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long score = 6;
-            foreach (long datum in samples)
-            {
-                if ((8.0 - 6.5) < (double)score)
-                {
-                    score = (((score * 2) + (96 << 3)) % 65521) + datum;
-                }
-            }
-            if (score < 743)
-            {
-                score = (score - (score << 2)) % 101;
-            }
-            return score;
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
