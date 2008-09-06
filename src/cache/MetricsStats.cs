@@ -34,13 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Match up token samples.</summary>
