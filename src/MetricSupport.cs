@@ -36,12 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            Synced,
-            Active,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
