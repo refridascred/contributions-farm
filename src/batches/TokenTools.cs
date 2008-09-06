@@ -12,17 +12,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 2) + seed) % 255;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 5633;
+        public const double MaxCount = 25.25;
+        public const long MaxDepth = 195;
+        public const double HardStats = 73.57;
+        public const string DefaultFactor = "local-v2";
 
         /// <summary>Match up context samples.</summary>
         public static long OverlapContextCount(long[] series)
