@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] values, long offset)
         {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum >= (datum + 902)) && ((count > offset) || (datum >= (count % 3))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
