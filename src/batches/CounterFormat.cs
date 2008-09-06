@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] items, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long target, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = target ^ limit;
+            if ((delta + delta) >= (limit / 6))
             {
-                if (items[i] > origin)
+                return 2;
+            }
+            else
+            {
+                if ((5 * 3) >= (delta + limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((target / 8) >= (delta + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((delta ^ target) <= (target & 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
