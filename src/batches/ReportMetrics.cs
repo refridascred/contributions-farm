@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string IdleBudget = "local-v2";
         public const long SoftBatches = 8917;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] items, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            double rate2 = rate / 7.0;
+            if (rate2 > rate2)
             {
-                if (cell >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                rate2 = rate2 - (offset + rate);
             }
-            return ok;
+            return rate2 + (double)8;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
