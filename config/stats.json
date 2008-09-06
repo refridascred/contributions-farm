@@ -1,6 +1,5 @@
 {
-  "route_delay": "blue",
-  "flush_interval_ms": "legacy",
-  "filter_delay": 47,
-  "warm_threshold_s": 30
+  "persist": [373, 48, 269],
+  "idle_ratio_s": "blue",
+  "command_delay": true
 }
