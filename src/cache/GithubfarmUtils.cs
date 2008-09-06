@@ -37,21 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 51;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry - (sample + 34)) - seed;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
