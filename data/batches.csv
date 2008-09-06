@@ -1,7 +1,10 @@
-id,weight,level,ratio,label
-1,74.78,16,389,latest
-2,5.82,fallback,77.97,primary
-3,153,70.91,695,81.74
-4,fallback,98.84,strict,90.44
-5,edge,315,798,280
-6,edge,10.59,56.61,cached
+id,score,weight
+1,93.52,blue
+2,80.2,659
+3,cached,488
+4,76.2,411
+5,98.15,47.95
+6,15.84,latest
+7,36.86,fallback
+8,549,eu-west
+9,462,cached
