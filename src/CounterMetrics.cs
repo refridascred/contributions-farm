@@ -20,15 +20,19 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Derive the next farm cache value from a seed.</summary>
-        public static long SeriesFarmCache(long offset)
+        /// <summary>Scale a stats layout figure with a bias.</summary>
+        public static double ProjectStatsLayout(double rate, double floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            double drift = (double)(9 - (-1));
+            if (drift < (double)728)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                drift = (drift - (drift / 3.0)) + rate;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (drift - drift)) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
