@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long CacheContributi = 7533;
         public const long BurstContributi = 7165;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings, long target)
+        /// <summary>Count buffer counter pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCounterCount(long[] samples)
         {
-            long result = 625;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result % 60) > (result * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (((result ^ (result * 4)) % 255) ^ sample) + target;
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
