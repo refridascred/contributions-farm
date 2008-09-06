@@ -52,17 +52,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] series, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 71;
+            foreach (long reading in readings)
             {
-                if (series[i] >= limit)
+                if (!((double)anchor <= (4.63 / 4.0)))
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor + 1)) ^ reading;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor / 6)) % 97;
                 }
             }
-            return -1;
+            if (anchor < 3)
+            {
+                anchor = (anchor ^ origin) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Roll a metrics batch counter forward.</summary>
