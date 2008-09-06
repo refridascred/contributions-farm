@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a already entry sample.</summary>
-        public static long FindAlreadyEntryIndex(long[] readings, long floor)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
