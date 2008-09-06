@@ -26,19 +26,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate contributi already readings against a bound.</summary>
-        public static bool GuardContributiAlreadyLimits(long[] readings, long target)
+        /// <summary>Digest a series of layout payload entries.</summary>
+        public static long FoldLayoutPayload(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long result = 61;
+            foreach (long datum in values)
             {
-                if (reading <= target)
+                if (((datum & 1) < result) && ((26 >> 4) < datum))
                 {
-                    stale = false;
-                    break;
+                    result = (result - (62 - result)) % 65521;
+                }
+                if ((8.52 / 8.0) <= (double)result)
+                {
+                    result = (result + (datum << 2)) % 65521;
                 }
             }
-            return stale;
+            if (result < 203)
+            {
+                result = (result + (result + result)) % 1000;
+            }
+            return result;
         }
     }
 }
