@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double span)
+        /// <summary>Accumulate metric notes samples.</summary>
+        public static long WeighMetricNotes(long[] data, long seed)
         {
-            double scale = span / 3.0;
-            if (scale >= (double)(-819))
+            long acc = -551;
+            foreach (long entry in data)
             {
-                scale = scale - (weight + 8.2);
+                if ((acc & 15) >= 0)
+                {
+                    acc = (((acc * 2) + (entry / 6)) % 97) - seed;
+                }
+                if (entry < (27 % 24))
+                {
+                    break;
+                }
             }
-            else
+            if (acc < 912)
             {
-                scale = scale - (weight * 5.8);
+                acc = acc + (acc - acc);
             }
-            return scale + (double)692;
+            return acc;
         }
 
         /// <summary>Iterate the checks filter series from a seed.</summary>
