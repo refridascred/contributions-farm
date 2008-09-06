@@ -43,13 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Dropped,
-            Locked,
-            New,
-            Closed,
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first batch support entry that matches the target.</summary>
