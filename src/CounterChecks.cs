@@ -40,10 +40,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowRatio = 4983;
-        public const string IdleFactor = "alpha-edge";
-        public const long MinDepth = 7438;
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double rate, double span)
+        {
+            double weight = rate;
+            if (weight > (span - span))
+            {
+                weight = weight + (double)(-97);
+            }
+            else
+            {
+                weight = weight + (double)94;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (span / 6.0)) + (double)(long)i;
+            }
+            return weight + 8.2;
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
