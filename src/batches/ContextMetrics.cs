@@ -31,18 +31,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long acc = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)78 > (double)reading)
-                {
-                    acc = ((acc << 3) ^ 92) % 65521;
-                }
-            }
-            return acc % 97;
+            Ready,
+            Stale,
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a tools options.</summary>
