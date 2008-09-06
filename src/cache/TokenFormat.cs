@@ -38,9 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSpan = 4993;
-        public const string RetryDepth = "cached-v2";
-        public const double RetryRatio = 15.41;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((offset + (-965)) <= (count - offset))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
     }
 }
