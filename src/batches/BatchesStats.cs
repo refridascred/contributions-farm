@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySpan = 5500;
+        public const long SoftTimeout = 349;
+        public const string RetrySchema = "primary-v2";
+        public const string BurstCount = "legacy-1";
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TallyFormat(long[] samples)
