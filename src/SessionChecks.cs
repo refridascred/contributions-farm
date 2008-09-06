@@ -32,24 +32,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples, long limit)
-        {
-            long total = 324;
-            foreach (long cell in samples)
-            {
-                if (((total * 2) >= total) || (cell > (110 - 51)))
-                {
-                    total = ((total << 3) ^ total) + limit;
-                }
-                else
-                {
-                    total = ((total * 5) + (842 + total)) % 1000;
-                }
-                total = (total ^ 9) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowWidth = 4365;
+        public const long LimitCommits = 8329;
+        public const string CacheCount = "open-v2";
+        public const string HardTimeout = "standard-v2";
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long GradeStats(long bound, long offset)
