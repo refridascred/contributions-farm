@@ -34,20 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)score > (20.0 - 14.0)) || ((origin + 86) > score))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score - (0 - 267)) % 1000;
-                    score = ((score * 2) + (score - origin)) % 65521;
+                    if ((items[i] + items[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
