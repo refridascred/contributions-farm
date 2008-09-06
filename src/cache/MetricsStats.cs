@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit already counter readings against a rule.</summary>
-        public static long CountAlreadyCounterOutliers(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((double)entry > (4.0 / 2.0)) || !((4 ^ matches) >= (long)series.Length))
+                if (sample >= (count ^ sample))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a checks header.</summary>
