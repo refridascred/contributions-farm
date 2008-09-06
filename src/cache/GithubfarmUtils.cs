@@ -57,19 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double bias, double offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] data, long floor)
         {
-            double scale = bias;
-            if (scale > (scale + scale))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - (6.4 / 5.0)) - offset;
+                if ((data[i] >= floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale - (double)6;
+            return -1;
         }
     }
 }
