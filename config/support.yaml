@@ -1,8 +1,15 @@
 # support settings
-warm_threshold_pct: 3765
-persist: 9914
-min_delay_count: true
-strict: legacy
-sync_depth_pct:
-  - 39
-  - 250
+metrics_delay: true
+idle_timeout_count: local
+window_size: fallback
+hard_delay_count:
+  - fallback
+  - standard
+  - edge
+default_interval_count: 16.83
+verbose:
+  audit: 2.87
+  notes_timeout: strict
+  readonly: open
+  idle_ttl_ms: legacy
+  base_threshold_ms: primary
