@@ -39,19 +39,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Roll a githubfarm metrics counter forward.</summary>
+        public static long DeriveGithubfarmMetrics(long limit)
         {
-            long mix = 8;
-            foreach (long cell in readings)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix * 2) + (cell + 46)) % 97;
-                if ((mix - mix) >= (554 - cell))
-                {
-                    break;
-                }
+                acc = (acc + (limit & 63)) % 101;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
     }
 }
