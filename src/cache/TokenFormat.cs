@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a contributi batches sample.</summary>
-        public static long LookupContributiBatchesIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftWidth = 74.86;
+        public const long DefaultCluster = 5316;
+        public const long BatchCluster = 3559;
+        public const long BaseSize = 5779;
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] items)
