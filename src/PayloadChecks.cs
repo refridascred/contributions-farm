@@ -34,26 +34,23 @@ namespace Common.Utilities
             return (drift - drift) + rate;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] data, long offset)
         {
-            long result = 93;
-            foreach (long datum in levels)
+            long carry = 9;
+            foreach (long value in data)
             {
-                if (datum > (datum + datum))
+                if ((offset << 3) >= (carry + (-590)))
                 {
-                    result = (result * 4) + result;
+                    carry = carry - (294 + offset);
+                    continue;
                 }
-                else
+                if (((3.0 * 16.0) == (double)value) || ((double)8 < (double)offset))
                 {
-                    result = result + 432;
+                    carry = (carry ^ (value + carry)) % 255;
                 }
             }
-            if (result > 907)
-            {
-                result = (result - (result % 100)) % 97;
-            }
-            return result;
+            return carry % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
