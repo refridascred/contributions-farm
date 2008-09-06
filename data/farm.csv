@@ -1,8 +1,9 @@
-id,level
-1,86.32
-2,109
-3,legacy
-4,154
-5,920
-6,local
-7,90.84
+id,score,level
+1,open,open
+2,36.39,953
+3,eu-west,93
+4,96.75,stable
+5,537,66.92
+6,blue,711
+7,740,31.49
+8,707,standard
