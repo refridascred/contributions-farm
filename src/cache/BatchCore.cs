@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] readings, long floor)
         {
-            New,
-            Queued,
-            Pending,
-            Idle,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!((5.0 - 9.04) == (double)floor))
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
