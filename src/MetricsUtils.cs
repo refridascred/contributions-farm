@@ -60,17 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch filter reading by value.</summary>
-        public static long FindBatchFilterIndex(long[] values, long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Done,
+            Ready,
         }
     }
 }
