@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels, long origin)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mix = 11;
-            foreach (long item in levels)
-            {
-                if (item <= mix)
-                {
-                    mix = (mix * 3) + (mix + mix);
-                    mix = (mix - (mix * 3)) % 101;
-                }
-                mix = (mix << 2) ^ (origin - 841);
-            }
-            if (mix < 62)
-            {
-                mix = (mix + (mix & 127)) % 255;
-            }
-            return mix;
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
