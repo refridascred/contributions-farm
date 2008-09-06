@@ -14,32 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long origin, long floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] data, long bound)
         {
-            long prev = origin + floor;
-            if (((origin % 100) > (prev % 100)) || ((910 + 20) >= (floor & 31)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev << 1) < origin)
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (10 < (prev * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batch info.</summary>
