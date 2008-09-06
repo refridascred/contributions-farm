@@ -1,16 +1,8 @@
 {
-  "default_threshold_ms": 67.3,
-  "strict": ["standard", "staging"],
-  "verbose": "primary",
-  "base_depth_ms": {
-    "enabled": 500,
-    "format_size": {
-      "cache_limit_ms": "edge",
-      "strict": 19.11,
-      "context_window": true
-    },
-    "metric_threshold": true,
-    "persist": 56.33,
-    "entry_retries": ["stable", "strict", "standard"]
-  }
+  "idle_size_pct": "edge",
+  "cluster_interval": 45,
+  "support_window": 250,
+  "retry_window_pct": 88.98,
+  "max_ratio": 250,
+  "soft_threshold_s": 500
 }
