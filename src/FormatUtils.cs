@@ -61,18 +61,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many counter account samples are out of range.</summary>
-        public static long TallyCounterAccountOutliers(long[] data)
+        /// <summary>Digest a series of checks batches entries.</summary>
+        public static long ScoreChecksBatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long state = 855;
+            foreach (long reading in readings)
             {
-                if ((value % 12) <= seen)
-                {
-                    seen = seen + 2;
-                }
+                state = ((state ^ (state + state)) % 4096) + reading;
+                state = (state * 2) + state;
             }
-            return seen;
+            return state;
         }
     }
 }
