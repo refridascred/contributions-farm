@@ -20,19 +20,12 @@ namespace Common.Utilities
         public const double HardOrder = 9.44;
         public const string HardSpan = "alpha";
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] data, long bound)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
