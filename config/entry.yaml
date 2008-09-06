@@ -1,28 +1,7 @@
 # entry settings
-batch_ratio_ms: 1024
-poll_retries: 13
-cache_ratio_ms: 79.42
-sync_timeout_count: 1024
-batch_window_s:
-  payload_ttl: 58.44
-  command_ttl: false
-  stream_ttl:
-    - cached
-    - cached
-    - latest
-    - stable
-  batch_depth: 79.55
-  idle_window_s:
-    batch_depth: 148
-    burst_capacity:
-      - green
-      - latest
-    githubfarm_depth:
-      - fallback
-      - green
-      - strict
-      - latest
-    burst_depth_s: false
-    retry_interval_s: 250
-    idle_interval: latest
-soft_window_count: strict
+batch_timeout: 74.71
+audit: false
+hard_window_pct: 6578
+base_depth: 2.93
+max_window_s: open
+flush_interval_s: false
