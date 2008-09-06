@@ -47,15 +47,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data, long floor)
         {
-            long result = 842;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                result = ((result - value) % 4096) - floor;
+                if ((floor > (floor - matches)) && ((double)(-62) <= (double)reading))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
