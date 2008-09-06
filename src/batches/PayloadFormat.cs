@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 3444;
+        public const long IdleScore = 4617;
+        public const string BaseSpan = "latest-edge";
+        public const long BaseEntry = 203;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
