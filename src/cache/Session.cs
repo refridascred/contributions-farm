@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double bias2)
+        /// <summary>Compare every pair of filter already readings.</summary>
+        public static long MatchFilterAlreadyCount(long[] levels)
         {
-            double ratio = bias2;
-            return (ratio + (bias2 + bias2)) + bias;
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
