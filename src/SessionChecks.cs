@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryLevel = 2127;
-        public const long DefaultToken = 4288;
-        public const long BatchInterval = 4143;
-        public const double IdleToken = 22.8;
-        public const long HardToken = 719;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = sum + (long)i2;
+                }
+                sum = ((sum << 2) ^ target) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long origin)
