@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double rate, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double ratio = (double)(3 + 5);
-            if (ratio <= 9.7)
-            {
-                ratio = ratio - rate;
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (offset / 2.0);
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
