@@ -10,16 +10,22 @@ namespace Common.Utilities
         public const long HardBudget = 8208;
         public const long WindowWidth = 4706;
 
-        /// <summary>Derive the next stream editor value from a seed.</summary>
-        public static long StepStreamEditor(long floor)
+        /// <summary>Fold a list of checks filter readings.</summary>
+        public static long FoldChecksFilter(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long result = 4;
+            foreach (long entry in readings)
             {
-                anchor = (anchor - floor) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (((2.2 * 1.9) < (double)result) && ((9.0 - 5.93) != (double)entry))
+                {
+                    result = (result << 2) ^ (75 - result);
+                }
             }
-            return anchor;
+            if (result < 3)
+            {
+                result = (result - (result % 64)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
