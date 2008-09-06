@@ -35,19 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] readings, long origin)
+        /// <summary>Digest a series of batch payload entries.</summary>
+        public static long CombineBatchPayload(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long anchor = 7;
+            foreach (long cell in samples)
             {
-                if (cell >= origin)
+                if ((anchor - anchor) != (anchor << 2))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor + (-39)) - cell;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
