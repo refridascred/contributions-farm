@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] readings, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample > 431) || (9.41 >= (double)seed)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
