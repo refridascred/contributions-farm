@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-A token that stays idle for too long is moved to the profile list.
-The payload report groups every already by batch.
+Each editor is validated before it reaches the channel queue.
+Run the farm check before changing any entry limits.
 
 ## Guidelines
 
-- Document new farm fields
-- Keep notes values small
-- Log every notes change
+- Validate queue input early
+- Log every metrics change
+- Keep stats values small
+- Document new payload fields
