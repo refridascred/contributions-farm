@@ -56,18 +56,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] levels, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count << 3) < (-59))
-                {
-                    count = ((count + 3) + cell) - floor;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
