@@ -34,11 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBudget = "open";
-        public const long WindowBatches = 5154;
-        public const double BaseWidth = 33.44;
-        public const string StepBatches = "staging-edge";
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long SortBatch(long limit, long limit2)
