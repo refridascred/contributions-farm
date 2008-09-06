@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxTimeout = "primary-edge";
-        public const long HardRatio = 7473;
-        public const double BatchFactor = 59.44;
-        public const long BurstRecord = 5158;
-        public const double HardRecord = 39.89;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 5019;
+        public const long BatchSpan = 5337;
+        public const string WindowEntry = "local-1";
+        public const string MaxSize = "local";
+        public const string BurstInterval = "latest-v2";
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LocatePayloadIndex(long[] levels, long offset)
