@@ -26,12 +26,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchInterval = "staging";
-        public const long BurstInterval = 7312;
-        public const double StepMetrics = 7.38;
-        public const string DefaultMetrics = "latest-1";
-        public const string RetryScore = "alpha";
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] items)
