@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 3074;
-        public const long BurstSchema = 1984;
-        public const long DefaultSchema = 5060;
-        public const long WindowSchema = 2258;
-        public const long MaxLevel = 4252;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result << 2) ^ (result + result);
+                result = (result * 2) + (result + result);
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long step, long offset)
