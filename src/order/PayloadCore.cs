@@ -22,15 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings, long step)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long sum = 9;
-            foreach (long entry in readings)
-            {
-                sum = (((sum << 3) ^ (step + sum)) % 4096) ^ entry;
-            }
-            return sum % 65521;
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
