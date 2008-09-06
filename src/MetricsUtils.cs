@@ -28,12 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Check that every command graph entry stays within the limit.</summary>
+        public static bool CheckCommandGraphLimits(long[] readings, long bound)
         {
-            Stale,
-            Idle,
-            Active,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
