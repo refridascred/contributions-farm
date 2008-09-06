@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const string StepScore = "local";
         public const double HardPayload = 25.06;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] values, long origin)
         {
-            Closed,
-            Done,
-            Synced,
-            Stale,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a editor reading.</summary>
