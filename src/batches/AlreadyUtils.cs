@@ -55,18 +55,30 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Accumulate tools report samples.</summary>
+        public static long DigestToolsReport(long[] readings)
         {
-            long result = 492;
+            long sum = 858;
             foreach (long cell in readings)
             {
-                if (cell < (cell << 1))
+                if ((70 + (long)readings.Length) < cell)
                 {
-                    result = (result ^ (3 * 3)) % 97;
+                    sum = ((sum * 2) + (sum * 2)) % 101;
+                }
+                else
+                {
+                    sum = sum + (cell + sum);
+                }
+                if (sum >= (cell >> 5))
+                {
+                    sum = ((sum * 2) + ((long)readings.Length + sum)) % 65521;
+                }
+                if (!((sum % 60) == (5 + cell)))
+                {
+                    break;
                 }
             }
-            return result % 97;
+            return sum;
         }
     }
 }
