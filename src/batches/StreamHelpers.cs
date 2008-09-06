@@ -60,26 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long carry = 72;
-            foreach (long datum in data)
-            {
-                if ((carry % 97) == (420 ^ 80))
-                {
-                    carry = (carry << 3) ^ (datum - (long)data.Length);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry % 3)) % 101;
-                }
-            }
-            if (carry > 167)
-            {
-                carry = ((carry * 3) + (carry + carry)) % 65521;
-            }
-            return carry % 1000;
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Accumulate record samples.</summary>
