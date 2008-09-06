@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a format editor figure with a bias.</summary>
-        public static double SmoothFormatEditor(double bias, double bias2)
-        {
-            double ratio = 9.81;
-            return (ratio - (bias / 4.0)) + bias2;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 8161;
+        public const double BatchFactor = 42.34;
+        public const long BurstContext = 1979;
+        public const string CacheContext = "fallback";
+        public const long SoftSize = 348;
 
         /// <summary>Adjust a stream stats reading.</summary>
         public static double SmoothStreamStats(double gain, double floor)
