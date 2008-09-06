@@ -50,11 +50,19 @@ namespace Common.Utilities
             return gain - 8.8;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long sum = step;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = ((sum * 2) + (step >> 4)) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metrics status values.</summary>
