@@ -1,5 +1,26 @@
 # githubfarm settings
-githubfarm_limit: standard
-warm_depth_ms: 30
-dry_run: 37.03
-token_timeout: 1024
+base_interval_count: 43
+poll_capacity_ms: open
+poll_limit_s: open
+buffer_delay: strict
+cache_ratio_s:
+  idle_ttl_count:
+    batch_delay_ms: 57.2
+    filter_threshold:
+      - 372
+      - 377
+      - 462
+    dry_run: open
+    default_ratio_ms:
+      - strict
+      - green
+      - open
+      - edge
+  channel_interval: true
+  sync_retries_s: blue
+  warm_threshold_pct: 60
+  token_timeout:
+    - 93
+    - 370
+    - 472
+  cache_threshold: 72
