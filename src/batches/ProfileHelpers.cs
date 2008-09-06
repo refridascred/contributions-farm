@@ -51,16 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor stats counter forward.</summary>
-        public static long StepEditorStats(long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                state = (state ^ (origin - origin)) % 65521;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Idle,
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a order record.</summary>
