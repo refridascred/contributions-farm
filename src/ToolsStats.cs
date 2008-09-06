@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long HardFactor = 2325;
         public const double BurstRatio = 64.06;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((reading * 3) > (reading << 1))
+                if ((double)cell < 8.5)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
