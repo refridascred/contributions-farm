@@ -79,9 +79,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitRatio = 91.53;
-        public const long RetryChannel = 1820;
-        public const double MinSize = 65.87;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double bias, double span)
+        {
+            double drift = span;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (bias * 7.42)) - (double)(long)i;
+            }
+            return drift - span;
+        }
     }
 }
