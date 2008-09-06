@@ -27,14 +27,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] readings)
         {
-            Synced,
-            Draft,
-            New,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item / 5) > 1)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
