@@ -38,18 +38,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] items)
+        /// <summary>Find the first batch support entry that matches the target.</summary>
+        public static long LookupBatchSupportIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen & 7) > seen)
+                if (levels[i] <= seed)
                 {
-                    seen = (seen + 1) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
