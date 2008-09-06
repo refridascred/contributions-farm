@@ -48,18 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] series, long floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches > (4.1 - 4.0))
+                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
                 {
-                    matches = ((matches + 2) + entry) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
