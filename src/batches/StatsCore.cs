@@ -58,22 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] series, long floor)
+        /// <summary>Roll a tools githubfarm counter forward.</summary>
+        public static long SeriesToolsGithubfarm(long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(((floor << 3) > (cell << 1)) || ((65 >> 5) >= (floor - cell))))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = tally + 1;
+                    score = ((score ^ ((long)i / 6)) % 1000) + (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the account state values.</summary>
