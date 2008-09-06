@@ -60,13 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
+            Retry,
+            Failed,
+            Draft,
         }
     }
 }
