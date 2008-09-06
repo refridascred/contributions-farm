@@ -13,11 +13,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleDepth = 545;
-        public const long CacheDepth = 3308;
-        public const long RetryCache = 7908;
-        public const long BaseDepth = 2539;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Dropped,
+            Pending,
+            Stale,
+            New,
+            Queued,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleAccount = 2390;
