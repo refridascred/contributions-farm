@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long bound, long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long seed)
         {
-            long delta = bound ^ seed;
-            if ((20.0 / 4.0) >= (double)delta)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (seed >= (delta - delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta * 2) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((-897) <= delta)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
