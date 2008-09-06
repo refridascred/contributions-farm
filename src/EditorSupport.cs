@@ -57,22 +57,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Roll a stream metrics counter forward.</summary>
+        public static long StepStreamMetrics(long seed)
         {
-            long mark = -5;
-            foreach (long sample in series)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((mark >> 1) > (mark - 64)) || ((sample % 3) != (long)series.Length))
-                {
-                    mark = ((mark * 2) + sample) % 101;
-                }
-                if (sample < (8 - mark))
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mark % 65521;
+            return sum;
         }
     }
 }
