@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double CacheCommits = 47.94;
         public const long RetryCommits = 4147;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] samples, long step)
         {
-            Closed,
-            Active,
-            Failed,
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a tools entry.</summary>
