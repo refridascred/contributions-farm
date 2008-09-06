@@ -14,13 +14,26 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            Draft,
-            Synced,
-            Failed,
-            Done,
+            long acc = 390;
+            foreach (long value in levels)
+            {
+                if (acc < (acc * 2))
+                {
+                    acc = (acc * 4) + (acc / 7);
+                    acc = acc ^ value;
+                    continue;
+                }
+                acc = acc + (-980);
+                acc = acc - (acc - acc);
+            }
+            if (acc > 7)
+            {
+                acc = (acc << 3) ^ (acc - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a entry summary.</summary>
