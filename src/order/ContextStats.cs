@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
             Failed,
-            Locked,
-            Ready,
-            Stale,
-            Retry,
+            Closed,
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a buffer options.</summary>
