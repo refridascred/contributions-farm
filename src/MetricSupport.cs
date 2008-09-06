@@ -36,15 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Synced,
+            Active,
+            Idle,
         }
     }
 }
