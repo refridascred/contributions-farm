@@ -39,16 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a githubfarm metrics counter forward.</summary>
-        public static long DeriveGithubfarmMetrics(long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] values, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                acc = (acc + (limit & 63)) % 101;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (!((67 * 3) <= (entry + entry)))
+                {
+                    seen = (seen + 1) + target;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
