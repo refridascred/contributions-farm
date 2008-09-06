@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 8560;
-        public const double CacheContributi = 76.81;
-        public const long RetryContributi = 6837;
-        public const long HardCount = 1459;
+        /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
+        public static long FindSchemaGithubfarmIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] items, long target)
