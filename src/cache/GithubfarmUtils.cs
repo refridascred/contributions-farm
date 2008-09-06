@@ -37,10 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 8737;
-        public const double CacheAlready = 88.21;
-        public const long MaxRatio = 2457;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell <= 966) && ((tally > (916 & 127)) && ((tally - 116) >= tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] data, long floor)
