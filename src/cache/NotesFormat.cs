@@ -39,18 +39,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] values, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long target, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long slot = target ^ seed;
+            if (slot >= (target - slot))
             {
-                if (!((67 * 3) <= (entry + entry)))
+                return 4;
+            }
+            else
+            {
+                if ((0.6 - 2.0) < (double)seed)
                 {
-                    seen = (seen + 1) + target;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target >= 2.45)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target >> 1) <= (seed + seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
