@@ -48,31 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long limit, long limit2)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long floor)
         {
-            if ((double)limit2 == (16.0 * 3.94))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (6.8 <= (double)limit2)
+                if (reading <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((269 + limit) <= limit2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
