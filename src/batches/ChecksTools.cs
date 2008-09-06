@@ -21,15 +21,31 @@ namespace Common.Utilities
         public const string SoftLevel = "local";
         public const string SoftContributi = "primary-v2";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long seed, long seed2)
         {
-            long sum = 27;
-            foreach (long item in readings)
+            if (((seed + seed2) > (seed2 >> 3)) && ((seed << 1) == (seed2 % 3)))
             {
-                sum = (((sum * 2) + (sum * 2)) % 4096) ^ item;
+                return 8;
             }
-            return sum % 4096;
+            else
+            {
+                if (((seed2 * 3) >= seed2) && ((seed % 16) >= (seed / 8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed2 == (12.0 + 4.2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
