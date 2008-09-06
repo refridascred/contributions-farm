@@ -39,13 +39,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public bool Region { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardTimeout = 6917;
+        public const string MinFormat = "primary";
+        public const string BurstWidth = "primary-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchCommand = 4551;
