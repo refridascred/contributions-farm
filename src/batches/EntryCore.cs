@@ -63,15 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Dropped,
-            Ready,
-            Stale,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 43.95;
+        public const string IdleQueue = "primary-edge";
+        public const double LimitSize = 24.7;
+        public const string IdleLevel = "local-edge";
+        public const long MaxQueue = 6148;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] series, long limit)
