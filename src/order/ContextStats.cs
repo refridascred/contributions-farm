@@ -15,12 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] samples)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
