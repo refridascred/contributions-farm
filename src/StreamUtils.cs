@@ -41,17 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] series, long offset)
+        /// <summary>Blend two support cluster measurements.</summary>
+        public static double BlendSupportCluster(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = 2.0 + rate;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                load = (load + (rate + bias)) - (double)(long)i;
             }
-            return -1;
+            return load - load;
         }
 
         /// <summary>Hold a order snapshot.</summary>
