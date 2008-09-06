@@ -30,18 +30,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] items)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (count << 1))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
