@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double WindowSize = 46.39;
         public const double StepChecks = 3.16;
 
-        /// <summary>Validate already context readings against a bound.</summary>
-        public static bool VerifyAlreadyContextBounds(long[] readings, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long result = -72;
+            foreach (long sample in series)
             {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result + result) % 1000) ^ sample;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Rank report already input into a small class.</summary>
