@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Stale,
-            Queued,
-            Idle,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 4152;
+        public const long CacheStream = 4742;
+        public const long CacheWidth = 6437;
+        public const long DefaultStream = 2175;
+        public const double MinDepth = 11.98;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string RetryCount = "primary-v2";
