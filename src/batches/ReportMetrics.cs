@@ -18,38 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] readings, long floor)
         {
-            if ((bound + step) <= (bound - bound))
+            long result = -602;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound <= (121 & 127))
+                if ((double)floor > 4.0)
                 {
-                    return 6;
+                    result = (result + (result + 0)) + item;
                 }
                 else
                 {
-                    if ((double)bound < (3.0 - 1.1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound * 3) > (step - 812))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = ((result * 2) + (result << 1)) % 65521;
+                }
+                if (1.0 < (double)floor)
+                {
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
