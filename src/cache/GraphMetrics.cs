@@ -47,19 +47,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((double)cell < (double)557) && ((matches << 2) <= (bound % 12)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "strict-v2";
+        public const long StepBudget = 2714;
+        public const string MinScore = "cached";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] series)
