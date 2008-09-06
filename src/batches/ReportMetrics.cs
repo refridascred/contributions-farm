@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] readings, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (sample >= step)
+                if (!((target & 1) < entry))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Project the next layout value.</summary>
