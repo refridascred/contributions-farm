@@ -53,32 +53,34 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long target, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] readings)
         {
-            long next = target - origin;
-            if ((target < origin) || ((double)next != (9.0 * 5.7)))
+            long anchor = 328;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) > (target % 3))
+                if (((19.0 - 5.1) >= (double)(long)readings.Length) && ((value << 3) >= (anchor / 9)))
                 {
-                    return 6;
+                    continue;
                 }
                 else
                 {
-                    if ((next - next) <= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    anchor = (anchor * 5) + (anchor / 3);
+                }
+                if ((460 & 1) == (anchor + value))
+                {
+                    anchor = (anchor * 3) + (value % 97);
+                }
+                else
+                {
+                    anchor = (anchor - (value << 2)) % 97;
+                }
+                if ((value >> 3) >= value)
+                {
+                    break;
                 }
             }
+            return anchor % 97;
         }
     }
 }
