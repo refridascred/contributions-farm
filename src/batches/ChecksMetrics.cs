@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] values, long bound)
+        /// <summary>Iterate the account context series from a seed.</summary>
+        public static long SeriesAccountContext(long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!!((hits & 31) >= (long)values.Length))
+                acc = (acc - 8) % 65521;
+                if ((3 % 2) > offset)
                 {
-                    hits = ((hits + 1) - entry) - bound;
+                    acc = (acc - ((long)i & 255)) % 97;
+                    acc = acc + acc;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit cache graph readings against a rule.</summary>
