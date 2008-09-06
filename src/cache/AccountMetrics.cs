@@ -35,28 +35,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] levels, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((765 / 5) <= acc)
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                if (((10.0 + 5.4) == (double)acc) || ((2.0 - 9.0) >= (double)(long)i))
-                {
-                    acc = ((acc << 3) ^ (target + target)) % 1000;
-                }
-                if ((8 + target) < (acc & 7))
-                {
-                    acc = (acc + (507 ^ target)) % 65521;
-                    acc = ((acc << 2) ^ ((long)i - target)) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
