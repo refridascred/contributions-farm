@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] series, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
