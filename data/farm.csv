@@ -1,11 +1,6 @@
-id,score,ratio,owner
-1,15.27,latest,704
-2,44.92,primary,996
-3,867,blue,919
-4,strict,20.14,13.29
-5,993,95.19,green
-6,753,fallback,938
-7,fallback,86.59,549
-8,110,41.79,latest
-9,stable,572,open
-10,staging,4.32,919
+id,level,token
+1,24.63,9
+2,908,green
+3,40.03,206
+4,52.94,edge
+5,473,cached
