@@ -46,12 +46,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Stale,
-            Dropped,
-            Draft,
+            Pending,
+            Synced,
+            Retry,
+            Ready,
+            Paused,
         }
     }
 }
