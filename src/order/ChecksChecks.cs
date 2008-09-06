@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Ready,
-            New,
+            Stale,
             Failed,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
