@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
+        public static bool CheckMetricsGraphBounds(long[] readings, long origin)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
