@@ -1,16 +1,23 @@
 # githubfarm settings
-flush_interval_ms: false
-already_window: 93.62
-enabled: false
-sync_capacity_count: 5658
-record_timeout:
-  soft_delay: 42.09
-  dry_run: 250
-  hard_capacity_s:
-    default_delay: true
-    burst_limit_s: 81.06
-    filter_interval: true
-    enabled: 70
-  burst_window: local
-  default_limit_pct: cached
-sync_retries_ms: edge
+farm_interval:
+  compress: 1024
+  window_interval: staging
+  sync_timeout:
+    - edge
+    - blue
+    - open
+    - green
+  retry_window_pct:
+    soft_window_ms: false
+    hard_interval_ms: false
+    sync_timeout_count: stable
+  batch_timeout:
+    - 30
+    - 243
+  warm_ttl_ms: 94
+dry_run:
+  - edge
+  - strict
+  - blue
+  - cached
+strict: 60
