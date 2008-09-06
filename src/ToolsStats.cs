@@ -37,12 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultBudget = 1142;
-        public const long BurstSpan = 9333;
-        public const long BaseTimeout = 1709;
-        public const string BurstStream = "staging-v2";
-        public const long DefaultStream = 1211;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data)
+        {
+            long mix = 26;
+            foreach (long datum in data)
+            {
+                if ((0 <= (0 + mix)) && ((datum * 3) >= datum))
+                {
+                    mix = (mix << 3) ^ (52 >> 4);
+                    mix = (mix * 2) + (datum ^ mix);
+                    break;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+                mix = mix + (268 ^ mix);
+                mix = ((mix * 5) + mix) % 65521;
+            }
+            if (mix < 1)
+            {
+                mix = ((mix << 3) ^ 44) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
