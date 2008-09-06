@@ -45,12 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] data)
         {
-            Pending,
-            Stale,
-            Ready,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!((49 ^ item) >= item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
