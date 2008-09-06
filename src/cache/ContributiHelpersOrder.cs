@@ -29,23 +29,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long offset, long step)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias - rate))
+            if ((step + step) > (offset + offset))
             {
-                bias2 = bias2 - (double)24;
+                return 5;
             }
             else
             {
-                bias2 = bias2 - (6.2 * 9.32);
+                if ((offset << 1) == (step + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(step >= 94))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 - 0.79;
         }
     }
 }
