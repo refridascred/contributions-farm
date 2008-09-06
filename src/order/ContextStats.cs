@@ -47,22 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] samples, long floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((floor + floor) < floor)
+                if ((values[i] >= bound) && ((values[i] % 5) != 0))
                 {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
