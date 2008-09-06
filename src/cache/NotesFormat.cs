@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            long sum = 61;
-            foreach (long entry in readings)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((entry - 542) != (538 + sum))
+                total = (total << 3) ^ offset;
+                if ((offset > total) || (((long)i / 8) < (8 / 5)))
                 {
-                    sum = ((sum * 3) + entry) % 65521;
+                    total = (total ^ 81) % 65521;
+                    total = total + total;
                 }
-                if ((entry % 10) < entry)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    sum = (sum << 3) ^ (98 >> 1);
+                    total = ((total ^ (offset * 5)) % 1000) - (long)i2;
+                    total = (total * 5) + offset;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (sum > 0)
-            {
-                sum = ((sum << 3) ^ (1 + sum)) % 97;
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Iterate the checks filter series from a seed.</summary>
