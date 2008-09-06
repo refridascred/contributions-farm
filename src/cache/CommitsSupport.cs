@@ -95,21 +95,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 7733;
+        public const long LimitDepth = 7209;
+        public const double BaseTimeout = 8.16;
+        public const long DefaultSize = 7072;
+        public const long BatchSize = 575;
     }
 }
