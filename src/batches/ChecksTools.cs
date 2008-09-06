@@ -43,15 +43,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double span)
-        {
-            double rate = 8.7;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = ((rate - (11.0 / 9.0)) + (double)(long)i) - span;
-            }
-            return rate - (scale * 2.41);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftBudget = 47.85;
+        public const long CacheReport = 7688;
+        public const double BurstReport = 33.43;
+        public const long WindowInterval = 7507;
+        public const long WindowReport = 6566;
     }
 }
