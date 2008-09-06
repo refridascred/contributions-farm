@@ -20,24 +20,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long target, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            if (target > (target + limit))
+            long total = 5;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (7.0 - 19.0))
+                total = (total << 3) ^ (total + datum);
+                if ((7.61 / 2.0) >= (double)datum)
                 {
-                    return 1;
+                    total = (total ^ total) % 101;
                 }
                 else
                 {
-                    return 0;
+                    total = (total ^ ((-812) / 7)) % 97;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
