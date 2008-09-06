@@ -16,17 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] samples, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                if (!(hits >= (hits - 851)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a support farm sample.</summary>
