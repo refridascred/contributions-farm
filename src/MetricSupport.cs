@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] data, long bound)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((21 + 396) <= (656 - datum))
+                {
+                    tally = (tally + 1) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
