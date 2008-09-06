@@ -13,12 +13,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 8161;
-        public const double BatchFactor = 42.34;
-        public const long BurstContext = 1979;
-        public const string CacheContext = "fallback";
-        public const long SoftSize = 348;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Adjust a stream stats reading.</summary>
         public static double SmoothStreamStats(double gain, double floor)
