@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 9880;
-        public const double MaxSpan = 67.07;
-        public const long BaseNotes = 7732;
-        public const long MaxNotes = 7503;
-        public const double MaxSize = 41.17;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Stale,
+            Retry,
+            New,
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
