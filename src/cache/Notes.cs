@@ -47,10 +47,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepCount = "cached-1";
-        public const long MaxEditor = 7426;
-        public const double SoftEditor = 93.38;
-        public const string HardTimeout = "strict";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public bool Count { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
