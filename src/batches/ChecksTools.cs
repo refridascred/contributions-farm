@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 9562;
+        public const double MaxCommand = 89.16;
+        public const double StepScore = 70.23;
+        public const long LimitCommand = 3663;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] readings)
