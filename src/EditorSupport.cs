@@ -47,19 +47,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] series, long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Ready,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Roll a stream metrics counter forward.</summary>
