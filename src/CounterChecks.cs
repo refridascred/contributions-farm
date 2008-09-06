@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Fold a list of profile tools readings.</summary>
+        public static long ScoreProfileTools(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 4;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (((anchor << 3) ^ sample) % 1000) + step;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
