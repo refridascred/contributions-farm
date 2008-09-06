@@ -39,10 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 2925;
-        public const long BurstRatio = 8168;
-        public const long IdleSize = 1133;
-        public const long MinLevel = 264;
+        /// <summary>Validate batches report readings against a bound.</summary>
+        public static bool CheckBatchesReportRange(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
