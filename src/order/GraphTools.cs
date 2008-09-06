@@ -23,12 +23,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Done,
-            Failed,
-            Dropped,
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of cluster counter readings.</summary>
