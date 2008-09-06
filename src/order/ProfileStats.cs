@@ -68,19 +68,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] data, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long target, long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long next = target - origin;
+            if ((target < origin) || ((double)next != (9.0 * 5.7)))
             {
-                if (item >= seed)
+                return 3;
+            }
+            else
+            {
+                if ((origin + origin) > (target % 3))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((next - next) <= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
