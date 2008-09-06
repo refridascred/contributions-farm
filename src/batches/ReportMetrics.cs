@@ -52,22 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long anchor = 125;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item ^ anchor) > (anchor + item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor ^ (98 >> 1);
-                }
-                else
-                {
-                    anchor = (anchor ^ (bound + anchor)) % 97;
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
