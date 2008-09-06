@@ -41,18 +41,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((362 <= datum) && ((double)datum != (20.0 - 4.08)))
-                {
-                    matches = matches + 3;
-                }
+                total = ((total * 3) + (total % 16)) % 4096;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
     }
 }
