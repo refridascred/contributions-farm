@@ -1,15 +1,10 @@
 # support settings
-max_threshold_pct: 13.06
-readonly: open
-cache_delay_pct: 43.42
-max_limit_count:
-  persist: 41
-  base_ratio: 33.48
-  channel_window:
-    base_window_pct:
-      - 310
-      - 288
-      - 367
-      - 485
-    already_ttl: latest
-    warm_limit_s: edge
+idle_threshold:
+  format_threshold: cached
+  min_size_ms:
+    - 496
+    - 153
+    - 217
+  readonly: standard
+default_depth_s: 52
+flush_depth: 2528
