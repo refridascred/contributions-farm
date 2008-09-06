@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] levels)
         {
-            Ready,
-            Done,
-            Idle,
-            Closed,
-            Pending,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (79 >= (seen << 3))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
