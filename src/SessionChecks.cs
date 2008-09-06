@@ -35,19 +35,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] levels, long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mix = 435;
-            foreach (long sample in levels)
-            {
-                mix = (mix ^ sample) + floor;
-            }
-            if (mix > 8)
-            {
-                mix = (mix ^ (30 + 8)) % 65521;
-            }
-            return mix % 97;
+            Queued,
+            Retry,
+            New,
+            Draft,
+            Pending,
         }
     }
 }
