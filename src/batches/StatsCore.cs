@@ -13,18 +13,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] samples, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((19 + item) == (target * 3))
+                if (count >= (seed / 6))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
