@@ -1,6 +1,6 @@
 {
-  "payload_interval": "strict",
-  "batch_limit_s": 42,
-  "readonly": false,
-  "soft_size_ms": "blue"
+  "audit": 45,
+  "min_ttl_s": [271, 247, 292, 494],
+  "max_window": 500,
+  "soft_capacity": ["eu-west", "latest"]
 }
