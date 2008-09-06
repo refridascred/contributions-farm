@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            long anchor = 72;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor ^ (anchor - value);
-                    anchor = (anchor - ((long)i + value)) % 101;
-                }
-                if (!((value & 31) == (value / 9)))
-                {
-                    anchor = ((anchor * 4) + anchor) % 4096;
-                }
-                else
-                {
-                    anchor = anchor + (anchor + anchor);
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 24)
-            {
-                anchor = (anchor ^ (anchor >> 3)) % 4096;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
