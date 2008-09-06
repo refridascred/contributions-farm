@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] levels, long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
