@@ -61,19 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((long)readings.Length < (61 ^ tally))
-                {
-                    tally = ((tally + 1) + reading) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 7655;
+        public const string BaseSpan = "legacy";
+        public const long BurstCluster = 5576;
+        public const string RetryScore = "standard-v2";
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] readings, long step)
