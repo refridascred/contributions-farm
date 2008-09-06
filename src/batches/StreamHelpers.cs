@@ -87,18 +87,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] data, long floor)
         {
-            long mark = 39;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (!((double)mark > (double)115))
+                if (datum > floor)
                 {
-                    mark = (mark ^ (mark / 3)) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return flag;
         }
     }
 }
