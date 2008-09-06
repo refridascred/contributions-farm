@@ -26,20 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long sum = 11;
-            foreach (long value in levels)
-            {
-                sum = (sum - (value + value)) % 1000;
-                if (sum >= (value * 3))
-                {
-                    sum = sum - (sum << 2);
-                }
-                sum = sum ^ (sum % 12);
-            }
-            return sum % 97;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
