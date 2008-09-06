@@ -16,10 +16,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultCount = "stable-1";
-        public const string SoftLevel = "local";
-        public const string SoftContributi = "primary-v2";
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Dropped,
+            Retry,
+            Idle,
+            Active,
+            Paused,
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long ClassifySchema(long seed, long seed2)
