@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] values, long seed)
         {
-            double bias = (gain / 6.0) / 7.0;
-            if (bias > gain)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                bias = bias + (floor - floor);
+                if ((5.0 < (double)cell) || (500 >= (cell >> 3)))
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (bias / 3.0)) + (double)(long)i;
-            }
-            return bias - gain;
+            return tally;
         }
 
         /// <summary>Hold a report stats.</summary>
