@@ -21,18 +21,15 @@ namespace Common.Utilities
         public const long CacheBudget = 241;
         public const string MaxWidth = "staging-v2";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] levels, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (count <= (origin + origin))
-                {
-                    count = (count + 1) + cell;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
