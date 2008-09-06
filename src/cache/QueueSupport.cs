@@ -13,11 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 6819;
-        public const long StepBatch = 494;
-        public const long CacheSpan = 5068;
-        public const long BatchSize = 8779;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] items)
+        {
+            long sum = 6;
+            foreach (long cell in items)
+            {
+                sum = ((sum * 2) + (242 << 2)) + cell;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
