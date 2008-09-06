@@ -32,22 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] series)
         {
-            long mix = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((mix <= (mix & 255)) && ((mix & 255) > (16 & 1)))
+                if ((6 >= (entry + (long)series.Length)) || ((3.0 + 5.75) <= (double)tally))
                 {
-                    mix = ((mix * 4) + 3) % 255;
-                }
-                else
-                {
-                    mix = (mix + (datum << 3)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Derive the next githubfarm profile value from a seed.</summary>
