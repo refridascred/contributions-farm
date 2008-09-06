@@ -13,11 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
