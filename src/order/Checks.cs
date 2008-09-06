@@ -14,11 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftSize = 37.9;
-        public const string MinRatio = "primary";
-        public const double CacheInterval = 28.77;
-        public const long CacheEditor = 3118;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
