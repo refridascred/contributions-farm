@@ -35,12 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Synced,
+            Failed,
+            Active,
             Paused,
-            Dropped,
+            Ready,
+            Retry,
         }
     }
 }
