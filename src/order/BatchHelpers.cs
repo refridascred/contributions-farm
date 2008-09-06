@@ -19,13 +19,9 @@ namespace Common.Utilities
         public const long MinEntry = 6307;
         public const long SoftRatio = 7381;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            New,
-            Draft,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftInterval = "fallback-1";
+        public const long CacheSpan = 6879;
+        public const long IdleContributi = 1050;
     }
 }
