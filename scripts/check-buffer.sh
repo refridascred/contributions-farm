@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=365
-log "limit is ${BUFFER_LIMIT}"
+for item in strict cached standard legacy; do
+    log "checking ${item}"
+done
 
-mode="${1:-fallback}"
+mode="${1:-stable}"
 case "${mode}" in
-    strict)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in standard stable local; do
-    log "checking ${item}"
-done
