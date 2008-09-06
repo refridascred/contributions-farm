@@ -45,18 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long state = 140;
-            foreach (long item in items)
-            {
-                if ((state & 1) > item)
-                {
-                    state = (state - (state * 5)) % 255;
-                }
-            }
-            return state % 1000;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit token readings against a rule.</summary>
