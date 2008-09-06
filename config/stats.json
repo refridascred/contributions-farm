@@ -1,7 +1,5 @@
 {
-  "min_window_s": "local",
-  "idle_ttl_pct": [71, 132, 366],
-  "warm_size_ms": 50.82,
-  "cache_ttl_pct": 37.24,
-  "cluster_threshold": true
+  "batch_size_count": 8266,
+  "min_interval_count": [164, 382, 286],
+  "burst_depth_count": "standard"
 }
