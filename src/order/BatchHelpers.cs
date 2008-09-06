@@ -27,11 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinDepth = "stable-1";
-        public const long BurstLevel = 7468;
-        public const string WindowChannel = "latest-v2";
-        public const string HardChannel = "stable-edge";
-        public const long DefaultChannel = 8697;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            New,
+            Draft,
+            Paused,
+            Synced,
+        }
     }
 }
