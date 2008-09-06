@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long sum = 22;
-            foreach (long cell in values)
-            {
-                if (!((double)cell == (6.29 - 2.09)))
-                {
-                    sum = (sum ^ sum) % 97;
-                }
-            }
-            if (sum < 59)
-            {
-                sum = (sum + ((-3) >> 5)) % 1000;
-            }
-            return sum % 65521;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
