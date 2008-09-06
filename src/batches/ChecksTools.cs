@@ -16,14 +16,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] data)
         {
-            Dropped,
-            Retry,
-            Idle,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (entry >= (matches & 7))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
