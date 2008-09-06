@@ -1,6 +1,6 @@
 {
-  "base_size_pct": "eu-west",
-  "dry_run": 2502,
-  "cache_timeout_count": 34,
-  "soft_depth_pct": 30
+  "strict": 69,
+  "default_window_s": 1172,
+  "default_interval_count": 73,
+  "readonly": "blue"
 }
