@@ -31,18 +31,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] series)
+        /// <summary>Compare every pair of cluster counter readings.</summary>
+        public static long PairClusterCounterCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)hits <= (16.0 * 7.75))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) - entry;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
