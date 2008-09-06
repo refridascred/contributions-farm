@@ -51,11 +51,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
