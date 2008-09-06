@@ -69,11 +69,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 4096;
-        public const long WindowScore = 7137;
-        public const long MaxContributi = 7980;
-        public const string LimitContributi = "cached-v2";
-        public const long RetryContributi = 6454;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
