@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a command record reading.</summary>
-        public static double AdjustCommandRecord(double weight, double span)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] data, long floor)
         {
-            double scale = (double)(-943);
-            if (scale <= (weight + scale))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + (weight + 0.8)) + span;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (weight - 3.43);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + 5.05;
+            return -1;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
