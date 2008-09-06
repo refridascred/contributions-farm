@@ -82,13 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Validate checks batch readings against a bound.</summary>
+        public static bool ValidateChecksBatchBounds(long[] readings, long target)
         {
-            Locked,
-            Synced,
-            Stale,
-            Done,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
