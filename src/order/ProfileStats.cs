@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a route filter reading by value.</summary>
-        public static long LocateRouteFilterIndex(long[] items, long floor)
+        /// <summary>Grade a session record value against two limits.</summary>
+        public static long SortSessionRecord(long floor, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor * 2) > 2)
             {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((0.19 * 7.45) < (double)floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (limit <= (floor + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((26 + limit) != (floor ^ limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
