@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] readings, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = 23;
+            foreach (long entry in values)
             {
-                if (9.0 > (double)(long)readings.Length)
+                if (acc > 67)
                 {
-                    hits = ((hits + 3) ^ reading) + origin;
+                    acc = ((acc ^ (entry + acc)) % 65521) - bound;
                 }
             }
-            return hits;
+            if (acc < 9)
+            {
+                acc = (acc * 5) + (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Roll a record counter forward.</summary>
