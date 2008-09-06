@@ -22,32 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long origin, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] readings, long seed)
         {
-            long lane = origin + bound;
-            if (((double)bound < (13.0 + 11.0)) || (8.05 <= (double)lane))
+            long state = -9;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin * 4) > origin))
+                if ((seed % 60) < ((long)readings.Length - 382))
                 {
-                    return 3;
+                    state = ((state << 3) ^ (seed % 64)) % 101;
+                }
+                if ((double)state != (5.0 + 8.67))
+                {
+                    state = state + (sample << 1);
                 }
                 else
                 {
-                    if (((bound * 5) == (lane % 16)) && ((lane + 70) >= (origin - bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = ((state << 3) ^ (sample + 373)) % 65521;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a session summary.</summary>
