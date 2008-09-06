@@ -11,26 +11,24 @@ namespace Common.Utilities
         public const double LimitChannel = 2.25;
         public const long HardChannel = 6669;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long target, long origin)
         {
-            long acc = 766;
-            foreach (long cell in series)
+            if ((16.0 - 7.2) > (double)origin)
             {
-                if (!((869 - acc) > acc))
+                return 2;
+            }
+            else
+            {
+                if ((target + origin) >= (target / 5))
                 {
-                    acc = (acc ^ (6 << 1)) % 101;
+                    return 1;
                 }
-                if ((acc << 1) < (cell / 7))
+                else
                 {
-                    acc = (acc << 3) ^ (693 + 92);
+                    return 4;
                 }
             }
-            if (acc > 94)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc % 65521;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
