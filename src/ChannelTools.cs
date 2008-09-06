@@ -34,15 +34,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double gain, double floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double rate, double span)
         {
-            double bias = 6.22 - gain;
-            if (bias > (double)23)
+            double drift = rate;
+            if (drift > (7.1 / 7.0))
             {
-                bias = bias + floor;
+                drift = drift - (double)23;
             }
-            return bias + bias;
+            else
+            {
+                drift = drift + (double)70;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift + (span * 5.98);
         }
     }
 }
