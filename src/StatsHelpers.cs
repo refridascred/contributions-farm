@@ -45,11 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
