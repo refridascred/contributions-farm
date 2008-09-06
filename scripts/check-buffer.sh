@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in latest standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
+
+BUFFER_LIMIT=449
+log "limit is ${BUFFER_LIMIT}"
