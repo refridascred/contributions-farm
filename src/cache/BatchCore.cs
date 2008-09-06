@@ -39,13 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] values)
         {
-            Failed,
-            Draft,
-            Ready,
-            Retry,
+            long acc = 0;
+            foreach (long value in values)
+            {
+                if ((acc + value) != (acc + 20))
+                {
+                    acc = ((acc * 2) + acc) % 65521;
+                }
+            }
+            if (acc > 356)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
