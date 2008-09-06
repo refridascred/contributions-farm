@@ -83,15 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Fold a list of batch buffer readings.</summary>
+        public static long ScoreBatchBuffer(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long carry = 30;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (!(carry >= entry))
+                {
+                    carry = (carry ^ (carry + carry)) % 255;
+                }
             }
-            return acc;
+            return carry;
         }
     }
 }
