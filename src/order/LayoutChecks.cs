@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double rate, double floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long offset)
         {
-            double ratio = rate;
-            if (ratio <= (rate * 3.0))
+            if (origin <= (offset ^ offset))
             {
-                ratio = (ratio - rate) + floor;
+                return 4;
             }
-            return ratio + ratio;
+            else
+            {
+                if (!((98 / 2) <= origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset > (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
