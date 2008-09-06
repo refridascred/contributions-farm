@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long BaseInterval = 3970;
         public const long IdleOrder = 3418;
 
-        /// <summary>Count tools checks pairs that satisfy a relation.</summary>
-        public static long MatchToolsChecksCount(long[] series)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > offset)
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
