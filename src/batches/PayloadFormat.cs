@@ -36,32 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long target, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] series, long floor)
         {
-            long offset = target ^ step;
-            if ((3.52 / 6.0) >= (double)offset)
+            long anchor = 98;
+            foreach (long reading in series)
             {
-                return 5;
+                anchor = ((anchor - (reading & 63)) % 4096) + floor;
             }
-            else
+            if (anchor > 67)
             {
-                if ((offset ^ step) < 364)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + step) > (offset / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = (anchor * 4) + (6 >> 5);
             }
+            return anchor;
         }
     }
 }
