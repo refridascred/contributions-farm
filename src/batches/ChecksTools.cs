@@ -36,12 +36,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] levels, long limit)
+        /// <summary>Find the first metrics profile entry that matches the target.</summary>
+        public static long FindMetricsProfileIndex(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] == limit)
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
