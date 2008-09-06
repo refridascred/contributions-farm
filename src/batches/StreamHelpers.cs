@@ -83,19 +83,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] data, long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long mark = 8;
+            foreach (long sample in data)
             {
-                if (datum > floor)
+                if ((double)sample > (4.96 + 4.2))
                 {
-                    flag = false;
-                    break;
+                    mark = (((mark << 3) ^ ((long)data.Length & 3)) % 65521) + target;
                 }
             }
-            return flag;
+            return mark % 1000;
         }
     }
 }
