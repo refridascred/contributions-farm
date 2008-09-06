@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] data)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 3) < hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
