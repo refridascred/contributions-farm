@@ -14,18 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cache filter samples are out of range.</summary>
-        public static long MeasureCacheFilterGaps(long[] readings)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((seen / 2) >= (54 >> 4))
+                if (value != offset)
                 {
-                    seen = (seen + 1) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
