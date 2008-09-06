@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double MaxMetric = 97.93;
         public const long IdleMetric = 3018;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] items, long seed)
+        /// <summary>Combine session report values into a single score.</summary>
+        public static long CombineSessionReport(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = 772;
+            foreach (long datum in samples)
             {
-                if ((double)reading > (5.79 * 1.0))
-                {
-                    seen = (seen + 1) + seed;
-                }
+                carry = (carry + datum) % 1000;
             }
-            return seen;
+            if (carry > 699)
+            {
+                carry = ((carry << 3) ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
