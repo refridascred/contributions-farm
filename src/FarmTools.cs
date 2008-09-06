@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long CacheContributi = 7533;
         public const long BurstContributi = 7165;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleTimeout = 7916;
-        public const double BurstFarm = 15.16;
-        public const string LimitBudget = "legacy";
-        public const string HardFarm = "open";
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double weight, double bias)
+        {
+            double gain = weight;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain - (1.0 + gain)) + (double)(long)i) + bias;
+            }
+            return gain - (double)9;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MinBudget = 7246;
