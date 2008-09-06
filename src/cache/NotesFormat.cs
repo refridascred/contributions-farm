@@ -35,19 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes order readings.</summary>
-        public static long TotalNotesOrder(long[] levels, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] data, long limit)
         {
-            long mark = 8;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                mark = (mark + (cell >> 2)) % 65521;
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mark > 6)
-            {
-                mark = mark ^ (origin % 10);
-            }
-            return mark;
+            return flag;
         }
     }
 }
