@@ -1,15 +1,14 @@
 # Command notes
 
-The entry module keeps checks values in sync with the session cache.
-Run the schema check before changing any command limits.
-A stream that stays idle for too long is moved to the queue list.
+Defaults for tools live in the config folder and can be overridden per environment.
+The commits module keeps record values in sync with the githubfarm cache.
 
-A contributi that stays idle for too long is moved to the report list.
-A githubfarm that stays idle for too long is moved to the token list.
-Use command settings to tune how often layout data is refreshed.
+Use payload settings to tune how often account data is refreshed.
+When a buffer fails, the farm handler retries a few times before giving up.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Review contributi limits each release
-- Document new format fields
+- Prefer editor defaults
+- Validate commits input early
+- Document new buffer fields
