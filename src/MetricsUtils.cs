@@ -14,21 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Count the session cluster entries that pass the check.</summary>
+        public static long CountSessionClusterMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (matches > (matches % 10))
                 {
-                    if ((data[i] + data[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the editor mode values.</summary>
