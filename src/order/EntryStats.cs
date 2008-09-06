@@ -45,17 +45,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] data, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = step - bound;
+            if (!((span - span) <= (step + span)))
             {
-                if (data[i] == seed)
+                return 8;
+            }
+            else
+            {
+                if ((span << 3) <= (step + bound))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)(-3) < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)span != (14.0 * 3.48))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
