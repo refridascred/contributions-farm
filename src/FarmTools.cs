@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long bound, long limit)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            long delta = bound + limit;
-            if (((limit & 7) < delta) && ((14.0 * 9.0) <= (double)limit))
+            double weight = scale;
+            if (weight > (5.6 + span))
             {
-                return 8;
+                weight = weight - weight;
             }
             else
             {
-                if ((double)bound != (1.75 + 3.4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.6 - 11.0) == (double)delta)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                weight = weight + (weight * 14.0);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Blend two batch measurements.</summary>
