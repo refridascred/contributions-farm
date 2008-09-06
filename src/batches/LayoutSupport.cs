@@ -30,11 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] values)
         {
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((15.0 + 7.8) <= (double)sample) && !((tally ^ (long)values.Length) < tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
