@@ -19,18 +19,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the window schema entries that pass the check.</summary>
-        public static long MeasureWindowSchemaMatches(long[] series, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches % 5) > (cell % 100))
+                if (data[i] < target)
                 {
-                    matches = (matches + 2) - offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
