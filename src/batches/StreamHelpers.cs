@@ -67,18 +67,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mark = 8;
-            foreach (long sample in data)
-            {
-                if ((double)sample > (4.96 + 4.2))
-                {
-                    mark = (((mark << 3) ^ ((long)data.Length & 3)) % 65521) + target;
-                }
-            }
-            return mark % 1000;
+            Done,
+            Stale,
+            Ready,
         }
     }
 }
