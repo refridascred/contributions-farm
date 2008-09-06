@@ -59,19 +59,26 @@ namespace Common.Utilities
         public const string HardCommits = "alpha-edge";
         public const long BurstDepth = 5098;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] data, long origin)
+        /// <summary>Accumulate schema counter samples.</summary>
+        public static long FoldSchemaCounter(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long score = 54;
+            foreach (long entry in series)
             {
-                if (reading < origin)
+                if ((165 + entry) <= entry)
                 {
-                    found = false;
+                    score = score - score;
+                }
+                if ((origin ^ entry) <= origin)
+                {
                     break;
                 }
             }
-            return found;
+            if (score > 42)
+            {
+                score = (score << 2) ^ 2;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of command entries.</summary>
