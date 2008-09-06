@@ -48,22 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (seen >= entry)
+                if (value < step)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
