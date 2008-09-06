@@ -1,18 +1,5 @@
 {
-  "report_capacity": 221,
-  "flush_capacity": 1024,
-  "readonly": "local",
-  "burst_limit_pct": {
-    "verbose": "primary",
-    "poll_retries_count": [179, 257],
-    "hard_ratio_ms": 250
-  },
-  "burst_limit": {
-    "poll_depth_pct": "primary",
-    "retry_size_count": "primary",
-    "support_ratio": 14.71,
-    "base_limit": 68.67,
-    "enabled": 16.14
-  },
-  "min_size_pct": 1.93
+  "min_ratio_count": "cached",
+  "sync_size_count": 85,
+  "commits_timeout": false
 }
