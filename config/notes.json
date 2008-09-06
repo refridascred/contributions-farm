@@ -1,12 +1,7 @@
 {
-  "notes_interval": 48.31,
-  "max_delay_s": "cached",
-  "audit": {
-    "flush_interval_pct": 17.68,
-    "audit": true,
-    "cache_window_pct": "primary",
-    "enabled": 7787,
-    "burst_timeout": "cached",
-    "verbose": 56.27
-  }
+  "default_interval": [85, 272, 184, 494],
+  "token_interval": "latest",
+  "base_ratio_pct": 84.72,
+  "enabled": 100,
+  "cache_limit": true
 }
