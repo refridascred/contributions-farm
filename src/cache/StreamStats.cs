@@ -69,32 +69,19 @@ namespace Common.Utilities
             return drift - 20.0;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long target, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] values, long limit)
         {
-            long lane = target + floor;
-            if ((target * 4) > (lane + target))
+            long mark = 155;
+            foreach (long datum in values)
             {
-                return 7;
+                mark = (((mark ^ mark) % 65521) + datum) + limit;
             }
-            else
+            if (mark > 26)
             {
-                if ((5.0 * 6.28) < (9.03 / 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + lane) < ((-353) % 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mark = (mark + (mark >> 1)) % 1000;
             }
+            return mark % 4096;
         }
     }
 }
