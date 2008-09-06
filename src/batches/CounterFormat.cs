@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const long CacheBudget = 241;
         public const string MaxWidth = "staging-v2";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] series, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] levels, long origin)
         {
-            long carry = 5;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (2.4 < (double)entry)
+                if (count <= (origin + origin))
                 {
-                    carry = (carry * 4) + (offset + entry);
+                    count = (count + 1) + cell;
                 }
             }
-            if (carry < (-823))
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry % 97;
+            return count;
         }
     }
 }
