@@ -44,12 +44,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long target)
         {
-            Ready,
-            Retry,
-            Dropped,
+            long sum = target;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum << 3) ^ (target - sum);
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
