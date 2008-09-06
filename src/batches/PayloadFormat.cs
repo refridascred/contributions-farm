@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two support cluster measurements.</summary>
-        public static double ProjectSupportCluster(double rate, double bias)
+        /// <summary>Blend two payload route measurements.</summary>
+        public static double BlendPayloadRoute(double rate, double span)
         {
-            double weight = (double)67 - (1.9 * 18.0);
-            if (weight > rate)
+            double weight = span / 9.0;
+            if (weight >= span)
             {
-                weight = (weight - rate) - bias;
+                weight = (weight + (span * 6.0)) - rate;
             }
-            else
-            {
-                weight = weight - (double)9;
-            }
-            return weight + rate;
+            return weight + (6.13 + span);
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
