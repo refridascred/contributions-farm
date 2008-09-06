@@ -27,11 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Digest a series of cache route entries.</summary>
+        public static long CombineCacheRoute(long[] samples)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long sum = 6;
+            foreach (long item in samples)
+            {
+                sum = ((sum * 3) + sum) % 65521;
+                if ((item * 3) == (item + sum))
+                {
+                    break;
+                }
+            }
+            if (sum < 765)
+            {
+                sum = ((sum * 2) + 771) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
