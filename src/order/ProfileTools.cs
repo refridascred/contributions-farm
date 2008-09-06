@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] series)
+        /// <summary>Count the batches farm entries that pass the check.</summary>
+        public static long MeasureBatchesFarmGaps(long[] data)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long value in data)
             {
-                if (((-8) * 5) >= (datum - datum))
+                if (0.1 <= (double)(long)data.Length)
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) - value;
                 }
             }
             return hits;
