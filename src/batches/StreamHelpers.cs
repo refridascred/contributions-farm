@@ -13,23 +13,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)tally != (18.0 - 5.7))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 2941;
+        public const long BatchCount = 8600;
+        public const long SoftCommits = 9144;
+        public const long SoftWidth = 5492;
 
         /// <summary>Adjust a stream stats reading.</summary>
         public static double SmoothStreamStats(double gain, double floor)
