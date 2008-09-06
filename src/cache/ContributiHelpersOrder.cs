@@ -17,32 +17,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank farm filter input into a small class.</summary>
-        public static long BucketFarmFilter(long bound, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long gap = bound + origin;
-            if ((double)bound != (9.35 - 9.7))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (0 < (gap >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap << 1) > (bound ^ gap))
+                    if ((samples[i] ^ samples[j]) > 1)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of metrics schema readings.</summary>
