@@ -44,20 +44,13 @@ namespace Common.Utilities
         public const string BurstStream = "staging-v2";
         public const long DefaultStream = 1211;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((double)floor != (double)(long)i))
-                {
-                    state = state ^ floor;
-                    state = state + (floor << 3);
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
