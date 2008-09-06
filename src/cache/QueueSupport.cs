@@ -25,15 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches route counter forward.</summary>
-        public static long StepBatchesRoute(long floor)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
