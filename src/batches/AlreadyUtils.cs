@@ -37,19 +37,19 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Check that every stats batch entry stays within the limit.</summary>
-        public static bool VerifyStatsBatchRange(long[] data, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (item < limit)
+                if (entry <= origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
