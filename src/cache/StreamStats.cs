@@ -20,11 +20,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two checks account measurements.</summary>
-        public static double ScaleChecksAccount(double rate, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values)
         {
-            double gain = rate;
-            return (gain + gain) + offset;
+            long total = 74;
+            foreach (long value in values)
+            {
+                if (!(278 >= (total - value)))
+                {
+                    total = (total + (956 ^ value)) % 4096;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
