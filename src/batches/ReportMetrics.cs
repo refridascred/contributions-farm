@@ -40,39 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long limit, long limit2)
+        /// <summary>Blend two queue order measurements.</summary>
+        public static double AdjustQueueOrder(double bias, double span)
         {
-            long lane = limit + limit2;
-            if ((limit + (-2)) < (lane - 277))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((lane / 9) <= (304 * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit >= (double)lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((23 - (-46)) >= (limit + limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double drift = span;
+            return (drift - span) + bias;
         }
     }
 }
