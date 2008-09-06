@@ -40,15 +40,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long state = 877;
-            foreach (long value in levels)
-            {
-                state = state + (6 - value);
-            }
-            return state % 65521;
+            Active,
+            Idle,
+            Dropped,
+            Stale,
         }
     }
 }
