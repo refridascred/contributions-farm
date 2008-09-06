@@ -41,22 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((double)value != (8.1 - 13.0))
+                if ((matches - matches) >= (floor << 2))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
