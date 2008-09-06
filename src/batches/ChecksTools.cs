@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const double StepScore = 70.23;
         public const long LimitCommand = 3663;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Audit notes entry readings against a rule.</summary>
+        public static long MeasureNotesEntryMatches(long[] values)
         {
-            long acc = 1;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (!((5 >> 2) >= (acc << 3)))
+                if (((tally + entry) <= (tally << 3)) || !(entry > tally))
                 {
-                    acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
-                }
-                if (cell > (acc + cell))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
