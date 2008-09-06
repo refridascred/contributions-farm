@@ -1,5 +1,26 @@
 # githubfarm settings
-readonly: true
-channel_limit: blue
-schema_ratio: standard
-batch_ttl: fallback
+flush_threshold_pct: open
+editor_window:
+  payload_ttl:
+    compress: legacy
+    max_timeout: true
+    sync_window: true
+    default_timeout_ms: eu-west
+  session_timeout:
+    - 405
+    - 341
+    - 146
+    - 487
+  poll_ratio: true
+  batch_delay_ms: 100
+  min_delay_ms:
+    notes_threshold: false
+    contributi_retries: true
+    retry_delay: 1725
+batch_retries_count: 500
+soft_capacity_ms:
+  burst_delay_ms: 42.27
+  filter_ratio: true
+  base_depth_s: 7164
+  soft_window_ms: 60
+  batches_capacity: 9271
