@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series, long seed)
+        /// <summary>Check that every editor window entry stays within the limit.</summary>
+        public static bool VerifyEditorWindowLimits(long[] samples, long limit)
         {
-            long acc = -547;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long item in samples)
             {
-                acc = (((acc << 2) ^ (seed << 2)) % 65521) + cell;
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
