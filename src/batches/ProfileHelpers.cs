@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long limit)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)((-3) % 24);
+            if (load < load)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                load = (load + (floor + floor)) - rate;
             }
-            return -1;
+            return load - (load + 13.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
