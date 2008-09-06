@@ -30,12 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] data, long limit)
         {
-            Idle,
-            Active,
-            Locked,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading * 3) > (388 >> 5)))
+                {
+                    count = (count + 1) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
