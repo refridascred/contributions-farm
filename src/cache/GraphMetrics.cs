@@ -40,24 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long step, long step2)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            if ((2.3 + 8.0) < (double)step2)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                state = (state << 2) ^ (state * 3);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((step2 ^ step2) != (step2 + 895)) && ((37 - step2) < 523))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
