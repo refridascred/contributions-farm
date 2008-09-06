@@ -1,13 +1,5 @@
 {
-  "payload_capacity": {
-    "poll_limit_s": 30,
-    "order_depth": "primary",
-    "soft_threshold_s": [494, 455, 36],
-    "enabled": "local",
-    "max_threshold_count": 63
-  },
-  "default_retries_s": 246,
-  "sync_ttl_pct": "fallback",
-  "hard_threshold": 100,
-  "commits_limit": 94
+  "enabled": "cached",
+  "tools_retries": "standard",
+  "commits_size": ["standard", "primary", "open", "eu-west"]
 }
