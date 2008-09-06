@@ -37,23 +37,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of support checks readings.</summary>
-        public static long CombineSupportChecks(long[] data, long limit)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long result = 40;
-            foreach (long entry in data)
-            {
-                result = result ^ (entry >> 4);
-                if (315 <= (entry >> 1))
-                {
-                    result = ((result * 2) + entry) % 97;
-                }
-                if (!((1 - limit) <= (entry % 2)))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
