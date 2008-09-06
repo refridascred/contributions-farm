@@ -14,22 +14,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long seed)
         {
-            long mix = -32;
-            foreach (long sample in items)
+            if ((6.0 * 1.0) >= (double)seed)
             {
-                if ((double)0 < (double)sample)
+                return 3;
+            }
+            else
+            {
+                if ((target + seed) > (3 - (-8)))
                 {
-                    mix = ((mix * 5) + (5 ^ sample)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    if ((6.6 * 4.56) == (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target > (seed ^ 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mix > (-58))
-            {
-                mix = mix ^ (mix << 3);
-            }
-            return mix;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
