@@ -1,5 +1,5 @@
 {
-  "batch_size_count": 8266,
-  "min_interval_count": [164, 382, 286],
-  "burst_depth_count": "standard"
+  "enabled": [423, 400, 300],
+  "audit": ["fallback", "green", "open", "local"],
+  "retry_depth_ms": true
 }
