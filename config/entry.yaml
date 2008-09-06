@@ -1,19 +1,4 @@
 # entry settings
-route_size:
-  batch_window_pct: true
-  readonly: stable
-  min_retries:
-    - strict
-    - legacy
-    - green
-    - latest
-  poll_timeout_count: green
-  queue_capacity: primary
-  max_threshold_ms: standard
-compress: 10.96
-warm_interval: false
-hard_limit_ms:
-  - stable
-  - green
-  - cached
-  - blue
+base_window_s: 90
+flush_retries_pct: 49
+soft_timeout_s: primary
