@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const double CacheCommits = 47.94;
         public const long RetryCommits = 4147;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] samples, long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            New,
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Derive the next cache support value from a seed.</summary>
