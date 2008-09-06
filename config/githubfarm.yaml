@@ -1,11 +1,5 @@
 # githubfarm settings
-poll_depth_count:
-  cache_depth: 55
-  min_retries_s: false
-  enabled: staging
-filter_depth:
-  dry_run: false
-  readonly: 82.7
-  flush_size_s: 30
-base_size_pct: cached
-soft_timeout_s: 37
+audit: strict
+flush_depth_ms: legacy
+enabled: true
+already_depth: latest
