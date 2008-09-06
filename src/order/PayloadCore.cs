@@ -49,17 +49,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a order batch reading by value.</summary>
-        public static long FindOrderBatchIndex(long[] items, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                if (!((6.7 - 3.85) >= (double)entry))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
