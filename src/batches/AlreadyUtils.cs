@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
+            Synced,
+            Locked,
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
