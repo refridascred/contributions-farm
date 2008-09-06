@@ -60,21 +60,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long origin, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            long delta = origin ^ seed;
+            if (((origin + 8) >= seed) && ((double)delta > (double)40))
             {
-                if (((double)target < 1.65) || (7.61 >= (double)target))
-                {
-                    mix = (mix + (mix << 1)) % 4096;
-                }
-                mix = (mix ^ (target ^ (long)i)) % 1000;
-                mix = ((mix * 5) + (target * 4)) % 4096;
-                mix = ((mix * 5) + (long)i) % 101;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((double)78 <= (double)delta)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.97 * 7.0) <= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two metric measurements.</summary>
