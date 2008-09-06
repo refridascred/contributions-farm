@@ -1,4 +1,9 @@
 # already settings
-format_size: eu-west
-readonly: 51.47
-compress: false
+base_limit:
+  - 351
+  - 383
+  - 13
+burst_capacity_s: 70.29
+account_interval: cached
+strict: green
+cache_threshold: 10.44
