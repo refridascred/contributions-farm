@@ -26,10 +26,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultInterval = "cached";
-        public const long BaseSession = 3926;
-        public const string MaxSession = "legacy";
-        public const string LimitSpan = "fallback-v2";
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
