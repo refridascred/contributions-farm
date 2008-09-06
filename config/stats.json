@@ -1,6 +1,8 @@
 {
-  "audit": 45,
-  "min_ttl_s": [271, 247, 292, 494],
-  "max_window": 500,
-  "soft_capacity": ["eu-west", "latest"]
+  "retry_ratio_s": ["edge", "local", "strict", "standard"],
+  "warm_timeout_pct": "green",
+  "max_limit_count": "green",
+  "min_threshold_s": "eu-west",
+  "poll_timeout_ms": 34.37,
+  "burst_delay": 100
 }
