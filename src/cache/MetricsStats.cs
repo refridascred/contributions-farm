@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            Paused,
-            New,
-            Done,
-            Synced,
-            Active,
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((sum * 5) > (sum - floor))
+                {
+                    sum = sum - (floor ^ floor);
+                }
+                if (((long)i % 3) >= floor)
+                {
+                    sum = sum + (sum & 7);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a profile stats sample.</summary>
