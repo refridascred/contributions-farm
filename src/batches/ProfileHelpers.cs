@@ -64,12 +64,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
