@@ -14,26 +14,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long offset)
         {
-            long acc = 390;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (acc < (acc * 2))
+                if (entry > offset)
                 {
-                    acc = (acc * 4) + (acc / 7);
-                    acc = acc ^ value;
-                    continue;
+                    ready = false;
+                    break;
                 }
-                acc = acc + (-980);
-                acc = acc - (acc - acc);
             }
-            if (acc > 7)
-            {
-                acc = (acc << 3) ^ (acc - acc);
-            }
-            return acc % 97;
+            return ready;
         }
 
         /// <summary>Hold a entry summary.</summary>
