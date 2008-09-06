@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] values, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum >= (datum + 902)) && ((count > offset) || (datum >= (count % 3))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a layout reading.</summary>
