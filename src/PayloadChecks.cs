@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a layout cache reading by value.</summary>
-        public static long LookupLayoutCacheIndex(long[] readings, long limit)
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long FoldAlreadyAccount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 42;
+            foreach (long cell in series)
             {
-                if (readings[i] > limit)
+                if ((653 - cell) < mark)
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (429 >> 1)) % 255;
+                }
+                else
+                {
+                    mark = mark ^ (74 << 2);
+                }
+                if (((mark + cell) > (mark + mark)) && ((741 >> 5) >= cell))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Describe the schema kind values.</summary>
