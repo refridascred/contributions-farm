@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support queue value from a seed.</summary>
-        public static long IterateSupportQueue(long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] items, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
