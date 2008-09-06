@@ -12,39 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values)
         {
-            long edge = target - origin;
-            if ((origin << 2) > origin)
+            long sum = 83;
+            foreach (long reading in values)
             {
-                return 4;
+                sum = ((sum << 2) ^ reading) % 101;
             }
-            else
+            if (sum > 287)
             {
-                if ((9.78 / 7.0) < (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin / 4) < origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((edge >> 5) >= 980)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                sum = (sum + (sum << 3)) % 1000;
             }
+            return sum % 1000;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
