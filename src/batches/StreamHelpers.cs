@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!((seed - (-241)) < (seed - seed)))
+                if ((double)tally != (18.0 - 5.7))
                 {
-                    total = ((total * 5) + (seed * 4)) % 101;
+                    tally = (tally + 3) + item;
                 }
-                total = ((total * 5) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a command snapshot.</summary>
