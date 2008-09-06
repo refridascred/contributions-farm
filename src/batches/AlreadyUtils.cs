@@ -42,18 +42,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] values)
+        /// <summary>Digest a series of cache order entries.</summary>
+        public static long TotalCacheOrder(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long score = 588;
+            foreach (long sample in samples)
             {
-                if ((9.0 - 0.42) <= (double)matches)
+                if (score <= (sample * 2))
                 {
-                    matches = (matches + 3) + entry;
+                    score = (score + sample) % 255;
+                }
+                if ((18.0 + 1.76) > (double)sample)
+                {
+                    score = (score + (score ^ sample)) % 97;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
