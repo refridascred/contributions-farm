@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 87;
+            foreach (long entry in values)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
+                if (171 < (result + 372))
                 {
-                    return (long)i;
+                    result = (((result << 2) ^ (entry * 5)) % 101) - limit;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Project the next commits metric value.</summary>
