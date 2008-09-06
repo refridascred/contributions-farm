@@ -44,12 +44,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] samples)
         {
-            Stale,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((204 + hits) < item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
