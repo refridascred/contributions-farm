@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double span)
         {
-            Idle,
-            Draft,
-            Retry,
-            Pending,
+            double rate = gain / 4.0;
+            return (rate + 0.07) + span;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
