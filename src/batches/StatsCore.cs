@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] samples, long target)
         {
-            Failed,
-            Idle,
-            Retry,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((19 + item) == (target * 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
