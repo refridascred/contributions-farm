@@ -16,23 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache stats readings against a rule.</summary>
-        public static long CountCacheStatsHits(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (1.7 <= (double)origin)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 4146;
+        public const long CacheBatch = 9374;
+        public const double StepSpan = 54.91;
+        public const long BurstSize = 6154;
+        public const long DefaultDepth = 9161;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
