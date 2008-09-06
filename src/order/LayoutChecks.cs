@@ -48,32 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long step)
-        {
-            if ((6 - target) == (target >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target - 33) < (4 << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)step > (1.7 - 8.19)) && ((step << 1) < step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 2932;
+        public const string BatchRatio = "staging";
+        public const long BaseFactor = 9023;
+        public const long LimitSession = 5707;
+        public const long BatchSize = 7545;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] readings)
