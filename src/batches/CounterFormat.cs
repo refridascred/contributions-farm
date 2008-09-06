@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Audit batches buffer readings against a rule.</summary>
+        public static long MeasureBatchesBufferMatches(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches + 4) != (datum + datum))
                 {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
