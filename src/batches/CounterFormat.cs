@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstInterval = 4098;
+        public const long SoftGithubfarm = 2102;
+        public const double MaxGithubfarm = 33.2;
+        public const long BurstGithubfarm = 774;
+        public const long SoftRatio = 4795;
     }
 }
