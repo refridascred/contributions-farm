@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count & 63) >= (datum >> 2))
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit route cache readings against a rule.</summary>
