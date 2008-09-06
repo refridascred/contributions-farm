@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const double BatchGraph = 30.81;
         public const double LimitGraph = 73.43;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            New,
-            Retry,
-            Paused,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
