@@ -48,37 +48,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long target)
         {
-            long next = offset + target;
-            if (((5.6 - 8.22) < (double)target) || ((14.0 / 4.0) <= (double)target))
+            long bound = step ^ target;
+            if ((double)target == (10.0 + 12.0))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((double)offset <= 2.0)
+                if (((-122) + step) <= (bound << 1))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset & 3) > next)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((25 < (next << 2)) || (target >= (offset & 15)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
