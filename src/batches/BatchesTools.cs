@@ -37,12 +37,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Ready,
-            Retry,
-            Paused,
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
