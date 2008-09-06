@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] readings, long offset)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum - count) != (datum + 481)) && ((-8) >= (count + count)))
+                {
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a window entry.</summary>
