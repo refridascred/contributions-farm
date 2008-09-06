@@ -52,22 +52,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload contributi entries.</summary>
-        public static long TotalPayloadContributi(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] samples)
         {
-            long total = 45;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (item >= ((long)samples.Length + total))
+                if (!((entry + entry) <= (entry << 3)))
                 {
-                    total = (total - (item % 5)) % 97;
+                    matches = matches + 3;
                 }
-                if ((total & 127) < 19)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
