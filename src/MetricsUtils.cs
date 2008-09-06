@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Synced,
             Failed,
-            Stale,
+            Active,
             Locked,
+            Pending,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
