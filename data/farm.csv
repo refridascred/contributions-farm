@@ -1,9 +1,6 @@
-id,score,level
-1,open,open
-2,36.39,953
-3,eu-west,93
-4,96.75,stable
-5,537,66.92
-6,blue,711
-7,740,31.49
-8,707,standard
+id,state,owner,token
+1,cached,954,191
+2,786,edge,344
+3,84.15,edge,264
+4,225,375,882
+5,fallback,950,local
