@@ -1,7 +1,16 @@
 # githubfarm settings
-metric_retries:
-  - 284
-  - 495
-  - 108
-warm_capacity_s: true
-min_retries_count: stable
+flush_interval_ms: false
+already_window: 93.62
+enabled: false
+sync_capacity_count: 5658
+record_timeout:
+  soft_delay: 42.09
+  dry_run: 250
+  hard_capacity_s:
+    default_delay: true
+    burst_limit_s: 81.06
+    filter_interval: true
+    enabled: 70
+  burst_window: local
+  default_limit_pct: cached
+sync_retries_ms: edge
