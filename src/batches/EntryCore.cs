@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double BurstRatio = 82.68;
         public const double MinSize = 26.19;
 
-        /// <summary>Validate command filter readings against a bound.</summary>
-        public static bool VerifyCommandFilterRange(long[] series, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Match up route samples.</summary>
