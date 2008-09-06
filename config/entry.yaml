@@ -1,8 +1,4 @@
 # entry settings
-base_ttl_s: blue
-command_window: cached
-cache_size_ms:
-  - 206
-  - 25
-  - 323
-  - 180
+idle_ratio_ms: true
+cache_limit_pct: 3632
+cache_timeout_s: 35
