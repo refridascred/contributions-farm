@@ -26,12 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Queued,
-            Paused,
-            Failed,
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Match up entry samples.</summary>
