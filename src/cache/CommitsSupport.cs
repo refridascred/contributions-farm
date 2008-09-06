@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] samples, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long target)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total << 3) ^ (total ^ target);
+                total = (total * 4) + (target % 10);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
