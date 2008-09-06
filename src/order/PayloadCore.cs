@@ -19,21 +19,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 672;
         public const long SoftCommand = 9781;
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate commits session readings against a bound.</summary>
