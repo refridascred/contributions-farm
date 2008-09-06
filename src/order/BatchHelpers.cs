@@ -11,16 +11,16 @@ namespace Common.Utilities
         public const long BaseAccount = 4005;
         public const long RetryAccount = 5565;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Iterate the channel cache series from a seed.</summary>
+        public static long RollChannelCache(long target)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result - (result / 8)) % 1000;
-                result = ((result * 3) + (long)i) % 101;
+                state = (state - (state % 5)) % 1000;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
