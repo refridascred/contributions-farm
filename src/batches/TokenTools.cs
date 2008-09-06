@@ -27,21 +27,12 @@ namespace Common.Utilities
         public const double HardStats = 73.57;
         public const string DefaultFactor = "local-v2";
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
