@@ -42,15 +42,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double gain, double span)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double gain2 = span;
-            if (gain2 >= (span / 3.0))
-            {
-                gain2 = (gain2 + (double)47) - gain;
-            }
-            return gain2 - (double)829;
+            Closed,
+            Pending,
+            Retry,
+            Queued,
+            Failed,
         }
     }
 }
