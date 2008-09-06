@@ -85,27 +85,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            long anchor = 59;
-            foreach (long sample in readings)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)sample < (13.0 / 5.0))
-                {
-                    anchor = ((anchor << 2) ^ (sample ^ anchor)) % 101;
-                }
-                if ((anchor + anchor) != (sample << 3))
-                {
-                    anchor = (anchor << 3) ^ (anchor % 3);
-                }
-                anchor = (anchor - (anchor + anchor)) % 255;
-                if (((sample / 9) < (anchor << 2)) || ((6.4 + 1.0) < (double)anchor))
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
     }
 }
