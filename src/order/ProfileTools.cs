@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] series, long limit)
         {
-            long acc = 386;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                acc = (((acc * 5) + (acc ^ seed)) % 4096) - value;
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
