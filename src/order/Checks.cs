@@ -67,13 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Draft,
+            Failed,
+            New,
+            Idle,
         }
     }
 }
