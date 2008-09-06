@@ -37,14 +37,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Audit stats context readings against a rule.</summary>
+        public static long CountStatsContextMatches(long[] data, long origin)
         {
-            Failed,
-            Pending,
-            Locked,
-            Active,
-            Draft,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((double)matches > (2.51 / 3.0)) || ((datum + origin) > (matches & 1)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
