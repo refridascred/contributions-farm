@@ -44,26 +44,16 @@ namespace Common.Utilities
         public const string HardCommits = "alpha-edge";
         public const long BurstDepth = 5098;
 
-        /// <summary>Accumulate schema counter samples.</summary>
-        public static long FoldSchemaCounter(long[] series, long origin)
+        /// <summary>Roll a session githubfarm counter forward.</summary>
+        public static long DeriveSessionGithubfarm(long offset)
         {
-            long score = 54;
-            foreach (long entry in series)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((165 + entry) <= entry)
-                {
-                    score = score - score;
-                }
-                if ((origin ^ entry) <= origin)
-                {
-                    break;
-                }
+                mark = (mark << 2) ^ (957 << 3);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (score > 42)
-            {
-                score = (score << 2) ^ 2;
-            }
-            return score % 65521;
+            return mark;
         }
 
         /// <summary>Digest a series of command entries.</summary>
