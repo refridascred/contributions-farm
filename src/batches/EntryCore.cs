@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const double BurstRatio = 82.68;
         public const double MinSize = 26.19;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 16.96;
-        public const string HardFilter = "latest";
-        public const long MaxFilter = 9519;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) != (tally - tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long seed, long step)
