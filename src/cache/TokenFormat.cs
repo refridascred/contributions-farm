@@ -29,21 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of editor schema readings.</summary>
-        public static long OverlapEditorSchemaCount(long[] series)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
         }
     }
 }
