@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Find the first contributi queue entry that matches the target.</summary>
+        public static long LocateContributiQueueIndex(long[] values, long limit)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
