@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] values, long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long state = 0;
+            foreach (long value in data)
             {
-                if (30 <= (origin & 3))
+                if (7.7 >= (double)value)
                 {
-                    count = (count + 1) + entry;
+                    state = state ^ value;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Rank entry session input into a small class.</summary>
