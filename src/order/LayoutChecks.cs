@@ -53,18 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] levels, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((hits + datum) > (datum + datum))
+                if (datum <= offset)
                 {
-                    hits = (hits + 1) + floor;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
