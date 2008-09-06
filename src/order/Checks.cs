@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up report order samples.</summary>
-        public static long CompareReportOrderCount(long[] levels)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample < seed)
                 {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Fold a list of graph schema readings.</summary>
