@@ -46,16 +46,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a profile githubfarm counter forward.</summary>
-        public static long IterateProfileGithubfarm(long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] data, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                acc = (acc + (acc + acc)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
