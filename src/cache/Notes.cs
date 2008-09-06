@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Measure how many support window samples are out of range.</summary>
+        public static long TallySupportWindowHits(long[] data)
         {
-            Locked,
-            Draft,
-            Idle,
-            Synced,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits + value) >= 1)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
