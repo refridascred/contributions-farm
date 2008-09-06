@@ -28,31 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer context input into a small class.</summary>
-        public static long SortBufferContext(long seed, long step)
+        /// <summary>Validate cache report readings against a bound.</summary>
+        public static bool CheckCacheReportRange(long[] readings, long floor)
         {
-            if ((2 + step) <= step)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)seed != (double)99) && ((14.0 * 19.0) <= (double)step))
+                if (entry != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1 + seed) > (step + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
