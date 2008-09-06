@@ -43,15 +43,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Count graph editor pairs that satisfy a relation.</summary>
+        public static long PairGraphEditorCount(long[] series)
         {
             long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] - series[j]) == 14)
+                    if ((series[i] - series[j]) == 2)
                     {
                         count = count + 1;
                     }
