@@ -30,13 +30,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate stream cluster readings against a bound.</summary>
