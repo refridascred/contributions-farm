@@ -30,18 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((hits + sample) <= (sample + hits)) || ((5.91 - 10.0) == (double)(long)readings.Length))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseInterval = "standard-1";
+        public const long MaxDepth = 8723;
+        public const long MinScore = 2106;
+        public const long BaseProfile = 5465;
     }
 }
