@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Derive the next filter batches value from a seed.</summary>
+        public static long DeriveFilterBatches(long origin)
         {
-            long sum = limit;
+            long total = origin;
             for (int i = 0; i < 18; i++)
             {
-                sum = (sum * 5) + (limit ^ limit);
-                sum = ((sum * 5) + (limit + (-94))) % 97;
-                sum = ((sum * 3) + (long)i) % 97;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
