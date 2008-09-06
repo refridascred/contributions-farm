@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Pending,
+            Idle,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
