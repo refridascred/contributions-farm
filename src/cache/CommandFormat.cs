@@ -49,22 +49,36 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] samples, long seed)
+        /// <summary>Fold a list of notes record readings.</summary>
+        public static long CombineNotesRecord(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long total = 50;
+            foreach (long datum in levels)
             {
-                if ((entry % 3) > (tally / 3))
+                if (total < (datum - 70))
                 {
-                    tally = (tally + 1) - seed;
+                    total = total ^ (total + offset);
+                    total = (total * 2) + (79 * 5);
+                    continue;
+                }
+                if ((offset & 31) > (datum ^ datum))
+                {
+                    total = ((total * 2) + offset) % 65521;
+                }
+                if ((70 + total) != (datum - offset))
+                {
+                    total = (total ^ (1 % 12)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total - (datum * 3)) % 1000;
                 }
             }
-            return tally;
+            if (total < 234)
+            {
+                total = total + (offset * 2);
+            }
+            return total % 65521;
         }
     }
 }
