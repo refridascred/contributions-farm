@@ -23,30 +23,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long bound)
         {
-            long state = 21;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (state >= (state + state))
+                if (datum > bound)
                 {
-                    state = state + seed;
-                }
-                if ((seed + (-222)) < (398 ^ seed))
-                {
-                    state = (state + (2 + datum)) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (state << 3)) % 101;
-                }
-                if (seed < 10)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Hold a support summary.</summary>
