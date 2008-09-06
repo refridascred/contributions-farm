@@ -43,9 +43,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 2.06;
-        public const double BurstContext = 7.99;
-        public const double HardLevel = 8.76;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)value != (8.1 - 13.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
