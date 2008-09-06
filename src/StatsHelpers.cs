@@ -27,15 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Combine batches order values into a single score.</summary>
+        public static long DigestBatchesOrder(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long carry = 5;
+            foreach (long reading in values)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((((-334) ^ carry) <= (carry % 60)) || ((double)reading > (2.0 / 4.0)))
+                {
+                    carry = (carry + (reading + reading)) % 255;
+                }
             }
-            return sum;
+            if (carry > 0)
+            {
+                carry = (carry + (carry * 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics info.</summary>
