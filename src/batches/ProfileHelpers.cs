@@ -18,26 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            long carry = -443;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= (carry - value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry << 3) ^ (value + value);
-                }
-                if (((-7) & 7) >= (carry & 1))
-                {
-                    carry = ((carry << 3) ^ (carry + value)) % 1000;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 1)
-            {
-                carry = (carry ^ (carry * 2)) % 1000;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
