@@ -54,22 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (771 >= value)
+                if ((92 >> 4) >= seen)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the payload class values.</summary>
