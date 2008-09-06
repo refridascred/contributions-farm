@@ -22,21 +22,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
