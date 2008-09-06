@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] data, long origin)
         {
-            long state = 748;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((-66) > state)
+                if ((double)tally > (double)sample)
                 {
-                    state = (((state << 2) ^ (state % 7)) % 101) + entry;
-                }
-                else
-                {
-                    state = ((state * 5) + (state - 18)) % 4096;
+                    tally = (tally + 3) - origin;
                 }
             }
-            if (state > 5)
-            {
-                state = (state ^ state) % 97;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
