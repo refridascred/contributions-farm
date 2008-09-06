@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long step2)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long offset, long seed)
         {
-            long step3 = step ^ step2;
-            if ((double)223 == (double)step2)
+            if ((double)offset > (7.0 + 11.0))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (((step3 + step2) < 43) || ((step3 + step2) >= (step3 + step3)))
+                if (seed >= (offset + seed))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)step2 <= (2.0 - 5.4))
+                    if ((offset + 657) <= offset)
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        if (((offset >> 3) <= (offset / 4)) && (seed >= (seed ^ offset)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
