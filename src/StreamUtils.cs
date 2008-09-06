@@ -54,11 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
