@@ -52,11 +52,31 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Classify a schema notes pair into a bucket.</summary>
+        public static long GradeSchemaNotes(long seed, long limit)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            if ((seed + seed) <= (limit + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed ^ 2) <= (seed / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - limit) < (seed * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of context entries.</summary>
