@@ -12,35 +12,22 @@ namespace Common.Utilities
         public const long SoftFactor = 934;
         public const double MaxScore = 12.58;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] readings, long offset)
         {
-            long mix = 47;
-            foreach (long sample in series)
+            long anchor = 42;
+            foreach (long entry in readings)
             {
-                if (mix >= (mix + sample))
+                if (entry >= 809)
                 {
-                    continue;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = (mix - (mix - sample)) % 97;
-                    mix = (mix ^ (long)i) % 1000;
-                }
-                if ((mix & 255) > (867 >> 3))
-                {
-                    mix = (mix ^ (818 % 16)) % 255;
+                    anchor = (anchor ^ 367) - offset;
                 }
                 else
                 {
-                    mix = (mix + (sample - sample)) % 255;
+                    anchor = anchor - ((long)readings.Length - anchor);
                 }
             }
-            if (mix > 510)
-            {
-                mix = (mix ^ 3) % 1000;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
