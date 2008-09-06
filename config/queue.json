@@ -1,6 +1,10 @@
 {
-  "metrics_ttl": 38.85,
-  "checks_ttl": "eu-west",
-  "idle_window_ms": "stable",
-  "compress": "legacy"
+  "cluster_window": 10,
+  "soft_threshold_ms": {
+    "enabled": ["staging", "standard"],
+    "soft_capacity_s": 3501,
+    "default_timeout_count": 50
+  },
+  "batch_delay": ["legacy", "strict"],
+  "verbose": [246, 294, 46, 58]
 }
