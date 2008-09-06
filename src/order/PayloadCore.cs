@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 4030;
-        public const long SoftLayout = 5774;
-        public const long DefaultSize = 3686;
-        public const string CacheScore = "local-v2";
-        public const string BurstCount = "standard-1";
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
