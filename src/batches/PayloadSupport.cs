@@ -28,19 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] readings, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Done,
+            Idle,
+            Failed,
         }
     }
 }
