@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] readings, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long seed)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long item in readings)
             {
-                if ((origin << 2) >= 219)
+                if ((hits - item) <= (item / 8))
                 {
-                    hits = (hits + 2) + value;
+                    hits = (hits + 2) + seed;
                 }
             }
             return hits;
