@@ -31,21 +31,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mix <= (mix & 255)) && ((mix & 255) > (16 & 1)))
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 4) + 3) % 255;
+                }
+                else
+                {
+                    mix = (mix + (datum << 3)) % 1000;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next githubfarm profile value from a seed.</summary>
