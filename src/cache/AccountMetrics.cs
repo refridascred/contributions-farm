@@ -32,22 +32,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] levels, long seed)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long state = 337;
-            foreach (long item in levels)
-            {
-                if ((item * 2) > (25 + seed))
-                {
-                    state = (state - (seed + (long)levels.Length)) % 101;
-                }
-            }
-            if (state > (-374))
-            {
-                state = state ^ (seed ^ state);
-            }
-            return state % 1000;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
