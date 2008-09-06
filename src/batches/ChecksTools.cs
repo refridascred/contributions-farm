@@ -36,18 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] items, long target)
         {
-            long carry = -463;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((double)bound >= (7.8 / 9.0))
+                if (value < target)
                 {
-                    carry = (((carry << 2) ^ bound) % 101) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return flag;
         }
     }
 }
