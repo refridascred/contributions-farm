@@ -26,19 +26,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] values, long floor)
         {
-            double load = offset;
-            if (load <= bias)
+            long matches = 0;
+            foreach (long item in values)
             {
-                load = load - offset;
+                if (!((floor <= (floor - item)) && ((floor + matches) != (floor - item))))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                load = load - (double)6;
-            }
-            return load - (double)9;
+            return matches;
         }
 
         /// <summary>Hold a context entry.</summary>
