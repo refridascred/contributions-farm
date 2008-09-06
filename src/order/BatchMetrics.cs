@@ -24,18 +24,16 @@ namespace Common.Utilities
         public const string RetryDepth = "primary";
         public const string StepReport = "latest";
 
-        /// <summary>Count the window tools entries that pass the check.</summary>
-        public static long CountWindowToolsHits(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((926 <= reading) && (hits >= reading))
-                {
-                    hits = hits + 1;
-                }
+                anchor = anchor ^ (889 - (long)i);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
