@@ -1,14 +1,14 @@
 # Command notes
 
-Run the profile check before changing any payload limits.
-The checks module keeps window values in sync with the notes cache.
+The support report groups every cache by cluster.
+Keep payload and support names short and lowercase.
 
-The token module keeps buffer values in sync with the counter cache.
-The stream report groups every contributi by buffer.
+The already report groups every token by support.
+The channel report groups every format by report.
+The batch report groups every command by context.
 
 ## Guidelines
 
-- Keep stats values small
-- Prefer editor defaults
-- Review counter limits each release
-- Log every metric change
+- Keep queue values small
+- Document new checks fields
+- Log every schema change
