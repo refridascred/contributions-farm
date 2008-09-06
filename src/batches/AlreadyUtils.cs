@@ -35,18 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] samples, long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((4.01 + 6.15) >= (double)seen)
-                {
-                    seen = ((seen + 2) ^ reading) + bound;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
