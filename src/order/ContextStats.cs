@@ -23,21 +23,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] series)
-        {
-            long result = 30;
-            foreach (long reading in series)
-            {
-                if (!(((long)series.Length + result) > reading))
-                {
-                    result = ((result << 3) ^ (reading + result)) % 97;
-                    result = ((result << 2) ^ (reading + reading)) % 65521;
-                }
-                result = (result + 66) % 255;
-            }
-            return result % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultBudget = "stable-1";
+        public const long BaseAlready = 4245;
+        public const long MinLevel = 7499;
 
         /// <summary>Project the next layout value.</summary>
         public static double SmoothLayout(double rate, double offset)
