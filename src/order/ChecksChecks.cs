@@ -27,15 +27,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long step, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long delta = step + bound;
+            if ((44 <= (step + 6)) && ((delta - bound) <= step))
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((double)bound >= (1.5 * 4.7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) > 167)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
