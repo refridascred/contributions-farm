@@ -56,23 +56,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            long result = 2;
-            foreach (long value in samples)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                result = (result ^ (long)samples.Length) % 1000;
-                if (result <= (value & 31))
+                state = ((state * 4) + origin) % 4096;
+                state = state ^ (origin % 5);
+                if ((86 + (long)i) >= state)
                 {
-                    result = (result ^ bound) % 255;
+                    state = state + (origin + 5);
+                    state = (state + (state % 97)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            if (result < 0)
-            {
-                result = (result << 2) ^ (9 % 64);
-            }
-            return result;
+            return state;
         }
     }
 }
