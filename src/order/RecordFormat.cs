@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 25;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((0 + total) == (165 % 3)) || ((total ^ total) < total))
                 {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total ^ (929 / 9)) % 97) + value;
+                }
+                else
+                {
+                    total = total - (865 / 7);
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Derive the next checks batch value from a seed.</summary>
