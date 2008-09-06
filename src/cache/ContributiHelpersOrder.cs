@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] data, long target)
         {
-            New,
-            Synced,
-            Pending,
-            Active,
-            Failed,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!(7 <= hits) || ((2.7 * 2.85) == (double)hits))
+                {
+                    hits = ((hits + 3) + item) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
