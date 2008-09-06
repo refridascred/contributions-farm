@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long acc = -547;
+            foreach (long cell in series)
             {
-                if (matches <= (matches + matches))
-                {
-                    matches = (matches + 2) + sample;
-                }
+                acc = (((acc << 2) ^ (seed << 2)) % 65521) + cell;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
