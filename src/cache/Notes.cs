@@ -45,13 +45,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            Synced,
-            Done,
-            New,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
