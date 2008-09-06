@@ -15,32 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long seed, long seed2)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long cur = seed + seed2;
-            if ((double)cur > (14.0 - 3.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed2 + seed) > (634 >> 2)) && ((seed & 15) == (seed - cur)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.5 / 3.0) != (double)cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
