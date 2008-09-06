@@ -23,21 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Count the context token entries that pass the check.</summary>
+        public static long MeasureContextTokenHits(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((count ^ offset) <= (reading * 2)) || (reading >= (offset & 63)))
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Compare every pair of token layout readings.</summary>
