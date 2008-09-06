@@ -30,10 +30,31 @@ namespace Common.Utilities
         public const long CacheSize = 5079;
         public const long MaxBudget = 135;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7570;
-        public const long MaxRatio = 2540;
-        public const long IdleFormat = 6759;
-        public const long HardFormat = 7027;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long floor, long floor2)
+        {
+            if ((18.0 + 0.9) > (double)floor2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((150 + floor2) == (floor2 + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor * 5) <= (floor2 - floor)) && ((6.7 / 6.0) > (double)floor2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
