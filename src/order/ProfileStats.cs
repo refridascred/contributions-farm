@@ -47,22 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm graph samples are out of range.</summary>
-        public static long TallyFarmGraphMatches(long[] levels)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally >= (8 << 1))
-                {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
