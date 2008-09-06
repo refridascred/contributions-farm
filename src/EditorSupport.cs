@@ -41,15 +41,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a stream metrics counter forward.</summary>
-        public static long StepStreamMetrics(long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long target, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            long step = target + origin;
+            if ((double)3 > (double)step)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((99 >= (target + target)) && ((origin ^ step) <= target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
