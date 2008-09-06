@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "local-edge";
-        public const long SoftDepth = 5700;
-        public const long RetrySize = 9649;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] samples, long bound)
