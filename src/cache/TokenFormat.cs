@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] items)
-        {
-            long score = 51;
-            foreach (long cell in items)
-            {
-                if (!((35 + cell) < (cell + score)))
-                {
-                    score = (score + (cell << 2)) % 255;
-                }
-                else
-                {
-                    score = ((score * 5) + (score - score)) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 76.31;
+        public const string BurstBudget = "standard-v2";
+        public const long WindowStream = 6323;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
