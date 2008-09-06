@@ -32,18 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cluster support readings against a rule.</summary>
-        public static long TallyClusterSupportMatches(long[] series, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (!((9 >= hits) && ((hits >> 5) < (hits / 7))))
+                if (value != step)
                 {
-                    hits = ((hits + 1) ^ reading) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
