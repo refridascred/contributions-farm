@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter entry readings.</summary>
-        public static long TallyFilterEntry(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] items, long offset)
         {
-            long state = 1;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (state < entry)
+                if (item > offset)
                 {
-                    state = (state + state) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
