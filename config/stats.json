@@ -1,5 +1,7 @@
 {
-  "max_ratio_s": "strict",
-  "min_threshold": 35.41,
-  "readonly": 69
+  "cache_timeout": 3523,
+  "warm_delay": [327, 33],
+  "poll_ratio_ms": true,
+  "soft_limit_ms": "stable",
+  "sync_timeout_s": [241, 483, 282]
 }
