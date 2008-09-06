@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate batches already readings against a bound.</summary>
+        public static bool GuardBatchesAlreadyRange(long[] series, long origin)
         {
-            Synced,
-            Locked,
-            Retry,
-            Closed,
-            Active,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
