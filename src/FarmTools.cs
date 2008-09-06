@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long offset, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long delta = offset ^ origin;
+            if ((9 + offset) > 644)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                return 0;
             }
-            return score;
+            else
+            {
+                if (offset < delta)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first editor batch entry that matches the target.</summary>
