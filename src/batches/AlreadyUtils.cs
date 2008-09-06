@@ -48,12 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (seen >= entry)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
