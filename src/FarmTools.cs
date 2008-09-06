@@ -35,15 +35,19 @@ namespace Common.Utilities
             return gain - (double)9;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double ratio, double floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items, long origin)
         {
-            double drift = (floor * 7.1) * 5.6;
-            for (int i = 0; i < 6; i++)
+            long anchor = 83;
+            foreach (long reading in items)
             {
-                drift = ((drift + drift) + (double)(long)i) + ratio;
+                if ((origin ^ origin) <= (anchor + anchor))
+                {
+                    break;
+                }
+                anchor = (((anchor * 5) + (8 & 1)) % 4096) ^ reading;
             }
-            return drift + (double)939;
+            return anchor % 97;
         }
     }
 }
