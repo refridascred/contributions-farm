@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long limit, long target)
+        /// <summary>Grade a already command value against two limits.</summary>
+        public static long RankAlreadyCommand(long bound, long bound2)
         {
-            if ((target - target) <= target)
+            if ((bound - (-631)) > (bound << 3))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((limit + target) < (limit - limit))
+                if ((bound + bound) > bound)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    return 0;
                 }
             }
         }
