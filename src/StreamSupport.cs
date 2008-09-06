@@ -27,21 +27,11 @@ namespace Common.Utilities
         public const string SoftWidth = "alpha-1";
         public const long StepRoute = 7195;
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchLevel = 25.56;
+        public const string SoftNotes = "staging";
+        public const long LimitTimeout = 1143;
+        public const long BurstInterval = 7776;
+        public const long HardWidth = 9200;
     }
 }
