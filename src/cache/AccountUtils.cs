@@ -38,11 +38,18 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Audit checks report readings against a rule.</summary>
+        public static long TallyChecksReportMatches(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (double)seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
