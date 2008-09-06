@@ -14,13 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            New,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitWidth = "strict";
+        public const long HardLevel = 5237;
+        public const double StepDepth = 48.37;
+        public const double MinCount = 20.29;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long floor)
