@@ -1,6 +1,11 @@
-id,active,weight
-1,565,cached
-2,676,92.25
-3,615,40
-4,98.42,98.48
-5,434,11
+id,token,owner,weight,label
+1,edge,775,781,36.91
+2,3.73,842,558,488
+3,72,fallback,498,65.17
+4,510,local,latest,95.62
+5,769,primary,51.33,eu-west
+6,cached,open,222,50.89
+7,cached,edge,873,670
+8,14.54,232,14.09,blue
+9,819,legacy,70.14,legacy
+10,249,320,77.83,680
