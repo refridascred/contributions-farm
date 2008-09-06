@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowScore = 14.87;
-        public const long WindowSpan = 7343;
-        public const long BurstCount = 5000;
-        public const long BaseInterval = 3970;
-        public const long IdleOrder = 3418;
+        /// <summary>Measure how many report route samples are out of range.</summary>
+        public static long AuditReportRouteGaps(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count / 9) > (reading * 2))
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportBounds(long[] data, long offset)
