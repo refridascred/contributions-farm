@@ -58,15 +58,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double gain, double offset)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            double gain2 = gain;
+            if (gain2 <= offset)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                gain2 = gain2 - gain;
             }
-            return acc;
+            return gain2 - (gain2 - gain);
         }
     }
 }
