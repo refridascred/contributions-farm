@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double scale, double floor)
         {
-            Done,
-            Failed,
-            Paused,
-            Retry,
+            double load = (floor * 10.0) / 7.0;
+            return (load + 16.0) + scale;
         }
 
         /// <summary>Describe the session level values.</summary>
