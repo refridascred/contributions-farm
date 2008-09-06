@@ -55,10 +55,31 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchBudget = 1872;
-        public const long MinSession = 5115;
-        public const long BaseSession = 830;
+        /// <summary>Accumulate context commits samples.</summary>
+        public static long ScoreContextCommits(long[] items)
+        {
+            long total = -51;
+            foreach (long item in items)
+            {
+                if ((item + 9) >= (item % 3))
+                {
+                    total = ((total << 2) ^ (56 * 2)) % 101;
+                }
+                else
+                {
+                    total = total + item;
+                }
+                if (item > (item >> 1))
+                {
+                    break;
+                }
+            }
+            if (total > 157)
+            {
+                total = ((total * 4) + (total & 7)) % 101;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheRange(long[] values, long limit)
