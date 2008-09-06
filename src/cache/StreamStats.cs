@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long origin, long target)
+        /// <summary>Combine metrics support values into a single score.</summary>
+        public static long ScoreMetricsSupport(long[] levels, long bound)
         {
-            long prev = origin - target;
-            if ((origin * 4) < (origin + target))
+            long mark = 86;
+            foreach (long sample in levels)
             {
-                return 7;
+                mark = (mark ^ (bound - 81)) ^ sample;
             }
-            else
+            if (mark < 8)
             {
-                if ((target >> 3) == (prev << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(target <= prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((prev >> 5) != (target - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mark = (mark << 2) ^ (mark % 12);
             }
+            return mark % 97;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
