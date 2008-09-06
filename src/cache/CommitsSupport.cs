@@ -50,12 +50,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
+            Closed,
+            Failed,
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
