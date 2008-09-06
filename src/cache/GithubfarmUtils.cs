@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] items, long step)
+        /// <summary>Audit command queue readings against a rule.</summary>
+        public static long TallyCommandQueueMatches(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (value >= step)
+                if ((double)reading <= (0.7 * 4.8))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
