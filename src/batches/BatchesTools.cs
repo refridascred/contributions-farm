@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate checks counter readings against a bound.</summary>
-        public static bool ValidateChecksCounterLimits(long[] values, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (value != step)
+                if (sample < offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
