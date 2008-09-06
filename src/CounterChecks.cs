@@ -23,11 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 6151;
-        public const double BurstFactor = 85.25;
-        public const long RetryScore = 7848;
-        public const long DefaultLevel = 4493;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
