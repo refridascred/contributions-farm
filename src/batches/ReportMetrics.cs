@@ -34,11 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two queue order measurements.</summary>
-        public static double AdjustQueueOrder(double bias, double span)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            double drift = span;
-            return (drift - span) + bias;
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((hits + sample) <= (sample + hits)) || ((5.91 - 10.0) == (double)(long)readings.Length))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
