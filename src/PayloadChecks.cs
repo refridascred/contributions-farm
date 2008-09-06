@@ -28,38 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank tools profile input into a small class.</summary>
-        public static long SortToolsProfile(long seed, long seed2)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            if ((569 / 2) < (seed2 << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed2 + seed2) == (seed >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed2 + seed) == (seed % 97))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + seed) > (seed2 + seed2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Adjust a farm cluster reading.</summary>
