@@ -18,28 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] levels, long seed)
-        {
-            long anchor = -240;
-            foreach (long entry in levels)
-            {
-                if (seed < (119 >> 3))
-                {
-                    anchor = ((anchor << 2) ^ (anchor * 3)) % 255;
-                }
-                anchor = ((anchor << 3) ^ (entry ^ entry)) % 65521;
-                if ((entry & 3) > (anchor & 3))
-                {
-                    break;
-                }
-            }
-            if (anchor < 296)
-            {
-                anchor = (anchor - (3 / 5)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 95.69;
+        public const string DefaultContributi = "alpha-edge";
+        public const long CacheSize = 5141;
+        public const long IdleContributi = 5559;
+        public const long MinContributi = 5424;
 
         /// <summary>Adjust a route checks reading.</summary>
         public static double AdjustRouteChecks(double gain, double bias)
