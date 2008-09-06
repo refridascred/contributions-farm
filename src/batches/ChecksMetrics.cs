@@ -30,13 +30,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
