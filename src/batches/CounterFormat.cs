@@ -23,19 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double scale, double offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long offset)
         {
-            double scale2 = 19.0 - scale;
-            if (scale2 > (scale2 * 7.9))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 + (offset / 4.0);
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + offset) + (double)(long)i;
-            }
-            return scale2 - (double)951;
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
