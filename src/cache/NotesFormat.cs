@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)928;
+            if (mean >= (weight + 7.18))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + offset;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - weight) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
