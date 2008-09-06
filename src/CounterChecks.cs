@@ -57,12 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
+            Synced,
+            Locked,
+            Retry,
             Ready,
-            New,
-            Draft,
         }
 
         /// <summary>Rank session input into a small class.</summary>
