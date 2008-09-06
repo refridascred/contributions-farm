@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 4152;
-        public const long CacheStream = 4742;
-        public const long CacheWidth = 6437;
-        public const long DefaultStream = 2175;
-        public const double MinDepth = 11.98;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string RetryCount = "primary-v2";
