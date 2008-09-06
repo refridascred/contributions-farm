@@ -20,13 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] series, long offset)
         {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
