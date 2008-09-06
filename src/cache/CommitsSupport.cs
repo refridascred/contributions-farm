@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long LimitGraph = 4560;
         public const double StepCount = 81.72;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] readings, long bound)
         {
-            New,
-            Idle,
-            Failed,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
