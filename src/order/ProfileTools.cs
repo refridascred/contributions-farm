@@ -99,13 +99,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] values, long origin)
         {
-            Draft,
-            Synced,
-            Queued,
-            Done,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
