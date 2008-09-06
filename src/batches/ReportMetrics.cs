@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] levels, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((seen - seen) < (value >> 4))
+                if ((hits % 97) < (hits - hits))
                 {
-                    seen = (seen + 1) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next support queue value from a seed.</summary>
