@@ -38,26 +38,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of layout payload entries.</summary>
-        public static long FoldLayoutPayload(long[] values)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long result = 61;
-            foreach (long datum in values)
-            {
-                if (((datum & 1) < result) && ((26 >> 4) < datum))
-                {
-                    result = (result - (62 - result)) % 65521;
-                }
-                if ((8.52 / 8.0) <= (double)result)
-                {
-                    result = (result + (datum << 2)) % 65521;
-                }
-            }
-            if (result < 203)
-            {
-                result = (result + (result + result)) % 1000;
-            }
-            return result;
+            Locked,
+            Failed,
+            Pending,
+            Ready,
+            Closed,
         }
     }
 }
