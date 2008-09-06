@@ -1,8 +1,7 @@
 {
-  "idle_capacity": true,
-  "order_retries": [123, 34, 49],
-  "context_delay": 28.4,
-  "cache_window_ms": 7007,
-  "max_window_s": false,
-  "poll_timeout": true
+  "stream_limit": [348, 44],
+  "hard_threshold": false,
+  "base_window": 83,
+  "hard_limit_pct": 2342,
+  "enabled": 87.45
 }
