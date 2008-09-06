@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate contributi stats readings against a bound.</summary>
-        public static bool GuardContributiStatsLimits(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 3094;
+        public const double CacheDepth = 58.73;
+        public const long IdleCount = 2224;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 5633;
