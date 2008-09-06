@@ -30,25 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a already order counter forward.</summary>
-        public static long RollAlreadyOrder(long seed)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 4) + (result & 3)) % 97;
-                if ((seed + seed) == (long)i)
-                {
-                    result = (result ^ (seed % 10)) % 255;
-                }
-                else
-                {
-                    long span = (seed / 9) + ((long)i + result);
-                    result = ((result * 4) + (seed ^ span)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
