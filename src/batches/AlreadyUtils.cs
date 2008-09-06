@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstScore = 6958;
+        public const double CacheOrder = 74.9;
+        public const string DefaultOrder = "staging-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long SoftFactor = 9011;
