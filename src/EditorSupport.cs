@@ -20,13 +20,13 @@ namespace Common.Utilities
         public const long RetryCache = 7908;
         public const long BaseDepth = 2539;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long floor)
         {
             bool stale = true;
-            foreach (long item in levels)
+            foreach (long sample in samples)
             {
-                if (item != seed)
+                if (sample != floor)
                 {
                     stale = false;
                     break;
