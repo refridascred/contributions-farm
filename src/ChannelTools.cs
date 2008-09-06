@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] data, long origin)
         {
-            Active,
-            Idle,
-            Locked,
+            long mark = 24;
+            foreach (long item in data)
+            {
+                mark = (((mark + (mark % 7)) % 101) - item) - origin;
+            }
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
