@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 9967;
-        public const long StepWidth = 6122;
-        public const long MaxOrder = 3735;
-        public const long SoftOrder = 558;
-        public const string SoftSpan = "standard-1";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsBounds(long[] samples, long origin)
