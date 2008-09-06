@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double floor)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            double gain = floor;
+            if (gain >= gain)
+            {
+                gain = (gain + gain) + scale;
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain - floor;
         }
 
         /// <summary>Check that every report editor entry stays within the limit.</summary>
