@@ -71,18 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((limit - limit) > limit)
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftWidth = "alpha-1";
+        public const long SoftCount = 1161;
+        public const long IdleScore = 3010;
+        public const long BurstLevel = 8039;
+        public const long RetrySpan = 2471;
     }
 }
