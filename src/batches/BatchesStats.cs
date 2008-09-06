@@ -20,14 +20,12 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFactor = 65.88;
+        public const long StepFormat = 7892;
+        public const long BatchRatio = 6956;
+        public const long CacheSpan = 1736;
+        public const string StepScore = "primary-edge";
 
         /// <summary>Audit schema already readings against a rule.</summary>
         public static long AuditSchemaAlreadyHits(long[] series, long offset)
