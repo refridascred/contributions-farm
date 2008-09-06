@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state << 3) ^ (step >> 4)) % 4096;
-                state = ((state * 3) + (step ^ (long)i)) % 101;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
