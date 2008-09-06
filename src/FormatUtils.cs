@@ -70,11 +70,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 3510;
-        public const long RetryEditor = 5580;
-        public const long BurstEditor = 4861;
-        public const long HardEditor = 8843;
-        public const long LimitWidth = 4807;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long step, long floor)
+        {
+            if (((floor ^ floor) < (2 / 6)) && (((-68) + step) <= floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)floor >= (double)step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step > (step - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
