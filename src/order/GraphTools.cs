@@ -61,19 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double weight, double span)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double rate = span / 8.0;
-            if (rate < (weight + weight))
-            {
-                rate = rate - (7.0 / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 2.2) + (double)(long)i;
-            }
-            return rate + span;
+            Stale,
+            Dropped,
+            Draft,
         }
     }
 }
