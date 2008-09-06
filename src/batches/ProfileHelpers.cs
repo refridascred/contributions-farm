@@ -41,12 +41,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseInterval = "stable-v2";
-        public const string LimitScore = "latest-v2";
-        public const double IdleScore = 94.15;
-        public const long MinWindow = 3187;
-        public const long DefaultWindow = 4188;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxDepth = 2324;
+        public const long IdleCount = 2555;
+        public const long IdleSize = 9067;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 2650;
