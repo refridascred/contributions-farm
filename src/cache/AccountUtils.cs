@@ -26,12 +26,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultInterval = "cached";
+        public const long BaseSession = 3926;
+        public const string MaxSession = "legacy";
+        public const string LimitSpan = "fallback-v2";
     }
 }
