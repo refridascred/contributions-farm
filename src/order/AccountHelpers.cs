@@ -19,10 +19,24 @@ namespace Common.Utilities
         public const long MaxScore = 1307;
         public const string WindowBatches = "alpha-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitProfile = 81.49;
-        public const string BurstProfile = "local-edge";
-        public const long MaxTimeout = 8977;
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double gain, double bias)
+        {
+            double ratio = (double)(6 + 954);
+            if (ratio < (bias * 5.54))
+            {
+                ratio = ratio - (bias / 3.0);
+            }
+            else
+            {
+                ratio = ratio - (gain - gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio + (3.1 * 14.0);
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
