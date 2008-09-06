@@ -34,15 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            double bias = (double)5 / 4.0;
+            if (bias > bias)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                bias = ((bias + bias) - ratio) + floor;
             }
-            return carry;
+            else
+            {
+                bias = bias - (7.0 / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - 8.0;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
