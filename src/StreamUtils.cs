@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long CombineCacheEditor(long[] data)
+        /// <summary>Validate layout filter readings against a bound.</summary>
+        public static bool VerifyLayoutFilterBounds(long[] values, long origin)
         {
-            long anchor = 81;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((reading >> 1) >= (long)data.Length)
+                if (sample >= origin)
                 {
-                    anchor = anchor + (317 / 4);
+                    ok = false;
+                    break;
                 }
-                anchor = anchor + (anchor % 60);
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor + (44 << 1)) % 101;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a filter summary.</summary>
