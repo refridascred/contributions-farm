@@ -23,19 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] series, long offset)
+        /// <summary>Fold a list of order payload readings.</summary>
+        public static long CombineOrderPayload(long[] data)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long result = 817;
+            foreach (long entry in data)
             {
-                if (value != offset)
+                if ((double)result >= (double)entry)
                 {
-                    stale = false;
-                    break;
+                    result = (result + (entry >> 3)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (181 - entry)) % 255;
                 }
             }
-            return stale;
+            if (result > 42)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
