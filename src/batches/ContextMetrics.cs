@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 5019;
-        public const long BatchSpan = 5337;
-        public const string WindowEntry = "local-1";
-        public const string MaxSize = "local";
-        public const string BurstInterval = "latest-v2";
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] readings)
