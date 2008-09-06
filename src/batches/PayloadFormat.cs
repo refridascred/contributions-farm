@@ -28,18 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] data, long seed)
+        /// <summary>Scale a batches payload figure with a bias.</summary>
+        public static double SmoothBatchesPayload(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double scale = bias2;
+            if (scale >= (double)16)
             {
-                if ((((double)entry > 6.6) || ((seen + 37) > ((long)data.Length ^ seed))) || (entry <= seen))
-                {
-                    seen = seen + 1;
-                }
+                scale = scale - 3.0;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (bias * 1.0)) - (double)(long)i;
+            }
+            return scale + bias2;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
