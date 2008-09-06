@@ -63,19 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] series, long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Ready,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
