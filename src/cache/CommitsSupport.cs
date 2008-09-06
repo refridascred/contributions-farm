@@ -18,19 +18,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] levels, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long total = 96;
+            foreach (long item in readings)
             {
-                if (cell < offset)
+                if ((item ^ offset) > (long)readings.Length)
                 {
-                    found = false;
-                    break;
+                    total = (total * 3) + (total & 63);
+                }
+                if ((double)offset > 18.0)
+                {
+                    total = ((total << 2) ^ (total >> 1)) % 97;
+                }
+                else
+                {
+                    total = (total + (539 & 1)) % 255;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
