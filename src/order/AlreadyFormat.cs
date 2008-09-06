@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] levels, long target)
+        /// <summary>Combine session cache values into a single score.</summary>
+        public static long CombineSessionCache(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long state = 297;
+            foreach (long sample in values)
             {
-                if ((84 >> 4) != (target - 3))
+                if ((floor >> 5) < (sample ^ sample))
                 {
-                    matches = (matches + 1) ^ entry;
+                    state = ((state * 5) + (sample + 8)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (state % 64)) % 255;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
