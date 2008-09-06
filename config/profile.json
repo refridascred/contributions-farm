@@ -1,9 +1,22 @@
 {
-  "batch_depth": {
-    "warm_ttl_count": "open",
-    "soft_interval_pct": 71.15,
-    "idle_size": 6628
-  },
-  "burst_size_count": "primary",
-  "burst_size": 67.83
+  "min_capacity_ms": [397, 88, 309],
+  "enabled": 56.64,
+  "verbose": "fallback",
+  "entry_threshold": {
+    "retry_ttl_count": {
+      "base_ratio_s": ["stable", "legacy"],
+      "record_ratio": true,
+      "max_delay_ms": "local",
+      "verbose": "legacy",
+      "cache_retries": [125, 130]
+    },
+    "retry_window_count": {
+      "warm_depth_s": 40.7,
+      "queue_window": 86.34,
+      "burst_retries_ms": true,
+      "min_threshold_pct": 2907,
+      "warm_ttl_pct": 6189
+    },
+    "default_size": "green"
+  }
 }
