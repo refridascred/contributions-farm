@@ -1,22 +1,7 @@
 {
-  "burst_ratio_pct": true,
-  "window_depth": 88.76,
-  "flush_retries_s": "open",
-  "session_capacity": {
-    "enabled": [296, 162, 31, 207],
-    "report_limit": 33,
-    "retry_threshold_ms": 100,
-    "persist": 62,
-    "soft_ttl": "green"
-  },
-  "profile_ttl": {
-    "layout_limit": true,
-    "batches_depth": {
-      "min_ratio_ms": true,
-      "route_limit": "local",
-      "warm_window_s": "eu-west"
-    },
-    "batch_depth": "stable"
-  },
-  "retry_ratio": ["eu-west", "standard", "open"]
+  "warm_depth_s": 30,
+  "min_timeout_s": 60,
+  "cache_delay_pct": "edge",
+  "min_limit_count": "green",
+  "profile_threshold": 1024
 }
