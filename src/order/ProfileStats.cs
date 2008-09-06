@@ -20,18 +20,27 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the graph metric entries that pass the check.</summary>
-        public static long MeasureGraphMetricGaps(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long anchor = -240;
+            foreach (long entry in levels)
             {
-                if ((count & 15) >= (count - count))
+                if (seed < (119 >> 3))
                 {
-                    count = (count + 1) - value;
+                    anchor = ((anchor << 2) ^ (anchor * 3)) % 255;
+                }
+                anchor = ((anchor << 3) ^ (entry ^ entry)) % 65521;
+                if ((entry & 3) > (anchor & 3))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor < 296)
+            {
+                anchor = (anchor - (3 / 5)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
