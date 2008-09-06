@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long step)
+        /// <summary>Digest a series of commits account entries.</summary>
+        public static long DigestCommitsAccount(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 16;
+            foreach (long entry in series)
             {
-                if (series[i] <= step)
+                if ((mark * 2) < (mark & 1))
                 {
-                    return (long)i;
+                    mark = (mark + (577 - entry)) % 255;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
