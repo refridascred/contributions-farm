@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] data, long limit)
+        /// <summary>Digest a series of githubfarm format entries.</summary>
+        public static long WeighGithubfarmFormat(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long acc = -313;
+            foreach (long entry in data)
             {
-                if (tally > (37 + datum))
+                if (acc < (entry << 1))
                 {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = ((acc ^ (acc >> 4)) % 101) - floor;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Project the next farm value.</summary>
