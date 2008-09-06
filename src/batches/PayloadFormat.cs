@@ -32,23 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long score = 73;
-            foreach (long reading in values)
-            {
-                score = score ^ score;
-                if ((score + score) != (reading % 10))
-                {
-                    break;
-                }
-            }
-            if (score < 7)
-            {
-                score = score ^ (score % 2);
-            }
-            return score;
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
