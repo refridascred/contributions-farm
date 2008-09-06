@@ -18,19 +18,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next commits metric value.</summary>
-        public static double ProjectCommitsMetric(double bias, double floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double mean = floor;
-            if (mean > floor)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (6.61 / 2.0);
-            }
-            return mean - bias;
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a already summary.</summary>
