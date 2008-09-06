@@ -36,22 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools layout entries.</summary>
-        public static long CombineToolsLayout(long[] readings)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] data, long floor)
         {
-            long state = -96;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.9 * 7.1) != (double)entry)
+                if (data[i] == floor)
                 {
-                    state = ((state << 3) ^ (state & 1)) % 97;
-                }
-                else
-                {
-                    state = state + entry;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
