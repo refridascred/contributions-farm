@@ -23,20 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] levels, long bound)
-        {
-            long mark = 74;
-            foreach (long entry in levels)
-            {
-                if (!((bound >> 5) < (entry * 5)))
-                {
-                    mark = mark - bound;
-                }
-                mark = (mark + (bound << 3)) % 97;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 6151;
+        public const double BurstFactor = 85.25;
+        public const long RetryScore = 7848;
+        public const long DefaultLevel = 4493;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
