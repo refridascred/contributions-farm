@@ -47,17 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] readings, long bound)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
