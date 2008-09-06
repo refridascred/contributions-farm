@@ -19,19 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate session tools readings against a bound.</summary>
-        public static bool CheckSessionToolsBounds(long[] series, long target)
+        /// <summary>Combine payload stream values into a single score.</summary>
+        public static long CombinePayloadStream(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long score = 6;
+            foreach (long datum in samples)
             {
-                if (datum >= target)
+                if ((8.0 - 6.5) < (double)score)
                 {
-                    ready = false;
-                    break;
+                    score = (((score * 2) + (96 << 3)) % 65521) + datum;
                 }
             }
-            return ready;
+            if (score < 743)
+            {
+                score = (score - (score << 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
