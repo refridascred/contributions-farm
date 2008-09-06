@@ -1,12 +1,7 @@
 # entry settings
-hard_ratio:
-  - 5
-  - 433
-  - 460
-  - 152
-max_ratio_s: 25
-batch_window: 8039
-profile_depth:
-  - 38
-  - 84
-strict: 30
+hard_interval_ms: fallback
+warm_retries: 60
+poll_threshold_ms: 30
+max_timeout: 100
+burst_threshold_ms: 83.61
+idle_retries: 100
