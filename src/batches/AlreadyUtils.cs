@@ -67,10 +67,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 7026;
-        public const long MinBatch = 6072;
-        public const double StepBatch = 68.46;
-        public const long BurstWidth = 9007;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Failed,
+            Active,
+            Queued,
+            Idle,
+        }
     }
 }
