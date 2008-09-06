@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "strict";
-        public const string LimitGithubfarm = "latest-edge";
-        public const long DefaultWidth = 7615;
-        public const double CacheCount = 65.71;
-        public const string StepGithubfarm = "latest";
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long SortCluster(long limit, long seed)
