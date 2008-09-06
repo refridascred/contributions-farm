@@ -55,11 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] samples, long bound)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
