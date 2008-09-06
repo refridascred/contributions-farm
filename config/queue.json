@@ -1,7 +1,5 @@
 {
-  "flush_ratio_pct": "edge",
-  "batch_capacity_pct": true,
-  "strict": "primary",
-  "counter_window": 21,
-  "warm_size_pct": "eu-west"
+  "buffer_ratio": "green",
+  "readonly": 11.54,
+  "compress": 70.04
 }
