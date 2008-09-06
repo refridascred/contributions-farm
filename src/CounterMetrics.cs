@@ -44,11 +44,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double scale, double floor)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            double bias = scale;
+            return bias + (floor + scale);
         }
     }
 }
