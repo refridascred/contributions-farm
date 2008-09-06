@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            Locked,
-            Idle,
-            Active,
-            Dropped,
-            Ready,
+            double gain = span * 19.0;
+            if (gain >= 3.8)
+            {
+                gain = gain + weight;
+            }
+            else
+            {
+                gain = gain + (span + gain);
+            }
+            return gain + (double)8;
         }
     }
 }
