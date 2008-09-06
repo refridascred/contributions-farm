@@ -1,5 +1,8 @@
 {
-  "idle_interval": 30,
-  "commits_window": false,
-  "hard_window": "local"
+  "layout_size": [318, 160, 336, 97],
+  "poll_depth_count": 38.65,
+  "min_interval_s": false,
+  "persist": 60,
+  "commits_delay": 60,
+  "command_timeout": "strict"
 }
