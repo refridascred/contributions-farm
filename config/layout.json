@@ -1,6 +1,5 @@
 {
-  "poll_depth": "standard",
-  "max_size": "strict",
-  "warm_limit": 1499,
-  "enabled": "fallback"
+  "default_interval": "legacy",
+  "poll_interval": 250,
+  "readonly": "cached"
 }
