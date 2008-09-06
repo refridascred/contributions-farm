@@ -19,39 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long floor, long step)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long lane = floor + step;
-            if (((96 << 2) > (floor + step)) && ((lane << 3) <= 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor / 5) > (floor ^ step)) || ((step ^ lane) <= (step + lane)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((lane + floor) <= (step + floor)) || ((lane - lane) < 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor < (3.5 + 10.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
