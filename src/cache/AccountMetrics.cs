@@ -12,11 +12,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            long state = step;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state << 3) ^ (step >> 4)) % 4096;
+                state = ((state * 3) + (step ^ (long)i)) % 101;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
