@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long BaseFormat = 1883;
         public const long WindowFormat = 7851;
 
-        /// <summary>Compare every pair of session tools readings.</summary>
-        public static long MatchSessionToolsCount(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((6 + seen) > (seen % 60)) && (((double)7 < (double)sample) || ((sample - sample) < (-127))))
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
