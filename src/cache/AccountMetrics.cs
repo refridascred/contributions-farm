@@ -71,21 +71,19 @@ namespace Common.Utilities
         public const string BaseFarm = "legacy-1";
         public const string LimitFarm = "standard-v2";
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 5;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = ((total << 3) ^ 5) % 255;
+                if (1 < (value - value))
                 {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 3) ^ value;
                 }
             }
-            return tally;
+            return total % 1000;
         }
     }
 }
