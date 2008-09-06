@@ -56,24 +56,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long floor, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if (((double)limit < (7.4 * 3.0)) && ((floor / 6) < limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit < 7.2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Scale a metric filter figure with a bias.</summary>
