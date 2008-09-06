@@ -52,24 +52,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long origin)
+        /// <summary>Scale a window checks figure with a bias.</summary>
+        public static double SmoothWindowChecks(double ratio, double offset)
         {
-            if ((double)origin >= (0.2 + 4.2))
+            double bias = (double)(366 % 60);
+            if (bias >= bias)
             {
-                return 1;
+                bias = ((bias - (double)2) - ratio) - offset;
             }
             else
             {
-                if (step > origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                bias = bias - (double)134;
             }
+            return bias + (double)86;
         }
     }
 }
