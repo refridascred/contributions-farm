@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Synced,
-            Idle,
-            Stale,
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
