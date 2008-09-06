@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryLevel = 2127;
+        public const long DefaultToken = 4288;
+        public const long BatchInterval = 4143;
+        public const double IdleToken = 22.8;
+        public const long HardToken = 719;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long origin)
