@@ -41,18 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] data, long floor)
+        /// <summary>Validate metrics cluster readings against a bound.</summary>
+        public static bool CheckMetricsClusterLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((matches - matches) >= (floor << 2))
+                if (value <= origin)
                 {
-                    matches = (matches + 3) - cell;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
