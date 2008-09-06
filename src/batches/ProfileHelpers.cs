@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((tally + datum) != (datum - tally)) && ((tally >> 1) <= (long)readings.Length))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
