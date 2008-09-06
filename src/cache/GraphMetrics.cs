@@ -75,11 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 41.52;
-        public const long LimitRatio = 7735;
-        public const string DefaultSpan = "staging-v2";
-        public const string LimitSize = "cached-v2";
+        /// <summary>Audit metrics farm readings against a rule.</summary>
+        public static long TallyMetricsFarmMatches(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((target - 511) == (target - hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepCount = 18.59;
