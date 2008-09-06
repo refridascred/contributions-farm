@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first editor queue entry that matches the target.</summary>
-        public static long LookupEditorQueueIndex(long[] items, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = 19.0 - scale;
+            if (scale2 > (scale2 * 7.9))
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 + (offset / 4.0);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + offset) + (double)(long)i;
+            }
+            return scale2 - (double)951;
         }
 
         /// <summary>Hold a queue stats.</summary>
