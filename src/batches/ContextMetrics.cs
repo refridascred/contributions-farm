@@ -54,9 +54,21 @@ namespace Common.Utilities
             return bias2 + (bias + 4.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 558;
-        public const string BatchInterval = "stable-edge";
-        public const double StepFactor = 4.47;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
