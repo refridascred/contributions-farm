@@ -20,21 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Validate queue order readings against a bound.</summary>
