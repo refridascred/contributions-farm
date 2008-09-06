@@ -20,20 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Count the layout stream entries that pass the check.</summary>
+        public static long AuditLayoutStreamHits(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((mix / 6) != (bound - (long)i))
+                if ((-10) > tally)
                 {
-                    mix = (mix << 3) ^ ((long)i + bound);
+                    tally = (tally + 3) ^ item;
                 }
-                mix = (mix * 4) + (mix & 255);
-                mix = ((mix * 5) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
