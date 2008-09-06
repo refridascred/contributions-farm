@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const string SoftWidth = "alpha-1";
         public const long StepRoute = 7195;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels, long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            long total = 8;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total * 5) + (bound + bound)) % 4096) + item;
-                if (((total / 6) == (bound - (long)levels.Length)) || ((339 - bound) >= (total / 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
