@@ -19,28 +19,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long floor, long floor2)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long origin)
         {
-            if ((floor - floor2) <= (floor2 / 5))
+            long edge = target - origin;
+            if ((origin << 2) > origin)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((195 ^ floor) != (floor2 + floor2))
+                if ((9.78 / 7.0) < (double)target)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (((18 << 1) != (floor2 / 6)) || ((floor2 + floor) != (floor + 98)))
+                    if (!((origin / 4) < origin))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        if ((edge >> 5) >= 980)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
