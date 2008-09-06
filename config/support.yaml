@@ -1,27 +1,4 @@
 # support settings
-burst_depth_pct: 6901
-min_ratio_count: 60
-sync_interval_count: 45.95
-hard_timeout_s:
-  route_depth: true
-  notes_depth: 39.78
-  idle_limit: 500
-  warm_delay_pct:
-    flush_ratio_count: 7353
-    sync_ratio_s: local
-    schema_ratio: 6632
-  flush_limit_pct: legacy
-hard_capacity: fallback
-stream_retries:
-  sync_limit: edge
-  audit:
-    - 391
-    - 97
-    - 157
-    - 464
-  max_ttl_ms: 11
-  persist:
-    - local
-    - open
-    - eu-west
-  verbose: 100
+audit: 55.26
+layout_size: false
+farm_capacity: true
