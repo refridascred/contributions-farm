@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
