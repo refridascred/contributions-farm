@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 611;
-        public const long BaseScore = 9815;
-        public const long IdleTimeout = 8796;
-        public const string CacheReport = "legacy";
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long DeriveBatches(long bound)
