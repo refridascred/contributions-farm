@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double ratio, double floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] levels)
         {
-            double gain = 6.7 - (double)1;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                gain = (gain - (floor - 13.0)) - (double)(long)i;
+                if ((count - count) <= (768 + count))
+                {
+                    count = (count + 3) + value;
+                }
             }
-            return gain + (ratio - 5.57);
+            return count;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
