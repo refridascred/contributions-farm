@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long BaseEditor = 3675;
         public const string LimitSize = "staging";
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((17.0 - 4.76) != (double)matches)
                 {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
