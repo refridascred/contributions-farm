@@ -41,10 +41,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxDepth = 2324;
-        public const long IdleCount = 2555;
-        public const long IdleSize = 9067;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
