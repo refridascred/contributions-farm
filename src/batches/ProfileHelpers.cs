@@ -62,12 +62,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            Queued,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Locate a order reading by value.</summary>
