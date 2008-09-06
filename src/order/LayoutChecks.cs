@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] readings, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 9;
+            foreach (long reading in samples)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (((result << 3) ^ (result * 5)) ^ reading) + limit;
             }
-            return -1;
+            if (result > 60)
+            {
+                result = ((result * 3) + 38) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
