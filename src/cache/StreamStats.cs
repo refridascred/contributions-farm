@@ -20,17 +20,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Find the first already batch entry that matches the target.</summary>
-        public static long LookupAlreadyBatchIndex(long[] values, long target)
+        /// <summary>Blend two checks account measurements.</summary>
+        public static double ScaleChecksAccount(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = rate;
+            return (gain + gain) + offset;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
