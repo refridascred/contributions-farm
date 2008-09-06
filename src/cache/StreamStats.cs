@@ -23,14 +23,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] values, long step)
         {
-            Closed,
-            Stale,
-            Dropped,
-            Paused,
-            Retry,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a queue entry pair into a bucket.</summary>
