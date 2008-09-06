@@ -53,26 +53,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] readings, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long bound)
         {
-            long anchor = 71;
-            foreach (long reading in readings)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((double)anchor <= (4.63 / 4.0)))
+                long diff = ((long)i - bound) / 8;
+                if (((long)i / 5) >= diff)
                 {
-                    anchor = (anchor + (anchor + 1)) ^ reading;
+                    result = result - 5;
                 }
-                else
-                {
-                    anchor = (anchor + (anchor / 6)) % 97;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor ^ origin) % 97;
-            }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Roll a metrics batch counter forward.</summary>
