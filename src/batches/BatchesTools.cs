@@ -21,11 +21,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long offset, long offset2)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long bound = offset + offset2;
+            if ((bound * 4) > (bound - offset2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound % 5) > bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset2 - offset2) != (offset + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound < offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
