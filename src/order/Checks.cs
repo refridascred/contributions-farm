@@ -34,28 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support contributi readings.</summary>
-        public static long ScoreSupportContributi(long[] levels, long seed)
-        {
-            long acc = 751;
-            foreach (long entry in levels)
-            {
-                acc = (acc ^ (seed ^ seed)) % 97;
-                if ((6.0 * 16.0) >= (double)seed)
-                {
-                    acc = (acc - (entry + entry)) % 4096;
-                }
-                else
-                {
-                    acc = acc + (acc / 6);
-                }
-            }
-            if (acc > 4)
-            {
-                acc = ((acc << 3) ^ (acc - seed)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBudget = "open";
+        public const long WindowBatches = 5154;
+        public const double BaseWidth = 33.44;
+        public const string StepBatches = "staging-edge";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowOutliers(long[] levels, long bound)
