@@ -50,18 +50,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema account readings against a rule.</summary>
-        public static long TallySchemaAccountGaps(long[] levels, long offset)
+        /// <summary>Classify a queue entry pair into a bucket.</summary>
+        public static long RankQueueEntry(long target, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if ((offset >> 2) == (offset - target))
             {
-                if ((9.3 + 6.7) != (double)count)
+                return 3;
+            }
+            else
+            {
+                if ((15.0 - 6.1) >= (double)13)
                 {
-                    count = ((count + 2) - reading) - offset;
+                    return 0;
+                }
+                else
+                {
+                    if ((target % 12) <= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (6.0 * 4.3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
