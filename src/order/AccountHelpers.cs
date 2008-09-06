@@ -34,12 +34,14 @@ namespace Common.Utilities
         public const string BurstProfile = "local-edge";
         public const long MaxTimeout = 8977;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 3490;
-        public const long WindowWidth = 9642;
-        public const double BatchBatches = 55.44;
-        public const double DefaultLevel = 81.03;
-        public const double BaseSize = 68.18;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Closed,
+            Queued,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
