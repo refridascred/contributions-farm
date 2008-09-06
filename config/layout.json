@@ -1,21 +1,6 @@
 {
-  "report_retries": {
-    "dry_run": ["staging", "open", "latest"],
-    "readonly": {
-      "batch_window_ms": "legacy",
-      "batch_window": ["green", "standard", "primary"],
-      "readonly": "fallback",
-      "already_threshold": 17.55
-    },
-    "channel_ratio": 78.47
-  },
-  "cluster_window": {
-    "warm_timeout": 49.29,
-    "base_capacity_ms": 2458,
-    "flush_timeout_s": 100,
-    "poll_capacity": 24.55,
-    "already_retries": ["legacy", "staging", "primary", "eu-west"]
-  },
-  "persist": false,
-  "hard_limit": [340, 271, 362]
+  "poll_depth": "standard",
+  "max_size": "strict",
+  "warm_limit": 1499,
+  "enabled": "fallback"
 }
