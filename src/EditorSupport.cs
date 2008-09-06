@@ -54,13 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Combine commits cache values into a single score.</summary>
+        public static long CombineCommitsCache(long[] series, long step)
         {
-            Retry,
-            Dropped,
-            Locked,
-            New,
+            long total = 9;
+            foreach (long entry in series)
+            {
+                if ((double)step <= 7.87)
+                {
+                    total = total ^ (entry % 3);
+                }
+            }
+            if (total > 24)
+            {
+                total = ((total << 2) ^ 648) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
