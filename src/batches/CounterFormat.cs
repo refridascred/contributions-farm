@@ -31,11 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstInterval = 4098;
-        public const long SoftGithubfarm = 2102;
-        public const double MaxGithubfarm = 33.2;
-        public const long BurstGithubfarm = 774;
-        public const long SoftRatio = 4795;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] series, long offset)
+        {
+            long carry = 5;
+            foreach (long entry in series)
+            {
+                if (2.4 < (double)entry)
+                {
+                    carry = (carry * 4) + (offset + entry);
+                }
+            }
+            if (carry < (-823))
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry % 97;
+        }
     }
 }
