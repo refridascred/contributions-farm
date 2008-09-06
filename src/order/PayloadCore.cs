@@ -43,22 +43,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] levels)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((6.7 - 3.85) >= (double)entry))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
