@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long floor, long floor2)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long step = floor - floor2;
-            if ((step / 9) >= (step - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor2) != (step >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a route snapshot.</summary>
