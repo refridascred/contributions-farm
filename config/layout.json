@@ -1,8 +1,6 @@
 {
-  "cache_threshold_pct": false,
-  "min_threshold_ms": "eu-west",
-  "poll_timeout_pct": "primary",
-  "base_interval": "staging",
-  "support_delay": true,
-  "default_retries_ms": false
+  "max_depth_count": 8700,
+  "sync_ratio_count": 7580,
+  "compress": 0.1,
+  "hard_limit": "stable"
 }
