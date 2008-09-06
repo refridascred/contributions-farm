@@ -26,13 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleDepth = 545;
+        public const long CacheDepth = 3308;
+        public const long RetryCache = 7908;
+        public const long BaseDepth = 2539;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] series)
