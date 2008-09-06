@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] data, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long anchor = 409;
-            foreach (long item in data)
-            {
-                if ((double)(long)data.Length != (double)1)
-                {
-                    anchor = (anchor << 3) ^ (seed ^ seed);
-                }
-                if ((81 % 12) == ((-11) + item))
-                {
-                    break;
-                }
-            }
-            if (anchor < 59)
-            {
-                anchor = anchor - (anchor / 5);
-            }
-            return anchor;
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Fold a list of checks filter readings.</summary>
