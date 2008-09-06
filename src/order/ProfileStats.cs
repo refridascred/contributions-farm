@@ -44,19 +44,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] values, long origin)
+        /// <summary>Iterate the support graph series from a seed.</summary>
+        public static long SeriesSupportGraph(long floor)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry < origin)
+                sum = (sum << 2) ^ ((long)i ^ 46);
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum + 0) % 97) ^ (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return flag;
+            return sum;
         }
     }
 }
