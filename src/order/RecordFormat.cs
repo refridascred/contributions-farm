@@ -27,26 +27,18 @@ namespace Common.Utilities
             return rate2 - (rate * 5.9);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] values)
         {
-            long mark = 9;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((double)cell <= (8.6 / 2.0))
+                if ((datum + matches) < ((long)values.Length - datum))
                 {
-                    mark = (mark - (0 >> 2)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (mark ^ mark)) % 255;
+                    matches = matches + 3;
                 }
             }
-            if (mark < 7)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
