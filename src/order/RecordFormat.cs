@@ -20,18 +20,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] values)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + matches) < ((long)values.Length - datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
