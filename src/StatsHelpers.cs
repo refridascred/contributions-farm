@@ -75,39 +75,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long step, long bound)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long offset = step + bound;
-            if ((double)step >= 8.7)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(((-8) + offset) <= (746 + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + bound) < bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step << 1) > (step + step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
