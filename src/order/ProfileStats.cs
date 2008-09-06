@@ -65,12 +65,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] levels, long offset)
         {
-            Retry,
-            Failed,
-            Draft,
+            long mix = 178;
+            foreach (long datum in levels)
+            {
+                mix = ((mix - 230) + datum) + offset;
+            }
+            return mix;
         }
     }
 }
