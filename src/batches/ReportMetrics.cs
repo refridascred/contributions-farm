@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinSize = 41.61;
-        public const long HardBatches = 6763;
-        public const long HardBudget = 4883;
-        public const string IdleBudget = "local-v2";
-        public const long SoftBatches = 8917;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double rate, double offset)
