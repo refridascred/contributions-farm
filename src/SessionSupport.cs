@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 184;
+            foreach (long sample in readings)
             {
-                if (!((double)count >= (double)entry))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (((acc << 3) ^ acc) % 101) + sample;
+                acc = (acc - (661 % 100)) % 1000;
             }
-            return count;
+            if (acc < 809)
+            {
+                acc = (acc * 2) + (acc & 255);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
