@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Validate contributi stats readings against a bound.</summary>
+        public static bool GuardContributiStatsLimits(long[] readings, long step)
         {
-            Stale,
-            Failed,
-            Retry,
-            Locked,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
