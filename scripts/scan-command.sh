@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=200
-log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west green staging; do
+for item in cached open standard stable; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=425
+log "limit is ${COMMAND_LIMIT}"
