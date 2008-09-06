@@ -56,12 +56,15 @@ namespace Common.Utilities
         public const string BaseFarm = "legacy-1";
         public const string LimitFarm = "standard-v2";
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double ratio, double offset)
         {
-            Ready,
-            Synced,
-            Queued,
+            double bias = offset;
+            if (bias < (bias * 3.89))
+            {
+                bias = bias + (ratio / 6.0);
+            }
+            return bias - bias;
         }
     }
 }
