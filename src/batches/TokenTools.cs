@@ -23,17 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a profile stats reading by value.</summary>
-        public static long SeekProfileStatsIndex(long[] samples, long limit)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
