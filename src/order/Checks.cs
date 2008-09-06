@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 44.1;
-        public const double SoftRatio = 53.23;
-        public const double MaxDepth = 61.23;
-        public const long StepDepth = 4107;
-        public const double MaxFactor = 55.94;
+        /// <summary>Match up report order samples.</summary>
+        public static long CompareReportOrderCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of graph schema readings.</summary>
         public static long TallyGraphSchema(long[] samples)
