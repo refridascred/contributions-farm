@@ -1,12 +1,5 @@
 {
-  "window_delay": [476, 105, 80, 128],
-  "verbose": 500,
-  "batch_depth": 43.68,
-  "retry_ttl": {
-    "cache_window_ms": true,
-    "base_window": ["strict", "edge", "fallback"],
-    "idle_interval": 47,
-    "hard_timeout_pct": "blue",
-    "enabled": "blue"
-  }
+  "strict": 6,
+  "contributi_threshold": "stable",
+  "poll_limit_ms": "blue"
 }
