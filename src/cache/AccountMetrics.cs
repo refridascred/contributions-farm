@@ -21,18 +21,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] readings, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((double)sample == (20.0 + 9.21)) || ((8 - step) >= step)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Digest a series of batch payload entries.</summary>
