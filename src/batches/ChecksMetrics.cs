@@ -25,12 +25,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long step)
         {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public long Score { get; set; }
+            if ((step + target) < (step + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)step <= 7.6) && ((double)49 < (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step & 31) < (step - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step == (0.5 + 7.41))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
