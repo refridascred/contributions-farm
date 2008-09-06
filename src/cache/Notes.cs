@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long floor, long target)
-        {
-            if ((target << 3) <= (89 - target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target << 3) <= 33)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((20.0 - 15.0) == (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowScore = 14.87;
+        public const long WindowSpan = 7343;
+        public const long BurstCount = 5000;
+        public const long BaseInterval = 3970;
+        public const long IdleOrder = 3418;
 
         /// <summary>Count tools checks pairs that satisfy a relation.</summary>
         public static long MatchToolsChecksCount(long[] series)
