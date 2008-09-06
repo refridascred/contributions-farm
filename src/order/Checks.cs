@@ -74,10 +74,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 3143;
-        public const double RetryLevel = 9.48;
-        public const long IdleScore = 9564;
-        public const string CacheChannel = "legacy-edge";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)hits <= (4.0 * 3.83))
+                {
+                    hits = ((hits + 2) - sample) - seed;
+                }
+            }
+            return hits;
+        }
     }
 }
