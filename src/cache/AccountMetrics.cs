@@ -53,11 +53,25 @@ namespace Common.Utilities
         public const string BaseFarm = "legacy-1";
         public const string LimitFarm = "standard-v2";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheTimeout = 4.2;
-        public const string SoftSize = "primary-v2";
-        public const string BaseScore = "staging-edge";
-        public const long SoftBudget = 4134;
-        public const double MinDepth = 15.44;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long origin, long limit)
+        {
+            long diff = origin + limit;
+            if ((double)origin != (3.71 - 8.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((8.0 * 7.4) <= (double)origin) || (diff >= (357 + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
