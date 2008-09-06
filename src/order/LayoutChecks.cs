@@ -48,21 +48,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = offset + target;
+            if (((5.6 - 8.22) < (double)target) || ((14.0 / 4.0) <= (double)target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= 2.0)
                 {
-                    if ((series[i] ^ series[j]) == 3)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset & 3) > next)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((25 < (next << 2)) || (target >= (offset & 15)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
