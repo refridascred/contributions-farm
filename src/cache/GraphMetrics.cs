@@ -74,11 +74,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 7655;
-        public const string BaseSpan = "legacy";
-        public const long BurstCluster = 5576;
-        public const string RetryScore = "standard-v2";
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] readings, long step)
