@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 3444;
-        public const long IdleScore = 4617;
-        public const string BaseSpan = "latest-edge";
-        public const long BaseEntry = 203;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((count >> 5) == (count + value)) && (((-52) - 244) <= (value - value)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
