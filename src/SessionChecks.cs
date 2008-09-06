@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCount = "legacy";
-        public const long WindowSize = 1990;
-        public const long BurstScore = 1430;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long origin)
