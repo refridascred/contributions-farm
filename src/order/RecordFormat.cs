@@ -53,11 +53,11 @@ namespace Common.Utilities
             return bias - 8.0;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleLevel = "staging-1";
-        public const long IdleWidth = 3117;
-        public const string WindowContributi = "cached";
-        public const double MaxContributi = 1.62;
-        public const long BatchLevel = 8980;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 5728;
+        public const long IdleCluster = 1682;
+        public const double HardCluster = 34.83;
+        public const long LimitSize = 2489;
+        public const string MaxLevel = "latest-v2";
     }
 }
