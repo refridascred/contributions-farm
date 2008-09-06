@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a notes graph sample.</summary>
-        public static long FindNotesGraphIndex(long[] items, long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = 4.8;
+            return ((load + (9.28 + 0.93)) + gain) + span;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
