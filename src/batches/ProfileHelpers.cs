@@ -46,10 +46,13 @@ namespace Common.Utilities
         public const long IdleCount = 2555;
         public const long IdleSize = 9067;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 2650;
-        public const long IdleTimeout = 4667;
-        public const double MaxFilter = 87.35;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
