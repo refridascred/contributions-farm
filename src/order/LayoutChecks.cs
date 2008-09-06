@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const double BaseToken = 48.69;
         public const long DefaultToken = 7790;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] data, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= origin)
+                if (levels[i] < target)
                 {
                     return (long)i;
                 }
