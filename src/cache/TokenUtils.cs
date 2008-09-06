@@ -32,14 +32,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Stale,
-            Paused,
-            Failed,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 6838;
+        public const string IdleSpan = "alpha";
+        public const long BurstAlready = 5033;
+        public const double CacheInterval = 35.54;
+        public const double DefaultAlready = 22.8;
     }
 }
