@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] values, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((origin & 127) < cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
