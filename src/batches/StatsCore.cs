@@ -49,13 +49,13 @@ namespace Common.Utilities
         public const long HardBatch = 2618;
         public const long CacheRatio = 972;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Draft,
-            Idle,
-            Stale,
-            Failed,
+            Locked,
+            Queued,
+            Closed,
+            Active,
             Done,
         }
 
