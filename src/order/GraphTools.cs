@@ -48,18 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double weight, double span)
         {
-            long mix = 3;
-            foreach (long entry in series)
+            double rate = span / 8.0;
+            if (rate < (weight + weight))
             {
-                if ((1.0 + 5.36) > (7.9 - 3.0))
-                {
-                    mix = (mix ^ 8) + entry;
-                }
+                rate = rate - (7.0 / 4.0);
             }
-            return mix % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 2.2) + (double)(long)i;
+            }
+            return rate + span;
         }
     }
 }
