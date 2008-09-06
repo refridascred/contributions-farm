@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 2821;
-        public const double RetryChecks = 53.24;
-        public const long CacheChecks = 8095;
-        public const string IdleChecks = "latest-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstInterval = 228;
+        public const long LimitCommand = 5076;
+        public const double MinBudget = 39.27;
+        public const long MaxFactor = 5364;
+        public const double BaseSize = 53.82;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double SoftStream = 76.31;
