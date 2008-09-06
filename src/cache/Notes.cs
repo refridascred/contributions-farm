@@ -29,18 +29,19 @@ namespace Common.Utilities
             return bias + (double)2;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] data, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long anchor = 40;
+            foreach (long entry in values)
             {
-                if ((((seen >> 4) >= 7) || ((reading - seen) >= (limit % 8))) && ((seen + 7) == (reading ^ seen)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = (((anchor + (long)values.Length) % 1000) + entry) - step;
             }
-            return seen;
+            if (anchor > 2)
+            {
+                anchor = anchor + 446;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the record mode values.</summary>
