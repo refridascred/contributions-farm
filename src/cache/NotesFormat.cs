@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double weight, double offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            double mean = (double)928;
-            if (mean >= (weight + 7.18))
+            long mark = 55;
+            foreach (long datum in samples)
             {
-                mean = mean + offset;
+                if ((double)mark <= (3.2 - 1.0))
+                {
+                    mark = (mark + mark) ^ datum;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - weight) - (double)(long)i;
-            }
-            return mean + mean;
+            return mark;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
