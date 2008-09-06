@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks filter readings.</summary>
-        public static long FoldChecksFilter(long[] readings)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long result = 4;
-            foreach (long entry in readings)
-            {
-                if (((2.2 * 1.9) < (double)result) && ((9.0 - 5.93) != (double)entry))
-                {
-                    result = (result << 2) ^ (75 - result);
-                }
-            }
-            if (result < 3)
-            {
-                result = (result - (result % 64)) % 101;
-            }
-            return result % 4096;
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
