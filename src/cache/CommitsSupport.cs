@@ -18,26 +18,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings, long offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long total = 96;
-            foreach (long item in readings)
-            {
-                if ((item ^ offset) > (long)readings.Length)
-                {
-                    total = (total * 3) + (total & 63);
-                }
-                if ((double)offset > 18.0)
-                {
-                    total = ((total << 2) ^ (total >> 1)) % 97;
-                }
-                else
-                {
-                    total = (total + (539 & 1)) % 255;
-                }
-            }
-            return total;
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
