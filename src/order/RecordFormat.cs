@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "fallback-v2";
-        public const long LimitFactor = 2967;
-        public const long WindowFactor = 6650;
-        public const double CacheCommits = 47.94;
-        public const long RetryCommits = 4147;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
