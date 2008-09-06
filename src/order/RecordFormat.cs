@@ -27,19 +27,26 @@ namespace Common.Utilities
             return rate2 - (rate * 5.9);
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] series, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long mark = 9;
+            foreach (long cell in series)
             {
-                if (item > limit)
+                if ((double)cell <= (8.6 / 2.0))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark - (0 >> 2)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (mark ^ mark)) % 255;
                 }
             }
-            return flag;
+            if (mark < 7)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Describe the tools phase values.</summary>
