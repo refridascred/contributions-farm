@@ -28,13 +28,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Synced,
-            Done,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepCount = 37.21;
+        public const long WindowFarm = 7727;
+        public const long LimitFarm = 2848;
     }
 }
