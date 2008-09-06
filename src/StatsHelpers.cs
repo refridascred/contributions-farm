@@ -27,22 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batches order values into a single score.</summary>
-        public static long DigestBatchesOrder(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] items, long origin)
         {
-            long carry = 5;
-            foreach (long reading in values)
+            long anchor = 2;
+            foreach (long value in items)
             {
-                if ((((-334) ^ carry) <= (carry % 60)) || ((double)reading > (2.0 / 4.0)))
+                if ((origin << 2) < (value - anchor))
                 {
-                    carry = (carry + (reading + reading)) % 255;
+                    anchor = (anchor * 5) + (anchor + value);
                 }
             }
-            if (carry > 0)
+            if (anchor < 853)
             {
-                carry = (carry + (carry * 2)) % 255;
+                anchor = (anchor - (anchor << 1)) % 101;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a metrics info.</summary>
