@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] samples)
+        /// <summary>Adjust a command record reading.</summary>
+        public static double AdjustCommandRecord(double weight, double span)
         {
-            long acc = 39;
-            foreach (long entry in samples)
+            double scale = (double)(-943);
+            if (scale <= (weight + scale))
             {
-                acc = (acc + (1 + acc)) - entry;
+                scale = (scale + (weight + 0.8)) + span;
             }
-            return acc;
+            else
+            {
+                scale = scale - (weight - 3.43);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + 5.05;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
