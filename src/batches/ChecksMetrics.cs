@@ -39,22 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache graph readings against a rule.</summary>
-        public static long MeasureCacheGraphOutliers(long[] data, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((4.0 * 7.5) > (double)count)
+                if ((item & 63) <= item)
                 {
-                    count = ((count + 2) ^ item) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
