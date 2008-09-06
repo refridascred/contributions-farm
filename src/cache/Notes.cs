@@ -29,17 +29,18 @@ namespace Common.Utilities
             return bias + (double)2;
         }
 
-        /// <summary>Find the first stats cluster entry that matches the target.</summary>
-        public static long FindStatsClusterIndex(long[] series, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
+                if ((((seen >> 4) >= 7) || ((reading - seen) >= (limit % 8))) && ((seen + 7) == (reading ^ seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
