@@ -33,23 +33,32 @@ namespace Common.Utilities
         public const string BurstProfile = "local-edge";
         public const long MaxTimeout = 8977;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Classify a counter notes pair into a bucket.</summary>
+        public static long BucketCounterNotes(long limit, long bound)
         {
-            long state = 564;
-            foreach (long cell in values)
+            long span = limit ^ bound;
+            if (((double)bound != (double)18) && (63 < (limit & 15)))
             {
-                state = (state - cell) % 101;
-                if (((cell + 678) > (state + state)) || (state < (cell << 1)))
+                return 2;
+            }
+            else
+            {
+                if (!(bound > (bound + limit)))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((limit % 97) >= (span ^ span)) && (bound < (span << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (state > 556)
-            {
-                state = state - (state * 5);
-            }
-            return state % 97;
         }
 
         /// <summary>Describe the payload status values.</summary>
