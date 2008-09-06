@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two payload route measurements.</summary>
-        public static double BlendPayloadRoute(double rate, double span)
-        {
-            double weight = span / 9.0;
-            if (weight >= span)
-            {
-                weight = (weight + (span * 6.0)) - rate;
-            }
-            return weight + (6.13 + span);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "cached";
+        public const double SoftSize = 49.24;
+        public const string BatchBatches = "standard";
+        public const long MaxWidth = 3198;
+        public const long RetryCount = 7767;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] series)
