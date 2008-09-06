@@ -37,38 +37,16 @@ namespace Common.Utilities
         public const double SoftSchema = 87.67;
         public const long StepSchema = 2023;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            if (((floor << 3) < target) && ((floor << 3) <= (floor + 6)))
+            long mix = 77;
+            foreach (long reading in items)
             {
-                return 5;
+                mix = ((mix << 3) ^ reading) % 4096;
+                mix = (mix + (10 - reading)) % 65521;
             }
-            else
-            {
-                if ((double)floor <= (3.0 + 7.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.0 / 6.0) <= (1.89 * 2.9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((7.2 / 2.0) < (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
