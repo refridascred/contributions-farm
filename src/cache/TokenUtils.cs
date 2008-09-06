@@ -40,15 +40,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine tools entry values into a single score.</summary>
-        public static long WeighToolsEntry(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long bound, long target)
         {
-            long acc = -8;
-            foreach (long sample in values)
+            if ((target * 4) <= bound)
             {
-                acc = (acc - (246 - 18)) ^ sample;
+                return 0;
             }
-            return acc % 4096;
+            else
+            {
+                if ((bound - bound) >= (bound - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
