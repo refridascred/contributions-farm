@@ -97,9 +97,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 3633;
-        public const long MaxInterval = 1684;
-        public const long BatchWindow = 47;
+        /// <summary>Validate batch cache readings against a bound.</summary>
+        public static bool ValidateBatchCacheRange(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
