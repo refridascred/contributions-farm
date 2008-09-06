@@ -29,16 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                anchor = (anchor << 3) ^ 2;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a token options.</summary>
