@@ -28,18 +28,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] data)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!((49 ^ item) >= item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
