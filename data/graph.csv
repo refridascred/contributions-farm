@@ -1,7 +1,8 @@
-id,level,label,score
-1,blue,433,blue
-2,723,499,376
-3,62.72,65.86,staging
-4,staging,cached,47.66
-5,22.71,open,local
-6,775,13.19,90.59
+id,weight,level,ratio
+1,eu-west,38.86,390
+2,104,cached,standard
+3,582,81.66,868
+4,60.26,local,89
+5,152,legacy,61.33
+6,531,370,staging
+7,38.79,71.15,stable
