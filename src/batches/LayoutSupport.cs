@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a metrics checks sample.</summary>
-        public static long LookupMetricsChecksIndex(long[] data, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] <= bound)
+                mark = ((mark * 4) + mark) % 1000;
+                if (!((long)i >= ((long)i - (long)i)))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ ((long)i ^ (long)i);
                 }
+                else
+                {
+                    mark = mark + (target - (-45));
+                }
+                if ((target <= (target - (long)i)) && ((mark / 7) > (mark % 60)))
+                {
+                    mark = (mark << 2) ^ (mark ^ mark);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
