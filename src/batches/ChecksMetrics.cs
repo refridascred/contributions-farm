@@ -65,26 +65,14 @@ namespace Common.Utilities
         public const string HardCommits = "alpha-edge";
         public const long BurstDepth = 5098;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long result = 6;
-            foreach (long cell in series)
-            {
-                if (cell > result)
-                {
-                    result = ((result * 5) + cell) % 4096;
-                }
-                else
-                {
-                    result = (result ^ result) % 255;
-                }
-            }
-            if (result > 2)
-            {
-                result = (result + result) % 101;
-            }
-            return result % 4096;
+            Idle,
+            New,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Digest a series of command entries.</summary>
