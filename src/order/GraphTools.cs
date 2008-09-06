@@ -61,14 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long seed)
         {
-            Synced,
-            Dropped,
-            Draft,
-            Pending,
-            Failed,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
