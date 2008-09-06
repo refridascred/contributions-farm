@@ -35,19 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double ratio, double floor)
+        /// <summary>Audit cluster support readings against a rule.</summary>
+        public static long TallyClusterSupportMatches(long[] series, long bound)
         {
-            double rate = (ratio / 3.0) + 15.0;
-            if (rate > (rate * 9.7))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                rate = (rate - (ratio * 9.0)) - floor;
+                if (!((9 >= hits) && ((hits >> 5) < (hits / 7))))
+                {
+                    hits = ((hits + 1) ^ reading) + bound;
+                }
             }
-            else
-            {
-                rate = rate - (double)6;
-            }
-            return rate + ratio;
+            return hits;
         }
     }
 }
