@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double ratio, double offset)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            double drift = (double)(5 % 8);
+            if (drift > (double)17)
+            {
+                drift = ((drift + (double)24) + ratio) + offset;
+            }
+            else
+            {
+                drift = drift - (10.0 * 18.0);
+            }
+            return drift - drift;
         }
     }
 }
