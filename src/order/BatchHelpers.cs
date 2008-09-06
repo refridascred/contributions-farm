@@ -39,19 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches report readings against a bound.</summary>
-        public static bool CheckBatchesReportRange(long[] series, long origin)
+        /// <summary>Check that every support context entry stays within the limit.</summary>
+        public static bool ValidateSupportContextLimits(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (value < origin)
+                if (entry > bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
