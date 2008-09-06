@@ -37,11 +37,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Combine stream schema values into a single score.</summary>
+        public static long ScoreStreamSchema(long[] values, long limit)
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
+            long total = 888;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    total = ((((total * 3) + (total + 584)) % 101) ^ (long)i) + limit;
+                }
+                if ((17.0 * 2.0) > (double)total)
+                {
+                    total = total ^ value;
+                }
+            }
+            if (total < 82)
+            {
+                total = total + (total + 22);
+            }
+            return total;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
