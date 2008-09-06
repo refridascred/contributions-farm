@@ -23,12 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state - 3) % 4096;
+                state = state ^ origin;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the entry phase values.</summary>
