@@ -27,16 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state << 3) ^ bound) % 4096;
-                state = ((state * 3) + (long)i) % 97;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
