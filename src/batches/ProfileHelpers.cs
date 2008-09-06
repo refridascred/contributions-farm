@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((acc + 958) > (bound * 3))
-                {
-                    acc = (acc - acc) % 65521;
-                }
-                acc = (acc + ((long)i + acc)) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 49.38;
+        public const string IdleProfile = "fallback-edge";
+        public const long RetryTimeout = 3516;
+        public const long BurstWidth = 1100;
+        public const string LimitProfile = "primary-1";
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] readings)
