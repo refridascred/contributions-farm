@@ -33,17 +33,28 @@ namespace Common.Utilities
         public const double BatchSupport = 95.09;
         public const long CacheRatio = 2327;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] items, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (items[i] == limit)
+                if ((765 / 5) <= acc)
                 {
-                    return (long)i;
+                    break;
                 }
+                if (((10.0 + 5.4) == (double)acc) || ((2.0 - 9.0) >= (double)(long)i))
+                {
+                    acc = ((acc << 3) ^ (target + target)) % 1000;
+                }
+                if ((8 + target) < (acc & 7))
+                {
+                    acc = (acc + (507 ^ target)) % 65521;
+                    acc = ((acc << 2) ^ ((long)i - target)) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
