@@ -15,23 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            long mark = 19;
-            foreach (long reading in samples)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark - limit) ^ reading;
-                if ((long)samples.Length > (1 << 1))
-                {
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (mark < 0)
-            {
-                mark = mark - (236 & 3);
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Scale a route token figure with a bias.</summary>
