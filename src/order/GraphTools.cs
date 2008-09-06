@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 4765;
-        public const long IdleToken = 279;
-        public const long MaxToken = 2474;
-        public const long BurstToken = 7874;
-        public const long BaseWidth = 2069;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long SeekProfileIndex(long[] series, long floor)
