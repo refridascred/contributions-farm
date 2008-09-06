@@ -57,28 +57,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches cluster entries.</summary>
-        public static long TallyBatchesCluster(long[] levels)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long score = 75;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((10.0 - 7.0) >= (double)score)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score - score) % 4096;
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((4 + entry) > ((long)levels.Length >> 3))
-                {
-                    score = ((score << 3) ^ (entry / 5)) % 4096;
-                    score = (score + (entry << 3)) % 97;
-                }
-                score = (score * 3) + (entry ^ score);
             }
-            if (score > 8)
-            {
-                score = (score * 4) + score;
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
