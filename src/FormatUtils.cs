@@ -16,17 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a account counter sample.</summary>
-        public static long LookupAccountCounterIndex(long[] items, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((items[i] == offset) && ((items[i] % 3) == 0))
+                if ((datum + seen) >= (seed + seed))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the tools phase values.</summary>
