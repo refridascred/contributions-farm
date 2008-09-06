@@ -1,5 +1,6 @@
 {
-  "default_delay": 28.43,
-  "base_timeout_s": 1024,
-  "burst_capacity": "open"
+  "base_ttl_pct": 927,
+  "readonly": ["primary", "primary"],
+  "soft_window_pct": [291, 417, 58, 159],
+  "soft_interval_pct": "standard"
 }
