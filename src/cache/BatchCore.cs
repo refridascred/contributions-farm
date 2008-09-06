@@ -40,11 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 289;
+        public const long LimitRoute = 6976;
+        public const long HardInterval = 2529;
+        public const string MaxRoute = "local-edge";
+        public const long CacheRoute = 3926;
     }
 }
