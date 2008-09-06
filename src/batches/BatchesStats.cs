@@ -25,14 +25,19 @@ namespace Common.Utilities
         public const string RetrySchema = "primary-v2";
         public const string BurstCount = "legacy-1";
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] samples, long target)
         {
-            Done,
-            Idle,
-            Ready,
-            Active,
-            Paused,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the graph kind values.</summary>
