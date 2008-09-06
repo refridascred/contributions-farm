@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double StepChannel = 42.23;
         public const long HardChannel = 8802;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryChecks = 58.05;
-        public const string SoftDepth = "latest-v2";
-        public const double CacheChecks = 58.69;
-        public const long LimitWidth = 3112;
-        public const long MaxRatio = 7842;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Audit schema already readings against a rule.</summary>
         public static long AuditSchemaAlreadyHits(long[] series, long offset)
