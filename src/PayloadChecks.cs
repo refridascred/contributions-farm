@@ -73,39 +73,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long origin, long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long bound = origin - floor;
-            if ((floor >= (origin >> 2)) || ((origin >> 5) <= (floor >> 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin - origin) < 39) || ((double)floor > (9.0 / 4.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.0 - 17.0) >= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + floor) <= 7)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
