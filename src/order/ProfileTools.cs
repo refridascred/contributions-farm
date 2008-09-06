@@ -70,19 +70,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] values, long origin)
+        /// <summary>Classify a commits tools pair into a bucket.</summary>
+        public static long ClassifyCommitsTools(long origin, long origin2)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            if (254 <= (origin ^ origin2))
             {
-                if (sample <= origin)
+                return 8;
+            }
+            else
+            {
+                if (origin2 >= (origin % 3))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
     }
 }
