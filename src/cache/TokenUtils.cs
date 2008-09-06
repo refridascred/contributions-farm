@@ -19,24 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double ratio, double floor)
         {
-            long sum = 117;
-            foreach (long entry in values)
+            double gain = 6.7 - (double)1;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum + (sum << 1)) % 97;
-                sum = (sum - entry) % 101;
-                if ((double)sum <= (8.0 / 6.0))
-                {
-                    sum = (sum << 3) ^ (sum & 127);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum - sum)) % 255;
-                }
+                gain = (gain - (floor - 13.0)) - (double)(long)i;
             }
-            return sum % 1000;
+            return gain + (ratio - 5.57);
         }
 
         /// <summary>Grade a order value against two limits.</summary>
