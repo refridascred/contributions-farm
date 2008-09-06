@@ -1,16 +1,5 @@
 {
-  "metrics_timeout": 77,
-  "enabled": ["primary", "legacy", "standard", "eu-west"],
-  "soft_retries_pct": "fallback",
-  "metrics_capacity": {
-    "already_capacity": "fallback",
-    "enabled": 60,
-    "payload_size": 33.8
-  },
-  "burst_capacity": {
-    "graph_threshold": 100,
-    "cache_window_count": 25,
-    "farm_size": 3874,
-    "max_size_s": "cached"
-  }
+  "strict": 250,
+  "contributi_ratio": 54.53,
+  "notes_interval": true
 }
