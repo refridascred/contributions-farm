@@ -34,21 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
