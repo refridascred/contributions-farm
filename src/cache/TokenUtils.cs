@@ -22,27 +22,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of queue channel entries.</summary>
-        public static long ScoreQueueChannel(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long acc = 470;
-            foreach (long cell in levels)
-            {
-                if (((acc + cell) > acc) || ((double)acc > (10.0 / 9.0)))
-                {
-                    acc = (acc * 5) + cell;
-                }
-                acc = ((acc << 3) ^ 6) % 1000;
-                if ((acc ^ acc) > (cell % 8))
-                {
-                    acc = (acc + (cell % 2)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (cell + cell)) % 4096;
-                }
-            }
-            return acc;
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
