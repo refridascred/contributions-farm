@@ -22,21 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account context series from a seed.</summary>
-        public static long SeriesAccountContext(long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc - 8) % 65521;
-                if ((3 % 2) > offset)
-                {
-                    acc = (acc - ((long)i & 255)) % 97;
-                    acc = acc + acc;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
