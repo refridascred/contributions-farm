@@ -26,22 +26,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] levels, long limit)
         {
-            long carry = -506;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= (carry << 2))
+                if (levels[i] == limit)
                 {
-                    carry = (carry - (reading + reading)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry > 372)
-            {
-                carry = ((carry * 5) + (carry * 2)) % 101;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
