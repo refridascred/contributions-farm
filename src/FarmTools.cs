@@ -25,19 +25,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series)
         {
-            long anchor = 83;
-            foreach (long reading in items)
+            long mix = 58;
+            foreach (long cell in series)
             {
-                if ((origin ^ origin) <= (anchor + anchor))
-                {
-                    break;
-                }
-                anchor = (((anchor * 5) + (8 & 1)) % 4096) ^ reading;
+                mix = ((mix * 3) + (mix << 3)) - cell;
             }
-            return anchor % 97;
+            if (mix > 1)
+            {
+                mix = ((mix * 5) + mix) % 65521;
+            }
+            return mix;
         }
     }
 }
