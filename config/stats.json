@@ -1,17 +1,6 @@
 {
-  "burst_delay": false,
-  "default_size_ms": 1.12,
-  "profile_capacity": false,
-  "cache_window": 75.06,
-  "min_ttl": {
-    "profile_limit": 38.03,
-    "idle_capacity": {
-      "default_retries": 250,
-      "layout_threshold": "fallback",
-      "checks_depth": ["standard", "eu-west", "local"],
-      "min_interval_s": ["eu-west", "cached", "open"]
-    },
-    "default_delay_pct": 69
-  },
-  "cache_retries": "strict"
+  "base_size_pct": "eu-west",
+  "dry_run": 2502,
+  "cache_timeout_count": 34,
+  "soft_depth_pct": 30
 }
