@@ -14,12 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryBudget = 351;
-        public const string StepMetrics = "strict-v2";
-        public const long BaseMetrics = 7472;
-        public const long MaxMetrics = 4948;
-        public const long HardLevel = 9687;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long floor)
