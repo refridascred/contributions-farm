@@ -1,7 +1,10 @@
 # githubfarm settings
-min_delay: 1
-min_interval_pct:
-  - open
-  - local
-  - eu-west
-idle_limit_count: 1024
+dry_run: 250
+warm_size_ms:
+  - 19
+  - 246
+payload_delay:
+  - 313
+  - 324
+min_threshold_pct: green
+default_retries_ms: false
