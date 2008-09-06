@@ -26,17 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every support context entry stays within the limit.</summary>
