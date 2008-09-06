@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 73.42;
-        public const long BaseScore = 5023;
-        public const long CacheCommits = 6548;
-        public const string StepCommits = "latest";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (47 < seen)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsLimits(long[] items, long origin)
