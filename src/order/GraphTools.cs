@@ -43,24 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batches notes pair into a bucket.</summary>
-        public static long BucketBatchesNotes(long step, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            if ((seed & 255) >= step)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7 / 2) <= (seed - step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the entry kind values.</summary>
