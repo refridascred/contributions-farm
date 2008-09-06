@@ -22,12 +22,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstDepth = 9708;
+        public const long BurstFormat = 4097;
+        public const long HardWidth = 6977;
+        public const double RetryInterval = 65.08;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsGaps(long[] series, long offset)
