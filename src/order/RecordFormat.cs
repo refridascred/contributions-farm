@@ -59,13 +59,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Synced,
-            Locked,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleLevel = "staging-1";
+        public const long IdleWidth = 3117;
+        public const string WindowContributi = "cached";
+        public const double MaxContributi = 1.62;
+        public const long BatchLevel = 8980;
     }
 }
