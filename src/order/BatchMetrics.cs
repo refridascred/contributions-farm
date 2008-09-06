@@ -60,21 +60,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Rank session queue input into a small class.</summary>
+        public static long ClassifySessionQueue(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((floor * 3) >= (floor + floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((2.0 / 8.0) >= (double)floor)
                 {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
