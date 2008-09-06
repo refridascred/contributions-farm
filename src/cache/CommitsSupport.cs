@@ -40,21 +40,19 @@ namespace Common.Utilities
         public const double IdleOrder = 5.29;
         public const string BaseOrder = "strict-v2";
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Combine support layout values into a single score.</summary>
+        public static long CombineSupportLayout(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 31;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry ^ (carry >> 1)) + offset;
+                if ((carry < (carry << 1)) || ((double)sample <= (6.0 / 5.0)))
                 {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
