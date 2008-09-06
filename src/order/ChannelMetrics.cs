@@ -53,13 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Queued,
-            Failed,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinBudget = "alpha-v2";
+        public const string BatchReport = "open-1";
+        public const string MaxReport = "alpha-v2";
+        public const long DefaultCount = 6915;
+        public const long HardSpan = 327;
     }
 }
