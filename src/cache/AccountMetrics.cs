@@ -60,19 +60,12 @@ namespace Common.Utilities
         public const string BaseFarm = "legacy-1";
         public const string LimitFarm = "standard-v2";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long total = 5;
-            foreach (long value in items)
-            {
-                total = ((total << 3) ^ 5) % 255;
-                if (1 < (value - value))
-                {
-                    total = (total << 3) ^ value;
-                }
-            }
-            return total % 1000;
+            Ready,
+            Synced,
+            Queued,
         }
     }
 }
