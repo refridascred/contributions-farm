@@ -1,6 +1,19 @@
 {
-  "default_ttl_count": "open",
-  "enabled": true,
-  "persist": 64,
-  "min_threshold_count": [310, 108, 30]
+  "burst_depth": 7156,
+  "profile_depth": {
+    "githubfarm_ttl": false,
+    "dry_run": {
+      "dry_run": 4432,
+      "format_capacity": true,
+      "layout_window": "local",
+      "payload_limit": 58.28,
+      "default_capacity_ms": 2319,
+      "max_ratio_s": false
+    },
+    "audit": 58,
+    "commits_threshold": 68
+  },
+  "tools_capacity": "staging",
+  "verbose": 10.9,
+  "base_threshold_s": [307, 335, 431, 389]
 }
