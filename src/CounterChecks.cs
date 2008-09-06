@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] readings, long origin)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (9.0 > (double)(long)readings.Length)
+                {
+                    hits = ((hits + 3) ^ reading) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a record counter forward.</summary>
