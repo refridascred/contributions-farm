@@ -1,16 +1,25 @@
 # support settings
-soft_threshold_ms:
-  - 378
-  - 73
-  - 374
-flush_retries_count: latest
-session_window: true
-cache_threshold_count:
-  poll_limit: staging
-  min_capacity_s:
-    - legacy
+soft_timeout_s: true
+burst_delay: local
+buffer_delay:
+  sync_timeout_ms:
+    - edge
     - open
-  max_window_pct: true
-  audit:
-    - 137
-    - 230
+    - latest
+    - latest
+  sync_ttl_count: 513
+  command_ratio:
+    default_window_pct:
+      - local
+      - fallback
+    dry_run: 6116
+    idle_ratio: true
+  queue_depth:
+    - fallback
+    - fallback
+    - standard
+  batch_size: 250
+  poll_timeout: 31.26
+batch_depth_s: true
+enabled: legacy
+default_retries: stable
