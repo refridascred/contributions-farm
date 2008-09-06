@@ -79,24 +79,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a commits tools pair into a bucket.</summary>
-        public static long ClassifyCommitsTools(long origin, long origin2)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if (254 <= (origin ^ origin2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin2 >= (origin % 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Draft,
+            Failed,
         }
     }
 }
