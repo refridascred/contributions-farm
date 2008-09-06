@@ -1,12 +1,10 @@
 # githubfarm settings
-context_ttl:
-  - 53
-  - 387
-  - 38
-default_size: 5466
-cache_delay_count: 4
-compress: cached
-cache_interval:
-  default_limit_s: false
-  burst_size_ms: 30
-  idle_depth_count: false
+already_ttl: local
+base_depth_pct: latest
+token_size: 57.7
+hard_depth:
+  retry_window_pct: 72
+  cache_window: open
+  soft_depth_s: 56
+cache_limit_s: 1405
+enabled: stable
