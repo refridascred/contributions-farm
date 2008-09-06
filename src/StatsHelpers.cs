@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] items, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm graph readings.</summary>
