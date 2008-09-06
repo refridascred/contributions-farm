@@ -12,14 +12,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Validate order command readings against a bound.</summary>
+        public static bool VerifyOrderCommandRange(long[] readings, long limit)
         {
-            Paused,
-            New,
-            Closed,
-            Idle,
-            Locked,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
