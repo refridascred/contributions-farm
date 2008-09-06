@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "standard-edge";
+        public const long HardCount = 2951;
+        public const long BaseInterval = 6051;
+        public const long CacheMetrics = 7698;
+        public const string RetryMetrics = "standard-1";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsOutliers(long[] levels)
