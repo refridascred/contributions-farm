@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowTimeout = 2847;
+        public const long HardEditor = 1968;
+        public const long BatchRatio = 5861;
+        public const long WindowEditor = 1888;
+        public const string WindowCount = "local-v2";
     }
 }
