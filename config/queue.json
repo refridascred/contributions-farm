@@ -1,5 +1,7 @@
 {
-  "verbose": 95.1,
-  "strict": 30,
-  "hard_ratio_pct": ["strict", "fallback", "eu-west"]
+  "compress": 5685,
+  "payload_limit": 30,
+  "default_interval_s": 11,
+  "base_timeout": 98,
+  "batch_delay": ["latest", "standard", "latest"]
 }
