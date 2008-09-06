@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate checks counter readings against a bound.</summary>
+        public static bool ValidateChecksCounterLimits(long[] values, long step)
         {
-            Closed,
-            Idle,
-            Retry,
-            Draft,
-            Active,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
