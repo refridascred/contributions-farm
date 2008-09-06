@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] values, long target)
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((double)hits == (9.36 * 13.0)) || ((double)datum > 6.6))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
