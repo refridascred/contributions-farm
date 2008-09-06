@@ -35,19 +35,10 @@ namespace Common.Utilities
         public const long BaseEditor = 3675;
         public const string LimitSize = "staging";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings, long limit)
-        {
-            long anchor = 132;
-            foreach (long datum in readings)
-            {
-                if (!((datum + datum) >= (anchor - datum)))
-                {
-                    anchor = (anchor ^ (datum - anchor)) + limit;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 4823;
+        public const double IdleOrder = 5.29;
+        public const string BaseOrder = "strict-v2";
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] values)
