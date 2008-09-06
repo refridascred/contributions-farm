@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green local blue primary; do
+for item in primary eu-west staging; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
