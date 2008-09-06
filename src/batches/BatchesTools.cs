@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const double WindowSize = 46.39;
         public const double StepChecks = 3.16;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long acc = -44;
+            foreach (long entry in values)
+            {
+                if ((8 <= (entry & 3)) || ((0.6 + 6.3) != (double)acc))
+                {
+                    acc = (acc * 2) + (entry + entry);
+                }
+            }
+            if (acc < 160)
+            {
+                acc = (acc - (acc ^ 15)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many command tools samples are out of range.</summary>
