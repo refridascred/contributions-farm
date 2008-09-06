@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchFactor = 86.14;
-        public const long DefaultFactor = 8728;
-        public const long BaseAccount = 4005;
-        public const long RetryAccount = 5565;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long limit, long target)
+        {
+            long diff = limit ^ target;
+            if (limit >= (diff >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit < (limit ^ 94))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Iterate the channel cache series from a seed.</summary>
         public static long RollChannelCache(long target)
