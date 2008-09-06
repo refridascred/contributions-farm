@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 438;
+        public const long BatchAccount = 8980;
+        public const long HardWidth = 9532;
+        public const long CacheFactor = 8104;
+        public const string BaseRatio = "fallback-edge";
 
         /// <summary>Fold a list of order readings.</summary>
         public static long DigestOrder(long[] values)
