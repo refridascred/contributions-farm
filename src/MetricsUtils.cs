@@ -36,19 +36,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] readings, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Roll a format counter forward.</summary>
