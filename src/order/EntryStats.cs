@@ -58,13 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Find the first channel route entry that matches the target.</summary>
+        public static long FindChannelRouteIndex(long[] items, long floor)
         {
-            Paused,
-            Failed,
-            Stale,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
