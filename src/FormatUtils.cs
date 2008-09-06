@@ -49,24 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context batch pair into a bucket.</summary>
-        public static long RankContextBatch(long seed, long seed2)
+        /// <summary>Project the next commits record value.</summary>
+        public static double AdjustCommitsRecord(double ratio, double span)
         {
-            if ((seed2 + seed2) <= (seed2 - seed))
+            double mean = ratio;
+            if (mean < ratio)
             {
-                return 7;
+                mean = (mean + ratio) + span;
             }
             else
             {
-                if ((seed2 + seed2) >= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                mean = mean + ratio;
             }
+            return mean - mean;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
