@@ -15,16 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a route channel reading.</summary>
-        public static double BlendRouteChannel(double ratio, double floor)
-        {
-            double drift = (double)684 + (double)969;
-            if (drift >= (3.3 / 4.0))
-            {
-                drift = drift - ratio;
-            }
-            return drift + floor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxCount = 1564;
+        public const double HardOrder = 9.44;
+        public const string HardSpan = "alpha";
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
