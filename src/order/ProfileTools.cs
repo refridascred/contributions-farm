@@ -55,13 +55,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            New,
-            Dropped,
-            Failed,
-            Ready,
+            long acc = -180;
+            foreach (long entry in readings)
+            {
+                if ((acc + 4) <= (7 & 127))
+                {
+                    acc = acc + (entry >> 3);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (entry >> 4)) % 97;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a commits tools pair into a bucket.</summary>
