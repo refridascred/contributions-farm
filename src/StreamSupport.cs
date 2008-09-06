@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long target, long origin)
+        /// <summary>Measure how many filter notes samples are out of range.</summary>
+        public static long MeasureFilterNotesHits(long[] data)
         {
-            if ((16.0 - 7.2) > (double)origin)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + origin) >= (target / 5))
+                if (((long)data.Length ^ seen) != (value + seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a counter header.</summary>
