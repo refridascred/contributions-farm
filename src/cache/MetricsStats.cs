@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 3074;
+        public const long BurstSchema = 1984;
+        public const long DefaultSchema = 5060;
+        public const long WindowSchema = 2258;
+        public const long MaxLevel = 4252;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long step, long offset)
