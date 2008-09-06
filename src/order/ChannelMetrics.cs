@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "legacy-1";
+        public const long SoftOrder = 3284;
+        public const long SoftLevel = 1098;
+        public const double StepBudget = 42.42;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long RollCluster(long offset)
