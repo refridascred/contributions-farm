@@ -28,14 +28,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit already graph readings against a rule.</summary>
+        public static long AuditAlreadyGraphMatches(long[] samples, long origin)
         {
-            Dropped,
-            Pending,
-            Stale,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (seen > (0 >> 5))
+                {
+                    seen = ((seen + 2) ^ datum) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
