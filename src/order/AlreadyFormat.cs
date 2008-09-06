@@ -38,18 +38,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (sample > tally)
+                if ((count * 2) >= count)
                 {
-                    tally = tally + 1;
+                    count = (count + 1) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
