@@ -23,25 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Find the first editor queue entry that matches the target.</summary>
+        public static long LookupEditorQueueIndex(long[] items, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry & 127) <= carry)
+                if (items[i] < limit)
                 {
-                    break;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (step - carry)) % 1000;
-                if ((step ^ (long)i) <= carry)
-                {
-                    carry = (carry - ((long)i << 2)) % 4096;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
