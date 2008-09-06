@@ -36,19 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] samples, long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= limit)
+                if (series[i] >= seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
