@@ -32,9 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftFactor = 4658;
-        public const string BaseLevel = "fallback";
-        public const long MaxCount = 9483;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double gain, double floor)
+        {
+            double bias = 6.22 - gain;
+            if (bias > (double)23)
+            {
+                bias = bias + floor;
+            }
+            return bias + bias;
+        }
     }
 }
