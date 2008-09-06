@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate stream cluster samples.</summary>
-        public static long TallyStreamCluster(long[] series)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] items, long floor)
         {
-            long mix = 9;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + (cell << 3)) % 255;
-                mix = (mix + (mix & 1)) % 97;
-                if ((86 ^ cell) > 6)
+                if (items[i] == floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
