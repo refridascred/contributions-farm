@@ -1,7 +1,19 @@
 # entry settings
-hard_interval_ms: fallback
-warm_retries: 60
-poll_threshold_ms: 30
-max_timeout: 100
-burst_threshold_ms: 83.61
-idle_retries: 100
+route_size:
+  batch_window_pct: true
+  readonly: stable
+  min_retries:
+    - strict
+    - legacy
+    - green
+    - latest
+  poll_timeout_count: green
+  queue_capacity: primary
+  max_threshold_ms: standard
+compress: 10.96
+warm_interval: false
+hard_limit_ms:
+  - stable
+  - green
+  - cached
+  - blue
