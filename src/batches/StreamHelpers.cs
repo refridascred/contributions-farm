@@ -39,13 +39,38 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long floor, long origin)
         {
-            Closed,
-            Locked,
-            Stale,
-            Dropped,
+            if ((1.4 >= (double)origin) && ((double)floor == (19.0 / 3.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor - floor) == (floor ^ origin)) && ((floor - origin) >= origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor << 2) == (floor % 24))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor - 698) <= (floor % 10))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
