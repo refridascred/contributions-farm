@@ -53,13 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            Locked,
-            New,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading <= (11.0 / 6.0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
