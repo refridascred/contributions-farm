@@ -1,22 +1,18 @@
 # githubfarm settings
-burst_ratio_count: 35.2
-max_limit_s: 4946
-checks_threshold:
-  poll_window_pct: 60
-  default_delay: staging
-  cluster_ttl: 16
-  batch_threshold:
-    retry_limit_count: 48
-    default_window_count: 56.34
-    warm_ttl: 8648
-    strict: 1024
-    enabled: 79.98
-    soft_ratio:
-      - green
-      - staging
-      - edge
-  audit: standard
-base_size_s:
-  - 142
-  - 155
-  - 326
+context_size: eu-west
+schema_threshold:
+  support_depth: 12.86
+  strict: 57
+  warm_limit: green
+batch_size:
+  batch_interval_count: 30
+  flush_timeout_s: true
+  max_threshold_count:
+    - 454
+    - 74
+    - 219
+default_retries_count:
+  - local
+  - stable
+poll_ratio: 38
+warm_retries_pct: false
