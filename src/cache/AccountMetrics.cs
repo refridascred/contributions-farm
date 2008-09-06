@@ -13,20 +13,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a cache token counter forward.</summary>
-        public static long IterateCacheToken(long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
-            {
-                long next = target + (target * 4);
-                if ((55 / 9) <= (next % 60))
-                {
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
