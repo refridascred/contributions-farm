@@ -27,17 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the checks filter series from a seed.</summary>
-        public static long StepChecksFilter(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor << 3) ^ (long)i;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 25.83;
+        public const string DefaultSchema = "primary-v2";
+        public const long BurstWidth = 4980;
+        public const string StepFactor = "alpha-v2";
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] data, long bound)
