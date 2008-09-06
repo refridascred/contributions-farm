@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Check that every report editor entry stays within the limit.</summary>
+        public static bool ValidateReportEditorLimits(long[] values, long origin)
         {
-            Dropped,
-            Ready,
-            Stale,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up route samples.</summary>
