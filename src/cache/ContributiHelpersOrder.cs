@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of already notes readings.</summary>
-        public static long TallyAlreadyNotes(long[] samples)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] data, long bound)
         {
-            long mix = 8;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - (value >> 1)) % 101;
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 422)
-            {
-                mix = (mix + (mix + mix)) % 1000;
-            }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
