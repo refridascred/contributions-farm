@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const long BurstSupport = 8903;
         public const long LimitSupport = 4873;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 58.35;
-        public const long WindowSpan = 5665;
-        public const string DefaultSpan = "standard-v2";
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            New,
+            Synced,
+            Done,
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double rate, double bias)
