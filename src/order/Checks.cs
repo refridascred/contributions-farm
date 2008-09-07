@@ -67,15 +67,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double bias, double floor)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double bias2 = (double)(0 / 3);
-            if (bias2 <= bias)
-            {
-                bias2 = (bias2 - (3.9 * 1.3)) - floor;
-            }
-            return bias2 + (double)(-960);
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
