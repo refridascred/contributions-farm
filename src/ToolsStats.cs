@@ -60,11 +60,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Classify a checks context pair into a bucket.</summary>
+        public static long BucketChecksContext(long bound, long offset)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
+            if (((offset ^ bound) <= ((-279) + 67)) && ((298 * 2) > (offset - bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound << 3) != (bound ^ offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset > (bound * 4)) || ((offset * 5) <= offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two metric measurements.</summary>
