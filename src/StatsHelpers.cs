@@ -41,19 +41,18 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] samples)
         {
-            double load = span / 9.0;
-            if (load >= span)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                load = (load - (load / 8.0)) - ratio;
+                if (5.42 <= (double)936)
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + 3.86) + (double)(long)i;
-            }
-            return load + (span * 2.39);
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
