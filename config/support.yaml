@@ -1,10 +1,20 @@
 # support settings
-hard_interval: primary
-hard_interval_count:
-  flush_timeout_s: cached
-  verbose: 3906
-  strict:
-    - cached
+farm_capacity:
+  cache_ttl_pct:
+    warm_threshold_pct: 87
+    cache_capacity_ms: staging
+    verbose: fallback
+    burst_timeout_s: false
+    persist: false
+    base_threshold_ms: legacy
+  strict: 11.25
+  metric_retries: latest
+  default_depth_ms: local
+  contributi_timeout: 35.78
+  githubfarm_threshold:
+    - eu-west
     - fallback
-  hard_depth_count: blue
-channel_ratio: 60
+    - cached
+    - eu-west
+order_ratio: true
+poll_threshold_ms: 34.52
