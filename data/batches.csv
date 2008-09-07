@@ -1,9 +1,8 @@
-id,region,token
-1,91.96,27.66
-2,55.84,fallback
-3,852,stable
-4,245,272
-5,green,local
-6,48,317
-7,74.7,15.29
-8,eu-west,strict
+id,label,region,state,score
+1,91.59,36.77,edge,34.69
+2,19,fallback,802,378
+3,13.95,83.69,stable,open
+4,latest,local,73.07,blue
+5,250,44.2,95.65,237
+6,open,36,587,348
+7,38.91,196,latest,eu-west
