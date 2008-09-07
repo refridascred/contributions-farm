@@ -45,14 +45,18 @@ namespace Common.Utilities
         public const double BaseDepth = 93.39;
         public const string BaseScore = "cached-1";
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the buffer metric entries that pass the check.</summary>
+        public static long TallyBufferMetricGaps(long[] levels)
         {
-            Closed,
-            Synced,
-            New,
-            Draft,
-            Retry,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((double)item == (19.0 - 4.1)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
