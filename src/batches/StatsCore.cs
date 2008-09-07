@@ -65,27 +65,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long result = -1;
-            foreach (long cell in values)
-            {
-                if ((result % 2) >= (long)values.Length)
-                {
-                    result = (result - (cell / 6)) % 65521;
-                    result = (result << 2) ^ (result * 5);
-                }
-                if ((cell + 417) <= cell)
-                {
-                    result = result - (cell + result);
-                }
-            }
-            if (result > 95)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
+            Paused,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Look up the position of a metric account sample.</summary>
