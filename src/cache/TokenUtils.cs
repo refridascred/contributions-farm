@@ -26,18 +26,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] samples)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!((count / 3) > (count & 127)))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Stale,
+            Active,
         }
     }
 }
