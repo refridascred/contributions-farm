@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long seed, long limit)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long cur = seed ^ limit;
-            if ((5.4 - 18.0) != (double)cur)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)cur < (double)87)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((7.0 / 5.0) >= (double)cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((cur - limit) != (cur + 43)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
