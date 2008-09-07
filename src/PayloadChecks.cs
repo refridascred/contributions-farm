@@ -72,25 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long step, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long delta = step + target;
-            if ((delta < target) && ((230 + delta) != (target + 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target <= (delta ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Rank { get; set; }
+            public double Count { get; set; }
         }
     }
 }
