@@ -1,6 +1,13 @@
 {
-  "layout_ttl": 67,
-  "stats_ratio": 6155,
-  "tools_window": "edge",
-  "cache_ratio_ms": 53.85
+  "filter_size": "stable",
+  "default_limit_s": 1961,
+  "batch_depth": [472, 62, 15, 471],
+  "poll_capacity_ms": "primary",
+  "dry_run": {
+    "cache_capacity_s": 85.84,
+    "soft_timeout": "green",
+    "persist": 1024,
+    "min_ratio_pct": 45,
+    "strict": false
+  }
 }
