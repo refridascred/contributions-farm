@@ -59,17 +59,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a contributi token sample.</summary>
-        public static long LookupContributiTokenIndex(long[] data, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 6;
+            foreach (long cell in items)
             {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
+                state = (state + (26 ^ state)) ^ cell;
             }
-            return -1;
+            return state;
         }
     }
 }
