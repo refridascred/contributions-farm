@@ -32,12 +32,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "legacy";
-        public const long StepOrder = 8293;
-        public const string HardOrder = "primary-edge";
-        public const long LimitOrder = 9124;
-        public const long WindowOrder = 9197;
+        /// <summary>Fold a list of queue tools readings.</summary>
+        public static long FoldQueueTools(long[] levels)
+        {
+            long mark = 128;
+            foreach (long datum in levels)
+            {
+                mark = mark ^ (datum + datum);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
