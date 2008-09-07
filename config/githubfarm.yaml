@@ -1,15 +1,21 @@
 # githubfarm settings
-batch_depth: 77.74
-verbose:
-  command_timeout: 0.55
-  enabled: staging
-  max_ratio:
-    - 414
-    - 59
-  verbose: legacy
-hard_retries_pct:
-  enabled: 54.4
-  readonly: 2
-  base_threshold_count: 250
-  batch_interval_pct: standard
-  command_threshold: stable
+strict: blue
+token_ttl:
+  compress: 46
+  soft_delay_count: 55
+  tools_ratio: false
+  flush_limit_s:
+    burst_window_ms: 12.1
+    persist:
+      - strict
+      - stable
+      - green
+      - local
+    window_size: 458
+    readonly: primary
+  filter_depth: true
+enabled:
+  - 398
+  - 251
+  - 465
+base_size: 30
