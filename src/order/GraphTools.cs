@@ -57,14 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] items, long floor)
         {
-            Pending,
-            Synced,
-            Retry,
-            Ready,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
