@@ -43,22 +43,13 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] values, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long sum = 7;
-            foreach (long datum in values)
-            {
-                if (!((datum + sum) > (datum ^ sum)))
-                {
-                    sum = sum + (target + 7);
-                }
-            }
-            if (sum < 55)
-            {
-                sum = sum - (target >> 2);
-            }
-            return sum;
+            Synced,
+            Dropped,
+            Queued,
+            Active,
         }
     }
 }
