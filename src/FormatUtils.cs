@@ -58,12 +58,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] series)
         {
-            Active,
-            Failed,
-            Dropped,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample > (6.0 - 6.66))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
