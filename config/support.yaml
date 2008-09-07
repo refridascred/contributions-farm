@@ -1,9 +1,25 @@
 # support settings
-window_threshold: 100
-retry_ratio_pct: 58
-persist: 30
+flush_retries: 44
+strict: 98.06
 verbose:
-  batch_window_ms: 37
-  strict: latest
-  base_retries_s: 41.9
-  sync_ttl_ms: 50
+  enabled: 1024
+  sync_limit_pct:
+    order_ratio: false
+    profile_depth: primary
+    cache_depth: 1
+    soft_ratio_count: 500
+    audit: 500
+  burst_depth: staging
+  warm_capacity_pct:
+    strict: false
+    cluster_ttl: standard
+    stats_retries: 500
+    readonly: eu-west
+    farm_ratio: 8285
+    warm_window: 29
+  warm_size_pct: 45.6
+payload_depth: 250
+cache_capacity_pct: cached
+min_timeout:
+  - edge
+  - strict
