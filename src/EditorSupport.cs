@@ -75,21 +75,19 @@ namespace Common.Utilities
         public const long LimitBudget = 1379;
         public const string MaxEntry = "latest-1";
 
-        /// <summary>Match up window session samples.</summary>
-        public static long OverlapWindowSessionCount(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= bound)
                 {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
