@@ -35,14 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Look up the position of a order channel sample.</summary>
+        public static long LookupOrderChannelIndex(long[] items, long seed)
         {
-            Locked,
-            Closed,
-            Failed,
-            Ready,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
