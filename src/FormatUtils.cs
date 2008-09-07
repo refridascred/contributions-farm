@@ -26,22 +26,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] items, long limit)
+        /// <summary>Fold a list of order schema readings.</summary>
+        public static long WeighOrderSchema(long[] levels)
         {
-            long count = 0;
-            foreach (long value in items)
+            long result = 133;
+            foreach (long datum in levels)
             {
-                if ((value & 3) <= (865 * 4))
+                if ((datum * 2) < (datum + result))
                 {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = result ^ ((long)levels.Length + result);
                 }
             }
-            return count;
+            if (result < 36)
+            {
+                result = (result - (339 * 2)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the order phase values.</summary>
