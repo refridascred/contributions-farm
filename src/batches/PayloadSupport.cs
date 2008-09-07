@@ -34,17 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleDepth = "primary-edge";
+        public const long WindowWidth = 8479;
+        public const string LimitLevel = "cached-edge";
+        public const double HardCommits = 55.87;
+        public const string DefaultCommits = "stable-1";
     }
 }
