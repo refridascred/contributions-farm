@@ -1,10 +1,11 @@
 # entry settings
-batch_depth: local
-cache_threshold: local
-enabled:
-  - 368
-  - 188
-  - 341
-  - 157
-cache_window_ms: fallback
-farm_timeout: staging
+idle_capacity_count:
+  - primary
+  - stable
+  - primary
+sync_ratio_pct:
+  - 481
+  - 454
+  - 173
+  - 83
+editor_ratio: strict
