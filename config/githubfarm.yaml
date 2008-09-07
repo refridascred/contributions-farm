@@ -1,5 +1,5 @@
 # githubfarm settings
-min_size: primary
-min_delay: true
-window_ttl: 3
-cluster_retries: true
+audit: 8046
+hard_delay: edge
+readonly: 30
+poll_window: latest
