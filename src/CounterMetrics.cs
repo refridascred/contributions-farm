@@ -22,17 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] items, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = -58;
+            foreach (long value in samples)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                if (!((seed >> 4) > (seed / 8)))
                 {
-                    return (long)i;
+                    sum = sum - (seed << 1);
+                }
+                sum = sum + value;
+                if (!((sum >> 2) >= (sum * 3)))
+                {
+                    sum = sum + (value ^ value);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
