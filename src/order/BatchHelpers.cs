@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const string BurstStats = "strict-1";
         public const long BaseFactor = 2619;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] samples)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits < (0.1 * 17.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of cluster cache readings.</summary>
