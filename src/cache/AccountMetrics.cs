@@ -34,12 +34,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 79.54;
-        public const long SoftDepth = 6314;
-        public const long IdleTimeout = 7598;
-        public const long MaxInterval = 9440;
-        public const long CacheLayout = 4101;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches / 4) < (long)levels.Length)
+                {
+                    matches = ((matches + 2) + entry) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate counter batch samples.</summary>
         public static long TotalCounterBatch(long[] values)
