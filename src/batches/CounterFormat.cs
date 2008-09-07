@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] readings)
+        /// <summary>Classify a context route pair into a bucket.</summary>
+        public static long BucketContextRoute(long step, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            if (((double)seed > (4.2 / 8.0)) || ((step % 24) == (seed / 8)))
             {
-                if ((sample + hits) >= 711)
+                return 0;
+            }
+            else
+            {
+                if (!((seed / 6) != (seed ^ seed)))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed > (6.7 * 6.1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the metric phase values.</summary>
