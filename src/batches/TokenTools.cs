@@ -27,22 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm support values into a single score.</summary>
-        public static long CombineGithubfarmSupport(long[] samples)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long seed)
         {
-            long carry = 0;
-            foreach (long entry in samples)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)(long)samples.Length < (19.0 + 7.8))
-                {
-                    carry = carry - (carry << 2);
-                }
-                else
-                {
-                    carry = carry + (entry % 24);
-                }
+                state = ((state << 2) ^ (state * 4)) % 255;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return carry % 97;
+            return state;
         }
     }
 }
