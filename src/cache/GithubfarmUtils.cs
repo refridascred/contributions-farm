@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] items, long floor)
+        /// <summary>Scale a metric batch figure with a bias.</summary>
+        public static double AdjustMetricBatch(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = floor + (floor * 8.9);
+            return (scale + 8.1) + ratio;
         }
 
         /// <summary>Count already notes pairs that satisfy a relation.</summary>
