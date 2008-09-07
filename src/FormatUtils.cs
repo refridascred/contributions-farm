@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardFactor = 2481;
-        public const long BatchTimeout = 9295;
-        public const long SoftSpan = 974;
-        public const double DefaultWidth = 86.89;
+        /// <summary>Look up the position of a report editor sample.</summary>
+        public static long LocateReportEditorIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
