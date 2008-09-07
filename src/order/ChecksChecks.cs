@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] data)
         {
-            Idle,
-            Dropped,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)count <= (1.89 / 9.0))
+                {
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
