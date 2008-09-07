@@ -26,18 +26,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many counter session samples are out of range.</summary>
-        public static long CountCounterSessionMatches(long[] levels)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 2) < hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the order phase values.</summary>
