@@ -74,10 +74,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "staging-v2";
-        public const long BurstFactor = 4718;
-        public const double MinDepth = 59.8;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Look up the position of a metric account sample.</summary>
         public static long SeekMetricAccountIndex(long[] items, long limit)
