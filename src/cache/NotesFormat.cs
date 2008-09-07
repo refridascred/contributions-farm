@@ -19,22 +19,21 @@ namespace Common.Utilities
         public const long RetrySize = 37;
         public const string LimitSize = "legacy-v2";
 
-        /// <summary>Digest a series of farm route entries.</summary>
-        public static long TotalFarmRoute(long[] data, long limit)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long state = 56;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((limit - 2) >= limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (((state * 3) + (state ^ state)) % 101) + sample;
-                }
-                else
-                {
-                    state = (state << 2) ^ 2;
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
