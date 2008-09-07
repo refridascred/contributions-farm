@@ -14,25 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank counter window input into a small class.</summary>
-        public static long SortCounterWindow(long origin, long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long next = origin ^ bound;
-            if (bound > (origin << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) == (0 ^ next))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Accumulate editor samples.</summary>
