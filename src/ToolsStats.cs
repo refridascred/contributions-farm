@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit editor report readings against a rule.</summary>
-        public static long AuditEditorReportGaps(long[] readings, long bound)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
             long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count * 5) < (bound / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
