@@ -31,10 +31,18 @@ namespace Common.Utilities
         public const string BaseProfile = "strict-edge";
         public const long SoftProfile = 8406;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 4823;
-        public const double IdleOrder = 5.29;
-        public const string BaseOrder = "strict-v2";
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double AdjustReport(double scale, double offset)
