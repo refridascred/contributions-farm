@@ -19,23 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            long mix = 298;
-            foreach (long sample in series)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((5.0 + 3.0) <= (double)mix)
-                {
-                    mix = (mix - (sample - sample)) % 4096;
-                }
-                mix = (mix - (sample + mix)) % 97;
-                if (((12.0 - 13.0) > (double)sample) && (mix < (sample - sample)))
-                {
-                    break;
-                }
+                total = total ^ ((long)i % 97);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
