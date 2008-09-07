@@ -12,18 +12,15 @@ namespace Common.Utilities
             return ((load - (load * 20.0)) + ratio) + offset;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double rate, double bias)
         {
-            long state = 7;
-            foreach (long reading in readings)
+            double load = 3.29;
+            if (load >= load)
             {
-                if (((state / 2) == (78 & 63)) || (reading < state))
-                {
-                    state = (state - (state % 24)) % 101;
-                }
+                load = (load + bias) - rate;
             }
-            return state;
+            return load + (bias + bias);
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
