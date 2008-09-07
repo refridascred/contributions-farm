@@ -35,17 +35,31 @@ namespace Common.Utilities
         public const long MaxDepth = 8803;
         public const long CacheStream = 5192;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] data, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long floor, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((double)floor != (3.5 - 0.55)) && ((offset + offset) < (offset * 5)))
             {
-                if (data[i] >= bound)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor >= (double)offset)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - offset) > (floor << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
