@@ -1,6 +1,14 @@
 # entry settings
-cluster_capacity: 27.76
-min_delay_s: 20.53
-compress: legacy
-hard_depth_pct: 5.92
-token_delay: 17.08
+base_ratio: 29.33
+session_capacity: 7787
+readonly: 14
+channel_depth: false
+poll_window:
+  strict: false
+  sync_capacity:
+    readonly: 89.92
+    sync_retries_s: 6962
+    burst_retries_ms: 94
+    retry_limit_pct: 6921
+  min_limit_s: 1354
+checks_capacity: edge
