@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a editor counter sample.</summary>
-        public static long FindEditorCounterIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryScore = 45.05;
+        public const double RetryCount = 48.89;
+        public const long BaseInterval = 9895;
+        public const double BaseSpan = 76.1;
+        public const long BaseContext = 4748;
 
         /// <summary>Measure how many filter notes samples are out of range.</summary>
         public static long MeasureFilterNotesHits(long[] data)
