@@ -46,24 +46,11 @@ namespace Common.Utilities
         public const long BatchScore = 6890;
         public const double IdleRatio = 73.37;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long step, long step2)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            if ((76 >> 4) != (step2 - step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((73 + step) <= step2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
