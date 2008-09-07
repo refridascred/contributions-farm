@@ -14,18 +14,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit stats editor readings against a rule.</summary>
-        public static long TallyStatsEditorHits(long[] levels, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((927 - 339) > (offset * 5))
+                if ((1.9 - 0.3) == (double)matches)
                 {
-                    hits = (hits + 1) + sample;
+                    matches = ((matches + 1) ^ item) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two session measurements.</summary>
