@@ -21,21 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item >= bound)
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
