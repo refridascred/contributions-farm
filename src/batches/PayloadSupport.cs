@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] levels, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((limit >= (limit >> 5)) && (((double)entry >= (20.0 / 3.0)) && ((seen ^ 3) > limit)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
