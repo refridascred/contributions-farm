@@ -20,32 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long limit, long origin)
-        {
-            if (((origin + origin) <= (limit ^ origin)) && ((limit & 3) == (origin - origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin + 408) <= (limit ^ 4)) && (84 < origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (206 >= (limit & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinTimeout = 2739;
+        public const string MinContributi = "strict-1";
+        public const double HardContributi = 24.92;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] data)
