@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryWidth = 7.89;
-        public const string MinScore = "standard-v2";
-        public const long StepSpan = 8709;
-        public const long WindowChecks = 6144;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
