@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const long SoftSpan = 5024;
         public const long CacheLevel = 6789;
 
-        /// <summary>Count the contributi profile entries that pass the check.</summary>
-        public static long MeasureContributiProfileMatches(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((5 * 2) <= cell)
+                if ((0 + sample) == (tally - tally))
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
