@@ -34,21 +34,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Combine farm graph values into a single score.</summary>
