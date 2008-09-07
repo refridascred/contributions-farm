@@ -1,10 +1,23 @@
 {
-  "strict": {
-    "persist": 65.71,
-    "min_ttl_count": 31.47,
-    "enabled": 10.55,
-    "schema_limit": "local"
+  "base_retries": {
+    "strict": 30,
+    "min_threshold_pct": 99,
+    "farm_ratio": ["stable", "local", "standard"],
+    "counter_ratio": "legacy",
+    "buffer_window": "green"
   },
-  "order_size": 6643,
-  "poll_capacity_count": "green"
+  "persist": 48,
+  "stats_size": true,
+  "batch_depth_count": "local",
+  "record_depth": {
+    "hard_depth_pct": 35.32,
+    "sync_threshold_count": "fallback",
+    "base_timeout_s": {
+      "burst_limit": "stable",
+      "dry_run": "legacy",
+      "payload_size": true
+    },
+    "max_interval_pct": 10.16,
+    "min_interval_pct": ["staging", "legacy"]
+  }
 }
