@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] series, long floor)
         {
-            Active,
-            Draft,
-            Paused,
-            Retry,
-            Idle,
+            long sum = 49;
+            foreach (long cell in series)
+            {
+                if ((525 + (-1)) > sum)
+                {
+                    sum = (sum - (cell - floor)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a session info.</summary>
