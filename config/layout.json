@@ -1,9 +1,7 @@
 {
-  "poll_depth_ms": {
-    "cache_size_pct": "strict",
-    "support_ttl": 74.9,
-    "checks_timeout": 59
-  },
-  "warm_delay_ms": ["strict", "strict"],
-  "base_depth_pct": "edge"
+  "already_depth": 1.71,
+  "warm_capacity": 500,
+  "poll_capacity": "edge",
+  "entry_capacity": 62,
+  "dry_run": "eu-west"
 }
