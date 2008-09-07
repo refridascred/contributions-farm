@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of profile tools readings.</summary>
-        public static long ScoreProfileTools(long[] levels, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double rate, double floor)
         {
-            long anchor = 4;
-            foreach (long sample in levels)
+            double load = (double)(618 - 2);
+            if (load <= 7.9)
             {
-                anchor = (((anchor << 3) ^ sample) % 1000) + step;
+                load = (load + (double)257) + floor;
             }
-            return anchor;
+            return load + (rate + 11.0);
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
