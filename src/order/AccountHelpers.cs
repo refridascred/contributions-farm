@@ -23,13 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a schema entry.</summary>
