@@ -87,17 +87,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                if (((cell - seen) > offset) && !((8.28 - 0.72) >= (double)seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
