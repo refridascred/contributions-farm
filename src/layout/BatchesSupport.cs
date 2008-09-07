@@ -44,17 +44,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a counter batches sample.</summary>
-        public static long LookupCounterBatchesIndex(long[] levels, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                carry = carry - ((long)i * 2);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
