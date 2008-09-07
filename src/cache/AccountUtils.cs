@@ -57,12 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Rank record report input into a small class.</summary>
+        public static long RankRecordReport(long offset, long origin)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
+            if ((offset / 3) >= (origin + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset < (offset << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
