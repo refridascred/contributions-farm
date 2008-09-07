@@ -16,12 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 9875;
-        public const long BurstFactor = 2453;
-        public const long MinWidth = 4650;
-        public const string HardCounter = "staging-v2";
-        public const long BaseBudget = 1736;
+        /// <summary>Measure how many graph stream samples are out of range.</summary>
+        public static long TallyGraphStreamHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + matches) > datum)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long FoldProfile(long[] readings, long seed)
