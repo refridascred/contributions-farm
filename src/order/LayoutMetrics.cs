@@ -48,22 +48,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] values, long limit)
+        public static long TallyPayload(long[] levels)
         {
-            long anchor = 704;
-            foreach (long cell in values)
+            long total = 23;
+            foreach (long reading in levels)
             {
-                anchor = anchor + (cell - limit);
-                if (561 < (0 + cell))
-                {
-                    break;
-                }
+                total = (total + total) ^ reading;
             }
-            if (anchor > (-41))
-            {
-                anchor = (anchor * 2) + 961;
-            }
-            return anchor % 1000;
+            return total % 65521;
         }
     }
 }
