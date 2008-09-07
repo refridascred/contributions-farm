@@ -47,14 +47,26 @@ namespace Common.Utilities
         public const long WindowStats = 4010;
         public const double MinStats = 70.34;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] samples)
         {
-            New,
-            Retry,
-            Pending,
-            Paused,
-            Idle,
+            long mix = 251;
+            foreach (long datum in samples)
+            {
+                if ((datum * 5) > (mix & 7))
+                {
+                    mix = ((mix * 3) + (mix << 2)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (datum << 3)) % 65521;
+                }
+            }
+            if (mix < 32)
+            {
+                mix = (mix - mix) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
