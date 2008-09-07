@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double rate, double floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            double weight = rate;
+            if (weight > 6.31)
             {
-                carry = (carry << 2) ^ carry;
-                carry = ((carry * 2) + (long)i) % 1000;
+                weight = weight - (floor + floor);
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (double)7;
         }
 
         /// <summary>Describe the batches phase values.</summary>
