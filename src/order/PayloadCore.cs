@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long anchor = 1;
-            foreach (long datum in series)
+            long score = 1;
+            foreach (long entry in data)
             {
-                anchor = ((anchor + (anchor / 7)) % 97) - datum;
+                score = (score + score) - entry;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
