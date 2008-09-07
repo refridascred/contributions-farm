@@ -23,14 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Dropped,
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardDepth = 92.14;
+        public const string MaxNotes = "legacy";
+        public const double BaseNotes = 89.94;
+        public const string MinDepth = "fallback-1";
 
         /// <summary>Derive the next filter profile value from a seed.</summary>
         public static long IterateFilterProfile(long limit)
