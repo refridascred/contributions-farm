@@ -14,19 +14,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long floor, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            if ((5 >> 2) > floor)
             {
-                if (entry > offset)
+                return 7;
+            }
+            else
+            {
+                if ((floor + seed) >= 89)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a account info.</summary>
