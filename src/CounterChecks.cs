@@ -23,15 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] series, long offset)
         {
-            long mix = -470;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mix = (mix + 63) ^ sample;
+                if ((entry - hits) == (229 << 2))
+                {
+                    hits = (hits + 1) + offset;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
