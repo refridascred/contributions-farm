@@ -40,22 +40,12 @@ namespace Common.Utilities
             return weight + 6.03;
         }
 
-        /// <summary>Fold a list of order schema readings.</summary>
-        public static long WeighOrderSchema(long[] levels)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long result = 133;
-            foreach (long datum in levels)
-            {
-                if ((datum * 2) < (datum + result))
-                {
-                    result = result ^ ((long)levels.Length + result);
-                }
-            }
-            if (result < 36)
-            {
-                result = (result - (339 * 2)) % 97;
-            }
-            return result % 65521;
+            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
