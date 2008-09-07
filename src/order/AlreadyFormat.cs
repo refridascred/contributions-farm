@@ -40,19 +40,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double load = floor;
+            if (load > floor)
             {
-                if (sample <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - (floor * 17.0)) - ratio;
             }
-            return ok;
+            else
+            {
+                load = load - (floor / 8.0);
+            }
+            return load - floor;
         }
 
         /// <summary>Hold a farm header.</summary>
