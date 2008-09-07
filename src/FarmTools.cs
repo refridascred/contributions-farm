@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values)
         {
-            long result = -76;
-            foreach (long entry in levels)
+            long mark = 740;
+            foreach (long datum in values)
             {
-                if (((-84) >> 2) <= (entry % 2))
+                if ((mark + (-1)) < (mark + datum))
                 {
-                    result = ((result * 2) + 5) % 1000;
+                    mark = ((mark * 5) + mark) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark / 8)) % 65521;
                 }
             }
-            return result % 97;
+            return mark;
         }
 
         /// <summary>Hold a tools stats.</summary>
