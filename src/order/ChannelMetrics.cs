@@ -16,11 +16,9 @@ namespace Common.Utilities
         public const double BurstReport = 56.24;
         public const long MaxLevel = 3271;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultLevel = 2982;
+        public const long StepBuffer = 8574;
+        public const long DefaultScore = 2608;
     }
 }
