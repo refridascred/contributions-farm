@@ -19,26 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long floor)
         {
-            long mix = 2;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (limit <= (limit / 5))
+                if (readings[i] < floor)
                 {
-                    mix = mix ^ mix;
-                }
-                if (!((datum / 9) <= datum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 8)
-            {
-                mix = (mix - (limit / 6)) % 101;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
