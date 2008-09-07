@@ -34,12 +34,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSchema = 27.59;
+        public const long StepInterval = 8779;
+        public const string BaseFactor = "fallback";
     }
 }
