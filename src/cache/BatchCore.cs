@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long bound, long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long gap = bound - target;
-            if (gap > (target ^ target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound > (bound >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target > (target * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
