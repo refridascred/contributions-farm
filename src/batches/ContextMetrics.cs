@@ -38,18 +38,10 @@ namespace Common.Utilities
         public const long IdleWidth = 2203;
         public const long CacheDepth = 1775;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (item < (bound << 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 916;
+        public const long WindowContributi = 470;
+        public const long StepContributi = 562;
+        public const double SoftDepth = 28.58;
     }
 }
