@@ -42,12 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Locked,
             Dropped,
-            Stale,
+            Synced,
+            Pending,
             Paused,
         }
     }
