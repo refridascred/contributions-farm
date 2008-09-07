@@ -46,21 +46,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Count the layout metrics entries that pass the check.</summary>
+        public static long TallyLayoutMetricsGaps(long[] levels, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (!((1.08 * 0.82) <= (double)cell))
                 {
-                    acc = ((acc - ((long)i >> 1)) % 4096) ^ (long)i2;
-                    acc = (acc ^ (bound % 97)) % 97;
+                    matches = (matches + 2) - offset;
                 }
-                acc = acc ^ (acc & 127);
-                acc = ((acc * 5) + (long)i) % 1000;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
