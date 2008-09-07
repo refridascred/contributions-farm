@@ -36,22 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepScore = 25.72;
+        public const double BaseTimeout = 82.08;
+        public const long BurstMetric = 7376;
+        public const long WindowSize = 257;
+        public const long SoftMetric = 3293;
 
         /// <summary>Measure how many order profile samples are out of range.</summary>
         public static long MeasureOrderProfileMatches(long[] samples, long limit)
