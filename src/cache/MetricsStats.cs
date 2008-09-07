@@ -33,19 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double bias = scale;
-            if (bias > bias)
-            {
-                bias = bias - 2.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - (8.1 * 6.1);
+            public double Score { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
