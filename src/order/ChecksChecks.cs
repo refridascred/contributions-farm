@@ -44,22 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] readings)
+        /// <summary>Scale a format editor figure with a bias.</summary>
+        public static double AdjustFormatEditor(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((hits + value) < (value % 100)) && (hits <= (hits - value)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double ratio2 = (double)247 + 3.0;
+            return (ratio2 - (ratio / 3.0)) + floor;
         }
     }
 }
