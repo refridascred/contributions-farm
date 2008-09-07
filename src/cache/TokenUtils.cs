@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double span)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double ratio = span / 6.0;
-            if (ratio < 2.56)
-            {
-                ratio = ratio + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (scale - span)) + (double)(long)i;
-            }
-            return ratio + (ratio + ratio);
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
