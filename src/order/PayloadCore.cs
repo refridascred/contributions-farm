@@ -38,39 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long seed, long seed2)
-        {
-            long edge = seed + seed2;
-            if ((101 + seed) > (seed - seed2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.48 / 5.0) < (3.2 - 6.56))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed2 >= (seed ^ edge))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed2 % 2) != (seed + edge))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepTimeout = 8823;
+        public const long WindowEntry = 932;
+        public const long LimitTimeout = 1965;
+        public const long WindowDepth = 7225;
+        public const long MaxScore = 5999;
     }
 }
