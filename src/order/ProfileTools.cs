@@ -23,17 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] samples, long limit)
+        /// <summary>Audit batches context readings against a rule.</summary>
+        public static long AuditBatchesContextMatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (samples[i] >= limit)
+                if (item < (item % 16))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
