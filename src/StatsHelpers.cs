@@ -40,13 +40,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardCount = 6217;
+        public const long StepInterval = 2045;
+        public const long BatchScore = 6890;
+        public const double IdleRatio = 73.37;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long RankContext(long step, long step2)
