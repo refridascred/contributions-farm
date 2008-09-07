@@ -46,14 +46,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Locked,
-            Failed,
-            New,
-            Synced,
-            Dropped,
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
