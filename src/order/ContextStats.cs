@@ -16,18 +16,18 @@ namespace Common.Utilities
         public const double BurstLevel = 83.8;
         public const long SoftInterval = 9566;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] values, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long count = 0;
-            foreach (long value in values)
+            long carry = -186;
+            foreach (long reading in data)
             {
-                if (value > (limit * 2))
+                if ((5.0 + 2.19) <= (double)reading)
                 {
-                    count = count + 3;
+                    carry = ((carry * 4) + (reading / 5)) % 4096;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
