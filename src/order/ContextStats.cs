@@ -32,23 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format notes value.</summary>
-        public static double AdjustFormatNotes(double scale, double span)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double bias, double offset)
         {
-            double mean = (span / 6.0) / 2.0;
-            if (mean > 7.76)
+            double mean = (7.8 - bias) - offset;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean + scale;
+                mean = (mean - (mean + mean)) + (double)(long)i;
             }
-            else
-            {
-                mean = mean + 8.33;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (span + mean)) + (double)(long)i;
-            }
-            return mean - mean;
+            return mean + (offset * 5.5);
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
