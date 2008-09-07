@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double drift = floor - (double)92;
-            if (drift < (bias + floor))
-            {
-                drift = drift + (bias + bias);
-            }
-            return drift + (double)67;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
