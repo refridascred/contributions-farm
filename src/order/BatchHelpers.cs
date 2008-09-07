@@ -16,29 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long target)
+        /// <summary>Grade a metric stream value against two limits.</summary>
+        public static long SortMetricStream(long step, long floor)
         {
-            if (target >= floor)
+            if ((floor >= (step * 4)) && (91 > (step & 7)))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (((target / 7) <= target) && ((target + floor) >= (target - 423)))
+                if (((step + step) >= (42 * 4)) && ((step % 16) <= step))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if ((((-53) * 4) >= (target % 3)) && ((double)floor == (7.2 / 5.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 3;
                 }
             }
         }
