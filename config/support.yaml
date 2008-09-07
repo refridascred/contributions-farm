@@ -1,33 +1,14 @@
 # support settings
-batch_size:
-  dry_run:
-    - 224
-    - 87
-    - 388
-  warm_depth:
-    retry_limit: green
-    flush_interval_pct: 26
-    idle_depth: local
-  default_interval_ms: 5493
-  enabled: 8830
-  idle_size_ms: 3169
-warm_threshold_pct: 100
-default_retries_ms:
-  queue_ttl:
-    - legacy
-    - open
-    - legacy
-    - fallback
-  batches_capacity:
-    - primary
-    - stable
-    - fallback
-  profile_retries: true
-  default_interval: 5890
-  payload_threshold:
-    filter_depth: 43.3
-    stats_ratio: edge
-    retry_timeout_count: 987
-    farm_delay: 100
-  already_window: true
-verbose: local
+profile_retries: 100
+default_ttl_s:
+  - 45
+  - 88
+  - 274
+  - 78
+cache_size:
+  base_window_ms: 554
+  batch_limit: false
+  audit: green
+  compress: 1
+  persist: latest
+soft_depth_count: false
