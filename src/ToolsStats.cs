@@ -65,11 +65,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double floor)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            double rate = gain;
+            if (rate < rate)
+            {
+                rate = (rate + gain) + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (double)0;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
