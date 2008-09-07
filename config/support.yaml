@@ -1,20 +1,29 @@
 # support settings
-farm_capacity:
-  cache_ttl_pct:
-    warm_threshold_pct: 87
-    cache_capacity_ms: staging
-    verbose: fallback
-    burst_timeout_s: false
-    persist: false
-    base_threshold_ms: legacy
-  strict: 11.25
-  metric_retries: latest
-  default_depth_ms: local
-  contributi_timeout: 35.78
-  githubfarm_threshold:
-    - eu-west
-    - fallback
-    - cached
-    - eu-west
-order_ratio: true
-poll_threshold_ms: 34.52
+retry_threshold_pct:
+  strict: stable
+  poll_threshold_pct: 97.33
+  burst_size_s: edge
+  poll_window_count: 1694
+  burst_timeout: false
+  token_timeout: true
+strict: 250
+max_retries: 41
+buffer_retries: 19.54
+readonly:
+  retry_interval: true
+  poll_depth:
+    flush_interval_pct: 42
+    record_ttl:
+      - 101
+      - 477
+    base_ttl_count: 595
+  verbose:
+    flush_capacity_ms: blue
+    idle_limit: latest
+    burst_limit: local
+    cache_timeout: green
+    poll_limit_pct: false
+    default_delay: 9722
+  enabled: 500
+  queue_depth: 4674
+entry_interval: 92.82
