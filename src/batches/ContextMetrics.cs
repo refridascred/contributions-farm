@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxBudget = 7963;
-        public const double LimitRatio = 45.18;
-        public const double CacheRatio = 27.69;
-        public const long DefaultWidth = 8609;
-        public const double IdleRatio = 67.98;
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardBudget = 2550;
