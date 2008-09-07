@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long BurstSupport = 8903;
         public const long LimitSupport = 4873;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long step)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
