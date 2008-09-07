@@ -23,19 +23,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((matches << 1) == (matches / 3)) && (18.0 < (double)entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardBudget = 2550;
+        public const double StepTimeout = 61.82;
+        public const double MinMetrics = 87.23;
+        public const long LimitSize = 6547;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double IdleScore = 77.34;
