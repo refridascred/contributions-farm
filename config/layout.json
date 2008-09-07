@@ -1,5 +1,13 @@
 {
-  "hard_delay_s": 2782,
-  "burst_ttl_ms": 44.37,
-  "layout_threshold": ["legacy", "standard", "fallback", "eu-west"]
+  "default_ratio_count": {
+    "audit": 13.16,
+    "dry_run": ["green", "cached", "edge"],
+    "soft_ttl_pct": "strict",
+    "persist": true,
+    "warm_window": "green",
+    "batch_depth_count": ["cached", "latest", "stable"]
+  },
+  "enabled": [130, 340, 319, 486],
+  "queue_limit": "fallback",
+  "warm_depth_count": false
 }
