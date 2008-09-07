@@ -47,13 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 5621;
+        public const long IdleScore = 9085;
+        public const long BurstMetric = 6214;
+        public const long IdleRatio = 3930;
+        public const double BatchTimeout = 30.33;
     }
 }
