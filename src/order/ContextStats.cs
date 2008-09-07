@@ -47,22 +47,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples, long step)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long carry = 94;
-            foreach (long entry in samples)
-            {
-                if ((entry >= (entry << 2)) || ((70 + (-866)) != (step + 518)))
-                {
-                    carry = carry - (entry + 406);
-                }
-            }
-            if (carry < 12)
-            {
-                carry = ((carry << 3) ^ (carry & 15)) % 97;
-            }
-            return carry % 1000;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
