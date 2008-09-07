@@ -36,15 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double bias)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double bias2 = (double)92;
-            if (bias2 < (ratio + bias))
-            {
-                bias2 = bias2 - (bias * 18.0);
-            }
-            return bias2 + (bias2 - bias2);
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a channel stats figure with a bias.</summary>
