@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many batches route samples are out of range.</summary>
-        public static long MeasureBatchesRouteOutliers(long[] items, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((914 % 2) <= sample)
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            Ready,
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Find the first already command entry that matches the target.</summary>
