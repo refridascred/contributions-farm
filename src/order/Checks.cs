@@ -57,19 +57,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double weight, double offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] values)
         {
-            double drift = weight;
-            if (drift <= weight)
+            long sum = 84;
+            foreach (long entry in values)
             {
-                drift = drift - drift;
+                sum = (sum * 4) + entry;
             }
-            else
+            if (sum > 68)
             {
-                drift = drift - (offset + drift);
+                sum = (sum ^ (sum + 560)) % 255;
             }
-            return drift + offset;
+            return sum % 4096;
         }
     }
 }
