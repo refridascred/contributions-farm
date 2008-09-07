@@ -75,18 +75,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] data)
+        /// <summary>Look up the position of a cache batch sample.</summary>
+        public static long LocateCacheBatchIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits & 3) == (datum - hits))
+                if (levels[i] <= origin)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
