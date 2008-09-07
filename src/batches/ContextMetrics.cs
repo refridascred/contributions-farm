@@ -47,19 +47,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every account command entry stays within the limit.</summary>
-        public static bool ValidateAccountCommandBounds(long[] samples, long floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
