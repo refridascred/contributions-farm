@@ -26,18 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor format entries that pass the check.</summary>
-        public static long MeasureEditorFormatGaps(long[] values, long step)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double drift = (double)81 / 9.0;
+            if (drift < (drift / 2.0))
             {
-                if (!((matches + step) == (cell & 7)))
-                {
-                    matches = matches + 1;
-                }
+                drift = ((drift - 4.76) + rate) + span;
             }
-            return matches;
+            return drift - (6.3 / 7.0);
         }
     }
 }
