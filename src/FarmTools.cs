@@ -37,22 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((value / 6) != (matches >> 4)) || ((matches * 2) <= (matches + value)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 4191;
+        public const string HardTimeout = "open-edge";
+        public const long CacheQueue = 5297;
     }
 }
