@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] values, long origin)
+        /// <summary>Derive the next githubfarm batches value from a seed.</summary>
+        public static long SeriesGithubfarmBatches(long limit)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result - (result & 127)) % 65521;
+                result = (result - limit) % 97;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Hold a stats record.</summary>
