@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the already payload entries that pass the check.</summary>
-        public static long CountAlreadyPayloadHits(long[] items, long origin)
+        /// <summary>Look up the position of a filter metric sample.</summary>
+        public static long FindFilterMetricIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen / 5) < (origin & 127))
+                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
                 {
-                    seen = (seen + 1) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
