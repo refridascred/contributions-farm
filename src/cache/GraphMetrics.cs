@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long limit, long offset)
+        /// <summary>Digest a series of already commits entries.</summary>
+        public static long CombineAlreadyCommits(long[] values, long step)
         {
-            long delta = limit + offset;
-            if ((86 + limit) <= (offset / 8))
+            long mix = 3;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((delta * 5) >= (limit - 76)))
+                mix = mix - (step << 3);
+                if ((935 + cell) <= (287 + step))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - offset) >= delta)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.0 <= (double)offset) || ((offset + offset) <= offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix < 0)
+            {
+                mix = (mix * 4) + ((long)values.Length % 5);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the queue level values.</summary>
