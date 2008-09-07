@@ -1,12 +1,15 @@
 # Command notes
 
-A route that stays idle for too long is moved to the token list.
-Each cluster is validated before it reaches the channel queue.
-The counter report groups every githubfarm by graph.
+Keep stream and metric names short and lowercase.
+Use record settings to tune how often cache data is refreshed.
+
+When a counter fails, the token handler retries a few times before giving up.
+A batches that stays idle for too long is moved to the route list.
+When a support fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review checks limits each release
-- Prefer order defaults
-- Document new window fields
-- Log every format change
+- Review route limits each release
+- Validate layout input early
+- Prefer already defaults
+- Document new cache fields
