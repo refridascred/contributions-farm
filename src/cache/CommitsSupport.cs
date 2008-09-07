@@ -26,10 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowCount = "alpha-1";
-        public const string BaseProfile = "strict-edge";
-        public const long SoftProfile = 8406;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
