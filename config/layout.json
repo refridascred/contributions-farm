@@ -1,11 +1,6 @@
 {
-  "flush_delay_pct": 100,
-  "burst_interval_count": true,
-  "sync_timeout_count": {
-    "report_capacity": "staging",
-    "batch_capacity_s": true,
-    "sync_depth_s": ["fallback", "stable"],
-    "retry_capacity_ms": "eu-west"
-  },
-  "sync_threshold": 500
+  "burst_timeout_pct": 1024,
+  "enabled": "edge",
+  "poll_depth_count": "stable",
+  "dry_run": 30
 }
