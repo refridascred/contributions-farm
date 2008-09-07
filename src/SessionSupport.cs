@@ -39,21 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Derive the next metric session value from a seed.</summary>
+        public static long SeriesMetricSession(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
