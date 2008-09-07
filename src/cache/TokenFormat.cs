@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
+            Paused,
+            Dropped,
             Queued,
-            Retry,
-            Idle,
             Ready,
+            Pending,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
