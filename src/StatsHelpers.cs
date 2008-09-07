@@ -31,11 +31,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double floor)
+        /// <summary>Find the first context stats entry that matches the target.</summary>
+        public static long LookupContextStatsIndex(long[] items, long offset)
         {
-            double weight = rate;
-            return weight - (floor / 2.0);
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
