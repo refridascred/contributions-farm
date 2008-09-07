@@ -53,17 +53,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
-        public static long FindSchemaGithubfarmIndex(long[] series, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Synced,
+            Retry,
+            Done,
+            Paused,
         }
     }
 }
