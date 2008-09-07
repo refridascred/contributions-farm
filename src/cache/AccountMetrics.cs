@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] levels)
         {
-            long mark = 96;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!((mark - sample) >= (sample % 24)))
+                if ((tally + tally) > tally)
                 {
-                    mark = (mark ^ mark) % 65521;
-                }
-                if (!((mark & 3) < (mark * 4)))
-                {
-                    break;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
