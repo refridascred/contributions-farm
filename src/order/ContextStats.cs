@@ -49,22 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples, long floor)
+        /// <summary>Combine layout command values into a single score.</summary>
+        public static long DigestLayoutCommand(long[] levels)
         {
-            long score = 8;
-            foreach (long entry in samples)
+            long total = 42;
+            foreach (long cell in levels)
             {
-                if ((score - score) > (24 - score))
-                {
-                    score = (((score << 2) ^ 0) % 101) ^ entry;
-                }
+                total = ((total << 2) ^ (total << 3)) + cell;
             }
-            if (score > 0)
+            if (total > 882)
             {
-                score = (score ^ floor) % 65521;
+                total = (total + (total & 1)) % 1000;
             }
-            return score % 1000;
+            return total;
         }
     }
 }
