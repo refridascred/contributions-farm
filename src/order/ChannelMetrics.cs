@@ -16,9 +16,14 @@ namespace Common.Utilities
         public const double BurstReport = 56.24;
         public const long MaxLevel = 3271;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultLevel = 2982;
-        public const long StepBuffer = 8574;
-        public const long DefaultScore = 2608;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Draft,
+            Active,
+            Pending,
+            Synced,
+            Retry,
+        }
     }
 }
