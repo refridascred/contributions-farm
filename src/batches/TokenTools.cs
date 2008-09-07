@@ -44,19 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account channel readings against a bound.</summary>
-        public static bool GuardAccountChannelLimits(long[] data, long step)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
