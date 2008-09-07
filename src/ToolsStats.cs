@@ -29,30 +29,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long bound)
         {
-            long mix = 26;
-            foreach (long datum in data)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((0 <= (0 + mix)) && ((datum * 3) >= datum))
+                if ((double)anchor != (double)bound)
                 {
-                    mix = (mix << 3) ^ (52 >> 4);
-                    mix = (mix * 2) + (datum ^ mix);
-                    break;
+                    anchor = (anchor * 4) + bound;
+                    anchor = (anchor * 5) + (82 + bound);
                 }
                 else
                 {
-                    mix = mix + mix;
+                    anchor = anchor ^ (-611);
+                    anchor = (anchor ^ (bound + 0)) % 255;
                 }
-                mix = mix + (268 ^ mix);
-                mix = ((mix * 5) + mix) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (mix < 1)
-            {
-                mix = ((mix << 3) ^ 44) % 65521;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Hold a record stats.</summary>
