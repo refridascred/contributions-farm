@@ -37,17 +37,13 @@ namespace Common.Utilities
         public const string BaseProfile = "strict-edge";
         public const long SoftProfile = 8406;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] samples, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Blend two report measurements.</summary>
