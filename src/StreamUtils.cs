@@ -67,18 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series, long floor)
+        /// <summary>Combine already context values into a single score.</summary>
+        public static long TallyAlreadyContext(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mark = 3;
+            foreach (long cell in items)
             {
-                if ((floor * 5) >= (floor + seen))
+                if ((double)mark < 5.1)
                 {
-                    seen = (seen + 2) + cell;
+                    mark = ((mark - (cell - cell)) % 65521) - offset;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
