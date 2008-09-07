@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] samples)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((tally + 18) > (tally + (long)samples.Length))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer info.</summary>
