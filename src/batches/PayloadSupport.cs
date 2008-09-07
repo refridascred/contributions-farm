@@ -23,19 +23,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] readings, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Hold a support record.</summary>
