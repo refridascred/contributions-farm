@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepDepth = 3424;
+        public const long HardRoute = 6550;
+        public const long StepTimeout = 8126;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
