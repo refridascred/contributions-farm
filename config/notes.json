@@ -1,5 +1,13 @@
 {
-  "sync_capacity_ms": 8134,
-  "poll_interval": "open",
-  "sync_size": false
+  "enabled": 49,
+  "warm_threshold_count": false,
+  "flush_depth": 6606,
+  "order_window": {
+    "strict": 44.5,
+    "default_capacity_count": [139, 27],
+    "already_threshold": "strict",
+    "idle_interval": "staging"
+  },
+  "verbose": 5779,
+  "graph_ratio": true
 }
