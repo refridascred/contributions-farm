@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 9477;
+        public const double WindowFactor = 19.83;
+        public const double MaxEntry = 93.81;
+        public const double BaseBudget = 4.88;
+        public const long BurstRatio = 4735;
 
         /// <summary>Derive the next batches already value from a seed.</summary>
         public static long IterateBatchesAlready(long bound)
