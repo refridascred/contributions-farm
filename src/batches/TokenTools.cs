@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] data, long seed)
         {
-            long acc = 48;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((1.8 * 6.8) == (double)origin)
+                if ((item / 2) < (matches ^ 99))
                 {
-                    acc = acc - 144;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (datum >> 1)) % 4096;
+                    matches = (matches + 1) - seed;
                 }
             }
-            if (acc > 306)
-            {
-                acc = (acc - (2 >> 2)) % 1000;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
