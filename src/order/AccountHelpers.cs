@@ -47,10 +47,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftLevel = 7558;
-        public const double DefaultTimeout = 9.39;
-        public const long MinMetrics = 2241;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
