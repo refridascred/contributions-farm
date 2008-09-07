@@ -29,15 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] readings, long target)
         {
-            long carry = 7;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                carry = ((carry << 3) ^ (carry % 12)) ^ reading;
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Digest a series of checks stats entries.</summary>
