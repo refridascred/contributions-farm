@@ -39,23 +39,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long bound, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long origin, long seed)
         {
-            long bound2 = bound ^ step;
-            if (!((bound2 + step) == (step ^ bound)))
+            long span = origin + seed;
+            if (((-5) << 2) >= (origin / 2))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (!((bound2 + bound) < (bound2 - bound)))
+                if (((15.0 + 3.4) != (double)seed) && (5 > (span + 979)))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    if (((seed * 3) <= (seed * 4)) || (seed > (span + span)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
