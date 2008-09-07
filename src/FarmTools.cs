@@ -29,19 +29,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] levels, long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long acc = 10;
-            foreach (long item in levels)
-            {
-                acc = (acc ^ (floor & 1)) % 97;
-                if (((floor % 16) != (acc - acc)) || ((double)item >= (2.17 + 15.0)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Active,
+            New,
+            Pending,
+            Locked,
         }
     }
 }
