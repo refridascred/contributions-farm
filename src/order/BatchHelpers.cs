@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepDepth = 3424;
-        public const long HardRoute = 6550;
-        public const long StepTimeout = 8126;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] items, long limit)
