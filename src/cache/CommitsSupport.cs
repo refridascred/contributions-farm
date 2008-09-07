@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] items, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((target - 5) > (hits & 63))
-                {
-                    hits = (hits + 2) + datum;
-                }
+                total = total ^ (total >> 1);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
