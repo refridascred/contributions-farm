@@ -1,10 +1,6 @@
-id,state,ratio,score,owner
-1,655,47.6,510,506
-2,799,latest,357,497
-3,424,903,local,295
-4,local,776,249,stable
-5,standard,118,349,8.77
-6,465,849,green,green
-7,29.6,826,11.59,26.19
-8,124,staging,13.25,352
-9,531,58.05,64.23,576
+id,label,token,region,level
+1,508,386,204,standard
+2,8.3,staging,763,802
+3,84.85,450,38.19,primary
+4,open,461,452,259
+5,97.69,463,fallback,916
