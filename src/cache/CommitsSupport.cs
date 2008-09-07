@@ -53,21 +53,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count stream tools pairs that satisfy a relation.</summary>
-        public static long OverlapStreamToolsCount(long[] samples)
+        /// <summary>Look up the position of a order payload sample.</summary>
+        public static long LookupOrderPayloadIndex(long[] samples, long bound)
         {
-            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] == bound)
                 {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
