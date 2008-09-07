@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long score = 0;
-            foreach (long cell in levels)
-            {
-                if ((score >> 5) <= (91 + cell))
-                {
-                    score = score - (score << 2);
-                }
-                if (65 > (cell ^ cell))
-                {
-                    break;
-                }
-            }
-            if (score > 340)
-            {
-                score = score ^ (score & 127);
-            }
-            return score;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a format header.</summary>
