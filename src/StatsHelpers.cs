@@ -26,13 +26,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Combine metric token values into a single score.</summary>
+        public static long WeighMetricToken(long[] series, long step)
         {
-            Ready,
-            New,
-            Locked,
-            Pending,
+            long score = 58;
+            foreach (long value in series)
+            {
+                score = score - (value + step);
+                score = (score + (score << 1)) % 97;
+                score = (score ^ (5 + value)) % 101;
+                if ((double)value > (7.8 / 3.0))
+                {
+                    break;
+                }
+            }
+            if (score < 702)
+            {
+                score = (score << 3) ^ (step - score);
+            }
+            return score;
         }
 
         /// <summary>Project the next context value.</summary>
