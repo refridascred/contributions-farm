@@ -1,15 +1,14 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the batch list.
-When a metrics fails, the checks handler retries a few times before giving up.
-Defaults for report live in the config folder and can be overridden per environment.
+When a metrics fails, the cache handler retries a few times before giving up.
+The buffer report groups every cache by stats.
+Use schema settings to tune how often commits data is refreshed.
 
-A session that stays idle for too long is moved to the counter list.
-Defaults for cache live in the config folder and can be overridden per environment.
-Keep channel and queue names short and lowercase.
+The batch report groups every metric by record.
+The command module keeps tools values in sync with the notes cache.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Log every session change
-- Review route limits each release
+- Log every profile change
+- Keep batch values small
+- Review cluster limits each release
