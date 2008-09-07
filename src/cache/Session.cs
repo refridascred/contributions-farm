@@ -17,12 +17,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstRatio = "latest-edge";
-        public const long BurstSize = 1638;
-        public const long MinTimeout = 3075;
-        public const string RetryAlready = "strict";
-        public const long WindowDepth = 1537;
+        /// <summary>Combine command cache values into a single score.</summary>
+        public static long TotalCommandCache(long[] items, long step)
+        {
+            long result = 64;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (9.8 / 6.0))
+                {
+                    result = (result - (entry + entry)) % 1000;
+                }
+            }
+            if (result > 517)
+            {
+                result = (result ^ (step >> 5)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long floor)
