@@ -42,21 +42,31 @@ namespace Common.Utilities
         public const long HardAccount = 4665;
         public const long IdleAccount = 9261;
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset != (double)target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (offset < (target % 8))
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
+                    return 8;
+                }
+                else
+                {
+                    if ((59 + offset) > (97 - target))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
     }
 }
