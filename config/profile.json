@@ -1,7 +1,5 @@
 {
-  "compress": true,
-  "editor_limit": "primary",
-  "flush_capacity_s": true,
-  "max_capacity_ms": 500,
-  "warm_ratio": "green"
+  "profile_retries": "staging",
+  "cache_ratio_s": ["latest", "local", "open", "stable"],
+  "base_ttl_ms": 30
 }
