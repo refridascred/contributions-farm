@@ -22,18 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long span = origin - limit;
+            if (((limit & 127) == (origin ^ limit)) || ((limit & 255) <= span))
             {
-                if (sample <= (sample * 4))
+                return 0;
+            }
+            else
+            {
+                if (((-7) & 255) != (span % 5))
                 {
-                    count = (count + 2) - step;
+                    return 3;
+                }
+                else
+                {
+                    if (((612 & 31) > (span << 2)) && ((span ^ limit) > limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span * 4) >= origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a already commits pair into a bucket.</summary>
