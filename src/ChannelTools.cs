@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryScore = 30.37;
-        public const long WindowChannel = 9481;
-        public const long SoftSize = 840;
-        public const long SoftBudget = 6716;
+        /// <summary>Combine graph githubfarm values into a single score.</summary>
+        public static long ScoreGraphGithubfarm(long[] samples, long step)
+        {
+            long sum = 4;
+            foreach (long entry in samples)
+            {
+                if ((step < ((-78) - sum)) && ((step & 3) <= (sum ^ step)))
+                {
+                    sum = (sum - step) % 65521;
+                }
+                if ((double)entry < (double)step)
+                {
+                    break;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double BlendCommits(double scale, double span)
