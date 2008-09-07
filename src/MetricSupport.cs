@@ -23,15 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Stale,
-            Pending,
-            Queued,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheBudget = 2781;
+        public const long MinSize = 9632;
+        public const long WindowLevel = 7602;
+        public const long BaseTimeout = 5295;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultDepth = 4635;
