@@ -55,21 +55,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
-        public static long CompareBufferContributiCount(long[] series)
+        /// <summary>Audit githubfarm cache readings against a rule.</summary>
+        public static long AuditGithubfarmCacheOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((hits & 7) <= (hits - hits)) || ((hits ^ hits) <= (datum ^ datum)))
                 {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
