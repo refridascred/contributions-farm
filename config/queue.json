@@ -1,11 +1,18 @@
 {
-  "compress": 9730,
-  "hard_threshold": {
-    "idle_ttl_count": true,
-    "readonly": 33.83,
-    "retry_size": [471, 258, 243],
-    "base_capacity_s": false,
-    "audit": true
+  "burst_capacity_pct": true,
+  "cluster_interval": {
+    "warm_interval": [64, 479, 100, 360],
+    "default_depth_pct": "strict",
+    "min_ratio": {
+      "audit": 2287,
+      "hard_interval": [196, 444],
+      "metric_retries": true,
+      "contributi_limit": 60,
+      "account_interval": 24
+    }
   },
-  "idle_delay_s": "legacy"
+  "stats_limit": "strict",
+  "compress": ["edge", "stable"],
+  "warm_limit": ["edge", "fallback", "standard"],
+  "poll_interval_s": false
 }
