@@ -24,31 +24,19 @@ namespace Common.Utilities
         public const string RetryAlready = "strict";
         public const long WindowDepth = 1537;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long floor, long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            if ((origin - 5) == (718 ^ origin))
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin >= (7.57 + 10.0)) || ((6 & 31) == (floor + floor)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 2;
+                    mark = ((mark << 2) ^ mark) - (long)i2;
                 }
-                else
-                {
-                    if ((double)origin < (5.0 - 7.1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Hold a notes header.</summary>
