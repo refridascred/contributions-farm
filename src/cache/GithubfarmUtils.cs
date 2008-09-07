@@ -38,13 +38,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
