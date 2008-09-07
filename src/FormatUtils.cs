@@ -12,13 +12,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Paused,
-            Closed,
+            Ready,
             Failed,
-            New,
+            Synced,
         }
 
         /// <summary>Project the next already value.</summary>
