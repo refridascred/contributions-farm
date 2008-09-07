@@ -50,17 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] values, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((values[i] <= target) && ((values[i] % 2) != 0))
+                if (count > (count + 3))
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ sample) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
