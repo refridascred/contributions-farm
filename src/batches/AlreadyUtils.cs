@@ -53,12 +53,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
+            Locked,
+            New,
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Iterate the record route series from a seed.</summary>
