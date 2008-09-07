@@ -66,24 +66,18 @@ namespace Common.Utilities
         public const long WindowFactor = 8185;
         public const long DefaultDepth = 4474;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((seed + mark) != (seed / 4))
+                if (!((value - tally) == (value >> 2)))
                 {
-                    mark = (mark + mark) % 1000;
-                    break;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    mark = (mark - ((long)i - 954)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
     }
 }
