@@ -40,19 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long result = 38;
+            foreach (long value in levels)
             {
-                for (int i3 = 0; i3 < 4; i3++)
+                if ((value << 2) < (9 >> 1))
                 {
-                    sum = ((sum + sum) % 4096) ^ (long)i3;
+                    result = (result ^ (result ^ 25)) % 1000;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            if (result < 7)
+            {
+                result = (result - (2 + result)) % 255;
+            }
+            return result % 1000;
         }
     }
 }
