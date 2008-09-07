@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] series)
         {
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((8.4 / 7.0) > (double)reading)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up tools profile samples.</summary>
