@@ -20,12 +20,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Project the next batch commits value.</summary>
-        public static double ScaleBatchCommits(double scale, double span)
-        {
-            double load = (span + span) / 2.0;
-            return (load - load) + scale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinBudget = 5237;
+        public const double BurstSupport = 10.73;
+        public const long HardScore = 3865;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] series)
