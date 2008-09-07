@@ -40,11 +40,10 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultBudget = "latest";
-        public const double BatchCount = 34.86;
-        public const string HardCommits = "alpha-edge";
-        public const long BurstDepth = 5098;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 5505;
+        public const string LimitEntry = "latest";
+        public const long BatchWidth = 3142;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
