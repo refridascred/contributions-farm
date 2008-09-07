@@ -40,12 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many context notes samples are out of range.</summary>
+        public static long AuditContextNotesGaps(long[] series)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (sample < (460 >> 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
