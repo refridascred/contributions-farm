@@ -63,23 +63,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long mix = 9;
-            foreach (long value in levels)
+            long acc = 52;
+            foreach (long item in levels)
             {
-                mix = (mix ^ limit) % 65521;
-                if ((value + value) >= limit)
+                if (!((acc - acc) == ((long)levels.Length + acc)))
                 {
-                    break;
+                    acc = ((acc - (568 & 127)) % 4096) - item;
                 }
             }
-            if (mix < 4)
-            {
-                mix = mix + (mix >> 2);
-            }
-            return mix % 4096;
+            return acc % 4096;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
