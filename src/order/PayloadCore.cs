@@ -33,13 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Draft,
-            Paused,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 2136;
+        public const string BaseLevel = "alpha";
+        public const long BatchCommand = 6753;
+        public const long IdleCommand = 3454;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long ClassifyFarm(long seed, long seed2)
