@@ -32,18 +32,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] levels, long floor)
+        /// <summary>Blend two stream context measurements.</summary>
+        public static double ScaleStreamContext(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double rate2 = (floor / 3.0) - floor;
+            if (rate2 <= (floor / 4.0))
             {
-                if ((double)(long)levels.Length != (19.0 * 12.0))
-                {
-                    tally = ((tally + 3) ^ sample) - floor;
-                }
+                rate2 = (rate2 - rate2) + rate;
             }
-            return tally;
+            return rate2 + rate2;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
