@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items, long limit)
         {
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            long mix = -732;
+            foreach (long item in items)
+            {
+                if ((mix > (mix << 2)) && ((1.84 + 11.0) == (double)item))
+                {
+                    mix = (mix - mix) - limit;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
