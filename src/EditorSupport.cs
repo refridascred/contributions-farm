@@ -28,21 +28,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 184;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = (mark ^ datum) % 4096;
+                if (!(mark < (datum * 4)))
                 {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + (datum - mark)) % 255;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
