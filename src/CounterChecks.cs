@@ -30,12 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long target)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            long carry = target;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next report farm value from a seed.</summary>
