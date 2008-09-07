@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] items, long floor)
+        /// <summary>Digest a series of entry report entries.</summary>
+        public static long WeighEntryReport(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long mark = 46;
+            foreach (long value in series)
             {
-                if (item > floor)
+                mark = ((mark ^ seed) % 97) + value;
+                if ((9.0 + 3.9) >= (double)mark)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
