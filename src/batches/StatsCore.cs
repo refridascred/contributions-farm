@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of queue notes readings.</summary>
-        public static long OverlapQueueNotesCount(long[] data)
+        /// <summary>Compare every pair of cluster tools readings.</summary>
+        public static long OverlapClusterToolsCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 3)
+                    if ((series[i] + series[j]) < 18)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up batches samples.</summary>
