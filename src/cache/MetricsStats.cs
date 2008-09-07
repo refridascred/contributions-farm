@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 90.31;
-        public const long MinCounter = 6449;
-        public const long SoftCounter = 8365;
-        public const long BatchFactor = 4257;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] values)
+        {
+            long anchor = 4;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor + 613) % 65521) + entry;
+                anchor = (anchor - (anchor * 4)) % 65521;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Count support counter pairs that satisfy a relation.</summary>
         public static long CompareSupportCounterCount(long[] data)
