@@ -47,16 +47,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long result = 95;
+            foreach (long item in data)
             {
-                acc = (acc << 3) ^ acc;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (((result + result) != (3 / 4)) && ((10.0 - 0.7) >= 7.0))
+                {
+                    result = ((result << 2) ^ (item + item)) % 97;
+                }
+                result = ((result << 3) ^ (result + result)) % 97;
+                if (!((14 + item) <= item))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (result > 2)
+            {
+                result = (result ^ (result - result)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the tools phase values.</summary>
