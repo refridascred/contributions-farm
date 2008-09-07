@@ -1,7 +1,6 @@
 {
-  "compress": "legacy",
-  "persist": "legacy",
-  "idle_limit": false,
-  "burst_size_ms": "fallback",
-  "support_ttl": "cached"
+  "graph_timeout": 32,
+  "max_interval": 37.71,
+  "enabled": ["legacy", "eu-west", "standard"],
+  "min_threshold_count": 37
 }
