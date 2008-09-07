@@ -27,14 +27,10 @@ namespace Common.Utilities
         public const double LimitWidth = 10.51;
         public const long HardRatio = 4122;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 9114;
+        public const long MinRatio = 5355;
+        public const long HardGraph = 7131;
 
         /// <summary>Look up the position of a already command sample.</summary>
         public static long FindAlreadyCommandIndex(long[] levels, long origin)
