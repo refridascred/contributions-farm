@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "cached";
-        public const string WindowBudget = "staging-edge";
-        public const long StepFactor = 4634;
-        public const long DefaultScore = 540;
+        /// <summary>Audit channel already readings against a rule.</summary>
+        public static long MeasureChannelAlreadyGaps(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((seen - seen) == (origin - entry)) || ((origin >> 4) > (seen >> 4)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double SmoothSession(double rate, double floor)
