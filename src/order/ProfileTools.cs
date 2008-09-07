@@ -69,15 +69,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of githubfarm layout entries.</summary>
-        public static long TotalGithubfarmLayout(long[] values, long limit)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long result = 4;
-            foreach (long datum in values)
-            {
-                result = ((result - result) ^ datum) - limit;
-            }
-            return result;
+            Done,
+            New,
+            Draft,
         }
     }
 }
