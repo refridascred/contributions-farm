@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long offset, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] items, long floor)
         {
-            long cur = offset ^ limit;
-            if ((57 << 2) <= cur)
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)cur <= (double)limit)
+                if (item > floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
