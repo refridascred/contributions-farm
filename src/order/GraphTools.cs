@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Grade a counter metrics value against two limits.</summary>
+        public static long SortCounterMetrics(long origin, long floor)
         {
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
+            if (!((double)floor < (3.6 * 2.99)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin == (0.77 + 14.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2 - origin) < (floor - 32))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin >= (origin / 9)) && ((double)floor != (11.0 - 16.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
