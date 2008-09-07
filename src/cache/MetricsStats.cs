@@ -44,15 +44,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Count the githubfarm context entries that pass the check.</summary>
+        public static long TallyGithubfarmContextMatches(long[] items)
         {
-            long state = 6;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                state = (state + (26 ^ state)) ^ cell;
+                if (!(reading <= tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
