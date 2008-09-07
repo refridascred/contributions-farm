@@ -37,11 +37,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 76.34;
-        public const long WindowPayload = 22;
-        public const long RetryPayload = 5669;
-        public const long BurstPayload = 2338;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double ratio, double span)
