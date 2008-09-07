@@ -73,18 +73,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
-        public static long TallyGithubfarmCacheMatches(long[] series)
+        /// <summary>Count the metrics order entries that pass the check.</summary>
+        public static long MeasureMetricsOrderMatches(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((item ^ hits) != (item + 62))
+                if ((84 & 31) >= tally)
                 {
-                    hits = hits + 2;
+                    tally = ((tally + 2) ^ cell) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
