@@ -50,21 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (bias2 - bias2) + (double)(long)i;
             }
-            return seen;
+            return bias2 + (bias + bias2);
         }
 
         /// <summary>Combine already context values into a single score.</summary>
