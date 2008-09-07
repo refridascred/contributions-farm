@@ -32,21 +32,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Active,
+            Locked,
+            Done,
+            Dropped,
         }
     }
 }
