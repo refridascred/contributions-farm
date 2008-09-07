@@ -1,10 +1,14 @@
 # Command notes
 
-Use graph settings to tune how often schema data is refreshed.
-Each commits is validated before it reaches the metric queue.
+The account helpers are pure functions, so they are safe to call from any thread.
+Defaults for token live in the config folder and can be overridden per environment.
+
+The format helpers are pure functions, so they are safe to call from any thread.
+A buffer that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Validate filter input early
-- Document new entry fields
-- Review buffer limits each release
+- Validate metrics input early
+- Review tools limits each release
+- Log every schema change
+- Prefer order defaults
