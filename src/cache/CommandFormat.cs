@@ -39,11 +39,32 @@ namespace Common.Utilities
             return scale - (scale * 7.6);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheFactor = 63.35;
-        public const string IdleGraph = "primary-v2";
-        public const double SoftRatio = 74.05;
-        public const double BatchGraph = 88.93;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long seed, long bound)
+        {
+            if (((6.1 * 3.0) >= (double)seed) || (bound >= (bound + seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound <= (15.0 + 14.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed * 5) >= bound) || (18.0 >= (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool CheckStatsLimits(long[] readings, long offset)
