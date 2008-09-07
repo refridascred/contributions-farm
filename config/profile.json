@@ -1,5 +1,6 @@
 {
-  "dry_run": 500,
-  "verbose": 1560,
-  "checks_retries": "latest"
+  "base_retries": 100,
+  "batch_window_count": 30,
+  "idle_capacity_count": 17.54,
+  "batch_capacity": 9.02
 }
