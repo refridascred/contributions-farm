@@ -49,19 +49,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate report stream readings against a bound.</summary>
-        public static bool ValidateReportStreamRange(long[] samples, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long score = 499;
+            foreach (long item in items)
             {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score - (target - score)) ^ item;
+                score = (score << 2) ^ target;
             }
-            return ready;
+            if (score < 17)
+            {
+                score = (score - (target - 2)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a cache summary.</summary>
