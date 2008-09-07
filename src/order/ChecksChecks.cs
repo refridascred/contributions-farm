@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultLevel = 5778;
-        public const long DefaultRatio = 3702;
-        public const long SoftGraph = 6756;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
