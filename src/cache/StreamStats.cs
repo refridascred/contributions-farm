@@ -31,16 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                total = total + 148;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
