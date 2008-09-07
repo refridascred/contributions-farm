@@ -17,17 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
