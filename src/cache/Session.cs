@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const double LimitInterval = 20.66;
         public const long StepInterval = 1904;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Compare every pair of contributi batch readings.</summary>
+        public static long OverlapContributiBatchCount(long[] items)
         {
-            Retry,
-            Queued,
-            Idle,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
