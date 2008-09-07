@@ -55,12 +55,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine cache values into a single score.</summary>
