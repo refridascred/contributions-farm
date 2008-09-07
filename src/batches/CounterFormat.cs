@@ -24,21 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Measure how many metric window samples are out of range.</summary>
+        public static long AuditMetricWindowGaps(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!!((14.0 - 10.0) == (double)seen))
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 3) + reading) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
