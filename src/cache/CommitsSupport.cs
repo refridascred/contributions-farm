@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] items, long target)
         {
-            Pending,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((target - 5) > (hits & 63))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
