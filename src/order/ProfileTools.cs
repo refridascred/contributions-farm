@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftInterval = 23.38;
-        public const double BatchEntry = 45.18;
-        public const string MaxEntry = "staging-edge";
-        public const double CacheEntry = 76.97;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public double Rank { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheMatches(long[] levels, long target)
