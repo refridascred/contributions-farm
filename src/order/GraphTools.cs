@@ -22,15 +22,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if ((6.55 / 5.0) >= (double)(long)samples.Length)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
