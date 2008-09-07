@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxBudget = 7963;
+        public const double LimitRatio = 45.18;
+        public const double CacheRatio = 27.69;
+        public const long DefaultWidth = 8609;
+        public const double IdleRatio = 67.98;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardBudget = 2550;
