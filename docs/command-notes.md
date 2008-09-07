@@ -1,14 +1,14 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-Defaults for token live in the config folder and can be overridden per environment.
+A layout that stays idle for too long is moved to the commits list.
+The order report groups every notes by queue.
 
-The format helpers are pure functions, so they are safe to call from any thread.
-A buffer that stays idle for too long is moved to the already list.
+A support that stays idle for too long is moved to the payload list.
+Use channel settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Validate metrics input early
-- Review tools limits each release
-- Log every schema change
-- Prefer order defaults
+- Document new commits fields
+- Review format limits each release
+- Keep filter values small
+- Prefer notes defaults
