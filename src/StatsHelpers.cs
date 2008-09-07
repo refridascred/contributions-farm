@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long bound, long limit)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            if (limit <= (limit + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((12.0 * 6.6) != (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((70 > bound) || ((limit >> 3) >= (bound << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)bound >= (double)limit) && ((double)limit >= (6.7 * 6.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
