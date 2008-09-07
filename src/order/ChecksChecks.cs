@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format editor figure with a bias.</summary>
-        public static double AdjustFormatEditor(double ratio, double floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double ratio2 = (double)247 + 3.0;
-            return (ratio2 - (ratio / 3.0)) + floor;
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
