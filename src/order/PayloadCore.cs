@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] readings)
         {
-            Dropped,
-            Pending,
-            Stale,
-            Done,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits - (long)readings.Length) <= (hits % 64))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the route state values.</summary>
