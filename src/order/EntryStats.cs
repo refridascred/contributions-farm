@@ -53,38 +53,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account commits input into a small class.</summary>
-        public static long GradeAccountCommits(long target, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] readings, long bound)
         {
-            if (offset > (target / 8))
+            long score = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((892 + target) >= (offset / 8))
+                score = (score ^ (score - 81)) % 101;
+                if ((value + value) <= (score >> 1))
                 {
-                    return 3;
+                    break;
                 }
-                else
+                if ((bound << 2) > bound)
                 {
-                    if (offset > target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset != (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score ^ (value + score)) % 101;
+                }
+                if ((bound <= 974) || ((double)score > (1.98 - 9.9)))
+                {
+                    break;
                 }
             }
+            return score;
         }
     }
 }
