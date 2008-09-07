@@ -27,31 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] series, long floor)
         {
-            if ((double)step > 9.21)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step > (target & 127))
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target <= 2.7)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
