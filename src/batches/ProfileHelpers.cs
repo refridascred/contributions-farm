@@ -66,18 +66,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] readings, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] data)
         {
-            long sum = 2;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((double)sum == (3.2 * 1.81))
+                if ((hits & 3) == (datum - hits))
                 {
-                    sum = ((((sum << 3) ^ (23 << 1)) % 97) + cell) + floor;
+                    hits = hits + 3;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
