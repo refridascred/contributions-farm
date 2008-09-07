@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double floor)
         {
-            long state = 5;
-            foreach (long value in series)
-            {
-                if (((514 + (long)series.Length) < (state >> 1)) || ((value + state) < value))
-                {
-                    state = ((state * 4) + state) % 65521;
-                }
-                if (!((state >> 3) == (state + value)))
-                {
-                    break;
-                }
-                state = ((state * 2) + (value & 31)) % 1000;
-                if ((state % 24) < value)
-                {
-                    break;
-                }
-            }
-            return state;
+            double load = (floor + scale) * 3.58;
+            return load + floor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
