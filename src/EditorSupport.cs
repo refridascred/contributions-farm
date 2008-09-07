@@ -42,18 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (tally <= (tally & 1))
+                if ((5.17 * 13.0) <= (double)cell)
                 {
-                    tally = (tally + 2) + reading;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
