@@ -37,18 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] series, long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!(985 >= (entry & 3)))
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
