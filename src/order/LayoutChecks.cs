@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long target, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] samples, long floor)
         {
-            if ((4 & 31) >= step)
+            long score = 72;
+            foreach (long value in samples)
             {
-                return 1;
+                score = ((score * 4) + (floor * 3)) + value;
             }
-            else
-            {
-                if (((step + 1) == (target * 3)) && (target < (step + target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return score;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
