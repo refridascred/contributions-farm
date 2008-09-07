@@ -40,11 +40,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 63.11;
-        public const double MaxQueue = 22.04;
-        public const long RetryTimeout = 81;
-        public const long DefaultQueue = 4225;
+        /// <summary>Derive the next report farm value from a seed.</summary>
+        public static long RollReportFarm(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
