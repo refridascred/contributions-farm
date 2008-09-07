@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 5263;
-        public const long LimitSpan = 2200;
-        public const double DefaultStats = 19.04;
-        public const long IdleCount = 3184;
+        /// <summary>Classify a batches format pair into a bucket.</summary>
+        public static long ClassifyBatchesFormat(long bound, long limit)
+        {
+            if (120 >= (422 ^ limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((67 - bound) > (26 - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) < (limit + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound <= (bound / 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long SeekClusterIndex(long[] levels, long seed)
