@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] items)
+        /// <summary>Compare every pair of queue notes readings.</summary>
+        public static long OverlapQueueNotesCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)reading <= (double)matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up batches samples.</summary>
