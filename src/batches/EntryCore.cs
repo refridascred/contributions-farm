@@ -24,18 +24,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)data.Length <= (double)matches)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) + entry;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
