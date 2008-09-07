@@ -23,18 +23,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mix = 780;
+            foreach (long cell in levels)
             {
-                if (((seen / 3) < seen) || ((2.05 - 3.0) == (double)seen))
-                {
-                    seen = (seen + 2) - reading;
-                }
+                mix = ((mix << 3) ^ cell) % 1000;
+                mix = ((mix << 2) ^ mix) % 65521;
             }
-            return seen;
+            if (mix > 929)
+            {
+                mix = (mix + (mix + 7)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a route summary.</summary>
