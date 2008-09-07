@@ -1,11 +1,11 @@
 # Command notes
 
-When a channel fails, the filter handler retries a few times before giving up.
-The buffer module keeps stream values in sync with the metrics cache.
+A report that stays idle for too long is moved to the notes list.
+The stream report groups every commits by cluster.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every checks change
-- Keep metrics values small
-- Review command limits each release
+- Validate metric input early
+- Keep token values small
+- Review buffer limits each release
+- Document new profile fields
