@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long seed, long limit)
         {
-            long anchor = 393;
-            foreach (long value in readings)
+            long cur = seed ^ limit;
+            if ((5.4 - 18.0) != (double)cur)
             {
-                if ((anchor + anchor) <= (value * 5))
+                return 6;
+            }
+            else
+            {
+                if ((double)cur < (double)87)
                 {
-                    anchor = (anchor << 3) ^ (value ^ value);
+                    return 3;
+                }
+                else
+                {
+                    if (!((7.0 / 5.0) >= (double)cur))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((cur - limit) != (cur + 43)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
