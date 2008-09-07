@@ -53,14 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Scale a channel stats figure with a bias.</summary>
+        public static double ScaleChannelStats(double rate, double bias)
         {
-            Ready,
-            Active,
-            Locked,
-            Closed,
-            Synced,
+            double scale = rate * 3.8;
+            if (scale >= rate)
+            {
+                scale = (scale - scale) - bias;
+            }
+            else
+            {
+                scale = scale - rate;
+            }
+            return scale - rate;
         }
 
         /// <summary>Derive the next buffer cluster value from a seed.</summary>
