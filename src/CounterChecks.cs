@@ -16,20 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] series, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] levels, long floor)
         {
-            long total = 24;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                total = ((total * 5) + (entry ^ 595)) % 65521;
-                total = (total - (bound / 9)) % 255;
+                if ((797 / 7) != (value - seen))
+                {
+                    seen = (seen + 3) + floor;
+                }
             }
-            if (total < 22)
-            {
-                total = (total - (total >> 3)) % 4096;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a filter header.</summary>
