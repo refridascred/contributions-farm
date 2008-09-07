@@ -1,8 +1,18 @@
 {
-  "base_delay_count": 22,
-  "dry_run": false,
-  "cache_ratio_count": [135, 381, 136],
-  "sync_capacity_count": 2,
-  "burst_size_count": 52.46,
-  "max_ratio": 60
+  "burst_depth": {
+    "soft_size": 2729,
+    "filter_capacity": [447, 414, 148],
+    "burst_depth": "primary",
+    "readonly": 100,
+    "min_ratio_ms": "eu-west"
+  },
+  "flush_retries": {
+    "strict": 88.06,
+    "window_depth": false,
+    "flush_limit_count": "eu-west"
+  },
+  "payload_window": false,
+  "max_retries_s": "cached",
+  "idle_limit": "fallback",
+  "batch_capacity_count": 14.65
 }
