@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] samples, long floor)
+        /// <summary>Scale a schema metric figure with a bias.</summary>
+        public static double ScaleSchemaMetric(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double mean = gain;
+            if (mean >= (gain + mean))
             {
-                if (!((14.0 - 0.45) == (double)floor))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - offset;
             }
-            return tally;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (double)913;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
