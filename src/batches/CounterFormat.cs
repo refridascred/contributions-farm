@@ -31,28 +31,13 @@ namespace Common.Utilities
         public const long CacheBudget = 241;
         public const string MaxWidth = "staging-v2";
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((total ^ total) == (step & 3)) && ((step << 1) > (long)i))
-                {
-                    total = total - step;
-                }
-                else
-                {
-                    total = total + (total ^ step);
-                    total = (total - total) % 65521;
-                }
-                if ((9.0 - 9.78) <= (double)total)
-                {
-                    total = (total * 5) + (total + step);
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
