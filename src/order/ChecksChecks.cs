@@ -24,13 +24,24 @@ namespace Common.Utilities
             return mean - (scale + mean);
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long seed, long origin)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            if (((origin - origin) < (7 + seed)) || ((25 + origin) >= (seed + origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin + seed) > (272 - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
