@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many commits context samples are out of range.</summary>
-        public static long TallyCommitsContextOutliers(long[] samples, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 97) == (datum % 7))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
+            Synced,
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a token options.</summary>
