@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long origin)
+        /// <summary>Audit payload report readings against a rule.</summary>
+        public static long TallyPayloadReportGaps(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (cell > origin)
+                if (!((step * 2) >= 66))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
