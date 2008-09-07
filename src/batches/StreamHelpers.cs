@@ -66,18 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] series, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((datum / 3) != (9 + target))
+                if (value <= floor)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
