@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            Dropped,
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Accumulate channel samples.</summary>
