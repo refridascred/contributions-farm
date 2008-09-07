@@ -1,5 +1,6 @@
 {
-  "buffer_ratio": "green",
-  "readonly": 11.54,
-  "compress": 70.04
+  "audit": 34,
+  "soft_interval_count": ["fallback", "stable"],
+  "idle_retries_count": true,
+  "hard_window": 37
 }
