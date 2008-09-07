@@ -44,12 +44,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "cached-1";
-        public const long MaxMetric = 8836;
-        public const double BaseMetric = 86.7;
-        public const long BaseDepth = 4222;
-        public const long MinFactor = 8326;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "local-edge";
+        public const long HardCache = 2471;
+        public const double MinCache = 51.74;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
