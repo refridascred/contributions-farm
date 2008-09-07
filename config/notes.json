@@ -1,8 +1,5 @@
 {
-  "base_window_count": 30,
-  "hard_timeout_pct": 60,
-  "retry_limit_count": 62,
-  "verbose": true,
-  "cache_depth": ["blue", "open"],
-  "sync_retries_pct": [117, 274, 117]
+  "burst_threshold": "edge",
+  "hard_capacity_ms": 500,
+  "compress": true
 }
