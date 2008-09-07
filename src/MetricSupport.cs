@@ -21,17 +21,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a editor order reading by value.</summary>
-        public static long SeekEditorOrderIndex(long[] series, long limit)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Active,
+            Ready,
+            Retry,
         }
     }
 }
