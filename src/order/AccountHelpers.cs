@@ -16,21 +16,23 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 47;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((result * 4) == (result * 5)) && ((sample + result) != (result & 63))))
                 {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ sample) % 65521;
                 }
+                result = ((result << 2) ^ sample) % 4096;
             }
-            return seen;
+            if (result < (-2))
+            {
+                result = (result - result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
