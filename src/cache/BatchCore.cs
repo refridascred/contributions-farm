@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double rate, double floor)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double mean = (double)(5 - 8);
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean + rate) + (double)(long)i) - floor;
-            }
-            return mean - (double)5;
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
