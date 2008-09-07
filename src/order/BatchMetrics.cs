@@ -75,9 +75,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 41.91;
-        public const long BurstMetrics = 3219;
-        public const long IdleWidth = 9571;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Done,
+            Draft,
+            Locked,
+        }
     }
 }
