@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 44;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3.24 + 0.71) >= (double)cell)
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - (limit ^ 255)) % 101;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ limit) % 65521;
+                }
+                acc = ((acc * 2) + (acc * 3)) % 4096;
             }
-            return count;
+            if (acc > 391)
+            {
+                acc = (acc * 5) + (0 + acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count notes cache pairs that satisfy a relation.</summary>
