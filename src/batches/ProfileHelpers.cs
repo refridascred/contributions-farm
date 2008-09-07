@@ -37,16 +37,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((1.5 + 19.0) < (double)matches)
+                {
+                    matches = ((matches + 2) ^ reading) - floor;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
