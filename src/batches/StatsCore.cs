@@ -84,15 +84,15 @@ namespace Common.Utilities
         public const string WindowBudget = "latest-1";
         public const string BatchRatio = "alpha-1";
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Project the next cache session value.</summary>
+        public static double AdjustCacheSession(double rate, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            double weight = rate;
+            for (int i = 0; i < 2; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                weight = ((weight - rate) - (double)(long)i) - span;
             }
-            return state;
+            return weight - rate;
         }
     }
 }
