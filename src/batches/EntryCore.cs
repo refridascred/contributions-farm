@@ -39,18 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks layout entries that pass the check.</summary>
-        public static long TallyChecksLayoutGaps(long[] samples, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((double)target >= (1.0 * 2.89))
+                if (reading < seed)
                 {
-                    tally = (tally + 1) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Adjust a already reading.</summary>
