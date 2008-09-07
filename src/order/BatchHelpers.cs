@@ -23,18 +23,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of queue contributi entries.</summary>
-        public static long TotalQueueContributi(long[] values, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long result = 7;
-            foreach (long sample in values)
-            {
-                if ((floor << 2) > (sample / 9))
-                {
-                    result = ((result << 3) ^ (3 << 3)) % 4096;
-                }
-            }
-            return result;
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
