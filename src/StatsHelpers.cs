@@ -23,13 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Adjust a account reading.</summary>
