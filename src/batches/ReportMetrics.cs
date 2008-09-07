@@ -41,10 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 8937;
-        public const long SoftInterval = 1683;
-        public const double MaxScore = 21.99;
-        public const long IdleRatio = 8940;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
