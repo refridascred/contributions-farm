@@ -32,19 +32,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
