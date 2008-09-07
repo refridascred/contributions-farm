@@ -24,15 +24,15 @@ namespace Common.Utilities
             return gain2 + (double)2;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score * 4) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the batch state values.</summary>
