@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchFactor = 7216;
-        public const string SoftInterval = "staging-1";
-        public const long BaseSize = 2553;
-        public const string RetryBudget = "alpha-edge";
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] levels)
+        {
+            long sum = -74;
+            foreach (long sample in levels)
+            {
+                if (((sample << 1) > (4 << 3)) && ((sum & 1) > (sample & 127)))
+                {
+                    sum = sum - sum;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Rank record metric input into a small class.</summary>
         public static long BucketRecordMetric(long target, long origin)
