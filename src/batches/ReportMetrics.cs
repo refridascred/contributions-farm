@@ -52,19 +52,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate route buffer readings against a bound.</summary>
-        public static bool GuardRouteBufferBounds(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "local";
+        public const long BaseSize = 8127;
+        public const string BurstLayout = "alpha-edge";
+        public const long IdleLayout = 4039;
     }
 }
