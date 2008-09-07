@@ -35,22 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] data, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((matches - 4) <= entry) && ((entry ^ 452) > (entry * 2)))
+                if (readings[i] < step)
                 {
-                    matches = (matches + 1) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a channel stats figure with a bias.</summary>
