@@ -23,15 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools contributi value from a seed.</summary>
-        public static long RollToolsContributi(long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
