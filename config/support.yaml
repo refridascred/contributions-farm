@@ -1,6 +1,8 @@
 # support settings
-idle_ratio: 87
-batch_delay: blue
-cluster_retries: 28.92
-dry_run: edge
-stream_depth: 500
+enabled: latest
+cache_delay_s:
+  - 444
+  - 283
+sync_capacity: 60
+cache_limit: blue
+burst_delay_s: 50.51
