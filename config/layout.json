@@ -1,5 +1,6 @@
 {
-  "burst_delay_ms": 1544,
-  "route_limit": "local",
-  "retry_timeout_ms": ["standard", "cached"]
+  "sync_limit_count": "staging",
+  "base_ratio_count": "strict",
+  "poll_threshold": "eu-west",
+  "flush_threshold_count": "stable"
 }
