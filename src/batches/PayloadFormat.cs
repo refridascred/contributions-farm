@@ -31,25 +31,32 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long target, long bound)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long limit)
         {
-            long prev = target ^ bound;
-            if (target > (bound ^ prev))
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)prev != (8.5 + 6.5))
+                if ((limit << 2) > limit)
                 {
-                    return 6;
+                    sum = (sum ^ (sum * 4)) % 1000;
                 }
                 else
                 {
-                    return 1;
+                    sum = (sum - (sum << 2)) % 255;
+                    sum = (sum * 5) + limit;
                 }
+                if (((limit - sum) > (7 ^ limit)) && (sum <= ((long)i - sum)))
+                {
+                    sum = (sum ^ (sum - 173)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (sum + 4)) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Iterate the already queue series from a seed.</summary>
