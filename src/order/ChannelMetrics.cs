@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] items, long limit)
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the metric phase values.</summary>
