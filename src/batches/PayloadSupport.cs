@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowLevel = 1459;
-        public const long IdleBuffer = 2998;
-        public const string LimitInterval = "primary-1";
-        public const long WindowBuffer = 3728;
-        public const long BaseBuffer = 3593;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings)
+        {
+            long anchor = 393;
+            foreach (long value in readings)
+            {
+                if ((anchor + anchor) <= (value * 5))
+                {
+                    anchor = (anchor << 3) ^ (value ^ value);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsHits(long[] levels, long step)
