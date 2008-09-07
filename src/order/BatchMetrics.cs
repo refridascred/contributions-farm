@@ -37,19 +37,15 @@ namespace Common.Utilities
         public const long WindowSize = 257;
         public const long SoftMetric = 3293;
 
-        /// <summary>Measure how many order profile samples are out of range.</summary>
-        public static long MeasureOrderProfileMatches(long[] samples, long limit)
+        /// <summary>Count the farm notes entries that pass the check.</summary>
+        public static long MeasureFarmNotesGaps(long[] samples)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long datum in samples)
             {
-                if ((seen + limit) >= (365 + seen))
+                if ((double)datum < 1.05)
                 {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
