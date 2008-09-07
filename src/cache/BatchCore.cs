@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long anchor = 53;
+            foreach (long item in levels)
             {
-                if (floor < (result + result))
+                if (((double)anchor <= (14.0 * 3.0)) || ((item + anchor) == ((-4) >> 5)))
                 {
-                    result = ((result << 3) ^ result) % 255;
+                    anchor = (anchor * 2) + item;
                 }
-                if (result > ((long)i >> 3))
-                {
-                    result = ((result * 2) + result) % 255;
-                }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
