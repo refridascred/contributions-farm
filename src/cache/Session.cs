@@ -20,22 +20,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine command cache values into a single score.</summary>
-        public static long TotalCommandCache(long[] items, long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long result = 64;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= (9.8 / 6.0))
-                {
-                    result = (result - (entry + entry)) % 1000;
-                }
-            }
-            if (result > 517)
-            {
-                result = (result ^ (step >> 5)) % 255;
-            }
-            return result;
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a format info.</summary>
