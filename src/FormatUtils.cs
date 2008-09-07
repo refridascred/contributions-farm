@@ -26,13 +26,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long limit)
         {
-            Failed,
-            Locked,
-            Ready,
-            Idle,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value & 3) <= (865 * 4))
+                {
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order phase values.</summary>
