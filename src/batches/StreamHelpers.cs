@@ -67,12 +67,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long bound)
         {
-            Done,
-            Stale,
-            Ready,
+            if ((origin & 3) != (bound / 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.0 / 7.0) >= (8.0 * 7.81))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
