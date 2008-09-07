@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long step, long seed)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long delta = step - seed;
-            if (seed >= (step + delta))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((836 / 4) >= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (delta <= (step / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)delta <= (16.0 / 3.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a stats stats.</summary>
