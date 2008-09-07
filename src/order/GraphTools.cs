@@ -28,15 +28,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate session support samples.</summary>
-        public static long CombineSessionSupport(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
         {
-            long anchor = 225;
-            foreach (long item in values)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = (anchor - ((-4) + item)) % 4096;
+                if ((4.34 + 4.16) != (double)total)
+                {
+                    total = total ^ offset;
+                }
+                else
+                {
+                    total = (total + (total + offset)) % 97;
+                }
+                total = (total + (offset - (long)i)) % 101;
+                if (((long)i - total) >= offset)
+                {
+                    total = total ^ (7 << 3);
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
