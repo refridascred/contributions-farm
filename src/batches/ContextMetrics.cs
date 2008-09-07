@@ -49,21 +49,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up schema cluster samples.</summary>
-        public static long MatchSchemaClusterCount(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item < (bound << 3))
                 {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
