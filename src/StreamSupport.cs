@@ -38,13 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Pending,
-            New,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 2578;
+        public const double BurstMetric = 51.74;
+        public const long WindowBudget = 600;
+        public const string DefaultSpan = "latest-1";
+        public const long CacheCount = 4324;
     }
 }
