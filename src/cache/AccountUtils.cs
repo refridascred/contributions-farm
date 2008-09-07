@@ -21,20 +21,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2 ^ bound) >= score)
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
                 {
-                    score = (score * 4) + (score * 2);
-                    continue;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
