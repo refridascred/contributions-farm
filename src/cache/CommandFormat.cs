@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Derive the next notes tools value from a seed.</summary>
+        public static long SeriesNotesTools(long step)
         {
-            Closed,
-            Queued,
-            Locked,
+            long score = step;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
