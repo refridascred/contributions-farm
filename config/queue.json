@@ -1,9 +1,8 @@
 {
-  "burst_timeout_s": false,
-  "warm_delay_pct": {
-    "route_timeout": "cached",
-    "batch_window_ms": ["cached", "fallback", "staging"],
-    "verbose": "fallback"
-  },
-  "warm_threshold_pct": 3351
+  "min_window_count": "open",
+  "context_size": false,
+  "stats_window": 500,
+  "window_interval": 6386,
+  "base_delay": 63.7,
+  "command_timeout": "blue"
 }
