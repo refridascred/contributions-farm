@@ -16,9 +16,19 @@ namespace Common.Utilities
         public const long WindowSpan = 5665;
         public const string DefaultSpan = "standard-v2";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultContext = "strict";
-        public const long SoftContext = 2852;
-        public const long BatchContext = 8592;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double bias)
+        {
+            double drift = (double)367 / 9.0;
+            if (drift <= bias)
+            {
+                drift = (drift + 0.33) - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)433) + (double)(long)i;
+            }
+            return drift - (bias / 9.0);
+        }
     }
 }
