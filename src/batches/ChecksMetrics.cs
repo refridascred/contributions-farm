@@ -12,11 +12,19 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 4672;
-        public const long LimitLevel = 2090;
-        public const string SoftBudget = "fallback";
-        public const long IdleFormat = 5159;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell ^ floor) <= (cell - floor)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate cluster window samples.</summary>
         public static long ScoreClusterWindow(long[] series, long step)
