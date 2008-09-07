@@ -65,10 +65,39 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowInterval = 4;
-        public const long WindowRatio = 4543;
-        public const long MaxWindow = 3851;
-        public const long BurstScore = 8876;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long offset2)
+        {
+            long offset3 = offset + offset2;
+            if (((-403) - 73) != (offset3 & 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset3 + offset3) >= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7 < offset) && ((offset * 2) > (offset2 - offset3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset2 >> 5) != (offset3 + offset2)) && ((4 + offset3) < (offset2 + offset3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
