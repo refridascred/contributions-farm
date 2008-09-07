@@ -13,19 +13,28 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] samples, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long result = 8;
+            foreach (long sample in levels)
             {
-                if (datum > limit)
+                if (((sample - sample) >= (result << 3)) && ((long)levels.Length >= (sample / 3)))
                 {
-                    stale = false;
-                    break;
+                    result = (result ^ (7 & 255)) % 1000;
+                    continue;
+                }
+                result = result + (sample + result);
+                if ((result - result) >= (result * 3))
+                {
+                    result = ((result << 3) ^ (798 * 4)) % 97;
                 }
             }
-            return stale;
+            if (result < 1)
+            {
+                result = (result + (970 << 2)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
