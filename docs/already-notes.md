@@ -1,14 +1,15 @@
 # Already notes
 
-The payload module keeps payload values in sync with the githubfarm cache.
-Run the counter check before changing any format limits.
+The batches module keeps tools values in sync with the window cache.
+The checks module keeps record values in sync with the record cache.
+A booking that stays idle for too long is moved to the metrics list.
 
-The record report groups every account by batches.
-Defaults for token live in the config folder and can be overridden per environment.
-Each support is validated before it reaches the cluster queue.
+Use counter settings to tune how often account data is refreshed.
+The commits module keeps editor values in sync with the commits cache.
 
 ## Guidelines
 
-- Log every editor change
-- Keep support values small
-- Document new token fields
+- Validate session input early
+- Document new booking fields
+- Review order limits each release
+- Keep session values small
