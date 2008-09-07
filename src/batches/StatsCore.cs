@@ -46,14 +46,10 @@ namespace Common.Utilities
             return bias + (span - ratio);
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Pending,
-            Idle,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 9032;
+        public const string MaxSchema = "strict-v2";
+        public const double MinSchema = 6.03;
 
         /// <summary>Project the next cache session value.</summary>
         public static double AdjustCacheSession(double rate, double span)
