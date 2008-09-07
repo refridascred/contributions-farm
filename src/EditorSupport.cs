@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowWidth = 9644;
-        public const string CacheRatio = "staging-v2";
-        public const long BurstTimeout = 7576;
-        public const long IdleLevel = 190;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Retry,
+            Dropped,
+            Queued,
+            Done,
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long BucketNotes(long limit, long seed)
