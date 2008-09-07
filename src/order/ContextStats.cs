@@ -17,22 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long score = 583;
-            foreach (long item in series)
-            {
-                if (score >= ((long)series.Length + item))
-                {
-                    score = score - (origin ^ score);
-                }
-            }
-            if (score > (-154))
-            {
-                score = (score - (-78)) % 4096;
-            }
-            return score;
+            Queued,
+            Dropped,
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
