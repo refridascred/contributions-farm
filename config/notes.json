@@ -1,18 +1,6 @@
 {
-  "batch_size_s": ["cached", "standard", "fallback", "edge"],
-  "retry_delay_s": "eu-west",
-  "warm_depth_count": true,
-  "compress": 250,
-  "already_size": {
-    "poll_threshold": {
-      "compress": "local",
-      "githubfarm_timeout": "standard",
-      "dry_run": 7964,
-      "graph_depth": 30,
-      "base_threshold_ms": 88.06,
-      "hard_depth_count": 30
-    },
-    "retry_capacity_count": 65.83,
-    "readonly": ["cached", "local", "latest", "standard"]
-  }
+  "schema_limit": "blue",
+  "flush_size_pct": 60,
+  "soft_delay_pct": "local",
+  "default_threshold": "latest"
 }
