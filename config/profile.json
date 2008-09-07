@@ -1,7 +1,8 @@
 {
-  "audit": 500,
-  "hard_ratio_ms": 60,
-  "cache_timeout_ms": "green",
-  "retry_delay": true,
-  "poll_ttl_pct": true
+  "commits_limit": false,
+  "burst_delay": true,
+  "hard_depth_count": "staging",
+  "default_ratio": "edge",
+  "idle_ratio": 36.72,
+  "persist": false
 }
