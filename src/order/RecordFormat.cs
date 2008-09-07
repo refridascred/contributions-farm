@@ -67,19 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue filter samples.</summary>
-        public static long WeighQueueFilter(long[] series, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] samples, long bound)
         {
-            long sum = 4;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((4 / 3) <= sum)
+                if (cell <= bound)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum + (value % 16)) % 97) - bound;
             }
-            return sum;
+            return stale;
         }
     }
 }
