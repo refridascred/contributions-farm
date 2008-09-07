@@ -35,22 +35,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] series, long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double ratio, double bias)
         {
-            long anchor = 129;
-            foreach (long datum in series)
+            double drift = bias + ratio;
+            if (drift > (bias * 10.0))
             {
-                if ((target * 4) > anchor)
-                {
-                    anchor = ((anchor ^ 16) % 101) - datum;
-                }
+                drift = drift - 1.92;
             }
-            if (anchor > 839)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor % 97;
+            return drift + (double)(-175);
         }
 
         /// <summary>Match up editor samples.</summary>
