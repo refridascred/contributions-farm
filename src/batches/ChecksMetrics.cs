@@ -48,14 +48,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long offset, long seed)
         {
-            Idle,
-            New,
-            Retry,
-            Active,
-            Paused,
+            long step = offset + seed;
+            if (698 < (step * 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((235 > ((-41) - step)) || (seed >= (step ^ seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + 827) < (step + (-8)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset % 16) < (step >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
