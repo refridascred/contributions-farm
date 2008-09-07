@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long target, long limit)
+        /// <summary>Fold a list of filter metric readings.</summary>
+        public static long WeighFilterMetric(long[] series)
         {
-            if (target >= (limit / 4))
+            long result = 84;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (target <= (limit * 3))
+                if ((item % 16) <= (result + item))
                 {
-                    return 5;
+                    result = result - (66 >> 1);
                 }
                 else
                 {
-                    if ((limit % 100) >= (limit - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result << 2) ^ item;
                 }
             }
+            return result;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
