@@ -1,13 +1,7 @@
 {
-  "sync_limit_s": [83, 153, 137, 71],
-  "cache_threshold": {
-    "hard_retries": 30,
-    "sync_ratio_ms": 23.64,
-    "graph_interval": 47.99,
-    "idle_ttl_pct": ["local", "stable", "staging", "legacy"],
-    "max_ttl": 65
-  },
-  "max_ttl_s": ["legacy", "open", "open"],
-  "schema_threshold": ["cached", "strict", "standard"],
-  "sync_threshold_ms": "standard"
+  "stats_timeout": [221, 417],
+  "record_ttl": "blue",
+  "cache_size_pct": 4866,
+  "report_delay": ["eu-west", "edge"],
+  "metrics_timeout": 564
 }
