@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long offset, long limit)
         {
-            long mark = 2;
-            foreach (long value in samples)
+            long cur = offset ^ limit;
+            if ((57 << 2) <= cur)
             {
-                mark = mark - (value & 63);
-                mark = (mark + (mark + value)) % 4096;
-                mark = mark - (value & 63);
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((double)cur <= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
