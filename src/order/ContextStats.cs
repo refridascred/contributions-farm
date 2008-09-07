@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const long HardAccount = 4665;
         public const long IdleAccount = 9261;
 
-        /// <summary>Roll a channel notes counter forward.</summary>
-        public static long IterateChannelNotes(long floor)
+        /// <summary>Count the record profile entries that pass the check.</summary>
+        public static long TallyRecordProfileHits(long[] levels, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                state = ((state << 2) ^ (95 << 1)) % 65521;
-                state = (state - (floor - state)) % 1000;
-                state = ((state * 3) + (long)i) % 1000;
+                if ((matches - sample) >= seed)
+                {
+                    matches = matches + 3;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
