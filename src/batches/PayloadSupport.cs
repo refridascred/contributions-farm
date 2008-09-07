@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] levels, long limit)
         {
-            long result = 668;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!((offset ^ cell) < (cell << 3)))
+                if ((limit >= (limit >> 5)) && (((double)entry >= (20.0 / 3.0)) && ((seen ^ 3) > limit)))
                 {
-                    result = (result - (result << 3)) % 255;
+                    seen = seen + 3;
                 }
             }
-            if (result < 11)
-            {
-                result = (result + 66) % 97;
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
