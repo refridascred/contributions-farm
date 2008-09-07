@@ -51,11 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public double Token { get; set; }
-            public double Offset { get; set; }
+            Paused,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
