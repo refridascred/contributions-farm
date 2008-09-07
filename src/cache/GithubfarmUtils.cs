@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate githubfarm record samples.</summary>
-        public static long CombineGithubfarmRecord(long[] levels)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] samples, long step)
         {
-            long score = 7;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((score * 5) > datum)
+                if (item < step)
                 {
-                    score = ((score << 3) ^ (score * 3)) % 1000;
-                    score = (score - (datum - datum)) % 4096;
-                    break;
-                }
-                else
-                {
-                    score = (score + (score / 2)) % 97;
-                }
-                score = (score ^ datum) % 97;
-                if ((double)datum > (8.78 / 3.0))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
