@@ -36,15 +36,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of graph entry readings.</summary>
-        public static long CombineGraphEntry(long[] items, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] values, long limit)
         {
-            long score = 9;
-            foreach (long entry in items)
+            long anchor = 704;
+            foreach (long cell in values)
             {
-                score = ((score ^ score) ^ entry) + limit;
+                anchor = anchor + (cell - limit);
+                if (561 < (0 + cell))
+                {
+                    break;
+                }
             }
-            return score;
+            if (anchor > (-41))
+            {
+                anchor = (anchor * 2) + 961;
+            }
+            return anchor % 1000;
         }
     }
 }
