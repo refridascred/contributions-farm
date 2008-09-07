@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] series, long step)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!(985 >= (entry & 3)))
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
