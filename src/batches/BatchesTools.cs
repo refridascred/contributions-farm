@@ -26,17 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = 4.4 + (8.13 / 7.0);
+            return (drift + span) + scale;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
