@@ -1,5 +1,5 @@
 {
-  "soft_timeout_s": ["fallback", "primary", "blue", "staging"],
-  "dry_run": [288, 32],
-  "audit": 38.3
+  "cache_window": 6.23,
+  "warm_interval_pct": false,
+  "sync_interval_s": "local"
 }
