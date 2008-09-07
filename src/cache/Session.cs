@@ -27,13 +27,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long sum = 84;
+            foreach (long reading in readings)
+            {
+                sum = ((sum << 2) ^ reading) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
