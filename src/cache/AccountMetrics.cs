@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long step, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if ((floor / 8) < (floor & 255))
             {
-                if ((tally + tally) > tally)
+                return 7;
+            }
+            else
+            {
+                if ((floor <= (step << 3)) && (floor > (floor / 7)))
                 {
-                    tally = (tally + 2) + entry;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)floor > (7.1 + 4.0)) || ((step >> 2) < (floor >> 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step + step) <= (step + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
