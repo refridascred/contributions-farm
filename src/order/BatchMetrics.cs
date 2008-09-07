@@ -70,10 +70,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 47.79;
-        public const long HardInterval = 4973;
-        public const long CacheTools = 7912;
-        public const long DefaultTools = 9371;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 41.91;
+        public const long BurstMetrics = 3219;
+        public const long IdleWidth = 9571;
     }
 }
