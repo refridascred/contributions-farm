@@ -22,16 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double bias, double floor)
-        {
-            double load = 8.0;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - (load / 9.0)) + (double)(long)i) - bias;
-            }
-            return load + floor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 9972;
+        public const long BurstDepth = 8368;
+        public const long MaxProfile = 2348;
+        public const string BatchRatio = "local";
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenGaps(long[] readings, long offset)
