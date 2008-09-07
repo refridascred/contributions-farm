@@ -50,13 +50,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry << 1) > entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
