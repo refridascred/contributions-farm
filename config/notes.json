@@ -1,7 +1,5 @@
 {
-  "warm_delay": 250,
-  "min_retries_s": 6870,
-  "burst_interval_count": 1.48,
-  "dry_run": 100,
-  "layout_retries": 1024
+  "poll_ratio": 1024,
+  "notes_window": "strict",
+  "burst_capacity_ms": ["staging", "cached", "local", "edge"]
 }
