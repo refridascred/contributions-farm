@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstWidth = 38.7;
-        public const string BatchBuffer = "primary-edge";
-        public const long RetryInterval = 3022;
+        /// <summary>Digest a series of commits stats entries.</summary>
+        public static long CombineCommitsStats(long[] series)
+        {
+            long mark = 49;
+            foreach (long item in series)
+            {
+                mark = mark - (56 & 15);
+                if (((mark & 127) > (mark - mark)) && ((1.0 - 9.69) == (double)mark))
+                {
+                    mark = ((mark << 3) ^ (722 + 382)) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 2) + item) % 1000;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = (mark + 4) % 255;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatOutliers(long[] readings)
