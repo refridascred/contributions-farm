@@ -40,12 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
