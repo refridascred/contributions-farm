@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 76.42;
-        public const double WindowReport = 65.63;
-        public const long IdleReport = 514;
-        public const string MinReport = "primary-1";
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long StepStream(long floor)
