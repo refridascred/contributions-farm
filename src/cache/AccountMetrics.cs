@@ -19,17 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] levels, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - rate) + (double)(long)i) - floor;
             }
-            return -1;
+            return rate + (double)2;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
