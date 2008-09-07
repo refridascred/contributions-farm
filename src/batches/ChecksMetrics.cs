@@ -49,11 +49,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a tools record.</summary>
