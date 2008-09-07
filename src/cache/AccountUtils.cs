@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series, long limit)
         {
-            long sum = -74;
-            foreach (long sample in levels)
+            long sum = -21;
+            foreach (long entry in series)
             {
-                if (((sample << 1) > (4 << 3)) && ((sum & 1) > (sample & 127)))
-                {
-                    sum = sum - sum;
-                }
+                sum = ((sum << 3) ^ (limit & 63)) ^ entry;
+            }
+            if (sum > 92)
+            {
+                sum = (sum << 2) ^ (sum & 15);
             }
             return sum;
         }
