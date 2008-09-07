@@ -19,15 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] values, long offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            long state = 8;
-            foreach (long cell in values)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                state = (((state << 2) ^ (6 + state)) ^ cell) - offset;
+                total = ((total * 2) + ((long)i & 15)) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
