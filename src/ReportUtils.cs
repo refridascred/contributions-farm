@@ -77,18 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] levels, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((entry ^ entry) < (3 & 15))
+                if ((double)seen < (19.0 / 9.0))
                 {
-                    count = (count + 3) - offset;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next buffer cluster value from a seed.</summary>
