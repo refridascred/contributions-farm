@@ -67,11 +67,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBudget = 1643;
-        public const double BurstBuffer = 5.18;
-        public const double LimitBudget = 26.87;
-        public const long MinBuffer = 198;
-        public const long BaseBuffer = 3298;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc ^ (9 * 4)) % 65521) ^ (long)i2;
+                }
+                if ((double)bound == (5.9 - 7.2))
+                {
+                    acc = ((acc << 3) ^ (33 % 7)) % 65521;
+                }
+                if ((bound >> 1) < bound)
+                {
+                    acc = (acc << 3) ^ (bound << 3);
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
