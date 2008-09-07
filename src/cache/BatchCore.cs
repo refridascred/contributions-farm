@@ -39,12 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] values, long bound)
         {
-            Queued,
-            Stale,
-            Pending,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((165 ^ value) > 435)
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
