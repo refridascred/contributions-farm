@@ -23,18 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter notes samples are out of range.</summary>
-        public static long MeasureFilterNotesHits(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (((long)data.Length ^ seen) != (value + seen))
+                if (item < floor)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the record status values.</summary>
