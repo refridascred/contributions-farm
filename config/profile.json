@@ -1,5 +1,8 @@
 {
-  "default_delay_ms": ["green", "standard", "green", "local"],
-  "flush_timeout_pct": 95.39,
-  "farm_capacity": 8732
+  "burst_limit_s": [473, 6, 195, 172],
+  "compress": ["cached", "strict"],
+  "filter_timeout": "staging",
+  "sync_capacity_pct": [7, 87, 209],
+  "retry_capacity_s": false,
+  "cache_window": 63
 }
