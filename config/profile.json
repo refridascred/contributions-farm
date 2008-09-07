@@ -1,7 +1,5 @@
 {
-  "counter_window": "latest",
-  "flush_threshold_count": [170, 76],
-  "compress": 500,
-  "already_size": false,
-  "max_limit_count": ["open", "blue", "latest"]
+  "graph_limit": 5508,
+  "graph_interval": true,
+  "base_ratio": [110, 36]
 }
