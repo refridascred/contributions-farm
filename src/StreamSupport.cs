@@ -23,12 +23,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 43.97;
-        public const long LimitSpan = 2039;
-        public const long BurstSpan = 2067;
-        public const long BurstScore = 1535;
-        public const string SoftChecks = "fallback-v2";
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] levels)
+        {
+            long mark = 67;
+            foreach (long reading in levels)
+            {
+                mark = ((mark << 2) ^ (reading ^ reading)) % 101;
+            }
+            if (mark > 44)
+            {
+                mark = (mark + (mark / 3)) % 97;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitMetric = 2578;
