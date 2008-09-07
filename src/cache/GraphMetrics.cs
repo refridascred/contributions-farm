@@ -49,17 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long seed)
+        /// <summary>Digest a series of layout buffer entries.</summary>
+        public static long TotalLayoutBuffer(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 3;
+            foreach (long value in readings)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (acc + acc)) % 1000) - value;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a farm header.</summary>
