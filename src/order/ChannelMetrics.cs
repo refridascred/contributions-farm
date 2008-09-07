@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double weight, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double weight2 = 19.0;
-            if (weight2 <= (6.0 - weight))
-            {
-                weight2 = (weight2 - weight2) - floor;
-            }
-            return weight2 - (double)13;
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
