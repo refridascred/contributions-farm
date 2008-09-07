@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first schema editor entry that matches the target.</summary>
-        public static long LocateSchemaEditorIndex(long[] readings, long target)
+        /// <summary>Scale a cache context figure with a bias.</summary>
+        public static double SmoothCacheContext(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)564 + ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
+                drift = ((drift + ratio) - (double)(long)i) - floor;
             }
-            return -1;
+            return drift + (double)7;
         }
 
         /// <summary>Locate a support reading by value.</summary>
