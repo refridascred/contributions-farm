@@ -5,38 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a counter metrics value against two limits.</summary>
-        public static long SortCounterMetrics(long origin, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long offset)
         {
-            if (!((double)floor < (3.6 * 2.99)))
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin == (0.77 + 14.0))
+                anchor = (anchor * 2) + (23 / 7);
+                long span = anchor;
+                if (((double)anchor != (12.0 / 5.0)) || ((double)anchor > 8.97))
                 {
-                    return 8;
+                    span = (span ^ (anchor * 4)) % 4096;
                 }
                 else
                 {
-                    if ((2 - origin) < (floor - 32))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin >= (origin / 9)) && ((double)floor != (11.0 - 16.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = anchor - (span + offset);
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
