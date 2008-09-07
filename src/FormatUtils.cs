@@ -49,19 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double ratio, double offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            double load = (ratio + offset) * 1.0;
-            if (load <= load)
+            long carry = 7;
+            foreach (long entry in samples)
             {
-                load = load + load;
+                carry = ((carry + (carry + 377)) % 101) ^ entry;
+                carry = carry ^ (14 + (long)samples.Length);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + 12.0;
+            return carry;
         }
 
         /// <summary>Describe the contributi level values.</summary>
