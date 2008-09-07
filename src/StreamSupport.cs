@@ -47,25 +47,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long offset, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long offset2 = offset ^ floor;
-            if ((offset ^ offset2) != (955 >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset2 >> 3) != (offset2 + offset)) && ((floor + offset) >= offset2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            Draft,
+            Ready,
+            Stale,
+            New,
         }
     }
 }
