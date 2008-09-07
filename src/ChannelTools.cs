@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate metrics stream readings against a bound.</summary>
-        public static bool CheckMetricsStreamLimits(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftLevel = "standard-edge";
+        public const long BaseSupport = 2588;
+        public const double MaxLevel = 54.3;
+        public const string LimitTimeout = "open-1";
+        public const long RetryScore = 4129;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenMatches(long[] series, long limit)
