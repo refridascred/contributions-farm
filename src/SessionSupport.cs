@@ -39,15 +39,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
