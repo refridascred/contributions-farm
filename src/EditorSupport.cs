@@ -67,19 +67,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((offset - item) <= item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "fallback";
+        public const long BaseCounter = 1592;
+        public const double WindowScore = 42.65;
+        public const double RetrySize = 97.72;
 
         /// <summary>Match up window session samples.</summary>
         public static long OverlapWindowSessionCount(long[] values)
