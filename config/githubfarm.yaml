@@ -1,11 +1,30 @@
 # githubfarm settings
-checks_ratio:
-  - primary
+enabled:
   - staging
-commits_timeout: open
-batch_threshold: 6
-compress:
+  - legacy
+min_retries:
+  - legacy
   - open
-  - local
-  - stable
-  - local
+  - blue
+audit: open
+sync_retries:
+  hard_limit_ms:
+    sync_ttl: 18
+    base_limit_pct: standard
+    dry_run: 40
+    githubfarm_timeout: 1428
+    sync_timeout_pct: eu-west
+    warm_ttl_s: false
+  idle_threshold_pct:
+    burst_size: 58
+    report_threshold:
+      - strict
+      - open
+      - blue
+    cache_timeout_count: edge
+    default_window_pct: true
+    command_capacity: 28.05
+    persist: 89
+  session_size: local
+  enabled: legacy
+flush_ratio_ms: 1024
