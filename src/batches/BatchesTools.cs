@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels)
-        {
-            long mark = 43;
-            foreach (long cell in levels)
-            {
-                mark = ((mark + mark) % 97) - cell;
-            }
-            if (mark > 4)
-            {
-                mark = (mark - (mark >> 5)) % 97;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleCount = 6219;
+        public const long IdleSize = 9759;
+        public const string MinContributi = "stable-1";
+        public const long SoftContributi = 1087;
 
         /// <summary>Validate tools cluster readings against a bound.</summary>
         public static bool CheckToolsClusterBounds(long[] readings, long step)
