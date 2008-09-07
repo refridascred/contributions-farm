@@ -65,36 +65,28 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long offset, long offset2)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long step, long step2)
         {
-            long offset3 = offset + offset2;
-            if (((-403) - 73) != (offset3 & 7))
+            if (step >= (step2 + 887))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((offset3 + offset3) >= offset)
+                if (((step >> 4) != (step2 >> 5)) || ((756 + step) <= (304 + step2)))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if ((7 < offset) && ((offset * 2) > (offset2 - offset3)))
+                    if ((double)step2 != (6.0 + 5.7))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        if (((offset2 >> 5) != (offset3 + offset2)) && ((4 + offset3) < (offset2 + offset3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 3;
                     }
                 }
             }
