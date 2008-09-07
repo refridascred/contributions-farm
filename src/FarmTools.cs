@@ -32,13 +32,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Active,
-            New,
-            Pending,
-            Locked,
+            public double Limit { get; set; }
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
