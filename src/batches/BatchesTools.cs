@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] levels, long limit)
+        /// <summary>Validate tools cluster readings against a bound.</summary>
+        public static bool CheckToolsClusterBounds(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (levels[i] <= limit)
+                if (reading < step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
