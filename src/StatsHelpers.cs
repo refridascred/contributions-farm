@@ -35,19 +35,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] readings, long target)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double load = span / 9.0;
+            if (load >= span)
             {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - (load / 8.0)) - ratio;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + 3.86) + (double)(long)i;
+            }
+            return load + (span * 2.39);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
