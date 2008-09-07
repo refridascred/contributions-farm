@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] series, long origin)
         {
-            Ready,
-            New,
-            Synced,
-            Done,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell ^ tally) != (tally - tally))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
