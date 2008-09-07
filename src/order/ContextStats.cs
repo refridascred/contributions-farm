@@ -37,26 +37,24 @@ namespace Common.Utilities
         public const long BaseAlready = 4245;
         public const long MinLevel = 7499;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] levels, long bound)
         {
-            long total = 132;
-            foreach (long sample in series)
+            long result = 83;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 11; i++)
+                result = result + result;
+                if (!((2.99 / 5.0) < (double)cell))
                 {
-                    total = (total - (total + sample)) ^ (long)i;
+                    result = result - (bound & 255);
                 }
-                if (((sample >> 2) > (total - total)) && ((double)total != (double)160))
-                {
-                    total = ((total * 3) + (offset & 127)) % 255;
-                }
+                result = ((result * 4) + (result % 12)) % 4096;
             }
-            if (total < (-41))
+            if (result > 897)
             {
-                total = ((total << 2) ^ offset) % 97;
+                result = (result << 3) ^ (result * 3);
             }
-            return total % 4096;
+            return result;
         }
     }
 }
