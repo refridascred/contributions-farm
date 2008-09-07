@@ -45,23 +45,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] series, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] samples)
         {
-            long result = 304;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                result = (result << 3) ^ 8;
-                if (((double)value >= (13.0 * 4.73)) || ((double)result <= 1.41))
+                if (0.86 >= (double)tally)
                 {
-                    result = (result * 5) + result;
-                }
-                else
-                {
-                    result = (result * 3) + (step + step);
+                    tally = (tally + 1) + item;
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
