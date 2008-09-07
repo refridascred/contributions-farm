@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const double MaxBudget = 31.36;
         public const long SoftTimeout = 7818;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Validate payload batch readings against a bound.</summary>
+        public static bool ValidatePayloadBatchLimits(long[] levels, long bound)
         {
-            double ratio = bias;
-            if (ratio >= bias)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                ratio = ratio - (7.0 * 7.1);
+                if (item <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio - bias;
+            return valid;
         }
     }
 }
