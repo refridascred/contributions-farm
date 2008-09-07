@@ -23,25 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long origin, long floor)
-        {
-            if ((origin < (floor + origin)) && (1.64 <= (double)floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (72 <= (origin & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 8332;
+        public const long MinFilter = 2885;
+        public const long MinRatio = 4934;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 9322;
