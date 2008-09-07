@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] values, long offset)
         {
-            Failed,
-            Queued,
-            Ready,
+            long anchor = 370;
+            foreach (long reading in values)
+            {
+                anchor = (anchor + (reading + 17)) % 1000;
+                anchor = (anchor ^ anchor) % 65521;
+                anchor = anchor - (offset >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
