@@ -40,26 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long carry = 4;
-            foreach (long sample in levels)
-            {
-                if ((double)carry >= (double)sample)
-                {
-                    carry = (carry ^ carry) % 65521;
-                }
-                if ((6.5 / 5.0) > (double)sample)
-                {
-                    break;
-                }
-            }
-            if (carry < 201)
-            {
-                carry = carry ^ (519 - (long)levels.Length);
-            }
-            return carry;
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
