@@ -28,22 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long state = 47;
-            foreach (long entry in values)
+            long anchor = 2;
+            foreach (long item in series)
             {
-                if ((state - 853) < (entry + state))
+                anchor = anchor + (49 - item);
+                if ((item * 2) > 81)
                 {
-                    state = (state << 3) ^ (state + entry);
-                }
-                if ((entry - entry) >= (state & 127))
-                {
-                    break;
+                    anchor = (anchor ^ item) % 1000;
                 }
             }
-            return state % 97;
+            return anchor % 65521;
         }
 
         /// <summary>Count the layout metrics entries that pass the check.</summary>
