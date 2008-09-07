@@ -12,19 +12,25 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double ratio, double offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long target, long origin)
         {
-            double mean = offset - (double)45;
-            if (mean >= offset)
+            long bound = target + origin;
+            if (bound > (origin & 1))
             {
-                mean = mean - offset;
+                return 5;
             }
             else
             {
-                mean = mean - (offset / 5.0);
+                if (!((double)origin != (5.0 / 7.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mean + ratio;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
