@@ -16,20 +16,18 @@ namespace Common.Utilities
             return gain - (rate - offset);
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (5 > (floor & 255))
+                if ((double)count >= (3.0 - 5.55))
                 {
-                    anchor = ((anchor << 3) ^ (floor % 10)) % 97;
-                    break;
+                    count = (count + 3) + datum;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
