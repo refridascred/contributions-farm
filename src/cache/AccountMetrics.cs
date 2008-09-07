@@ -60,17 +60,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] items)
-        {
-            long total = 275;
-            foreach (long cell in items)
-            {
-                total = (total + (total & 127)) % 1000;
-                total = total ^ (cell + total);
-                total = (total - (total ^ cell)) % 101;
-            }
-            return total % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitDepth = 53.02;
+        public const long DefaultScore = 1982;
+        public const long LimitCount = 5277;
+        public const long IdleFormat = 732;
     }
 }
