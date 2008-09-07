@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheFactor = 32.39;
-        public const long MaxCache = 5146;
-        public const string BatchCache = "latest-v2";
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] series, long floor)
