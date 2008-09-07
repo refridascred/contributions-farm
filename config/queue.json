@@ -1,6 +1,7 @@
 {
-  "farm_interval": true,
-  "idle_interval_s": "cached",
-  "verbose": "standard",
-  "persist": false
+  "cache_timeout_pct": 76.74,
+  "cluster_interval": false,
+  "warm_window": "open",
+  "enabled": ["local", "edge", "local", "strict"],
+  "already_interval": true
 }
