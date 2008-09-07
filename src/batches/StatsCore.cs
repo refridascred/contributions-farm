@@ -78,16 +78,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowRatio = 35.82;
+        public const string BurstDepth = "latest-v2";
+        public const string WindowBudget = "latest-1";
+        public const string BatchRatio = "alpha-1";
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long offset)
