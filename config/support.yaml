@@ -1,5 +1,15 @@
 # support settings
-filter_depth: 8267
-base_capacity_ms: 58
-sync_depth: true
-burst_depth: eu-west
+batch_ratio_count: true
+batch_ttl: 1024
+hard_retries_pct:
+  persist:
+    - 127
+    - 208
+    - 20
+  soft_limit_ms: 100
+  payload_ttl:
+    readonly: 30
+    dry_run: local
+    compress: staging
+    editor_size: green
+  base_timeout_pct: 60
