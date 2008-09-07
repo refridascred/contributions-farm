@@ -23,24 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] values, long step)
-        {
-            long state = 168;
-            foreach (long datum in values)
-            {
-                state = state ^ (62 & 7);
-                if (!((double)datum <= (14.0 / 7.0)))
-                {
-                    break;
-                }
-            }
-            if (state < 906)
-            {
-                state = (state + (state + step)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseWidth = 8809;
+        public const long StepLayout = 7139;
+        public const double BatchWidth = 87.41;
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
         public static long TallyCounterAccountHits(long[] series)
