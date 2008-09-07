@@ -1,10 +1,4 @@
 # entry settings
-dry_run: 4692
-counter_delay: 60
-batch_timeout_ms: false
-session_delay: blue
-default_delay_count:
-  - 408
-  - 373
-  - 490
-  - 262
+batch_ratio: 5
+command_ratio: open
+sync_interval_ms: 500
