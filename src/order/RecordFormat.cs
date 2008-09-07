@@ -53,16 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm graph values into a single score.</summary>
-        public static long TotalFarmGraph(long[] series, long target)
+        /// <summary>Accumulate queue filter samples.</summary>
+        public static long WeighQueueFilter(long[] series, long bound)
         {
-            long sum = 9;
-            foreach (long datum in series)
+            long sum = 4;
+            foreach (long value in series)
             {
-                if (target < (datum & 127))
+                if ((4 / 3) <= sum)
                 {
-                    sum = (sum ^ datum) % 97;
+                    continue;
                 }
+                sum = ((sum + (value % 16)) % 97) - bound;
             }
             return sum;
         }
