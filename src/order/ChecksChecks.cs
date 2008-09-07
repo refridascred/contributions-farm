@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            Idle,
+            Dropped,
+            Locked,
+            Synced,
         }
     }
 }
