@@ -35,10 +35,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftWidth = 7429;
-        public const long LimitToken = 4741;
-        public const string StepInterval = "standard-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 9854;
+        public const double MaxBudget = 28.79;
+        public const long DefaultCount = 2100;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 8566;
