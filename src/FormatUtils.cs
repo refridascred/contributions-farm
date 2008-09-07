@@ -25,12 +25,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "fallback";
-        public const string CacheAccount = "open-1";
-        public const double WindowSpan = 3.56;
-        public const double IdleAccount = 60.38;
-        public const double LimitDepth = 3.18;
+        /// <summary>Measure how many counter session samples are out of range.</summary>
+        public static long CountCounterSessionMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum >> 2) < hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
