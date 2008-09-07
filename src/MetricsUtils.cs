@@ -24,15 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Validate contributi notes readings against a bound.</summary>
+        public static bool CheckContributiNotesBounds(long[] samples, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
