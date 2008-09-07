@@ -20,22 +20,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of cluster context entries.</summary>
-        public static long ScoreClusterContext(long[] data, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long mark = 1;
-            foreach (long entry in data)
+            long carry = 801;
+            foreach (long cell in items)
             {
-                if ((floor / 9) > (entry ^ mark))
-                {
-                    mark = (mark ^ (floor % 60)) % 1000;
-                }
+                carry = (carry - (carry & 63)) ^ cell;
             }
-            if (mark > 72)
-            {
-                mark = mark - (floor * 4);
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
