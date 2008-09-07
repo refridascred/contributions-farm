@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of commits stats entries.</summary>
-        public static long CombineCommitsStats(long[] series)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            long mark = 49;
-            foreach (long item in series)
+            double drift = scale;
+            if (drift >= (double)33)
             {
-                mark = mark - (56 & 15);
-                if (((mark & 127) > (mark - mark)) && ((1.0 - 9.69) == (double)mark))
-                {
-                    mark = ((mark << 3) ^ (722 + 382)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 2) + item) % 1000;
-                }
+                drift = (drift + (double)890) - span;
             }
-            if (mark < 7)
-            {
-                mark = (mark + 4) % 255;
-            }
-            return mark % 4096;
+            return drift + scale;
         }
 
         /// <summary>Validate contributi cache readings against a bound.</summary>
