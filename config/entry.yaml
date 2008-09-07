@@ -1,14 +1,9 @@
 # entry settings
-base_ratio: 29.33
-session_capacity: 7787
-readonly: 14
-channel_depth: false
-poll_window:
-  strict: false
-  sync_capacity:
-    readonly: 89.92
-    sync_retries_s: 6962
-    burst_retries_ms: 94
-    retry_limit_pct: 6921
-  min_limit_s: 1354
-checks_capacity: edge
+poll_ratio_s: true
+dry_run: 72
+poll_interval_pct: 60
+soft_interval_s:
+  - cached
+  - fallback
+warm_depth_ms: 100
+batch_capacity: latest
