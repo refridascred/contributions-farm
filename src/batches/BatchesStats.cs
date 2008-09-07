@@ -29,22 +29,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (((seen % 16) <= seen) && ((entry + 1) < (entry / 8)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the order phase values.</summary>
