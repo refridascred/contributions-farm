@@ -28,19 +28,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double bias, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            double scale = bias;
-            if (scale >= 6.15)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (scale + floor);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (double)57;
+            return hits;
         }
     }
 }
