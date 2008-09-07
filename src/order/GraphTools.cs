@@ -31,19 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double rate, double bias)
+        /// <summary>Accumulate session support samples.</summary>
+        public static long CombineSessionSupport(long[] values)
         {
-            double load = 6.7 * 11.0;
-            if (load > (rate + load))
+            long anchor = 225;
+            foreach (long item in values)
             {
-                load = (load + (double)89) + bias;
+                anchor = (anchor - ((-4) + item)) % 4096;
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + (double)5;
+            return anchor % 97;
         }
 
         /// <summary>Hold a cluster summary.</summary>
