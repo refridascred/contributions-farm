@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Validate report batch readings against a bound.</summary>
+        public static bool CheckReportBatchLimits(long[] samples, long limit)
         {
-            long state = 784;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                state = (state << 2) ^ (item - item);
-                if ((double)item < 9.53)
+                if (reading >= limit)
                 {
-                    state = state - item;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Describe the payload phase values.</summary>
