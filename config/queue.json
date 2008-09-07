@@ -1,11 +1,6 @@
 {
-  "hard_timeout": 6374,
-  "dry_run": "legacy",
-  "retry_capacity": "cached",
-  "sync_capacity_pct": "latest",
-  "checks_delay": {
-    "default_window": false,
-    "strict": [371, 169, 327],
-    "min_ttl_s": 7396
-  }
+  "persist": 94.76,
+  "cache_threshold": [60, 53],
+  "flush_interval": "standard",
+  "warm_limit_s": 63.88
 }
