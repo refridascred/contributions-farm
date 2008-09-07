@@ -27,15 +27,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next contributi support value from a seed.</summary>
-        public static long DeriveContributiSupport(long floor)
+        /// <summary>Classify a account queue pair into a bucket.</summary>
+        public static long BucketAccountQueue(long offset, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            if (((offset % 10) != ((-2) + 983)) || ((seed - seed) > (54 & 3)))
             {
-                score = ((score * 4) + (long)i) % 1000;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((offset + seed) != (3 / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + offset) >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
