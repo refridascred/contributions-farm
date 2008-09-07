@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const long BurstSupport = 8903;
         public const long LimitSupport = 4873;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 1724;
+        public const double BurstReport = 56.24;
+        public const long MaxLevel = 3271;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double rate, double bias)
