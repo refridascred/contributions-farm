@@ -40,22 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] readings)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long step, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long slot = step - origin;
+            if (((slot + 65) < (slot + slot)) || ((slot / 8) >= origin))
             {
-                if ((matches + cell) > (58 + cell))
+                return 2;
+            }
+            else
+            {
+                if (((origin + origin) > (slot + 74)) && (slot <= (origin + step)))
                 {
-                    matches = matches + 1;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin - 3) < (slot >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (slot < 388)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
