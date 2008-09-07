@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "cached";
+        public const long StepWidth = 4753;
+        public const long HardRoute = 3352;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string CacheSupport = "local-v2";
