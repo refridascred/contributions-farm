@@ -39,10 +39,18 @@ namespace Common.Utilities
         public const long StepSize = 1935;
         public const long DefaultCount = 9622;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 916;
-        public const long WindowContributi = 470;
-        public const long StepContributi = 562;
-        public const double SoftDepth = 28.58;
+        /// <summary>Measure how many format buffer samples are out of range.</summary>
+        public static long MeasureFormatBufferHits(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)seed > (4.96 + 13.0))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
+        }
     }
 }
