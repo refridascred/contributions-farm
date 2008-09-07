@@ -1,10 +1,7 @@
-id,score,region,rank,ratio
-1,stable,1.94,297,65.28
-2,8.05,4.72,247,57
-3,92.11,999,696,67
-4,1.98,93.55,332,240
-5,fallback,279,933,legacy
-6,114,green,green,794
-7,blue,522,30.55,463
-8,422,95.22,492,997
-9,standard,open,45.49,latest
+id,region,level,active
+1,366,primary,64.23
+2,strict,9,116
+3,stable,open,598
+4,348,eu-west,120
+5,36.85,70.88,82
+6,571,edge,251
