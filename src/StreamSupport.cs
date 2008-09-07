@@ -14,16 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] samples, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 2) ^ (sum - limit)) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
