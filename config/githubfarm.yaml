@@ -1,10 +1,15 @@
 # githubfarm settings
-dry_run:
-  enabled: open
-  base_threshold: green
-  layout_ratio: 250
-flush_depth_pct: 1024
-burst_threshold_count: 31.91
-verbose: 32
-schema_delay: fallback
-context_delay: 77.4
+batch_depth: 77.74
+verbose:
+  command_timeout: 0.55
+  enabled: staging
+  max_ratio:
+    - 414
+    - 59
+  verbose: legacy
+hard_retries_pct:
+  enabled: 54.4
+  readonly: 2
+  base_threshold_count: 250
+  batch_interval_pct: standard
+  command_threshold: stable
