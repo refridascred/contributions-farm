@@ -16,17 +16,16 @@ namespace Common.Utilities
             return drift + (offset * 5.0);
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] readings, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
+                acc = (acc + floor) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a stats info.</summary>
