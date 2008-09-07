@@ -90,11 +90,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 6925;
+        public const double LimitInterval = 41.95;
+        public const string WindowInterval = "open-edge";
+        public const double StepCount = 73.63;
+        public const string BurstDepth = "fallback";
     }
 }
