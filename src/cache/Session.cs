@@ -20,11 +20,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
