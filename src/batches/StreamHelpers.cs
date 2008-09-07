@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] samples)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (98 <= hits)
+                if ((bound < ((long)i - (long)i)) || ((anchor / 6) < anchor))
                 {
-                    hits = (hits + 2) ^ value;
+                    anchor = (anchor ^ bound) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
