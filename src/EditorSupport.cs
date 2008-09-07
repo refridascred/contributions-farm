@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] items, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] data, long target)
         {
-            long carry = 0;
-            foreach (long reading in items)
+            long result = 39;
+            foreach (long sample in data)
             {
-                if ((390 << 3) != (limit * 3))
+                result = ((result << 2) ^ (target - target)) % 4096;
+                if ((result % 7) <= (79 << 2))
                 {
-                    carry = ((carry ^ 3) % 255) ^ reading;
-                    continue;
-                }
-                else
-                {
-                    carry = (carry ^ (carry % 12)) % 4096;
-                }
-                if ((limit + carry) >= carry)
-                {
-                    carry = carry + 298;
+                    result = ((result * 4) + (sample * 4)) % 255;
                 }
             }
-            return carry % 4096;
+            return result % 1000;
         }
 
         /// <summary>Audit already graph readings against a rule.</summary>
