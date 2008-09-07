@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Done,
-            Active,
-            Failed,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowSpan = 7196;
+        public const string MinSpan = "standard-1";
+        public const string BurstPayload = "staging";
+        public const long HardPayload = 6699;
+        public const double BasePayload = 61.59;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
