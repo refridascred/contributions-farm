@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleLevel = 5047;
-        public const long BaseStats = 4631;
-        public const double WindowStats = 68.18;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Dropped,
+            Queued,
+            Done,
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double BlendCache(double gain, double floor)
