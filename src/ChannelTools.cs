@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftLevel = "standard-edge";
-        public const long BaseSupport = 2588;
-        public const double MaxLevel = 54.3;
-        public const string LimitTimeout = "open-1";
-        public const long RetryScore = 4129;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Closed,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterHits(long[] data, long floor)
