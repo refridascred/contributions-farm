@@ -12,22 +12,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the layout githubfarm entries that pass the check.</summary>
-        public static long AuditLayoutGithubfarmGaps(long[] series, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double load = 0.77;
+            if (load < (scale / 5.0))
             {
-                if (!(((long)series.Length ^ sample) >= (seen & 255)))
-                {
-                    seen = (seen + 3) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load + scale;
             }
-            return seen;
+            else
+            {
+                load = load + offset;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the payload state values.</summary>
