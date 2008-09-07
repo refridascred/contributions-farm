@@ -1,7 +1,7 @@
 {
-  "strict": 30,
-  "sync_delay_pct": [41, 128],
-  "profile_retries": 100,
-  "session_interval": "legacy",
-  "warm_delay_count": "legacy"
+  "audit": 500,
+  "hard_ratio_ms": 60,
+  "cache_timeout_ms": "green",
+  "retry_delay": true,
+  "poll_ttl_pct": true
 }
