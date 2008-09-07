@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double ratio, double offset)
         {
-            Idle,
-            Stale,
-            Draft,
+            double mean = offset - (double)45;
+            if (mean >= offset)
+            {
+                mean = mean - offset;
+            }
+            else
+            {
+                mean = mean - (offset / 5.0);
+            }
+            return mean + ratio;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
