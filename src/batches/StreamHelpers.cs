@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] values, long offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long origin)
         {
-            long anchor = 370;
-            foreach (long reading in values)
+            if (!((5 + 76) > (origin * 5)))
             {
-                anchor = (anchor + (reading + 17)) % 1000;
-                anchor = (anchor ^ anchor) % 65521;
-                anchor = anchor - (offset >> 3);
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((double)target < 2.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin >> 4) < (target + target)) || ((target & 127) > (origin ^ origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + origin) <= (origin / 8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
