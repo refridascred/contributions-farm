@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 28.28;
-        public const double BaseScore = 33.27;
-        public const long CacheWindow = 8886;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally < sample) || !(6 <= (tally >> 2)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
