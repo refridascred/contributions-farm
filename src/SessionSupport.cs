@@ -26,32 +26,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long target, long target2)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long target)
         {
-            long delta = target ^ target2;
-            if ((target + delta) != (83 << 3))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (target <= ((-858) << 3))
+                if (cell > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target << 3) < (delta + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
