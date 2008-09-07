@@ -56,19 +56,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] series, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (item < limit)
+                if (entry >= step)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
