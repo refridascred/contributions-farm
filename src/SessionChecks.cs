@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const long WindowScore = 5236;
         public const string MaxBatches = "fallback-1";
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] values, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
