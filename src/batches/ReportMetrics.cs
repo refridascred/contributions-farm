@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double ratio, double offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] items, long seed)
         {
-            double load = 6.4;
-            return ((load - (load * 20.0)) + ratio) + offset;
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
