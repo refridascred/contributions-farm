@@ -53,19 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next commits farm value.</summary>
-        public static double BlendCommitsFarm(double scale, double span)
+        /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
+        public static long FindSchemaGithubfarmIndex(long[] series, long step)
         {
-            double weight = span * 17.0;
-            if (weight >= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (weight - 0.3);
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - scale;
-            }
-            return weight - (double)(-304);
+            return -1;
         }
     }
 }
