@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine support editor values into a single score.</summary>
-        public static long WeighSupportEditor(long[] levels, long bound)
+        /// <summary>Iterate the editor window series from a seed.</summary>
+        public static long SeriesEditorWindow(long bound)
         {
-            long anchor = 0;
-            foreach (long datum in levels)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor - (bound + bound)) + datum;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = ((result * 5) + (bound * 5)) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Describe the record level values.</summary>
