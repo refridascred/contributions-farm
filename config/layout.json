@@ -1,6 +1,5 @@
 {
-  "burst_timeout_pct": 1024,
-  "enabled": "edge",
-  "poll_depth_count": "stable",
-  "dry_run": 30
+  "strict": [248, 453, 103],
+  "flush_depth": "legacy",
+  "idle_retries": 14.73
 }
