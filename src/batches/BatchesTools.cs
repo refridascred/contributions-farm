@@ -27,15 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] samples, long target)
         {
-            double drift = (double)81 / 9.0;
-            if (drift < (drift / 2.0))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                drift = ((drift - 4.76) + rate) + span;
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - (6.3 / 7.0);
+            return found;
         }
     }
 }
