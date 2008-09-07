@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 5550;
-        public const long DefaultFarm = 4133;
-        public const long IdleFactor = 5005;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] levels, long bound)
+        {
+            long score = 593;
+            foreach (long reading in levels)
+            {
+                if ((1.75 * 5.34) >= (double)reading)
+                {
+                    score = (((score * 3) + 4) % 65521) - bound;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long offset, long target)
