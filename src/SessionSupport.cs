@@ -26,15 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric session value from a seed.</summary>
-        public static long SeriesMetricSession(long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                result = (result - (long)i) % 255;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return mark;
+            return result;
         }
     }
 }
