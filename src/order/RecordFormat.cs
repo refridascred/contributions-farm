@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const long StepAlready = 1758;
         public const long BurstAlready = 7998;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] values, long floor)
         {
-            long mix = 25;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                mix = ((mix * 5) + step) - cell;
+                if (entry < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix > 428)
-            {
-                mix = ((mix << 2) ^ (step - 50)) % 97;
-            }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Compare every pair of counter editor readings.</summary>
