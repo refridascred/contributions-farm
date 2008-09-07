@@ -35,17 +35,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] readings, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
