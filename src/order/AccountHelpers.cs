@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] data)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (!((7.83 / 9.0) != (double)cell))
+                if (entry >= floor)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
