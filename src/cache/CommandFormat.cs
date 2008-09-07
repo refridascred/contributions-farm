@@ -32,40 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a support profile pair into a bucket.</summary>
-        public static long SortSupportProfile(long bound, long bound2)
-        {
-            long diff = bound ^ bound2;
-            if (!((5.63 - 2.6) != (double)diff))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((diff - diff) >= bound2) || ((double)bound2 != (0.2 + 16.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((11 - diff) > bound) || ((double)diff < (4.0 / 3.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound << 3) == (bound - bound)) && ((bound % 24) <= diff))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheFactor = 63.35;
+        public const string IdleGraph = "primary-v2";
+        public const double SoftRatio = 74.05;
+        public const double BatchGraph = 88.93;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool CheckStatsLimits(long[] readings, long offset)
