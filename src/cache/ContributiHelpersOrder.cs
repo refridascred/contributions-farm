@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long MaxCount = 5894;
         public const long IdleDepth = 3507;
 
-        /// <summary>Look up the position of a payload layout sample.</summary>
-        public static long FindPayloadLayoutIndex(long[] samples, long target)
+        /// <summary>Project the next batch commits value.</summary>
+        public static double ScaleBatchCommits(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (span + span) / 2.0;
+            return (load - load) + scale;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
