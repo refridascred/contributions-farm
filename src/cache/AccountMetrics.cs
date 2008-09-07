@@ -27,11 +27,23 @@ namespace Common.Utilities
         public const long StepToken = 929;
         public const long LimitToken = 4364;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
+            long anchor = 21;
+            foreach (long value in series)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+                if ((anchor * 2) < (value / 7))
+                {
+                    anchor = ((anchor << 3) ^ (anchor + value)) % 65521;
+                }
+            }
+            if (anchor < (-6))
+            {
+                anchor = ((anchor << 2) ^ (97 / 8)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
