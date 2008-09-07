@@ -27,15 +27,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] readings, long floor)
         {
-            long sum = 84;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                sum = ((sum << 2) ^ reading) % 4096;
+                if ((floor & 7) < (floor >> 1))
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
