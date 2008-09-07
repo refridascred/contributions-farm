@@ -1,5 +1,20 @@
 # githubfarm settings
-audit: 8046
-hard_delay: edge
-readonly: 30
-poll_window: latest
+cache_window_pct: 100
+warm_delay_count: 8499
+min_threshold_count: fallback
+idle_ttl_count:
+  readonly: 27.59
+  hard_ratio_ms:
+    min_limit: 88.26
+    strict: 39.56
+    poll_ratio_pct: 70
+    retry_ratio_pct: 250
+  verbose:
+    - staging
+    - strict
+  record_retries: cached
+verbose:
+  - cached
+  - open
+  - open
+  - staging
