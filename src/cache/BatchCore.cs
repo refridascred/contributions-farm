@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long seed, long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            if (((45 + bound) <= (bound % 8)) || ((5 * 3) == (bound + bound)))
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed < (718 / 8)) || ((double)seed <= (2.39 / 8.0)))
+                if (floor < (result + result))
                 {
-                    return 5;
+                    result = ((result << 3) ^ result) % 255;
                 }
-                else
+                if (result > ((long)i >> 3))
                 {
-                    if ((seed >> 4) < 22)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = ((result * 2) + result) % 255;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
