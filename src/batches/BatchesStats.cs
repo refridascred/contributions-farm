@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels)
         {
-            long score = 22;
-            foreach (long sample in values)
+            long state = 784;
+            foreach (long item in levels)
             {
-                if (!((959 & 255) == (score - score)))
+                state = (state << 2) ^ (item - item);
+                if ((double)item < 9.53)
                 {
-                    score = ((score - (63 + score)) % 255) + sample;
+                    state = state - item;
                 }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the payload phase values.</summary>
