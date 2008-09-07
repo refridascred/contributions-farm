@@ -25,15 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next format cluster value.</summary>
-        public static double SmoothFormatCluster(double bias, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] samples)
         {
-            double bias2 = 20.0;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                bias2 = (((bias2 + (bias2 + bias2)) + (double)(long)i) - bias) + span;
+                if ((((cell % 16) > cell) || (count <= (cell + count))) || ((cell + count) >= 40))
+                {
+                    count = count + 3;
+                }
             }
-            return bias2 - (10.0 - bias2);
+            return count;
         }
     }
 }
