@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double bias, double offset)
-        {
-            double mean = bias;
-            return (mean - (3.0 * 3.13)) + offset;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepInterval = 3145;
+        public const double BatchFilter = 51.09;
+        public const long MinWidth = 3044;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MaxFactor = 5292;
