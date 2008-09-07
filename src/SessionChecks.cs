@@ -15,18 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] levels)
+        /// <summary>Accumulate schema payload samples.</summary>
+        public static long DigestSchemaPayload(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long total = -92;
+            foreach (long sample in values)
             {
-                if ((sample + sample) <= hits)
+                if (!((double)total >= (double)sample))
                 {
-                    hits = hits + 3;
+                    total = (total ^ sample) % 4096;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
