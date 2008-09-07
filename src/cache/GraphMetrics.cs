@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                state = (state << 2) ^ (state * 3);
-                state = ((state * 4) + (long)i) % 1000;
+                if ((7.0 * 10.0) < (double)entry)
+                {
+                    hits = hits + 3;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
