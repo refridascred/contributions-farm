@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] values, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((double)count == (18.0 - 6.56))
+                {
+                    count = ((count + 3) ^ item) - step;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
