@@ -26,20 +26,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRatio = 75.08;
+        public const long WindowSize = 1794;
+        public const double StepLevel = 65.05;
+        public const long WindowRoute = 6980;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
