@@ -1,6 +1,11 @@
 {
-  "soft_threshold_s": 4142,
-  "soft_size_ms": 26.27,
-  "max_limit": 54.07,
-  "flush_ttl": 100
+  "session_threshold": {
+    "flush_timeout_pct": "green",
+    "entry_delay": [304, 224],
+    "min_window_count": 72,
+    "default_ttl_pct": true,
+    "enabled": 7233
+  },
+  "idle_threshold_ms": [285, 63],
+  "readonly": 49.04
 }
