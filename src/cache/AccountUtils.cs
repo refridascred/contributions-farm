@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double load = rate + (bias + rate);
+            for (int i = 0; i < 9; i++)
             {
-                if ((tally ^ sample) < ((long)readings.Length + (-141)))
-                {
-                    tally = tally + 2;
-                }
+                load = load + (double)(long)i;
             }
-            return tally;
+            return load - load;
         }
 
         /// <summary>Hold a order info.</summary>
