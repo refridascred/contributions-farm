@@ -31,17 +31,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first context stats entry that matches the target.</summary>
-        public static long LookupContextStatsIndex(long[] items, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
