@@ -12,32 +12,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank already order input into a small class.</summary>
-        public static long SortAlreadyOrder(long origin, long floor)
+        /// <summary>Derive the next graph format value from a seed.</summary>
+        public static long RollGraphFormat(long seed)
         {
-            long next = origin - floor;
-            if (!((origin & 15) != (floor / 3)))
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((next / 8) > origin)
+                if ((seed * 3) != (seed >> 3))
                 {
-                    return 4;
+                    score = (score << 2) ^ (score + seed);
+                    score = ((score * 4) + seed) % 97;
                 }
-                else
-                {
-                    if ((7.0 + 7.0) >= (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Blend two session measurements.</summary>
