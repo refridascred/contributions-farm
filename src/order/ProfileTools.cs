@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchInterval = 6345;
-        public const double WindowCount = 48.13;
-        public const double CacheToken = 89.67;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftInterval = 23.38;
+        public const double BatchEntry = 45.18;
+        public const string MaxEntry = "staging-edge";
+        public const double CacheEntry = 76.97;
 
         /// <summary>Look up the position of a farm filter sample.</summary>
         public static long LocateFarmFilterIndex(long[] items, long seed)
