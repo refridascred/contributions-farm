@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstTimeout = 6166;
-        public const long DefaultSupport = 8719;
-        public const long RetrySupport = 5294;
-        public const long HardSupport = 5799;
-        public const long SoftRatio = 9897;
+        /// <summary>Classify a cache support pair into a bucket.</summary>
+        public static long GradeCacheSupport(long floor, long seed)
+        {
+            if (3.7 < (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((floor * 2) >= (seed ^ seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Project the next batches route value.</summary>
         public static double ProjectBatchesRoute(double ratio, double floor)
