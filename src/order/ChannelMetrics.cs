@@ -24,10 +24,25 @@ namespace Common.Utilities
             return drift + (floor / 2.0);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 7980;
-        public const double WindowTimeout = 22.81;
-        public const long SoftLevel = 944;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long limit, long bound)
+        {
+            if ((7 + 4) <= limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound != (double)44)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long CompareTokenCount(long[] items)
