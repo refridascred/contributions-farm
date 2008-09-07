@@ -38,9 +38,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 6043;
-        public const long StepWidth = 9032;
-        public const long CacheBatches = 9974;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCommand = "primary";
+        public const double WindowBudget = 57.96;
+        public const long HardCommand = 952;
+        public const double IdleCommand = 91.43;
     }
 }
