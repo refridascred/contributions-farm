@@ -28,14 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Draft,
-            Active,
-            Pending,
             Synced,
-            Retry,
+            Queued,
+            Idle,
         }
     }
 }
