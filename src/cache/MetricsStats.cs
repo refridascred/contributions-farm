@@ -34,11 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double gain, double floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] samples)
         {
-            double bias = 18.0 + (double)756;
-            return ((bias - bias) + gain) + floor;
+            long total = 702;
+            foreach (long datum in samples)
+            {
+                total = total ^ (datum - (-587));
+                total = ((total << 2) ^ (datum % 16)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
