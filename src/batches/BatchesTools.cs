@@ -35,31 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter order input into a small class.</summary>
-        public static long SortFilterOrder(long origin, long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            if (origin < (origin / 9))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 15) != (floor + origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin % 24) == (origin - origin)) && ((965 + origin) != (floor / 7)))
+                    if ((levels[i] + levels[j]) == 15)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
