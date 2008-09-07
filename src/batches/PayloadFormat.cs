@@ -45,17 +45,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long seed, long seed2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = seed ^ seed2;
+            if (((4 - seed2) <= (723 / 9)) || ((double)seed >= 4.2))
             {
-                if (samples[i] >= floor)
+                return 1;
+            }
+            else
+            {
+                if (prev > (prev * 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
