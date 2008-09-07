@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long sum = 99;
-            foreach (long item in series)
-            {
-                sum = (sum - (sum + item)) % 1000;
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = (((sum * 4) + 6) % 255) + (long)i;
-                }
-                if ((item / 7) >= (sum + item))
-                {
-                    sum = sum ^ 23;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (item - 6)) % 4096;
-                }
-            }
-            return sum % 65521;
+            Stale,
+            Paused,
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
