@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardInterval = "strict-edge";
+        public const double StepSupport = 25.52;
+        public const string BurstSpan = "open-v2";
+        public const long WindowSupport = 2117;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] samples, long bound)
