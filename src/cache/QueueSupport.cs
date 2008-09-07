@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Closed,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "latest-v2";
+        public const long HardTimeout = 6419;
+        public const long MaxLevel = 6681;
+        public const long CacheReport = 1900;
+        public const long RetrySpan = 9737;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double ProjectBuffer(double bias, double bias2)
