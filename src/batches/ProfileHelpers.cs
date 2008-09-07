@@ -64,15 +64,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] readings, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long sum = 2;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((double)sum == (3.2 * 1.81))
+                {
+                    sum = ((((sum << 3) ^ (23 << 1)) % 97) + cell) + floor;
+                }
             }
-            return carry;
+            return sum;
         }
     }
 }
