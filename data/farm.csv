@@ -1,11 +1,6 @@
-id,weight,rank
-1,955,13.77
-2,59.44,887
-3,91.47,45
-4,cached,standard
-5,712,0.98
-6,95.03,601
-7,standard,local
-8,97.97,182
-9,946,209
-10,17,eu-west
+id,level,weight
+1,staging,95
+2,open,blue
+3,6.93,930
+4,local,663
+5,330,43.72
