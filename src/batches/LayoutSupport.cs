@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 2) + (bound & 31)) % 255;
-                if ((state << 1) <= (state + bound))
-                {
-                    state = (state ^ bound) % 97;
-                }
-                if (((double)bound >= (double)state) || (bound > (130 << 2)))
-                {
-                    state = (state ^ (bound + (long)i)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
