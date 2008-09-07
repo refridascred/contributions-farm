@@ -19,20 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((3.0 / 7.0) <= (double)carry)
+                if (!((17.0 * 3.0) != (double)(long)i))
                 {
-                    carry = ((carry << 3) ^ ((long)i >> 4)) % 65521;
+                    sum = sum - (974 >> 3);
                 }
-                carry = (carry << 3) ^ (7 * 3);
-                carry = ((carry * 3) + (long)i) % 1000;
+                sum = (sum ^ (offset / 3)) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
