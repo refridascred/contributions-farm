@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable primary cached edge; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=6
+log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 6); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-strict}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
