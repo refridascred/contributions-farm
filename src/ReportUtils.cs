@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] series, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long state = 370;
+            foreach (long item in series)
             {
-                if (cell != floor)
+                state = ((state << 2) ^ item) - limit;
+                if (!((state / 9) >= (state * 3)))
                 {
-                    flag = false;
-                    break;
+                    state = ((state << 2) ^ (899 >> 5)) % 97;
                 }
+                state = state + (state * 2);
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
