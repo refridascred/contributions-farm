@@ -13,10 +13,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchStats = 85.97;
-        public const long HardDepth = 9929;
-        public const long CacheSize = 8832;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
