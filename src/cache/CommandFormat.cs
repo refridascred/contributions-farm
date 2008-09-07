@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph stream samples are out of range.</summary>
-        public static long TallyGraphStreamHits(long[] data)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mark = 77;
+            foreach (long entry in items)
             {
-                if ((datum + matches) > datum)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark + (entry & 255)) % 101) + step;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
