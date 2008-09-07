@@ -32,14 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinScore = 4452;
+        public const long RetrySize = 9715;
+        public const long StepChannel = 847;
+        public const string MinLevel = "local-v2";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleBuffer = "primary-v2";
