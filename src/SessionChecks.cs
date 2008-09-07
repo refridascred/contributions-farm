@@ -29,12 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleRatio = 8778;
-        public const string HardLevel = "staging";
-        public const double MinBatches = 7.37;
-        public const long WindowScore = 5236;
-        public const string MaxBatches = "fallback-1";
+        /// <summary>Count the window metrics entries that pass the check.</summary>
+        public static long TallyWindowMetricsHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches + cell) <= matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of queue session readings.</summary>
         public static long CombineQueueSession(long[] levels, long offset)
