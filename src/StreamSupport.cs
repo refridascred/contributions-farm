@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long limit)
         {
-            long anchor = 29;
-            foreach (long sample in levels)
+            if ((double)21 <= (double)seed)
             {
-                if ((seed <= (seed + sample)) || ((sample % 100) >= (sample * 4)))
-                {
-                    anchor = ((anchor * 4) + (anchor * 4)) % 97;
-                }
-                anchor = ((anchor * 5) + (seed + 86)) % 4096;
-                anchor = ((anchor << 3) ^ (anchor + 63)) % 255;
+                return 6;
             }
-            return anchor % 4096;
+            else
+            {
+                if ((seed - limit) <= (seed + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (87 < (seed - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
