@@ -12,12 +12,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
+            Paused,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Iterate the stream token series from a seed.</summary>
