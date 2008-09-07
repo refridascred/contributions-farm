@@ -20,15 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double scale, double span)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] data, long offset)
         {
-            double weight = (double)(888 + 7);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = ((weight + weight) + (double)(long)i) - scale;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight - span;
+            return -1;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
