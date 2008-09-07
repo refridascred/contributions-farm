@@ -1,5 +1,7 @@
 # entry settings
-soft_timeout: latest
-burst_delay: true
-flush_timeout_pct: primary
-idle_window_s: 64.36
+route_threshold:
+  - local
+  - standard
+cache_size_count: 46
+burst_limit_s: latest
+support_capacity: open
