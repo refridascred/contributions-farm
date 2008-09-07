@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowBuffer = "staging-edge";
+        public const string WindowRatio = "latest-1";
+        public const long MinSpan = 3065;
+        public const long LimitInterval = 5640;
+        public const long RetryBuffer = 4107;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LookupAlreadyIndex(long[] data, long seed)
