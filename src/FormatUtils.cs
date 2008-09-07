@@ -49,16 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long carry = 7;
-            foreach (long entry in samples)
-            {
-                carry = ((carry + (carry + 377)) % 101) ^ entry;
-                carry = carry ^ (14 + (long)samples.Length);
-            }
-            return carry;
+            Active,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the contributi level values.</summary>
