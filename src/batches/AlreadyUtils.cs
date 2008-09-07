@@ -20,38 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long bound, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] readings, long target)
         {
-            if ((seed + seed) > (bound + bound))
+            bool valid = true;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 15) >= (bound + seed))
+                if (value < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.0 / 4.0) >= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7 + (-669)) == (bound + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the account mode values.</summary>
