@@ -36,12 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Classify a already commits pair into a bucket.</summary>
+        public static long SortAlreadyCommits(long target, long limit)
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            if ((3.83 - 4.3) <= (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) <= target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Scale a channel stats figure with a bias.</summary>
