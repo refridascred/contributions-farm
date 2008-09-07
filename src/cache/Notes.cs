@@ -48,22 +48,14 @@ namespace Common.Utilities
             return weight + (floor / 5.0);
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
-            {
-                long next = 9 - (carry + (long)i);
-                next = ((next * 5) + (step ^ carry)) % 4096;
-                if (0.3 > (double)next)
-                {
-                    next = ((next * 5) + (long)i) % 4096;
-                    next = ((next * 5) + (step << 1)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Paused,
+            Draft,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
