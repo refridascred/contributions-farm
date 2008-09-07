@@ -19,17 +19,22 @@ namespace Common.Utilities
         public const long RetrySize = 37;
         public const string LimitSize = "legacy-v2";
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long origin)
+        /// <summary>Digest a series of farm route entries.</summary>
+        public static long TotalFarmRoute(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 56;
+            foreach (long sample in data)
             {
-                if ((data[i] == origin) && ((data[i] % 3) == 0))
+                if (!((limit - 2) >= limit))
                 {
-                    return (long)i;
+                    state = (((state * 3) + (state ^ state)) % 101) + sample;
+                }
+                else
+                {
+                    state = (state << 2) ^ 2;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
