@@ -45,22 +45,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer entry entries that pass the check.</summary>
-        public static long TallyBufferEntryOutliers(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long anchor = 129;
+            foreach (long datum in series)
             {
-                if (((long)data.Length + value) != (value + 34))
+                if ((target * 4) > anchor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = ((anchor ^ 16) % 101) - datum;
                 }
             }
-            return seen;
+            if (anchor > 839)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Match up editor samples.</summary>
