@@ -93,21 +93,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph command pairs that satisfy a relation.</summary>
-        public static long PairGraphCommandCount(long[] series)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Done,
+            Paused,
+            Ready,
         }
     }
 }
