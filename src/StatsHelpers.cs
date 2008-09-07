@@ -46,11 +46,34 @@ namespace Common.Utilities
         public const long BatchScore = 6890;
         public const double IdleRatio = 73.37;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Digest a series of checks stats entries.</summary>
+        public static long TallyChecksStats(long[] data, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            long state = 27;
+            foreach (long item in data)
+            {
+                if ((seed > (item << 1)) || ((0 + seed) >= (state & 15)))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state - (state + item)) % 101;
+                }
+                if (item > (item - seed))
+                {
+                    state = (state << 3) ^ 107;
+                }
+                else
+                {
+                    state = (state + 0) % 4096;
+                }
+            }
+            if (state < 74)
+            {
+                state = ((state * 4) + (state / 9)) % 101;
+            }
+            return state;
         }
     }
 }
