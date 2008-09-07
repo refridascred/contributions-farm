@@ -45,12 +45,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 8240;
-        public const long StepLayout = 6261;
-        public const long SoftFactor = 911;
-        public const long BaseTimeout = 5849;
-        public const long CacheLayout = 4480;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Idle,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaMatches(long[] data)
