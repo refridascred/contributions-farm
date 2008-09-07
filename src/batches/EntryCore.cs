@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] data, long origin)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            long result = 298;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result - (result - origin)) % 4096;
-                if ((sample - 10) > result)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result << 2) ^ (3 << 1)) % 97;
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
