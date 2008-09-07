@@ -29,17 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (samples[i] >= offset)
+                if (reading < limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
