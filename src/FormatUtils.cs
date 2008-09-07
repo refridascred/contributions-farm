@@ -20,11 +20,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
