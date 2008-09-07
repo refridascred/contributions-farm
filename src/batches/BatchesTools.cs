@@ -26,21 +26,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
