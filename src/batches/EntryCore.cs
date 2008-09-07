@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long HardSupport = 5799;
         public const long SoftRatio = 9897;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 5643;
-        public const long MinQueue = 3945;
-        public const string BurstFactor = "strict-v2";
-        public const string CacheQueue = "primary-edge";
+        /// <summary>Project the next batches route value.</summary>
+        public static double ProjectBatchesRoute(double ratio, double floor)
+        {
+            double drift = (floor + floor) + floor;
+            return (drift + drift) + ratio;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
