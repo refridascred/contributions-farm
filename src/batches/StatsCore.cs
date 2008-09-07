@@ -70,11 +70,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowRatio = 35.82;
-        public const string BurstDepth = "latest-v2";
-        public const string WindowBudget = "latest-1";
-        public const string BatchRatio = "alpha-1";
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Idle,
+            Draft,
+            New,
+        }
 
         /// <summary>Project the next cache session value.</summary>
         public static double AdjustCacheSession(double rate, double span)
