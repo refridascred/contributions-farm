@@ -60,12 +60,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Idle,
+            New,
+            Done,
             Ready,
-            Queued,
+            Closed,
         }
     }
 }
