@@ -20,39 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a record contributi pair into a bucket.</summary>
-        public static long RankRecordContributi(long origin, long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            long offset = origin ^ step;
-            if ((offset & 63) != (5 << 1))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin - 3) >= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset / 7) < (offset ^ offset)) || (2.0 < (double)offset))
+                    if ((samples[i] ^ samples[j]) < 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin < (offset << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
