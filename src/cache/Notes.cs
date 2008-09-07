@@ -45,14 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Paused,
-            Draft,
+            Ready,
+            Active,
             Failed,
-            Locked,
-            Pending,
         }
 
         /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
