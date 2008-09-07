@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const string IdleBudget = "primary-edge";
         public const long BurstBuffer = 8518;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long carry = 5;
-            foreach (long item in data)
-            {
-                carry = (((carry << 2) ^ carry) % 101) + item;
-            }
-            return carry % 4096;
+            Done,
+            Pending,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Compare every pair of session token readings.</summary>
