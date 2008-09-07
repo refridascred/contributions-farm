@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] levels)
-        {
-            long carry = 7;
-            foreach (long reading in levels)
-            {
-                if ((double)carry >= (double)reading)
-                {
-                    carry = ((carry << 3) ^ carry) % 65521;
-                }
-                else
-                {
-                    carry = (carry + carry) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchFactor = 7216;
+        public const string SoftInterval = "staging-1";
+        public const long BaseSize = 2553;
+        public const string RetryBudget = "alpha-edge";
 
         /// <summary>Rank record metric input into a small class.</summary>
         public static long BucketRecordMetric(long target, long origin)
