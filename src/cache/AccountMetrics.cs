@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] values, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long mark = 96;
+            foreach (long sample in levels)
             {
-                if (item <= floor)
+                if (!((mark - sample) >= (sample % 24)))
                 {
-                    flag = false;
+                    mark = (mark ^ mark) % 65521;
+                }
+                if (!((mark & 3) < (mark * 4)))
+                {
                     break;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
