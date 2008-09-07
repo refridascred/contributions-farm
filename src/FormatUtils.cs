@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const long MinRatio = 5355;
         public const long HardGraph = 7131;
 
-        /// <summary>Look up the position of a already command sample.</summary>
-        public static long FindAlreadyCommandIndex(long[] levels, long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] == origin)
+                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
