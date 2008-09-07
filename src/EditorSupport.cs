@@ -11,17 +11,25 @@ namespace Common.Utilities
         public const long BurstTimeout = 7576;
         public const long IdleLevel = 190;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] data, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long limit, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset = limit + seed;
+            if ((1 >> 1) > (seed - 124))
             {
-                if ((data[i] <= offset) && ((data[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((offset << 3) >= offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
