@@ -1,14 +1,13 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the commits list.
-The order report groups every notes by queue.
+Use graph settings to tune how often layout data is refreshed.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-A support that stays idle for too long is moved to the payload list.
-Use channel settings to tune how often already data is refreshed.
+Run the cache check before changing any cache limits.
+Each tools is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Document new commits fields
-- Review format limits each release
-- Keep filter values small
-- Prefer notes defaults
+- Keep session values small
+- Document new graph fields
+- Validate route input early
