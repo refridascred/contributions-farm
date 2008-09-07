@@ -39,13 +39,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long bound, long step)
         {
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            long bound2 = bound ^ step;
+            if (!((bound2 + step) == (step ^ bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound2 + bound) < (bound2 - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of format readings.</summary>
