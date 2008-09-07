@@ -29,11 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double ratio, double floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double rate = (ratio / 8.0) * 9.0;
-            return (rate - (ratio - ratio)) + floor;
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
