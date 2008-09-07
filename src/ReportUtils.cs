@@ -77,19 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a channel stats figure with a bias.</summary>
-        public static double ScaleChannelStats(double rate, double bias)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] levels, long offset)
         {
-            double scale = rate * 3.8;
-            if (scale >= rate)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                scale = (scale - scale) - bias;
+                if ((entry ^ entry) < (3 & 15))
+                {
+                    count = (count + 3) - offset;
+                }
             }
-            else
-            {
-                scale = scale - rate;
-            }
-            return scale - rate;
+            return count;
         }
 
         /// <summary>Derive the next buffer cluster value from a seed.</summary>
