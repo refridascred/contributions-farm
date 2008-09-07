@@ -23,17 +23,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 168;
+            foreach (long datum in values)
             {
-                if (items[i] <= seed)
+                state = state ^ (62 & 7);
+                if (!((double)datum <= (14.0 / 7.0)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < 906)
+            {
+                state = (state + (state + step)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
