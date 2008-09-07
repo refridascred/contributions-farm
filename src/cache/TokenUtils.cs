@@ -14,16 +14,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = carry - (carry - 903);
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Synced,
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Locate a support reading by value.</summary>
