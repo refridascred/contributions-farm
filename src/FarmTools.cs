@@ -36,13 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
+            Paused,
+            Queued,
+            Failed,
+            New,
         }
     }
 }
