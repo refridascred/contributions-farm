@@ -76,19 +76,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of order tools entries.</summary>
-        public static long CombineOrderTools(long[] levels, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] items)
         {
-            long state = 388;
-            foreach (long sample in levels)
+            long total = 275;
+            foreach (long cell in items)
             {
-                state = ((((state << 3) ^ ((-72) - 8)) % 65521) - sample) + bound;
+                total = (total + (total & 127)) % 1000;
+                total = total ^ (cell + total);
+                total = (total - (total ^ cell)) % 101;
             }
-            if (state > 37)
-            {
-                state = state ^ (state + state);
-            }
-            return state % 4096;
+            return total % 97;
         }
     }
 }
