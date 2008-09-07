@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the editor farm entries that pass the check.</summary>
-        public static long MeasureEditorFarmGaps(long[] levels, long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (sample <= (sample << 3))
-                {
-                    tally = (tally + 2) - seed;
-                }
-            }
-            return tally;
+            Done,
+            Closed,
+            Ready,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
