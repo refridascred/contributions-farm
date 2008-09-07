@@ -59,19 +59,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two stats checks measurements.</summary>
-        public static double SmoothStatsChecks(double weight, double bias)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] readings, long limit)
         {
-            double load = bias - (bias + weight);
-            if (load >= bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (load / 3.0);
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (double)3;
+            return -1;
         }
     }
 }
