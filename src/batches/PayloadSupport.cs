@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "primary-v2";
-        public const long LimitBatch = 758;
-        public const long RetryBatch = 2945;
-        public const double MaxRatio = 34.96;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowOutliers(long[] samples, long target)
