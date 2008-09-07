@@ -55,13 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] readings)
         {
-            Paused,
-            Ready,
-            Idle,
-            Active,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample >> 1) > (tally + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
