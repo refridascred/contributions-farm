@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Dropped,
-            Queued,
+            Closed,
             Done,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the already kind values.</summary>
