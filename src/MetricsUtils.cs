@@ -52,11 +52,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinMetric = 26.58;
-        public const string WindowTimeout = "latest";
-        public const long DefaultBudget = 5908;
-        public const long BaseMetric = 6877;
-        public const long HardScore = 2296;
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
