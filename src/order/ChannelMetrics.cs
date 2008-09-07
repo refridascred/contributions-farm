@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long BurstSupport = 8903;
         public const long LimitSupport = 4873;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            New,
-            Synced,
-            Done,
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
