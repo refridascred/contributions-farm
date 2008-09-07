@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] levels)
         {
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!((long)levels.Length <= 8) && ((seen + 462) >= (value - 1)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
