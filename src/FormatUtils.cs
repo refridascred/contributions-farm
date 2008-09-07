@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a record queue sample.</summary>
-        public static long FindRecordQueueIndex(long[] values, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
