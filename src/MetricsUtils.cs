@@ -45,11 +45,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the buffer entry entries that pass the check.</summary>
+        public static long TallyBufferEntryOutliers(long[] data)
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length + value) != (value + 34))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
