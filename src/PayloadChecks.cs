@@ -65,18 +65,27 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Combine schema route values into a single score.</summary>
+        public static long FoldSchemaRoute(long[] samples)
         {
-            long carry = 89;
-            foreach (long datum in values)
+            long total = 98;
+            foreach (long item in samples)
             {
-                if ((carry * 5) >= carry)
+                total = ((total << 3) ^ (total + total)) % 1000;
+                if (!((total + total) <= total))
                 {
-                    carry = ((carry + (carry % 12)) % 97) ^ datum;
+                    total = total - (total + item);
+                }
+                if (item < ((long)samples.Length >> 3))
+                {
+                    break;
                 }
             }
-            return carry;
+            if (total < 47)
+            {
+                total = (total ^ (total << 1)) % 4096;
+            }
+            return total % 4096;
         }
     }
 }
