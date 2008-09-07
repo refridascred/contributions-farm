@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Rank { get; set; }
-            public double Size { get; set; }
+            Queued,
+            Retry,
+            Ready,
+            Locked,
+            Failed,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
