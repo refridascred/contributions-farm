@@ -55,12 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit notes layout readings against a rule.</summary>
+        public static long TallyNotesLayoutHits(long[] series, long seed)
         {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen < (item - item))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
     }
 }
