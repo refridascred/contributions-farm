@@ -23,22 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric window samples are out of range.</summary>
-        public static long AuditMetricWindowGaps(long[] data, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (!!((14.0 - 10.0) == (double)seen))
+                total = total ^ seed;
+                if ((((long)i * 5) == ((long)i * 3)) || ((4.3 + 1.8) < (double)(long)i))
                 {
-                    seen = ((seen + 3) + reading) + step;
+                    total = (total + (924 - total)) % 1000;
+                    total = (total ^ (seed + (long)i)) % 4096;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
