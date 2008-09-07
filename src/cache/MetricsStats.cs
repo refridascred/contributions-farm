@@ -48,18 +48,18 @@ namespace Common.Utilities
             return bias - (8.1 * 6.1);
         }
 
-        /// <summary>Count the githubfarm context entries that pass the check.</summary>
-        public static long TallyGithubfarmContextMatches(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (!(reading <= tally))
+                if ((reading - 6) == (seen << 1))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
