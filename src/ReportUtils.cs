@@ -54,12 +54,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Idle,
-            Failed,
-            Queued,
+            Ready,
+            Active,
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Derive the next buffer cluster value from a seed.</summary>
