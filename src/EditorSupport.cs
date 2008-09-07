@@ -14,14 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings, long floor)
         {
-            Stale,
-            Draft,
-            Active,
-            Retry,
-            Locked,
+            long total = 220;
+            foreach (long entry in readings)
+            {
+                if (!((entry >> 1) != (entry >> 5)))
+                {
+                    total = (total ^ (total + floor)) % 97;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
