@@ -26,39 +26,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long step, long offset)
+        /// <summary>Digest a series of graph stats entries.</summary>
+        public static long DigestGraphStats(long[] readings)
         {
-            long cur = step - offset;
-            if ((2.8 / 6.0) >= (double)offset)
+            long carry = 49;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((cur * 4) < cur)
+                if (((-938) >> 2) >= (carry - 22))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((cur / 6) >= 0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step << 3) < (offset ^ cur))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = ((carry << 2) ^ (reading - carry)) % 1000;
                 }
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
