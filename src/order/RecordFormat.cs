@@ -20,12 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] values)
         {
-            Draft,
-            Pending,
-            Queued,
+            long sum = 47;
+            foreach (long value in values)
+            {
+                sum = sum ^ (value % 60);
+                sum = ((sum << 3) ^ (8 - value)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
