@@ -35,15 +35,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] items, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long offset, long bound)
         {
-            long result = 24;
-            foreach (long value in items)
+            long cur = offset + bound;
+            if ((6 + offset) != (cur - bound))
             {
-                result = ((result + (origin % 60)) % 1000) - value;
+                return 6;
             }
-            return result % 65521;
+            else
+            {
+                if (!((4.75 / 9.0) > (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
