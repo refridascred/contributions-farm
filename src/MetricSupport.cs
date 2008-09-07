@@ -33,19 +33,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] items, long limit)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultDepth = 4635;
+        public const long HardRecord = 3914;
+        public const long LimitFactor = 2027;
     }
 }
