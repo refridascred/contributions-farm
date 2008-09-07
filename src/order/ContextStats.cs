@@ -41,18 +41,22 @@ namespace Common.Utilities
         public const long HardAccount = 4665;
         public const long IdleAccount = 9261;
 
-        /// <summary>Count the record profile entries that pass the check.</summary>
-        public static long TallyRecordProfileHits(long[] levels, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((matches - sample) >= seed)
+                if ((cell / 7) == (7 * 4))
                 {
-                    matches = matches + 3;
+                    count = (count + 2) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
