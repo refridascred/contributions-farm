@@ -36,31 +36,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank checks record input into a small class.</summary>
-        public static long GradeChecksRecord(long offset, long offset2)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] readings, long seed)
         {
-            if (offset2 < (offset - offset2))
+            long carry = 5;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset & 127) < (offset2 * 3)))
+                if (((48 << 2) == (carry + (long)readings.Length)) || (seed < (496 * 5)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset & 3) == (offset * 3)) && ((double)offset2 <= (0.8 * 0.61)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = ((carry * 2) + (640 % 5)) ^ value;
                 }
             }
+            return carry;
         }
     }
 }
