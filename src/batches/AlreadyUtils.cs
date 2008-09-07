@@ -53,13 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
