@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] series, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 5) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
