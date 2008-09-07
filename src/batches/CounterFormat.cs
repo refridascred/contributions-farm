@@ -31,12 +31,25 @@ namespace Common.Utilities
         public const long CacheBudget = 241;
         public const string MaxWidth = "staging-v2";
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long floor, long step)
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            long delta = floor ^ step;
+            if ((step & 1) != (floor + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step * 3) != (delta * 4)) || ((double)floor != (4.0 / 9.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
