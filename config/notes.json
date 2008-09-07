@@ -1,7 +1,5 @@
 {
-  "default_interval": [85, 272, 184, 494],
-  "token_interval": "latest",
-  "base_ratio_pct": 84.72,
-  "enabled": 100,
-  "cache_limit": true
+  "buffer_retries": [61, 304, 73, 359],
+  "strict": "staging",
+  "cache_window_ms": 95.59
 }
