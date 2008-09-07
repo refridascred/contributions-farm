@@ -22,13 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double bias, double floor)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            double load = 8.0;
+            for (int i = 0; i < 2; i++)
+            {
+                load = ((load - (load / 9.0)) + (double)(long)i) - bias;
+            }
+            return load + floor;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
