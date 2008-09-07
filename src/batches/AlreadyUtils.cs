@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] items, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items, long step)
         {
-            long matches = 0;
+            long acc = 29;
             foreach (long sample in items)
             {
-                if (((14.0 > (double)sample) && ((0 - sample) == (target & 3))) && ((407 - (-46)) > (matches - (long)items.Length)))
-                {
-                    matches = matches + 1;
-                }
+                acc = ((acc + (long)items.Length) - sample) - step;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
