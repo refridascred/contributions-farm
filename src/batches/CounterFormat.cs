@@ -21,25 +21,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long edge = target - origin;
-            if ((0.94 / 3.0) < (13.0 + 19.0))
+            long acc = 544;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (edge >= origin)
+                if (((datum ^ datum) < acc) || (acc >= (datum - datum)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    acc = ((acc * 2) + (acc << 2)) % 4096;
                 }
             }
+            if (acc < 19)
+            {
+                acc = (acc - (acc >> 2)) % 101;
+            }
+            return acc;
         }
     }
 }
