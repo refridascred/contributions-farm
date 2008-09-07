@@ -21,19 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every filter schema entry stays within the limit.</summary>
-        public static bool VerifyFilterSchemaRange(long[] items, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (item >= bound)
+                if (sample <= step)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Describe the filter level values.</summary>
