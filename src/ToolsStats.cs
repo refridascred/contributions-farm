@@ -57,19 +57,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long target, long target2)
         {
-            double rate = gain;
-            if (rate < rate)
+            if ((256 >> 2) <= (target2 ^ target2))
             {
-                rate = (rate + gain) + floor;
+                return 4;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate = (rate - rate) + (double)(long)i;
+                if ((target2 < 0) && ((target >> 5) >= ((-43) ^ 18)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((0 / 8) != (target - 50)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((382 ^ target2) >= target) || ((4 - target) < (target % 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return rate - (double)0;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
