@@ -1,7 +1,10 @@
 {
-  "batches_ttl": 500,
-  "idle_limit_count": "latest",
-  "batch_threshold_ms": 5115,
-  "max_delay": [363, 352],
-  "poll_capacity": ["open", "blue", "stable", "standard"]
+  "strict": {
+    "persist": 65.71,
+    "min_ttl_count": 31.47,
+    "enabled": 10.55,
+    "schema_limit": "local"
+  },
+  "order_size": 6643,
+  "poll_capacity_count": "green"
 }
