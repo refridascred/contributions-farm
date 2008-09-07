@@ -17,21 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 53;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3.0 * 0.2) <= (double)sample)
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (80 >> 4)) % 255;
+                }
+                if (((sample + sum) < sum) || ((double)sum < (double)origin))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
