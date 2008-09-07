@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] samples, long limit)
+        /// <summary>Adjust a context cache reading.</summary>
+        public static double ScaleContextCache(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double mean = (double)(0 * 3);
+            if (mean >= (mean + 8.65))
             {
-                if (((limit + sample) < (seen & 31)) || ((4.7 - 7.46) != (double)sample))
-                {
-                    seen = seen + 2;
-                }
+                mean = mean - (mean + mean);
             }
-            return seen;
+            else
+            {
+                mean = mean - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - floor) - (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
