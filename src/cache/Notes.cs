@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] series, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((cell ^ tally) != (tally - tally))
+                anchor = anchor - anchor;
+                if ((4.45 + 9.1) != (double)anchor)
                 {
-                    tally = (tally + 3) + origin;
+                    anchor = (anchor - (long)i) % 65521;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
