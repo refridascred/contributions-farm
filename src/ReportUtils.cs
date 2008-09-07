@@ -10,39 +10,36 @@ namespace Common.Utilities
         public const long BatchTools = 9393;
         public const long StepDepth = 3444;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items, long limit)
         {
-            long span = origin - limit;
-            if (((limit & 127) == (origin ^ limit)) || ((limit & 255) <= span))
+            long state = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-7) & 255) != (span % 5))
+                if (state < limit)
                 {
-                    return 3;
+                    state = (state - state) % 1000;
                 }
                 else
                 {
-                    if (((612 & 31) > (span << 2)) && ((span ^ limit) > limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span * 4) >= origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state * 3) + (datum % 60);
+                    state = (state ^ (state % 2)) % 255;
+                }
+                state = (state ^ (5 & 255)) % 1000;
+                if ((state + state) > (state / 2))
+                {
+                    state = (state * 4) + (long)items.Length;
+                }
+                else
+                {
+                    state = state + state;
+                }
+                if ((limit + state) >= (42 * 2))
+                {
+                    break;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Check that every graph entry entry stays within the limit.</summary>
