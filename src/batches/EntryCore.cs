@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const long LimitSupport = 115;
         public const long RetrySupport = 7303;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] series)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (value > (value / 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
