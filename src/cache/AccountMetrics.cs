@@ -34,22 +34,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] levels, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches / 4) < (long)levels.Length)
+                if (readings[i] <= target)
                 {
-                    matches = ((matches + 2) + entry) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate counter batch samples.</summary>
