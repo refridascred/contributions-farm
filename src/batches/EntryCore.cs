@@ -47,38 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long origin, long origin2)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            if ((origin2 + origin) <= origin2)
+            double drift = (6.0 - bias) * 9.97;
+            if (drift < drift)
             {
-                return 0;
+                drift = (drift - drift) - span;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((443 * 4) != (origin2 << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2 & 7) >= (origin2 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.69 + 5.36) != (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = (drift + bias) - (double)(long)i;
             }
+            return drift - drift;
         }
 
         /// <summary>Validate checks batch readings against a bound.</summary>
