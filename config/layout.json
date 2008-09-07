@@ -1,13 +1,7 @@
 {
-  "readonly": {
-    "filter_depth": false,
-    "hard_delay_s": true,
-    "sync_capacity": 29.25,
-    "min_delay_pct": "cached",
-    "readonly": 4.56,
-    "report_delay": 94
-  },
-  "soft_threshold": 2162,
-  "token_limit": "primary",
-  "token_delay": 8
+  "compress": "legacy",
+  "persist": "legacy",
+  "idle_limit": false,
+  "burst_size_ms": "fallback",
+  "support_ttl": "cached"
 }
