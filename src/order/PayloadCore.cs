@@ -14,15 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long score = 1;
-            foreach (long entry in data)
-            {
-                score = (score + score) - entry;
-            }
-            return score;
+            Locked,
+            Stale,
+            Done,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
