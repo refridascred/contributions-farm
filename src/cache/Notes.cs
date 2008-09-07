@@ -51,22 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] readings, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((origin << 3) > ((long)readings.Length & 3))
+                if (value <= limit)
                 {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
