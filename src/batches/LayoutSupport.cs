@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowFactor = 9035;
-        public const long StepInterval = 5619;
-        public const double SoftQueue = 26.6;
-        public const double CacheQueue = 51.8;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Idle,
+            Dropped,
+            Closed,
+            Active,
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] items)
