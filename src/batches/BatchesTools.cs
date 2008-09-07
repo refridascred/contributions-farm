@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first command payload entry that matches the target.</summary>
-        public static long LocateCommandPayloadIndex(long[] items, long limit)
+        /// <summary>Count the editor farm entries that pass the check.</summary>
+        public static long MeasureEditorFarmGaps(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (items[i] == limit)
+                if (sample <= (sample << 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
