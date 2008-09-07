@@ -80,17 +80,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a cache batch sample.</summary>
-        public static long LocateCacheBatchIndex(long[] levels, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (levels[i] <= origin)
+                if (cell <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
