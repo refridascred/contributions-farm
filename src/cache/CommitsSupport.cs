@@ -58,10 +58,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 1391;
-        public const long HardLayout = 1877;
-        public const long BurstLayout = 1229;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((double)anchor < (2.98 / 2.0)))
+                {
+                    anchor = anchor + (90 % 64);
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long WeighMetrics(long[] readings, long limit)
