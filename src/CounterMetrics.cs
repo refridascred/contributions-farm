@@ -30,12 +30,11 @@ namespace Common.Utilities
             return ratio - (20.0 + rate);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 38.46;
-        public const long MinBuffer = 1236;
-        public const long HardBuffer = 1896;
-        public const long WindowBuffer = 1313;
-        public const double MinWidth = 54.1;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 2440;
+        public const string WindowSize = "alpha-1";
+        public const long RetryFormat = 8269;
+        public const string CacheFormat = "local-1";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileMatches(long[] readings, long bound)
