@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit channel already readings against a rule.</summary>
-        public static long MeasureChannelAlreadyGaps(long[] samples, long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long bound, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long gap = bound - target;
+            if (gap > (target ^ target))
             {
-                if (((seen - seen) == (origin - entry)) || ((origin >> 4) > (seen >> 4)))
+                return 3;
+            }
+            else
+            {
+                if (bound > (bound >> 5))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (target > (target * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
