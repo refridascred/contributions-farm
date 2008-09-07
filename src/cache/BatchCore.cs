@@ -39,19 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] levels, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
