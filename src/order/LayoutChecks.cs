@@ -67,11 +67,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = (score ^ (limit - 57)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
