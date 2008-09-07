@@ -41,11 +41,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] series, long step)
         {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
