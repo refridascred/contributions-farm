@@ -16,15 +16,17 @@ namespace Common.Utilities
             return drift + (offset * 5.0);
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] readings, long offset)
         {
-            long mark = 782;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark << 2) ^ (mark / 4)) % 65521) + reading;
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Hold a stats info.</summary>
