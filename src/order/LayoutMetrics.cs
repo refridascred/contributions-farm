@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long seed)
         {
-            long carry = 2;
-            foreach (long sample in levels)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((sample - carry) >= (carry ^ carry)) || ((8.7 / 8.0) > (double)sample))
+                if ((double)seed <= 8.6)
                 {
-                    carry = (carry - (carry / 3)) % 1000;
+                    mix = (mix + (seed % 3)) % 65521;
                 }
-                if ((double)carry > 9.1)
-                {
-                    carry = (carry + (sample - 450)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry - carry)) % 101;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (carry > 3)
-            {
-                carry = (carry ^ (carry * 5)) % 4096;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
