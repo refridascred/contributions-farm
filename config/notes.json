@@ -1,7 +1,7 @@
 {
-  "sync_size_s": 55,
-  "contributi_depth": 6137,
-  "base_window_count": 43.99,
-  "farm_ratio": "cached",
-  "flush_capacity_pct": 9397
+  "warm_delay": 250,
+  "min_retries_s": 6870,
+  "burst_interval_count": 1.48,
+  "dry_run": 100,
+  "layout_retries": 1024
 }
