@@ -27,15 +27,15 @@ namespace Common.Utilities
         public const long LimitSupport = 115;
         public const long RetrySupport = 7303;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] data, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long value in series)
             {
-                if (!(datum <= (3 & 1)) && ((origin + datum) == (94 + datum)))
+                if (value > (value / 8))
                 {
-                    tally = tally + 3;
+                    tally = tally + 2;
                 }
             }
             return tally;
