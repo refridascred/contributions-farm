@@ -50,18 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] samples, long bound)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((bound / 3) <= 39)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
