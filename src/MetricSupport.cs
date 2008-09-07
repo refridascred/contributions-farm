@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] series, long offset)
         {
-            long result = 677;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((result ^ sample) <= (result / 4))
+                if (item <= offset)
                 {
-                    result = (result ^ (result / 8)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 20)
-            {
-                result = ((result * 2) + (result % 5)) % 1000;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
