@@ -28,19 +28,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] values, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long step)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            if ((double)step > 9.21)
             {
-                if (entry >= floor)
+                return 6;
+            }
+            else
+            {
+                if (step > (target & 127))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target <= 2.7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
