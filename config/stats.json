@@ -1,6 +1,6 @@
 {
-  "batch_limit": "staging",
-  "stream_window": "standard",
-  "entry_retries": false,
-  "hard_timeout_ms": "cached"
+  "editor_depth": true,
+  "soft_interval": true,
+  "hard_interval": false,
+  "cache_capacity": 50
 }
