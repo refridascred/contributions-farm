@@ -1,10 +1,11 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the entry list.
-The payload report groups every batches by tools.
+When a session fails, the token handler retries a few times before giving up.
+When a githubfarm fails, the metric handler retries a few times before giving up.
+Run the githubfarm check before changing any layout limits.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Log every format change
-- Review contributi limits each release
+- Keep format values small
+- Log every support change
+- Document new format fields
