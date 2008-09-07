@@ -73,15 +73,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
