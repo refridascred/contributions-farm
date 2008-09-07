@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Done,
-            Retry,
-            Failed,
             Stale,
-            Idle,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
