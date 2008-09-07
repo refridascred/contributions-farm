@@ -16,12 +16,12 @@ namespace Common.Utilities
             return drift + (offset * 5.0);
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] readings, long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] readings, long origin)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
+                if (readings[i] <= origin)
                 {
                     return (long)i;
                 }
