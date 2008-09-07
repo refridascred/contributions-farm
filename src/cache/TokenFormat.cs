@@ -26,13 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Done,
-            Dropped,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowDepth = 2245;
+        public const double StepScore = 5.73;
+        public const string MinCommand = "cached-1";
+        public const long BatchCommand = 9730;
     }
 }
