@@ -22,19 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] levels, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long total = 778;
+            foreach (long datum in levels)
             {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                total = total - (datum + datum);
             }
-            return stale;
+            if (total < 0)
+            {
+                total = (total * 2) + (target << 1);
+            }
+            return total % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
