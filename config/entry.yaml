@@ -1,4 +1,21 @@
 # entry settings
-hard_size: 8224
-verbose: edge
-flush_timeout_ms: 54.89
+readonly: true
+window_ratio: 5429
+cache_retries:
+  - 57
+  - 133
+  - 369
+max_ratio: true
+verbose: 4.75
+audit:
+  notes_ratio: standard
+  readonly: 3534
+  counter_limit:
+    - 86
+    - 184
+    - 308
+  default_delay_count:
+    - staging
+    - open
+    - local
+  flush_delay_count: 31
