@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] items)
         {
-            Active,
-            Closed,
-            Queued,
-            Locked,
+            long result = 912;
+            foreach (long entry in items)
+            {
+                result = ((result * 3) + entry) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
