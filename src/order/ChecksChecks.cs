@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] levels)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample + sample) < count) || ((double)sample == (7.7 + 6.16)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batches record.</summary>
