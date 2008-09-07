@@ -15,15 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double scale, double floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double gain = 9.0;
-            if (gain >= (double)2)
-            {
-                gain = ((gain + (double)8) - scale) + floor;
-            }
-            return gain - (7.05 * 6.8);
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
