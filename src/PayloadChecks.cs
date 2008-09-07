@@ -62,12 +62,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Pending,
+            Draft,
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
