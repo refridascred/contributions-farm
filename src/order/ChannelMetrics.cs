@@ -29,38 +29,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long step, long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] samples, long offset)
         {
-            if (origin > (step - origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < (11.0 / 6.0))
+                if (samples[i] >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - step) == (origin / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)step > 7.0) || ((double)origin == (9.8 * 7.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
