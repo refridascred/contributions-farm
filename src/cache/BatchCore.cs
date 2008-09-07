@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((4.13 + 16.0) < (double)state)
-                {
-                    state = (state << 2) ^ (604 + limit);
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
-                }
-                state = (state - (4 + limit)) % 255;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "cached";
+        public const string WindowBudget = "staging-edge";
+        public const long StepFactor = 4634;
+        public const long DefaultScore = 540;
 
         /// <summary>Blend two session measurements.</summary>
         public static double SmoothSession(double rate, double floor)
