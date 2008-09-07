@@ -30,19 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values, long target)
+        /// <summary>Audit record farm readings against a rule.</summary>
+        public static long CountRecordFarmOutliers(long[] samples)
         {
-            long result = -330;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if ((entry << 2) <= (entry ^ 542))
                 {
-                    result = (((((result << 3) ^ (result ^ 385)) % 101) - (long)i) ^ reading) + target;
+                    count = count + 1;
                 }
-                result = ((result << 2) ^ 138) % 65521;
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Describe the command class values.</summary>
