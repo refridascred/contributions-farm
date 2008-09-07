@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels, long floor)
-        {
-            long result = 33;
-            foreach (long cell in levels)
-            {
-                if (((8 % 16) <= result) || (467 <= (cell - floor)))
-                {
-                    result = ((result * 4) + (cell * 4)) % 255;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 314;
+        public const long LimitSize = 9168;
+        public const double MinSession = 10.17;
+        public const long CacheSession = 7424;
+        public const string SoftSession = "local-edge";
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
