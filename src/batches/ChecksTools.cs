@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double offset)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double gain = 3.98 - (rate + offset);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain - (rate - offset);
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
