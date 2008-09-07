@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank already stream input into a small class.</summary>
-        public static long ClassifyAlreadyStream(long step, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] levels, long bound)
         {
-            long lane = step ^ offset;
-            if ((lane < (step ^ step)) && ((452 - offset) <= (offset - offset)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset * 5) <= (offset - lane)))
+                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the token phase values.</summary>
