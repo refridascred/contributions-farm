@@ -62,27 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels, long seed)
         {
-            long result = 95;
-            foreach (long item in data)
+            long result = 931;
+            foreach (long sample in levels)
             {
-                if (((result + result) != (3 / 4)) && ((10.0 - 0.7) >= 7.0))
-                {
-                    result = ((result << 2) ^ (item + item)) % 97;
-                }
-                result = ((result << 3) ^ (result + result)) % 97;
-                if (!((14 + item) <= item))
-                {
-                    break;
-                }
+                result = ((((result << 2) ^ (93 * 5)) % 4096) - sample) - seed;
             }
-            if (result > 2)
-            {
-                result = (result ^ (result - result)) % 4096;
-            }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Digest a series of order tools entries.</summary>
