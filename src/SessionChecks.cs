@@ -41,9 +41,21 @@ namespace Common.Utilities
         public const long WindowScore = 5236;
         public const string MaxBatches = "fallback-1";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowBudget = "primary-edge";
-        public const long MaxChecks = 9335;
-        public const double BaseChecks = 28.42;
+        /// <summary>Count account schema pairs that satisfy a relation.</summary>
+        public static long MatchAccountSchemaCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
