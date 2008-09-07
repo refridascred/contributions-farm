@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] levels, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Audit payload queue readings against a rule.</summary>
