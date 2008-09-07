@@ -1,14 +1,11 @@
 # Command notes
 
-When a layout fails, the filter handler retries a few times before giving up.
-Run the buffer check before changing any metric limits.
-The support helpers are pure functions, so they are safe to call from any thread.
-
-A payload that stays idle for too long is moved to the channel list.
-When a stream fails, the tools handler retries a few times before giving up.
+When a editor fails, the stream handler retries a few times before giving up.
+The session report groups every support by token.
 
 ## Guidelines
 
-- Keep counter values small
-- Document new window fields
-- Validate cluster input early
+- Document new commits fields
+- Review profile limits each release
+- Prefer account defaults
+- Keep account values small
