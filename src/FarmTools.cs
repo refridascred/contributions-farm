@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate counter session samples.</summary>
-        public static long TotalCounterSession(long[] levels)
-        {
-            long mix = -45;
-            foreach (long value in levels)
-            {
-                mix = ((mix * 4) + (value ^ mix)) % 4096;
-            }
-            if (mix < 3)
-            {
-                mix = (mix ^ (mix ^ mix)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultSpan = 78.35;
+        public const long CacheRatio = 5148;
+        public const double MaxBuffer = 71.22;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
