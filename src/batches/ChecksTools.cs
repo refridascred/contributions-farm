@@ -21,23 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double bias, double bias2)
+        /// <summary>Check that every filter schema entry stays within the limit.</summary>
+        public static bool VerifyFilterSchemaRange(long[] items, long bound)
         {
-            double ratio = (double)((-692) - 4);
-            if (ratio > (bias2 - bias))
+            bool ok = true;
+            foreach (long item in items)
             {
-                ratio = ratio + bias2;
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return ok;
         }
 
         /// <summary>Describe the filter level values.</summary>
