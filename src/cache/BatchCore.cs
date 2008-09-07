@@ -25,19 +25,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate payload batch readings against a bound.</summary>
-        public static bool ValidatePayloadBatchLimits(long[] levels, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (item <= bound)
+                if ((1.4 / 2.0) >= (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 1) + entry) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
