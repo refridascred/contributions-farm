@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a context route pair into a bucket.</summary>
-        public static long BucketContextRoute(long step, long seed)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if (((double)seed > (4.2 / 8.0)) || ((step % 24) == (seed / 8)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed / 6) != (seed ^ seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed > (6.7 * 6.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
