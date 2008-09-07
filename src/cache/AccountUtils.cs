@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] levels)
         {
-            Retry,
-            Done,
-            Paused,
-            Active,
-            Queued,
+            long carry = 7;
+            foreach (long reading in levels)
+            {
+                if ((double)carry >= (double)reading)
+                {
+                    carry = ((carry << 3) ^ carry) % 65521;
+                }
+                else
+                {
+                    carry = (carry + carry) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank record metric input into a small class.</summary>
