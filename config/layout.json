@@ -1,6 +1,18 @@
 {
-  "cache_delay": 15,
-  "batches_ratio": 37,
-  "commits_ratio": 55.28,
-  "githubfarm_delay": 21
+  "batch_ttl_pct": 429,
+  "verbose": {
+    "idle_window": ["strict", "staging", "staging"],
+    "soft_ratio_pct": ["fallback", "open"],
+    "payload_threshold": 6144,
+    "burst_depth_ms": [178, 350, 421]
+  },
+  "idle_retries_count": {
+    "verbose": 3.78,
+    "counter_retries": 500,
+    "hard_retries": 57,
+    "compress": 97.25,
+    "burst_window_count": 88
+  },
+  "default_size_ms": "staging",
+  "cache_delay_ms": [94, 220, 47]
 }
