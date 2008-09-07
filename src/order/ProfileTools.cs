@@ -24,33 +24,10 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long bound, long seed)
-        {
-            long bound2 = bound - seed;
-            if ((10.0 / 2.0) > (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 + 403) <= seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ bound2) >= (8 >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryTimeout = 70.08;
+        public const long MaxToken = 8980;
+        public const string HardFactor = "strict-edge";
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long SeekGraphIndex(long[] samples, long limit)
