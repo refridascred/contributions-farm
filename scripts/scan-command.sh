@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=99
+COMMAND_LIMIT=13
 log "limit is ${COMMAND_LIMIT}"
 
-for item in fallback eu-west green; do
+for item in edge fallback stable; do
     log "checking ${item}"
 done
+
+mode="${1:-standard}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
