@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer record samples are out of range.</summary>
-        public static long MeasureBufferRecordGaps(long[] items)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((0.5 * 0.3) > (double)sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
