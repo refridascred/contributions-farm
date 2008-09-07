@@ -20,39 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long offset, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values, long origin)
         {
-            long offset2 = offset - target;
-            if ((57 + target) != (target * 5))
+            long sum = 29;
+            foreach (long value in values)
             {
-                return 2;
+                sum = (sum + (value * 3)) + origin;
+                sum = ((sum * 5) + (value << 1)) % 255;
             }
-            else
-            {
-                if (664 <= (offset + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + offset2) >= ((-93) << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)offset2 <= (6.1 * 2.7)) && ((double)target < (7.35 - 2.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Classify a support profile pair into a bucket.</summary>
