@@ -14,19 +14,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            long carry = 1;
-            foreach (long datum in series)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (carry << 2) ^ (datum << 1);
+                state = state + limit;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (carry > (-653))
-            {
-                carry = (carry * 3) + (carry ^ carry);
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a token entry.</summary>
