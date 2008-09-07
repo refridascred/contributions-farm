@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 6488;
-        public const string SoftToken = "cached-v2";
-        public const long BatchFactor = 4013;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] values, long offset)
+        {
+            long state = 8;
+            foreach (long cell in values)
+            {
+                state = (((state << 2) ^ (6 + state)) ^ cell) - offset;
+            }
+            return state;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BaseLevel = "alpha-1";
