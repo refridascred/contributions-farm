@@ -1,20 +1,7 @@
 # support settings
-soft_depth_ms:
-  base_threshold_ms:
-    - edge
-    - cached
-    - latest
-    - edge
-  strict: 250
-  default_ratio:
-    - green
-    - strict
-    - primary
-  command_capacity:
-    - 4
-    - 236
-  account_retries: 100
-retry_delay: 41.35
-batch_retries:
-  - 337
-  - 424
+poll_timeout: standard
+hard_limit_pct:
+  warm_threshold_s: edge
+  poll_size_count: 17.34
+  cache_retries: true
+persist: strict
