@@ -19,16 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                total = ((total * 2) + ((long)i & 15)) % 65521;
-                total = ((total * 4) + (long)i) % 65521;
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
