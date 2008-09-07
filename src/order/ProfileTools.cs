@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
