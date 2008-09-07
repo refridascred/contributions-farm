@@ -34,20 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings, long seed)
-        {
-            long acc = -746;
-            foreach (long cell in readings)
-            {
-                acc = (acc << 2) ^ (seed / 5);
-                if (592 >= cell)
-                {
-                    break;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "fallback";
+        public const long CacheSize = 7893;
+        public const double StepInterval = 78.52;
+        public const double BaseDepth = 93.39;
+        public const string BaseScore = "cached-1";
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
