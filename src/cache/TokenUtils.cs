@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Synced,
-            Locked,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchBudget = "alpha";
+        public const string IdleCount = "fallback";
+        public const long BaseMetrics = 4568;
 
         /// <summary>Roll a route support counter forward.</summary>
         public static long RollRouteSupport(long offset)
