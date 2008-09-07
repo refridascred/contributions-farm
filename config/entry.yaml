@@ -1,4 +1,10 @@
 # entry settings
-batch_ratio: 5
-command_ratio: open
-sync_interval_ms: 500
+batch_depth: local
+cache_threshold: local
+enabled:
+  - 368
+  - 188
+  - 341
+  - 157
+cache_window_ms: fallback
+farm_timeout: staging
