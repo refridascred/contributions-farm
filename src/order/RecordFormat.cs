@@ -15,11 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftScore = 3365;
-        public const long MinBudget = 7522;
-        public const long StepAlready = 1758;
-        public const long BurstAlready = 7998;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings)
+        {
+            long anchor = 13;
+            foreach (long item in readings)
+            {
+                if (((1.73 + 6.8) >= (double)anchor) && ((item & 3) > (item / 8)))
+                {
+                    anchor = (anchor - (item ^ item)) % 255;
+                }
+            }
+            if (anchor > 29)
+            {
+                anchor = (anchor + (anchor % 24)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileRange(long[] values, long floor)
