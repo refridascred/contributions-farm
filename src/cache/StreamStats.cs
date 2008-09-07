@@ -19,13 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Iterate the tools support series from a seed.</summary>
+        public static long IterateToolsSupport(long limit)
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((sum >> 1) >= (sum / 2))
+                {
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a route stats.</summary>
