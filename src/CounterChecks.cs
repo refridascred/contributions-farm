@@ -72,18 +72,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long sum = 6;
+            foreach (long item in readings)
             {
-                if (!(((double)seen <= (2.32 - 4.5)) && (seen > datum)))
+                if ((4.0 + 8.4) >= (double)item)
                 {
-                    seen = seen + 1;
+                    sum = ((sum * 2) + ((-924) % 100)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (sum * 3)) % 97;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
