@@ -1,6 +1,8 @@
 {
-  "readonly": "latest",
-  "schema_depth": 30.02,
-  "verbose": 8882,
-  "warm_timeout_pct": ["eu-west", "green", "fallback", "eu-west"]
+  "sync_size_pct": true,
+  "base_retries": "cached",
+  "cache_ttl_ms": true,
+  "command_size": 1515,
+  "farm_window": 92,
+  "persist": true
 }
