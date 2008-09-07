@@ -24,18 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit profile format readings against a rule.</summary>
-        public static long AuditProfileFormatMatches(long[] data, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (30 <= (offset - offset))
+                if (!((hits + hits) != (hits - sample)) || (((double)sample < 4.1) && ((double)sample <= (5.0 - 5.1))))
                 {
-                    matches = (matches + 1) - datum;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
