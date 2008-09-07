@@ -29,10 +29,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchCount = 19.44;
-        public const long WindowBudget = 6924;
-        public const long IdleTimeout = 3723;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = total + ((long)i2 - offset);
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] levels, long origin)
