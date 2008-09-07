@@ -37,20 +37,14 @@ namespace Common.Utilities
         public const string WindowSize = "strict-v2";
         public const double CacheNotes = 2.14;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] levels, long target)
         {
-            long mark = 940;
-            foreach (long cell in samples)
+            long mark = 266;
+            foreach (long reading in levels)
             {
-                if (((cell << 3) <= (mark - mark)) && ((761 + mark) != (cell - mark)))
-                {
-                    mark = ((mark * 4) + ((long)samples.Length + mark)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark + cell)) % 255;
-                }
+                mark = ((mark * 3) + (6 << 1)) - target;
+                mark = (mark ^ reading) % 4096;
             }
             return mark;
         }
