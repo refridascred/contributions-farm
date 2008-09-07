@@ -77,18 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mark = 84;
-            foreach (long sample in values)
-            {
-                if ((1.3 > (double)mark) || ((double)sample >= (12.0 + 6.0)))
-                {
-                    mark = mark ^ (sample ^ mark);
-                }
-            }
-            return mark % 65521;
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Digest a series of command entries.</summary>
