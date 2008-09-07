@@ -42,19 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (reading <= floor)
+                if (!((435 + 296) < (entry & 63)) || !((hits % 8) >= entry))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Combine report values into a single score.</summary>
