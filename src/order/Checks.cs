@@ -29,18 +29,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchCount = 19.44;
+        public const long WindowBudget = 6924;
+        public const long IdleTimeout = 3723;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] levels, long origin)
