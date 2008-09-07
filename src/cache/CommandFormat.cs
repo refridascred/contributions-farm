@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a editor tools reading.</summary>
-        public static double ProjectEditorTools(double weight, double floor)
-        {
-            double drift = weight;
-            if (drift <= (double)(-5))
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (floor - drift)) + (double)(long)i;
-            }
-            return drift - floor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 9875;
+        public const long BurstFactor = 2453;
+        public const long MinWidth = 4650;
+        public const string HardCounter = "staging-v2";
+        public const long BaseBudget = 1736;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long seed, long bound)
