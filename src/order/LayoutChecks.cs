@@ -81,16 +81,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score ^ (limit - 57)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 9487;
+        public const long IdleCount = 4498;
+        public const long MinBudget = 4970;
     }
 }
