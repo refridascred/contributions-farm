@@ -14,15 +14,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next notes account value from a seed.</summary>
-        public static long IterateNotesAccount(long floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 23; i++)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                carry = carry - (carry - 903);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Locate a support reading by value.</summary>
