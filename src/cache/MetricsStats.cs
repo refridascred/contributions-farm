@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long SoftCounter = 8365;
         public const long BatchFactor = 4257;
 
-        /// <summary>Look up the position of a editor checks sample.</summary>
-        public static long LookupEditorChecksIndex(long[] data, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
