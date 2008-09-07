@@ -29,19 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((sample << 2) >= sample) || (((hits % 3) <= 6) && ((10.0 * 19.0) > (double)sample)))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "stable-v2";
+        public const long CacheScore = 2181;
+        public const double BaseFormat = 16.61;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string StepCache = "local-edge";
