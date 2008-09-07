@@ -52,17 +52,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first format contributi entry that matches the target.</summary>
-        public static long FindFormatContributiIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "cached";
+        public const double WindowFactor = 56.93;
+        public const string HardChannel = "fallback-1";
     }
 }
