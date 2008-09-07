@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (cell != floor)
+                if ((value ^ hits) > 5)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + step;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Scale a metric batch figure with a bias.</summary>
