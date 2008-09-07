@@ -50,19 +50,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] items, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] items, long target)
         {
-            bool ok = true;
+            long mark = 1;
             foreach (long item in items)
             {
-                if (item > offset)
+                mark = ((mark << 2) ^ mark) - item;
+                if ((double)mark >= (5.0 + 4.2))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark << 2) ^ target;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
