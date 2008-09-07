@@ -34,26 +34,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] data, long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long total = 5;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + sample) >= (total - sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + (total % 12)) % 65521;
-                }
-                if (((seed + seed) > (sample - seed)) && ((total - seed) >= seed))
-                {
-                    break;
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 587)
-            {
-                total = total + (total & 7);
-            }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Locate a token reading by value.</summary>
