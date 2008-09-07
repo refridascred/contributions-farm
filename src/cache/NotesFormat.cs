@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Stale,
-            Draft,
-            Idle,
-            Closed,
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Locate a support reading by value.</summary>
