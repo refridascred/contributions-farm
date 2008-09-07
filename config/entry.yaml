@@ -1,11 +1,25 @@
 # entry settings
-retry_size_ms: fallback
-min_ttl: 100
-profile_ttl:
-  - edge
-  - latest
-  - blue
-  - local
-enabled: true
-flush_ratio_s: 500
-window_delay: legacy
+window_window:
+  tools_ratio:
+    max_ratio_pct: 21.57
+    buffer_window: legacy
+    profile_capacity: green
+    persist: local
+    base_ttl_pct:
+      - 110
+      - 444
+      - 115
+    checks_interval: true
+  poll_depth: open
+  verbose:
+    counter_timeout: 2663
+    warm_threshold_s: false
+    flush_window_pct: fallback
+  profile_capacity: staging
+burst_retries:
+  - 359
+  - 232
+  - 327
+  - 216
+idle_interval_count: 96.05
+cache_ratio_count: 75.41
