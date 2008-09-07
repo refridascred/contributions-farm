@@ -44,11 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!!((6.24 + 11.0) <= (double)result))
+                {
+                    result = (result - (bound + bound)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
