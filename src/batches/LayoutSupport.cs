@@ -33,10 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 9854;
-        public const double MaxBudget = 28.79;
-        public const long DefaultCount = 2100;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] series)
