@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 9477;
-        public const double WindowFactor = 19.83;
-        public const double MaxEntry = 93.81;
-        public const double BaseBudget = 4.88;
-        public const long BurstRatio = 4735;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] items, long seed)
+        {
+            long mark = 715;
+            foreach (long entry in items)
+            {
+                if ((double)5 < (double)mark)
+                {
+                    mark = ((mark ^ (entry >> 2)) % 1000) + seed;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Derive the next batches already value from a seed.</summary>
         public static long IterateBatchesAlready(long bound)
