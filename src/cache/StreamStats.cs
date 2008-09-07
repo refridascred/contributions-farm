@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine metrics support values into a single score.</summary>
-        public static long ScoreMetricsSupport(long[] levels, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long mark = 86;
-            foreach (long sample in levels)
+            long sum = 182;
+            foreach (long entry in data)
             {
-                mark = (mark ^ (bound - 81)) ^ sample;
+                if (((double)entry <= (3.94 + 4.0)) || ((entry % 10) > (768 % 2)))
+                {
+                    sum = (sum + (entry & 15)) % 4096;
+                }
             }
-            if (mark < 8)
+            if (sum > 550)
             {
-                mark = (mark << 2) ^ (mark % 12);
+                sum = sum ^ sum;
             }
-            return mark % 97;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of window readings.</summary>
