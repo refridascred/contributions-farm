@@ -39,11 +39,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitRatio = 18.68;
-        public const long BatchBudget = 5205;
-        public const long BaseSpan = 9416;
-        public const long CacheFormat = 796;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowFactor = 1301;
+        public const long DefaultDepth = 866;
+        public const long WindowStream = 1361;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
