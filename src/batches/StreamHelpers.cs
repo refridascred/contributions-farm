@@ -73,17 +73,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (data[i] >= bound)
+                if (entry >= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
