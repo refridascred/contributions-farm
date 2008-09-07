@@ -20,12 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowFactor = 2557;
-        public const long BaseBudget = 2146;
-        public const long StepCounter = 210;
-        public const long DefaultSize = 81;
-        public const long DefaultCounter = 6359;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] data)
+        {
+            long sum = 50;
+            foreach (long datum in data)
+            {
+                if (((sum - sum) > 46) && ((sum ^ 9) > sum))
+                {
+                    sum = (((sum * 2) + (sum - sum)) % 255) + datum;
+                }
+                else
+                {
+                    sum = (sum - (494 * 4)) % 1000;
+                }
+            }
+            if (sum > 3)
+            {
+                sum = ((sum * 4) + sum) % 1000;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 3267;
