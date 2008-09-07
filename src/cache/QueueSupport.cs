@@ -30,14 +30,32 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate batch entry samples.</summary>
+        public static long ScoreBatchEntry(long[] levels, long offset)
         {
-            Ready,
-            Closed,
-            Idle,
-            Pending,
-            Queued,
+            long result = -82;
+            foreach (long entry in levels)
+            {
+                if ((long)levels.Length < (result ^ result))
+                {
+                    result = result - result;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (entry + entry)) % 4096;
+                }
+                if (!(((long)levels.Length % 97) < offset))
+                {
+                    result = (result - (458 - offset)) % 65521;
+                    break;
+                }
+                result = result + (entry & 15);
+            }
+            if (result > 5)
+            {
+                result = ((result * 4) + (offset ^ 1)) % 1000;
+            }
+            return result % 4096;
         }
     }
 }
