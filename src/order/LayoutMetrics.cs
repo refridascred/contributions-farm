@@ -36,21 +36,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Fold a list of graph entry readings.</summary>
+        public static long CombineGraphEntry(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 9;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score ^ score) ^ entry) + limit;
             }
-            return matches;
+            return score;
         }
     }
 }
