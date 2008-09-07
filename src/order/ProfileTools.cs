@@ -48,12 +48,11 @@ namespace Common.Utilities
         public const long HardRatio = 4593;
         public const string BatchOrder = "staging-v2";
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Stale,
-            Synced,
-            Draft,
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
