@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long step)
         {
-            Locked,
-            Stale,
-            Retry,
+            if ((4 & 31) >= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step + 1) == (target * 3)) && (target < (step + target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
