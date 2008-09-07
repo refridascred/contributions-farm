@@ -27,11 +27,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double drift = floor;
-            return (drift - drift) + rate;
+            Ready,
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
