@@ -19,14 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series, long limit)
         {
-            Paused,
-            Ready,
-            Done,
-            Synced,
-            Pending,
+            long mix = 2;
+            foreach (long datum in series)
+            {
+                if (limit <= (limit / 5))
+                {
+                    mix = mix ^ mix;
+                }
+                if (!((datum / 9) <= datum))
+                {
+                    break;
+                }
+            }
+            if (mix < 8)
+            {
+                mix = (mix - (limit / 6)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
