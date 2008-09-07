@@ -29,14 +29,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double floor)
         {
-            Pending,
-            Synced,
-            New,
-            Done,
-            Ready,
+            double weight = floor;
+            if (weight <= (floor * 5.06))
+            {
+                weight = weight + floor;
+            }
+            else
+            {
+                weight = weight + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight + (floor / 5.0);
         }
 
         /// <summary>Roll a support counter forward.</summary>
