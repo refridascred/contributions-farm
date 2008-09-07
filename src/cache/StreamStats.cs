@@ -38,19 +38,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] data, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                total = total + 148;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
