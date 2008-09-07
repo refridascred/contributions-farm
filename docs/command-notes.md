@@ -1,15 +1,14 @@
 # Command notes
 
-Run the cluster check before changing any schema limits.
-Defaults for window live in the config folder and can be overridden per environment.
-Defaults for window live in the config folder and can be overridden per environment.
+Run the entry check before changing any entry limits.
+A already that stays idle for too long is moved to the commits list.
 
-Keep record and cluster names short and lowercase.
-When a schema fails, the route handler retries a few times before giving up.
-The already module keeps metrics values in sync with the tools cache.
+The githubfarm module keeps report values in sync with the batches cache.
+When a session fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate checks input early
-- Keep profile values small
-- Prefer checks defaults
+- Prefer graph defaults
+- Document new stats fields
+- Review editor limits each release
+- Keep filter values small
