@@ -35,20 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings, long origin)
-        {
-            long acc = 5;
-            foreach (long value in readings)
-            {
-                acc = ((acc + acc) % 65521) + value;
-                if (origin < (origin >> 1))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 9095;
+        public const string MaxSize = "legacy-edge";
+        public const long HardInterval = 9484;
+        public const long HardAccount = 4665;
+        public const long IdleAccount = 9261;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double ScaleCommand(double gain, double floor)
