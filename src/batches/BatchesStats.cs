@@ -19,12 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheRoute = 69.8;
+        public const double MinLevel = 89.9;
+        public const long BaseRoute = 9735;
+        public const long MinRoute = 4519;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double MaxRatio = 75.08;
