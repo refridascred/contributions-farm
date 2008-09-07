@@ -19,35 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] data, long origin)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] data, long seed)
         {
-            long carry = 3;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.0 - 9.34) >= (double)item)
+                if (data[i] < seed)
                 {
-                    carry = (carry ^ origin) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry - 16)) % 101;
-                }
-                carry = (carry + (item / 6)) % 65521;
-                if (((origin >> 3) == (origin >> 4)) && (268 <= ((long)data.Length % 12)))
-                {
-                    carry = (carry ^ (item * 5)) % 65521;
-                }
-                if ((origin & 127) >= (carry ^ origin))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 20)
-            {
-                carry = ((carry * 2) + origin) % 1000;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Hold a filter record.</summary>
