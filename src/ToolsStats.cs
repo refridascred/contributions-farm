@@ -44,31 +44,15 @@ namespace Common.Utilities
         public const long BaseSpan = 9416;
         public const long CacheFormat = 796;
 
-        /// <summary>Classify a checks context pair into a bucket.</summary>
-        public static long BucketChecksContext(long bound, long offset)
+        /// <summary>Iterate the stats channel series from a seed.</summary>
+        public static long IterateStatsChannel(long offset)
         {
-            if (((offset ^ bound) <= ((-279) + 67)) && ((298 * 2) > (offset - bound)))
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound << 3) != (bound ^ offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset > (bound * 4)) || ((offset * 5) <= offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Blend two metric measurements.</summary>
