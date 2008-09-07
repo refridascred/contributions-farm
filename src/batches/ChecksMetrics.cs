@@ -25,21 +25,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ 9) % 255) - sample;
             }
-            return tally;
+            if (mark < 69)
+            {
+                mark = ((mark << 3) ^ (mark / 6)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the report phase values.</summary>
