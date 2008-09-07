@@ -28,18 +28,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long origin, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((970 ^ origin) == (origin + step))
             {
-                if (entry <= (entry * 4))
+                return 6;
+            }
+            else
+            {
+                if ((origin << 1) > (origin % 2))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (origin < (step * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step * 3) > (step + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
