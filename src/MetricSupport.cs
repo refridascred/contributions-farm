@@ -14,11 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
+            Stale,
+            Pending,
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
