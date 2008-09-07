@@ -21,20 +21,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Roll a route support counter forward.</summary>
+        public static long RollRouteSupport(long offset)
         {
-            long total = 13;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (total >= (total - item))
+                if ((offset & 255) >= offset)
                 {
-                    long matches = (item >> 3) * 4;
-                    total = total + (matches % 97);
+                    result = ((result * 5) + (result ^ offset)) % 97;
+                    continue;
                 }
-                total = (total << 2) ^ (total & 63);
+                result = ((result * 2) + (long)i) % 101;
             }
-            return total % 1000;
+            return result;
         }
 
         /// <summary>Blend two report stats measurements.</summary>
