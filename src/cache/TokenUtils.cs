@@ -37,19 +37,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two report stats measurements.</summary>
-        public static double ScaleReportStats(double scale, double bias)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            double load = 7.3;
-            if (load <= load)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + (bias - bias)) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (2.0 - load);
-            }
-            return load - (load * 4.3);
+            return matches;
         }
     }
 }
