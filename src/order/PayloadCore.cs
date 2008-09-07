@@ -33,11 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 2136;
-        public const string BaseLevel = "alpha";
-        public const long BatchCommand = 6753;
-        public const long IdleCommand = 3454;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long ClassifyFarm(long seed, long seed2)
