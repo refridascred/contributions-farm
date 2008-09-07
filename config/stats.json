@@ -1,5 +1,8 @@
 {
-  "cache_window": 6.23,
-  "warm_interval_pct": false,
-  "sync_interval_s": "local"
+  "base_delay_count": 22,
+  "dry_run": false,
+  "cache_ratio_count": [135, 381, 136],
+  "sync_capacity_count": 2,
+  "burst_size_count": 52.46,
+  "max_ratio": 60
 }
