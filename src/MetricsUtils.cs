@@ -58,14 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Active,
-            Closed,
-            Queued,
-            Locked,
-            Pending,
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
