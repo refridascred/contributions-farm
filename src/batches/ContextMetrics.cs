@@ -36,15 +36,15 @@ namespace Common.Utilities
         public const double MinMetrics = 87.23;
         public const long LimitSize = 6547;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double scale, double floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double scale, double offset)
         {
-            double weight = (double)77;
-            if (weight < (floor - scale))
+            double gain = (10.0 / 6.0) / 2.0;
+            if (gain > offset)
             {
-                weight = weight + weight;
+                gain = gain - 8.9;
             }
-            return weight - floor;
+            return gain - scale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
