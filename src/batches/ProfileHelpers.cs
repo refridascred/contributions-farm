@@ -76,19 +76,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] readings, long bound)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
