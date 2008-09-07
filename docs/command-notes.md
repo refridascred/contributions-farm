@@ -1,10 +1,12 @@
 # Command notes
 
-When a schema fails, the batches handler retries a few times before giving up.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Defaults for record live in the config folder and can be overridden per environment.
+The record module keeps session values in sync with the batch cache.
+The account module keeps session values in sync with the support cache.
 
 ## Guidelines
 
-- Log every channel change
-- Prefer counter defaults
-- Validate report input early
+- Log every stats change
+- Validate schema input early
+- Keep batch values small
+- Document new batch fields
