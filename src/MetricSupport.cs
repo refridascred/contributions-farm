@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardSize = 5224;
-        public const long RetryBudget = 1258;
-        public const long BurstFactor = 5022;
-        public const double CacheBudget = 69.24;
-        public const long BatchSpan = 8192;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data)
+        {
+            long carry = 5;
+            foreach (long item in data)
+            {
+                carry = (((carry << 2) ^ carry) % 101) + item;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
