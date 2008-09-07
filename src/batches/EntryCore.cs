@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long HardSupport = 5799;
         public const long SoftRatio = 9897;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen < (seen << 1)) && ((seen / 9) > 11))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 5643;
+        public const long MinQueue = 3945;
+        public const string BurstFactor = "strict-v2";
+        public const string CacheQueue = "primary-edge";
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
