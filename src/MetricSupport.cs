@@ -21,18 +21,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Compare every pair of session token readings.</summary>
+        public static long MatchSessionTokenCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen / 9) > (reading << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
