@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long seed)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
