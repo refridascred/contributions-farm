@@ -52,11 +52,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitChecks = "primary";
-        public const double MinChecks = 40.74;
-        public const long BaseChecks = 3622;
-        public const long HardChecks = 8970;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultFormat = 6817;
