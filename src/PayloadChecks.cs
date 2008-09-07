@@ -57,12 +57,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Synced,
-            Queued,
-            Retry,
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of command entries.</summary>
