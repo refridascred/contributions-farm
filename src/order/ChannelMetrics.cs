@@ -21,39 +21,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a support buffer pair into a bucket.</summary>
-        public static long ClassifySupportBuffer(long limit, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] values, long seed)
         {
-            long span = limit - step;
-            if (((limit * 3) <= (limit << 1)) && (span < (span + (-486))))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.77 * 7.91) == (double)limit)
+                if (entry >= seed)
                 {
-                    return 8;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (((8.26 + 7.0) == (double)step) || ((span ^ limit) <= (step + step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit < (limit << 3)) || ((limit << 3) > step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
