@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((7.57 - 9.4) <= (double)hits)
-                {
-                    hits = ((hits + 1) ^ sample) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowLevel = 1459;
+        public const long IdleBuffer = 2998;
+        public const string LimitInterval = "primary-1";
+        public const long WindowBuffer = 3728;
+        public const long BaseBuffer = 3593;
 
         /// <summary>Iterate the already batches series from a seed.</summary>
         public static long StepAlreadyBatches(long limit)
