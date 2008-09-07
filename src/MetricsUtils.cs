@@ -24,23 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] series)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long sum = 143;
-            foreach (long entry in series)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum - (sum & 63)) % 97;
-                if (entry >= (entry / 2))
-                {
-                    sum = (sum - (entry + 763)) % 255;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (sum > 98)
-            {
-                sum = (sum ^ (sum & 1)) % 1000;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Accumulate graph samples.</summary>
