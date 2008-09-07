@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every command schema entry stays within the limit.</summary>
-        public static bool GuardCommandSchemaRange(long[] series, long step)
+        /// <summary>Validate metrics stream readings against a bound.</summary>
+        public static bool CheckMetricsStreamLimits(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (entry != step)
+                if (value < seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
