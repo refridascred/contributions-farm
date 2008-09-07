@@ -64,12 +64,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double span)
-        {
-            double drift = gain;
-            return (drift + 0.8) + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheInterval = 450;
+        public const string WindowDepth = "cached-1";
+        public const double CacheCommand = 58.99;
+        public const long RetrySpan = 4671;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ScaleMetric(double ratio, double floor)
