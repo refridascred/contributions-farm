@@ -40,12 +40,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Ready,
-            Locked,
+            Active,
+            Retry,
+            Paused,
             Stale,
+            Closed,
         }
     }
 }
