@@ -39,18 +39,21 @@ namespace Common.Utilities
             return weight - (floor / 2.0);
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] readings)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((6 + seen) > (seen % 60)) && (((double)7 < (double)sample) || ((sample - sample) < (-127))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine account values into a single score.</summary>
