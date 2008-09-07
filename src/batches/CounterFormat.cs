@@ -30,38 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a counter profile value against two limits.</summary>
-        public static long SortCounterProfile(long bound, long seed)
+        /// <summary>Fold a list of counter layout readings.</summary>
+        public static long WeighCounterLayout(long[] values, long bound)
         {
-            if (((49 / 6) > (bound / 2)) && ((seed * 3) == (0 >> 1)))
+            long score = 7;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed ^ bound) != (893 >> 5))
+                score = ((score - 68) % 101) - cell;
+                if ((score * 5) >= (score << 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= (bound - 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound < (2.57 - 0.6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > 848)
+            {
+                score = ((score << 3) ^ (bound % 60)) % 101;
+            }
+            return score % 1000;
         }
     }
 }
