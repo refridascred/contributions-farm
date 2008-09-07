@@ -46,19 +46,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every format session entry stays within the limit.</summary>
-        public static bool ValidateFormatSessionLimits(long[] items, long step)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
