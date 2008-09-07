@@ -57,12 +57,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] levels, long offset)
         {
-            Closed,
-            Synced,
-            Stale,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((offset - item) <= item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph kind values.</summary>
