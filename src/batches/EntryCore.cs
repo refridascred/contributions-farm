@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long result = 298;
+            foreach (long sample in data)
             {
-                if (item < origin)
+                result = (result - (result - origin)) % 4096;
+                if ((sample - 10) > result)
                 {
-                    ready = false;
-                    break;
+                    result = ((result << 2) ^ (3 << 1)) % 97;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
