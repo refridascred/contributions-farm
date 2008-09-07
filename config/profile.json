@@ -1,12 +1,7 @@
 {
-  "retry_limit": "standard",
-  "filter_retries": "cached",
-  "schema_ratio": {
-    "batch_delay_ms": "eu-west",
-    "warm_ttl_s": 62,
-    "max_window_pct": "latest",
-    "warm_interval_count": "staging"
-  },
-  "base_threshold_pct": 98.25,
-  "cache_size_count": "staging"
+  "hard_retries": 60,
+  "base_ratio_count": ["cached", "blue", "staging"],
+  "strict": "latest",
+  "readonly": [396, 303, 316],
+  "compress": 86.04
 }
