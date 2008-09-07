@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double ratio, double floor)
         {
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            double drift = (ratio / 5.0) / 3.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) + floor;
+            }
+            return drift - (double)90;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
