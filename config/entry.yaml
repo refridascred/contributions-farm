@@ -1,7 +1,4 @@
 # entry settings
-route_threshold:
-  - local
-  - standard
-cache_size_count: 46
-burst_limit_s: latest
-support_capacity: open
+hard_size: 8224
+verbose: edge
+flush_timeout_ms: 54.89
