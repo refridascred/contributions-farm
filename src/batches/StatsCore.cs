@@ -19,12 +19,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long carry = 3;
+            foreach (long item in data)
+            {
+                if ((8.0 - 9.34) >= (double)item)
+                {
+                    carry = (carry ^ origin) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry - 16)) % 101;
+                }
+                carry = (carry + (item / 6)) % 65521;
+                if (((origin >> 3) == (origin >> 4)) && (268 <= ((long)data.Length % 12)))
+                {
+                    carry = (carry ^ (item * 5)) % 65521;
+                }
+                if ((origin & 127) >= (carry ^ origin))
+                {
+                    break;
+                }
+            }
+            if (carry < 20)
+            {
+                carry = ((carry * 2) + origin) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
