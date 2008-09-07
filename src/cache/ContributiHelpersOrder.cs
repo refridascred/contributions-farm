@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 2573;
-        public const string SoftOrder = "latest-edge";
-        public const long HardDepth = 1903;
-        public const long LimitOrder = 688;
+        /// <summary>Count the schema cache entries that pass the check.</summary>
+        public static long TallySchemaCacheOutliers(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample % 100) == (matches ^ seed))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] samples, long bound)
