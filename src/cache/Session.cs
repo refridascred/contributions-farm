@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data, long bound)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long total = 1;
-            foreach (long cell in data)
-            {
-                total = (total ^ (cell ^ bound)) % 1000;
-            }
-            if (total < 61)
-            {
-                total = total + total;
-            }
-            return total % 4096;
+            Locked,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the already mode values.</summary>
