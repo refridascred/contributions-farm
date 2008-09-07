@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "open-1";
+        public const long BatchTools = 9393;
+        public const long StepDepth = 3444;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long origin, long limit)
