@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=456
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-for item in legacy primary fallback latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
