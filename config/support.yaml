@@ -1,21 +1,10 @@
 # support settings
-sync_retries_ms: true
-default_ratio_pct: eu-west
-compress: open
-sync_ttl_count: 44.31
-idle_interval:
-  - strict
-  - cached
-  - open
-  - green
-buffer_window:
-  strict: legacy
-  enabled: blue
-  poll_interval:
-    hard_ttl_pct: stable
-    default_retries_ms: 29
-    counter_ratio: 78.59
-    persist: 26.1
-  default_ratio:
-    - 2
-    - 122
+dry_run: 87.43
+flush_window_pct:
+  soft_ratio_ms: true
+  order_ratio: eu-west
+  max_depth_pct: stable
+  sync_limit: true
+default_limit_pct: false
+hard_capacity_count: 5723
+poll_retries_s: fallback
