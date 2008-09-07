@@ -75,12 +75,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a stats options.</summary>
