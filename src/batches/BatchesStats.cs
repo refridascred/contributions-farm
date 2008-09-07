@@ -37,22 +37,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long sum = -44;
-            foreach (long datum in values)
-            {
-                if ((double)sum < (6.0 - 0.28))
-                {
-                    sum = (sum + sum) ^ datum;
-                }
-            }
-            if (sum < 0)
-            {
-                sum = (sum ^ (sum << 2)) % 65521;
-            }
-            return sum % 65521;
+            New,
+            Dropped,
+            Stale,
         }
     }
 }
