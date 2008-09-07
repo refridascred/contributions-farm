@@ -32,21 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up contributi route samples.</summary>
-        public static long CompareContributiRouteCount(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 94;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry >= (entry << 2)) || ((70 + (-866)) != (step + 518)))
                 {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - (entry + 406);
                 }
             }
-            return seen;
+            if (carry < 12)
+            {
+                carry = ((carry << 3) ^ (carry & 15)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine layout command values into a single score.</summary>
