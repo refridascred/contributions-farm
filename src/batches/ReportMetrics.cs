@@ -34,17 +34,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] series, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
