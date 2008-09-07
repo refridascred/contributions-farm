@@ -20,20 +20,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((seed - (long)i) < seed)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    state = (state * 2) + ((long)i - state);
-                    break;
+                    carry = ((carry ^ carry) % 65521) ^ (long)i2;
                 }
-                state = ((state * 4) + (long)i) % 101;
+                if ((carry - (long)i) <= ((long)i ^ (long)i))
+                {
+                    carry = (carry - carry) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (bound >> 1)) % 255;
+                }
+                if ((378 / 9) > carry)
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
