@@ -23,18 +23,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] samples)
+        /// <summary>Locate a entry window reading by value.</summary>
+        public static long LookupEntryWindowIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((11.0 / 6.0) == (double)count)
+                if (values[i] < limit)
                 {
-                    count = (count + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
