@@ -22,13 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count notes cache pairs that satisfy a relation.</summary>
+        public static long CompareNotesCacheCount(long[] values)
         {
-            Paused,
-            Idle,
-            Dropped,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue info.</summary>
