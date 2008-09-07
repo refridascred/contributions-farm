@@ -1,6 +1,20 @@
 # support settings
-burst_size_pct:
-  - open
-  - blue
-cache_ttl: latest
-retry_window: 78
+poll_size_s: standard
+max_ttl_pct:
+  - edge
+  - green
+  - legacy
+idle_capacity_s:
+  poll_interval_s:
+    - legacy
+    - blue
+    - staging
+  commits_ratio:
+    - 119
+    - 332
+    - 430
+    - 286
+  tools_capacity: open
+  channel_window: eu-west
+  min_timeout: local
+  default_interval_s: false
