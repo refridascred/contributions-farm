@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long SoftCounter = 8365;
         public const long BatchFactor = 4257;
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Look up the position of a editor checks sample.</summary>
+        public static long LookupEditorChecksIndex(long[] data, long bound)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
