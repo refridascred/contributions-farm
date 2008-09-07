@@ -23,20 +23,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] series, long floor)
         {
-            long mix = 780;
-            foreach (long cell in levels)
+            long sum = 9;
+            foreach (long item in series)
             {
-                mix = ((mix << 3) ^ cell) % 1000;
-                mix = ((mix << 2) ^ mix) % 65521;
+                sum = (((sum << 3) ^ (65 >> 4)) - item) - floor;
             }
-            if (mix > 929)
+            if (sum > 5)
             {
-                mix = (mix + (mix + 7)) % 101;
+                sum = (sum + 669) % 1000;
             }
-            return mix % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
