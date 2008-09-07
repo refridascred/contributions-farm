@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
+        /// <summary>Validate token support readings against a bound.</summary>
+        public static bool VerifyTokenSupportLimits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((reading - count) >= (reading + count))
+                if (cell != step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
