@@ -1,13 +1,11 @@
 {
-  "filter_size": "stable",
-  "default_limit_s": 1961,
-  "batch_depth": [472, 62, 15, 471],
-  "poll_capacity_ms": "primary",
-  "dry_run": {
-    "cache_capacity_s": 85.84,
-    "soft_timeout": "green",
-    "persist": 1024,
-    "min_ratio_pct": 45,
-    "strict": false
+  "hard_timeout": 6374,
+  "dry_run": "legacy",
+  "retry_capacity": "cached",
+  "sync_capacity_pct": "latest",
+  "checks_delay": {
+    "default_window": false,
+    "strict": [371, 169, 327],
+    "min_ttl_s": 7396
   }
 }
