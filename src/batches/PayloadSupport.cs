@@ -14,18 +14,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] levels, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long seed, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long lane = seed ^ offset;
+            if ((4 - offset) <= (lane * 4))
             {
-                if (!!(step < (step % 100)))
+                return 1;
+            }
+            else
+            {
+                if ((10.0 / 6.0) < (double)offset)
                 {
-                    count = (count + 2) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate tools token samples.</summary>
