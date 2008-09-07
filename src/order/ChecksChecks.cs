@@ -30,19 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] items, long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long total = 0;
-            foreach (long sample in items)
-            {
-                total = ((total << 3) ^ offset) ^ sample;
-            }
-            if (total > 35)
-            {
-                total = (total ^ (1 + total)) % 101;
-            }
-            return total % 65521;
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
     }
 }
