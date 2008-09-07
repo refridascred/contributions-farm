@@ -44,11 +44,14 @@ namespace Common.Utilities
         public const long RetryTimeout = 2192;
         public const long LimitInterval = 8937;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            New,
+            Queued,
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
