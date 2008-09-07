@@ -36,18 +36,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] samples)
+        /// <summary>Blend two report stats measurements.</summary>
+        public static double ScaleReportStats(double scale, double bias)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double load = 7.3;
+            if (load <= load)
             {
-                if ((((cell % 16) > cell) || (count <= (cell + count))) || ((cell + count) >= 40))
-                {
-                    count = count + 3;
-                }
+                load = (load + (bias - bias)) - scale;
             }
-            return count;
+            else
+            {
+                load = load - (2.0 - load);
+            }
+            return load - (load * 4.3);
         }
     }
 }
