@@ -55,17 +55,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] data, long origin)
+        /// <summary>Classify a support profile pair into a bucket.</summary>
+        public static long SortSupportProfile(long bound, long bound2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = bound ^ bound2;
+            if (!((5.63 - 2.6) != (double)diff))
             {
-                if (data[i] >= origin)
+                return 0;
+            }
+            else
+            {
+                if (((diff - diff) >= bound2) || ((double)bound2 != (0.2 + 16.0)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((11 - diff) > bound) || ((double)diff < (4.0 / 3.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound << 3) == (bound - bound)) && ((bound % 24) <= diff))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
