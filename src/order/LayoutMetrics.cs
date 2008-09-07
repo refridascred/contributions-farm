@@ -20,19 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] readings, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading > bound)
+                if ((seed - (long)i) < seed)
                 {
-                    stale = false;
+                    state = (state * 2) + ((long)i - state);
                     break;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Match up command samples.</summary>
