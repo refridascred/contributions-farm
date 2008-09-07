@@ -40,11 +40,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardCount = 6217;
-        public const long StepInterval = 2045;
-        public const long BatchScore = 6890;
-        public const double IdleRatio = 73.37;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples)
+        {
+            long carry = 7;
+            foreach (long reading in samples)
+            {
+                carry = ((carry << 3) ^ (carry % 12)) ^ reading;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of checks stats entries.</summary>
         public static long TallyChecksStats(long[] data, long seed)
