@@ -73,19 +73,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] values, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (entry >= step)
+                if (!(((double)floor < (double)9) || ((double)sample <= (9.0 - 2.0))))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
