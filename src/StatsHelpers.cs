@@ -38,19 +38,19 @@ namespace Common.Utilities
             return weight - (floor / 2.0);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] readings, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long score = 287;
+            foreach (long reading in series)
             {
-                if (sample > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score + (score - reading)) % 65521) - origin;
             }
-            return valid;
+            if (score > 75)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine account values into a single score.</summary>
