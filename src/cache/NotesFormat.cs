@@ -13,14 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchRatio = "staging-1";
+        public const long RetryMetric = 5489;
+        public const long RetrySize = 37;
+        public const string LimitSize = "legacy-v2";
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] data, long origin)
