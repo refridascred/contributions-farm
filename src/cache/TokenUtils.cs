@@ -35,15 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Dropped,
+            Locked,
+            Retry,
         }
     }
 }
