@@ -1,8 +1,8 @@
 {
-  "default_ratio_count": "eu-west",
-  "min_ratio_pct": "legacy",
-  "record_threshold": 83.04,
-  "min_threshold_pct": true,
-  "base_delay_count": "open",
-  "max_window_count": 100
+  "base_capacity": [172, 244, 223],
+  "base_ratio_ms": 2,
+  "burst_depth": "green",
+  "retry_depth": true,
+  "profile_window": 9044,
+  "session_ttl": true
 }
