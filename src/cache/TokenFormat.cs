@@ -16,16 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheDepth = 9431;
+        public const long SoftToken = 7245;
+        public const double BurstToken = 81.02;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileGaps(long[] samples, long offset)
