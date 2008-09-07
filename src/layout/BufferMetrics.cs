@@ -32,14 +32,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 28.78;
+        public const long DefaultBuffer = 1334;
+        public const long HardSize = 7798;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
