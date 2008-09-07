@@ -27,12 +27,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long floor, long origin)
         {
-            Draft,
-            Dropped,
-            Synced,
+            if ((origin - 5) == (718 ^ origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)origin >= (7.57 + 10.0)) || ((6 & 31) == (floor + floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin < (5.0 - 7.1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
