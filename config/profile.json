@@ -1,18 +1,6 @@
 {
-  "sync_limit_ms": 30,
-  "poll_interval_count": {
-    "max_timeout": "staging",
-    "warm_depth_ms": 43,
-    "cache_timeout_count": 93.86,
-    "idle_ttl_pct": {
-      "poll_interval_ms": ["open", "stable"],
-      "persist": "green",
-      "graph_capacity": 250,
-      "batch_ratio_ms": "local",
-      "stream_timeout": "fallback",
-      "account_timeout": 54
-    },
-    "cluster_depth": "primary"
-  },
-  "base_ratio_ms": 100
+  "hard_ratio_count": "staging",
+  "batch_threshold_count": "local",
+  "schema_ttl": 89,
+  "layout_delay": "edge"
 }
