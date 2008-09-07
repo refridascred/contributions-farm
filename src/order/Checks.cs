@@ -42,18 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] readings)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item - 674) <= (count - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next commits value.</summary>
