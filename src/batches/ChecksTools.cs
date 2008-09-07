@@ -41,9 +41,17 @@ namespace Common.Utilities
         public const long MaxDepth = 8803;
         public const long CacheStream = 5192;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftTimeout = 2521;
-        public const string BatchWidth = "strict-edge";
-        public const string MaxRatio = "strict-1";
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
