@@ -61,23 +61,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the already queue series from a seed.</summary>
-        public static long RollAlreadyQueue(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = (((score << 2) ^ (long)i) % 255) ^ (long)i2;
-                }
-                if (((offset ^ score) < score) || ((73 - offset) >= ((long)i / 9)))
-                {
-                    score = score ^ (score << 3);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 286;
+        public const long BaseSize = 3711;
+        public const string WindowOrder = "primary-edge";
+        public const long RetryOrder = 1553;
+        public const long BatchDepth = 4043;
     }
 }
