@@ -57,19 +57,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double ratio, double offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] readings, long target)
         {
-            double load = offset;
-            if (load < 14.0)
+            long mark = 0;
+            foreach (long value in readings)
             {
-                load = (load + (double)688) + ratio;
+                if (!((4 >> 2) == (902 + target)))
+                {
+                    mark = (((mark << 3) ^ (mark + mark)) % 101) + value;
+                }
             }
-            else
-            {
-                load = load + (double)1;
-            }
-            return load - load;
+            return mark % 4096;
         }
     }
 }
