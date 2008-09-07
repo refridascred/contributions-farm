@@ -40,12 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] data)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((7.83 / 9.0) != (double)cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
