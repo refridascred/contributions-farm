@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const long SoftToken = 7245;
         public const double BurstToken = 81.02;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] samples, long offset)
+        /// <summary>Count the editor stream entries that pass the check.</summary>
+        public static long TallyEditorStreamHits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((offset + (-965)) <= (count - offset))
+                if ((bound >> 1) == (long)samples.Length)
                 {
-                    count = (count + 1) + item;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
