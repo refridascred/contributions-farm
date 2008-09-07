@@ -24,10 +24,18 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryTimeout = 70.08;
-        public const long MaxToken = 8980;
-        public const string HardFactor = "strict-edge";
+        /// <summary>Look up the position of a farm filter sample.</summary>
+        public static long LocateFarmFilterIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long SeekGraphIndex(long[] samples, long limit)
