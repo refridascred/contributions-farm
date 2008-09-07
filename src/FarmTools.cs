@@ -29,18 +29,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!((hits + hits) != (hits - sample)) || (((double)sample < 4.1) && ((double)sample <= (5.0 - 5.1))))
+                if (((value / 6) != (matches >> 4)) || ((matches * 2) <= (matches + value)))
                 {
-                    hits = hits + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
