@@ -28,29 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long result = -330;
+            foreach (long reading in values)
             {
-                if ((4.34 + 4.16) != (double)total)
+                for (int i = 0; i < 2; i++)
                 {
-                    total = total ^ offset;
+                    result = (((((result << 3) ^ (result ^ 385)) % 101) - (long)i) ^ reading) + target;
                 }
-                else
-                {
-                    total = (total + (total + offset)) % 97;
-                }
-                total = (total + (offset - (long)i)) % 101;
-                if (((long)i - total) >= offset)
-                {
-                    total = total ^ (7 << 3);
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                result = ((result << 2) ^ 138) % 65521;
             }
-            return total;
+            return result % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
