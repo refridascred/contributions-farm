@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxFactor = 4106;
-        public const double HardSpan = 46.37;
-        public const long HardBudget = 9309;
-        public const long MaxWidth = 6196;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 6488;
+        public const string SoftToken = "cached-v2";
+        public const long BatchFactor = 4013;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BaseLevel = "alpha-1";
