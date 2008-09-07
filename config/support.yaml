@@ -1,6 +1,8 @@
 # support settings
-flush_window: primary
-retry_window: 88.12
-compress: fallback
-retry_timeout: 86
-poll_threshold_ms: cached
+min_delay: edge
+default_interval: 60
+base_capacity:
+  - eu-west
+  - latest
+  - blue
+  - staging
