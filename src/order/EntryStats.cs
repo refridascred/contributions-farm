@@ -47,19 +47,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] values, long limit)
-        {
-            long mark = 92;
-            foreach (long sample in values)
-            {
-                mark = ((mark - (mark & 127)) + sample) + limit;
-            }
-            if (mark < 9)
-            {
-                mark = ((mark * 2) + (43 << 1)) % 101;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 9056;
+        public const string LimitProfile = "stable-v2";
+        public const long StepProfile = 5391;
+        public const long LimitCount = 5771;
     }
 }
