@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long floor)
+        /// <summary>Find the first schema editor entry that matches the target.</summary>
+        public static long LocateSchemaEditorIndex(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > floor)
+                if (readings[i] <= target)
                 {
                     return (long)i;
                 }
