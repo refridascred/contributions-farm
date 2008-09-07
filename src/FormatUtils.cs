@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)reading < 9.2) && (((hits & 1) != (reading << 1)) && ((double)reading > (8.05 + 15.0))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
