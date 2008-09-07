@@ -41,12 +41,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long sum = 209;
+            foreach (long reading in samples)
+            {
+                if (((sum / 6) <= (reading << 1)) && ((seed + sum) < (sum + reading)))
+                {
+                    sum = sum - (reading + seed);
+                    sum = (sum * 2) + seed;
+                }
+                else
+                {
+                    sum = (sum - (sum + sum)) % 255;
+                }
+                if ((-322) > (reading ^ reading))
+                {
+                    sum = (sum * 2) + (1 * 5);
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum + (4 % 7)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
