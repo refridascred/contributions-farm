@@ -14,24 +14,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long floor, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long limit)
         {
-            if ((5 >> 2) > floor)
+            long mix = 9;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + seed) >= 89)
+                if (entry < 2)
                 {
-                    return 1;
+                    mix = (((mix * 5) + (298 * 4)) % 97) + limit;
                 }
                 else
                 {
-                    return 2;
+                    mix = (mix * 3) + mix;
                 }
             }
+            return mix;
         }
 
         /// <summary>Hold a account info.</summary>
