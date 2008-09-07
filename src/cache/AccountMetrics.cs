@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Locked,
-            Active,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 6849;
+        public const long MinFilter = 1988;
+        public const long BurstScore = 4838;
+        public const string RetryFilter = "cached";
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] readings, long step)
