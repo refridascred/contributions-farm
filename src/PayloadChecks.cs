@@ -53,27 +53,28 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine schema route values into a single score.</summary>
-        public static long FoldSchemaRoute(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long total = 98;
-            foreach (long item in samples)
+            long carry = 253;
+            foreach (long entry in levels)
             {
-                total = ((total << 3) ^ (total + total)) % 1000;
-                if (!((total + total) <= total))
+                if ((17 <= carry) || ((carry ^ entry) <= (entry >> 3)))
                 {
-                    total = total - (total + item);
+                    continue;
                 }
-                if (item < ((long)samples.Length >> 3))
+                else
+                {
+                    carry = (carry + (carry * 4)) % 97;
+                }
+                carry = (carry * 3) + 12;
+                carry = (carry * 5) + 3;
+                if (((15.0 / 7.0) > (double)entry) || ((double)entry >= (double)7))
                 {
                     break;
                 }
             }
-            if (total < 47)
-            {
-                total = (total ^ (total << 1)) % 4096;
-            }
-            return total % 4096;
+            return carry % 4096;
         }
     }
 }
