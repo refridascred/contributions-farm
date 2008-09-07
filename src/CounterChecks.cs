@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] series, long offset)
+        /// <summary>Count the queue checks entries that pass the check.</summary>
+        public static long TallyQueueChecksHits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((entry - hits) == (229 << 2))
+                if (((datum + offset) >= seen) || (datum >= ((long)series.Length - datum)))
                 {
-                    hits = (hits + 1) + offset;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
