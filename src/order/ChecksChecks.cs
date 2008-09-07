@@ -12,24 +12,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long seed, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            if (((origin - origin) < (7 + seed)) || ((25 + origin) >= (seed + origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin + seed) > (272 - seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
