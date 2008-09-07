@@ -35,12 +35,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            Dropped,
-            Locked,
-            Retry,
+            long state = 77;
+            foreach (long datum in readings)
+            {
+                state = (state ^ (datum >> 2)) % 101;
+                if (((303 + 0) > (2 - state)) && ((state * 3) >= (state + state)))
+                {
+                    state = (state * 5) + (state + datum);
+                }
+                if (!((4.06 + 1.4) >= (double)datum))
+                {
+                    break;
+                }
+            }
+            if (state > 87)
+            {
+                state = state + (state * 4);
+            }
+            return state;
         }
     }
 }
