@@ -20,13 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Paused,
-            Active,
-            Retry,
+            Closed,
+            Idle,
             Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the commits state values.</summary>
