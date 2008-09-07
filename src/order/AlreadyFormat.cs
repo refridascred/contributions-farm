@@ -33,32 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long origin, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long span = origin + seed;
-            if (((-5) << 2) >= (origin / 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((15.0 + 3.4) != (double)seed) && (5 > (span + 979)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed * 3) <= (seed * 4)) || (seed > (span + span)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the graph phase values.</summary>
