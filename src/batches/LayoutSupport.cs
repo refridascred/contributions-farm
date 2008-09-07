@@ -73,15 +73,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] levels, long bound)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long total = 99;
-            foreach (long datum in levels)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                total = (((total + (48 << 3)) % 101) - datum) - bound;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return total % 4096;
+            return score;
         }
     }
 }
