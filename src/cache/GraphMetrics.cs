@@ -60,21 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((tally >> 4) != (datum & 7)))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
