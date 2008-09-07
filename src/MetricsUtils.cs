@@ -49,21 +49,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] <= target) && ((values[i] % 2) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
