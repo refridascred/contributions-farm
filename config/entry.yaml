@@ -1,9 +1,24 @@
 # entry settings
-poll_ratio_s: true
-dry_run: 72
-poll_interval_pct: 60
-soft_interval_s:
-  - cached
-  - fallback
-warm_depth_ms: 100
-batch_capacity: latest
+token_window: true
+retry_retries_count:
+  verbose:
+    burst_ratio_pct: 42
+    record_capacity: 6436
+    buffer_ttl:
+      - 26
+      - 178
+      - 237
+    max_threshold: 30
+  audit: 500
+  readonly: true
+  retry_threshold_pct:
+    readonly: false
+    filter_ttl: open
+    stream_capacity: 64.05
+    min_delay_ms:
+      - 23
+      - 439
+    filter_limit: 6884
+  burst_ttl_ms: cached
+context_window: 1024
+soft_delay_pct: strict
