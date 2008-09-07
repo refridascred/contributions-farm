@@ -58,15 +58,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] items, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long total = 998;
+            foreach (long item in items)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                total = ((((total << 3) ^ (long)items.Length) % 255) + item) + step;
+                total = ((total << 3) ^ (total * 3)) % 255;
             }
-            return carry;
+            return total % 1000;
         }
     }
 }
