@@ -28,22 +28,13 @@ namespace Common.Utilities
         public const double LimitSpan = 38.61;
         public const long CacheSchema = 3676;
 
-        /// <summary>Fold a list of support report readings.</summary>
-        public static long TallySupportReport(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = 931;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((anchor << 3) ^ ((long)i & 127)) % 1000;
-                }
-                if (!(((-20) / 9) < (anchor - entry)))
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-            }
-            return anchor % 97;
+            Draft,
+            Queued,
+            Paused,
+            Closed,
         }
     }
 }
