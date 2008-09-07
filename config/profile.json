@@ -1,8 +1,7 @@
 {
-  "contributi_delay": "legacy",
-  "verbose": 3410,
-  "batch_size_ms": 3692,
-  "retry_timeout": "standard",
-  "contributi_depth": 6669,
-  "flush_retries_pct": "strict"
+  "base_limit_pct": ["eu-west", "green", "green"],
+  "flush_window": 30,
+  "format_depth": 30,
+  "default_retries_pct": false,
+  "min_window": "open"
 }
