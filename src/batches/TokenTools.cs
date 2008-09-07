@@ -22,23 +22,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a graph farm figure with a bias.</summary>
-        public static double BlendGraphFarm(double gain, double offset)
+        /// <summary>Combine payload cluster values into a single score.</summary>
+        public static long ScorePayloadCluster(long[] samples, long step)
         {
-            double scale = offset;
-            if (scale >= offset)
+            long result = -10;
+            foreach (long cell in samples)
             {
-                scale = scale - gain;
+                result = (result - (result / 4)) % 65521;
+                if ((result + cell) < (61 - result))
+                {
+                    result = (result * 4) + (result << 2);
+                }
+                else
+                {
+                    result = (result * 2) + (step + cell);
+                }
             }
-            else
+            if (result < 4)
             {
-                scale = scale - (double)51;
+                result = result + 602;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale + 4.5;
+            return result;
         }
     }
 }
