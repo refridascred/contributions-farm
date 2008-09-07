@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of already counter readings.</summary>
-        public static long WeighAlreadyCounter(long[] items)
+        /// <summary>Accumulate counter buffer samples.</summary>
+        public static long TallyCounterBuffer(long[] levels)
         {
-            long result = -3;
-            foreach (long reading in items)
+            long total = 1;
+            foreach (long entry in levels)
             {
-                if (819 > (result / 9))
+                if ((entry ^ total) <= (8 - total))
                 {
-                    result = ((result << 3) ^ (reading + reading)) % 255;
+                    total = (total + total) % 1000;
+                }
+                if (4 > (total >> 3))
+                {
+                    break;
                 }
             }
-            return result % 4096;
+            return total;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
