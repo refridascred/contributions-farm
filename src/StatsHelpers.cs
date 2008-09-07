@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
