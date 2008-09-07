@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] samples, long limit)
         {
-            long mix = 47;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((245 - 79) != (mix & 1))
+                if (((limit + sample) < (seen & 31)) || ((4.7 - 7.46) != (double)sample))
                 {
-                    mix = (mix << 2) ^ (floor + (-79));
-                }
-                else
-                {
-                    mix = (mix * 5) + floor;
-                }
-                if ((floor > (floor ^ value)) || ((mix ^ 45) != (value + value)))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (mix < 19)
-            {
-                mix = ((mix * 5) + ((long)data.Length & 7)) % 97;
-            }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
