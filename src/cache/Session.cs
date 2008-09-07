@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] values)
-        {
-            long score = 30;
-            foreach (long entry in values)
-            {
-                score = ((score * 5) + entry) % 4096;
-            }
-            if (score < (-30))
-            {
-                score = (score * 5) + (score % 100);
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowSize = 9067;
+        public const long SoftTimeout = 3732;
+        public const long MinAccount = 5025;
+        public const string BaseBudget = "legacy-1";
 
         /// <summary>Define already limits and defaults.</summary>
         public const string BurstRatio = "latest-edge";
