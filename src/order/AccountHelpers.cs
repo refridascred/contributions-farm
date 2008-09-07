@@ -16,23 +16,18 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] items, long seed)
         {
-            long result = 47;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!(((result * 4) == (result * 5)) && ((sample + result) != (result & 63))))
+                if (seed > (5 % 5))
                 {
-                    result = ((result << 2) ^ sample) % 65521;
+                    hits = (hits + 3) + sample;
                 }
-                result = ((result << 2) ^ sample) % 4096;
             }
-            if (result < (-2))
-            {
-                result = (result - result) % 4096;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
