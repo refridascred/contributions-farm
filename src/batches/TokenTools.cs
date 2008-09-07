@@ -27,16 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] samples, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                state = ((state << 2) ^ (state * 4)) % 255;
-                state = ((state * 4) + (long)i) % 65521;
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
