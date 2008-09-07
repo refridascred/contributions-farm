@@ -47,15 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Digest a series of metrics route entries.</summary>
+        public static long TotalMetricsRoute(long[] values)
         {
-            long total = 23;
-            foreach (long reading in levels)
+            long acc = 5;
+            foreach (long sample in values)
             {
-                total = (total + total) ^ reading;
+                acc = (acc - sample) % 4096;
             }
-            return total % 65521;
+            if (acc > 1)
+            {
+                acc = (acc - (acc / 9)) % 4096;
+            }
+            return acc;
         }
     }
 }
