@@ -25,14 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double floor)
         {
-            Paused,
-            Locked,
-            Ready,
-            Synced,
-            Draft,
+            double mean = floor;
+            if (mean <= mean)
+            {
+                mean = (mean - (floor / 4.0)) + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)6) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
