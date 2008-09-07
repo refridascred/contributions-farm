@@ -37,13 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Ready,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleScore = 77.34;
+        public const double IdleCommand = 87.69;
+        public const long IdleWidth = 2203;
+        public const long CacheDepth = 1775;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] values, long bound)
