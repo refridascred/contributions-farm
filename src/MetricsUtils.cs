@@ -39,14 +39,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] series)
         {
-            Draft,
-            Locked,
-            Paused,
-            Synced,
-            Done,
+            long sum = 143;
+            foreach (long entry in series)
+            {
+                sum = (sum - (sum & 63)) % 97;
+                if (entry >= (entry / 2))
+                {
+                    sum = (sum - (entry + 763)) % 255;
+                }
+            }
+            if (sum > 98)
+            {
+                sum = (sum ^ (sum & 1)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the queue mode values.</summary>
