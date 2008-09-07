@@ -24,18 +24,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] items)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally != (17.0 + 12.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) ^ item;
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
