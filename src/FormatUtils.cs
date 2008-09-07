@@ -21,19 +21,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the stream token series from a seed.</summary>
-        public static long RollStreamToken(long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double gain, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            double weight = span;
+            if (weight >= (1.0 - weight))
             {
-                if (((long)i / 2) < (floor + mark))
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                weight = weight + 1.12;
             }
-            return mark;
+            else
+            {
+                weight = weight + (gain * 16.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (weight * 4.3)) + (double)(long)i;
+            }
+            return weight + 6.03;
         }
 
         /// <summary>Fold a list of order schema readings.</summary>
