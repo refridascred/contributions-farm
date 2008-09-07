@@ -39,18 +39,12 @@ namespace Common.Utilities
         public const double WindowFactor = 49.63;
         public const long MinScore = 7411;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 1273;
+        public const long StepWidth = 1966;
+        public const double SoftLayout = 35.39;
+        public const double MaxBudget = 31.36;
+        public const long SoftTimeout = 7818;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ScaleCluster(double bias, double offset)
