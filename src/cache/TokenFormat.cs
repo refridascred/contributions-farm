@@ -16,19 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] values, long bound)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double bias = weight / 9.0;
+            return (bias - (double)83) + offset;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
