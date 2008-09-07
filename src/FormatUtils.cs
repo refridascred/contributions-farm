@@ -49,26 +49,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] data, long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            long score = -21;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)score >= 7.2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score - (score >> 5)) % 101;
-                }
-                if (item <= (origin << 2))
-                {
-                    score = score + (origin / 7);
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < (-111))
-            {
-                score = (score + 0) % 1000;
-            }
-            return score;
+            return seen;
         }
     }
 }
