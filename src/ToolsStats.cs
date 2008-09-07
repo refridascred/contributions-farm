@@ -28,18 +28,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of token account readings.</summary>
-        public static long DigestTokenAccount(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] values)
         {
-            long result = 1;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((27 & 31) >= (result - entry))
+                if (8.0 < (double)cell)
                 {
-                    result = (result - (result * 2)) % 255;
+                    tally = tally + 3;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a queue info.</summary>
