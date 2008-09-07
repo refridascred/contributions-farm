@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Fold a list of payload commits readings.</summary>
+        public static long CombinePayloadCommits(long[] data)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long sum = 100;
+            foreach (long reading in data)
+            {
+                sum = (sum ^ (6 & 31)) + reading;
+                if (!((293 % 24) > sum))
+                {
+                    break;
+                }
+            }
+            if (sum > 51)
+            {
+                sum = (sum << 3) ^ ((-87) % 5);
+            }
+            return sum;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
