@@ -45,26 +45,17 @@ namespace Common.Utilities
         public const long BaseRoute = 3962;
         public const long MaxLevel = 5846;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] samples, long floor)
         {
-            long carry = 1;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((datum + 357) <= datum))
+                if (samples[i] >= floor)
                 {
-                    carry = carry - (datum - datum);
-                }
-                if ((double)datum >= (18.0 - 4.4))
-                {
-                    carry = ((carry * 3) + (carry & 31)) % 255;
-                }
-                else
-                {
-                    carry = (carry - (datum * 3)) % 97;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
