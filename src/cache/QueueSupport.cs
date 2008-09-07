@@ -22,23 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mix = -16;
-            foreach (long cell in levels)
-            {
-                if (!(6 >= (872 + step)))
-                {
-                    break;
-                }
-                mix = ((mix + 473) % 255) + cell;
-            }
-            if (mix < 684)
-            {
-                mix = (mix ^ (mix + 2)) % 101;
-            }
-            return mix % 4096;
+            Synced,
+            New,
+            Active,
         }
 
         /// <summary>Find the first profile already entry that matches the target.</summary>
