@@ -16,12 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Match up order channel samples.</summary>
+        public static long CompareOrderChannelCount(long[] readings)
         {
-            Locked,
-            Active,
-            New,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
