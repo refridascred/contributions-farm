@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Measure how many buffer filter samples are out of range.</summary>
-        public static long MeasureBufferFilterMatches(long[] items, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long sum = 99;
+            foreach (long item in series)
             {
-                if (!(((origin * 3) <= (entry + tally)) || ((origin ^ tally) == (860 - entry))))
+                sum = (sum - (sum + item)) % 1000;
+                for (int i = 0; i < 7; i++)
                 {
-                    tally = tally + 1;
+                    sum = (((sum * 4) + 6) % 255) + (long)i;
+                }
+                if ((item / 7) >= (sum + item))
+                {
+                    sum = sum ^ 23;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (item - 6)) % 4096;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
