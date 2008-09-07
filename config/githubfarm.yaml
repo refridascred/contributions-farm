@@ -1,10 +1,16 @@
 # githubfarm settings
-default_threshold_count:
-  - 372
-  - 97
-  - 356
-retry_timeout_count: 100
-account_ttl: 1024
-commits_retries: 82.24
-tools_threshold: open
-max_limit: false
+profile_size: primary
+notes_limit:
+  hard_capacity: green
+  compress: 88.91
+  retry_threshold_count:
+    - eu-west
+    - edge
+  poll_interval: legacy
+  max_interval_s: 500
+  cache_depth_pct: false
+sync_ttl_s:
+  - stable
+  - staging
+  - cached
+  - green
