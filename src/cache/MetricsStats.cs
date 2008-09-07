@@ -42,18 +42,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] readings, long floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - 6) == (seen << 1))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            Dropped,
+            Closed,
+            Idle,
+            Draft,
         }
     }
 }
