@@ -22,13 +22,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Locked,
-            New,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 1170;
+        public const long IdleBudget = 1483;
+        public const long BaseInterval = 6929;
+        public const long WindowWidth = 8295;
     }
 }
