@@ -44,15 +44,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double ratio, double floor)
         {
-            double ratio2 = span;
-            if (ratio2 >= (double)598)
+            double load = 14.0;
+            if (load > ratio)
             {
-                ratio2 = ratio2 + (double)5;
+                load = load - ratio;
             }
-            return ratio2 + ratio;
+            return load + floor;
         }
     }
 }
