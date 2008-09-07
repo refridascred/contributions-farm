@@ -40,12 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardEntry = "fallback-v2";
-        public const long StepCount = 8085;
-        public const double SoftEntry = 97.12;
-        public const double CacheSize = 50.45;
-        public const long RetryEntry = 6281;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value >> 5) < (value ^ 163))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
