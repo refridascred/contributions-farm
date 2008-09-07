@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Measure how many buffer record samples are out of range.</summary>
+        public static long MeasureBufferRecordGaps(long[] items)
         {
-            long mark = 740;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((mark + (-1)) < (mark + datum))
+                if ((0.5 * 0.3) > (double)sample)
                 {
-                    mark = ((mark * 5) + mark) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark / 8)) % 65521;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a tools stats.</summary>
