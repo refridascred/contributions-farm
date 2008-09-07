@@ -60,13 +60,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            long mark = 97;
+            foreach (long datum in readings)
+            {
+                if ((mark << 3) >= (datum - datum))
+                {
+                    mark = (mark << 3) ^ ((long)readings.Length / 3);
+                }
+                mark = ((mark << 3) ^ (mark / 8)) % 1000;
+                if ((1.94 < (double)datum) || ((mark / 5) <= (mark % 10)))
+                {
+                    mark = (mark * 2) + (datum & 1);
+                }
+            }
+            return mark;
         }
     }
 }
