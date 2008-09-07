@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                sum = ((sum << 2) ^ (step * 2)) % 255;
-                sum = (sum ^ (sum & 31)) % 1000;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((4.3 + 4.3) < (double)item)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many checks channel samples are out of range.</summary>
