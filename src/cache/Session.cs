@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double floor)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            double bias = (double)(0 + 86);
+            if (bias > scale)
+            {
+                bias = (bias - bias) - floor;
+            }
+            return bias - (scale + scale);
         }
 
         /// <summary>Describe the already mode values.</summary>
