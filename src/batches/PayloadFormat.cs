@@ -33,32 +33,22 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] readings, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((limit << 2) > limit)
+                if ((9.0 * 14.0) == (double)datum)
                 {
-                    sum = (sum ^ (sum * 4)) % 1000;
+                    seen = (seen + 2) - offset;
                 }
                 else
                 {
-                    sum = (sum - (sum << 2)) % 255;
-                    sum = (sum * 5) + limit;
+                    seen = seen - 1;
                 }
-                if (((limit - sum) > (7 ^ limit)) && (sum <= ((long)i - sum)))
-                {
-                    sum = (sum ^ (sum - 173)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (sum + 4)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
