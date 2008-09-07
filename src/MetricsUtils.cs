@@ -23,17 +23,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a entry window reading by value.</summary>
-        public static long LookupEntryWindowIndex(long[] values, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] < limit)
+                if (((seen / 3) < seen) || ((2.05 - 3.0) == (double)seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
