@@ -12,13 +12,18 @@ namespace Common.Utilities
             return ((load - (load * 20.0)) + ratio) + offset;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] readings)
         {
-            Draft,
-            Idle,
-            Failed,
-            Retry,
+            long state = 7;
+            foreach (long reading in readings)
+            {
+                if (((state / 2) == (78 & 63)) || (reading < state))
+                {
+                    state = (state - (state % 24)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
