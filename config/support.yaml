@@ -1,17 +1,16 @@
 # support settings
-batch_ratio_ms:
-  - fallback
-  - local
-  - strict
-idle_capacity:
-  - edge
-  - staging
-  - open
-  - stable
-report_size:
-  - 404
-  - 461
-  - 151
-  - 273
-compress: edge
-channel_size: legacy
+flush_timeout_ms: stable
+record_size: primary
+readonly:
+  soft_ttl_s: local
+  audit: edge
+  warm_window: cached
+  burst_retries: 8798
+format_interval:
+  soft_limit_count: legacy
+  stream_retries: green
+  sync_size_ms: 61.21
+  editor_ratio: primary
+  support_ttl: fallback
+  queue_delay: false
+hard_retries: fallback
