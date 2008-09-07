@@ -31,19 +31,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell & 1) > 65)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetrySpan = 4186;
+        public const long BurstBuffer = 901;
+        public const string DefaultBuffer = "standard-edge";
 
         /// <summary>Iterate the already queue series from a seed.</summary>
         public static long RollAlreadyQueue(long offset)
