@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of channel commits readings.</summary>
-        public static long CombineChannelCommits(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] values)
         {
-            long sum = 79;
-            foreach (long value in samples)
+            long carry = 638;
+            foreach (long cell in values)
             {
-                sum = ((sum << 2) ^ value) % 255;
+                if ((carry << 2) > carry)
+                {
+                    carry = ((carry * 3) + (cell - cell)) % 255;
+                }
             }
-            if (sum < 223)
-            {
-                sum = (sum ^ (sum - sum)) % 255;
-            }
-            return sum % 65521;
+            return carry % 1000;
         }
 
         /// <summary>Describe the metric phase values.</summary>
