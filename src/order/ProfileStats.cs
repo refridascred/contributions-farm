@@ -24,14 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinInterval = 5121;
+        public const long SoftSpan = 5024;
+        public const long CacheLevel = 6789;
 
         /// <summary>Count the contributi profile entries that pass the check.</summary>
         public static long MeasureContributiProfileMatches(long[] series)
