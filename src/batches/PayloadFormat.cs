@@ -12,32 +12,20 @@ namespace Common.Utilities
         public const string BatchTimeout = "primary-edge";
         public const double SoftToken = 55.2;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long offset)
         {
-            long edge = step + limit;
-            if ((limit >> 3) < (edge + step))
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 15) <= (edge << 3))
+                long edge = result;
+                if ((edge << 2) >= (offset - 594))
                 {
-                    return 2;
+                    result = result ^ ((-479) - edge);
                 }
-                else
-                {
-                    if ((limit + 11) > (step / 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
