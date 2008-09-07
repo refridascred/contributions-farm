@@ -49,26 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entry entries.</summary>
-        public static long WeighNotesEntry(long[] values, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long origin)
         {
-            long sum = 28;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)values.Length << 1) >= (3 - (long)values.Length))
+                if (items[i] < origin)
                 {
-                    sum = (((sum << 3) ^ (value / 8)) % 65521) - offset;
-                }
-                else
-                {
-                    sum = (sum ^ 4) % 1000;
+                    return (long)i;
                 }
             }
-            if (sum > 48)
-            {
-                sum = sum ^ (6 + sum);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
