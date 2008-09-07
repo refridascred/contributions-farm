@@ -28,18 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] samples, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((bound < (datum >> 5)) && (bound <= (tally >> 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Paused,
         }
     }
 }
