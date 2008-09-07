@@ -25,19 +25,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] levels, long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double gain, double floor)
         {
-            long total = 778;
-            foreach (long datum in levels)
+            double rate = floor * 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                total = total - (datum + datum);
+                rate = ((rate - (3.3 - rate)) + (double)(long)i) + gain;
             }
-            if (total < 0)
-            {
-                total = (total * 2) + (target << 1);
-            }
-            return total % 65521;
+            return rate - rate;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
