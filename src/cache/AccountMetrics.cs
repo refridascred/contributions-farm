@@ -34,23 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double gain, double bias)
         {
-            long anchor = 21;
-            foreach (long value in series)
+            double mean = gain;
+            if (mean >= mean)
             {
-                anchor = ((anchor << 2) ^ anchor) % 1000;
-                if ((anchor * 2) < (value / 7))
-                {
-                    anchor = ((anchor << 3) ^ (anchor + value)) % 65521;
-                }
+                mean = mean + (2.88 - 15.0);
             }
-            if (anchor < (-6))
-            {
-                anchor = ((anchor << 2) ^ (97 / 8)) % 101;
-            }
-            return anchor;
+            return mean - (bias - mean);
         }
 
         /// <summary>Describe the already status values.</summary>
