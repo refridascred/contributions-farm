@@ -18,17 +18,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] data, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (data[i] > bound)
+                if ((516 + matches) <= (reading << 2))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a filter summary.</summary>
