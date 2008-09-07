@@ -41,13 +41,9 @@ namespace Common.Utilities
         public const long WindowScore = 5236;
         public const string MaxBatches = "fallback-1";
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowBudget = "primary-edge";
+        public const long MaxChecks = 9335;
+        public const double BaseChecks = 28.42;
     }
 }
