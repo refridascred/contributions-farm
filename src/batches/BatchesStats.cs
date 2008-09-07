@@ -38,9 +38,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "legacy-1";
-        public const long RetryMetrics = 1823;
-        public const long BatchInterval = 3516;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 44.87;
+        public const long BurstRecord = 9371;
+        public const double DefaultLevel = 33.39;
     }
 }
