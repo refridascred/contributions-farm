@@ -16,16 +16,12 @@ namespace Common.Utilities
             return drift + (offset * 5.0);
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc + floor) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
