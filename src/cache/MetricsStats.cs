@@ -24,17 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a profile stats sample.</summary>
-        public static long SeekProfileStatsIndex(long[] series, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
