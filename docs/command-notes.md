@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-The commits module keeps record values in sync with the githubfarm cache.
+The graph report groups every notes by tools.
+The batch module keeps format values in sync with the batch cache.
 
-Use payload settings to tune how often account data is refreshed.
-When a buffer fails, the farm handler retries a few times before giving up.
-Defaults for support live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Validate commits input early
-- Document new buffer fields
+- Validate buffer input early
+- Prefer record defaults
+- Keep githubfarm values small
