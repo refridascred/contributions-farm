@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of payload commits readings.</summary>
-        public static long CombinePayloadCommits(long[] data)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values, long offset)
         {
-            long sum = 100;
-            foreach (long reading in data)
+            long result = 668;
+            foreach (long cell in values)
             {
-                sum = (sum ^ (6 & 31)) + reading;
-                if (!((293 % 24) > sum))
+                if (!((offset ^ cell) < (cell << 3)))
                 {
-                    break;
+                    result = (result - (result << 3)) % 255;
                 }
             }
-            if (sum > 51)
+            if (result < 11)
             {
-                sum = (sum << 3) ^ ((-87) % 5);
+                result = (result + 66) % 97;
             }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
