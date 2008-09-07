@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] series, long bound)
+        /// <summary>Measure how many commits context samples are out of range.</summary>
+        public static long TallyCommitsContextOutliers(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (item < bound)
+                if ((datum % 97) == (datum % 7))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a token options.</summary>
