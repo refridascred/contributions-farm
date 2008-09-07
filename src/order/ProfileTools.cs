@@ -40,16 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a schema stream counter forward.</summary>
-        public static long RollSchemaStream(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "cached-1";
+        public const long MaxMetric = 8836;
+        public const double BaseMetric = 86.7;
+        public const long BaseDepth = 4222;
+        public const long MinFactor = 8326;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
