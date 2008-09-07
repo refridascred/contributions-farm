@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a session record value against two limits.</summary>
-        public static long SortSessionRecord(long floor, long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            if ((floor * 2) > 2)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.19 * 7.45) < (double)floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit <= (floor + limit))
+                    if ((values[i] ^ values[j]) < 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((26 + limit) != (floor ^ limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
