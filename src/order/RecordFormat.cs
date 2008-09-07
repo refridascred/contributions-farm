@@ -34,15 +34,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Compare every pair of counter editor readings.</summary>
+        public static long PairCounterEditorCount(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Combine farm graph values into a single score.</summary>
