@@ -1,6 +1,5 @@
 {
-  "audit": 34,
-  "soft_interval_count": ["fallback", "stable"],
-  "idle_retries_count": true,
-  "hard_window": 37
+  "idle_interval_pct": "strict",
+  "enabled": 75,
+  "base_ratio": "standard"
 }
