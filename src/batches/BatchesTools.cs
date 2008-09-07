@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string MinContributi = "stable-1";
         public const long SoftContributi = 1087;
 
-        /// <summary>Validate tools cluster readings against a bound.</summary>
-        public static bool CheckToolsClusterBounds(long[] readings, long step)
+        /// <summary>Check that every format channel entry stays within the limit.</summary>
+        public static bool VerifyFormatChannelRange(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (reading < step)
+                if (value <= origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Match up payload samples.</summary>
