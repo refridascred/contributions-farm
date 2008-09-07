@@ -30,19 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftTimeout = 46.27;
+        public const string HardSize = "standard-1";
+        public const long BaseMetric = 492;
+        public const long IdleInterval = 9497;
     }
 }
