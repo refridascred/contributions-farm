@@ -1,13 +1,15 @@
 {
-  "batch_capacity": "local",
-  "audit": {
-    "flush_depth_ms": ["standard", "open"],
-    "warm_depth_ms": 79.8,
-    "strict": ["green", "latest", "open"],
-    "profile_interval": true
+  "base_ttl_count": {
+    "base_timeout": false,
+    "batch_retries": 100,
+    "strict": {
+      "persist": "edge",
+      "base_ttl_ms": 8024,
+      "poll_limit": true
+    }
   },
-  "schema_delay": 26,
-  "enabled": 2591,
-  "batch_window": [318, 106, 470, 16],
-  "readonly": 56.32
+  "dry_run": [19, 83, 412, 2],
+  "soft_limit_pct": "staging",
+  "burst_timeout_count": 14,
+  "order_threshold": 66.85
 }
