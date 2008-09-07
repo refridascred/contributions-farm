@@ -13,12 +13,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSize = 7859;
-        public const long BurstSize = 7174;
-        public const string RetryScore = "fallback-1";
-        public const string DefaultSize = "fallback-edge";
-        public const long CacheTools = 4233;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchStats = 85.97;
+        public const long HardDepth = 9929;
+        public const long CacheSize = 8832;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
