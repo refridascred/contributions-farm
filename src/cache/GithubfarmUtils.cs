@@ -46,19 +46,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] samples, long step)
+        /// <summary>Combine tools payload values into a single score.</summary>
+        public static long DigestToolsPayload(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long carry = 34;
+            foreach (long sample in items)
             {
-                if (entry >= step)
+                if ((double)57 != (double)carry)
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry - (71 + (-727))) % 1000) ^ sample;
+                }
+                else
+                {
+                    carry = carry + (seed * 2);
                 }
             }
-            return stale;
+            return carry;
         }
     }
 }
