@@ -66,19 +66,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] levels, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (value <= floor)
+                if (score >= (7 >> 5))
                 {
-                    flag = false;
-                    break;
+                    score = (score + (offset / 8)) % 65521;
+                    continue;
                 }
+                score = ((score << 3) ^ (score ^ score)) % 97;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Roll a window counter forward.</summary>
