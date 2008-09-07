@@ -40,17 +40,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Find the first metrics profile entry that matches the target.</summary>
-        public static long FindMetricsProfileIndex(long[] values, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
