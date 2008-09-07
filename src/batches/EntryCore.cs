@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            long acc = -2;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc - (limit >> 2)) + (long)i;
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 3) + (limit - reading)) % 255;
             }
-            if (acc < 5)
-            {
-                acc = (acc + limit) % 4096;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
