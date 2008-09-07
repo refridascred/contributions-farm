@@ -49,18 +49,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long score = -21;
+            foreach (long item in data)
             {
-                if ((double)sample > (6.0 - 6.66))
+                if ((double)score >= 7.2)
                 {
-                    count = count + 1;
+                    score = (score - (score >> 5)) % 101;
+                }
+                if (item <= (origin << 2))
+                {
+                    score = score + (origin / 7);
                 }
             }
-            return count;
+            if (score < (-111))
+            {
+                score = (score + 0) % 1000;
+            }
+            return score;
         }
     }
 }
