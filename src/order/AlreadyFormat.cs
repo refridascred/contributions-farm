@@ -52,27 +52,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long state = 6;
-            foreach (long cell in readings)
-            {
-                state = ((state * 4) + (cell + cell)) % 1000;
-                if ((499 + state) <= (cell + state))
-                {
-                    state = ((state * 2) + cell) % 97;
-                }
-                else
-                {
-                    state = ((state * 3) + (cell + 475)) % 97;
-                }
-                if ((709 << 1) >= cell)
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public bool Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
