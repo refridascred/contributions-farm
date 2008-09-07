@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            Idle,
-            Locked,
-            Queued,
-            Stale,
+            long mark = 43;
+            foreach (long cell in levels)
+            {
+                mark = ((mark + mark) % 97) - cell;
+            }
+            if (mark > 4)
+            {
+                mark = (mark - (mark >> 5)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
