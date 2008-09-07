@@ -19,19 +19,31 @@ namespace Common.Utilities
         public const long BurstTools = 6032;
         public const string MinScore = "strict";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] readings, long offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long seed, long offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            if (offset > (seed + offset))
             {
-                if (value > offset)
+                return 2;
+            }
+            else
+            {
+                if ((seed - offset) >= (seed * 2))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + offset) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
