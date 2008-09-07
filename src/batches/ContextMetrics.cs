@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double floor)
-        {
-            double rate = floor + floor;
-            if (rate <= (5.22 + rate))
-            {
-                rate = (rate - rate) - gain;
-            }
-            return rate + 3.68;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstWidth = 38.7;
+        public const string BatchBuffer = "primary-edge";
+        public const long RetryInterval = 3022;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BaseFarm = "latest-edge";
