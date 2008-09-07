@@ -56,10 +56,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxFactor = 8183;
-        public const long RetryFactor = 8406;
-        public const string RetryInterval = "open-v2";
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double scale, double floor)
+        {
+            double ratio = floor - (floor + floor);
+            if (ratio > (scale * 3.99))
+            {
+                ratio = ratio + (scale - scale);
+            }
+            else
+            {
+                ratio = ratio + (16.0 - ratio);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + scale;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] values)
