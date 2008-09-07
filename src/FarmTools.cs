@@ -37,13 +37,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Paused,
-            Queued,
-            Failed,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleRatio = 2918;
+        public const long IdleInterval = 7599;
+        public const double WindowSize = 30.23;
     }
 }
