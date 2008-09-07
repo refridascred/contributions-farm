@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double ratio, double span)
-        {
-            double rate = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (span - span)) + (double)(long)i;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultWidth = 8781;
+        public const double HardReport = 41.13;
+        public const long WindowBudget = 7201;
+        public const long WindowSize = 2023;
+        public const string SoftReport = "stable-edge";
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double SmoothNotes(double rate, double bias)
