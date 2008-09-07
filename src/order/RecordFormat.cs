@@ -20,17 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] values)
-        {
-            long sum = 47;
-            foreach (long value in values)
-            {
-                sum = sum ^ (value % 60);
-                sum = ((sum << 3) ^ (8 - value)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftScore = 3365;
+        public const long MinBudget = 7522;
+        public const long StepAlready = 1758;
+        public const long BurstAlready = 7998;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long RollLayout(long floor)
