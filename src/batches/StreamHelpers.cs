@@ -81,17 +81,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] series, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc - ((long)i * 3)) % 4096;
+                acc = acc ^ acc;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
