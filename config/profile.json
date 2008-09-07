@@ -1,15 +1,10 @@
 {
-  "base_ttl_count": {
-    "base_timeout": false,
-    "batch_retries": 100,
-    "strict": {
-      "persist": "edge",
-      "base_ttl_ms": 8024,
-      "poll_limit": true
-    }
+  "record_retries": "staging",
+  "soft_limit_ms": {
+    "filter_ratio": "blue",
+    "hard_capacity_ms": 2682,
+    "default_ttl_s": 60,
+    "base_threshold": true
   },
-  "dry_run": [19, 83, 412, 2],
-  "soft_limit_pct": "staging",
-  "burst_timeout_count": 14,
-  "order_threshold": 66.85
+  "checks_delay": 60.12
 }
