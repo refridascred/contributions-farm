@@ -1,7 +1,5 @@
 {
-  "filter_timeout": false,
-  "warm_timeout": ["green", "standard"],
-  "default_interval_s": 30,
-  "queue_limit": 78,
-  "command_interval": 7.34
+  "soft_timeout_s": ["fallback", "primary", "blue", "staging"],
+  "dry_run": [288, 32],
+  "audit": 38.3
 }
