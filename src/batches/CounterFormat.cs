@@ -41,13 +41,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long target, long step)
         {
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
+            if (((-14) % 12) > (step * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target ^ step) < step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step ^ target) >= (target ^ target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
