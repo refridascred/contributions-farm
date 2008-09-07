@@ -50,34 +50,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of checks stats entries.</summary>
-        public static long TallyChecksStats(long[] data, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] items, long step)
         {
-            long state = 27;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((seed > (item << 1)) || ((0 + seed) >= (state & 15)))
+                if (entry <= step)
                 {
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    state = (state - (state + item)) % 101;
-                }
-                if (item > (item - seed))
-                {
-                    state = (state << 3) ^ 107;
-                }
-                else
-                {
-                    state = (state + 0) % 4096;
-                }
             }
-            if (state < 74)
-            {
-                state = ((state * 4) + (state / 9)) % 101;
-            }
-            return state;
+            return flag;
         }
     }
 }
