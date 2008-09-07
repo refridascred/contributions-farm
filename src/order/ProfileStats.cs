@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 95.69;
-        public const string DefaultContributi = "alpha-edge";
-        public const long CacheSize = 5141;
-        public const long IdleContributi = 5559;
-        public const long MinContributi = 5424;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Match up tools profile samples.</summary>
         public static long MatchToolsProfileCount(long[] data)
