@@ -25,38 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long limit, long floor)
+        /// <summary>Check that every command githubfarm entry stays within the limit.</summary>
+        public static bool ValidateCommandGithubfarmLimits(long[] values, long offset)
         {
-            if ((floor & 15) != (limit - (-567)))
+            bool found = true;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit >> 3) <= (3 >> 5))
+                if (value >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - floor) <= (limit << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit <= (limit - floor)) || (floor <= (floor / 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the format status values.</summary>
