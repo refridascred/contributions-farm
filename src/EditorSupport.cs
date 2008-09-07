@@ -57,13 +57,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the graph kind values.</summary>
