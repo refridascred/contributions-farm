@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long IdleSize = 891;
         public const double SoftProfile = 78.97;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Closed,
-            Queued,
-            Paused,
-            Draft,
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
