@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] levels)
         {
-            New,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (seen <= 0)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
