@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long WindowSize = 2023;
         public const string SoftReport = "stable-edge";
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double load = rate + (bias + rate);
-            for (int i = 0; i < 9; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - load;
+            Synced,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
