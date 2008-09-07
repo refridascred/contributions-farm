@@ -32,24 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long limit, long bound)
+        /// <summary>Validate context order readings against a bound.</summary>
+        public static bool VerifyContextOrderLimits(long[] data, long offset)
         {
-            if ((7 + 4) <= limit)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound != (double)44)
+                if (entry >= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
