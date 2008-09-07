@@ -67,18 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] levels)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((hits + hits) < cell)
+                if ((floor * 5) >= (floor + seen))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
