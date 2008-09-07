@@ -49,17 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] levels, long origin)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Accumulate notes samples.</summary>
