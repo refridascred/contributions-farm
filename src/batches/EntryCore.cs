@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long acc = -2;
+            foreach (long reading in data)
             {
-                if ((10.0 / 7.0) >= (double)hits)
+                for (int i = 0; i < 9; i++)
                 {
-                    hits = (hits + 3) + sample;
+                    acc = (acc - (limit >> 2)) + (long)i;
                 }
+                acc = ((acc * 3) + (limit - reading)) % 255;
             }
-            return hits;
+            if (acc < 5)
+            {
+                acc = (acc + limit) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
