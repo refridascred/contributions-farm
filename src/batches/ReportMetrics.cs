@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] series)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long anchor = 647;
+            foreach (long datum in series)
             {
-                if (entry >= (entry + 0))
+                if ((anchor & 63) < (3 >> 2))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor + (anchor % 60)) % 4096;
                 }
+                anchor = ((anchor << 2) ^ (anchor + datum)) % 255;
             }
-            return matches;
+            if (anchor < (-3))
+            {
+                anchor = (anchor ^ (-48)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
