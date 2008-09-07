@@ -39,22 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] readings, long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((9.0 * 14.0) == (double)datum)
-                {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
