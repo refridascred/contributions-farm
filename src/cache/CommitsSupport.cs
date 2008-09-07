@@ -38,19 +38,15 @@ namespace Common.Utilities
         public const double IdleOrder = 5.29;
         public const string BaseOrder = "strict-v2";
 
-        /// <summary>Combine support layout values into a single score.</summary>
-        public static long CombineSupportLayout(long[] items, long offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double scale, double offset)
         {
-            long carry = 31;
-            foreach (long sample in items)
+            double bias = (offset * 8.0) / 6.0;
+            if (bias > (scale * 18.0))
             {
-                carry = (carry ^ (carry >> 1)) + offset;
-                if ((carry < (carry << 1)) || ((double)sample <= (6.0 / 5.0)))
-                {
-                    break;
-                }
+                bias = bias + offset;
             }
-            return carry % 1000;
+            return bias + scale;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
