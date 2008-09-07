@@ -26,25 +26,12 @@ namespace Common.Utilities
             return bias - (1.86 + ratio);
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long target, long bound)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long lane = target - bound;
-            if (((target % 97) != (lane / 2)) && ((target * 3) >= target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((lane * 4) < (bound ^ bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
