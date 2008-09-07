@@ -45,25 +45,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long seed, long seed2)
+        /// <summary>Iterate the already queue series from a seed.</summary>
+        public static long RollAlreadyQueue(long offset)
         {
-            long prev = seed ^ seed2;
-            if (((4 - seed2) <= (723 / 9)) || ((double)seed >= 4.2))
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (prev > (prev * 2))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 8;
+                    score = (((score << 2) ^ (long)i) % 255) ^ (long)i2;
                 }
-                else
+                if (((offset ^ score) < score) || ((73 - offset) >= ((long)i / 9)))
                 {
-                    return 6;
+                    score = score ^ (score << 3);
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
     }
 }
