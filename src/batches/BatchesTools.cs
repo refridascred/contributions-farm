@@ -39,19 +39,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            double weight = (floor - floor) + (floor * 7.0);
-            if (weight >= floor)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight - bias;
+                if (!((seed + carry) != (seed & 31)))
+                {
+                    carry = ((carry << 3) ^ ((long)i ^ seed)) % 97;
+                    continue;
+                }
+                if ((seed % 24) > (long)i)
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight - floor;
+            return carry;
         }
     }
 }
