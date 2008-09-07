@@ -19,26 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long carry = 6;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)carry > (double)datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry + (-31)) % 101;
-                }
-                if ((datum - datum) == (42 >> 3))
-                {
-                    carry = carry ^ (carry - 8);
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 896)
-            {
-                carry = (carry - (carry % 12)) % 4096;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a buffer info.</summary>
