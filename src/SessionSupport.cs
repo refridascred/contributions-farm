@@ -19,24 +19,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next batches already value from a seed.</summary>
-        public static long IterateBatchesAlready(long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] data, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result & 31) < (63 / 5))
+                if ((data[i] < seed) && ((data[i] % 3) == 0))
                 {
-                    result = (result * 4) + bound;
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result * 3) + bound) % 255;
-                    result = result + (bound / 3);
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next metric session value from a seed.</summary>
