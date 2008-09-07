@@ -18,22 +18,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] data, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long target)
         {
-            long mark = 26;
-            foreach (long value in data)
+            long slot = offset ^ target;
+            if (((slot / 9) == (offset & 255)) && (target < (target * 5)))
             {
-                if ((target + value) != (value ^ mark))
+                return 0;
+            }
+            else
+            {
+                if ((target - target) <= target)
                 {
-                    mark = ((mark << 3) ^ (value + mark)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (mark - (long)data.Length)) % 255;
+                    return 8;
                 }
             }
-            return mark;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
