@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const long MinWidth = 9114;
         public const long SoftStats = 1855;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 72.63;
-        public const string LimitTimeout = "fallback-edge";
-        public const long StepFactor = 8760;
-        public const double WindowTimeout = 44.8;
-        public const string StepAlready = "primary-edge";
+        /// <summary>Measure how many graph queue samples are out of range.</summary>
+        public static long MeasureGraphQueueGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (entry >= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] levels, long origin)
