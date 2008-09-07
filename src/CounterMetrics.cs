@@ -19,23 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window checks samples.</summary>
-        public static long ScoreWindowChecks(long[] readings)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double rate, double offset)
         {
-            long total = 643;
-            foreach (long item in readings)
+            double ratio = rate;
+            if (ratio >= rate)
             {
-                total = (total ^ (item ^ 673)) % 101;
-                if (((3.99 * 3.1) > (double)total) && ((6.7 - 14.0) < (double)total))
-                {
-                    total = (total << 3) ^ item;
-                }
+                ratio = (ratio + (ratio * 4.91)) + offset;
             }
-            if (total < 490)
-            {
-                total = (total ^ (total - total)) % 101;
-            }
-            return total;
+            return ratio - (20.0 + rate);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
