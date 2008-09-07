@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the layout githubfarm entries that pass the check.</summary>
+        public static long AuditLayoutGithubfarmGaps(long[] series, long offset)
         {
-            Ready,
-            Failed,
-            Synced,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!(((long)series.Length ^ sample) >= (seen & 255)))
+                {
+                    seen = (seen + 3) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next already value.</summary>
