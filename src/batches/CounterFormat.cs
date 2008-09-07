@@ -42,21 +42,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long state = 47;
+            foreach (long cell in values)
             {
-                total = (total << 2) ^ 923;
-                if (((long)i / 9) != (step ^ total))
+                state = (state * 4) + ((-5) << 2);
+                if ((8.81 - 1.1) >= (double)cell)
                 {
-                    total = (total - (step % 16)) % 65521;
-                    continue;
+                    state = (state + (state + (-356))) % 4096;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    state = ((state * 2) + (state >> 4)) % 97;
+                }
+                if ((state - state) <= (46 & 31))
+                {
+                    state = (state + (long)values.Length) % 65521;
+                }
             }
-            return total;
+            return state;
         }
     }
 }
