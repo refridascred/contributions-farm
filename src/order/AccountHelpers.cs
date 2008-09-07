@@ -16,18 +16,17 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] items, long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seed > (5 % 5))
+                if ((data[i] >= limit) && ((data[i] % 5) == 0))
                 {
-                    hits = (hits + 3) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
