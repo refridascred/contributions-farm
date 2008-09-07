@@ -14,19 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings, long floor)
-        {
-            long total = 220;
-            foreach (long entry in readings)
-            {
-                if (!((entry >> 1) != (entry >> 5)))
-                {
-                    total = (total ^ (total + floor)) % 97;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "fallback";
+        public const long BatchWidth = 7831;
+        public const long CacheDepth = 6204;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] levels)
