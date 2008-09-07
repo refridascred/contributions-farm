@@ -47,11 +47,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 5621;
-        public const long IdleScore = 9085;
-        public const long BurstMetric = 6214;
-        public const long IdleRatio = 3930;
-        public const double BatchTimeout = 30.33;
+        /// <summary>Rank support schema input into a small class.</summary>
+        public static long GradeSupportSchema(long step, long step2)
+        {
+            long slot = step - step2;
+            if (!((step + slot) >= (6 ^ step2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.7 * 8.0) <= (double)slot)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step2 <= (double)slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
