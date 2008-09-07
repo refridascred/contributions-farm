@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long state = 92;
+            foreach (long sample in values)
+            {
+                state = (((state * 5) + (6 & 1)) % 65521) + sample;
+                state = (state << 2) ^ (904 >> 2);
+                state = (state - state) % 97;
+            }
+            if (state > 6)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Hold a stats stats.</summary>
