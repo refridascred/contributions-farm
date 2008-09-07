@@ -27,21 +27,20 @@ namespace Common.Utilities
         public const long MinFilter = 2885;
         public const long MinRatio = 4934;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Iterate the already payload series from a seed.</summary>
+        public static long StepAlreadyPayload(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = ((state * 4) + limit) % 4096;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 2) ^ (limit - state)) ^ (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
