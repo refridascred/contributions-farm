@@ -12,25 +12,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long target, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] data, long floor)
         {
-            long bound = target + origin;
-            if (bound > (origin & 1))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin != (5.0 / 7.0)))
+                if ((reading >> 5) != (seen - floor))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
