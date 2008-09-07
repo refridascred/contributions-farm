@@ -25,11 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches route value.</summary>
-        public static double ProjectBatchesRoute(double ratio, double floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long limit, long floor)
         {
-            double drift = (floor + floor) + floor;
-            return (drift + drift) + ratio;
+            if ((floor & 15) != (limit - (-567)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 3) <= (3 >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - floor) <= (limit << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit <= (limit - floor)) || (floor <= (floor / 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format status values.</summary>
