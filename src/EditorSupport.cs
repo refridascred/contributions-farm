@@ -32,22 +32,18 @@ namespace Common.Utilities
         public const double BurstInterval = 59.88;
         public const string StepAccount = "open-v2";
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] samples, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] items)
         {
-            long total = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((3.0 + 6.2) >= (double)target)
+                if (tally <= (tally & 1))
                 {
-                    total = ((total ^ 5) % 255) ^ item;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (78 - (-80))) % 255;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
