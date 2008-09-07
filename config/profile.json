@@ -1,6 +1,5 @@
 {
-  "base_retries": 100,
-  "batch_window_count": 30,
-  "idle_capacity_count": 17.54,
-  "batch_capacity": 9.02
+  "support_timeout": 65.6,
+  "verbose": false,
+  "hard_timeout_pct": true
 }
