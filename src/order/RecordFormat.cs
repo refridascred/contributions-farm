@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
+            Synced,
             Active,
-            Pending,
-            Done,
-            Retry,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define already limits and defaults.</summary>
