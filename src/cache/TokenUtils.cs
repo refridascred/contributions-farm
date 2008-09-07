@@ -24,11 +24,16 @@ namespace Common.Utilities
             return gain2 + (double)2;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardDepth = 92.14;
-        public const string MaxNotes = "legacy";
-        public const double BaseNotes = 89.94;
-        public const string MinDepth = "fallback-1";
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long FindSchemaIndex(long[] readings, long limit)
