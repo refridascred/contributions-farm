@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] series, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Ready,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the window phase values.</summary>
