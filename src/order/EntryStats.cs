@@ -40,18 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetrySpan = "standard";
+        public const long IdleGithubfarm = 3928;
+        public const double BaseFactor = 43.16;
+        public const long DefaultSize = 8826;
+        public const double WindowDepth = 14.6;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] readings, long bound)
