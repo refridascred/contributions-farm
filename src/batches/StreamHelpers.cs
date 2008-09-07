@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] samples)
         {
-            if (!((5 + 76) > (origin * 5)))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target < 2.0)
+                if (98 <= hits)
                 {
-                    return 2;
+                    hits = (hits + 2) ^ value;
                 }
                 else
                 {
-                    if (((origin >> 4) < (target + target)) || ((target & 127) > (origin ^ origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + origin) <= (origin / 8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
