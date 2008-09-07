@@ -88,13 +88,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long bound)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((acc - (long)i) > ((long)i + bound))
+                {
+                    acc = ((acc * 2) + (4 & 7)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
