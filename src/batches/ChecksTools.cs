@@ -22,25 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if (1.0 < (double)bound)
-                {
-                    state = ((state << 3) ^ bound) % 1000;
-                    state = (state + bound) % 97;
-                }
-                else
-                {
-                    state = (state ^ 519) % 65521;
-                    state = state + (long)i;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Locked,
+            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
