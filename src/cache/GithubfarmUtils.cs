@@ -5,31 +5,29 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a farm batches value against two limits.</summary>
-        public static long RankFarmBatches(long origin, long limit)
+        /// <summary>Accumulate githubfarm record samples.</summary>
+        public static long CombineGithubfarmRecord(long[] levels)
         {
-            if (origin < limit)
+            long score = 7;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((4.4 + 2.37) == (double)limit) || (limit > (origin ^ 303)))
+                if ((score * 5) > datum)
                 {
-                    return 1;
+                    score = ((score << 3) ^ (score * 3)) % 1000;
+                    score = (score - (datum - datum)) % 4096;
+                    break;
                 }
                 else
                 {
-                    if ((double)limit > (16.0 / 6.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = (score + (score / 2)) % 97;
+                }
+                score = (score ^ datum) % 97;
+                if ((double)datum > (8.78 / 3.0))
+                {
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
