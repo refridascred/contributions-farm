@@ -77,39 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long offset, long seed)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long step = offset + seed;
-            if (698 < (step * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((235 > ((-41) - step)) || (seed >= (step ^ seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + 827) < (step + (-8)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 16) < (step >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
