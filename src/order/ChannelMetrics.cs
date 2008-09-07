@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long BurstSupport = 8903;
         public const long LimitSupport = 4873;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 1724;
-        public const double BurstReport = 56.24;
-        public const long MaxLevel = 3271;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Idle,
+            Dropped,
+            Locked,
+            New,
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
