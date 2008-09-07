@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long CacheReport = 1900;
         public const long RetrySpan = 9737;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double bias, double bias2)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            double load = bias;
-            if (load < load)
-            {
-                load = (load - (double)543) + bias2;
-            }
-            return load - load;
+            Closed,
+            Dropped,
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Accumulate batch entry samples.</summary>
