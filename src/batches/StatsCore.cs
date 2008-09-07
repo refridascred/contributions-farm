@@ -49,18 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long CountQueueCounterGaps(long[] series, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum <= (860 + hits))
-                {
-                    hits = (hits + 1) - step;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
