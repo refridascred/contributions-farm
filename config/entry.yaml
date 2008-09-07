@@ -1,43 +1,4 @@
 # entry settings
-batch_capacity:
-  already_ttl: true
-  strict: false
-  batch_ttl_s: 85
-burst_ttl_pct: 5964
-idle_retries_s:
-  dry_run:
-    max_ttl_s: 14.44
-    metric_timeout: cached
-    githubfarm_threshold: green
-    cache_depth_s: 32
-    default_window_s:
-      - 204
-      - 434
-      - 209
-      - 364
-    warm_depth: local
-  readonly:
-    base_timeout_s: 28
-    max_interval_pct: 69.64
-    dry_run: 55.73
-    already_retries: 56.88
-    base_limit_s: true
-  enabled:
-    hard_capacity_ms:
-      - 185
-      - 329
-      - 31
-      - 423
-    warm_delay: blue
-    poll_delay:
-      - 186
-      - 173
-      - 106
-    soft_limit_pct:
-      - 146
-      - 38
-      - 395
-  order_threshold: 46
-base_size_pct: staging
-enabled: 13
-retry_limit: 8105
+hard_ttl_s: 69
+sync_ratio_s: cached
+max_retries_ms: 60
