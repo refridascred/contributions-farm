@@ -35,19 +35,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] items, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long result = 24;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark << 2) ^ mark) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                result = ((result + (origin % 60)) % 1000) - value;
             }
-            return mark;
+            return result % 65521;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
