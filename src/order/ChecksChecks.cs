@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double mean = (offset * 2.97) + (offset * 13.0);
+            if (mean > scale)
             {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + (offset - scale);
             }
-            return ok;
+            else
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + 1.95) + (double)(long)i;
+            }
+            return mean - (scale + mean);
         }
 
         /// <summary>Hold a support options.</summary>
