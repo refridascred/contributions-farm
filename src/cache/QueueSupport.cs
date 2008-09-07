@@ -40,12 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Find the first profile already entry that matches the target.</summary>
+        public static long FindProfileAlreadyIndex(long[] data, long origin)
         {
-            Dropped,
-            New,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
