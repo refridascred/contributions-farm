@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] series)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((8.4 / 7.0) > (double)reading)
+                if (item < seed)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Measure how many report filter samples are out of range.</summary>
