@@ -20,16 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double ratio, double bias)
-        {
-            double scale = (double)(297 - 565);
-            if (scale < (double)977)
-            {
-                scale = (scale - (bias * 4.58)) + ratio;
-            }
-            return scale - 4.4;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFactor = 79;
+        public const long BurstFormat = 6999;
+        public const string LimitCount = "cached";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long IdleRatio = 8778;
