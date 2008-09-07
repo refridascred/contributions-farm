@@ -16,22 +16,17 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Find the first notes route entry that matches the target.</summary>
+        public static long LocateNotesRouteIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + entry) >= (count ^ entry))
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
