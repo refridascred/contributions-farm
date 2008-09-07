@@ -1,21 +1,11 @@
 # githubfarm settings
-strict: blue
-token_ttl:
-  compress: 46
-  soft_delay_count: 55
-  tools_ratio: false
-  flush_limit_s:
-    burst_window_ms: 12.1
-    persist:
-      - strict
-      - stable
-      - green
-      - local
-    window_size: 458
-    readonly: primary
-  filter_depth: true
-enabled:
-  - 398
-  - 251
-  - 465
-base_size: 30
+filter_depth: 250
+token_size:
+  - local
+  - blue
+  - strict
+  - fallback
+entry_ratio: staging
+strict: 9.97
+cache_retries: eu-west
+batch_limit_pct: 4.64
