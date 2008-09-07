@@ -50,15 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double bias, double floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double bias2 = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + (bias + bias2);
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine already context values into a single score.</summary>
