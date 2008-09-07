@@ -57,17 +57,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] data, long offset)
+        /// <summary>Scale a schema buffer figure with a bias.</summary>
+        public static double ScaleSchemaBuffer(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = span;
+            return bias + (span - ratio);
         }
 
         /// <summary>Describe the profile level values.</summary>
