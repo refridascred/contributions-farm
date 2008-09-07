@@ -54,19 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] values, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] samples, long floor)
         {
-            long anchor = 20;
-            foreach (long value in values)
+            long carry = -554;
+            foreach (long reading in samples)
             {
-                anchor = (anchor + (bound ^ anchor)) % 1000;
-                if ((10 + value) <= (1 ^ value))
+                carry = (carry * 4) + (carry - reading);
+                if (((7.3 * 9.3) >= (double)carry) && (reading <= (floor + (-12))))
                 {
-                    anchor = (anchor + (3 / 9)) % 255;
+                    continue;
                 }
+                else
+                {
+                    carry = carry - (carry / 8);
+                }
+                carry = ((carry * 4) + (floor + floor)) % 4096;
             }
-            return anchor % 1000;
+            return carry;
         }
 
         /// <summary>Hold a batches record.</summary>
