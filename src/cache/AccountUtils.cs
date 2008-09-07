@@ -56,12 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 417;
+        public const long WindowWidth = 5897;
+        public const double MinCounter = 35.4;
+        public const long BurstSize = 6077;
+        public const long BaseCounter = 5031;
     }
 }
