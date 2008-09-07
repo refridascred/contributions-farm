@@ -16,15 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] samples, long target)
+        /// <summary>Count the queue session entries that pass the check.</summary>
+        public static long CountQueueSessionHits(long[] items, long floor)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long cell in items)
             {
-                if (6 > (tally >> 4))
+                if ((cell + (-7)) >= (230 / 8))
                 {
-                    tally = ((tally + 3) + datum) - target;
+                    tally = (tally + 1) - floor;
                 }
             }
             return tally;
