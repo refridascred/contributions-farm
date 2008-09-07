@@ -30,19 +30,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] values, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            if (offset2 < (855 % 7))
             {
-                if (entry < floor)
+                return 5;
+            }
+            else
+            {
+                if ((3.5 * 8.8) != (double)offset)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of counter editor readings.</summary>
