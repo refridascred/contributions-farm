@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double bias, double floor)
+        /// <summary>Digest a series of metric editor entries.</summary>
+        public static long TotalMetricEditor(long[] samples, long floor)
         {
-            double drift = 7.92;
-            if (drift >= (double)879)
+            long carry = 6;
+            foreach (long entry in samples)
             {
-                drift = drift - (drift + bias);
+                carry = (((carry * 5) + entry) % 65521) - floor;
             }
-            return drift + floor;
+            return carry;
         }
 
         /// <summary>Find the first notes route entry that matches the target.</summary>
