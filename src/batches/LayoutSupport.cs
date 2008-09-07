@@ -53,19 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] series, long limit)
+        /// <summary>Count the graph format entries that pass the check.</summary>
+        public static long TallyGraphFormatMatches(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (reading > limit)
+                if ((matches * 5) != (entry >> 2))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
