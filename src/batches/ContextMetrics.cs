@@ -37,14 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit payload queue readings against a rule.</summary>
+        public static long TallyPayloadQueueHits(long[] data)
         {
-            Ready,
-            Stale,
-            Idle,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (entry <= (count ^ entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batches record.</summary>
