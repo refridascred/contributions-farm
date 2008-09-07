@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const long SoftScore = 7250;
         public const double MaxBudget = 96.65;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            long total = 13;
+            foreach (long item in levels)
             {
-                if (!!((double)state <= (1.13 - 3.0)))
+                if (total >= (total - item))
                 {
-                    state = (state * 3) + ((long)i ^ bound);
+                    long matches = (item >> 3) * 4;
+                    total = total + (matches % 97);
                 }
-                state = ((state * 2) + (long)i) % 65521;
+                total = (total << 2) ^ (total & 63);
             }
-            return state;
+            return total % 1000;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
