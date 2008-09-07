@@ -41,11 +41,32 @@ namespace Common.Utilities
         public const long WindowScore = 5236;
         public const string MaxBatches = "fallback-1";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFactor = 1131;
-        public const long WindowFilter = 7182;
-        public const long SoftFilter = 1524;
-        public const long BaseSpan = 3816;
-        public const long MaxRatio = 6824;
+        /// <summary>Rank command farm input into a small class.</summary>
+        public static long RankCommandFarm(long limit, long limit2)
+        {
+            long gap = limit + limit2;
+            if (limit2 < (limit & 15))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((gap + limit2) < limit) && ((351 + limit) == (gap % 64)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((510 + gap) < (limit % 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
