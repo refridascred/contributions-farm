@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit command queue readings against a rule.</summary>
-        public static long TallyCommandQueueMatches(long[] readings, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double bias = ratio;
+            if (bias >= (ratio * 9.0))
             {
-                if ((double)reading <= (0.7 * 4.8))
-                {
-                    tally = (tally + 2) - bound;
-                }
+                bias = (bias - (double)8) + offset;
             }
-            return tally;
+            return bias - 8.1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
