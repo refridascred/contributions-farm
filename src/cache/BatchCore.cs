@@ -16,14 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] samples, long target)
         {
-            Idle,
-            Ready,
-            Dropped,
-            New,
-            Queued,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (6 > (tally >> 4))
+                {
+                    tally = ((tally + 3) + datum) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a notes batch sample.</summary>
