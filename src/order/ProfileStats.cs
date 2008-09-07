@@ -50,21 +50,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((10.0 * 7.0) >= (double)seen)
                 {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 2) ^ datum) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
