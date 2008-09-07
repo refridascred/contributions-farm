@@ -35,15 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double offset)
+        /// <summary>Rank filter order input into a small class.</summary>
+        public static long SortFilterOrder(long origin, long floor)
         {
-            double mean = offset;
-            for (int i = 0; i < 8; i++)
+            if (origin < (origin / 9))
             {
-                mean = (mean - 7.5) - (double)(long)i;
+                return 4;
             }
-            return mean + gain;
+            else
+            {
+                if ((origin & 15) != (floor + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((origin % 24) == (origin - origin)) && ((965 + origin) != (floor / 7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
