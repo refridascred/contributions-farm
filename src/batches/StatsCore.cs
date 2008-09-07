@@ -61,12 +61,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double ratio, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            double ratio2 = (offset * 9.0) * 1.0;
+            if (ratio2 >= ratio2)
+            {
+                ratio2 = ratio2 - (7.0 * 9.9);
+            }
+            else
+            {
+                ratio2 = ratio2 - (ratio + 20.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 + (double)(-843);
         }
 
         /// <summary>Roll a layout counter forward.</summary>
