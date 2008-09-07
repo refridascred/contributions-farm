@@ -1,8 +1,11 @@
 {
-  "min_window_count": "open",
-  "context_size": false,
-  "stats_window": 500,
-  "window_interval": 6386,
-  "base_delay": 63.7,
-  "command_timeout": "blue"
+  "compress": 9730,
+  "hard_threshold": {
+    "idle_ttl_count": true,
+    "readonly": 33.83,
+    "retry_size": [471, 258, 243],
+    "base_capacity_s": false,
+    "audit": true
+  },
+  "idle_delay_s": "legacy"
 }
