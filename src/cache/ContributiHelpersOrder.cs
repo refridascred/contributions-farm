@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 6045;
+        public const long BurstTimeout = 8062;
+        public const long HardSize = 5980;
+        public const long MaxCount = 5894;
+        public const long IdleDepth = 3507;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] samples, long seed)
