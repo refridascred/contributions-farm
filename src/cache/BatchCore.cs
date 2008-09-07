@@ -37,17 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a notes batch sample.</summary>
-        public static long LocateNotesBatchIndex(long[] data, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (data[i] == origin)
+                if (sample > seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
