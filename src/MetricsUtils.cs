@@ -24,19 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi notes readings against a bound.</summary>
-        public static bool CheckContributiNotesBounds(long[] samples, long origin)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Draft,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
