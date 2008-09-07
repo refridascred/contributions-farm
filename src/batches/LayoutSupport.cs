@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] series)
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (tally <= entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
