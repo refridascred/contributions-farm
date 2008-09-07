@@ -32,18 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] readings, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if (!((offset / 3) == (62 + 70)))
             {
-                if ((double)seen < (double)floor)
+                return 5;
+            }
+            else
+            {
+                if ((offset % 5) == (5 - offset))
                 {
-                    seen = (seen + 2) + sample;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)target > (8.0 * 6.85)) && ((target + target) <= offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of layout buffer entries.</summary>
