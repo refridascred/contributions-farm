@@ -83,22 +83,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] values)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (matches < (matches & 31))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            Locked,
+            Done,
         }
     }
 }
