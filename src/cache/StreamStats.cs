@@ -38,22 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of filter session readings.</summary>
-        public static long FoldFilterSession(long[] values, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] data, long origin)
         {
-            long score = 93;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((offset + offset) != (reading ^ reading))
+                if (sample >= origin)
                 {
-                    score = ((score << 2) ^ (reading << 3)) % 101;
-                }
-                else
-                {
-                    score = (score + (reading >> 4)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
