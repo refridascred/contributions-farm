@@ -1,14 +1,14 @@
 {
-  "layout_capacity": "fallback",
-  "record_ttl": {
-    "sync_depth": "fallback",
-    "flush_limit_count": 26.61,
-    "default_window": "green",
-    "burst_size_ms": false,
-    "compress": 90.88,
-    "sync_ratio": 65
+  "warm_interval": false,
+  "warm_timeout_ms": {
+    "cache_delay_count": {
+      "poll_threshold": true,
+      "max_size_s": 3834,
+      "sync_capacity_pct": [477, 401, 355]
+    },
+    "profile_timeout": [332, 372],
+    "base_timeout": true,
+    "idle_limit": false
   },
-  "idle_delay_ms": 52,
-  "strict": 64.4,
-  "audit": "primary"
+  "readonly": "edge"
 }
