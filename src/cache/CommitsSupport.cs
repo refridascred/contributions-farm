@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long offset, long step)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            if ((step / 7) >= (941 - 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (8 >= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.46 - 4.1) > (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.8 - 12.0) != (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
