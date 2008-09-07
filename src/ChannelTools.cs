@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const string LimitTimeout = "open-1";
         public const long RetryScore = 4129;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((((cell / 6) < (cell % 8)) && ((2.97 + 5.6) != (double)matches)) && (5.0 < (double)cell))
+                if (datum < (67 << 1))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit notes farm readings against a rule.</summary>
