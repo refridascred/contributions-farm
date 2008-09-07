@@ -36,15 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue tools readings.</summary>
-        public static long FoldQueueTools(long[] levels)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long limit)
         {
-            long mark = 128;
-            foreach (long datum in levels)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                mark = mark ^ (datum + datum);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mark % 65521;
+            return carry;
         }
 
         /// <summary>Hold a counter stats.</summary>
