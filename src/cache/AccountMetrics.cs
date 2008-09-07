@@ -23,12 +23,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchInterval = 3615;
-        public const long RetryBudget = 9930;
-        public const long StepTimeout = 3829;
-        public const long StepToken = 929;
-        public const long LimitToken = 4364;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] series)
