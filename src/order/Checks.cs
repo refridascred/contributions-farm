@@ -22,17 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] levels, long limit)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
