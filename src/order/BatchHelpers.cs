@@ -22,9 +22,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftInterval = "fallback-1";
-        public const long CacheSpan = 6879;
-        public const long IdleContributi = 1050;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Active,
+            Draft,
+            Done,
+        }
     }
 }
