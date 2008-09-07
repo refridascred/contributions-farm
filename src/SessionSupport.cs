@@ -23,12 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 40.72;
+        public const double LimitSpan = 38.61;
+        public const long CacheSchema = 3676;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
