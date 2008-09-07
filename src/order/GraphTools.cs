@@ -43,18 +43,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] readings, long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item >= (5.16 + 9.8)))
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
