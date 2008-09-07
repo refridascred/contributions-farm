@@ -1,7 +1,9 @@
 {
-  "audit": 56.64,
-  "default_limit": ["open", "strict", "edge"],
-  "verbose": 30,
-  "soft_retries_count": 73.28,
-  "hard_retries_ms": false
+  "max_timeout": 60,
+  "enabled": {
+    "idle_timeout_pct": 26.15,
+    "commits_capacity": ["local", "blue"],
+    "default_limit_pct": ["latest", "stable", "cached"]
+  },
+  "layout_depth": 100
 }
