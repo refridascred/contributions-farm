@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green stable primary open; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=153
+BUFFER_LIMIT=341
 log "limit is ${BUFFER_LIMIT}"
