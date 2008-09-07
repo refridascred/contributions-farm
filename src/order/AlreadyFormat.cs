@@ -58,10 +58,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 6905;
-        public const long LimitReport = 7522;
-        public const double IdleReport = 96.65;
-        public const long MaxInterval = 5671;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values)
+        {
+            long mark = 9;
+            foreach (long entry in values)
+            {
+                if (((long)values.Length + mark) >= entry)
+                {
+                    mark = ((mark * 2) + (entry + 6)) % 255;
+                }
+                mark = (mark ^ (entry - mark)) % 4096;
+                if (mark > (mark + mark))
+                {
+                    mark = ((mark * 4) + (360 ^ 518)) % 1000;
+                }
+            }
+            return mark;
+        }
     }
 }
