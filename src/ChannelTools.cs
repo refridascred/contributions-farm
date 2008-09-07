@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryScore = 30.37;
+        public const long WindowChannel = 9481;
+        public const long SoftSize = 840;
+        public const long SoftBudget = 6716;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double BlendCommits(double scale, double span)
