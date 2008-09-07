@@ -1,8 +1,7 @@
-id,owner,state,weight
-1,57.11,605,970
-2,standard,993,625
-3,528,47.01,legacy
-4,local,cached,705
-5,65.94,40.84,785
-6,69.99,32.92,43.83
-7,75,eu-west,local
+id,score,weight
+1,staging,130
+2,36.65,46.67
+3,530,32.14
+4,294,327
+5,open,staging
+6,340,305
