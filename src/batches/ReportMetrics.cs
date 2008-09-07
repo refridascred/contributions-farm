@@ -42,11 +42,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 3267;
-        public const double IdleToken = 50.81;
-        public const string MaxToken = "legacy-1";
-        public const long BurstToken = 6762;
-        public const long BatchSize = 7199;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinCount = 23.58;
+        public const long LimitFormat = 1626;
+        public const long IdleFormat = 5084;
     }
 }
