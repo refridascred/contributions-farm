@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
