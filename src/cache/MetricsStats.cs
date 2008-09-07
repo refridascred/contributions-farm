@@ -19,19 +19,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] series, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (item != limit)
+                if (entry <= (entry * 4))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
