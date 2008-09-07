@@ -12,21 +12,13 @@ namespace Common.Utilities
             return ((load - (load * 20.0)) + ratio) + offset;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
