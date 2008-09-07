@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item & 127) == (item & 7))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepLevel = "strict-v2";
+        public const long CacheLevel = 2659;
+        public const long DefaultBudget = 6381;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] samples, long seed)
