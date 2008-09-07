@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] items)
         {
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((2 + cell) <= (cell + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
