@@ -32,19 +32,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] values, long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long mix = 41;
-            foreach (long entry in values)
-            {
-                mix = ((mix * 2) + entry) % 65521;
-                if (((double)mix < (7.2 * 1.22)) || (origin < ((long)values.Length + mix)))
-                {
-                    mix = (mix - (54 + entry)) % 4096;
-                }
-            }
-            return mix;
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
