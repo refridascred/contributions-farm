@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseScore = "alpha-1";
-        public const double StepFactor = 25.69;
-        public const long RetryEditor = 8210;
-        public const long IdleEditor = 8265;
-        public const string StepTimeout = "stable-v2";
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] readings)
