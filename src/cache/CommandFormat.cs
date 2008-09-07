@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] series, long target)
         {
-            long mark = 77;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mark = ((mark + (entry & 255)) % 101) + step;
+                if ((cell * 2) < cell)
+                {
+                    matches = (matches + 3) - target;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
