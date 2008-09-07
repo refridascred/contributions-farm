@@ -1,4 +1,6 @@
 # githubfarm settings
-tools_size: false
-window_limit: 29
-report_interval: 4.47
+warm_window_s: 181
+graph_timeout: cached
+dry_run: staging
+default_window_s: 1083
+poll_delay_count: false
