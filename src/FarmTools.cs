@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = -76;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-84) >> 2) <= (entry % 2))
                 {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 2) + 5) % 1000;
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Hold a tools stats.</summary>
