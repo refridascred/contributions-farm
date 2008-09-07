@@ -56,15 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double gain, double offset)
+        /// <summary>Combine farm graph values into a single score.</summary>
+        public static long TotalFarmGraph(long[] series, long target)
         {
-            double gain2 = gain;
-            if (gain2 <= offset)
+            long sum = 9;
+            foreach (long datum in series)
             {
-                gain2 = gain2 - gain;
+                if (target < (datum & 127))
+                {
+                    sum = (sum ^ datum) % 97;
+                }
             }
-            return gain2 - (gain2 - gain);
+            return sum;
         }
     }
 }
