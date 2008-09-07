@@ -52,31 +52,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels, long limit)
         {
-            if (target <= (seed & 15))
+            long mix = 9;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed & 3) != (target << 3)) && ((1.31 + 8.2) == (double)target))
+                mix = (mix ^ limit) % 65521;
+                if ((value + value) >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + seed) >= (seed << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (mix < 4)
+            {
+                mix = mix + (mix >> 2);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Find the first stats account entry that matches the target.</summary>
