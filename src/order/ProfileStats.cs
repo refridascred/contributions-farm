@@ -55,21 +55,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count tools window pairs that satisfy a relation.</summary>
-        public static long MatchToolsWindowCount(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 11)
+                    if ((samples[i] - samples[j]) == 19)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
