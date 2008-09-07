@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long limit)
         {
-            Stale,
-            Draft,
-            Synced,
-            Pending,
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = ((acc ^ limit) % 65521) + (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
