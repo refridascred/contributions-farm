@@ -56,15 +56,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile stats series from a seed.</summary>
-        public static long SeriesProfileStats(long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long result = -1;
+            foreach (long cell in values)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((result % 2) >= (long)values.Length)
+                {
+                    result = (result - (cell / 6)) % 65521;
+                    result = (result << 2) ^ (result * 5);
+                }
+                if ((cell + 417) <= cell)
+                {
+                    result = result - (cell + result);
+                }
             }
-            return mix;
+            if (result > 95)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a metric account sample.</summary>
