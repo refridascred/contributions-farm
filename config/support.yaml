@@ -1,15 +1,10 @@
 # support settings
-batch_ratio_count: true
-batch_ttl: 1024
-hard_retries_pct:
-  persist:
-    - 127
-    - 208
-    - 20
-  soft_limit_ms: 100
-  payload_ttl:
-    readonly: 30
-    dry_run: local
-    compress: staging
-    editor_size: green
-  base_timeout_pct: 60
+hard_interval: primary
+hard_interval_count:
+  flush_timeout_s: cached
+  verbose: 3906
+  strict:
+    - cached
+    - fallback
+  hard_depth_count: blue
+channel_ratio: 60
