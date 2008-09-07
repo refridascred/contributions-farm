@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of context notes readings.</summary>
-        public static long PairContextNotesCount(long[] levels)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = acc - acc;
+                if (!(acc >= (76 << 3)))
                 {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc * 2) + (563 + seed);
                 }
+                else
+                {
+                    acc = acc + (seed % 7);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
