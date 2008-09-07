@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Check that every command schema entry stays within the limit.</summary>
+        public static bool GuardCommandSchemaRange(long[] series, long step)
         {
-            Failed,
-            New,
-            Ready,
-            Synced,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
