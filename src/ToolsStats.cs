@@ -30,25 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)anchor != (double)bound)
-                {
-                    anchor = (anchor * 4) + bound;
-                    anchor = (anchor * 5) + (82 + bound);
-                }
-                else
-                {
-                    anchor = anchor ^ (-611);
-                    anchor = (anchor ^ (bound + 0)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
