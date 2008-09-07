@@ -53,12 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 96.38;
-        public const double MinCommits = 18.56;
-        public const long BaseCommits = 1379;
-        public const string MaxCount = "latest-1";
-        public const double SoftCommits = 31.74;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = anchor - anchor;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate report stream readings against a bound.</summary>
         public static bool ValidateReportStreamRange(long[] samples, long target)
