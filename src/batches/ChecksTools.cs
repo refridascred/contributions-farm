@@ -16,19 +16,20 @@ namespace Common.Utilities
             return gain - (rate - offset);
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] samples, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample <= step)
+                if (5 > (floor & 255))
                 {
-                    found = false;
+                    anchor = ((anchor << 3) ^ (floor % 10)) % 97;
                     break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
