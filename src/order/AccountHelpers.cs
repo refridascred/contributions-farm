@@ -54,19 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] samples, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long anchor = 20;
+            foreach (long value in values)
             {
-                if (datum >= limit)
+                anchor = (anchor + (bound ^ anchor)) % 1000;
+                if ((10 + value) <= (1 ^ value))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + (3 / 9)) % 255;
                 }
             }
-            return found;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a batches record.</summary>
