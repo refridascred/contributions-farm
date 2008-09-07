@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string MaxEntry = "staging-edge";
         public const double CacheEntry = 76.97;
 
-        /// <summary>Look up the position of a farm filter sample.</summary>
-        public static long LocateFarmFilterIndex(long[] items, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] <= seed)
+                if ((2 - reading) >= (reading % 60))
                 {
-                    return (long)i;
+                    count = (count + 3) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit batches context readings against a rule.</summary>
