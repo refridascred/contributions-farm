@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Match up checks entry samples.</summary>
+        public static long PairChecksEntryCount(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total ^ (total >> 1);
-                total = ((total * 2) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine filter channel values into a single score.</summary>
