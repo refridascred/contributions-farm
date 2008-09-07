@@ -25,18 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue session entries that pass the check.</summary>
-        public static long CountQueueSessionHits(long[] items, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double mean = (double)(5 - 8);
+            for (int i = 0; i < 2; i++)
             {
-                if ((cell + (-7)) >= (230 / 8))
-                {
-                    tally = (tally + 1) - floor;
-                }
+                mean = ((mean + rate) + (double)(long)i) - floor;
             }
-            return tally;
+            return mean - (double)5;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
