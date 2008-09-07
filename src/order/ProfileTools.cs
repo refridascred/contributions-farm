@@ -29,17 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] readings, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] <= step)
+                if (((sample << 2) >= sample) || (((hits % 3) <= 6) && ((10.0 * 19.0) > (double)sample)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
