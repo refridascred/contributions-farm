@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinBudget = 914;
+        public const long StepTimeout = 4609;
+        public const double LimitLevel = 38.87;
+        public const long CacheFactor = 3807;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
