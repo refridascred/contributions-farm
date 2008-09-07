@@ -70,14 +70,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Digest a series of order tools entries.</summary>
+        public static long CombineOrderTools(long[] levels, long bound)
         {
-            Synced,
-            Retry,
-            Done,
-            New,
-            Locked,
+            long state = 388;
+            foreach (long sample in levels)
+            {
+                state = ((((state << 3) ^ ((-72) - 8)) % 65521) - sample) + bound;
+            }
+            if (state > 37)
+            {
+                state = state ^ (state + state);
+            }
+            return state % 4096;
         }
     }
 }
