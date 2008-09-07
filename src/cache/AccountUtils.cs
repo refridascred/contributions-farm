@@ -13,19 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] values, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            double bias = (double)((-774) & 127);
+            for (int i = 0; i < 5; i++)
             {
-                if (value != bound)
-                {
-                    found = false;
-                    break;
-                }
+                bias = ((bias + (2.7 * 6.08)) - (double)(long)i) + offset;
             }
-            return found;
+            return bias - (1.86 + ratio);
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
