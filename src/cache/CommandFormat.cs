@@ -20,16 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values, long origin)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double bias, double offset)
         {
-            long sum = 29;
-            foreach (long value in values)
+            double scale = 1.6;
+            if (scale < offset)
             {
-                sum = (sum + (value * 3)) + origin;
-                sum = ((sum * 5) + (value << 1)) % 255;
+                scale = scale + bias;
             }
-            return sum;
+            else
+            {
+                scale = scale - (17.0 / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (scale / 4.0)) + (double)(long)i;
+            }
+            return scale - (scale * 7.6);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
