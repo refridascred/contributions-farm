@@ -42,22 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] items, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((cell << 2) >= (seed << 2))
+                if ((96 * 4) <= (sample + (long)data.Length))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
