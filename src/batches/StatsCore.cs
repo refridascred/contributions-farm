@@ -43,11 +43,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a schema buffer figure with a bias.</summary>
-        public static double ScaleSchemaBuffer(double ratio, double span)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long bound)
         {
-            double bias = span;
-            return bias + (span - ratio);
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the profile stats series from a seed.</summary>
