@@ -19,17 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] data, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 849;
+            foreach (long sample in data)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score + sample) % 255;
             }
-            return -1;
+            if (score < 16)
+            {
+                score = score ^ (score / 4);
+            }
+            return score % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
