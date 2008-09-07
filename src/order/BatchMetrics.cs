@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long floor)
         {
-            Done,
-            Pending,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((14.0 - 0.45) == (double)floor))
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
