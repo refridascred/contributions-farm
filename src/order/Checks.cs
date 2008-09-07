@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 2674;
-        public const string BatchStats = "strict-v2";
-        public const long MinWidth = 9114;
-        public const long SoftStats = 1855;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "open-v2";
+        public const long BatchFormat = 5428;
+        public const long SoftFormat = 1963;
+        public const long BaseTimeout = 2397;
 
         /// <summary>Measure how many graph queue samples are out of range.</summary>
         public static long MeasureGraphQueueGaps(long[] series)
