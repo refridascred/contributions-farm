@@ -12,13 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Digest a series of already stats entries.</summary>
+        public static long DigestAlreadyStats(long[] readings, long bound)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            long mark = 753;
+            foreach (long sample in readings)
+            {
+                mark = (mark - (mark * 3)) - sample;
+                if (mark >= (4 + bound))
+                {
+                    mark = (mark * 2) + (mark % 60);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the queue state values.</summary>
