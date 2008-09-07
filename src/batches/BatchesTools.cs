@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long state = 92;
-            foreach (long sample in values)
-            {
-                state = (((state * 5) + (6 & 1)) % 65521) + sample;
-                state = (state << 2) ^ (904 >> 2);
-                state = (state - state) % 97;
-            }
-            if (state > 6)
-            {
-                state = state - state;
-            }
-            return state;
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first command payload entry that matches the target.</summary>
