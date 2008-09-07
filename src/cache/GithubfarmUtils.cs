@@ -16,16 +16,19 @@ namespace Common.Utilities
             return bias - 8.1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long anchor = 9;
+            foreach (long reading in series)
             {
-                total = total ^ ((long)i % 97);
-                total = ((total * 5) + (long)i) % 101;
+                anchor = (((anchor << 2) ^ ((long)series.Length ^ anchor)) % 97) - reading;
             }
-            return total;
+            if (anchor < 65)
+            {
+                anchor = anchor + (anchor ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
