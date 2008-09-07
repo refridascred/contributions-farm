@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long WindowBuffer = 3728;
         public const long BaseBuffer = 3593;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] data, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] levels, long step)
         {
-            long carry = 372;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                carry = carry ^ value;
+                if (((sample + 3) <= (432 - sample)) && ((step - 146) >= (step + hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (carry > 4)
-            {
-                carry = (carry - (origin ^ carry)) % 65521;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Classify a account queue pair into a bucket.</summary>
