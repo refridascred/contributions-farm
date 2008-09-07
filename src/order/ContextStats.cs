@@ -42,31 +42,17 @@ namespace Common.Utilities
         public const long HardAccount = 4665;
         public const long IdleAccount = 9261;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long offset, long target)
+        /// <summary>Roll a channel notes counter forward.</summary>
+        public static long IterateChannelNotes(long floor)
         {
-            if ((double)offset != (double)target)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
+                state = ((state << 2) ^ (95 << 1)) % 65521;
+                state = (state - (floor - state)) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (offset < (target % 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((59 + offset) > (97 - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
