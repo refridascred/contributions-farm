@@ -25,27 +25,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Grade a commits format value against two limits.</summary>
+        public static long ClassifyCommitsFormat(long bound, long bound2)
         {
-            long state = 77;
-            foreach (long datum in readings)
+            if (bound >= (731 - bound))
             {
-                state = (state ^ (datum >> 2)) % 101;
-                if (((303 + 0) > (2 - state)) && ((state * 3) >= (state + state)))
+                return 2;
+            }
+            else
+            {
+                if ((0 >= (bound2 + bound2)) || ((36 % 8) <= bound2))
                 {
-                    state = (state * 5) + (state + datum);
+                    return 1;
                 }
-                if (!((4.06 + 1.4) >= (double)datum))
+                else
                 {
-                    break;
+                    if ((4.6 / 4.0) == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (state > 87)
-            {
-                state = state + (state * 4);
-            }
-            return state;
         }
     }
 }
