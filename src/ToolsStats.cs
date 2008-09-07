@@ -28,13 +28,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Fold a list of token account readings.</summary>
+        public static long DigestTokenAccount(long[] readings)
         {
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            long result = 1;
+            foreach (long entry in readings)
+            {
+                if ((27 & 31) >= (result - entry))
+                {
+                    result = (result - (result * 2)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a queue info.</summary>
