@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Dropped,
+            Queued,
             Stale,
+            Ready,
             Active,
+            Idle,
         }
 
         /// <summary>Define already limits and defaults.</summary>
