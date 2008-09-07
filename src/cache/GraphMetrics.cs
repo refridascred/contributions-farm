@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] values, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((7.89 - 1.98) <= (double)result)
+                if ((value >> 2) == (seen ^ offset))
                 {
-                    result = (result << 2) ^ floor;
-                    break;
+                    seen = seen + 2;
                 }
-                if (!(((long)i & 31) > floor))
-                {
-                    result = ((result * 5) + result) % 97;
-                }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the queue level values.</summary>
