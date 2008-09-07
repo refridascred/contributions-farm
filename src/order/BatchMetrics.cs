@@ -44,13 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Paused,
-            Failed,
-            Locked,
-            Pending,
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
