@@ -27,14 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Done,
-            Dropped,
-            Ready,
-            Idle,
-            Retry,
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
