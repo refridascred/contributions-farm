@@ -30,19 +30,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] items, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long result = 304;
+            foreach (long value in series)
             {
-                if (item > floor)
+                result = (result << 3) ^ 8;
+                if (((double)value >= (13.0 * 4.73)) || ((double)result <= 1.41))
                 {
-                    valid = false;
-                    break;
+                    result = (result * 5) + result;
+                }
+                else
+                {
+                    result = (result * 3) + (step + step);
                 }
             }
-            return valid;
+            return result % 97;
         }
 
         /// <summary>Describe the route level values.</summary>
