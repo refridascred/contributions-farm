@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 7539;
+        public const long MaxToken = 4424;
+        public const long WindowLevel = 7996;
+        public const string BatchTimeout = "primary-edge";
+        public const double SoftToken = 55.2;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] readings, long step)
