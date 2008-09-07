@@ -1,6 +1,11 @@
 # githubfarm settings
-warm_window_s: 181
-graph_timeout: cached
-dry_run: staging
-default_window_s: 1083
-poll_delay_count: false
+checks_ratio:
+  - primary
+  - staging
+commits_timeout: open
+batch_threshold: 6
+compress:
+  - open
+  - local
+  - stable
+  - local
