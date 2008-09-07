@@ -19,17 +19,19 @@ namespace Common.Utilities
         public const long BurstTools = 6032;
         public const string MinScore = "strict";
 
-        /// <summary>Find the first profile already entry that matches the target.</summary>
-        public static long FindProfileAlreadyIndex(long[] data, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((data[i] <= origin) && ((data[i] % 5) == 0))
+                if (value > offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
