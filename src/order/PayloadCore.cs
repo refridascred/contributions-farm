@@ -43,14 +43,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            Closed,
-            Failed,
-            Synced,
-            Dropped,
-            Active,
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 5) + mix) % 97;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
