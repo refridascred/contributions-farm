@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item + item) >= (count << 1))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
