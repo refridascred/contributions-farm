@@ -39,19 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] data, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long total = 937;
+            foreach (long sample in readings)
             {
-                if (value >= offset)
+                total = (total ^ step) % 4096;
+                if ((double)sample == (4.5 / 2.0))
                 {
-                    ready = false;
-                    break;
+                    total = total - (step - 3);
+                }
+                else
+                {
+                    total = (total << 2) ^ (sample << 3);
                 }
             }
-            return ready;
+            if (total < 27)
+            {
+                total = (total + (34 + step)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
