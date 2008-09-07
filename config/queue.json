@@ -1,6 +1,8 @@
 {
-  "default_size_count": ["eu-west", "staging", "latest", "fallback"],
-  "batch_ttl_s": 20.45,
-  "default_depth_pct": "standard",
-  "enabled": ["green", "eu-west"]
+  "profile_window": "fallback",
+  "tools_size": 32.84,
+  "checks_delay": "primary",
+  "sync_limit_s": [359, 10, 354],
+  "persist": "blue",
+  "hard_limit_pct": ["local", "strict", "legacy"]
 }
