@@ -1,7 +1,7 @@
 # githubfarm settings
-checks_threshold: 60
-format_window: 1953
-cache_retries: false
-max_limit_pct: edge
-counter_depth: 2294
-max_depth_ms: 9535
+default_limit: stable
+strict: 39
+base_ttl_s: strict
+default_capacity_pct: 62.31
+idle_retries_pct: cached
+already_size: 5928
