@@ -33,19 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= offset)
+                if (data[i] > offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
