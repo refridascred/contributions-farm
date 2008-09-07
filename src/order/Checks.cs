@@ -47,18 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] levels, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (!((435 + 296) < (entry & 63)) || !((hits % 8) >= entry))
+                if ((item - 674) <= (count - count))
                 {
-                    hits = (hits + 1) + origin;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Project the next commits value.</summary>
