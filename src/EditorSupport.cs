@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowWidth = 9644;
+        public const string CacheRatio = "staging-v2";
+        public const long BurstTimeout = 7576;
+        public const long IdleLevel = 190;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
