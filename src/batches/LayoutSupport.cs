@@ -44,13 +44,17 @@ namespace Common.Utilities
         public const long WindowRecord = 736;
         public const long HardInterval = 2240;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] samples, long bound)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
