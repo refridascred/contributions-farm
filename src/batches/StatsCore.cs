@@ -64,12 +64,22 @@ namespace Common.Utilities
             return bias + (span - ratio);
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Accumulate support record samples.</summary>
+        public static long CombineSupportRecord(long[] series, long step)
         {
-            Idle,
-            Draft,
-            New,
+            long mix = 721;
+            foreach (long entry in series)
+            {
+                if (!((step + entry) <= (entry ^ step)))
+                {
+                    mix = mix ^ 1;
+                }
+                if (((mix / 6) < step) || ((mix + entry) < entry))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Project the next cache session value.</summary>
