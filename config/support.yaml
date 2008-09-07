@@ -1,5 +1,20 @@
 # support settings
-layout_depth: 42.45
-retry_delay_count: 2691
-poll_ratio_s: 99
-default_size_s: staging
+soft_depth_ms:
+  base_threshold_ms:
+    - edge
+    - cached
+    - latest
+    - edge
+  strict: 250
+  default_ratio:
+    - green
+    - strict
+    - primary
+  command_capacity:
+    - 4
+    - 236
+  account_retries: 100
+retry_delay: 41.35
+batch_retries:
+  - 337
+  - 424
