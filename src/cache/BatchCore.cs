@@ -39,22 +39,30 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] samples, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = 731;
+            foreach (long cell in values)
             {
-                if ((1.4 / 2.0) >= (double)seen)
+                if (sum > (sum + cell))
                 {
-                    seen = ((seen + 1) + entry) - bound;
+                    sum = sum ^ cell;
+                }
+                if ((double)9 == (double)sum)
+                {
+                    sum = ((sum << 3) ^ (cell - sum)) % 97;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum << 2) ^ (33 % 5);
+                }
+                if (((7.1 * 6.1) <= (double)sum) && ((2 - 11) >= sum))
+                {
+                    sum = (sum ^ (cell + sum)) % 101;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
     }
 }
