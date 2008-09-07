@@ -39,11 +39,18 @@ namespace Common.Utilities
         public const long HardCache = 2471;
         public const double MinCache = 51.74;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Measure how many batch buffer samples are out of range.</summary>
+        public static long MeasureBatchBufferHits(long[] readings, long origin)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((origin << 3) < (seen ^ value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
