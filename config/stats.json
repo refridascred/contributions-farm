@@ -1,6 +1,5 @@
 {
-  "editor_depth": true,
-  "soft_interval": true,
-  "hard_interval": false,
-  "cache_capacity": 50
+  "soft_limit_ms": 74.73,
+  "metrics_window": 500,
+  "idle_size_s": 5868
 }
