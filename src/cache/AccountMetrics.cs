@@ -66,16 +66,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate session batches samples.</summary>
-        public static long FoldSessionBatches(long[] series, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long total = 627;
-            foreach (long cell in series)
-            {
-                total = ((total + (origin * 3)) % 255) - cell;
-                total = (total * 5) + (7 % 24);
-            }
-            return total % 4096;
+            Synced,
+            Retry,
+            Done,
+            New,
+            Locked,
         }
     }
 }
