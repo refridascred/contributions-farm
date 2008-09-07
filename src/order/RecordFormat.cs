@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Queued,
-            Stale,
-            Ready,
-            Active,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "standard-1";
+        public const long HardSize = 1654;
+        public const long IdleTools = 6785;
+        public const long StepTools = 9161;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftScore = 3365;
