@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] levels, long limit)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a account record.</summary>
