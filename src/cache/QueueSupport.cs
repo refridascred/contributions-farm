@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepDepth = 4540;
-        public const long RetryGithubfarm = 7048;
-        public const long LimitScore = 1448;
-        public const double LimitGithubfarm = 80.63;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count - count) < count)
+                {
+                    count = ((count + 3) - entry) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double ProjectBuffer(double bias, double bias2)
