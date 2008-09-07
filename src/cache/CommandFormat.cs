@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] series, long target)
+        /// <summary>Check that every token report entry stays within the limit.</summary>
+        public static bool CheckTokenReportBounds(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((cell * 2) < cell)
+                if (item <= offset)
                 {
-                    matches = (matches + 3) - target;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
