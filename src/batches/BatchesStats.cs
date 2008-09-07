@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long BaseRoute = 9735;
         public const long MinRoute = 4519;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRatio = 75.08;
-        public const long WindowSize = 1794;
-        public const double StepLevel = 65.05;
-        public const long WindowRoute = 6980;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string DefaultMetrics = "legacy-1";
