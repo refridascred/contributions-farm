@@ -27,11 +27,21 @@ namespace Common.Utilities
         public const long MinFilter = 2885;
         public const long MinRatio = 4934;
 
-        /// <summary>Scale a format channel figure with a bias.</summary>
-        public static double ScaleFormatChannel(double weight, double floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            double rate = weight;
-            return (rate - (6.7 * 8.76)) + floor;
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
