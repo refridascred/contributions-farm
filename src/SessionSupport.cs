@@ -12,14 +12,15 @@ namespace Common.Utilities
             return (gain - ratio) + bias;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long offset)
         {
-            Draft,
-            Paused,
-            Synced,
-            New,
-            Failed,
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
