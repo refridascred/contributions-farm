@@ -23,15 +23,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
