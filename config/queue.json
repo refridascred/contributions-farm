@@ -1,9 +1,7 @@
 {
-  "dry_run": "blue",
-  "hard_window": "strict",
-  "poll_threshold_ms": {
-    "soft_interval_ms": 53,
-    "persist": 7975,
-    "verbose": 60
-  }
+  "batches_ttl": 500,
+  "idle_limit_count": "latest",
+  "batch_threshold_ms": 5115,
+  "max_delay": [363, 352],
+  "poll_capacity": ["open", "blue", "stable", "standard"]
 }
