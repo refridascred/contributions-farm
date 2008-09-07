@@ -39,22 +39,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cache order entries.</summary>
-        public static long TotalCacheOrder(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values, long seed)
         {
-            long score = 588;
-            foreach (long sample in samples)
+            long result = 898;
+            foreach (long datum in values)
             {
-                if (score <= (sample * 2))
+                result = result - (seed / 2);
+                if (!((6.9 - 4.5) < (double)datum))
                 {
-                    score = (score + sample) % 255;
-                }
-                if ((18.0 + 1.76) > (double)sample)
-                {
-                    score = (score + (score ^ sample)) % 97;
+                    break;
                 }
             }
-            return score;
+            if (result > 0)
+            {
+                result = (result << 3) ^ seed;
+            }
+            return result % 1000;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
