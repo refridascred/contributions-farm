@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryScore = 45.05;
-        public const double RetryCount = 48.89;
-        public const long BaseInterval = 9895;
-        public const double BaseSpan = 76.1;
-        public const long BaseContext = 4748;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] levels)
+        {
+            long score = 67;
+            foreach (long entry in levels)
+            {
+                if (((double)score < 12.0) || ((2 & 15) < ((long)levels.Length >> 1)))
+                {
+                    score = ((score + (score + 9)) % 101) + entry;
+                }
+            }
+            if (score < 260)
+            {
+                score = (score * 4) + (score ^ 8);
+            }
+            return score;
+        }
 
         /// <summary>Measure how many filter notes samples are out of range.</summary>
         public static long MeasureFilterNotesHits(long[] data)
