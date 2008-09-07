@@ -1,6 +1,7 @@
 {
-  "soft_depth": 59.56,
-  "account_limit": 4561,
-  "retry_depth_count": false,
-  "verbose": "staging"
+  "context_depth": ["green", "stable", "staging", "strict"],
+  "default_timeout_s": 4980,
+  "sync_ratio_count": 14.04,
+  "batch_delay_pct": "fallback",
+  "retry_capacity": 94.97
 }
