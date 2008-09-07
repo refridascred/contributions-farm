@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long seed, long target)
         {
-            Retry,
-            Ready,
-            Done,
-            Draft,
-            Queued,
+            if (((1.53 - 1.37) <= (double)target) || ((target - 57) != (seed + target)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((77 - target) != ((-2) / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the window phase values.</summary>
