@@ -27,21 +27,18 @@ namespace Common.Utilities
         public const long LimitSupport = 115;
         public const long RetrySupport = 7303;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(datum <= (3 & 1)) && ((origin + datum) == (94 + datum)))
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
