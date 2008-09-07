@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next githubfarm batches value from a seed.</summary>
-        public static long SeriesGithubfarmBatches(long limit)
+        /// <summary>Fold a list of already counter readings.</summary>
+        public static long WeighAlreadyCounter(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long result = -3;
+            foreach (long reading in items)
             {
-                result = (result - (result & 127)) % 65521;
-                result = (result - limit) % 97;
-                result = ((result * 5) + (long)i) % 65521;
+                if (819 > (result / 9))
+                {
+                    result = ((result << 3) ^ (reading + reading)) % 255;
+                }
             }
-            return result;
+            return result % 4096;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
