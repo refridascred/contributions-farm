@@ -1,11 +1,11 @@
 # Command notes
 
-When a session fails, the token handler retries a few times before giving up.
-When a githubfarm fails, the metric handler retries a few times before giving up.
-Run the githubfarm check before changing any layout limits.
+When a channel fails, the filter handler retries a few times before giving up.
+The buffer module keeps stream values in sync with the metrics cache.
 
 ## Guidelines
 
-- Keep format values small
-- Log every support change
-- Document new format fields
+- Prefer support defaults
+- Log every checks change
+- Keep metrics values small
+- Review command limits each release
