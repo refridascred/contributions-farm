@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string LimitTimeout = "open-1";
         public const long RetryScore = 4129;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] series, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((seen + limit) > (231 & 63))
+                if ((((cell / 6) < (cell % 8)) && ((2.97 + 5.6) != (double)matches)) && (5.0 < (double)cell))
                 {
-                    seen = (seen + 1) + item;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit notes farm readings against a rule.</summary>
