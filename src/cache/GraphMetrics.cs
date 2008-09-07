@@ -75,17 +75,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] levels, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
+                mark = (mark + ((long)i + floor)) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
