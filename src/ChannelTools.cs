@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double mean = bias;
-            if (mean <= 4.9)
-            {
-                mean = mean - (bias * 7.1);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (0.6 - floor)) + (double)(long)i;
-            }
-            return mean - 8.1;
+            Done,
+            Active,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Adjust a stats reading.</summary>
