@@ -30,15 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double weight, double offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double scale = offset;
-            if (scale < weight)
-            {
-                scale = scale - scale;
-            }
-            return scale + (scale / 2.0);
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the contributi profile entries that pass the check.</summary>
