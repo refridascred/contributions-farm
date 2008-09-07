@@ -25,36 +25,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long offset, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long offset, long target)
         {
-            if ((double)step >= (5.6 / 9.0))
+            long bound = offset - target;
+            if ((target / 2) <= (893 ^ bound))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (((step % 100) < (step * 3)) && ((offset / 6) < step))
+                if (1.0 <= (double)target)
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((offset * 2) >= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step <= (1.3 * 9.52))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
