@@ -1,6 +1,11 @@
-id,count,state,owner,level
-1,9.45,58.67,35.04,standard
-2,464,133,11.54,38.14
-3,639,20.75,cached,6
-4,open,73.57,strict,38.15
-5,541,26.64,93.78,local
+id,active,weight,count,score
+1,blue,23.3,87.33,743
+2,323,302,blue,961
+3,standard,961,cached,latest
+4,28.13,cached,944,242
+5,865,239,686,344
+6,98.96,108,110,staging
+7,edge,689,open,74.28
+8,951,232,278,789
+9,49.3,208,438,local
+10,64.39,23.18,9.19,378
