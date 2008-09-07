@@ -1,7 +1,6 @@
 # support settings
-hard_retries_count: stable
-flush_depth_count: standard
-verbose: 1024
-default_limit: true
-cluster_ttl: 1024
-batch_size_s: 46.65
+burst_size_pct:
+  - open
+  - blue
+cache_ttl: latest
+retry_window: 78
