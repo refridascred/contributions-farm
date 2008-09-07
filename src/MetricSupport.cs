@@ -34,31 +34,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long target, long offset)
+        /// <summary>Locate a editor order reading by value.</summary>
+        public static long SeekEditorOrderIndex(long[] series, long limit)
         {
-            if (((target & 1) >= 842) || (0.8 > (double)offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (target <= (0 + offset))
+                if (series[i] < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((17 << 2) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
