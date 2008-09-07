@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "open-v2";
-        public const long BatchFormat = 5428;
-        public const long SoftFormat = 1963;
-        public const long BaseTimeout = 2397;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many graph queue samples are out of range.</summary>
         public static long MeasureGraphQueueGaps(long[] series)
