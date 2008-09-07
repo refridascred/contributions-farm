@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowSize = 9067;
-        public const long SoftTimeout = 3732;
-        public const long MinAccount = 5025;
-        public const string BaseBudget = "legacy-1";
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total << 2) ^ (origin + origin);
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string BurstRatio = "latest-edge";
