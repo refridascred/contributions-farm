@@ -61,11 +61,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 286;
-        public const long BaseSize = 3711;
-        public const string WindowOrder = "primary-edge";
-        public const long RetryOrder = 1553;
-        public const long BatchDepth = 4043;
+        /// <summary>Derive the next record schema value from a seed.</summary>
+        public static long RollRecordSchema(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((offset - (long)i) != (score + score))
+                {
+                    score = (score * 5) + (offset & 63);
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
