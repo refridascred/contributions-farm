@@ -1,16 +1,8 @@
 # support settings
-flush_timeout_ms: stable
-record_size: primary
-readonly:
-  soft_ttl_s: local
-  audit: edge
-  warm_window: cached
-  burst_retries: 8798
-format_interval:
-  soft_limit_count: legacy
-  stream_retries: green
-  sync_size_ms: 61.21
-  editor_ratio: primary
-  support_ttl: fallback
-  queue_delay: false
-hard_retries: fallback
+warm_interval:
+  - 436
+  - 401
+counter_window: open
+poll_ttl:
+  - legacy
+  - fallback
