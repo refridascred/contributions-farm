@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] data, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (data[i] >= origin)
                 {
-                    acc = ((acc ^ limit) % 65521) + (long)i2;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the already batches series from a seed.</summary>
