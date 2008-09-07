@@ -1,14 +1,10 @@
 # Command notes
 
-When a metrics fails, the cache handler retries a few times before giving up.
-The buffer report groups every cache by stats.
-Use schema settings to tune how often commits data is refreshed.
-
-The batch report groups every metric by record.
-The command module keeps tools values in sync with the notes cache.
+When a schema fails, the batches handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every profile change
-- Keep batch values small
-- Review cluster limits each release
+- Log every channel change
+- Prefer counter defaults
+- Validate report input early
