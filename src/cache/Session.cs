@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias - (scale + scale);
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Paused,
-            Ready,
-            New,
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
