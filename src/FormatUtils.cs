@@ -53,22 +53,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((sample ^ sample) <= (sample / 3)) && ((sample + 273) > 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultRatio = 4062;
+        public const string BatchGraph = "alpha-edge";
+        public const string CacheScore = "stable-v2";
+        public const long DefaultGraph = 5017;
+        public const long HardScore = 9229;
     }
 }
