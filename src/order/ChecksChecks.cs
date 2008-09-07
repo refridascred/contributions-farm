@@ -20,32 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank contributi graph input into a small class.</summary>
-        public static long ClassifyContributiGraph(long offset, long seed)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long prev = offset - seed;
-            if ((double)prev < (5.0 * 9.31))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset == (3.19 - 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 2) > prev)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
