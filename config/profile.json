@@ -1,7 +1,8 @@
 {
-  "hard_retries": 60,
-  "base_ratio_count": ["cached", "blue", "staging"],
-  "strict": "latest",
-  "readonly": [396, 303, 316],
-  "compress": 86.04
+  "contributi_delay": "legacy",
+  "verbose": 3410,
+  "batch_size_ms": 3692,
+  "retry_timeout": "standard",
+  "contributi_depth": 6669,
+  "flush_retries_pct": "strict"
 }
