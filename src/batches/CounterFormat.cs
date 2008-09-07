@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] series, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitBudget = 3867;
+        public const long DefaultSize = 9787;
+        public const string StepInterval = "stable-v2";
 
         /// <summary>Fold a list of counter layout readings.</summary>
         public static long WeighCounterLayout(long[] values, long bound)
