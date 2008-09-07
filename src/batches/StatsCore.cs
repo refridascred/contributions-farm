@@ -50,10 +50,16 @@ namespace Common.Utilities
             return bias + (span - ratio);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 9032;
-        public const string MaxSchema = "strict-v2";
-        public const double MinSchema = 6.03;
+        /// <summary>Iterate the profile stats series from a seed.</summary>
+        public static long SeriesProfileStats(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a metric account sample.</summary>
         public static long SeekMetricAccountIndex(long[] items, long limit)
