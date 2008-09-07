@@ -49,23 +49,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double scale, double floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] series, long seed)
         {
-            double ratio = floor - (floor + floor);
-            if (ratio > (scale * 3.99))
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + (scale - scale);
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (16.0 - ratio);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + scale;
+            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
