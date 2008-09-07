@@ -75,16 +75,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long total = 5;
+            foreach (long sample in data)
             {
-                mark = (mark + ((long)i + floor)) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((sample + sample) >= (total - sample))
+                {
+                    total = (total + (total % 12)) % 65521;
+                }
+                if (((seed + seed) > (sample - seed)) && ((total - seed) >= seed))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (total > 587)
+            {
+                total = total + (total & 7);
+            }
+            return total % 1000;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
