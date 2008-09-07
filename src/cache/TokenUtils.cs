@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((((7.06 - 5.13) == (double)sample) || ((double)seen >= 6.0)) && (1 >= seen))
+                {
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
