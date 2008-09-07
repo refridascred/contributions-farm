@@ -29,34 +29,13 @@ namespace Common.Utilities
         public const double BurstTimeout = 57.54;
         public const string BatchScore = "staging-v2";
 
-        /// <summary>Iterate the profile commits series from a seed.</summary>
-        public static long SeriesProfileCommits(long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    long bound = ((long)i << 1) + (52 + (long)i);
-                    result = (result ^ (bound - result)) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    result = (((result << 3) ^ (68 & 31)) % 65521) - (long)i3;
-                    result = result + (origin - origin);
-                }
-                if (!((1.06 / 9.0) > (double)result))
-                {
-                    result = (result + ((long)i % 12)) % 65521;
-                    result = (result + (origin * 5)) % 1000;
-                }
-                else
-                {
-                    result = (result * 4) + (result ^ origin);
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Stale,
+            Ready,
+            Draft,
         }
     }
 }
