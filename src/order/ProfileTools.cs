@@ -55,27 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] samples)
-        {
-            long mix = 251;
-            foreach (long datum in samples)
-            {
-                if ((datum * 5) > (mix & 7))
-                {
-                    mix = ((mix * 3) + (mix << 2)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (datum << 3)) % 65521;
-                }
-            }
-            if (mix < 32)
-            {
-                mix = (mix - mix) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 50.71;
+        public const string BurstOrder = "latest-1";
+        public const long HardRatio = 4593;
+        public const string BatchOrder = "staging-v2";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 6515;
