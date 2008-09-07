@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] values, long limit)
         {
-            long result = 34;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                result = result + (entry - entry);
-                if (!((0.9 - 5.8) == (double)entry))
+                if ((double)limit < (6.0 + 7.0))
                 {
-                    result = ((result << 2) ^ (offset / 4)) % 255;
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (result < 85)
-            {
-                result = result - (offset % 10);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many metric window samples are out of range.</summary>
