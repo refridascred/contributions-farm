@@ -35,13 +35,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            Done,
-            New,
-            Dropped,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch phase values.</summary>
