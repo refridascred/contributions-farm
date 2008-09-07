@@ -23,17 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] items, long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Derive the next filter profile value from a seed.</summary>
