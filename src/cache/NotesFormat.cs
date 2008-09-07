@@ -23,21 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of contributi tools readings.</summary>
-        public static long OverlapContributiToolsCount(long[] values)
+        /// <summary>Check that every profile format entry stays within the limit.</summary>
+        public static bool ValidateProfileFormatRange(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry <= origin)
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a command summary.</summary>
