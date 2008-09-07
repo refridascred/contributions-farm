@@ -26,14 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 137;
+        public const double HardFilter = 14.16;
+        public const string CacheWidth = "local-v2";
+        public const long RetryFilter = 481;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] data, long offset)
