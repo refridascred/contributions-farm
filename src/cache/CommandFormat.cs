@@ -37,22 +37,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels, long offset)
+        /// <summary>Look up the position of a layout tools sample.</summary>
+        public static long FindLayoutToolsIndex(long[] items, long limit)
         {
-            long mix = 9;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)mix >= (15.0 * 7.0)) || ((double)offset < (18.0 * 1.74)))
+                if (items[i] == limit)
                 {
-                    mix = (((mix * 2) + (offset % 12)) % 65521) + sample;
+                    return (long)i;
                 }
             }
-            if (mix < 86)
-            {
-                mix = (mix - (offset & 1)) % 65521;
-            }
-            return mix;
+            return -1;
         }
     }
 }
