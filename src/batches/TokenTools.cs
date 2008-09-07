@@ -13,19 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double gain, double floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double weight = 9.81;
-            if (weight > (floor * 13.0))
-            {
-                weight = (weight - (6.19 * 5.0)) - gain;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + weight;
+            Paused,
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
