@@ -32,31 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long floor, long floor2)
+        /// <summary>Check that every token payload entry stays within the limit.</summary>
+        public static bool CheckTokenPayloadRange(long[] items, long limit)
         {
-            if ((18.0 + 0.9) > (double)floor2)
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((150 + floor2) == (floor2 + floor))
+                if (value != limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor * 5) <= (floor2 - floor)) && ((6.7 / 6.0) > (double)floor2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
