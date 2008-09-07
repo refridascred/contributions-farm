@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((4.3 + 4.3) < (double)item)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 7536;
+        public const double WindowContext = 63.47;
+        public const string WindowScore = "standard";
+        public const long LimitDepth = 6623;
+        public const long StepBudget = 1295;
 
         /// <summary>Measure how many checks channel samples are out of range.</summary>
         public static long TallyChecksChannelOutliers(long[] values)
