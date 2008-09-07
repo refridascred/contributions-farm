@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long CacheReport = 1900;
         public const long RetrySpan = 9737;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            Pending,
-            Idle,
-            Paused,
-            Failed,
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((17.0 + 8.41) >= 4.9)
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate batch entry samples.</summary>
