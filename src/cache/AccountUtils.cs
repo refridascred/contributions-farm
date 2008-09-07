@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count payload stats pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadStatsCount(long[] levels)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate - (span - span)) + (double)(long)i;
             }
-            return matches;
+            return rate + rate;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
