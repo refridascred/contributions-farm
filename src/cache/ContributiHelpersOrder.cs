@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long MaxCount = 5894;
         public const long IdleDepth = 3507;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a payload layout sample.</summary>
+        public static long FindPayloadLayoutIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
+                if (samples[i] > target)
                 {
                     return (long)i;
                 }
