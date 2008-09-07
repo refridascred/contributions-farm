@@ -19,21 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Queued,
+            Ready,
+            Synced,
+            Paused,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
