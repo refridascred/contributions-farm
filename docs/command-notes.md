@@ -1,11 +1,14 @@
 # Command notes
 
-A context that stays idle for too long is moved to the report list.
-Run the checks check before changing any session limits.
+Keep batches and stats names short and lowercase.
+The profile report groups every editor by channel.
+Keep editor and contributi names short and lowercase.
+
+Use account settings to tune how often profile data is refreshed.
+The buffer module keeps context values in sync with the report cache.
 
 ## Guidelines
 
-- Review channel limits each release
-- Prefer route defaults
-- Validate stats input early
-- Keep stream values small
+- Document new counter fields
+- Review stream limits each release
+- Log every stream change
