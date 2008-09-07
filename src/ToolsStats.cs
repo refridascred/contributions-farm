@@ -59,11 +59,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheInterval = 450;
-        public const string WindowDepth = "cached-1";
-        public const double CacheCommand = 58.99;
-        public const long RetrySpan = 4671;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ScaleMetric(double ratio, double floor)
