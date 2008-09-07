@@ -14,25 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long limit, long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long offset = limit + seed;
-            if ((1 >> 1) > (seed - 124))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset << 3) >= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Stale,
+            Draft,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
