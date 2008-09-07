@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double weight, double offset)
         {
-            Locked,
-            Closed,
-            Draft,
+            double scale = weight / 6.0;
+            if (scale >= (weight + 19.0))
+            {
+                scale = scale + (scale + 7.46);
+            }
+            return scale + (offset + weight);
         }
 
         /// <summary>Combine graph values into a single score.</summary>
