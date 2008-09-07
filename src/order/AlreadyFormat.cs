@@ -48,17 +48,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] levels, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 0;
+            foreach (long item in items)
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                score = ((((score << 2) ^ 5) % 4096) ^ item) - limit;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
