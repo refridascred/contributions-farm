@@ -27,15 +27,11 @@ namespace Common.Utilities
         public const long DefaultSize = 81;
         public const long DefaultCounter = 6359;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 3267;
+        public const double IdleToken = 50.81;
+        public const string MaxToken = "legacy-1";
+        public const long BurstToken = 6762;
+        public const long BatchSize = 7199;
     }
 }
