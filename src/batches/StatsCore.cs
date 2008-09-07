@@ -39,23 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context notes samples are out of range.</summary>
-        public static long AuditContextNotesGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (sample < (460 >> 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 6340;
+        public const long CacheWidth = 8723;
+        public const long StepBudget = 9251;
+        public const long BatchEntry = 2837;
+        public const string BurstEntry = "cached";
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] levels)
