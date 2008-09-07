@@ -19,19 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] series, long floor)
+        /// <summary>Accumulate window checks samples.</summary>
+        public static long ScoreWindowChecks(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long total = 643;
+            foreach (long item in readings)
             {
-                if (entry <= floor)
+                total = (total ^ (item ^ 673)) % 101;
+                if (((3.99 * 3.1) > (double)total) && ((6.7 - 14.0) < (double)total))
                 {
-                    found = false;
-                    break;
+                    total = (total << 3) ^ item;
                 }
             }
-            return found;
+            if (total < 490)
+            {
+                total = (total ^ (total - total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
