@@ -20,25 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long seed, long offset)
+        /// <summary>Iterate the already batches series from a seed.</summary>
+        public static long StepAlreadyBatches(long limit)
         {
-            long lane = seed ^ offset;
-            if ((4 - offset) <= (lane * 4))
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                result = ((result * 5) + (limit & 127)) % 65521;
+                result = result - (result * 3);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((10.0 / 6.0) < (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return result;
         }
 
         /// <summary>Accumulate tools token samples.</summary>
