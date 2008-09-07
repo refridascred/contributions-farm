@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardInterval = 1286;
-        public const long BurstTimeout = 4117;
-        public const double BaseBatches = 79.91;
+        /// <summary>Compare every pair of context notes readings.</summary>
+        public static long PairContextNotesCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double HardSchema = 34.51;
