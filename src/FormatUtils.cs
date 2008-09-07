@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const string LimitScore = "local-edge";
         public const long BurstDepth = 4481;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardFactor = 2481;
+        public const long BatchTimeout = 9295;
+        public const long SoftSpan = 974;
+        public const double DefaultWidth = 86.89;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
