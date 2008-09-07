@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double rate, double floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            double weight = rate;
-            if (weight > 6.31)
+            long state = 5;
+            foreach (long value in series)
             {
-                weight = weight - (floor + floor);
+                if (((514 + (long)series.Length) < (state >> 1)) || ((value + state) < value))
+                {
+                    state = ((state * 4) + state) % 65521;
+                }
+                if (!((state >> 3) == (state + value)))
+                {
+                    break;
+                }
+                state = ((state * 2) + (value & 31)) % 1000;
+                if ((state % 24) < value)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (double)7;
+            return state;
         }
 
         /// <summary>Describe the batches phase values.</summary>
