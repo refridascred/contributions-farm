@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleFactor = 3046;
-        public const long DefaultProfile = 3640;
-        public const string MaxProfile = "staging-v2";
-        public const long IdleSize = 891;
-        public const double SoftProfile = 78.97;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] values)
+        {
+            long score = 30;
+            foreach (long entry in values)
+            {
+                score = ((score * 5) + entry) % 4096;
+            }
+            if (score < (-30))
+            {
+                score = (score * 5) + (score % 100);
+            }
+            return score;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
