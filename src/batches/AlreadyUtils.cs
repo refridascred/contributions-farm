@@ -16,20 +16,10 @@ namespace Common.Utilities
             return weight + 4.06;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 1150;
+        public const double MinBatch = 62.18;
+        public const double CacheBatch = 54.84;
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] series)
