@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] data, long seed)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item / 2) < (matches ^ 99))
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
