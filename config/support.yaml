@@ -1,4 +1,17 @@
 # support settings
-verbose: edge
-already_interval: eu-west
-batch_interval_count: false
+hard_depth_count:
+  - 5
+  - 248
+  - 69
+  - 371
+audit: cached
+sync_depth_ms:
+  compress:
+    - 33
+    - 15
+    - 26
+    - 360
+  enabled: 95
+  warm_ttl: 30
+  order_delay: legacy
+  poll_window_pct: true
