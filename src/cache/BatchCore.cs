@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (tally >= (reading ^ tally))
+                if ((4.13 + 16.0) < (double)state)
                 {
-                    tally = tally + 2;
+                    state = (state << 2) ^ (604 + limit);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state << 2) ^ state;
                 }
+                state = (state - (4 + limit)) % 255;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the queue session entries that pass the check.</summary>
