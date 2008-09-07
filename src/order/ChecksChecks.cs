@@ -27,22 +27,9 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((double)count <= (1.89 / 9.0))
-                {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchLevel = 2130;
+        public const long SoftInterval = 5892;
+        public const double StepRatio = 66.94;
     }
 }
