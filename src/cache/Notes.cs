@@ -14,19 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] series, long limit)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            long result = 422;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result ^ result) % 255) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result < 774)
-            {
-                result = (result - (limit << 2)) % 255;
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
