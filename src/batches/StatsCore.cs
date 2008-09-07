@@ -51,15 +51,17 @@ namespace Common.Utilities
         public const string MaxSchema = "strict-v2";
         public const double MinSchema = 6.03;
 
-        /// <summary>Project the next cache session value.</summary>
-        public static double AdjustCacheSession(double rate, double span)
+        /// <summary>Look up the position of a metric account sample.</summary>
+        public static long SeekMetricAccountIndex(long[] items, long limit)
         {
-            double weight = rate;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight - rate) - (double)(long)i) - span;
+                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - rate;
+            return -1;
         }
     }
 }
