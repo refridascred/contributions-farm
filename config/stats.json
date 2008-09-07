@@ -1,24 +1,11 @@
 {
-  "warm_retries_ms": {
-    "default_limit_pct": {
-      "buffer_retries": "edge",
-      "retry_delay": false,
-      "burst_capacity_ms": 30,
-      "persist": "edge",
-      "support_depth": 93.32
-    },
-    "already_interval": "eu-west",
-    "min_timeout": 61.83
+  "schema_retries": {
+    "metric_delay": 1024,
+    "compress": "legacy",
+    "route_retries": [28, 235],
+    "batch_ttl_ms": 19.87
   },
-  "readonly": 6729,
-  "context_ttl": {
-    "readonly": 1422,
-    "poll_capacity": 63,
-    "batch_size_pct": 100,
-    "flush_retries": 36.52,
-    "retry_window_s": [72, 378, 49, 68],
-    "enabled": 23.43
-  },
-  "retry_interval": true,
-  "warm_window_pct": 53.81
+  "command_window": 24.29,
+  "context_delay": 76,
+  "command_interval": true
 }
