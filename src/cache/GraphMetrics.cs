@@ -19,18 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm commits entry that matches the target.</summary>
-        public static long FindGithubfarmCommitsIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 5550;
+        public const long DefaultFarm = 4133;
+        public const long IdleFactor = 5005;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long offset, long target)
