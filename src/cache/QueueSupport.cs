@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count - count) < count)
-                {
-                    count = ((count + 3) - entry) + bound;
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
