@@ -42,23 +42,34 @@ namespace Common.Utilities
         public const long CacheAlready = 9931;
         public const string CacheSize = "fallback";
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double weight, double span)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples, long offset)
         {
-            double ratio = (double)((-25) - 212);
-            if (ratio < (double)8)
+            long sum = 48;
+            foreach (long datum in samples)
             {
-                ratio = ratio - (span - span);
+                if ((0.9 * 4.6) >= (double)offset)
+                {
+                    sum = sum ^ (datum * 3);
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (sum - (sum ^ sum)) ^ (long)i;
+                }
+                if ((datum & 255) < (datum * 5))
+                {
+                    sum = (sum ^ ((long)samples.Length << 2)) % 4096;
+                }
+                else
+                {
+                    sum = sum + (offset + 410);
+                }
             }
-            else
+            if (sum < (-3))
             {
-                ratio = ratio + weight;
+                sum = ((sum * 3) + (offset << 1)) % 255;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (double)7) + (double)(long)i;
-            }
-            return ratio + weight;
+            return sum % 4096;
         }
     }
 }
