@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
+            Pending,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
