@@ -38,20 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheBudget = 51.39;
+        public const string WindowRoute = "latest";
+        public const long BatchRoute = 1674;
+        public const long LimitRatio = 9977;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
