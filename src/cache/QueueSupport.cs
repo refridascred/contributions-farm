@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Locked,
-            Paused,
-            Synced,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
