@@ -69,16 +69,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples, long step)
+        /// <summary>Digest a series of githubfarm layout entries.</summary>
+        public static long TotalGithubfarmLayout(long[] values, long limit)
         {
-            long carry = 720;
-            foreach (long value in samples)
+            long result = 4;
+            foreach (long datum in values)
             {
-                carry = (carry ^ step) ^ value;
-                carry = ((carry << 3) ^ carry) % 97;
+                result = ((result - result) ^ datum) - limit;
             }
-            return carry % 65521;
+            return result;
         }
     }
 }
