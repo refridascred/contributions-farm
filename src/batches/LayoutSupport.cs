@@ -40,12 +40,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 7452;
-        public const double LimitReport = 25.57;
-        public const double BurstLevel = 73.66;
-        public const long MaxFactor = 2618;
-        public const long RetryCount = 3729;
+        /// <summary>Validate report cache readings against a bound.</summary>
+        public static bool CheckReportCacheLimits(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the graph format entries that pass the check.</summary>
         public static long TallyGraphFormatMatches(long[] samples, long bound)
