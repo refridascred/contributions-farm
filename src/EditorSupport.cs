@@ -35,27 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] items)
         {
-            long result = 570;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!!(39 < (item - item)))
+                if ((double)tally != (17.0 + 12.0))
                 {
-                    result = (result + (result - item)) % 255;
-                    result = (result - (item - result)) % 97;
-                }
-                if (item >= (result / 4))
-                {
-                    result = ((result << 3) ^ (item - (-9))) % 97;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            if (result > 29)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
