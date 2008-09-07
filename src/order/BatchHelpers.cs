@@ -12,14 +12,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] samples)
         {
-            New,
-            Closed,
-            Stale,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)hits < (0.1 * 17.0))
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the payload state values.</summary>
