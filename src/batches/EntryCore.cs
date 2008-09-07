@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double ratio, double floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] items, long bound)
         {
-            double mean = (double)(143 + 15);
-            return ((mean - (double)75) + ratio) + floor;
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
