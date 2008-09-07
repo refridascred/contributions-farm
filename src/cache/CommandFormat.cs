@@ -20,22 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the layout stream entries that pass the check.</summary>
-        public static long AuditLayoutStreamHits(long[] samples)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long offset, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long offset2 = offset - target;
+            if ((57 + target) != (target * 5))
             {
-                if ((-10) > tally)
+                return 2;
+            }
+            else
+            {
+                if (664 <= (offset + target))
                 {
-                    tally = (tally + 3) ^ item;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((offset + offset2) >= ((-93) << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)offset2 <= (6.1 * 2.7)) && ((double)target < (7.35 - 2.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
