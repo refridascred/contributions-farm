@@ -1,11 +1,15 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Use metric settings to tune how often account data is refreshed.
-Each contributi is validated before it reaches the graph queue.
+A checks that stays idle for too long is moved to the batch list.
+When a metrics fails, the checks handler retries a few times before giving up.
+Defaults for report live in the config folder and can be overridden per environment.
+
+A session that stays idle for too long is moved to the counter list.
+Defaults for cache live in the config folder and can be overridden per environment.
+Keep channel and queue names short and lowercase.
 
 ## Guidelines
 
-- Document new batch fields
-- Log every stream change
-- Validate counter input early
+- Prefer batches defaults
+- Log every session change
+- Review route limits each release
