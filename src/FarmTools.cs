@@ -14,14 +14,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double bias)
         {
-            Failed,
-            Pending,
-            Retry,
-            Active,
-            Queued,
+            double bias2 = 10.0 / 9.0;
+            if (bias2 >= (bias2 * 3.75))
+            {
+                bias2 = bias2 + (bias2 + scale);
+            }
+            return bias2 - (bias * 13.0);
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
