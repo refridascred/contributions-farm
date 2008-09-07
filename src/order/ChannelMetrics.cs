@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double gain, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples, long seed)
         {
-            double drift = gain;
-            if (drift > (double)6)
+            long score = 378;
+            foreach (long item in samples)
             {
-                drift = drift + (double)156;
+                if ((-2) < (item + score))
+                {
+                    score = (score ^ (32 - seed)) % 65521;
+                }
+                else
+                {
+                    score = score ^ (item >> 2);
+                }
             }
-            else
+            if (score > 82)
             {
-                drift = drift + (gain + 4.5);
+                score = ((score << 2) ^ seed) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift + gain)) + (double)(long)i;
-            }
-            return drift + (floor / 2.0);
+            return score;
         }
 
         /// <summary>Rank already input into a small class.</summary>
