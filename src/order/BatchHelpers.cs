@@ -23,13 +23,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 186;
+        public const string HardMetric = "local-1";
+        public const double WindowInterval = 74.38;
     }
 }
