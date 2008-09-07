@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next metric checks value.</summary>
-        public static double ProjectMetricChecks(double gain, double offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double drift = 19.0;
-            if (drift >= offset)
-            {
-                drift = (drift + 7.0) - gain;
-            }
-            return drift + (offset * 5.0);
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the cluster level values.</summary>
