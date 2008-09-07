@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] series)
         {
-            Ready,
-            Draft,
-            Active,
-            Locked,
+            long carry = 1;
+            foreach (long datum in series)
+            {
+                carry = (carry << 2) ^ (datum << 1);
+            }
+            if (carry > (-653))
+            {
+                carry = (carry * 3) + (carry ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a token entry.</summary>
