@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long LimitScore = 1448;
         public const double LimitGithubfarm = 80.63;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardSpan = 6340;
-        public const double MaxPayload = 26.97;
-        public const long MaxInterval = 4431;
-        public const long RetryPayload = 9056;
-        public const double BatchPayload = 20.29;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double bias, double bias2)
+        {
+            double load = bias;
+            if (load < load)
+            {
+                load = (load - (double)543) + bias2;
+            }
+            return load - load;
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
