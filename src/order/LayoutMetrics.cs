@@ -31,15 +31,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Idle,
-            Stale,
-            Active,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxFactor = 4106;
+        public const double HardSpan = 46.37;
+        public const long HardBudget = 9309;
+        public const long MaxWidth = 6196;
 
         /// <summary>Check that every token payload entry stays within the limit.</summary>
         public static bool CheckTokenPayloadRange(long[] items, long limit)
