@@ -1,8 +1,5 @@
 # support settings
-enabled: latest
-cache_delay_s:
-  - 444
-  - 283
-sync_capacity: 60
-cache_limit: blue
-burst_delay_s: 50.51
+layout_depth: 42.45
+retry_delay_count: 2691
+poll_ratio_s: 99
+default_size_s: staging
