@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 5076;
-        public const long SoftStream = 797;
-        public const long MinCount = 2609;
-        public const double MaxStream = 60.7;
-        public const double BurstTimeout = 33.99;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Retry,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] levels)
