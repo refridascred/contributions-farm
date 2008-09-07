@@ -28,17 +28,14 @@ namespace Common.Utilities
         public const long LimitOrder = 9124;
         public const long WindowOrder = 9197;
 
-        /// <summary>Find the first checks batches entry that matches the target.</summary>
-        public static long FindChecksBatchesIndex(long[] series, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Synced,
+            Dropped,
+            Active,
         }
     }
 }
