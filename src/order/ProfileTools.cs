@@ -71,11 +71,22 @@ namespace Common.Utilities
         public const long HardRatio = 4593;
         public const string BatchOrder = "staging-v2";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 6515;
-        public const string MinBudget = "alpha-v2";
-        public const long SoftCount = 4688;
-        public const double LimitRoute = 42.86;
-        public const string DefaultRoute = "standard-edge";
+        /// <summary>Audit payload contributi readings against a rule.</summary>
+        public static long TallyPayloadContributiMatches(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!!((hits - offset) == (hits - cell)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
