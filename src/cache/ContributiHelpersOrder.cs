@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of batches token entries.</summary>
-        public static long WeighBatchesToken(long[] series, long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long total = 334;
-            foreach (long value in series)
-            {
-                if ((6.86 - 3.92) != (double)total)
-                {
-                    total = (total - floor) % 101;
-                }
-                if ((6 - value) != (total & 7))
-                {
-                    total = total ^ (total << 3);
-                }
-                if ((value % 64) < (value % 97))
-                {
-                    total = (total << 2) ^ (floor / 4);
-                }
-            }
-            return total % 65521;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit stats editor readings against a rule.</summary>
