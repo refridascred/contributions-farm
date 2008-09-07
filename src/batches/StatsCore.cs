@@ -82,17 +82,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a metric account sample.</summary>
-        public static long SeekMetricAccountIndex(long[] items, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                anchor = anchor + (limit * 2);
+                if ((anchor / 6) == (limit - 3))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ ((-8) * 4);
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
