@@ -64,12 +64,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a record payload reading by value.</summary>
-        public static long FindRecordPayloadIndex(long[] readings, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] < limit)
+                if (data[i] >= bound)
                 {
                     return (long)i;
                 }
