@@ -19,11 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 34.51;
-        public const long IdleSchema = 1901;
-        public const double WindowFactor = 49.63;
-        public const long MinScore = 7411;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
