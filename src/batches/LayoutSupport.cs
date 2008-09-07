@@ -55,19 +55,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double bias)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] levels, long target)
         {
-            double rate = (double)(-20) + (5.3 / 3.0);
-            if (rate <= weight)
+            long score = 383;
+            foreach (long datum in levels)
             {
-                rate = rate - (9.39 / 2.0);
+                if (((datum + 368) == (809 + datum)) || ((double)datum <= 0.53))
+                {
+                    score = score ^ (score - datum);
+                }
+                else
+                {
+                    score = ((score * 5) + (target + target)) % 1000;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (rate / 8.0)) + (double)(long)i;
-            }
-            return rate + bias;
+            return score % 97;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
