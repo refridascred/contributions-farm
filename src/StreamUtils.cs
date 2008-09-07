@@ -55,11 +55,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate counter samples.</summary>
