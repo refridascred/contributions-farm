@@ -48,22 +48,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] samples, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long seed, long offset)
         {
-            long score = 2;
-            foreach (long sample in samples)
+            long gap = seed - offset;
+            if ((double)gap <= (6.0 + 20.0))
             {
-                if ((limit + limit) <= 23)
+                return 8;
+            }
+            else
+            {
+                if ((seed * 3) <= (49 & 255))
                 {
-                    continue;
+                    return 0;
                 }
-                if ((7 >> 1) == (score & 63))
+                else
                 {
-                    score = (((score * 4) + 684) % 65521) + sample;
+                    return 3;
                 }
             }
-            return score;
         }
     }
 }
