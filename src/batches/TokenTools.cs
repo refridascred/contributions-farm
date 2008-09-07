@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of token commits readings.</summary>
-        public static long TallyTokenCommits(long[] values, long step)
+        /// <summary>Fold a list of buffer account readings.</summary>
+        public static long FoldBufferAccount(long[] series)
         {
-            long mix = 0;
-            foreach (long cell in values)
+            long mix = -9;
+            foreach (long entry in series)
             {
-                if ((26 - mix) > (step + mix))
+                if ((double)entry < (5.0 / 4.0))
                 {
-                    mix = (mix ^ (mix + mix)) + cell;
+                    mix = (mix - entry) % 101;
                 }
                 else
                 {
-                    mix = (mix - (step << 3)) % 65521;
+                    mix = (mix - (entry % 3)) % 97;
                 }
             }
-            return mix;
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
