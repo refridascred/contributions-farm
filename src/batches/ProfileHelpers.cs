@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] data)
         {
-            Closed,
-            Locked,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)hits >= 16.0)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
