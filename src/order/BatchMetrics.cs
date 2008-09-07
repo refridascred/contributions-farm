@@ -67,22 +67,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the metrics order entries that pass the check.</summary>
-        public static long MeasureMetricsOrderMatches(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((84 & 31) >= tally)
-                {
-                    tally = ((tally + 2) ^ cell) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 47.79;
+        public const long HardInterval = 4973;
+        public const long CacheTools = 7912;
+        public const long DefaultTools = 9371;
     }
 }
