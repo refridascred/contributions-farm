@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] data)
+        /// <summary>Measure how many counter account samples are out of range.</summary>
+        public static long TallyCounterAccountHits(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (((hits ^ hits) != ((-374) * 5)) && ((item >= (hits << 1)) || ((item + item) >= (2 % 5))))
+                if ((seen + 51) == (cell - (-775)))
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
