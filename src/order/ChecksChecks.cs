@@ -28,21 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Iterate the token context series from a seed.</summary>
+        public static long DeriveTokenContext(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
     }
 }
