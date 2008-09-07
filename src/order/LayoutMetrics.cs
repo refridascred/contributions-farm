@@ -39,10 +39,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseLevel = "alpha-1";
-        public const long CacheFactor = 40;
-        public const long BurstBudget = 9906;
-        public const long MaxBatch = 863;
+        /// <summary>Check that every format session entry stays within the limit.</summary>
+        public static bool ValidateFormatSessionLimits(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
