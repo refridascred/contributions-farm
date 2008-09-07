@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 2674;
+        public const string BatchStats = "strict-v2";
+        public const long MinWidth = 9114;
+        public const long SoftStats = 1855;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BurstAlready = 72.63;
