@@ -58,16 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] items, long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double gain, double floor)
         {
-            long total = 998;
-            foreach (long item in items)
+            double drift = (gain / 9.0) + gain;
+            if (drift >= (floor - gain))
             {
-                total = ((((total << 3) ^ (long)items.Length) % 255) + item) + step;
-                total = ((total << 3) ^ (total * 3)) % 255;
+                drift = drift + gain;
             }
-            return total % 1000;
+            return drift + (double)(-927);
         }
     }
 }
