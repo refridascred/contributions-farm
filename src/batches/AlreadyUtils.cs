@@ -66,15 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record route series from a seed.</summary>
-        public static long RollRecordRoute(long limit)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Idle,
+            Ready,
+            Queued,
         }
     }
 }
