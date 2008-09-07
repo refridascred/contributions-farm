@@ -31,19 +31,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((floor << 2) < (floor - entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 8495;
+        public const string HardTimeout = "staging-edge";
+        public const string BaseQueue = "latest-edge";
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] data)
