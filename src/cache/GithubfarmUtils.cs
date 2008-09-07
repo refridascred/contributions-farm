@@ -16,19 +16,24 @@ namespace Common.Utilities
             return bias - 8.1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Rank order stream input into a small class.</summary>
+        public static long GradeOrderStream(long seed, long origin)
         {
-            long anchor = 9;
-            foreach (long reading in series)
+            if ((double)seed != (9.3 + 9.0))
             {
-                anchor = (((anchor << 2) ^ ((long)series.Length ^ anchor)) % 97) - reading;
+                return 3;
             }
-            if (anchor < 65)
+            else
             {
-                anchor = anchor + (anchor ^ anchor);
+                if ((origin + seed) > (origin + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
