@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] items, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = (double)22 * 8.58;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 - (scale * 3.75)) + (double)(long)i;
             }
-            return -1;
+            return scale2 - (scale - floor);
         }
 
         /// <summary>Scale a schema metric figure with a bias.</summary>
