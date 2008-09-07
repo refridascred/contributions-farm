@@ -68,36 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes record readings.</summary>
-        public static long CombineNotesRecord(long[] levels, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] readings, long offset)
         {
-            long total = 50;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (total < (datum - 70))
+                if (sample >= offset)
                 {
-                    total = total ^ (total + offset);
-                    total = (total * 2) + (79 * 5);
-                    continue;
-                }
-                if ((offset & 31) > (datum ^ datum))
-                {
-                    total = ((total * 2) + offset) % 65521;
-                }
-                if ((70 + total) != (datum - offset))
-                {
-                    total = (total ^ (1 % 12)) % 101;
-                }
-                else
-                {
-                    total = (total - (datum * 3)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (total < 234)
-            {
-                total = total + (offset * 2);
-            }
-            return total % 65521;
+            return found;
         }
     }
 }
