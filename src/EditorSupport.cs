@@ -47,18 +47,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] items)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.17 * 13.0) <= (double)cell)
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
