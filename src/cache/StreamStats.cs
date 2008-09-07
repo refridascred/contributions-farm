@@ -33,10 +33,23 @@ namespace Common.Utilities
         public const long RetryLevel = 6109;
         public const long BaseTimeout = 285;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 682;
-        public const double MinScore = 43.51;
-        public const double StepNotes = 46.73;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings, long floor)
+        {
+            long carry = 40;
+            foreach (long reading in readings)
+            {
+                if (reading <= floor)
+                {
+                    carry = carry + 84;
+                }
+            }
+            if (carry > 3)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long step, long floor)
