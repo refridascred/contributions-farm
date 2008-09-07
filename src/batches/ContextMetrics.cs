@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the token order entries that pass the check.</summary>
-        public static long AuditTokenOrderMatches(long[] readings)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double rate = floor + floor;
+            if (rate <= (5.22 + rate))
             {
-                if ((84 << 2) != (matches << 3))
-                {
-                    matches = (matches + 2) ^ value;
-                }
+                rate = (rate - rate) - gain;
             }
-            return matches;
+            return rate + 3.68;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
