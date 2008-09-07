@@ -20,15 +20,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double ratio, double span)
+        /// <summary>Digest a series of cluster context entries.</summary>
+        public static long ScoreClusterContext(long[] data, long floor)
         {
-            double drift = (ratio * 2.2) + (span * 3.74);
-            if (drift > (double)1)
+            long mark = 1;
+            foreach (long entry in data)
             {
-                drift = drift - 6.6;
+                if ((floor / 9) > (entry ^ mark))
+                {
+                    mark = (mark ^ (floor % 60)) % 1000;
+                }
             }
-            return drift + 4.48;
+            if (mark > 72)
+            {
+                mark = mark - (floor * 4);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of filter session readings.</summary>
