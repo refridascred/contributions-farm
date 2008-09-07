@@ -32,11 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 2578;
-        public const double BurstMetric = 51.74;
-        public const long WindowBudget = 600;
-        public const string DefaultSpan = "latest-1";
-        public const long CacheCount = 4324;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((0 >= (step + step)) || (step < seen)) && (reading > (seen + seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
