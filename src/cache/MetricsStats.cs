@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const long SoftCounter = 8365;
         public const long BatchFactor = 4257;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count support counter pairs that satisfy a relation.</summary>
+        public static long CompareSupportCounterCount(long[] data)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Stale,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
