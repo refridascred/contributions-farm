@@ -28,18 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "fallback";
+        public const string CacheAccount = "open-1";
+        public const double WindowSpan = 3.56;
+        public const double IdleAccount = 60.38;
+        public const double LimitDepth = 3.18;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
