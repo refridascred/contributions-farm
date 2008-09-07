@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=232
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-for item in staging open; do
+for item in blue legacy green fallback; do
     log "checking ${item}"
 done
