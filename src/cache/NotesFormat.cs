@@ -13,17 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long bound)
+        /// <summary>Fold a list of record profile readings.</summary>
+        public static long CombineRecordProfile(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -16;
+            foreach (long datum in values)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark << 2) ^ (datum + (long)values.Length);
             }
-            return -1;
+            if (mark > 43)
+            {
+                mark = ((mark * 4) + (offset >> 4)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of record entries.</summary>
