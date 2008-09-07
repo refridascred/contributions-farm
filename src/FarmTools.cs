@@ -24,19 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Audit profile format readings against a rule.</summary>
+        public static long AuditProfileFormatMatches(long[] data, long offset)
         {
-            long mix = 58;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mix = ((mix * 3) + (mix << 3)) - cell;
+                if (30 <= (offset - offset))
+                {
+                    matches = (matches + 1) - datum;
+                }
             }
-            if (mix > 1)
-            {
-                mix = ((mix * 5) + mix) % 65521;
-            }
-            return mix;
+            return matches;
         }
     }
 }
