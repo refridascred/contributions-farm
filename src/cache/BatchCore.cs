@@ -41,30 +41,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values)
-        {
-            long sum = 731;
-            foreach (long cell in values)
-            {
-                if (sum > (sum + cell))
-                {
-                    sum = sum ^ cell;
-                }
-                if ((double)9 == (double)sum)
-                {
-                    sum = ((sum << 3) ^ (cell - sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (33 % 5);
-                }
-                if (((7.1 * 6.1) <= (double)sum) && ((2 - 11) >= sum))
-                {
-                    sum = (sum ^ (cell + sum)) % 101;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "primary-v2";
+        public const long CacheWidth = 8596;
+        public const string SoftTimeout = "stable-1";
+        public const long BurstFactor = 5941;
     }
 }
