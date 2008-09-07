@@ -49,24 +49,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long seed, long seed2)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if (((seed * 4) > (seed2 + seed2)) && ((double)seed >= (2.18 + 7.3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(seed2 > (seed + seed2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a tools record.</summary>
