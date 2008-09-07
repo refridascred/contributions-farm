@@ -27,13 +27,9 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryDepth = 31.1;
+        public const long HardLevel = 3164;
+        public const long RetryFactor = 3672;
     }
 }
