@@ -50,31 +50,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long seed, long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] samples, long bound)
         {
-            if ((seed ^ target) != (seed >> 1))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed / 2) != (target + target)) && ((target >> 4) >= seed))
+                if (samples[i] >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target * 4) <= (86 << 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
