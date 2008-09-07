@@ -29,19 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] data, long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != offset)
+                if (readings[i] <= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
