@@ -1,8 +1,6 @@
 {
-  "readonly": 35,
-  "record_retries": ["latest", "cached"],
-  "default_retries_count": false,
-  "hard_delay_count": 6467,
-  "persist": true,
-  "burst_retries": 36
+  "soft_ratio_ms": "stable",
+  "sync_ratio_s": "staging",
+  "idle_delay_pct": 9,
+  "idle_retries_count": "primary"
 }
