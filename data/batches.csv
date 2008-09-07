@@ -1,8 +1,9 @@
-id,label,region,state,score
-1,91.59,36.77,edge,34.69
-2,19,fallback,802,378
-3,13.95,83.69,stable,open
-4,latest,local,73.07,blue
-5,250,44.2,95.65,237
-6,open,36,587,348
-7,38.91,196,latest,eu-west
+id,active,state
+1,226,local
+2,454,17
+3,fallback,staging
+4,open,stable
+5,eu-west,91.29
+6,37.62,714
+7,998,301
+8,398,367
