@@ -14,12 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] series, long limit)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long result = 422;
+            foreach (long datum in series)
+            {
+                result = ((result ^ result) % 255) ^ datum;
+            }
+            if (result < 774)
+            {
+                result = (result - (limit << 2)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the cache level values.</summary>
