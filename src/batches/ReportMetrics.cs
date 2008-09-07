@@ -37,12 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
