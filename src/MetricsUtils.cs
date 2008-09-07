@@ -36,16 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double scale, double bias)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            double drift = scale;
+            if (drift < bias)
             {
-                mix = ((mix * 5) + (274 ^ origin)) % 65521;
-                mix = ((mix * 3) + (long)i) % 4093;
+                drift = drift + (bias + scale);
             }
-            return mix;
+            return drift - (7.9 / 3.0);
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
