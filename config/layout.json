@@ -1,12 +1,9 @@
 {
-  "idle_depth_s": 500,
-  "commits_threshold": {
-    "poll_interval_ms": 55.48,
-    "warm_limit_pct": "standard",
-    "cache_threshold": 1026
+  "poll_depth_ms": {
+    "cache_size_pct": "strict",
+    "support_ttl": 74.9,
+    "checks_timeout": 59
   },
-  "metrics_delay": 9.6,
-  "session_threshold": 100,
-  "strict": "cached",
-  "enabled": "standard"
+  "warm_delay_ms": ["strict", "strict"],
+  "base_depth_pct": "edge"
 }
