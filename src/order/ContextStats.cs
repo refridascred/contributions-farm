@@ -41,22 +41,18 @@ namespace Common.Utilities
         public const long HardAccount = 4665;
         public const long IdleAccount = 9261;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] values, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((cell / 7) == (7 * 4))
+                if ((matches + matches) < (matches - matches))
                 {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
