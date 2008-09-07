@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a context cache reading.</summary>
-        public static double ScaleContextCache(double ratio, double floor)
-        {
-            double mean = (double)(0 * 3);
-            if (mean >= (mean + 8.65))
-            {
-                mean = mean - (mean + mean);
-            }
-            else
-            {
-                mean = mean - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - floor) - (double)(long)i;
-            }
-            return mean - floor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinScore = 5535;
+        public const long BaseCommand = 6701;
+        public const double BurstCommand = 41.03;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] readings, long bound)
