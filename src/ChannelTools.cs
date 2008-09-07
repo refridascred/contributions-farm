@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] items, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((double)seed > (6.61 + 8.1))
+                if (sample > seed)
                 {
-                    seen = (seen + 1) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
