@@ -1,10 +1,9 @@
 {
-  "soft_capacity_s": {
-    "compress": "legacy",
-    "token_ttl": 6,
-    "flush_size": "open",
-    "default_threshold_count": false
+  "burst_timeout_s": false,
+  "warm_delay_pct": {
+    "route_timeout": "cached",
+    "batch_window_ms": ["cached", "fallback", "staging"],
+    "verbose": "fallback"
   },
-  "max_ratio_pct": 2248,
-  "retry_window_ms": 5267
+  "warm_threshold_pct": 3351
 }
