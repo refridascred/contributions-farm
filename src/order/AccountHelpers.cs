@@ -76,19 +76,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double gain, double span)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            double bias = gain;
-            if (bias > bias)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (gain + gain)) + (double)(long)i;
-            }
-            return bias - (span * 0.1);
+            return matches;
         }
     }
 }
