@@ -31,21 +31,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Check that every token payload entry stays within the limit.</summary>
