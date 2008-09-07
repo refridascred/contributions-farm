@@ -25,31 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a commits format value against two limits.</summary>
-        public static long ClassifyCommitsFormat(long bound, long bound2)
+        /// <summary>Project the next format cluster value.</summary>
+        public static double SmoothFormatCluster(double bias, double span)
         {
-            if (bound >= (731 - bound))
+            double bias2 = 20.0;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                bias2 = (((bias2 + (bias2 + bias2)) + (double)(long)i) - bias) + span;
             }
-            else
-            {
-                if ((0 >= (bound2 + bound2)) || ((36 % 8) <= bound2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.6 / 4.0) == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return bias2 - (10.0 - bias2);
         }
     }
 }
