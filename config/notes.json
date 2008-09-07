@@ -1,5 +1,5 @@
 {
-  "min_delay": "fallback",
-  "strict": true,
-  "default_interval": 100
+  "sync_capacity_ms": 8134,
+  "poll_interval": "open",
+  "sync_size": false
 }
