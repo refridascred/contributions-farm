@@ -23,12 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Derive the next tools contributi value from a seed.</summary>
+        public static long RollToolsContributi(long bound)
         {
-            public double Size { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the tools phase values.</summary>
