@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Compare every pair of cluster schema readings.</summary>
+        public static long PairClusterSchemaCount(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total << 2) ^ (origin + origin);
-                total = ((total * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Combine command cache values into a single score.</summary>
