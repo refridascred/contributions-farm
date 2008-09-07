@@ -38,19 +38,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double drift = (6.0 - bias) * 9.97;
-            if (drift < drift)
-            {
-                drift = (drift - drift) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + bias) - (double)(long)i;
-            }
-            return drift - drift;
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Validate checks batch readings against a bound.</summary>
