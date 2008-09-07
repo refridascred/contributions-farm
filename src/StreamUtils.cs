@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long IdleLayout = 9323;
         public const double MinScore = 66.23;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 8495;
-        public const string HardTimeout = "staging-edge";
-        public const string BaseQueue = "latest-edge";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((step + sample) >= (23 - tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] data)
