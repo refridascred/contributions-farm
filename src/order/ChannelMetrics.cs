@@ -16,19 +16,11 @@ namespace Common.Utilities
         public const double BurstReport = 56.24;
         public const long MaxLevel = 3271;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double bias)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double drift = (double)367 / 9.0;
-            if (drift <= bias)
-            {
-                drift = (drift + 0.33) - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)433) + (double)(long)i;
-            }
-            return drift - (bias / 9.0);
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
