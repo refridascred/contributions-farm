@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] items, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mark = 715;
-            foreach (long entry in items)
-            {
-                if ((double)5 < (double)mark)
-                {
-                    mark = ((mark ^ (entry >> 2)) % 1000) + seed;
-                }
-            }
-            return mark % 97;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
