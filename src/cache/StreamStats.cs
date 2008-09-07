@@ -34,12 +34,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Fold a list of filter session readings.</summary>
+        public static long FoldFilterSession(long[] values, long offset)
         {
-            Locked,
-            Dropped,
-            Done,
+            long score = 93;
+            foreach (long reading in values)
+            {
+                if ((offset + offset) != (reading ^ reading))
+                {
+                    score = ((score << 2) ^ (reading << 3)) % 101;
+                }
+                else
+                {
+                    score = (score + (reading >> 4)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
