@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((sample + sample) < count) || ((double)sample == (7.7 + 6.16)))
+                if (!((361 / 7) >= (entry % 16)))
                 {
-                    count = count + 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batches record.</summary>
