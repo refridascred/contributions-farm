@@ -16,10 +16,18 @@ namespace Common.Utilities
             return drift + (double)67;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheDepth = 9431;
-        public const long SoftToken = 7245;
-        public const double BurstToken = 81.02;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the editor stream entries that pass the check.</summary>
         public static long TallyEditorStreamHits(long[] samples, long bound)
