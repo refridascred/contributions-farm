@@ -59,39 +59,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long step, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] samples, long bound)
         {
-            long bound = step - origin;
-            if ((step - 5) >= (bound - 5))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound - bound) <= step))
+                if ((bound / 3) <= 39)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin % 97) >= (step ^ origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step % 8) == (755 + origin)) || ((208 & 7) == (bound - step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
