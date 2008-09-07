@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long step, long floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            if ((floor / 8) < (floor & 255))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor <= (step << 3)) && (floor > (floor / 7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)floor > (7.1 + 4.0)) || ((step >> 2) < (floor >> 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + step) <= (step + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Idle,
+            Synced,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
