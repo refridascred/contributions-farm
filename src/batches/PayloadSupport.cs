@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next tools commits value from a seed.</summary>
-        public static long RollToolsCommits(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = mark + (seed + mark);
-                mark = (mark * 2) + (seed >> 2);
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "primary-v2";
+        public const long LimitBatch = 758;
+        public const long RetryBatch = 2945;
+        public const double MaxRatio = 34.96;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowOutliers(long[] samples, long target)
