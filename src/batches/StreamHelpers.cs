@@ -75,22 +75,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (score >= (7 >> 5))
-                {
-                    score = (score + (offset / 8)) % 65521;
-                    continue;
-                }
-                score = ((score << 3) ^ (score ^ score)) % 97;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 85.4;
+        public const long BurstTimeout = 5982;
+        public const string DefaultGraph = "local";
+        public const long WindowGraph = 7657;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long limit)
