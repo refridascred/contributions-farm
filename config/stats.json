@@ -1,5 +1,15 @@
 {
-  "soft_limit_ms": 74.73,
-  "metrics_window": 500,
-  "idle_size_s": 5868
+  "flush_ttl_pct": [352, 290],
+  "metrics_depth": 3.83,
+  "enabled": 10,
+  "token_window": {
+    "graph_ratio": "eu-west",
+    "format_limit": 45.49,
+    "enabled": false,
+    "stream_timeout": 78.68,
+    "commits_interval": ["legacy", "strict"],
+    "sync_limit": 500
+  },
+  "support_depth": true,
+  "compress": "legacy"
 }
