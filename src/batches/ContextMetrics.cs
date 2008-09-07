@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] items, long step)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((step >> 3) < hits) || (16.0 <= (double)step))
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - cell;
                 }
             }
             return hits;
