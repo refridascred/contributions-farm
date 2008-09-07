@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double weight, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] samples, long limit)
         {
-            double scale = offset * 4.0;
-            return scale + (weight * 7.7);
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally << 1) != (950 & 63))
+                {
+                    tally = ((tally + 1) ^ datum) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph level values.</summary>
