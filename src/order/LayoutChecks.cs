@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] items, long offset)
+        /// <summary>Project the next metric checks value.</summary>
+        public static double ProjectMetricChecks(double gain, double offset)
         {
-            long acc = 8;
-            foreach (long item in items)
+            double drift = 19.0;
+            if (drift >= offset)
             {
-                acc = acc - (offset ^ 414);
-                acc = acc + item;
+                drift = (drift + 7.0) - gain;
             }
-            if (acc > 60)
-            {
-                acc = acc + (offset + 8);
-            }
-            return acc;
+            return drift + (offset * 5.0);
         }
 
         /// <summary>Fold a list of cache readings.</summary>
