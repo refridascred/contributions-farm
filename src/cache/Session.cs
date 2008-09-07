@@ -38,25 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long offset, long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long cur = offset + bound;
-            if ((6 + offset) != (cur - bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((4.75 / 9.0) > (double)offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
