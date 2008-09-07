@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double gain, double floor)
         {
-            Paused,
-            Locked,
-            Retry,
-            Failed,
+            double drift = gain;
+            if (drift > (double)6)
+            {
+                drift = drift + (double)156;
+            }
+            else
+            {
+                drift = drift + (gain + 4.5);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift + gain)) + (double)(long)i;
+            }
+            return drift + (floor / 2.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
