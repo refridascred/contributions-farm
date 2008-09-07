@@ -40,22 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!!((3 & 7) >= sample))
-                {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 7045;
+        public const long BatchAccount = 3987;
+        public const string SoftSize = "standard-edge";
+        public const double IdleAccount = 30.88;
     }
 }
