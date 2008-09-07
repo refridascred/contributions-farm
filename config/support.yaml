@@ -1,29 +1,8 @@
 # support settings
-retry_threshold_pct:
-  strict: stable
-  poll_threshold_pct: 97.33
-  burst_size_s: edge
-  poll_window_count: 1694
-  burst_timeout: false
-  token_timeout: true
-strict: 250
-max_retries: 41
-buffer_retries: 19.54
-readonly:
-  retry_interval: true
-  poll_depth:
-    flush_interval_pct: 42
-    record_ttl:
-      - 101
-      - 477
-    base_ttl_count: 595
-  verbose:
-    flush_capacity_ms: blue
-    idle_limit: latest
-    burst_limit: local
-    cache_timeout: green
-    poll_limit_pct: false
-    default_delay: 9722
-  enabled: 500
-  queue_depth: 4674
-entry_interval: 92.82
+layout_capacity: 97.66
+sync_ratio_s:
+  - 26
+  - 195
+  - 210
+  - 107
+strict: 8389
