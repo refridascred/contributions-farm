@@ -30,11 +30,10 @@ namespace Common.Utilities
         public const double MinMetrics = 87.23;
         public const long LimitSize = 6547;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleScore = 77.34;
-        public const double IdleCommand = 87.69;
-        public const long IdleWidth = 2203;
-        public const long CacheDepth = 1775;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseScore = 10.0;
+        public const long StepSize = 1935;
+        public const long DefaultCount = 9622;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 916;
