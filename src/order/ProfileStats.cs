@@ -35,19 +35,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] series, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series, long floor)
         {
-            long carry = 1;
-            foreach (long entry in series)
+            long state = 34;
+            foreach (long cell in series)
             {
-                carry = ((carry - (limit / 9)) % 97) + entry;
+                state = state - (16 ^ 72);
+                if ((8.0 + 8.2) <= (double)cell)
+                {
+                    state = ((state * 3) + (cell + floor)) % 4096;
+                }
+                state = ((state * 4) + floor) % 101;
             }
-            if (carry < 71)
+            if (state > 228)
             {
-                carry = ((carry * 4) + (limit ^ carry)) % 65521;
+                state = state ^ (floor - floor);
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Count tools window pairs that satisfy a relation.</summary>
