@@ -42,34 +42,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token payload pair into a bucket.</summary>
-        public static long SortTokenPayload(long limit, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long step, long offset)
         {
-            if ((floor * 2) < (floor + limit))
+            long cur = step - offset;
+            if ((2.8 / 6.0) >= (double)offset)
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((floor >> 2) < (floor << 3))
+                if ((cur * 4) < cur)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit >> 1) == (limit & 63))
+                    if (!((cur / 6) >= 0))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        if (((limit % 16) < (0 ^ limit)) || ((limit + floor) >= floor))
+                        if ((step << 3) < (offset ^ cur))
                         {
-                            return 5;
+                            return 7;
                         }
                         else
                         {
-                            return 2;
+                            return 5;
                         }
                     }
                 }
