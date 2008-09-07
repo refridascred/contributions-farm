@@ -1,28 +1,7 @@
 # entry settings
-sync_capacity_pct: 71
-sync_interval_ms:
-  burst_capacity_s:
-    - 436
-    - 113
-    - 413
-  queue_ttl: 41.75
-  hard_depth_count:
-    idle_ttl_pct:
-      - fallback
-      - primary
-      - edge
-    max_delay_ms:
-      - 42
-      - 4
-    sync_delay:
-      - 1
-      - 143
-      - 16
-flush_threshold: 5
-sync_capacity_s:
-  - blue
-  - strict
-readonly:
-  - local
-  - local
-cache_size: local
+retry_ratio_pct: 97.86
+notes_depth: fallback
+schema_timeout: 10.63
+idle_threshold: 64.53
+batch_depth_s: true
+min_delay_count: local
