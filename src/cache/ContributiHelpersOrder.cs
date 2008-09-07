@@ -14,10 +14,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinBudget = 5237;
-        public const double BurstSupport = 10.73;
-        public const long HardScore = 3865;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] series)
