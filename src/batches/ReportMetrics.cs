@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] values, long bound)
         {
-            long lane = offset + floor;
-            if (((lane + lane) <= (lane ^ offset)) || ((floor * 4) == (lane - 642)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset < (lane << 2))
+                if (values[i] >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a route counter forward.</summary>
