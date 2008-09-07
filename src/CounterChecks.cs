@@ -52,13 +52,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 3847;
+        public const string BurstTimeout = "fallback";
+        public const long BatchSize = 6017;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long floor)
