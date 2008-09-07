@@ -22,14 +22,14 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
             Ready,
-            Failed,
-            Retry,
-            New,
-            Done,
+            Closed,
+            Idle,
+            Pending,
+            Queued,
         }
     }
 }
