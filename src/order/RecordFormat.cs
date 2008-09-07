@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every stream stats entry stays within the limit.</summary>
-        public static bool ValidateStreamStatsRange(long[] levels, long seed)
+        /// <summary>Measure how many graph counter samples are out of range.</summary>
+        public static long AuditGraphCounterOutliers(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (value < seed)
+                if ((double)floor <= (0.7 + 5.7))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
