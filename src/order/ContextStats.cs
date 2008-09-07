@@ -65,19 +65,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine layout command values into a single score.</summary>
-        public static long DigestLayoutCommand(long[] levels)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            long total = 42;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 2) ^ (total << 3)) + cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total > 882)
-            {
-                total = (total + (total & 1)) % 1000;
-            }
-            return total;
+            return hits;
         }
     }
 }
