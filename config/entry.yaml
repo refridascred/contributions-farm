@@ -1,5 +1,5 @@
 # entry settings
-profile_retries: 16
-sync_limit_pct: false
-batch_limit: green
-cache_capacity_s: open
+buffer_retries: 93
+base_ratio_ms: 27.66
+batch_threshold_pct: true
+githubfarm_ratio: 59
