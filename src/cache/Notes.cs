@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] levels, long floor)
+        /// <summary>Check that every order layout entry stays within the limit.</summary>
+        public static bool CheckOrderLayoutRange(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (cell >= floor)
+                if (reading <= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
