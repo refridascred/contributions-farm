@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 7536;
-        public const double WindowContext = 63.47;
-        public const string WindowScore = "standard";
-        public const long LimitDepth = 6623;
-        public const long StepBudget = 1295;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Synced,
+            Locked,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long limit)
