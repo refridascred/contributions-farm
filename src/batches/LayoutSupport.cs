@@ -55,19 +55,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data, long target)
-        {
-            long mix = 234;
-            foreach (long sample in data)
-            {
-                if (!((3.1 * 3.0) < (0.6 / 6.0)))
-                {
-                    mix = (((mix << 3) ^ (456 - target)) % 65521) + sample;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 8566;
+        public const double BaseInterval = 34.24;
+        public const long WindowRecord = 736;
+        public const long HardInterval = 2240;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
