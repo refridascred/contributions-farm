@@ -37,21 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Project the next githubfarm support value.</summary>
+        public static double ProjectGithubfarmSupport(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = (weight / 2.0) + (weight / 4.0);
+            if (weight2 < span)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = weight2 + (weight2 * 4.79);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - 2.8) + (double)(long)i;
+            }
+            return weight2 - (span * 6.0);
         }
     }
 }
