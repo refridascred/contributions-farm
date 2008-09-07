@@ -25,16 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double ratio, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                state = (state - (state % 24)) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            double rate = (ratio / 8.0) * 9.0;
+            return (rate - (ratio - ratio)) + floor;
         }
     }
 }
