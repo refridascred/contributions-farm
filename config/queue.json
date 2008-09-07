@@ -1,18 +1,7 @@
 {
-  "route_capacity": "standard",
-  "max_window_s": 250,
-  "dry_run": {
-    "cache_size": true,
-    "poll_limit": 6104,
-    "idle_timeout_count": 100,
-    "notes_depth": 55,
-    "enabled": "staging"
-  },
-  "verbose": {
-    "max_capacity_ms": "standard",
-    "min_retries_count": 3299,
-    "hard_delay_s": true
-  },
-  "poll_window_count": 84,
-  "min_size": false
+  "audit": 56.64,
+  "default_limit": ["open", "strict", "edge"],
+  "verbose": 30,
+  "soft_retries_count": 73.28,
+  "hard_retries_ms": false
 }
