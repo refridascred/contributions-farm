@@ -49,12 +49,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] values, long step)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public double Score { get; set; }
+            long carry = 318;
+            foreach (long item in values)
+            {
+                if (((197 & 127) <= step) || (step < (step & 15)))
+                {
+                    carry = carry + (carry * 3);
+                }
+                if (((step * 5) > (item % 100)) && (step < carry))
+                {
+                    carry = carry + (item % 12);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
