@@ -52,14 +52,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "primary";
+        public const double MinChecks = 40.74;
+        public const long BaseChecks = 3622;
+        public const long HardChecks = 8970;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long offset, long seed)
