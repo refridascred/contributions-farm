@@ -46,22 +46,21 @@ namespace Common.Utilities
         public const long IdleContributi = 5559;
         public const long MinContributi = 5424;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] items, long target)
+        /// <summary>Match up tools profile samples.</summary>
+        public static long MatchToolsProfileCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count <= (8.3 / 2.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 2) ^ datum) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate context samples.</summary>
