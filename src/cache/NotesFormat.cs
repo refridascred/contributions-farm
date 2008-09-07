@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile format entry stays within the limit.</summary>
-        public static bool ValidateProfileFormatRange(long[] series, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long result = 33;
+            foreach (long cell in levels)
             {
-                if (entry <= origin)
+                if (((8 % 16) <= result) || (467 <= (cell - floor)))
                 {
-                    found = false;
-                    break;
+                    result = ((result * 4) + (cell * 4)) % 255;
                 }
             }
-            return found;
+            return result % 65521;
         }
 
         /// <summary>Hold a command summary.</summary>
