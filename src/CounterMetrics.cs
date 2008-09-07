@@ -41,26 +41,18 @@ namespace Common.Utilities
         public const long WindowBuffer = 1313;
         public const double MinWidth = 54.1;
 
-        /// <summary>Accumulate payload batch samples.</summary>
-        public static long TotalPayloadBatch(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] readings, long bound)
         {
-            long mix = 731;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((reading << 3) >= mix)
+                if ((entry << 2) == (9 - matches))
                 {
-                    mix = mix + reading;
-                }
-                else
-                {
-                    mix = (mix * 3) + (reading << 3);
-                }
-                if ((8.81 / 6.0) != (double)(long)readings.Length)
-                {
-                    break;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
