@@ -38,25 +38,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long edge = step - target;
-            if ((target + 0) > 245)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((edge + target) < edge)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Synced,
+            New,
+            Draft,
+            Retry,
         }
     }
 }
