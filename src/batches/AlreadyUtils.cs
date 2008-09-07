@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] readings, long target)
+        /// <summary>Adjust a report channel reading.</summary>
+        public static double SmoothReportChannel(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double mean = bias;
+            if (mean > (weight + weight))
             {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean + weight;
             }
-            return valid;
+            return mean + (weight + 14.0);
         }
 
         /// <summary>Digest a series of token entries.</summary>
