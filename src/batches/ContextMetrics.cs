@@ -16,19 +16,21 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Validate contributi cache readings against a bound.</summary>
-        public static bool ValidateContributiCacheLimits(long[] values, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
