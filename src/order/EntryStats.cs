@@ -53,22 +53,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long seed)
+        /// <summary>Rank account commits input into a small class.</summary>
+        public static long GradeAccountCommits(long target, long offset)
         {
-            if ((origin + origin) <= 52)
+            if (offset > (target / 8))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((seed >> 1) <= (origin - origin))
+                if ((892 + target) >= (offset / 8))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    if (offset > target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset != (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
