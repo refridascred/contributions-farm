@@ -60,14 +60,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] readings, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            long mark = 8;
+            foreach (long sample in readings)
             {
-                mark = (mark - (mark + seed)) % 1000;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (!(sample > 2))
+                {
+                    mark = (mark + target) % 255;
+                }
+            }
+            if (mark < 51)
+            {
+                mark = (mark ^ (mark >> 3)) % 255;
             }
             return mark;
         }
