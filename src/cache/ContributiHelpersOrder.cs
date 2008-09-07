@@ -25,13 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] series)
         {
-            Closed,
-            Paused,
-            Queued,
-            Dropped,
+            long acc = 1;
+            foreach (long sample in series)
+            {
+                acc = ((acc ^ (acc / 3)) % 255) + sample;
+            }
+            return acc % 4096;
         }
     }
 }
