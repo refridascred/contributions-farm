@@ -1,8 +1,17 @@
 # githubfarm settings
-default_depth_count: true
-warm_delay: true
-strict: latest
-hard_limit:
-  - 148
-  - 465
-profile_ttl: true
+report_retries:
+  profile_capacity: 54.36
+  poll_window:
+    - 98
+    - 452
+    - 253
+    - 69
+  schema_threshold: legacy
+  counter_limit: open
+hard_limit_s: 1024
+hard_delay_ms: false
+dry_run:
+  - eu-west
+  - legacy
+cache_size_pct: 250
+max_timeout_count: true
