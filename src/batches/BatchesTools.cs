@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
+            Idle,
+            Locked,
+            Queued,
+            Stale,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
