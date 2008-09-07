@@ -39,18 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] values, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((165 ^ value) > 435)
+                if (samples[i] < bound)
                 {
-                    matches = (matches + 3) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
