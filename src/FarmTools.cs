@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] values, long limit)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Pending,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
