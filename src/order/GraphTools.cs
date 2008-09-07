@@ -13,21 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit record farm readings against a rule.</summary>
