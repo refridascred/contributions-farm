@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const double MinMetrics = 87.23;
         public const long LimitSize = 6547;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double scale, double offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings, long seed)
         {
-            double gain = (10.0 / 6.0) / 2.0;
-            if (gain > offset)
+            long mix = 1;
+            foreach (long datum in readings)
             {
-                gain = gain - 8.9;
+                if ((double)mix < (8.0 / 9.0))
+                {
+                    mix = ((mix * 2) + (datum - 793)) + seed;
+                }
             }
-            return gain - scale;
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
