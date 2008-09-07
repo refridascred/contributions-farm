@@ -86,18 +86,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks counter samples are out of range.</summary>
-        public static long TallyChecksCounterHits(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long delta = origin ^ offset;
+            if (!((187 % 10) != (origin ^ origin)))
             {
-                if ((5.3 * 2.0) > (double)seen)
+                return 7;
+            }
+            else
+            {
+                if (!((6.78 - 1.7) > (double)delta))
                 {
-                    seen = (seen + 1) - entry;
+                    return 8;
+                }
+                else
+                {
+                    if (((73 + offset) != (origin & 7)) || ((delta ^ offset) < (offset % 64)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
