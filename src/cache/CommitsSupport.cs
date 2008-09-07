@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Stale,
-            Pending,
-            Ready,
-            Synced,
-            Paused,
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
