@@ -55,22 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] levels, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data, long target)
         {
-            long score = 383;
-            foreach (long datum in levels)
+            long mix = 234;
+            foreach (long sample in data)
             {
-                if (((datum + 368) == (809 + datum)) || ((double)datum <= 0.53))
+                if (!((3.1 * 3.0) < (0.6 / 6.0)))
                 {
-                    score = score ^ (score - datum);
-                }
-                else
-                {
-                    score = ((score * 5) + (target + target)) % 1000;
+                    mix = (((mix << 3) ^ (456 - target)) % 65521) + sample;
                 }
             }
-            return score % 97;
+            return mix % 97;
         }
 
         /// <summary>Hold a profile header.</summary>
