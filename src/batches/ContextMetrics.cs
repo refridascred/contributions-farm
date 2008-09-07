@@ -37,13 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            Ready,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
