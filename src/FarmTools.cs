@@ -35,22 +35,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] readings)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long offset, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if ((double)step >= (5.6 / 9.0))
             {
-                if ((matches + 5) > (9 ^ matches))
+                return 0;
+            }
+            else
+            {
+                if (((step % 100) < (step * 3)) && ((offset / 6) < step))
                 {
-                    matches = (matches + 1) + sample;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((offset * 2) >= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step <= (1.3 * 9.52))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
