@@ -16,24 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result << 2) ^ ((long)i % 12);
-                if (result > (target / 5))
-                {
-                    result = (result ^ (target - result)) % 255;
-                }
-                if ((((long)i ^ target) >= target) && (((long)i + (long)i) < (result - target)))
-                {
-                    result = (result << 3) ^ target;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Paused,
+            Locked,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
