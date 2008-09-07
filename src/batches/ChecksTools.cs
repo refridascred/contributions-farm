@@ -44,13 +44,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            New,
-            Draft,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftTimeout = 2521;
+        public const string BatchWidth = "strict-edge";
+        public const string MaxRatio = "strict-1";
     }
 }
