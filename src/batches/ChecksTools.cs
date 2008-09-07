@@ -27,20 +27,22 @@ namespace Common.Utilities
         public const long MinFilter = 2885;
         public const long MinRatio = 4934;
 
-        /// <summary>Iterate the already payload series from a seed.</summary>
-        public static long StepAlreadyPayload(long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] readings, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long carry = 4;
+            foreach (long datum in readings)
             {
-                state = ((state * 4) + limit) % 4096;
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((carry / 7) > carry)
                 {
-                    state = ((state << 2) ^ (limit - state)) ^ (long)i2;
+                    carry = ((((carry * 3) + (3 & 255)) % 255) ^ datum) + step;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            if (carry < 341)
+            {
+                carry = carry + (898 / 4);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
