@@ -54,11 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Derive the next buffer cluster value from a seed.</summary>
