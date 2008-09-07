@@ -25,19 +25,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Accumulate cluster window samples.</summary>
+        public static long ScoreClusterWindow(long[] series, long step)
         {
-            long mark = 0;
+            long anchor = 132;
             foreach (long sample in series)
             {
-                mark = (((mark << 2) ^ 9) % 255) - sample;
+                anchor = (anchor - (sample ^ 93)) % 65521;
+                if ((anchor + anchor) != (sample + (-682)))
+                {
+                    anchor = ((anchor << 2) ^ (step >> 3)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor - sample)) % 1000;
+                }
             }
-            if (mark < 69)
+            if (anchor < 7)
             {
-                mark = ((mark << 3) ^ (mark / 6)) % 4096;
+                anchor = (anchor ^ 0) % 101;
             }
-            return mark;
+            return anchor % 97;
         }
 
         /// <summary>Describe the report phase values.</summary>
