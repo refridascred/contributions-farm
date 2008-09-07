@@ -38,11 +38,17 @@ namespace Common.Utilities
         public const double MaxBudget = 28.79;
         public const long DefaultCount = 2100;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 8566;
-        public const double BaseInterval = 34.24;
-        public const long WindowRecord = 736;
-        public const long HardInterval = 2240;
+        /// <summary>Digest a series of context queue entries.</summary>
+        public static long TotalContextQueue(long[] levels, long floor)
+        {
+            long score = 270;
+            foreach (long reading in levels)
+            {
+                score = score ^ (reading + floor);
+                score = (score ^ (reading - floor)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long FindCommitsIndex(long[] samples, long bound)
