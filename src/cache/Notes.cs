@@ -29,20 +29,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!!(610 > (limit + (long)i)))
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-                anchor = (anchor - anchor) % 255;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Stale,
+            Failed,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the filter phase values.</summary>
