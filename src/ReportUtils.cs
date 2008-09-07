@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] values, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (item >= bound)
+                if (sample <= (sample * 4))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - step;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Adjust a session reading.</summary>
