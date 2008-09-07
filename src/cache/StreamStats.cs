@@ -38,24 +38,24 @@ namespace Common.Utilities
         public const double MinScore = 43.51;
         public const double StepNotes = 46.73;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long floor)
         {
-            if ((step > (seed + step)) && ((double)seed != (9.9 * 2.15)))
+            if ((double)step >= (9.01 - 4.34))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((seed - 216) <= step)
+                if ((step << 1) <= (6 - (-85)))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((5 + step) < (seed + seed))
+                    if (1 <= (step + step))
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
