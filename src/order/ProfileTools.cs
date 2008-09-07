@@ -71,22 +71,12 @@ namespace Common.Utilities
         public const long HardRatio = 4593;
         public const string BatchOrder = "staging-v2";
 
-        /// <summary>Audit payload contributi readings against a rule.</summary>
-        public static long TallyPayloadContributiMatches(long[] levels, long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!!((hits - offset) == (hits - cell)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Synced,
+            Draft,
         }
     }
 }
