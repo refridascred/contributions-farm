@@ -16,24 +16,12 @@ namespace Common.Utilities
             return bias - 8.1;
         }
 
-        /// <summary>Rank order stream input into a small class.</summary>
-        public static long GradeOrderStream(long seed, long origin)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((double)seed != (9.3 + 9.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + seed) > (origin + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Closed,
+            Draft,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
