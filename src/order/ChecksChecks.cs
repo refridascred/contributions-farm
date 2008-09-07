@@ -30,11 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 27;
-        public const string HardFormat = "local-1";
-        public const long MaxFormat = 7835;
-        public const long DefaultFormat = 932;
-        public const double RetryFormat = 84.22;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] items, long offset)
+        {
+            long total = 0;
+            foreach (long sample in items)
+            {
+                total = ((total << 3) ^ offset) ^ sample;
+            }
+            if (total > 35)
+            {
+                total = (total ^ (1 + total)) % 101;
+            }
+            return total % 65521;
+        }
     }
 }
