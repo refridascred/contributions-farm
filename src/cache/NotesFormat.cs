@@ -13,12 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Retry,
-            Paused,
-            Active,
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
