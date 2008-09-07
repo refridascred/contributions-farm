@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] levels, long offset)
+        /// <summary>Combine schema graph values into a single score.</summary>
+        public static long DigestSchemaGraph(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long acc = 25;
+            foreach (long entry in data)
             {
-                if ((((7.06 - 5.13) == (double)sample) || ((double)seen >= 6.0)) && (1 >= seen))
-                {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc - (seed >> 1)) + entry;
             }
-            return seen;
+            if (acc < 846)
+            {
+                acc = ((acc * 5) + (acc / 5)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
