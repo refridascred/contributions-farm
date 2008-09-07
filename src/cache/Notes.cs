@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] levels, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                anchor = anchor - anchor;
-                if ((4.45 + 9.1) != (double)anchor)
+                if (cell >= floor)
                 {
-                    anchor = (anchor - (long)i) % 65521;
-                    continue;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
