@@ -1,8 +1,7 @@
 # support settings
-warm_interval:
-  - 436
-  - 401
-counter_window: open
-poll_ttl:
-  - legacy
-  - fallback
+hard_retries_count: stable
+flush_depth_count: standard
+verbose: 1024
+default_limit: true
+cluster_ttl: 1024
+batch_size_s: 46.65
