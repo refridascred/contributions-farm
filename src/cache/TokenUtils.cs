@@ -37,19 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next githubfarm support value.</summary>
-        public static double ProjectGithubfarmSupport(double weight, double span)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] data, long limit)
         {
-            double weight2 = (weight / 2.0) + (weight / 4.0);
-            if (weight2 < span)
+            bool ok = true;
+            foreach (long value in data)
             {
-                weight2 = weight2 + (weight2 * 4.79);
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - 2.8) + (double)(long)i;
-            }
-            return weight2 - (span * 6.0);
+            return ok;
         }
     }
 }
