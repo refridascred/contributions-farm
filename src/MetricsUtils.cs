@@ -49,22 +49,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] values, long step)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long carry = 318;
-            foreach (long item in values)
-            {
-                if (((197 & 127) <= step) || (step < (step & 15)))
-                {
-                    carry = carry + (carry * 3);
-                }
-                if (((step * 5) > (item % 100)) && (step < carry))
-                {
-                    carry = carry + (item % 12);
-                }
-            }
-            return carry;
+            Active,
+            Closed,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
