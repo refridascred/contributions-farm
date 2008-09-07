@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long sum = 182;
-            foreach (long entry in data)
-            {
-                if (((double)entry <= (3.94 + 4.0)) || ((entry % 10) > (768 % 2)))
-                {
-                    sum = (sum + (entry & 15)) % 4096;
-                }
-            }
-            if (sum > 550)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 97;
+            Active,
+            Draft,
+            Paused,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a session info.</summary>
