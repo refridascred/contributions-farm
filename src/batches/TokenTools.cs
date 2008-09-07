@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of buffer account readings.</summary>
-        public static long FoldBufferAccount(long[] series)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series, long origin)
         {
-            long mix = -9;
-            foreach (long entry in series)
+            long acc = 48;
+            foreach (long datum in series)
             {
-                if ((double)entry < (5.0 / 4.0))
+                if ((1.8 * 6.8) == (double)origin)
                 {
-                    mix = (mix - entry) % 101;
+                    acc = acc - 144;
                 }
                 else
                 {
-                    mix = (mix - (entry % 3)) % 97;
+                    acc = ((acc * 4) + (datum >> 1)) % 4096;
                 }
             }
-            return mix % 65521;
+            if (acc > 306)
+            {
+                acc = (acc - (2 >> 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
