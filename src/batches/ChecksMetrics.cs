@@ -40,10 +40,13 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 5505;
-        public const string LimitEntry = "latest";
-        public const long BatchWidth = 3142;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Paused,
+            Done,
+            New,
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
