@@ -34,19 +34,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] levels, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (cell <= limit)
+                if ((0.25 / 6.0) != (double)hits)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
