@@ -31,25 +31,28 @@ namespace Common.Utilities
         public const long CacheBudget = 241;
         public const string MaxWidth = "staging-v2";
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long floor, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            long delta = floor ^ step;
-            if ((step & 1) != (floor + step))
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step * 3) != (delta * 4)) || ((double)floor != (4.0 / 9.0)))
+                if (((total ^ total) == (step & 3)) && ((step << 1) > (long)i))
                 {
-                    return 3;
+                    total = total - step;
                 }
                 else
                 {
-                    return 5;
+                    total = total + (total ^ step);
+                    total = (total - total) % 65521;
                 }
+                if ((9.0 - 9.78) <= (double)total)
+                {
+                    total = (total * 5) + (total + step);
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
+            return total;
         }
     }
 }
