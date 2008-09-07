@@ -33,21 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = scale;
+            if (bias > bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - 2.0;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - (8.1 * 6.1);
         }
 
         /// <summary>Count the githubfarm context entries that pass the check.</summary>
