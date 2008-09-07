@@ -1,12 +1,13 @@
 # githubfarm settings
-default_depth: 28
-sync_window: 82.79
-sync_delay_ms: false
-cache_depth_ms:
-  warm_delay_pct: 60
-  soft_ratio_ms:
-    - 342
-    - 471
-    - 89
-  flush_threshold_count: 45
-  flush_size_count: standard
+retry_ratio_ms: 77
+hard_capacity_count: false
+readonly:
+  - 164
+  - 31
+verbose: green
+min_ttl:
+  cache_ttl_count:
+    - strict
+    - primary
+  audit: 34.74
+  cache_ttl_pct: open
