@@ -1,14 +1,6 @@
 # support settings
-profile_retries: 100
-default_ttl_s:
-  - 45
-  - 88
-  - 274
-  - 78
-cache_size:
-  base_window_ms: 554
-  batch_limit: false
-  audit: green
-  compress: 1
-  persist: latest
-soft_depth_count: false
+idle_ratio: 87
+batch_delay: blue
+cluster_retries: 28.92
+dry_run: edge
+stream_depth: 500
