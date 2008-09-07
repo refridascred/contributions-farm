@@ -48,25 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long floor, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            long step = floor - seed;
-            if (!((seed >> 1) != (seed & 31)))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((step >> 5) < seed))
+                if (((hits + value) < (value % 100)) && (hits <= (hits - value)))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
