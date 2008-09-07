@@ -14,15 +14,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Rank counter window input into a small class.</summary>
+        public static long SortCounterWindow(long origin, long bound)
         {
-            double bias2 = 10.0 / 9.0;
-            if (bias2 >= (bias2 * 3.75))
+            long next = origin ^ bound;
+            if (bound > (origin << 3))
             {
-                bias2 = bias2 + (bias2 + scale);
+                return 2;
             }
-            return bias2 - (bias * 13.0);
+            else
+            {
+                if ((bound + bound) == (0 ^ next))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
