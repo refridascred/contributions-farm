@@ -51,22 +51,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] values, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (count > (count + 3))
-                {
-                    count = ((count + 2) ^ sample) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
