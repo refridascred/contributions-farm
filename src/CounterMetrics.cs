@@ -21,12 +21,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinTimeout = 525;
-        public const long HardDepth = 9461;
-        public const long RetryRoute = 9354;
-        public const long StepWidth = 532;
-        public const long CacheRoute = 1815;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the githubfarm commits entries that pass the check.</summary>
         public static long CountGithubfarmCommitsMatches(long[] samples)
