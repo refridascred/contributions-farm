@@ -23,12 +23,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] levels, long step)
         {
-            Draft,
-            Ready,
-            Retry,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!!(step < (step % 100)))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
