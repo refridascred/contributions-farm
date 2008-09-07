@@ -58,40 +58,11 @@ namespace Common.Utilities
         public const long BaseChecks = 3622;
         public const long HardChecks = 8970;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long offset, long seed)
-        {
-            long lane = offset + seed;
-            if (((offset / 5) >= (offset % 10)) || ((offset >> 1) != (lane - lane)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((lane & 31) >= (lane - 777)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((98 >> 1) >= (offset * 2)) && (offset > (lane + offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((lane / 8) > (5 >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 6817;
+        public const long RetrySpan = 4520;
+        public const long WindowFactor = 8185;
+        public const long DefaultDepth = 4474;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] series, long seed)
