@@ -23,13 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long target)
         {
-            Synced,
-            New,
-            Closed,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next filter profile value from a seed.</summary>
