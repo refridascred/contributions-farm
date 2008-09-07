@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a filter metric sample.</summary>
-        public static long FindFilterMetricIndex(long[] samples, long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
+                if (reading > limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of format entries.</summary>
