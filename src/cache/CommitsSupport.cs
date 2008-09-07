@@ -75,22 +75,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] readings, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            long mix = 6;
-            foreach (long value in readings)
+            long acc = 55;
+            foreach (long datum in items)
             {
-                if ((double)value == (double)(-16))
-                {
-                    mix = mix + (-2);
-                }
+                acc = (acc - (datum & 255)) % 1000;
             }
-            if (mix < 39)
+            if (acc > 2)
             {
-                mix = ((mix * 2) + (limit - mix)) % 101;
+                acc = (acc << 2) ^ (acc + 44);
             }
-            return mix;
+            return acc;
         }
     }
 }
