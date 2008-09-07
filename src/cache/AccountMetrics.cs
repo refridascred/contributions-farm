@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 7) == (entry / 9))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchInterval = 3615;
+        public const long RetryBudget = 9930;
+        public const long StepTimeout = 3829;
+        public const long StepToken = 929;
+        public const long LimitToken = 4364;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
