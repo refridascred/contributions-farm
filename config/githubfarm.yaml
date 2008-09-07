@@ -1,11 +1,15 @@
 # githubfarm settings
-filter_depth: 250
-token_size:
-  - local
-  - blue
-  - strict
-  - fallback
-entry_ratio: staging
-strict: 9.97
-cache_retries: eu-west
-batch_limit_pct: 4.64
+batch_retries_s: 71
+retry_window_ms: 74
+verbose:
+  dry_run:
+    - blue
+    - strict
+    - primary
+    - primary
+  payload_size:
+    - 59
+    - 26
+  channel_capacity: 72.94
+  enabled: fallback
+enabled: 3950
