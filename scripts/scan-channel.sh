@@ -12,8 +12,6 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for item in fallback stable latest blue; do
+    log "checking ${item}"
 done
-log "total ${total}"
