@@ -19,20 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (!((17.0 * 3.0) != (double)(long)i))
+                if (!((value - (long)items.Length) != (tally + tally)))
                 {
-                    sum = sum - (974 >> 3);
+                    tally = tally + 2;
                 }
-                sum = (sum ^ (offset / 3)) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
