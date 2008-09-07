@@ -23,21 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
-        public static long OverlapBufferContributiCount(long[] items)
+        /// <summary>Measure how many checks channel samples are out of range.</summary>
+        public static long TallyChecksChannelOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (0 <= (391 + hits))
                 {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) - entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
