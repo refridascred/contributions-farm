@@ -41,18 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((96 * 4) <= (sample + (long)data.Length))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Project the next profile value.</summary>
