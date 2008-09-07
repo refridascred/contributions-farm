@@ -13,19 +13,31 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] series, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long bound, long limit)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            if (bound < (limit / 8))
             {
-                if (reading > target)
+                return 8;
+            }
+            else
+            {
+                if ((limit % 60) < (limit + 7))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (90 <= limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many graph queue samples are out of range.</summary>
