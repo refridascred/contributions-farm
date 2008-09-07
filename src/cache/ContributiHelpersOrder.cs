@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long HardDepth = 1903;
         public const long LimitOrder = 688;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound < (datum >> 5)) && (bound <= (tally >> 3)))
                 {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
