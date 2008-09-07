@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 604;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)reading > (4.6 / 3.0))
                 {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score * 4) + reading;
                 }
             }
-            return matches;
+            if (score > 365)
+            {
+                score = (score ^ (84 % 97)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the report phase values.</summary>
