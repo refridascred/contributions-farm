@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels, long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((seen + seen) == (seen / 5)) && ((9 % 97) <= seen))
-                {
-                    seen = ((seen + 2) - item) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
