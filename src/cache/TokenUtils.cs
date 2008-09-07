@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every cache payload entry stays within the limit.</summary>
-        public static bool CheckCachePayloadBounds(long[] samples, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Roll a route support counter forward.</summary>
