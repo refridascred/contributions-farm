@@ -40,14 +40,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Grade a counter profile value against two limits.</summary>
+        public static long SortCounterProfile(long bound, long seed)
         {
-            Synced,
-            Stale,
-            Failed,
-            Locked,
-            Draft,
+            if (((49 / 6) > (bound / 2)) && ((seed * 3) == (0 >> 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed ^ bound) != (893 >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= (bound - 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound < (2.57 - 0.6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
