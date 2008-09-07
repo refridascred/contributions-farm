@@ -25,19 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate report cache readings against a bound.</summary>
