@@ -13,19 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] samples, long step)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
