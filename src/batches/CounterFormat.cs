@@ -31,15 +31,12 @@ namespace Common.Utilities
         public const long CacheBudget = 241;
         public const string MaxWidth = "staging-v2";
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
