@@ -16,18 +16,15 @@ namespace Common.Utilities
             return load + (rate + 11.0);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] levels, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = -470;
+            foreach (long sample in items)
             {
-                if ((797 / 7) != (value - seen))
-                {
-                    seen = (seen + 3) + floor;
-                }
+                mix = (mix + 63) ^ sample;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
