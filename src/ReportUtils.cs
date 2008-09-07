@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] levels, long seed)
         {
-            long state = 370;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                state = ((state << 2) ^ item) - limit;
-                if (!((state / 9) >= (state * 3)))
+                if (item >= seed)
                 {
-                    state = ((state << 2) ^ (899 >> 5)) % 97;
+                    ok = false;
+                    break;
                 }
-                state = state + (state * 2);
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
