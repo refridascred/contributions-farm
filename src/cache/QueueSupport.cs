@@ -25,19 +25,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            long mix = -16;
+            foreach (long cell in levels)
             {
-                if ((17.0 + 8.41) >= 4.9)
+                if (!(6 >= (872 + step)))
                 {
-                    continue;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
+                mix = ((mix + 473) % 255) + cell;
             }
-            return carry;
+            if (mix < 684)
+            {
+                mix = (mix ^ (mix + 2)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Find the first profile already entry that matches the target.</summary>
