@@ -72,18 +72,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] samples, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long anchor = 136;
+            foreach (long value in values)
             {
-                if ((double)floor != (double)entry)
+                if ((95 ^ limit) > (value << 2))
                 {
-                    seen = seen + 1;
+                    anchor = ((anchor * 3) + (7 + value)) % 1000;
+                    anchor = (anchor + ((long)values.Length + limit)) % 255;
+                    break;
                 }
+                anchor = (anchor << 2) ^ (value + anchor);
             }
-            return seen;
+            return anchor % 4096;
         }
     }
 }
