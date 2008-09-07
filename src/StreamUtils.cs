@@ -56,12 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double offset)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            double bias = 5.2;
+            if (bias <= ratio)
+            {
+                bias = bias + (offset - ratio);
+            }
+            else
+            {
+                bias = bias + (bias * 2.0);
+            }
+            return bias - (double)37;
         }
 
         /// <summary>Locate a record cache reading by value.</summary>
