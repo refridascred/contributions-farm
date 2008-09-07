@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] readings)
         {
-            long acc = 29;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                acc = ((acc + (long)items.Length) - sample) - step;
+                if ((7.0 / 2.0) >= (double)tally)
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
