@@ -28,13 +28,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 682;
+        public const double MinScore = 43.51;
+        public const double StepNotes = 46.73;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long BucketTools(long step, long seed)
