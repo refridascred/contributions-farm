@@ -47,17 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 5630;
+        public const long SoftSpan = 7583;
+        public const double DefaultChannel = 56.5;
+        public const double WindowChannel = 26.15;
+        public const long IdleChannel = 6221;
     }
 }
