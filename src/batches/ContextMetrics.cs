@@ -47,18 +47,11 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Measure how many format buffer samples are out of range.</summary>
-        public static long MeasureFormatBufferHits(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seed > (4.96 + 13.0))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultWidth = 36.22;
+        public const string DefaultCache = "strict";
+        public const long CacheCount = 9389;
+        public const string StepCache = "local-v2";
+        public const long BatchScore = 9664;
     }
 }
