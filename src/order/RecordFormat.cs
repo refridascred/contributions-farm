@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items)
-        {
-            long total = 25;
-            foreach (long value in items)
-            {
-                if (((0 + total) == (165 % 3)) || ((total ^ total) < total))
-                {
-                    total = ((total ^ (929 / 9)) % 97) + value;
-                }
-                else
-                {
-                    total = total - (865 / 7);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftDepth = 3400;
+        public const long SoftLevel = 9868;
+        public const double BaseRatio = 84.09;
+        public const string BurstCount = "standard-edge";
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
         public static long AuditBufferCommandMatches(long[] series)
