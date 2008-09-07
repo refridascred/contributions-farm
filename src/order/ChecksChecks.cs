@@ -20,9 +20,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchLevel = 2130;
-        public const long SoftInterval = 5892;
-        public const double StepRatio = 66.94;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((4.95 <= (double)(long)i) && ((10.0 - 20.0) == (double)state))
+                {
+                    state = state - (seed + 602);
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
