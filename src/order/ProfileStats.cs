@@ -46,20 +46,22 @@ namespace Common.Utilities
         public const long IdleContributi = 5559;
         public const long MinContributi = 5424;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] items, long target)
         {
-            long anchor = -76;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                anchor = (((anchor * 2) + anchor) % 4096) - floor;
-                anchor = (anchor - (sample << 1)) % 101;
+                if ((double)count <= (8.3 / 2.0))
+                {
+                    count = ((count + 2) ^ datum) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (anchor > 21)
-            {
-                anchor = anchor ^ ((long)readings.Length & 3);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
