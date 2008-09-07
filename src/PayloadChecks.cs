@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double ratio, double span)
+        /// <summary>Combine commits cluster values into a single score.</summary>
+        public static long FoldCommitsCluster(long[] values, long step)
         {
-            double mean = span;
-            for (int i = 0; i < 6; i++)
+            long sum = 8;
+            foreach (long cell in values)
             {
-                mean = ((mean + mean) - (double)(long)i) - ratio;
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum - (sum + cell)) % 4096) ^ (long)i;
+                    sum = (sum * 3) + (-996);
+                }
+                sum = (sum + (step ^ sum)) % 65521;
+                if (((cell & 31) == (step * 2)) || (cell <= step))
+                {
+                    sum = sum - 149;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + sum)) % 4096;
+                }
+                if ((double)cell <= (5.41 * 15.0))
+                {
+                    break;
+                }
             }
-            return mean - span;
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
