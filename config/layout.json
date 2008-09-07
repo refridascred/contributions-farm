@@ -1,21 +1,7 @@
 {
-  "base_window_pct": {
-    "enabled": {
-      "command_ratio": false,
-      "sync_size_count": 60,
-      "poll_size": 500
-    },
-    "batch_retries": false,
-    "contributi_size": 78,
-    "batch_interval": 500,
-    "burst_ttl": false,
-    "checks_retries": "open"
-  },
-  "hard_limit_pct": ["staging", "fallback"],
-  "retry_ratio": {
-    "readonly": 100,
-    "compress": [393, 483, 411, 44],
-    "burst_ttl_s": true,
-    "soft_delay_ms": true
-  }
+  "readonly": "stable",
+  "audit": 7499,
+  "schema_window": "fallback",
+  "session_interval": 500,
+  "persist": 3243
 }
