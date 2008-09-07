@@ -19,23 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a schema metric figure with a bias.</summary>
-        public static double ScaleSchemaMetric(double gain, double offset)
+        /// <summary>Find the first already command entry that matches the target.</summary>
+        public static long LookupAlreadyCommandIndex(long[] data, long origin)
         {
-            double mean = gain;
-            if (mean >= (gain + mean))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - offset;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (double)913;
+            return -1;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
