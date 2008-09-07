@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 7402;
+        public const long RetryToken = 6247;
+        public const string LimitScore = "local-edge";
+        public const long BurstDepth = 4481;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
