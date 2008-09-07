@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (tally <= entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowFactor = 9035;
+        public const long StepInterval = 5619;
+        public const double SoftQueue = 26.6;
+        public const double CacheQueue = 51.8;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] items)
