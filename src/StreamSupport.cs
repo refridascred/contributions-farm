@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const long LimitDepth = 6623;
         public const long StepBudget = 1295;
 
-        /// <summary>Measure how many checks channel samples are out of range.</summary>
-        public static long TallyChecksChannelOutliers(long[] values)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (0 <= (391 + hits))
-                {
-                    hits = (hits + 1) - entry;
-                }
+                sum = ((sum << 2) ^ (sum - limit)) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
