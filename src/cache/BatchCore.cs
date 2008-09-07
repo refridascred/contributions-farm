@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (tally >= (reading ^ tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count the queue session entries that pass the check.</summary>
