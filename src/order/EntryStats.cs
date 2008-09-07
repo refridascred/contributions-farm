@@ -40,12 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetrySpan = "standard";
-        public const long IdleGithubfarm = 3928;
-        public const double BaseFactor = 43.16;
-        public const long DefaultSize = 8826;
-        public const double WindowDepth = 14.6;
+        /// <summary>Count the format schema entries that pass the check.</summary>
+        public static long CountFormatSchemaMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((double)value >= (11.0 - 9.2)) && !((count % 16) < value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] readings, long bound)
