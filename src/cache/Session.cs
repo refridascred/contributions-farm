@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double bias = (double)(0 + 86);
-            if (bias > scale)
-            {
-                bias = (bias - bias) - floor;
-            }
-            return bias - (scale + scale);
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
