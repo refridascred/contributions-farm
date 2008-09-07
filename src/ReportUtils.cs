@@ -52,13 +52,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Locked,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstCount = 9031;
+        public const long CacheChannel = 2840;
+        public const double LimitChannel = 6.53;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long WeighGithubfarm(long[] readings, long target)
