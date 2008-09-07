@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] items, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (value >= seed)
+                if ((83 + tally) > item)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
