@@ -70,18 +70,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((((reading ^ tally) >= (tally / 2)) && ((2.9 - 0.5) <= (double)tally)) || !(reading > (reading & 7)))
+                if (matches < (matches & 31))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
