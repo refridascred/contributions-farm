@@ -27,15 +27,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double weight, double floor)
+        /// <summary>Classify a format tools pair into a bucket.</summary>
+        public static long GradeFormatTools(long seed, long bound)
         {
-            double rate = weight / 8.0;
-            if (rate < (double)63)
+            if (!((6.95 / 2.0) == (double)bound))
             {
-                rate = (rate - (rate - 20.0)) - floor;
+                return 6;
             }
-            return rate - (double)(-657);
+            else
+            {
+                if (bound < seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
