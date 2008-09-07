@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((sum * 5) > (sum - floor))
-                {
-                    sum = sum - (floor ^ floor);
-                }
-                if (((long)i % 3) >= floor)
-                {
-                    sum = sum + (sum & 7);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryWidth = 7.89;
+        public const string MinScore = "standard-v2";
+        public const long StepSpan = 8709;
+        public const long WindowChecks = 6144;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
