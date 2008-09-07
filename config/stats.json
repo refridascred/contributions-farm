@@ -1,11 +1,5 @@
 {
-  "schema_retries": {
-    "metric_delay": 1024,
-    "compress": "legacy",
-    "route_retries": [28, 235],
-    "batch_ttl_ms": 19.87
-  },
-  "command_window": 24.29,
-  "context_delay": 76,
-  "command_interval": true
+  "hard_timeout": false,
+  "buffer_timeout": "staging",
+  "warm_threshold_count": "strict"
 }
