@@ -1,6 +1,8 @@
 {
-  "hard_ratio_count": "staging",
-  "batch_threshold_count": "local",
-  "schema_ttl": 89,
-  "layout_delay": "edge"
+  "filter_retries": [232, 30, 48],
+  "route_interval": 60,
+  "soft_interval": true,
+  "retry_window_pct": "latest",
+  "flush_delay_count": "cached",
+  "max_depth_count": 60
 }
