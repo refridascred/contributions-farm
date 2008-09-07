@@ -30,23 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double gain, double span)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double weight = span;
-            if (weight >= (1.0 - weight))
-            {
-                weight = weight + 1.12;
-            }
-            else
-            {
-                weight = weight + (gain * 16.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight * 4.3)) + (double)(long)i;
-            }
-            return weight + 6.03;
+            Dropped,
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a notes stats.</summary>
