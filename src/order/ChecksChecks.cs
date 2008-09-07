@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double mean = (offset * 2.97) + (offset * 13.0);
-            if (mean > scale)
-            {
-                mean = mean + (offset - scale);
-            }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + 1.95) + (double)(long)i;
-            }
-            return mean - (scale + mean);
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
