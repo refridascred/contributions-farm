@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Locked,
-            Active,
-            Failed,
-            Queued,
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
