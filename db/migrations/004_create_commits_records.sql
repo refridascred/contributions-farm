@@ -1,12 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
+    region TEXT,
     active INTEGER NOT NULL DEFAULT 1,
-    weight REAL,
-    ratio REAL
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
 
-INSERT INTO commits_records (active, weight, ratio) VALUES (79, 78.03, 14.42);
-INSERT INTO commits_records (active, weight, ratio) VALUES (4, 83.56, 82.87);
+INSERT INTO commits_records (region, active) VALUES ('fallback', 55);
+INSERT INTO commits_records (region, active) VALUES ('primary', 87);
