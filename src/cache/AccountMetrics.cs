@@ -34,16 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double gain, double bias)
-        {
-            double mean = gain;
-            if (mean >= mean)
-            {
-                mean = mean + (2.88 - 15.0);
-            }
-            return mean - (bias - mean);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 79.54;
+        public const long SoftDepth = 6314;
+        public const long IdleTimeout = 7598;
+        public const long MaxInterval = 9440;
+        public const long CacheLayout = 4101;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
