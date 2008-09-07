@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine session cache values into a single score.</summary>
-        public static long CombineSessionCache(long[] values, long floor)
-        {
-            long state = 297;
-            foreach (long sample in values)
-            {
-                if ((floor >> 5) < (sample ^ sample))
-                {
-                    state = ((state * 5) + (sample + 8)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (state % 64)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxSize = 7859;
+        public const long BurstSize = 7174;
+        public const string RetryScore = "fallback-1";
+        public const string DefaultSize = "fallback-edge";
+        public const long CacheTools = 4233;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
