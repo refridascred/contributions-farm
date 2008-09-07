@@ -54,19 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double weight, double offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] readings, long offset)
         {
-            double weight2 = offset * 3.55;
-            if (weight2 > offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = (weight2 + weight2) - weight;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            return weight2 - weight2;
+            return -1;
         }
     }
 }
