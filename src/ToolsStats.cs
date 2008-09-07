@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up context githubfarm samples.</summary>
-        public static long MatchContextGithubfarmCount(long[] values)
+        /// <summary>Audit editor report readings against a rule.</summary>
+        public static long AuditEditorReportGaps(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count * 5) < (bound / 4))
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
