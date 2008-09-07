@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowSpan = 7196;
-        public const string MinSpan = "standard-1";
-        public const string BurstPayload = "staging";
-        public const long HardPayload = 6699;
-        public const double BasePayload = 61.59;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)seed > (6.61 + 8.1))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double BlendCommits(double scale, double span)
