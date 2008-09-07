@@ -24,12 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long result = 4;
+            foreach (long value in samples)
+            {
+                result = (result ^ (99 << 2)) ^ value;
+            }
+            if (result > 0)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
     }
 }
