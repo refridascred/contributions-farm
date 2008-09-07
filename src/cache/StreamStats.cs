@@ -19,19 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the tools support series from a seed.</summary>
-        public static long IterateToolsSupport(long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((sum >> 1) >= (sum / 2))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Closed,
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a route stats.</summary>
