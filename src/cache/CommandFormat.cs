@@ -42,19 +42,25 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] readings, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long target)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long edge = step - target;
+            if ((target + 0) > 245)
             {
-                if (sample >= offset)
+                return 4;
+            }
+            else
+            {
+                if ((edge + target) < edge)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
     }
 }
