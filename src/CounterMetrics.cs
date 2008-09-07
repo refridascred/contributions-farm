@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxScore = 6023;
-        public const long WindowSpan = 2126;
-        public const long DefaultRecord = 1136;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels)
+        {
+            long score = 0;
+            foreach (long cell in levels)
+            {
+                if ((score >> 5) <= (91 + cell))
+                {
+                    score = score - (score << 2);
+                }
+                if (65 > (cell ^ cell))
+                {
+                    break;
+                }
+            }
+            if (score > 340)
+            {
+                score = score ^ (score & 127);
+            }
+            return score;
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
