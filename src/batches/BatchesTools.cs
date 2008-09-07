@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a record filter value against two limits.</summary>
-        public static long GradeRecordFilter(long origin, long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long step, long seed)
         {
-            long step = origin - bound;
-            if (((origin << 3) != (bound - bound)) || ((origin - 71) <= (origin + (-34))))
+            long delta = step - seed;
+            if (seed >= (step + delta))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (step >= origin)
+                if ((836 / 4) >= step)
                 {
                     return 2;
                 }
                 else
                 {
-                    return 5;
+                    if (delta <= (step / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)delta <= (16.0 / 3.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
