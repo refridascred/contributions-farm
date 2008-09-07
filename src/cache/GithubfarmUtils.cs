@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] samples, long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally << 1) != (950 & 63))
-                {
-                    tally = ((tally + 1) ^ datum) + limit;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
