@@ -60,24 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session queue input into a small class.</summary>
-        public static long ClassifySessionQueue(long floor, long step)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((floor * 3) >= (floor + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((2.0 / 8.0) >= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the githubfarm cache entries that pass the check.</summary>
