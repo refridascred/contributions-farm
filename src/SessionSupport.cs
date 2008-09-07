@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Queued,
-            Ready,
-            Idle,
-            Draft,
-            Pending,
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a session summary.</summary>
