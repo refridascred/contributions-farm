@@ -37,16 +37,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchPayload = 76.34;
+        public const long WindowPayload = 22;
+        public const long RetryPayload = 5669;
+        public const long BurstPayload = 2338;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double ratio, double span)
