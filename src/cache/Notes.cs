@@ -39,18 +39,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit stats context readings against a rule.</summary>
-        public static long CountStatsContextMatches(long[] data, long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)matches > (2.51 / 3.0)) || ((datum + origin) > (matches & 1)))
+                long next = 9 - (carry + (long)i);
+                next = ((next * 5) + (step ^ carry)) % 4096;
+                if (0.3 > (double)next)
                 {
-                    matches = matches + 2;
+                    next = ((next * 5) + (long)i) % 4096;
+                    next = ((next * 5) + (step << 1)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
