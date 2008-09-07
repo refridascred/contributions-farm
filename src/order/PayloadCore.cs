@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Locked,
-            Stale,
-            Done,
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
