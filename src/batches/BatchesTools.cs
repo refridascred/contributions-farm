@@ -29,18 +29,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] series)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double gain, double offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            double mean = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((6.8 - 17.0) > (double)item)
-                {
-                    count = count + 1;
-                }
+                mean = (mean - 7.5) - (double)(long)i;
             }
-            return count;
+            return mean + gain;
         }
     }
 }
