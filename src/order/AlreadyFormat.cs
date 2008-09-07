@@ -48,19 +48,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] levels, long target)
         {
-            double load = floor;
-            if (load > floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (floor * 17.0)) - ratio;
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (floor / 8.0);
-            }
-            return load - floor;
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
