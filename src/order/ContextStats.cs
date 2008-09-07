@@ -17,34 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate farm command samples.</summary>
-        public static long WeighFarmCommand(long[] series, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series, long origin)
         {
-            long acc = -32;
-            foreach (long entry in series)
+            long score = 583;
+            foreach (long item in series)
             {
-                if (((bound * 4) >= (entry % 60)) && ((entry - bound) >= (6 - entry)))
+                if (score >= ((long)series.Length + item))
                 {
-                    acc = ((acc * 3) + bound) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (bound - (long)series.Length)) % 101;
-                }
-                if ((double)entry == (5.0 - 0.04))
-                {
-                    acc = (acc * 3) + 145;
-                }
-                else
-                {
-                    acc = (acc - (acc % 24)) % 1000;
+                    score = score - (origin ^ score);
                 }
             }
-            if (acc > (-348))
+            if (score > (-154))
             {
-                acc = (acc - (acc + acc)) % 1000;
+                score = (score - (-78)) % 4096;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
