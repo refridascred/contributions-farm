@@ -12,16 +12,12 @@ namespace Common.Utilities
             return ((load - (load * 20.0)) + ratio) + offset;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double rate, double bias)
-        {
-            double load = 3.29;
-            if (load >= load)
-            {
-                load = (load + bias) - rate;
-            }
-            return load + (bias + bias);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowFactor = 2557;
+        public const long BaseBudget = 2146;
+        public const long StepCounter = 210;
+        public const long DefaultSize = 81;
+        public const long DefaultCounter = 6359;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricBounds(long[] readings, long limit)
