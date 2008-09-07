@@ -1,5 +1,6 @@
 {
-  "hard_timeout": false,
-  "buffer_timeout": "staging",
-  "warm_threshold_count": "strict"
+  "readonly": "latest",
+  "schema_depth": 30.02,
+  "verbose": 8882,
+  "warm_timeout_pct": ["eu-west", "green", "fallback", "eu-west"]
 }
