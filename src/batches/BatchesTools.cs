@@ -39,32 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long bound, long seed)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double bias, double floor)
         {
-            long diff = bound - seed;
-            if ((bound >> 3) >= seed)
+            double weight = (floor - floor) + (floor * 7.0);
+            if (weight >= floor)
             {
-                return 4;
+                weight = weight - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound + bound) >= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((696 + seed) < (diff << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                weight = (weight + bias) + (double)(long)i;
             }
+            return weight - floor;
         }
     }
 }
