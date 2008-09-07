@@ -16,11 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double weight, double offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long offset)
         {
-            double bias = weight / 9.0;
-            return (bias - (double)83) + offset;
+            long result = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
