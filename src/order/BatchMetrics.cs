@@ -40,24 +40,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long origin, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            if ((double)seed > 3.37)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed < 5.5)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a buffer entry.</summary>
