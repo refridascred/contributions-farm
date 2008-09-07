@@ -12,19 +12,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every support cluster entry stays within the limit.</summary>
-        public static bool GuardSupportClusterRange(long[] values, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Closed,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
