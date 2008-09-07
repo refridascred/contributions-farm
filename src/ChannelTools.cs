@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Closed,
-            Queued,
-            Failed,
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
