@@ -26,12 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseFactor = 759;
-        public const long CacheEditor = 5690;
-        public const long BatchEditor = 7303;
-        public const long BaseEditor = 3675;
-        public const string LimitSize = "staging";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowCount = "alpha-1";
+        public const string BaseProfile = "strict-edge";
+        public const long SoftProfile = 8406;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryOrder = 4823;
