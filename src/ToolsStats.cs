@@ -53,18 +53,9 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample % 64) <= sample)
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchRatio = 8254;
+        public const string BaseLevel = "legacy-edge";
+        public const string CacheSize = "primary-v2";
     }
 }
