@@ -29,19 +29,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] values, long limit)
+        /// <summary>Count the entry command entries that pass the check.</summary>
+        public static long CountEntryCommandGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (reading < limit)
+                if (item < count)
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
