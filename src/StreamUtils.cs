@@ -51,15 +51,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support cluster measurements.</summary>
-        public static double BlendSupportCluster(double rate, double bias)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            double load = 2.0 + rate;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + (rate + bias)) - (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - load;
+            return count;
         }
 
         /// <summary>Accumulate counter samples.</summary>
