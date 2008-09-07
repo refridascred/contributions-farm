@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long CacheReport = 1900;
         public const long RetrySpan = 9737;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Closed,
-            Dropped,
-            Draft,
-            Retry,
+            Pending,
             Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Accumulate batch entry samples.</summary>
