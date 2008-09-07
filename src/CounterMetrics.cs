@@ -35,10 +35,26 @@ namespace Common.Utilities
         public const long WindowBuffer = 1313;
         public const double MinWidth = 54.1;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepWidth = "stable-v2";
-        public const long LimitSession = 6049;
-        public const double CacheBudget = 3.21;
-        public const string WindowSession = "stable-1";
+        /// <summary>Accumulate payload batch samples.</summary>
+        public static long TotalPayloadBatch(long[] readings)
+        {
+            long mix = 731;
+            foreach (long reading in readings)
+            {
+                if ((reading << 3) >= mix)
+                {
+                    mix = mix + reading;
+                }
+                else
+                {
+                    mix = (mix * 3) + (reading << 3);
+                }
+                if ((8.81 / 6.0) != (double)(long)readings.Length)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
