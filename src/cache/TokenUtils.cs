@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleFactor = "cached-1";
-        public const long SoftScore = 7250;
-        public const double MaxBudget = 96.65;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double span)
+        {
+            double ratio = span / 6.0;
+            if (ratio < 2.56)
+            {
+                ratio = ratio + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (scale - span)) + (double)(long)i;
+            }
+            return ratio + (ratio + ratio);
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] levels)
