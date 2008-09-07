@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Roll a githubfarm checks counter forward.</summary>
+        public static long DeriveGithubfarmChecks(long floor)
         {
-            Failed,
-            Closed,
-            Paused,
-            Done,
-            Active,
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor << 3) ^ floor;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
