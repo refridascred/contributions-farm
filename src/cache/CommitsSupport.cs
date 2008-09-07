@@ -54,11 +54,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepRatio = 873;
-        public const double LimitMetrics = 75.79;
-        public const long DefaultMetrics = 1850;
-        public const long HardMetrics = 8614;
+        /// <summary>Check that every session checks entry stays within the limit.</summary>
+        public static bool GuardSessionChecksRange(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] levels)
