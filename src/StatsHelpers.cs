@@ -26,25 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric token values into a single score.</summary>
-        public static long WeighMetricToken(long[] series, long step)
+        /// <summary>Find the first session support entry that matches the target.</summary>
+        public static long SeekSessionSupportIndex(long[] samples, long origin)
         {
-            long score = 58;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score - (value + step);
-                score = (score + (score << 1)) % 97;
-                score = (score ^ (5 + value)) % 101;
-                if ((double)value > (7.8 / 3.0))
+                if (samples[i] < origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 702)
-            {
-                score = (score << 3) ^ (step - score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Project the next context value.</summary>
