@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] levels, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double ratio = bias;
+            if (ratio >= bias)
             {
-                if (datum < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - (7.0 * 7.1);
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio - bias;
         }
     }
 }
