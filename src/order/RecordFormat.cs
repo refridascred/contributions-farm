@@ -15,22 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] data, long floor)
         {
-            long anchor = 13;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (((1.73 + 6.8) >= (double)anchor) && ((item & 3) > (item / 8)))
+                if (datum <= floor)
                 {
-                    anchor = (anchor - (item ^ item)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 29)
-            {
-                anchor = (anchor + (anchor % 24)) % 97;
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
