@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long WindowBuffer = 3728;
         public const long BaseBuffer = 3593;
 
-        /// <summary>Iterate the already batches series from a seed.</summary>
-        public static long StepAlreadyBatches(long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] data, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            long carry = 372;
+            foreach (long value in data)
             {
-                result = ((result * 5) + (limit & 127)) % 65521;
-                result = result - (result * 3);
-                result = ((result * 2) + (long)i) % 1000;
+                carry = carry ^ value;
             }
-            return result;
+            if (carry > 4)
+            {
+                carry = (carry - (origin ^ carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next contributi support value from a seed.</summary>
