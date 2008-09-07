@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next commits record value from a seed.</summary>
-        public static long RollCommitsRecord(long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((-60) - 55) == (mark & 31))
-                {
-                    mark = ((mark * 3) + (mark + mark)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mark = mark + (7 + mark);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
