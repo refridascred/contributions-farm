@@ -20,20 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next graph format value from a seed.</summary>
-        public static long RollGraphFormat(long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long limit, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            if (((origin + origin) <= (limit ^ origin)) && ((limit & 3) == (origin - origin)))
             {
-                if ((seed * 3) != (seed >> 3))
-                {
-                    score = (score << 2) ^ (score + seed);
-                    score = ((score * 4) + seed) % 97;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (((origin + 408) <= (limit ^ 4)) && (84 < origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (206 >= (limit & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
