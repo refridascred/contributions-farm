@@ -31,32 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long lane = target - limit;
-            if ((limit * 2) > (target / 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit != (14.0 + 6.98))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)lane <= 7.28))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
