@@ -93,13 +93,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] series, long seed)
         {
-            Closed,
-            Done,
-            Paused,
-            Ready,
+            long acc = -74;
+            foreach (long entry in series)
+            {
+                acc = (acc - (seed + (-69))) - entry;
+            }
+            return acc % 65521;
         }
     }
 }
