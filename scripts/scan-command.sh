@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=286
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for item in eu-west staging local legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+mode="${1:-fallback}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
