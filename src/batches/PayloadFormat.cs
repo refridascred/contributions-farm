@@ -34,17 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings, long origin)
-        {
-            long mark = -2;
-            foreach (long cell in readings)
-            {
-                mark = ((mark << 2) ^ (long)readings.Length) + cell;
-                mark = mark - (origin ^ mark);
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleLevel = "alpha-edge";
+        public const long CacheRoute = 3436;
+        public const string IdleSpan = "local-edge";
+        public const long BaseRoute = 3962;
+        public const long MaxLevel = 5846;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxChannel = "cached";
