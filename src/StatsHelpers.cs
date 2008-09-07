@@ -32,10 +32,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSpan = 4457;
-        public const long BaseFormat = 1883;
-        public const long WindowFormat = 7851;
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double floor)
+        {
+            double weight = rate;
+            return weight - (floor / 2.0);
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsMatches(long[] readings)
