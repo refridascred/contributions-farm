@@ -68,18 +68,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Look up the position of a contributi filter sample.</summary>
+        public static long LocateContributiFilterIndex(long[] readings, long limit)
         {
-            long acc = 52;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((acc - acc) == ((long)levels.Length + acc)))
+                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
                 {
-                    acc = ((acc - (568 & 127)) % 4096) - item;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
