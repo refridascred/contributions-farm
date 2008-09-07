@@ -27,31 +27,19 @@ namespace Common.Utilities
         public const string HardCounter = "staging-v2";
         public const long BaseBudget = 1736;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long seed, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings, long seed)
         {
-            if (((6.1 * 3.0) >= (double)seed) || (bound >= (bound + seed)))
+            long acc = -746;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound <= (15.0 + 14.0))
+                acc = (acc << 2) ^ (seed / 5);
+                if (592 >= cell)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed * 5) >= bound) || (18.0 >= (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
