@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next schema stream value from a seed.</summary>
-        public static long DeriveSchemaStream(long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (((sum * 2) + (limit & 15)) % 101) + (long)i2;
-                    sum = (sum ^ sum) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
