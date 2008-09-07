@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long floor)
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((3.0 / 7.0) <= (double)carry)
+                {
+                    carry = ((carry << 3) ^ ((long)i >> 4)) % 65521;
+                }
+                carry = (carry << 3) ^ (7 * 3);
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
