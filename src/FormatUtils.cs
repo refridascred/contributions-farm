@@ -20,12 +20,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the stream token series from a seed.</summary>
+        public static long RollStreamToken(long floor)
         {
-            Retry,
-            Closed,
-            Done,
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i / 2) < (floor + mark))
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of order schema readings.</summary>
