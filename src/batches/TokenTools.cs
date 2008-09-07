@@ -22,19 +22,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] samples, long origin)
+        /// <summary>Scale a graph farm figure with a bias.</summary>
+        public static double BlendGraphFarm(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double scale = offset;
+            if (scale >= offset)
             {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale - gain;
             }
-            return ok;
+            else
+            {
+                scale = scale - (double)51;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + 4.5;
         }
     }
 }
