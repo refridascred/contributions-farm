@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const string BatchBuffer = "primary-edge";
         public const long RetryInterval = 3022;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "latest-edge";
-        public const long CacheRatio = 1353;
-        public const string BurstFarm = "local-v2";
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value + 30) <= (value - value))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardBudget = 2550;
