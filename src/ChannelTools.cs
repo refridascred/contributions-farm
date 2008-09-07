@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] data, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (data[i] == offset)
+                if ((seen + limit) > (231 & 63))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
