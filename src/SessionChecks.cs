@@ -20,24 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the commits graph series from a seed.</summary>
-        public static long IterateCommitsGraph(long target)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double ratio, double bias)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            double scale = (double)(297 - 565);
+            if (scale < (double)977)
             {
-                if (((long)i << 3) == ((long)i / 8))
-                {
-                    result = (result + (result >> 2)) % 101;
-                }
-                if (!(((double)result >= (2.6 + 8.0)) || ((result >> 4) >= ((long)i >> 1))))
-                {
-                    result = ((result << 3) ^ (target - (long)i)) % 4096;
-                    result = result - 668;
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                scale = (scale - (bias * 4.58)) + ratio;
             }
-            return result;
+            return scale - 4.4;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
