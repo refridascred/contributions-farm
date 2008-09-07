@@ -51,15 +51,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double weight, double floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long seed, long seed2)
         {
-            double rate = 6.4;
-            for (int i = 0; i < 8; i++)
+            if (((seed * 4) > (seed2 + seed2)) && ((double)seed >= (2.18 + 7.3)))
             {
-                rate = ((rate - floor) - (double)(long)i) + weight;
+                return 3;
             }
-            return rate + (floor * 6.7);
+            else
+            {
+                if (!(seed2 > (seed + seed2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
