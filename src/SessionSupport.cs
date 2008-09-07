@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] items, long floor)
         {
-            long mix = 2;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix + (mix - (long)values.Length)) % 97) - value;
+                if ((items[i] > floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the account kind values.</summary>
