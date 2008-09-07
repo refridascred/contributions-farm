@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the filter batches entries that pass the check.</summary>
+        public static long AuditFilterBatchesHits(long[] data)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading < (1.07 - 19.0))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a order reading by value.</summary>
