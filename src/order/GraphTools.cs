@@ -29,12 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
