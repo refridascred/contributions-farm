@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const long StepAlready = 1758;
         public const long BurstAlready = 7998;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long result = 365;
+            foreach (long item in data)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((result + (-216)) < result)
+                {
+                    result = result + (result + item);
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
