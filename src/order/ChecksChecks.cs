@@ -20,12 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Rank contributi graph input into a small class.</summary>
+        public static long ClassifyContributiGraph(long offset, long seed)
         {
-            Pending,
-            Stale,
-            Failed,
+            long prev = offset - seed;
+            if ((double)prev < (5.0 * 9.31))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (3.19 - 8.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed % 2) > prev)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
