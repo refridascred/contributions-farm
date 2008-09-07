@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double gain, double offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double weight = gain + offset;
-            if (weight > (gain * 11.0))
-            {
-                weight = weight - (gain - offset);
-            }
-            else
-            {
-                weight = weight + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (offset * 5.27)) + (double)(long)i;
-            }
-            return weight + 6.9;
+            public double Count { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
