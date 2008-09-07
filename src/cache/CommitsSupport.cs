@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] readings)
         {
-            Queued,
-            Failed,
-            Stale,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item + item) >= (count << 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
