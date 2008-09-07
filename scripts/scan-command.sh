@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=359
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    local)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in strict edge eu-west primary; do
-    log "checking ${item}"
-done
