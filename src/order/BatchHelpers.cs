@@ -23,21 +23,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of cluster cache readings.</summary>
-        public static long MatchClusterCacheCount(long[] series)
+        /// <summary>Digest a series of queue contributi entries.</summary>
+        public static long TotalQueueContributi(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 7;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((floor << 2) > (sample / 9))
                 {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (3 << 3)) % 4096;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
