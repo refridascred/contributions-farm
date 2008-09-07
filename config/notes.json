@@ -1,13 +1,8 @@
 {
-  "enabled": 49,
-  "warm_threshold_count": false,
-  "flush_depth": 6606,
-  "order_window": {
-    "strict": 44.5,
-    "default_capacity_count": [139, 27],
-    "already_threshold": "strict",
-    "idle_interval": "staging"
-  },
-  "verbose": 5779,
-  "graph_ratio": true
+  "base_window_count": 30,
+  "hard_timeout_pct": 60,
+  "retry_limit_count": 62,
+  "verbose": true,
+  "cache_depth": ["blue", "open"],
+  "sync_retries_pct": [117, 274, 117]
 }
