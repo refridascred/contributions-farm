@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict blue; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in blue stable green; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+mode="${1:-standard}"
 case "${mode}" in
-    staging)
+    legacy)
         log "fast path"
         ;;
     *)
