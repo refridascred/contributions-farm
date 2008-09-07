@@ -18,13 +18,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long step)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine token values into a single score.</summary>
