@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] data, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long result = 39;
-            foreach (long sample in data)
-            {
-                result = ((result << 2) ^ (target - target)) % 4096;
-                if ((result % 7) <= (79 << 2))
-                {
-                    result = ((result * 4) + (sample * 4)) % 255;
-                }
-            }
-            return result % 1000;
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
