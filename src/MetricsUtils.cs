@@ -67,23 +67,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double scale, double offset)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            double scale2 = (double)(2 + 5);
-            if (scale2 > (double)534)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - offset) + (double)(long)i;
-            }
-            return scale2 - (double)99;
+            return hits;
         }
     }
 }
