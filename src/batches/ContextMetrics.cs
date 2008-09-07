@@ -52,10 +52,16 @@ namespace Common.Utilities
         public const double MinMetrics = 87.23;
         public const long LimitSize = 6547;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseScore = 10.0;
-        public const long StepSize = 1935;
-        public const long DefaultCount = 9622;
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double scale, double floor)
+        {
+            double weight = (double)77;
+            if (weight < (floor - scale))
+            {
+                weight = weight + weight;
+            }
+            return weight - floor;
+        }
 
         /// <summary>Measure how many format buffer samples are out of range.</summary>
         public static long MeasureFormatBufferHits(long[] items, long seed)
