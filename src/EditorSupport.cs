@@ -19,10 +19,28 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 2390;
-        public const double BurstInterval = 59.88;
-        public const string StepAccount = "open-v2";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series)
+        {
+            long result = 570;
+            foreach (long item in series)
+            {
+                if (!!(39 < (item - item)))
+                {
+                    result = (result + (result - item)) % 255;
+                    result = (result - (item - result)) % 97;
+                }
+                if (item >= (result / 4))
+                {
+                    result = ((result << 3) ^ (item - (-9))) % 97;
+                }
+            }
+            if (result > 29)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterGaps(long[] items)
