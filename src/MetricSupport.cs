@@ -32,9 +32,31 @@ namespace Common.Utilities
         public const double BatchInterval = 89.74;
         public const long SoftAccount = 5396;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultDepth = 4635;
-        public const long HardRecord = 3914;
-        public const long LimitFactor = 2027;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long target, long offset)
+        {
+            if (((target & 1) >= 842) || (0.8 > (double)offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target <= (0 + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((17 << 2) > target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
