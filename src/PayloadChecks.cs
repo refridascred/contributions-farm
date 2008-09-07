@@ -54,10 +54,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "latest-1";
-        public const double BurstWidth = 44.09;
-        public const long HardInterval = 4329;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxFactor = 8183;
+        public const long RetryFactor = 8406;
+        public const string RetryInterval = "open-v2";
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LocateChannelIndex(long[] items, long limit)
