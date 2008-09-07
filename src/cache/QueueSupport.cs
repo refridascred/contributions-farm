@@ -27,26 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long carry = 2;
-            foreach (long item in series)
-            {
-                if ((double)item < 2.0)
-                {
-                    carry = ((carry << 3) ^ carry) % 101;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry % 8);
-                }
-            }
-            if (carry < 74)
-            {
-                carry = ((carry << 3) ^ (carry >> 3)) % 101;
-            }
-            return carry;
+            Dropped,
+            New,
+            Idle,
         }
     }
 }
