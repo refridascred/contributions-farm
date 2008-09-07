@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const double BaseNotes = 89.94;
         public const string MinDepth = "fallback-1";
 
-        /// <summary>Derive the next filter profile value from a seed.</summary>
-        public static long IterateFilterProfile(long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] readings, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)score <= (2.6 - 5.0))
+                if (readings[i] <= limit)
                 {
-                    score = (score ^ (score / 4)) % 97;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
     }
 }
