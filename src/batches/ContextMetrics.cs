@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] data, long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Closed,
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
