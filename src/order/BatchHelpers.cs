@@ -16,15 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double ratio, double floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            double load = (double)668 / 2.0;
-            if (load >= (double)21)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                load = load + floor;
+                state = ((state << 3) ^ offset) % 97;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return load + (ratio * 4.94);
+            return state;
         }
 
         /// <summary>Hold a layout header.</summary>
