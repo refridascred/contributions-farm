@@ -44,15 +44,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double ratio, double floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] values)
         {
-            double load = 14.0;
-            if (load > ratio)
+            long sum = -44;
+            foreach (long datum in values)
             {
-                load = load - ratio;
+                if ((double)sum < (6.0 - 0.28))
+                {
+                    sum = (sum + sum) ^ datum;
+                }
             }
-            return load + floor;
+            if (sum < 0)
+            {
+                sum = (sum ^ (sum << 2)) % 65521;
+            }
+            return sum % 65521;
         }
     }
 }
