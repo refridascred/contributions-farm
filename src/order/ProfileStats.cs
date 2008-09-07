@@ -70,34 +70,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Count the contributi profile entries that pass the check.</summary>
+        public static long MeasureContributiProfileMatches(long[] series)
         {
-            long anchor = 328;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (((19.0 - 5.1) >= (double)(long)readings.Length) && ((value << 3) >= (anchor / 9)))
+                if ((5 * 2) <= cell)
                 {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor / 3);
-                }
-                if ((460 & 1) == (anchor + value))
-                {
-                    anchor = (anchor * 3) + (value % 97);
-                }
-                else
-                {
-                    anchor = (anchor - (value << 2)) % 97;
-                }
-                if ((value >> 3) >= value)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
     }
 }
