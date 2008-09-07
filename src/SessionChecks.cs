@@ -20,11 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double rate, double offset)
+        /// <summary>Iterate the commits graph series from a seed.</summary>
+        public static long IterateCommitsGraph(long target)
         {
-            double ratio = rate / 8.0;
-            return (ratio + rate) + offset;
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i << 3) == ((long)i / 8))
+                {
+                    result = (result + (result >> 2)) % 101;
+                }
+                if (!(((double)result >= (2.6 + 8.0)) || ((result >> 4) >= ((long)i >> 1))))
+                {
+                    result = ((result << 3) ^ (target - (long)i)) % 4096;
+                    result = result - 668;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
