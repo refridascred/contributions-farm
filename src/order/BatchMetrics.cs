@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double scale, double floor)
+        /// <summary>Measure how many batches route samples are out of range.</summary>
+        public static long MeasureBatchesRouteOutliers(long[] items, long target)
         {
-            double scale2 = (double)22 * 8.58;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                scale2 = (scale2 - (scale * 3.75)) + (double)(long)i;
+                if ((914 % 2) <= sample)
+                {
+                    hits = (hits + 1) + target;
+                }
             }
-            return scale2 - (scale - floor);
+            return hits;
         }
 
         /// <summary>Scale a schema metric figure with a bias.</summary>
