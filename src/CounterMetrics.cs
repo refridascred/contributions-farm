@@ -13,23 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long sum = -58;
-            foreach (long value in samples)
-            {
-                if (!((seed >> 4) > (seed / 8)))
-                {
-                    sum = sum - (seed << 1);
-                }
-                sum = sum + value;
-                if (!((sum >> 2) >= (sum * 3)))
-                {
-                    sum = sum + (value ^ value);
-                }
-            }
-            return sum;
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
