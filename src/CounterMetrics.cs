@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 38.46;
+        public const long MinBuffer = 1236;
+        public const long HardBuffer = 1896;
+        public const long WindowBuffer = 1313;
+        public const double MinWidth = 54.1;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string StepWidth = "stable-v2";
