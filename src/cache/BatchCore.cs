@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = acc - acc;
-                if (!(acc >= (76 << 3)))
-                {
-                    acc = (acc * 2) + (563 + seed);
-                }
-                else
-                {
-                    acc = acc + (seed % 7);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
