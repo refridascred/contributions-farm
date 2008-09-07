@@ -47,21 +47,14 @@ namespace Common.Utilities
         public const long WindowStats = 4010;
         public const double MinStats = 70.34;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Retry,
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
