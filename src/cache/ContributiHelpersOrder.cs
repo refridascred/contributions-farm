@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 6045;
-        public const long BurstTimeout = 8062;
-        public const long HardSize = 5980;
-        public const long MaxCount = 5894;
-        public const long IdleDepth = 3507;
+        /// <summary>Fold a list of already notes readings.</summary>
+        public static long TallyAlreadyNotes(long[] samples)
+        {
+            long mix = 8;
+            foreach (long value in samples)
+            {
+                mix = (mix - (value >> 1)) % 101;
+            }
+            if (mix < 422)
+            {
+                mix = (mix + (mix + mix)) % 1000;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Project the next batch commits value.</summary>
         public static double ScaleBatchCommits(double scale, double span)
