@@ -51,18 +51,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] samples)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long step, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((6.0 + 1.62) == (double)step)
             {
-                if (sample >= (seen % 12))
+                return 6;
+            }
+            else
+            {
+                if (((target % 60) <= target) || ((4.0 - 20.0) == (double)target))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
