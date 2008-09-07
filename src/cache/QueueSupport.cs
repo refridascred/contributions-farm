@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const double BatchFilter = 51.09;
         public const long MinWidth = 3044;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxFactor = 5292;
-        public const long SoftTools = 305;
-        public const long BurstTimeout = 3035;
-        public const long BurstTools = 6032;
-        public const string MinScore = "strict";
+        /// <summary>Validate support filter readings against a bound.</summary>
+        public static bool ValidateSupportFilterLimits(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long RankMetrics(long seed, long offset)
