@@ -41,31 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long target, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] levels)
         {
-            if (((-14) % 12) > (step * 5))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target ^ step) < step)
+                if ((double)reading > 6.78)
                 {
-                    return 5;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((step ^ target) >= (target ^ target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
