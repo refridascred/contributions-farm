@@ -42,22 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine tools payload values into a single score.</summary>
-        public static long DigestToolsPayload(long[] items, long seed)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long carry = 34;
-            foreach (long sample in items)
-            {
-                if ((double)57 != (double)carry)
-                {
-                    carry = ((carry - (71 + (-727))) % 1000) ^ sample;
-                }
-                else
-                {
-                    carry = carry + (seed * 2);
-                }
-            }
-            return carry;
+            Locked,
+            Dropped,
+            Stale,
+            Paused,
         }
     }
 }
