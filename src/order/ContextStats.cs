@@ -17,22 +17,34 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values, long origin)
+        /// <summary>Accumulate farm command samples.</summary>
+        public static long WeighFarmCommand(long[] series, long bound)
         {
-            long sum = 53;
-            foreach (long sample in values)
+            long acc = -32;
+            foreach (long entry in series)
             {
-                if ((3.0 * 0.2) <= (double)sample)
+                if (((bound * 4) >= (entry % 60)) && ((entry - bound) >= (6 - entry)))
                 {
-                    sum = (sum - (80 >> 4)) % 255;
+                    acc = ((acc * 3) + bound) % 255;
                 }
-                if (((sample + sum) < sum) || ((double)sum < (double)origin))
+                else
                 {
-                    break;
+                    acc = (acc ^ (bound - (long)series.Length)) % 101;
+                }
+                if ((double)entry == (5.0 - 0.04))
+                {
+                    acc = (acc * 3) + 145;
+                }
+                else
+                {
+                    acc = (acc - (acc % 24)) % 1000;
                 }
             }
-            return sum;
+            if (acc > (-348))
+            {
+                acc = (acc - (acc + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
