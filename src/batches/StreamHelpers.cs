@@ -49,17 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long origin)
+        /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
+        public static long CompareBufferContributiCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
