@@ -57,18 +57,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] readings, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double weight, double offset)
         {
-            long mark = 0;
-            foreach (long value in readings)
+            double drift = weight;
+            if (drift <= weight)
             {
-                if (!((4 >> 2) == (902 + target)))
-                {
-                    mark = (((mark << 3) ^ (mark + mark)) % 101) + value;
-                }
+                drift = drift - drift;
             }
-            return mark % 4096;
+            else
+            {
+                drift = drift - (offset + drift);
+            }
+            return drift + offset;
         }
     }
 }
