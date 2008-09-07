@@ -31,13 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Pending,
-            Locked,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinWidth = 2710;
+        public const long IdleCounter = 2907;
+        public const string DefaultCounter = "primary-1";
+        public const long MaxBudget = 168;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftTimeout = 2521;
