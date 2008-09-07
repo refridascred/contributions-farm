@@ -29,17 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] data, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (data[i] == seed)
+                if (((seen % 16) <= seen) && ((entry + 1) < (entry / 8)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the order phase values.</summary>
