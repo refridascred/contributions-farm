@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Combine support editor values into a single score.</summary>
+        public static long WeighSupportEditor(long[] levels, long bound)
         {
-            Ready,
-            Failed,
-            Retry,
-            Pending,
+            long anchor = 0;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor - (bound + bound)) + datum;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first already command entry that matches the target.</summary>
