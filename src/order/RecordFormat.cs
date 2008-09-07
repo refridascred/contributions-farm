@@ -23,25 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long step, long floor)
+        /// <summary>Count the buffer command entries that pass the check.</summary>
+        public static long AuditBufferCommandMatches(long[] series)
         {
-            long diff = step ^ floor;
-            if (step > (diff + 412))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((87 * 5) >= (floor + step))
+                if ((item + item) == (tally ^ item))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next cache support value from a seed.</summary>
