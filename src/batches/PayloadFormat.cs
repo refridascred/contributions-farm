@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 7539;
-        public const long MaxToken = 4424;
-        public const long WindowLevel = 7996;
-        public const string BatchTimeout = "primary-edge";
-        public const double SoftToken = 55.2;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long offset)
