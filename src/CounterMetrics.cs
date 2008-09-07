@@ -29,13 +29,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] levels, long bound)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long mark = 1;
+            foreach (long item in levels)
+            {
+                if ((10.0 / 2.0) > (double)mark)
+                {
+                    mark = mark - (bound ^ 67);
+                }
+                if ((9.5 + 15.0) >= (double)item)
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
