@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardDepth = 1209;
-        public const long BatchBudget = 9500;
-        public const long WindowScore = 306;
-        public const long IdleLayout = 9323;
-        public const double MinScore = 66.23;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderGaps(long[] readings, long step)
