@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "standard-1";
-        public const long HardSize = 1654;
-        public const long IdleTools = 6785;
-        public const long StepTools = 9161;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Active,
+            Pending,
+            Done,
+            Retry,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftScore = 3365;
