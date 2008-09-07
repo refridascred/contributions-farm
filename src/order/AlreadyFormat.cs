@@ -63,11 +63,11 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double gain, double offset)
         {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
+            double load = gain / 2.0;
+            return (load + 9.6) + offset;
         }
     }
 }
