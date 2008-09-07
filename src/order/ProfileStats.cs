@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] samples, long bound)
+        /// <summary>Count the already payload entries that pass the check.</summary>
+        public static long CountAlreadyPayloadHits(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (samples[i] >= bound)
+                if ((seen / 5) < (origin & 127))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
