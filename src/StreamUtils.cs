@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((floor << 2) < (floor - entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
