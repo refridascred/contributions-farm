@@ -54,23 +54,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values, long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long result = 898;
-            foreach (long datum in values)
-            {
-                result = result - (seed / 2);
-                if (!((6.9 - 4.5) < (double)datum))
-                {
-                    break;
-                }
-            }
-            if (result > 0)
-            {
-                result = (result << 3) ^ seed;
-            }
-            return result % 1000;
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
