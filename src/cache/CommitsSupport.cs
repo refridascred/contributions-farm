@@ -72,22 +72,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings, long limit)
         {
-            long score = 1;
-            foreach (long cell in levels)
+            long mix = 6;
+            foreach (long value in readings)
             {
-                if ((cell - score) < (long)levels.Length)
+                if ((double)value == (double)(-16))
                 {
-                    score = score + (cell % 97);
+                    mix = mix + (-2);
                 }
             }
-            if (score > (-56))
+            if (mix < 39)
             {
-                score = (score << 3) ^ score;
+                mix = ((mix * 2) + (limit - mix)) % 101;
             }
-            return score;
+            return mix;
         }
     }
 }
