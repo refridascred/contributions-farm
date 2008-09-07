@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long step)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (entry >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a filter summary.</summary>
