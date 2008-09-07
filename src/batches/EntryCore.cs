@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long HardSupport = 5799;
         public const long SoftRatio = 9897;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] samples)
         {
-            Active,
-            Paused,
-            Done,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen < (seen << 1)) && ((seen / 9) > 11))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format status values.</summary>
