@@ -1,8 +1,5 @@
 # support settings
-min_delay: edge
-default_interval: 60
-base_capacity:
-  - eu-west
-  - latest
-  - blue
-  - staging
+filter_depth: 8267
+base_capacity_ms: 58
+sync_depth: true
+burst_depth: eu-west
