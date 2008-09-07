@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftSize = "latest";
-        public const long MinGithubfarm = 7210;
-        public const long MinInterval = 628;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!(hits < (hits + value)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchSpan = 5670;
