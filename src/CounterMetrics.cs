@@ -12,14 +12,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 5.33;
+        public const long MinSpan = 6451;
+        public const long MaxStats = 4660;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] items, long target)
