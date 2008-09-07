@@ -30,12 +30,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheScore = 4749;
-        public const double MaxSize = 24.63;
-        public const long SoftCount = 2208;
-        public const string WindowSize = "strict-v2";
-        public const double CacheNotes = 2.14;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] levels, long target)
