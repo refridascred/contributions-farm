@@ -44,11 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Validate account channel readings against a bound.</summary>
+        public static bool GuardAccountChannelLimits(long[] data, long step)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
