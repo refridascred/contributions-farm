@@ -52,10 +52,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "local";
-        public const long BaseSize = 8127;
-        public const string BurstLayout = "alpha-edge";
-        public const long IdleLayout = 4039;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 8937;
+        public const long SoftInterval = 1683;
+        public const double MaxScore = 21.99;
+        public const long IdleRatio = 8940;
     }
 }
