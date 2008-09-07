@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long origin)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
