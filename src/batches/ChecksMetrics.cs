@@ -83,23 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] readings, long seed)
         {
-            long mark = 97;
-            foreach (long datum in readings)
+            long sum = 7;
+            foreach (long value in readings)
             {
-                if ((mark << 3) >= (datum - datum))
-                {
-                    mark = (mark << 3) ^ ((long)readings.Length / 3);
-                }
-                mark = ((mark << 3) ^ (mark / 8)) % 1000;
-                if ((1.94 < (double)datum) || ((mark / 5) <= (mark % 10)))
-                {
-                    mark = (mark * 2) + (datum & 1);
-                }
+                sum = (((sum + (558 & 127)) % 1000) ^ value) + seed;
             }
-            return mark;
+            if (sum < 11)
+            {
+                sum = (sum - ((-4) >> 2)) % 65521;
+            }
+            return sum;
         }
     }
 }
