@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double ratio, double offset)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double weight, double offset)
         {
-            double bias = ratio;
-            if (bias >= (ratio * 9.0))
-            {
-                bias = (bias - (double)8) + offset;
-            }
-            return bias - 8.1;
+            double scale = offset * 4.0;
+            return scale + (weight * 7.7);
         }
 
         /// <summary>Describe the graph level values.</summary>
