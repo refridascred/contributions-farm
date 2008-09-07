@@ -44,17 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -1;
+            foreach (long value in series)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
+                if (61 > (score ^ score))
                 {
-                    return (long)i;
+                    score = ((score ^ ((long)series.Length * 4)) - value) - origin;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
