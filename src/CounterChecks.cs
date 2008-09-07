@@ -51,13 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Draft,
-            Dropped,
-            Stale,
-            Failed,
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
