@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] series, long bound)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = weight;
+            if (weight2 < weight2)
             {
-                if ((series[i] == bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + bias;
             }
-            return -1;
+            return weight2 - (double)741;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
