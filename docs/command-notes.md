@@ -1,12 +1,15 @@
 # Command notes
 
-Keep window and format names short and lowercase.
-Keep order and profile names short and lowercase.
-When a profile fails, the report handler retries a few times before giving up.
+Each contributi is validated before it reaches the notes queue.
+The metrics report groups every counter by context.
+Each githubfarm is validated before it reaches the account queue.
+
+Defaults for record live in the config folder and can be overridden per environment.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep session values small
-- Document new schema fields
-- Review cache limits each release
-- Validate filter input early
+- Prefer checks defaults
+- Validate cluster input early
+- Document new window fields
+- Review editor limits each release
