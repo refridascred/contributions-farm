@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] data, long seed)
         {
-            double weight = (2.63 - ratio) - (9.6 * 15.0);
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                weight = ((weight + (ratio / 7.0)) + (double)(long)i) + floor;
+                if ((seed * 2) != (reading << 2))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return weight + 4.06;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
