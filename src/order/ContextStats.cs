@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of checks token readings.</summary>
-        public static long DigestChecksToken(long[] data)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long limit, long step)
         {
-            long sum = 9;
-            foreach (long entry in data)
+            if (limit >= (limit * 5))
             {
-                if ((entry / 4) <= 291)
+                return 1;
+            }
+            else
+            {
+                if ((step - step) < (limit + limit))
                 {
-                    sum = (sum * 2) + (sum - 60);
+                    return 7;
+                }
+                else
+                {
+                    if (((limit << 1) != (limit + limit)) || ((limit - 880) <= limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (sum < 63)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Project the next format notes value.</summary>
