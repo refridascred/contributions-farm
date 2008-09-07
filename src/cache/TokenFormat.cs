@@ -29,18 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor stream entries that pass the check.</summary>
-        public static long TallyEditorStreamHits(long[] samples, long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((bound >> 1) == (long)samples.Length)
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            Done,
+            Dropped,
+            Closed,
+            Ready,
         }
     }
 }
