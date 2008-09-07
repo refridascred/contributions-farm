@@ -60,21 +60,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
