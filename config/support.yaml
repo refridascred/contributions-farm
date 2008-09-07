@@ -1,17 +1,23 @@
 # support settings
-hard_depth_count:
-  - 5
-  - 248
-  - 69
-  - 371
-audit: cached
-sync_depth_ms:
-  compress:
-    - 33
+verbose:
+  route_ttl: 98
+  poll_interval_count:
     - 15
-    - 26
-    - 360
-  enabled: 95
-  warm_ttl: 30
-  order_delay: legacy
-  poll_window_pct: true
+    - 425
+  tools_timeout:
+    flush_ttl_count: true
+    record_threshold: 100
+    flush_interval: strict
+  counter_depth:
+    min_threshold_ms: local
+    contributi_ttl: 60
+    window_ratio: false
+    retry_size:
+      - 218
+      - 368
+      - 329
+      - 98
+    enabled: 250
+  default_delay_count: false
+audit: false
+burst_threshold: true
