@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] samples, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (entry != target)
+                if (reading < step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
