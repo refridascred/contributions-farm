@@ -27,21 +27,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long target, long target2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = target ^ target2;
+            if ((target + delta) != (83 << 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (target <= ((-858) << 3))
                 {
-                    if ((values[i] + values[j]) == 16)
+                    return 6;
+                }
+                else
+                {
+                    if ((target << 3) < (delta + target))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
     }
 }
