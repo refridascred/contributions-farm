@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long target, long origin)
-        {
-            if ((origin - target) > target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= (9.7 - 9.1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((10.0 / 5.0) > (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryDepth = 8435;
+        public const long BurstWidth = 783;
+        public const long BurstSupport = 8903;
+        public const long LimitSupport = 4873;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseToken = 58.35;
