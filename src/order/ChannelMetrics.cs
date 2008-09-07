@@ -44,11 +44,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheTimeout = "latest-1";
-        public const long BatchScore = 291;
-        public const double BatchSpan = 33.39;
-        public const long CacheSize = 2194;
-        public const long BatchLevel = 4089;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultContext = "strict";
+        public const long SoftContext = 2852;
+        public const long BatchContext = 8592;
     }
 }
