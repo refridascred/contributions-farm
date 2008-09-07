@@ -13,19 +13,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + reading) > (matches - 725))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepTimeout = 448;
+        public const long BaseRatio = 3878;
+        public const double CacheStream = 28.8;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] items)
