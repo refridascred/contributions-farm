@@ -28,15 +28,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the token context series from a seed.</summary>
-        public static long DeriveTokenContext(long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long floor, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long step = floor - seed;
+            if (!((seed >> 1) != (seed & 31)))
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (!((step >> 5) < seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
