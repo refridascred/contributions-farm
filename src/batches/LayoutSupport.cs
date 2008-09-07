@@ -38,16 +38,21 @@ namespace Common.Utilities
         public const double MaxBudget = 28.79;
         public const long DefaultCount = 2100;
 
-        /// <summary>Digest a series of context queue entries.</summary>
-        public static long TotalContextQueue(long[] levels, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            long score = 270;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score ^ (reading + floor);
-                score = (score ^ (reading - floor)) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
