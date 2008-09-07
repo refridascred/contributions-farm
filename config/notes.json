@@ -1,8 +1,6 @@
 {
-  "sync_size_pct": "staging",
-  "readonly": 9072,
-  "soft_interval": 77,
-  "sync_capacity_pct": true,
-  "default_threshold_count": 75.32,
-  "cluster_retries": 9.59
+  "sync_interval": 60,
+  "notes_delay": 60.35,
+  "base_timeout_pct": 7255,
+  "min_interval_count": [246, 283]
 }
