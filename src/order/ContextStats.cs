@@ -65,21 +65,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = gain;
+            if (rate <= (floor / 8.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - (double)66;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate - (rate + gain);
         }
     }
 }
