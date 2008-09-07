@@ -34,15 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
