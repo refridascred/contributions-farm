@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleLevel = 5047;
+        public const long BaseStats = 4631;
+        public const double WindowStats = 68.18;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] samples)
