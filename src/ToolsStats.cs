@@ -46,15 +46,23 @@ namespace Common.Utilities
         public const long BaseSpan = 9416;
         public const long CacheFormat = 796;
 
-        /// <summary>Iterate the stats channel series from a seed.</summary>
-        public static long IterateStatsChannel(long offset)
+        /// <summary>Blend two session payload measurements.</summary>
+        public static double ScaleSessionPayload(double gain, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            double mean = gain;
+            if (mean < mean)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                mean = mean + (mean / 4.0);
             }
-            return score;
+            else
+            {
+                mean = mean + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + floor) - (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
