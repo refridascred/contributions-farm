@@ -55,12 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 52.3;
-        public const string SoftSize = "cached";
-        public const long LimitAccount = 7175;
-        public const double MinAccount = 93.11;
-        public const long MaxAccount = 6721;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of notes record readings.</summary>
         public static long CombineNotesRecord(long[] levels, long offset)
