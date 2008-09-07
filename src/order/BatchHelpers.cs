@@ -25,24 +25,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a format tools pair into a bucket.</summary>
-        public static long GradeFormatTools(long seed, long bound)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            if (!((6.95 / 2.0) == (double)bound))
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
+                sum = (sum ^ (seed - (long)i)) % 65521;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (bound < seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
     }
 }
