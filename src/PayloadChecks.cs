@@ -34,23 +34,22 @@ namespace Common.Utilities
             return (drift - drift) + rate;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] data, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] items, long seed)
         {
-            long carry = 9;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((offset << 3) >= (carry + (-590)))
+                if ((cell << 2) >= (seed << 2))
                 {
-                    carry = carry - (294 + offset);
-                    continue;
+                    tally = tally + 1;
                 }
-                if (((3.0 * 16.0) == (double)value) || ((double)8 < (double)offset))
+                else
                 {
-                    carry = (carry ^ (value + carry)) % 255;
+                    tally = tally - 1;
                 }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
