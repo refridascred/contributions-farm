@@ -30,18 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report filter samples are out of range.</summary>
-        public static long CountReportFilterOutliers(long[] readings, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double scale = offset;
+            if (scale < weight)
             {
-                if (487 > value)
-                {
-                    hits = (hits + 1) + bound;
-                }
+                scale = scale - scale;
             }
-            return hits;
+            return scale + (scale / 2.0);
         }
 
         /// <summary>Count the contributi profile entries that pass the check.</summary>
