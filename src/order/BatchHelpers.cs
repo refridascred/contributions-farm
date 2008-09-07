@@ -16,24 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a metric stream value against two limits.</summary>
-        public static long SortMetricStream(long step, long floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double ratio, double floor)
         {
-            if ((floor >= (step * 4)) && (91 > (step & 7)))
+            double load = (double)668 / 2.0;
+            if (load >= (double)21)
             {
-                return 6;
+                load = load + floor;
             }
-            else
-            {
-                if (((step + step) >= (42 * 4)) && ((step % 16) <= step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return load + (ratio * 4.94);
         }
 
         /// <summary>Hold a layout header.</summary>
