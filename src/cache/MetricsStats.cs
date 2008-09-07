@@ -32,12 +32,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 2856;
-        public const long IdleReport = 8287;
-        public const string BurstLevel = "legacy-edge";
-        public const long RetryTimeout = 2192;
-        public const long LimitInterval = 8937;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
