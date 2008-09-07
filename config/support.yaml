@@ -1,20 +1,21 @@
 # support settings
-poll_size_s: standard
-max_ttl_pct:
-  - edge
+sync_retries_ms: true
+default_ratio_pct: eu-west
+compress: open
+sync_ttl_count: 44.31
+idle_interval:
+  - strict
+  - cached
+  - open
   - green
-  - legacy
-idle_capacity_s:
-  poll_interval_s:
-    - legacy
-    - blue
-    - staging
-  commits_ratio:
-    - 119
-    - 332
-    - 430
-    - 286
-  tools_capacity: open
-  channel_window: eu-west
-  min_timeout: local
-  default_interval_s: false
+buffer_window:
+  strict: legacy
+  enabled: blue
+  poll_interval:
+    hard_ttl_pct: stable
+    default_retries_ms: 29
+    counter_ratio: 78.59
+    persist: 26.1
+  default_ratio:
+    - 2
+    - 122
