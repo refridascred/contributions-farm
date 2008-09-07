@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double gain, double span)
         {
-            long score = 773;
-            foreach (long reading in values)
+            double gain2 = gain / 6.0;
+            if (gain2 < (double)84)
             {
-                if ((score + reading) > reading)
-                {
-                    score = (score + (score - reading)) % 97;
-                }
+                gain2 = (gain2 - (gain2 * 7.7)) - span;
             }
-            if (score < 643)
+            else
             {
-                score = score ^ (long)values.Length;
+                gain2 = gain2 - 2.2;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + gain) - (double)(long)i;
+            }
+            return gain2 + (double)2;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
