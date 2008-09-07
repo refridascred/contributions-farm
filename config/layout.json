@@ -1,5 +1,5 @@
 {
-  "strict": [248, 453, 103],
-  "flush_depth": "legacy",
-  "idle_retries": 14.73
+  "burst_delay_ms": 1544,
+  "route_limit": "local",
+  "retry_timeout_ms": ["standard", "cached"]
 }
