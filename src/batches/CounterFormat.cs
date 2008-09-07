@@ -40,22 +40,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] levels)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading > 6.78)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Stale,
+            Failed,
+            Locked,
+            Draft,
         }
     }
 }
