@@ -62,20 +62,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((double)anchor < (2.98 / 2.0)))
-                {
-                    anchor = anchor + (90 % 64);
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                carry = carry ^ (offset % 64);
+                carry = ((carry << 2) ^ carry) % 97;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
