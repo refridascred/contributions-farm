@@ -36,32 +36,18 @@ namespace Common.Utilities
         public const long WindowScore = 5236;
         public const string MaxBatches = "fallback-1";
 
-        /// <summary>Rank command farm input into a small class.</summary>
-        public static long RankCommandFarm(long limit, long limit2)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] levels)
         {
-            long gap = limit + limit2;
-            if (limit2 < (limit & 15))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((gap + limit2) < limit) && ((351 + limit) == (gap % 64)))
+                if ((tally % 3) == (tally - (long)levels.Length))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((510 + gap) < (limit % 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = (tally + 1) + item;
                 }
             }
+            return tally;
         }
     }
 }
