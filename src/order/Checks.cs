@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Derive the next entry order value from a seed.</summary>
+        public static long RollEntryOrder(long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = sum + (offset ^ 759);
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Rank account input into a small class.</summary>
