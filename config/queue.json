@@ -1,5 +1,9 @@
 {
-  "idle_interval_pct": "strict",
-  "enabled": 75,
-  "base_ratio": "standard"
+  "dry_run": "blue",
+  "hard_window": "strict",
+  "poll_threshold_ms": {
+    "soft_interval_ms": 53,
+    "persist": 7975,
+    "verbose": 60
+  }
 }
