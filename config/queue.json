@@ -1,12 +1,6 @@
 {
-  "min_delay": 71.61,
-  "soft_depth": 92,
-  "default_capacity": {
-    "min_capacity": ["latest", "eu-west", "eu-west"],
-    "idle_limit": 2566,
-    "enabled": true,
-    "min_depth": "edge",
-    "persist": 72.17,
-    "command_depth": "standard"
-  }
+  "farm_interval": true,
+  "idle_interval_s": "cached",
+  "verbose": "standard",
+  "persist": false
 }
