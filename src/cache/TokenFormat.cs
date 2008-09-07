@@ -13,17 +13,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (values[i] == bound)
+                if (((double)seen >= 14.0) && ((double)datum != (2.37 / 5.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
