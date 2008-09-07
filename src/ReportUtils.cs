@@ -35,17 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] readings, long step)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (double)92;
+            if (bias2 < (ratio + bias))
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (bias * 18.0);
             }
-            return -1;
+            return bias2 + (bias2 - bias2);
         }
 
         /// <summary>Scale a channel stats figure with a bias.</summary>
