@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] data)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally < sample) || !(6 <= (tally >> 2)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
