@@ -27,18 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) <= (6 * 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
