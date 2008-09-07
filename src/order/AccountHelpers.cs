@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of metric editor entries.</summary>
-        public static long TotalMetricEditor(long[] samples, long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long carry = 6;
-            foreach (long entry in samples)
-            {
-                carry = (((carry * 5) + entry) % 65521) - floor;
-            }
-            return carry;
+            Dropped,
+            Paused,
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Roll a command counter forward.</summary>
