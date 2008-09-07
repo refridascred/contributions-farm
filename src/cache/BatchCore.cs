@@ -26,18 +26,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] values, long floor)
+        /// <summary>Look up the position of a notes batch sample.</summary>
+        public static long LocateNotesBatchIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((floor <= (floor - item)) && ((floor + matches) != (floor - item))))
+                if (data[i] == origin)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
