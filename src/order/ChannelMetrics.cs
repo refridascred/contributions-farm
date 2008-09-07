@@ -32,18 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 58.35;
+        public const long WindowSpan = 5665;
+        public const string DefaultSpan = "standard-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const string DefaultContext = "strict";
