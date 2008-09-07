@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=182
-log "limit is ${COMMAND_LIMIT}"
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-fallback}"
+mode="${1:-stable}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
