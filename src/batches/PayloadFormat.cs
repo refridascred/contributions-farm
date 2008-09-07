@@ -38,12 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleLevel = "alpha-edge";
-        public const long CacheRoute = 3436;
-        public const string IdleSpan = "local-edge";
-        public const long BaseRoute = 3962;
-        public const long MaxLevel = 5846;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 1) > 65)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] samples, long floor)
