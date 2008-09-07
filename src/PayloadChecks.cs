@@ -95,18 +95,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] series)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] values)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long carry = 89;
+            foreach (long datum in values)
             {
-                if ((count * 4) <= (count + 0))
+                if ((carry * 5) >= carry)
                 {
-                    count = (count + 1) ^ sample;
+                    carry = ((carry + (carry % 12)) % 97) ^ datum;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
