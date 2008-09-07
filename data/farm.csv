@@ -1,9 +1,8 @@
-id,region,weight,owner
-1,strict,11.71,86.21
-2,strict,local,edge
-3,74.47,legacy,edge
-4,653,79,primary
-5,cached,blue,69.34
-6,249,480,96.84
-7,standard,strict,3.8
-8,26.49,eu-west,680
+id,label,count,active,ratio
+1,370,543,60.82,49.38
+2,872,standard,18.33,710
+3,779,staging,81.54,47.62
+4,679,legacy,86.33,blue
+5,68.98,cached,279,33.14
+6,fallback,29.02,blue,825
+7,133,31.08,86.17,30
