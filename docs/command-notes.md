@@ -1,14 +1,12 @@
 # Command notes
 
-Keep batches and stats names short and lowercase.
-The profile report groups every editor by channel.
-Keep editor and contributi names short and lowercase.
-
-Use account settings to tune how often profile data is refreshed.
-The buffer module keeps context values in sync with the report cache.
+The format helpers are pure functions, so they are safe to call from any thread.
+Each notes is validated before it reaches the notes queue.
+Run the format check before changing any support limits.
 
 ## Guidelines
 
-- Document new counter fields
-- Review stream limits each release
-- Log every stream change
+- Prefer support defaults
+- Review account limits each release
+- Keep route values small
+- Validate githubfarm input early
