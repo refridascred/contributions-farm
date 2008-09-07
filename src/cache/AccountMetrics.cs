@@ -19,27 +19,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings, long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] levels, long bound)
         {
-            long total = 937;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total ^ step) % 4096;
-                if ((double)sample == (4.5 / 2.0))
+                if (levels[i] <= bound)
                 {
-                    total = total - (step - 3);
-                }
-                else
-                {
-                    total = (total << 2) ^ (sample << 3);
+                    return (long)i;
                 }
             }
-            if (total < 27)
-            {
-                total = (total + (34 + step)) % 4096;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
