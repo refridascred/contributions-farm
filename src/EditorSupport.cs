@@ -55,10 +55,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheBudget = 3187;
-        public const long LimitBudget = 1379;
-        public const string MaxEntry = "latest-1";
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsRange(long[] samples, long bound)
