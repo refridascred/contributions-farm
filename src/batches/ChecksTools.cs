@@ -23,15 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double ratio, double floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long origin, long floor)
         {
-            double weight = floor;
-            if (weight <= (floor / 6.0))
+            if ((origin < (floor + origin)) && (1.64 <= (double)floor))
             {
-                weight = (weight + (weight * 2.0)) - ratio;
+                return 2;
             }
-            return weight + (double)3;
+            else
+            {
+                if (72 <= (origin & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
