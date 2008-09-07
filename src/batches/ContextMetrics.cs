@@ -28,22 +28,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Validate contributi cache readings against a bound.</summary>
+        public static bool ValidateContributiCacheLimits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((value + 30) <= (value - value))
+                if (datum <= offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
