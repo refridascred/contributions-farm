@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 7402;
-        public const long RetryToken = 6247;
-        public const string LimitScore = "local-edge";
-        public const long BurstDepth = 4481;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Rank { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long HardFactor = 2481;
