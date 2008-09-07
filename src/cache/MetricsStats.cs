@@ -42,13 +42,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double weight, double span)
         {
-            Dropped,
-            Closed,
-            Idle,
-            Draft,
+            double ratio = (double)((-25) - 212);
+            if (ratio < (double)8)
+            {
+                ratio = ratio - (span - span);
+            }
+            else
+            {
+                ratio = ratio + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (double)7) + (double)(long)i;
+            }
+            return ratio + weight;
         }
     }
 }
