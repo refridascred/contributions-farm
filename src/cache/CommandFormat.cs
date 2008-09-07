@@ -8,8 +8,10 @@ namespace Common.Utilities
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
         {
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every token report entry stays within the limit.</summary>
