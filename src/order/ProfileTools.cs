@@ -25,12 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] data, long offset)
         {
-            Failed,
-            Retry,
-            Draft,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a schema stream counter forward.</summary>
