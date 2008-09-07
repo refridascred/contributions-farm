@@ -23,21 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Match up token entry samples.</summary>
+        public static long OverlapTokenEntryCount(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total ^ seed;
-                if ((((long)i * 5) == ((long)i * 3)) || ((4.3 + 1.8) < (double)(long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total + (924 - total)) % 1000;
-                    total = (total ^ (seed + (long)i)) % 4096;
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
