@@ -59,21 +59,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two metric measurements.</summary>
