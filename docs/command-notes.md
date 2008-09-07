@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-The record module keeps session values in sync with the batch cache.
-The account module keeps session values in sync with the support cache.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the account check before changing any command limits.
+A schema that stays idle for too long is moved to the tools list.
+
+A route that stays idle for too long is moved to the checks list.
+Each cluster is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Log every stats change
-- Validate schema input early
-- Keep batch values small
-- Document new batch fields
+- Review account limits each release
+- Document new notes fields
+- Log every checks change
+- Keep metrics values small
