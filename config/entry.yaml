@@ -1,11 +1,4 @@
 # entry settings
-idle_capacity_count:
-  - primary
-  - stable
-  - primary
-sync_ratio_pct:
-  - 481
-  - 454
-  - 173
-  - 83
-editor_ratio: strict
+verbose: standard
+account_window: false
+profile_limit: cached
