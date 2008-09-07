@@ -1,7 +1,7 @@
-id,score,active,level,state
-1,fallback,502,42.19,local
-2,970,782,41.22,22.08
-3,26.38,local,484,72.89
-4,491,701,legacy,11.84
-5,753,stable,79.43,662
-6,165,548,655,58.17
+id,ratio,state,owner,active
+1,17.85,418,832,41.94
+2,167,12.77,36.98,staging
+3,272,eu-west,staging,10.42
+4,cached,402,75.64,897
+5,27,legacy,391,750
+6,78.55,primary,stable,655
