@@ -1,8 +1,8 @@
 {
-  "burst_limit_s": [473, 6, 195, 172],
-  "compress": ["cached", "strict"],
-  "filter_timeout": "staging",
-  "sync_capacity_pct": [7, 87, 209],
-  "retry_capacity_s": false,
-  "cache_window": 63
+  "sync_threshold_pct": true,
+  "hard_threshold_ms": 30,
+  "cache_ratio_count": 19,
+  "warm_size_ms": false,
+  "idle_ratio": 250,
+  "burst_threshold_pct": 40.37
 }
