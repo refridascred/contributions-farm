@@ -60,22 +60,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 4) + origin) % 4096;
-                state = state ^ (origin % 5);
-                if ((86 + (long)i) >= state)
-                {
-                    state = state + (origin + 5);
-                    state = (state + (state % 97)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
