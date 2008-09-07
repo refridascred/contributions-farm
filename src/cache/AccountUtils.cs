@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultWidth = 8781;
-        public const double HardReport = 41.13;
-        public const long WindowBudget = 7201;
-        public const long WindowSize = 2023;
-        public const string SoftReport = "stable-edge";
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
