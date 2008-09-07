@@ -13,14 +13,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Stale,
+            Active,
             Done,
-            Ready,
-            Dropped,
-            Pending,
+            Draft,
         }
 
         /// <summary>Fold a list of token readings.</summary>
