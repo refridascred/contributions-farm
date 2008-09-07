@@ -1,7 +1,6 @@
-id,count,level
-1,289,18
-2,green,79.71
-3,626,712
-4,513,560
-5,518,633
-6,standard,295
+id,count,state,owner,level
+1,9.45,58.67,35.04,standard
+2,464,133,11.54,38.14
+3,639,20.75,cached,6
+4,open,73.57,strict,38.15
+5,541,26.64,93.78,local
