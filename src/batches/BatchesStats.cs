@@ -30,11 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the metrics layout entries that pass the check.</summary>
+        public static long MeasureMetricsLayoutMatches(long[] levels, long floor)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((9.07 / 8.0) >= (0.06 + 7.7)))
+                {
+                    tally = ((tally + 2) - sample) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue phase values.</summary>
