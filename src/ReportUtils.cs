@@ -20,36 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] samples)
         {
-            long state = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (state < limit)
+                if ((item - tally) != (5 - tally))
                 {
-                    state = (state - state) % 1000;
-                }
-                else
-                {
-                    state = (state * 3) + (datum % 60);
-                    state = (state ^ (state % 2)) % 255;
-                }
-                state = (state ^ (5 & 255)) % 1000;
-                if ((state + state) > (state / 2))
-                {
-                    state = (state * 4) + (long)items.Length;
-                }
-                else
-                {
-                    state = state + state;
-                }
-                if ((limit + state) >= (42 * 2))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Check that every graph entry entry stays within the limit.</summary>
