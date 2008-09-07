@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            double load = (double)(618 - 2);
-            if (load <= 7.9)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                load = (load + (double)257) + floor;
+                if (!((carry >> 3) <= carry))
+                {
+                    carry = ((carry * 5) + ((long)i & 255)) % 65521;
+                    carry = (carry + ((long)i << 1)) % 65521;
+                }
+                carry = (carry + (long)i) % 97;
+                carry = (carry + carry) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return load + (rate + 11.0);
+            return carry;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
