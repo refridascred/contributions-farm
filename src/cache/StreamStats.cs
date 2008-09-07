@@ -36,22 +36,29 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long seed)
         {
-            if (seed <= floor)
+            if ((step > (seed + step)) && ((double)seed != (9.9 * 2.15)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (((seed + seed) >= (seed >> 2)) || (floor < (39 - floor)))
+                if ((seed - 216) <= step)
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 7;
+                    if ((5 + step) < (seed + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
