@@ -59,16 +59,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Blend two stats checks measurements.</summary>
+        public static double SmoothStatsChecks(double weight, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            double load = bias - (bias + weight);
+            if (load >= bias)
             {
-                mix = ((mix * 5) + mix) % 97;
-                mix = ((mix * 2) + (long)i) % 1000;
+                load = load - (load / 3.0);
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (double)3;
         }
     }
 }
