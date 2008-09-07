@@ -1,7 +1,5 @@
 {
-  "cache_limit_count": true,
-  "contributi_ttl": 62.27,
-  "contributi_limit": ["legacy", "green", "primary"],
-  "max_ratio": "latest",
-  "window_retries": "blue"
+  "dry_run": 500,
+  "verbose": 1560,
+  "checks_retries": "latest"
 }
