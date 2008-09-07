@@ -64,15 +64,24 @@ namespace Common.Utilities
         public const long WindowFactor = 8185;
         public const long DefaultDepth = 4474;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] series, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long seed)
         {
-            long acc = -74;
-            foreach (long entry in series)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                acc = (acc - (seed + (-69))) - entry;
+                if ((seed + mark) != (seed / 4))
+                {
+                    mark = (mark + mark) % 1000;
+                    break;
+                }
+                else
+                {
+                    mark = (mark - ((long)i - 954)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return acc % 65521;
+            return mark;
         }
     }
 }
