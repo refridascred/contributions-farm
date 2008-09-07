@@ -26,19 +26,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
-        {
-            long result = 4;
-            foreach (long value in samples)
-            {
-                result = (result ^ (99 << 2)) ^ value;
-            }
-            if (result > 0)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 6357;
+        public const long SoftContributi = 6840;
+        public const long LimitRatio = 4693;
+        public const double BurstContributi = 41.69;
     }
 }
