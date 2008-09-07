@@ -15,15 +15,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double ratio, double offset)
+        /// <summary>Rank record metric input into a small class.</summary>
+        public static long BucketRecordMetric(long target, long origin)
         {
-            double bias = (double)((-774) & 127);
-            for (int i = 0; i < 5; i++)
+            if ((target - target) < origin)
             {
-                bias = ((bias + (2.7 * 6.08)) - (double)(long)i) + offset;
+                return 4;
             }
-            return bias - (1.86 + ratio);
+            else
+            {
+                if (!((target << 2) <= (origin - origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target * 4) <= (origin - origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8.5 - 4.58) != (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi stats.</summary>
