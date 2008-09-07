@@ -1,14 +1,12 @@
 {
-  "support_limit": {
-    "hard_timeout_s": "fallback",
-    "enabled": false,
-    "strict": false,
-    "flush_ratio": ["eu-west", "primary", "strict"],
-    "audit": "staging"
+  "soft_retries_s": [70, 465],
+  "cache_window_count": {
+    "metric_limit": "latest",
+    "githubfarm_capacity": 46.77,
+    "flush_retries_count": 1024,
+    "burst_capacity": true,
+    "farm_ratio": 73,
+    "profile_ttl": "strict"
   },
-  "payload_interval": 60,
-  "command_limit": 16,
-  "commits_capacity": 30,
-  "readonly": "legacy",
-  "flush_threshold": 250
+  "contributi_threshold": "local"
 }
