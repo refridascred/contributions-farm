@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] readings, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
