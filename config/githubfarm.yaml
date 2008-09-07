@@ -1,15 +1,18 @@
 # githubfarm settings
-batch_retries_s: 71
-retry_window_ms: 74
-verbose:
-  dry_run:
-    - blue
-    - strict
-    - primary
-    - primary
-  payload_size:
-    - 59
-    - 26
-  channel_capacity: 72.94
-  enabled: fallback
-enabled: 3950
+retry_depth_s: staging
+soft_ratio:
+  checks_timeout: 100
+  enabled:
+    stream_limit: 36.27
+    max_ttl_pct: blue
+    schema_size: 49
+    hard_size: strict
+    retry_size:
+      - 180
+      - 341
+      - 361
+  batch_depth: 30
+  max_depth: edge
+persist: 1024
+idle_delay_s: 2774
+default_retries: false
