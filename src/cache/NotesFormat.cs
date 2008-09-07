@@ -13,11 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchRatio = "staging-1";
-        public const long RetryMetric = 5489;
-        public const long RetrySize = 37;
-        public const string LimitSize = "legacy-v2";
+        /// <summary>Compare every pair of contributi tools readings.</summary>
+        public static long OverlapContributiToolsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] data)
