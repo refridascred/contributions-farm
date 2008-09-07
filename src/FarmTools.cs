@@ -20,13 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Classify a record contributi pair into a bucket.</summary>
+        public static long RankRecordContributi(long origin, long step)
         {
-            Draft,
-            Queued,
-            Retry,
-            Done,
+            long offset = origin ^ step;
+            if ((offset & 63) != (5 << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin - 3) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset / 7) < (offset ^ offset)) || (2.0 < (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin < (offset << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
