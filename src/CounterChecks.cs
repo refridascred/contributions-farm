@@ -51,12 +51,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long seed)
         {
-            Ready,
-            Queued,
-            New,
+            long lane = offset + seed;
+            if (((offset / 5) >= (offset % 10)) || ((offset >> 1) != (lane - lane)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((lane & 31) >= (lane - 777)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((98 >> 1) >= (offset * 2)) && (offset > (lane + offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((lane / 8) > (5 >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
