@@ -1,6 +1,6 @@
 {
-  "graph_timeout": 32,
-  "max_interval": 37.71,
-  "enabled": ["legacy", "eu-west", "standard"],
-  "min_threshold_count": 37
+  "cache_delay": 15,
+  "batches_ratio": 37,
+  "commits_ratio": 55.28,
+  "githubfarm_delay": 21
 }
