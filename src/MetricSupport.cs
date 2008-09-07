@@ -21,21 +21,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed + result) <= (result >> 1))
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
     }
 }
