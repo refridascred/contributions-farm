@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const long MinFilter = 2885;
         public const long MinRatio = 4934;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 9322;
-        public const long MaxStream = 6798;
-        public const long DefaultStream = 6916;
-        public const long MaxDepth = 8803;
-        public const long CacheStream = 5192;
+        /// <summary>Scale a format channel figure with a bias.</summary>
+        public static double ScaleFormatChannel(double weight, double floor)
+        {
+            double rate = weight;
+            return (rate - (6.7 * 8.76)) + floor;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long BucketFilter(long floor, long offset)
