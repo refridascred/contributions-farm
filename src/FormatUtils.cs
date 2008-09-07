@@ -29,10 +29,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 9114;
-        public const long MinRatio = 5355;
-        public const long HardGraph = 7131;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] samples, long offset)
