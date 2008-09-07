@@ -37,23 +37,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] items, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long limit)
         {
-            long mix = 34;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 3) + (seed & 255)) - reading;
-                if ((seed >> 3) < (seed / 9))
+                if (sample <= limit)
                 {
-                    mix = ((mix * 5) + (960 + seed)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < 267)
-            {
-                mix = ((mix * 5) + (mix + seed)) % 1000;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Fold a list of order readings.</summary>
