@@ -1,5 +1,7 @@
 {
-  "graph_limit": 5508,
-  "graph_interval": true,
-  "base_ratio": [110, 36]
+  "cache_limit_count": true,
+  "contributi_ttl": 62.27,
+  "contributi_limit": ["legacy", "green", "primary"],
+  "max_ratio": "latest",
+  "window_retries": "blue"
 }
