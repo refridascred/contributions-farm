@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long target)
+        /// <summary>Fold a list of checks token readings.</summary>
+        public static long DigestChecksToken(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            long sum = 9;
+            foreach (long entry in data)
             {
-                result = (result ^ result) % 65521;
-                result = ((result * 3) + (long)i) % 97;
+                if ((entry / 4) <= 291)
+                {
+                    sum = (sum * 2) + (sum - 60);
+                }
             }
-            return result;
+            if (sum < 63)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Match up commits samples.</summary>
