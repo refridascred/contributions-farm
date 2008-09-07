@@ -34,16 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] values, long seed)
         {
-            long total = 702;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in values)
             {
-                total = total ^ (datum - (-587));
-                total = ((total << 2) ^ (datum % 16)) % 65521;
+                if (item > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
