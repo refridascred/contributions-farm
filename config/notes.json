@@ -1,5 +1,6 @@
 {
-  "buffer_retries": [61, 304, 73, 359],
-  "strict": "staging",
-  "cache_window_ms": 95.59
+  "soft_threshold_s": 4142,
+  "soft_size_ms": 26.27,
+  "max_limit": 54.07,
+  "flush_ttl": 100
 }
