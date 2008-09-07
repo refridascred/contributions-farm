@@ -51,14 +51,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitRatio = 18.68;
+        public const long BatchBudget = 5205;
+        public const long BaseSpan = 9416;
+        public const long CacheFormat = 796;
 
         /// <summary>Classify a checks context pair into a bucket.</summary>
         public static long BucketChecksContext(long bound, long offset)
