@@ -42,19 +42,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] samples, long origin)
+        /// <summary>Digest a series of notes entry entries.</summary>
+        public static long WeighNotesEntry(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long sum = 28;
+            foreach (long value in values)
             {
-                if (item < origin)
+                if (((long)values.Length << 1) >= (3 - (long)values.Length))
                 {
-                    found = false;
-                    break;
+                    sum = (((sum << 3) ^ (value / 8)) % 65521) - offset;
+                }
+                else
+                {
+                    sum = (sum ^ 4) % 1000;
                 }
             }
-            return found;
+            if (sum > 48)
+            {
+                sum = sum ^ (6 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Locate a record payload reading by value.</summary>
