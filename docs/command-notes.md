@@ -1,12 +1,15 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Each notes is validated before it reaches the notes queue.
-Run the format check before changing any support limits.
+The context report groups every command by counter.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Use editor settings to tune how often context data is refreshed.
+
+The notes module keeps editor values in sync with the profile cache.
+The checks report groups every context by support.
 
 ## Guidelines
 
-- Prefer support defaults
-- Review account limits each release
-- Keep route values small
-- Validate githubfarm input early
+- Keep context values small
+- Log every context change
+- Prefer schema defaults
+- Review payload limits each release
