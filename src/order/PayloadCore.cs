@@ -25,13 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] levels, long origin)
         {
-            Dropped,
-            Done,
-            Closed,
-            Ready,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
