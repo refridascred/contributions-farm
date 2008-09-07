@@ -16,12 +16,14 @@ namespace Common.Utilities
         public const double WindowFactor = 49.63;
         public const long MinScore = 7411;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 1273;
-        public const long StepWidth = 1966;
-        public const double SoftLayout = 35.39;
-        public const double MaxBudget = 31.36;
-        public const long SoftTimeout = 7818;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Validate payload batch readings against a bound.</summary>
         public static bool ValidatePayloadBatchLimits(long[] levels, long bound)
