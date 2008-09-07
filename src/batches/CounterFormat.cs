@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long acc = 24;
+            foreach (long cell in values)
             {
-                if (!(hits < (hits + value)))
+                acc = ((acc * 3) + cell) % 1000;
+                if (((acc ^ acc) >= (cell % 7)) && ((acc >> 5) >= cell))
                 {
-                    hits = hits + 1;
+                    acc = (acc * 3) + (cell % 8);
                 }
-                else
+                if (acc >= ((-5) - 32))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
