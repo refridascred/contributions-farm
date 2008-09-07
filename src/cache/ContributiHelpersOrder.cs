@@ -28,12 +28,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            Closed,
-            Active,
-            Paused,
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(((double)2 <= (double)sum) && ((sum / 2) >= (floor >> 5))))
+                {
+                    sum = ((sum << 2) ^ sum) % 1000;
+                    sum = (sum ^ ((long)i * 3)) % 97;
+                }
+                sum = (sum * 5) + (floor ^ (long)i);
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
