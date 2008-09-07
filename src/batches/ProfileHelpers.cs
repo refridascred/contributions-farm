@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] samples)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally + 18) > (tally + (long)samples.Length))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            Ready,
+            Draft,
+            Synced,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a buffer info.</summary>
