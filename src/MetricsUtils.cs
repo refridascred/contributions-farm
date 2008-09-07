@@ -39,11 +39,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            Draft,
+            Locked,
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a metrics stats.</summary>
