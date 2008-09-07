@@ -46,16 +46,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double scale, double offset)
-        {
-            double bias = (offset * 8.0) / 6.0;
-            if (bias > (scale * 18.0))
-            {
-                bias = bias + offset;
-            }
-            return bias + scale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepRatio = 873;
+        public const double LimitMetrics = 75.79;
+        public const long DefaultMetrics = 1850;
+        public const long HardMetrics = 8614;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] levels)
