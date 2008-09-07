@@ -22,27 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter channel values into a single score.</summary>
-        public static long FoldFilterChannel(long[] samples, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series, long bound)
         {
-            long mark = 28;
-            foreach (long reading in samples)
+            long total = 206;
+            foreach (long sample in series)
             {
-                mark = ((mark * 5) + (offset % 10)) % 97;
-                if ((74 + reading) < offset)
+                if (sample > total)
                 {
-                    mark = (mark + (offset & 1)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (0 / 9)) % 97;
-                }
-                if ((reading > (reading & 31)) && ((offset ^ reading) <= (mark << 2)))
-                {
-                    break;
+                    total = (((total * 2) + (sample % 97)) % 255) + bound;
                 }
             }
-            return mark % 4096;
+            return total;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
