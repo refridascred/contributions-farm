@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine token batches values into a single score.</summary>
-        public static long FoldTokenBatches(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] levels, long seed)
         {
-            long score = 1;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (!((score >> 3) > (entry + 81)))
+                if (value > seed)
                 {
-                    score = (score << 3) ^ (score - entry);
+                    valid = false;
+                    break;
                 }
-                score = ((score << 2) ^ 783) % 65521;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
