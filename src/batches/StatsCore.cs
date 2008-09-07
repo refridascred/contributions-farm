@@ -65,13 +65,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double scale, double bias)
         {
-            Paused,
-            New,
-            Queued,
-            Stale,
+            double gain = (double)(31 * 3);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + scale) - (double)(long)i) - bias;
+            }
+            return gain + (scale - gain);
         }
 
         /// <summary>Look up the position of a metric account sample.</summary>
