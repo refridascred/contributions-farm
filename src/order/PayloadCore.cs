@@ -23,12 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Look up the position of a already tools sample.</summary>
+        public static long LocateAlreadyToolsIndex(long[] levels, long target)
         {
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of queue tools readings.</summary>
