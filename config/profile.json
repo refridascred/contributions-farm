@@ -1,8 +1,7 @@
 {
-  "retry_size_count": 7597,
-  "poll_ttl": true,
-  "batch_window_s": [103, 344, 105],
-  "context_ratio": 100,
-  "compress": "strict",
-  "cache_capacity_pct": 3.6
+  "counter_window": "latest",
+  "flush_threshold_count": [170, 76],
+  "compress": 500,
+  "already_size": false,
+  "max_limit_count": ["open", "blue", "latest"]
 }
