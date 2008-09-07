@@ -54,27 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] readings, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] values, long limit)
         {
-            long score = 0;
-            foreach (long value in readings)
+            long mark = 92;
+            foreach (long sample in values)
             {
-                score = (score ^ (score - 81)) % 101;
-                if ((value + value) <= (score >> 1))
-                {
-                    break;
-                }
-                if ((bound << 2) > bound)
-                {
-                    score = (score ^ (value + score)) % 101;
-                }
-                if ((bound <= 974) || ((double)score > (1.98 - 9.9)))
-                {
-                    break;
-                }
+                mark = ((mark - (mark & 127)) + sample) + limit;
             }
-            return score;
+            if (mark < 9)
+            {
+                mark = ((mark * 2) + (43 << 1)) % 101;
+            }
+            return mark % 97;
         }
     }
 }
