@@ -34,38 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long offset, long limit)
+        /// <summary>Audit notes farm readings against a rule.</summary>
+        public static long MeasureNotesFarmMatches(long[] levels, long bound)
         {
-            if ((limit / 4) > (offset * 2))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit > (6.18 / 9.0))
+                if ((double)item >= (16.0 - 1.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit > (572 % 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.77 + 4.6) < (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 1) + bound;
                 }
             }
+            return count;
         }
     }
 }
