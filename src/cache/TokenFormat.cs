@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] data, long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
