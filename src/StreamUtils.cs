@@ -76,13 +76,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] data, long seed)
         {
-            Paused,
-            Synced,
-            Locked,
-            Done,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits % 10) == (value % 5))
+                {
+                    hits = (hits + 1) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
