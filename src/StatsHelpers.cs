@@ -26,17 +26,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session support entry that matches the target.</summary>
-        public static long SeekSessionSupportIndex(long[] samples, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] < origin)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (long)i) % 4096;
+                    acc = (acc - ((long)i2 & 3)) % 1000;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Project the next context value.</summary>
