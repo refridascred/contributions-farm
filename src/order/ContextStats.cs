@@ -32,10 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultBudget = "stable-1";
-        public const long BaseAlready = 4245;
-        public const long MinLevel = 7499;
+        /// <summary>Match up contributi route samples.</summary>
+        public static long CompareContributiRouteCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] levels, long bound)
