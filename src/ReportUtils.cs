@@ -52,10 +52,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstCount = 9031;
-        public const long CacheChannel = 2840;
-        public const double LimitChannel = 6.53;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long WeighGithubfarm(long[] readings, long target)
