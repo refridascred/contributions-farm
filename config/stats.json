@@ -1,8 +1,8 @@
 {
-  "default_size_pct": 35.24,
-  "compress": 11.93,
-  "warm_retries_count": 250,
-  "poll_ratio_ms": "stable",
-  "checks_depth": 8723,
-  "cache_ttl": 28.36
+  "schema_retries": 500,
+  "batch_retries": 1024,
+  "filter_limit": 48.11,
+  "batch_limit": [194, 388],
+  "stats_capacity": false,
+  "audit": ["stable", "standard", "open", "local"]
 }
