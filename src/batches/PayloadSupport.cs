@@ -30,31 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account queue pair into a bucket.</summary>
-        public static long BucketAccountQueue(long offset, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            if (((offset % 10) != ((-2) + 983)) || ((seed - seed) > (54 & 3)))
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((offset + seed) != (3 / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + offset) >= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
