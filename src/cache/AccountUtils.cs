@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels, long seed)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long acc = 305;
+            foreach (long datum in levels)
+            {
+                acc = (((acc ^ (acc * 4)) % 4096) ^ datum) + seed;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the checks class values.</summary>
