@@ -20,19 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] items, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if (target >= floor)
             {
-                if (entry > limit)
+                return 8;
+            }
+            else
+            {
+                if (((target / 7) <= target) && ((target + floor) >= (target - 423)))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((((-53) * 4) >= (target % 3)) && ((double)floor == (7.2 / 5.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
