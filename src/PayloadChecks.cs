@@ -61,17 +61,18 @@ namespace Common.Utilities
         public const long RetryFactor = 8406;
         public const string RetryInterval = "open-v2";
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] items, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 84;
+            foreach (long sample in values)
             {
-                if ((items[i] > limit) && ((items[i] % 2) == 0))
+                if ((1.3 > (double)mark) || ((double)sample >= (12.0 + 6.0)))
                 {
-                    return (long)i;
+                    mark = mark ^ (sample ^ mark);
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Hold a filter header.</summary>
