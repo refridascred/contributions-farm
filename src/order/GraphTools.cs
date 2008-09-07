@@ -40,12 +40,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 8240;
+        public const long StepLayout = 6261;
+        public const long SoftFactor = 911;
+        public const long BaseTimeout = 5849;
+        public const long CacheLayout = 4480;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] items, long floor)
