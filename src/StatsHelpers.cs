@@ -13,29 +13,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels)
-        {
-            long result = 8;
-            foreach (long sample in levels)
-            {
-                if (((sample - sample) >= (result << 3)) && ((long)levels.Length >= (sample / 3)))
-                {
-                    result = (result ^ (7 & 255)) % 1000;
-                    continue;
-                }
-                result = result + (sample + result);
-                if ((result - result) >= (result * 3))
-                {
-                    result = ((result << 3) ^ (798 * 4)) % 97;
-                }
-            }
-            if (result < 1)
-            {
-                result = (result + (970 << 2)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardWidth = 3601;
+        public const long DefaultFactor = 9240;
+        public const string SoftCount = "stable";
+        public const long RetryMetric = 5344;
+        public const long RetrySize = 4181;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double BlendCluster(double scale, double span)
