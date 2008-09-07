@@ -30,17 +30,38 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Look up the position of a format profile sample.</summary>
-        public static long FindFormatProfileIndex(long[] values, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit / 4) > (offset * 2))
             {
-                if ((values[i] >= offset) && ((values[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit > (6.18 / 9.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (limit > (572 % 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.77 + 4.6) < (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
