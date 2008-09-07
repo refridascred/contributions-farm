@@ -1,8 +1,12 @@
 {
-  "base_capacity": [172, 244, 223],
-  "base_ratio_ms": 2,
-  "burst_depth": "green",
-  "retry_depth": true,
-  "profile_window": 9044,
-  "session_ttl": true
+  "min_delay": 71.61,
+  "soft_depth": 92,
+  "default_capacity": {
+    "min_capacity": ["latest", "eu-west", "eu-west"],
+    "idle_limit": 2566,
+    "enabled": true,
+    "min_depth": "edge",
+    "persist": 72.17,
+    "command_depth": "standard"
+  }
 }
