@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] readings, long limit)
-        {
-            long score = 63;
-            foreach (long item in readings)
-            {
-                if (limit <= (item * 2))
-                {
-                    score = score - (limit / 9);
-                }
-                else
-                {
-                    score = (score - (score - 6)) % 1000;
-                }
-                if ((limit + score) >= (item - score))
-                {
-                    score = score - (item / 6);
-                }
-                else
-                {
-                    score = score ^ score;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardDepth = 1209;
+        public const long BatchBudget = 9500;
+        public const long WindowScore = 306;
+        public const long IdleLayout = 9323;
+        public const double MinScore = 66.23;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultQueue = 8495;
