@@ -23,21 +23,17 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Look up the position of a format profile sample.</summary>
+        public static long FindFormatProfileIndex(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] >= offset) && ((values[i] % 2) == 0))
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
