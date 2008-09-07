@@ -14,10 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepTimeout = 448;
-        public const long BaseRatio = 3878;
-        public const double CacheStream = 28.8;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchSpan = 5670;
+        public const long DefaultFilter = 2348;
+        public const double BurstTimeout = 57.54;
+        public const string BatchScore = "staging-v2";
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] items)
