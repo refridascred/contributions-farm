@@ -22,11 +22,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Find the first command payload entry that matches the target.</summary>
+        public static long LocateCommandPayloadIndex(long[] items, long limit)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a token reading.</summary>
