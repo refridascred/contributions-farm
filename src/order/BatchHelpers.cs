@@ -18,9 +18,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 186;
-        public const string HardMetric = "local-1";
-        public const double WindowInterval = 74.38;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double weight, double floor)
+        {
+            double rate = weight / 8.0;
+            if (rate < (double)63)
+            {
+                rate = (rate - (rate - 20.0)) - floor;
+            }
+            return rate - (double)(-657);
+        }
     }
 }
