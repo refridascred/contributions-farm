@@ -20,10 +20,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 1150;
-        public const double MinBatch = 62.18;
-        public const double CacheBatch = 54.84;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long seed)
+        {
+            if ((seed + seed) > (bound + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound & 15) >= (bound + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8.0 / 4.0) >= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7 + (-669)) == (bound + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
