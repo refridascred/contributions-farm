@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] samples, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (1.7 < (double)target)
+                if (reading >= offset)
                 {
-                    matches = (matches + 2) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
