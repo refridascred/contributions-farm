@@ -80,24 +80,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] readings)
         {
-            if ((origin & 3) != (bound / 2))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.0 / 7.0) >= (8.0 * 7.81))
+                if (value > (23 >> 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
