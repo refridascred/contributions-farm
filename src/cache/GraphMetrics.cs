@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((7.0 * 10.0) < (double)entry)
+                if ((matches + cell) > (58 + cell))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
