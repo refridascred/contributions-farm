@@ -60,15 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout buffer entries.</summary>
-        public static long TotalLayoutBuffer(long[] readings)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
-            long acc = 3;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc ^ (acc + acc)) % 1000) - value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
