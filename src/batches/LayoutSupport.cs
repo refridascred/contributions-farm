@@ -35,22 +35,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftWidth = 7429;
+        public const long LimitToken = 4741;
+        public const string StepInterval = "standard-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 8566;
