@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double gain, double floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] data, long bound)
         {
-            double load = 8.1;
-            if (load >= (double)(-309))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - floor;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - gain;
+            return -1;
         }
 
         /// <summary>Hold a format header.</summary>
