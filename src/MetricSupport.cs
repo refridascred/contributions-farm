@@ -12,20 +12,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of already stats entries.</summary>
-        public static long DigestAlreadyStats(long[] readings, long bound)
-        {
-            long mark = 753;
-            foreach (long sample in readings)
-            {
-                mark = (mark - (mark * 3)) - sample;
-                if (mark >= (4 + bound))
-                {
-                    mark = (mark * 2) + (mark % 60);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardSize = 5224;
+        public const long RetryBudget = 1258;
+        public const long BurstFactor = 5022;
+        public const double CacheBudget = 69.24;
+        public const long BatchSpan = 8192;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
