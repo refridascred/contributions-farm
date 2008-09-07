@@ -1,8 +1,7 @@
-id,label,count,rank,score
-1,247,88.24,79.1,605
-2,102,266,staging,816
-3,92.2,73,cached,80.71
-4,legacy,strict,40.98,34.25
-5,514,694,875,cached
-6,13.91,cached,842,892
-7,green,162,local,fallback
+id,count,level
+1,289,18
+2,green,79.71
+3,626,712
+4,513,560
+5,518,633
+6,standard,295
