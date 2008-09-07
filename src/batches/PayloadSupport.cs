@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] data, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] >= origin)
+                if ((7.57 - 9.4) <= (double)hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) ^ sample) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the already batches series from a seed.</summary>
