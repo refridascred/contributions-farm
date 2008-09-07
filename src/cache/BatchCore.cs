@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardInterval = 1286;
+        public const long BurstTimeout = 4117;
+        public const double BaseBatches = 79.91;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double HardSchema = 34.51;
