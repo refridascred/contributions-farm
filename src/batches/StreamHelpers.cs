@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = ((mix << 3) ^ (mix + (long)i)) + (long)i2;
-                }
-                if (!(((long)i & 127) < ((long)i / 4)))
-                {
-                    mix = ((mix * 3) + (mix + (long)i)) % 255;
-                }
-                mix = ((mix * 2) + (seed >> 1)) % 97;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Roll a order report counter forward.</summary>
