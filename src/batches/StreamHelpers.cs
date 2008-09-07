@@ -81,17 +81,10 @@ namespace Common.Utilities
         public const string DefaultGraph = "local";
         public const long WindowGraph = 7657;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc - ((long)i * 3)) % 4096;
-                acc = acc ^ acc;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "stable-edge";
+        public const double LimitRoute = 90.26;
+        public const double StepDepth = 90.36;
+        public const long CacheDepth = 8936;
     }
 }
