@@ -33,11 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleDepth = "primary-edge";
-        public const long WindowWidth = 8479;
-        public const string LimitLevel = "cached-edge";
-        public const double HardCommits = 55.87;
-        public const string DefaultCommits = "stable-1";
+        /// <summary>Accumulate tools token samples.</summary>
+        public static long FoldToolsToken(long[] series, long seed)
+        {
+            long acc = 0;
+            foreach (long value in series)
+            {
+                acc = acc ^ (1 - seed);
+                if (((9.0 + 20.0) <= (double)acc) || ((value + seed) != (seed & 7)))
+                {
+                    acc = (acc << 3) ^ (value >> 5);
+                }
+                else
+                {
+                    acc = (acc ^ (seed + value)) % 97;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
