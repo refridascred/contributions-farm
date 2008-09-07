@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if (target >= (limit / 4))
             {
-                if (!((long)levels.Length <= 8) && ((seen + 462) >= (value - 1)))
+                return 8;
+            }
+            else
+            {
+                if (target <= (limit * 3))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit % 100) >= (limit - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
