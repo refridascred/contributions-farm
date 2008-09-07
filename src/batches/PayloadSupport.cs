@@ -58,15 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double gain, double floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] levels, long floor)
         {
-            double drift = (gain / 9.0) + gain;
-            if (drift >= (floor - gain))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                drift = drift + gain;
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + (double)(-927);
+            return stale;
         }
     }
 }
