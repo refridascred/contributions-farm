@@ -17,21 +17,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Combine filter channel values into a single score.</summary>
+        public static long FoldFilterChannel(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 28;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = ((mark * 5) + (offset % 10)) % 97;
+                if ((74 + reading) < offset)
                 {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + (offset & 1)) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (0 / 9)) % 97;
+                }
+                if ((reading > (reading & 31)) && ((offset ^ reading) <= (mark << 2)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate session samples.</summary>
