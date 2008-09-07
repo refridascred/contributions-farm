@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor * 2) + (23 / 7);
-                long span = anchor;
-                if (((double)anchor != (12.0 / 5.0)) || ((double)anchor > 8.97))
-                {
-                    span = (span ^ (anchor * 4)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (span + offset);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
