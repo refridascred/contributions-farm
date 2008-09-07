@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double weight = floor;
+            if (weight <= (floor / 6.0))
             {
-                if ((double)count >= (3.0 - 5.55))
-                {
-                    count = (count + 3) + datum;
-                }
+                weight = (weight + (weight * 2.0)) - ratio;
             }
-            return count;
+            return weight + (double)3;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
