@@ -13,10 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "staging-edge";
-        public const long CacheEntry = 1927;
-        public const long HardDepth = 104;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Paused,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
         public static long ScorePayloadCluster(long[] samples, long step)
