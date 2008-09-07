@@ -27,9 +27,15 @@ namespace Common.Utilities
         public const long DefaultSize = 81;
         public const long DefaultCounter = 6359;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "stable-edge";
-        public const long DefaultSchema = 654;
-        public const long MinSchema = 2795;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
