@@ -1,8 +1,24 @@
 # support settings
-layout_capacity: 97.66
-sync_ratio_s:
-  - 26
-  - 195
-  - 210
-  - 107
-strict: 8389
+compress:
+  cache_delay_count:
+    poll_timeout_count:
+      - 452
+      - 81
+    retry_size_count: true
+    compress: 39
+    editor_capacity: primary
+    retry_timeout_count: local
+  farm_ratio:
+    - 129
+    - 108
+    - 444
+    - 391
+  support_depth: 7326
+  poll_threshold_pct:
+    - stable
+    - fallback
+    - blue
+  flush_ratio: 6.76
+readonly: 20.31
+base_limit_pct: 82.19
+soft_delay_count: true
