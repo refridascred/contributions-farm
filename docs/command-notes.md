@@ -1,11 +1,15 @@
 # Command notes
 
-The githubfarm report groups every report by schema.
-A token that stays idle for too long is moved to the queue list.
+A metrics that stays idle for too long is moved to the filter list.
+The batches module keeps commits values in sync with the already cache.
+Use command settings to tune how often context data is refreshed.
+
+The checks report groups every graph by record.
+Use tools settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Document new counter fields
-- Log every channel change
-- Prefer batches defaults
-- Validate checks input early
+- Log every metric change
+- Review order limits each release
+- Keep route values small
+- Prefer route defaults
