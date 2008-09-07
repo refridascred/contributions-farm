@@ -42,18 +42,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of session account entries.</summary>
-        public static long TallySessionAccount(long[] series)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long total = 9;
-            foreach (long datum in series)
-            {
-                if ((double)total <= (11.0 / 2.0))
-                {
-                    total = ((total * 2) + (total - datum)) % 255;
-                }
-            }
-            return total % 97;
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
