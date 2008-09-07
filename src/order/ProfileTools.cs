@@ -33,11 +33,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 50.71;
-        public const string BurstOrder = "latest-1";
-        public const long HardRatio = 4593;
-        public const string BatchOrder = "staging-v2";
+        /// <summary>Roll a schema stream counter forward.</summary>
+        public static long RollSchemaStream(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
