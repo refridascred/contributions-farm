@@ -48,26 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] readings, long seed)
+        /// <summary>Find the first format contributi entry that matches the target.</summary>
+        public static long FindFormatContributiIndex(long[] readings, long step)
         {
-            long score = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed / 4) != (seed + seed))
+                if (readings[i] > step)
                 {
-                    score = ((score - score) % 1000) + item;
-                }
-                if ((double)score == (7.5 * 3.9))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 1)
-            {
-                score = ((score << 3) ^ ((long)readings.Length - score)) % 4096;
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
