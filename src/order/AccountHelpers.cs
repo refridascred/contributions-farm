@@ -60,13 +60,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] data, long seed)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!((value >> 5) != (seed ^ matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats options.</summary>
