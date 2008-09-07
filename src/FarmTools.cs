@@ -35,25 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long offset, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] levels, long floor)
         {
-            long bound = offset - target;
-            if ((target / 2) <= (893 ^ bound))
+            long acc = 10;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (1.0 <= (double)target)
+                acc = (acc ^ (floor & 1)) % 97;
+                if (((floor % 16) != (acc - acc)) || ((double)item >= (2.17 + 15.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            return acc;
         }
     }
 }
