@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftDepth = 3400;
-        public const long SoftLevel = 9868;
-        public const double BaseRatio = 84.09;
-        public const string BurstCount = "standard-edge";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (8.5 <= (double)offset)
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
         public static long AuditBufferCommandMatches(long[] series)
