@@ -20,12 +20,13 @@ namespace Common.Utilities
         public const string DefaultSize = "fallback-edge";
         public const long CacheTools = 4233;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
