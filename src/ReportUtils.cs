@@ -45,24 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already commits pair into a bucket.</summary>
-        public static long SortAlreadyCommits(long target, long limit)
+        /// <summary>Check that every graph entry entry stays within the limit.</summary>
+        public static bool ValidateGraphEntryBounds(long[] series, long floor)
         {
-            if ((3.83 - 4.3) <= (double)target)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) <= target)
+                if (reading >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
