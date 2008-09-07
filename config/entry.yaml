@@ -1,4 +1,16 @@
 # entry settings
-dry_run: true
-audit: 71
-batch_interval: fallback
+cache_ttl: cached
+idle_ratio_ms: standard
+cache_interval_pct: open
+default_limit: primary
+soft_ratio_ms:
+  base_window_ms: 43
+  enabled: 60.23
+  burst_window: standard
+  support_capacity:
+    - 204
+    - 184
+    - 141
+    - 350
+  verbose: 60
+warm_interval_count: 28
