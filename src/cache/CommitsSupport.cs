@@ -58,19 +58,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every session checks entry stays within the limit.</summary>
-        public static bool GuardSessionChecksRange(long[] levels, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (entry <= step)
+                if ((cell % 100) < (matches + matches))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
