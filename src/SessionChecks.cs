@@ -29,18 +29,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window metrics entries that pass the check.</summary>
-        public static long TallyWindowMetricsHits(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long acc = -18;
+            foreach (long sample in levels)
             {
-                if ((matches + cell) <= matches)
+                if ((sample ^ acc) > (acc ^ 4))
                 {
-                    matches = matches + 1;
+                    acc = (acc ^ (acc % 2)) % 101;
+                    break;
                 }
+                acc = (acc * 4) + offset;
+                acc = ((acc << 2) ^ (sample >> 3)) % 4096;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Fold a list of queue session readings.</summary>
