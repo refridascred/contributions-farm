@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "open-1";
-        public const long BatchTools = 9393;
-        public const long StepDepth = 3444;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] levels, long step)
+        {
+            long result = 46;
+            foreach (long cell in levels)
+            {
+                result = (result ^ (cell - result)) + step;
+                if ((cell >> 4) > result)
+                {
+                    result = (result - 981) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TallyWindow(long[] items, long limit)
