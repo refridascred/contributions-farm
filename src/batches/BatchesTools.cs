@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "primary-edge";
-        public const double WindowSize = 46.39;
-        public const double StepChecks = 3.16;
+        /// <summary>Grade a record filter value against two limits.</summary>
+        public static long GradeRecordFilter(long origin, long bound)
+        {
+            long step = origin - bound;
+            if (((origin << 3) != (bound - bound)) || ((origin - 71) <= (origin + (-34))))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step >= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] data, long origin)
