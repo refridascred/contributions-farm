@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items, long limit)
-        {
-            long mix = -732;
-            foreach (long item in items)
-            {
-                if ((mix > (mix << 2)) && ((1.84 + 11.0) == (double)item))
-                {
-                    mix = (mix - mix) - limit;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 34.51;
+        public const long IdleSchema = 1901;
+        public const double WindowFactor = 49.63;
+        public const long MinScore = 7411;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] samples, long bound)
