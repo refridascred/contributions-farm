@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] readings)
         {
-            Done,
-            Stale,
-            Active,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry / 7) == (entry / 9))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a entry summary.</summary>
