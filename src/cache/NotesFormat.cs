@@ -22,13 +22,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long origin)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
