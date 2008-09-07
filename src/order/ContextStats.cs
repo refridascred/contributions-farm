@@ -47,13 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long origin)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long acc = 5;
+            foreach (long value in readings)
+            {
+                acc = ((acc + acc) % 65521) + value;
+                if (origin < (origin >> 1))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
