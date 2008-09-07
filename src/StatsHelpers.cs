@@ -57,19 +57,19 @@ namespace Common.Utilities
             return load + (span * 2.39);
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] items, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (entry <= step)
+                if (value < target)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
