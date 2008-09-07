@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] samples)
         {
-            Active,
-            Done,
-            Draft,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) > (matches - 725))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
