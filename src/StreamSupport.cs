@@ -21,11 +21,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] readings, long target)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
