@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long MeasureContributiEntryGaps(long[] readings)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value * 3) < hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a queue info.</summary>
