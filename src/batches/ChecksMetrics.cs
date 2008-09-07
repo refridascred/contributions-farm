@@ -65,31 +65,9 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long step, long step2)
-        {
-            if (step >= (step2 + 887))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step >> 4) != (step2 >> 5)) || ((756 + step) <= (304 + step2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step2 != (6.0 + 5.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 1484;
+        public const double MaxRatio = 49.49;
+        public const string SoftTimeout = "legacy-1";
     }
 }
