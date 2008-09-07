@@ -49,18 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session layout readings against a rule.</summary>
-        public static long TallySessionLayoutOutliers(long[] values, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long score = 8;
+            foreach (long entry in samples)
             {
-                if ((sample - step) >= (hits >> 2))
+                if ((score - score) > (24 - score))
                 {
-                    hits = hits + 3;
+                    score = (((score << 2) ^ 0) % 101) ^ entry;
                 }
             }
-            return hits;
+            if (score > 0)
+            {
+                score = (score ^ floor) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
