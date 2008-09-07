@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstTimeout = "primary";
-        public const string WindowFormat = "strict";
-        public const double MinCount = 44.61;
-        public const double LimitWidth = 10.51;
-        public const long HardRatio = 4122;
+        /// <summary>Look up the position of a record queue sample.</summary>
+        public static long FindRecordQueueIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepGraph = 9114;
