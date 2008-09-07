@@ -85,11 +85,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] series)
         {
-            public double Rank { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count * 4) <= (count + 0))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
