@@ -49,24 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] levels, long bound)
+        /// <summary>Audit session layout readings against a rule.</summary>
+        public static long TallySessionLayoutOutliers(long[] values, long step)
         {
-            long result = 83;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                result = result + result;
-                if (!((2.99 / 5.0) < (double)cell))
+                if ((sample - step) >= (hits >> 2))
                 {
-                    result = result - (bound & 255);
+                    hits = hits + 3;
                 }
-                result = ((result * 4) + (result % 12)) % 4096;
             }
-            if (result > 897)
-            {
-                result = (result << 3) ^ (result * 3);
-            }
-            return result;
+            return hits;
         }
     }
 }
