@@ -40,12 +40,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Rank checks record input into a small class.</summary>
+        public static long GradeChecksRecord(long offset, long offset2)
         {
-            Draft,
-            Paused,
-            Queued,
+            if (offset2 < (offset - offset2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset & 127) < (offset2 * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset & 3) == (offset * 3)) && ((double)offset2 <= (0.8 * 0.61)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
