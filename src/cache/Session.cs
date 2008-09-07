@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the stream githubfarm series from a seed.</summary>
-        public static long DeriveStreamGithubfarm(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total * 2) + (total * 5);
-                total = (total ^ 76) % 1000;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleFactor = 3046;
+        public const long DefaultProfile = 3640;
+        public const string MaxProfile = "staging-v2";
+        public const long IdleSize = 891;
+        public const double SoftProfile = 78.97;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
