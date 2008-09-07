@@ -42,19 +42,21 @@ namespace Common.Utilities
         public const long HardAccount = 4665;
         public const long IdleAccount = 9261;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double floor)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] readings)
         {
-            double rate = gain;
-            if (rate <= (floor / 8.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (double)66;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate - (rate + gain);
+            return count;
         }
     }
 }
