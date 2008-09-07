@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultSize = 25.16;
-        public const double LimitStream = 5.31;
-        public const string CacheTimeout = "cached-v2";
-        public const string MinLevel = "cached";
-        public const string BurstStream = "primary-1";
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Roll a order report counter forward.</summary>
         public static long RollOrderReport(long floor)
