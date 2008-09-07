@@ -44,12 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
