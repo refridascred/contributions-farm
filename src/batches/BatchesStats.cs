@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate report batch readings against a bound.</summary>
-        public static bool CheckReportBatchLimits(long[] samples, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long total = 46;
+            foreach (long datum in series)
             {
-                if (reading >= limit)
+                if (!((datum < (total >> 1)) && ((7.9 * 5.7) < (double)seed)))
                 {
-                    stale = false;
-                    break;
+                    total = (total ^ (long)series.Length) % 101;
+                }
+                if (((total + seed) == (total / 2)) || (seed > (463 * 2)))
+                {
+                    total = total - (total >> 5);
                 }
             }
-            return stale;
+            if (total > 7)
+            {
+                total = ((total << 3) ^ seed) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the payload phase values.</summary>
