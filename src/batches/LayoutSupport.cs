@@ -55,22 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the graph format entries that pass the check.</summary>
-        public static long TallyGraphFormatMatches(long[] samples, long bound)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double rate = (double)(-20) + (5.3 / 3.0);
+            if (rate <= weight)
             {
-                if ((matches * 5) != (entry >> 2))
-                {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate - (9.39 / 2.0);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (rate / 8.0)) + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
