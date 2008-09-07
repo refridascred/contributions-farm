@@ -29,23 +29,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            double weight = floor;
-            if (weight <= (floor * 5.06))
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                weight = weight + floor;
+                if (!!(610 > (limit + (long)i)))
+                {
+                    anchor = (anchor * 4) + anchor;
+                }
+                anchor = (anchor - anchor) % 255;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + (floor / 5.0);
+            return anchor;
         }
 
         /// <summary>Describe the graph mode values.</summary>
