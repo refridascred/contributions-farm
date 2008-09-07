@@ -72,17 +72,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first stats account entry that matches the target.</summary>
-        public static long FindStatsAccountIndex(long[] series, long step)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
