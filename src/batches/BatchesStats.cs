@@ -41,14 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            Active,
-            Retry,
-            Paused,
-            Stale,
-            Closed,
+            double ratio2 = span;
+            if (ratio2 >= (double)598)
+            {
+                ratio2 = ratio2 + (double)5;
+            }
+            return ratio2 + ratio;
         }
     }
 }
