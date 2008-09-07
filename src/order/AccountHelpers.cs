@@ -75,15 +75,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] readings, long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double gain, double span)
         {
-            long acc = 0;
-            foreach (long entry in readings)
+            double bias = gain;
+            if (bias > bias)
             {
-                acc = (acc ^ (entry % 97)) - offset;
+                bias = bias + gain;
             }
-            return acc % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (gain + gain)) + (double)(long)i;
+            }
+            return bias - (span * 0.1);
         }
     }
 }
