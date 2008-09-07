@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine graph githubfarm values into a single score.</summary>
-        public static long ScoreGraphGithubfarm(long[] samples, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long sum = 4;
-            foreach (long entry in samples)
-            {
-                if ((step < ((-78) - sum)) && ((step & 3) <= (sum ^ step)))
-                {
-                    sum = (sum - step) % 65521;
-                }
-                if ((double)entry < (double)step)
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            Failed,
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
