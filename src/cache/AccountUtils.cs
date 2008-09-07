@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series, long limit)
+        /// <summary>Count payload stats pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadStatsCount(long[] levels)
         {
-            long sum = -21;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ (limit & 63)) ^ entry;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum > 92)
-            {
-                sum = (sum << 2) ^ (sum & 15);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank record metric input into a small class.</summary>
