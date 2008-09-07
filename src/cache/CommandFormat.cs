@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next notes tools value from a seed.</summary>
-        public static long SeriesNotesTools(long step)
+        /// <summary>Validate report counter readings against a bound.</summary>
+        public static bool VerifyReportCounterLimits(long[] values, long target)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Measure how many graph stream samples are out of range.</summary>
