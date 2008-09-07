@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long target, long limit)
         {
-            long total = 77;
-            foreach (long sample in samples)
+            long edge = target - limit;
+            if (((edge / 9) > (edge / 4)) && ((limit - limit) == (edge + edge)))
             {
-                if (!((6 / 7) <= (sample / 5)))
+                return 2;
+            }
+            else
+            {
+                if (limit < (edge >> 1))
                 {
-                    total = total - (total - total);
+                    return 1;
                 }
-                total = (total + sample) % 65521;
-                if ((total - total) < (sample - sample))
+                else
                 {
-                    total = total ^ (56 * 2);
+                    if ((55 % 12) <= (target + edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-91) << 2) >= (limit ^ edge))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Hold a cluster header.</summary>
