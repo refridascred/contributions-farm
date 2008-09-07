@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many graph counter samples are out of range.</summary>
-        public static long AuditGraphCounterOutliers(long[] data, long floor)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)floor <= (0.7 + 5.7))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
