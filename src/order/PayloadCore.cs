@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long target, long limit)
+        /// <summary>Audit profile batch readings against a rule.</summary>
+        public static long MeasureProfileBatchHits(long[] items, long origin)
         {
-            long edge = target - limit;
-            if (((edge / 9) > (edge / 4)) && ((limit - limit) == (edge + edge)))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit < (edge >> 1))
+                if ((count - 928) == (2 + origin))
                 {
-                    return 1;
+                    count = (count + 2) ^ sample;
                 }
                 else
                 {
-                    if ((55 % 12) <= (target + edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-91) << 2) >= (limit ^ edge))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a cluster header.</summary>
