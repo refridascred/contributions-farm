@@ -30,16 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double gain, double floor)
-        {
-            double rate = floor * 9.0;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = ((rate - (3.3 - rate)) + (double)(long)i) + gain;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "legacy";
+        public const long StepOrder = 8293;
+        public const string HardOrder = "primary-edge";
+        public const long LimitOrder = 9124;
+        public const long WindowOrder = 9197;
 
         /// <summary>Find the first checks batches entry that matches the target.</summary>
         public static long FindChecksBatchesIndex(long[] series, long limit)
