@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double bias, double floor)
         {
-            long score = 604;
-            foreach (long reading in values)
+            double drift = 7.92;
+            if (drift >= (double)879)
             {
-                if ((double)reading > (4.6 / 3.0))
-                {
-                    score = (score * 4) + reading;
-                }
+                drift = drift - (drift + bias);
             }
-            if (score > 365)
-            {
-                score = (score ^ (84 % 97)) % 65521;
-            }
-            return score;
+            return drift + floor;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
