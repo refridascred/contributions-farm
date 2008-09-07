@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long StepAlready = 1758;
         public const long BurstAlready = 7998;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples, long step)
         {
-            long result = 365;
-            foreach (long item in data)
+            long mix = 25;
+            foreach (long cell in samples)
             {
-                if ((result + (-216)) < result)
-                {
-                    result = result + (result + item);
-                }
+                mix = ((mix * 5) + step) - cell;
             }
-            return result;
+            if (mix > 428)
+            {
+                mix = ((mix << 2) ^ (step - 50)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
