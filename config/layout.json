@@ -1,7 +1,6 @@
 {
-  "compress": 23.66,
-  "cache_ttl": 303,
-  "max_capacity_count": true,
-  "soft_timeout_ms": "fallback",
-  "poll_retries": false
+  "compress": "standard",
+  "readonly": 1024,
+  "command_size": 28,
+  "soft_delay_ms": 71.47
 }
