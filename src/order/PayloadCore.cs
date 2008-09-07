@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((hits - (long)readings.Length) <= (hits % 64))
-                {
-                    hits = (hits + 3) + reading;
-                }
+                acc = (acc ^ (long)i) % 4096;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the route state values.</summary>
