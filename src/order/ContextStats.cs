@@ -23,21 +23,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Project the next format notes value.</summary>
+        public static double AdjustFormatNotes(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (span / 6.0) / 2.0;
+            if (mean > 7.76)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + scale;
             }
-            return seen;
+            else
+            {
+                mean = mean + 8.33;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (span + mean)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define account limits and defaults.</summary>
