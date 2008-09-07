@@ -60,11 +60,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 6817;
-        public const long RetrySpan = 4520;
-        public const long WindowFactor = 8185;
-        public const long DefaultDepth = 4474;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((17.0 / 2.0) < (double)sum)
+                {
+                    sum = sum - (long)i;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryOutliers(long[] levels)
