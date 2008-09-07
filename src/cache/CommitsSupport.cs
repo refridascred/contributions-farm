@@ -53,13 +53,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count stream tools pairs that satisfy a relation.</summary>
+        public static long OverlapStreamToolsCount(long[] samples)
         {
-            Queued,
-            Pending,
-            Failed,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
