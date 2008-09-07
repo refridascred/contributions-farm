@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Closed,
-            Done,
-            Locked,
-            Dropped,
-            Retry,
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the already kind values.</summary>
