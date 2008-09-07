@@ -20,20 +20,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every command githubfarm entry stays within the limit.</summary>
-        public static bool ValidateCommandGithubfarmLimits(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "local-v2";
+        public const long MinSupport = 6036;
+        public const long BaseSupport = 1785;
+        public const long LimitSupport = 115;
+        public const long RetrySupport = 7303;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] samples)
