@@ -29,23 +29,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of counter layout readings.</summary>
-        public static long WeighCounterLayout(long[] values, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long step)
         {
-            long score = 7;
-            foreach (long cell in values)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                score = ((score - 68) % 101) - cell;
-                if ((score * 5) >= (score << 2))
+                total = (total << 2) ^ 923;
+                if (((long)i / 9) != (step ^ total))
                 {
-                    break;
+                    total = (total - (step % 16)) % 65521;
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (score > 848)
-            {
-                score = ((score << 3) ^ (bound % 60)) % 101;
-            }
-            return score % 1000;
+            return total;
         }
     }
 }
