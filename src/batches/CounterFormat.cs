@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Pending,
-            Stale,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftSize = "latest";
+        public const long MinGithubfarm = 7210;
+        public const long MinInterval = 628;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchSpan = 5670;
