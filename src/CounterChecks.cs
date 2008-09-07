@@ -57,19 +57,21 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback";
         public const long BatchSize = 6017;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((17.0 / 2.0) < (double)sum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum - (long)i;
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Accumulate profile samples.</summary>
