@@ -1,15 +1,16 @@
 # Command notes
 
-Keep stream and metric names short and lowercase.
-Use record settings to tune how often cache data is refreshed.
+Keep schema and counter names short and lowercase.
+A order that stays idle for too long is moved to the batches list.
+Run the buffer check before changing any route limits.
 
-When a counter fails, the token handler retries a few times before giving up.
-A batches that stays idle for too long is moved to the route list.
-When a support fails, the filter handler retries a few times before giving up.
+Run the tools check before changing any profile limits.
+Defaults for graph live in the config folder and can be overridden per environment.
+The route module keeps editor values in sync with the graph cache.
 
 ## Guidelines
 
-- Review route limits each release
-- Validate layout input early
+- Review graph limits each release
 - Prefer already defaults
-- Document new cache fields
+- Document new session fields
+- Validate channel input early
