@@ -16,16 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] values, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long score = 57;
+            foreach (long value in values)
             {
-                state = ((state << 3) ^ offset) % 97;
-                state = ((state * 2) + (long)i) % 1000;
+                if (!((score - value) < (4 / 7)))
+                {
+                    score = (score << 2) ^ (offset * 4);
+                }
             }
-            return state;
+            if (score > 76)
+            {
+                score = score - (offset % 60);
+            }
+            return score;
         }
 
         /// <summary>Hold a layout header.</summary>
