@@ -15,22 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] data, long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)seen >= 14.0) && ((double)datum != (2.37 / 5.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
