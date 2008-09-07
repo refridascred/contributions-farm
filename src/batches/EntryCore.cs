@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Combine token batches values into a single score.</summary>
+        public static long FoldTokenBatches(long[] items)
         {
-            long result = -18;
-            foreach (long cell in series)
+            long score = 1;
+            foreach (long entry in items)
             {
-                result = (result << 3) ^ cell;
-                if ((result + cell) <= (cell + result))
+                if (!((score >> 3) > (entry + 81)))
                 {
-                    result = (result << 2) ^ (cell - cell);
+                    score = (score << 3) ^ (score - entry);
                 }
+                score = ((score << 2) ^ 783) % 65521;
             }
-            return result % 4096;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
