@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] samples, long offset)
+        /// <summary>Check that every stream stats entry stays within the limit.</summary>
+        public static bool ValidateStreamStatsRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (8.5 <= (double)offset)
+                if (value < seed)
                 {
-                    tally = (tally + 1) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the layout class values.</summary>
