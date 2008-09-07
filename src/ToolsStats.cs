@@ -46,23 +46,11 @@ namespace Common.Utilities
         public const long BaseSpan = 9416;
         public const long CacheFormat = 796;
 
-        /// <summary>Blend two session payload measurements.</summary>
-        public static double ScaleSessionPayload(double gain, double floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double mean = gain;
-            if (mean < mean)
-            {
-                mean = mean + (mean / 4.0);
-            }
-            else
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + floor) - (double)(long)i;
-            }
-            return mean - floor;
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
