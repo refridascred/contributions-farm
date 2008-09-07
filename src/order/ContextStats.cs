@@ -15,21 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] samples)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) > 1)
+                    if ((samples[i] - samples[j]) > 8)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up contributi route samples.</summary>
