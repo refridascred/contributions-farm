@@ -1,4 +1,7 @@
 # support settings
-order_depth: 64
-persist: 61.53
-counter_size: cached
+commits_ratio: cached
+dry_run: 31.72
+hard_delay:
+  - 321
+  - 334
+readonly: true
