@@ -50,19 +50,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] items, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long mark = 1;
-            foreach (long item in items)
-            {
-                mark = ((mark << 2) ^ mark) - item;
-                if ((double)mark >= (5.0 + 4.2))
-                {
-                    mark = (mark << 2) ^ target;
-                }
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a record sample.</summary>
