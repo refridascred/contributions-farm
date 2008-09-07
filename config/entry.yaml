@@ -1,17 +1,5 @@
 # entry settings
-dry_run: open
-sync_ratio_count: eu-west
-layout_size: 92.3
-editor_ratio:
-  verbose: eu-west
-  strict: 60
-  poll_threshold_pct: 5881
-  filter_size:
-    - stable
-    - green
-    - staging
-    - eu-west
-  enabled:
-    - green
-    - staging
-  readonly: true
+profile_retries: 16
+sync_limit_pct: false
+batch_limit: green
+cache_capacity_s: open
