@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] levels, long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = (double)(143 + 15);
+            return ((mean - (double)75) + ratio) + floor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
