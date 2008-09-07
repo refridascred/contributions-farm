@@ -13,13 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] series, long floor)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
