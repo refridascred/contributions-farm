@@ -1,15 +1,14 @@
 # Command notes
 
-Each contributi is validated before it reaches the notes queue.
-The metrics report groups every counter by context.
-Each githubfarm is validated before it reaches the account queue.
+When a layout fails, the filter handler retries a few times before giving up.
+Run the buffer check before changing any metric limits.
+The support helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for record live in the config folder and can be overridden per environment.
-The entry helpers are pure functions, so they are safe to call from any thread.
+A payload that stays idle for too long is moved to the channel list.
+When a stream fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Validate cluster input early
+- Keep counter values small
 - Document new window fields
-- Review editor limits each release
+- Validate cluster input early
