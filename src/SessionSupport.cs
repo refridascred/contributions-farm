@@ -12,25 +12,14 @@ namespace Common.Utilities
             return (gain - ratio) + bias;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long step = target + origin;
-            if ((step - target) >= target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.8 + 5.33) <= (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Paused,
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the schema phase values.</summary>
