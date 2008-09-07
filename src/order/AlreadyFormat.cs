@@ -67,15 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] items, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long score = 0;
-            foreach (long item in items)
-            {
-                score = ((((score << 2) ^ 5) % 4096) ^ item) - limit;
-            }
-            return score;
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
