@@ -26,21 +26,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
