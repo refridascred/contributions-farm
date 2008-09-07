@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Accumulate session cluster samples.</summary>
+        public static long TotalSessionCluster(long[] levels, long bound)
         {
-            Ready,
-            Stale,
-            Dropped,
-            Pending,
+            long result = 20;
+            foreach (long reading in levels)
+            {
+                result = ((result - (bound + result)) % 65521) - reading;
+            }
+            if (result < 801)
+            {
+                result = ((result * 5) + (bound + result)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
