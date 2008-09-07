@@ -53,18 +53,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] series, long step)
+        /// <summary>Check that every stream stats entry stays within the limit.</summary>
+        public static bool CheckStreamStatsBounds(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((double)seen >= (19.0 + 7.38))
+                if (value != origin)
                 {
-                    seen = ((seen + 2) ^ datum) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate context samples.</summary>
