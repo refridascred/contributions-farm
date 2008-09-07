@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > origin)
                 {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a buffer info.</summary>
