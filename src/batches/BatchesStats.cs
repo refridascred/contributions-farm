@@ -31,12 +31,9 @@ namespace Common.Utilities
         public const double StepLevel = 65.05;
         public const long WindowRoute = 6980;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "legacy-1";
+        public const long RetryMetrics = 1823;
+        public const long BatchInterval = 3516;
     }
 }
