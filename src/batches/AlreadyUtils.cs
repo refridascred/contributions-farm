@@ -61,27 +61,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Iterate the record route series from a seed.</summary>
+        public static long RollRecordRoute(long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc ^ (9 * 4)) % 65521) ^ (long)i2;
-                }
-                if ((double)bound == (5.9 - 7.2))
-                {
-                    acc = ((acc << 3) ^ (33 % 7)) % 65521;
-                }
-                if ((bound >> 1) < bound)
-                {
-                    acc = (acc << 3) ^ (bound << 3);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
     }
 }
