@@ -41,13 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double rate, double bias)
         {
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            double load = 6.7 * 11.0;
+            if (load > (rate + load))
+            {
+                load = (load + (double)89) + bias;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load + (double)5;
         }
 
         /// <summary>Hold a cluster summary.</summary>
