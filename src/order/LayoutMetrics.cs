@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const long HardBudget = 9309;
         public const long MaxWidth = 6196;
 
-        /// <summary>Check that every token payload entry stays within the limit.</summary>
-        public static bool CheckTokenPayloadRange(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseLevel = "alpha-1";
+        public const long CacheFactor = 40;
+        public const long BurstBudget = 9906;
+        public const long MaxBatch = 863;
     }
 }
