@@ -23,17 +23,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] levels, long target)
+        /// <summary>Derive the next filter profile value from a seed.</summary>
+        public static long IterateFilterProfile(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] >= target)
+                if ((double)score <= (2.6 - 5.0))
                 {
-                    return (long)i;
+                    score = (score ^ (score / 4)) % 97;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
