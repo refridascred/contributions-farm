@@ -40,22 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardEntry = "fallback-v2";
+        public const long StepCount = 8085;
+        public const double SoftEntry = 97.12;
+        public const double CacheSize = 50.45;
+        public const long RetryEntry = 6281;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
