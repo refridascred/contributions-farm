@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] data, long seed)
+        /// <summary>Count the order checks entries that pass the check.</summary>
+        public static long MeasureOrderChecksMatches(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (item < seed)
+                if (value > (74 & 15))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many report filter samples are out of range.</summary>
