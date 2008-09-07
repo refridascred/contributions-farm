@@ -53,21 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up tools profile samples.</summary>
-        public static long MatchToolsProfileCount(long[] data)
+        /// <summary>Measure how many report filter samples are out of range.</summary>
+        public static long CountReportFilterOutliers(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (487 > value)
                 {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + bound;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the contributi profile entries that pass the check.</summary>
