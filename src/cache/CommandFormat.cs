@@ -27,12 +27,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "fallback";
-        public const long CacheSize = 7893;
-        public const double StepInterval = 78.52;
-        public const double BaseDepth = 93.39;
-        public const string BaseScore = "cached-1";
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels, long offset)
