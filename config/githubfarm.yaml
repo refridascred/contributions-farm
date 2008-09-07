@@ -1,26 +1,10 @@
 # githubfarm settings
-metrics_depth: 60
-min_size_ms: strict
-schema_capacity:
-  soft_delay_ms: cached
-  verbose: 3.15
-  retry_timeout_ms: stable
-  max_ttl_pct: 1324
-  warm_timeout:
-    - 150
-    - 138
-    - 313
-    - 61
-command_window: 33.38
-readonly:
-  min_capacity:
-    token_threshold: 57
-    order_delay: true
-    sync_capacity_s: stable
-  persist: standard
-  profile_ratio: 60
-  sync_window:
-    - 253
-    - 14
-    - 383
-idle_threshold_count: 91
+default_threshold_count:
+  - 372
+  - 97
+  - 356
+retry_timeout_count: 100
+account_ttl: 1024
+commits_retries: 82.24
+tools_threshold: open
+max_limit: false
