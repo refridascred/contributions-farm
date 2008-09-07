@@ -1,10 +1,5 @@
 {
-  "context_window": {
-    "record_window": ["stable", "legacy", "primary", "edge"],
-    "dry_run": "legacy",
-    "compress": 91,
-    "soft_retries_count": 81.13
-  },
-  "idle_retries_pct": 18.5,
-  "contributi_timeout": 52.97
+  "command_size": ["stable", "strict", "primary"],
+  "burst_ratio": false,
+  "default_retries_ms": 42.22
 }
