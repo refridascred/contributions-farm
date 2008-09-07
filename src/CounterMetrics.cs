@@ -27,22 +27,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] levels, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] levels, long step)
         {
-            long mark = 1;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((10.0 / 2.0) > (double)mark)
+                if (!((sample + sample) >= (sample + 27)))
                 {
-                    mark = mark - (bound ^ 67);
-                }
-                if ((9.5 + 15.0) >= (double)item)
-                {
-                    break;
+                    seen = (seen + 2) - step;
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
