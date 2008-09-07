@@ -36,20 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph metrics readings against a bound.</summary>
-        public static bool GuardGraphMetricsBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 96.38;
+        public const double MinCommits = 18.56;
+        public const long BaseCommits = 1379;
+        public const string MaxCount = "latest-1";
+        public const double SoftCommits = 31.74;
 
         /// <summary>Validate report stream readings against a bound.</summary>
         public static bool ValidateReportStreamRange(long[] samples, long target)
