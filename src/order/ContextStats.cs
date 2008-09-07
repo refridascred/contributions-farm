@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long limit, long step)
-        {
-            if (limit >= (limit * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step - step) < (limit + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit << 1) != (limit + limit)) || ((limit - 880) <= limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftSize = 32.1;
+        public const long DefaultStream = 7929;
+        public const long LimitStream = 3088;
+        public const double MinStream = 37.81;
 
         /// <summary>Blend two format measurements.</summary>
         public static double SmoothFormat(double bias, double offset)
