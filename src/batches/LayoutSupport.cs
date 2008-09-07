@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            long result = 912;
-            foreach (long entry in items)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                result = ((result * 3) + entry) % 65521;
+                state = ((state * 2) + (bound & 31)) % 255;
+                if ((state << 1) <= (state + bound))
+                {
+                    state = (state ^ bound) % 97;
+                }
+                if (((double)bound >= (double)state) || (bound > (130 << 2)))
+                {
+                    state = (state ^ (bound + (long)i)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return result % 65521;
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
