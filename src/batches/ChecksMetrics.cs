@@ -25,19 +25,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double ratio, double floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            double scale = ratio + ratio;
-            if (scale < (floor * 1.2))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - 15.0;
-            }
-            return scale + floor;
+            return tally;
         }
 
         /// <summary>Describe the report phase values.</summary>
