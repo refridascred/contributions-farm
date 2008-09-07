@@ -94,32 +94,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long floor, long floor2)
-        {
-            long lane = floor - floor2;
-            if ((floor * 2) < floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (lane <= (floor2 - 58))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7 - floor2) < (floor - 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowInterval = 4;
+        public const long WindowRatio = 4543;
+        public const long MaxWindow = 3851;
+        public const long BurstScore = 8876;
     }
 }
