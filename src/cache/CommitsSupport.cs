@@ -58,19 +58,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell % 100) < (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 1391;
+        public const long HardLayout = 1877;
+        public const long BurstLayout = 1229;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long WeighMetrics(long[] readings, long limit)
