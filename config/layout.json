@@ -1,5 +1,6 @@
 {
-  "retry_retries": 500,
-  "default_ratio_ms": 500,
-  "retry_size_ms": ["primary", "staging"]
+  "context_retries": 250,
+  "entry_window": "local",
+  "poll_retries_ms": 45,
+  "soft_size_count": [153, 328]
 }
