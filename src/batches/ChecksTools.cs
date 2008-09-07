@@ -32,11 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 3371;
-        public const long BatchRatio = 4633;
-        public const long MinTimeout = 7257;
-        public const string RetryAccount = "legacy-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 9322;
+        public const long MaxStream = 6798;
+        public const long DefaultStream = 6916;
+        public const long MaxDepth = 8803;
+        public const long CacheStream = 5192;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftTimeout = 2521;
