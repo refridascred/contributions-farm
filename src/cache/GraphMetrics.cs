@@ -32,21 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Grade a entry support value against two limits.</summary>
+        public static long ClassifyEntrySupport(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound2 >> 4) < (bound & 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((bound2 + bound2) <= (bound2 * 2))
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of layout buffer entries.</summary>
