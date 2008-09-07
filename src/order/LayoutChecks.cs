@@ -28,12 +28,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            long state = 47;
+            foreach (long entry in values)
+            {
+                if ((state - 853) < (entry + state))
+                {
+                    state = (state << 3) ^ (state + entry);
+                }
+                if ((entry - entry) >= (state & 127))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
