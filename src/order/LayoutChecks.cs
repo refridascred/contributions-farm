@@ -43,22 +43,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the layout metrics entries that pass the check.</summary>
-        public static long TallyLayoutMetricsGaps(long[] levels, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((1.08 * 0.82) <= (double)cell))
+                if ((double)seen >= (19.0 + 7.38))
                 {
-                    matches = (matches + 2) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 2) ^ datum) + step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate context samples.</summary>
