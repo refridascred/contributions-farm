@@ -1,6 +1,9 @@
-id,owner,label
-1,33.13,127
-2,88,legacy
-3,cached,74.23
-4,eu-west,local
-5,eu-west,873
+id,count,label,rank,level
+1,64.51,standard,102,90.93
+2,55.7,500,121,34
+3,stable,staging,61.06,46.39
+4,181,303,standard,87.72
+5,standard,154,527,green
+6,staging,blue,672,163
+7,67.56,cached,885,stable
+8,latest,stable,legacy,419
