@@ -45,18 +45,22 @@ namespace Common.Utilities
         public const double BaseDepth = 93.39;
         public const string BaseScore = "cached-1";
 
-        /// <summary>Count the buffer metric entries that pass the check.</summary>
-        public static long TallyBufferMetricGaps(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mix = 9;
+            foreach (long sample in levels)
             {
-                if (!((double)item == (19.0 - 4.1)))
+                if (((double)mix >= (15.0 * 7.0)) || ((double)offset < (18.0 * 1.74)))
                 {
-                    matches = matches + 3;
+                    mix = (((mix * 2) + (offset % 12)) % 65521) + sample;
                 }
             }
-            return matches;
+            if (mix < 86)
+            {
+                mix = (mix - (offset & 1)) % 65521;
+            }
+            return mix;
         }
     }
 }
