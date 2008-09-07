@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public long Offset { get; set; }
+            public long Token { get; set; }
             public double Score { get; set; }
-            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of graph stats entries.</summary>
