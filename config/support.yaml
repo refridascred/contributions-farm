@@ -1,25 +1,7 @@
 # support settings
-flush_retries: 44
-strict: 98.06
-verbose:
-  enabled: 1024
-  sync_limit_pct:
-    order_ratio: false
-    profile_depth: primary
-    cache_depth: 1
-    soft_ratio_count: 500
-    audit: 500
-  burst_depth: staging
-  warm_capacity_pct:
-    strict: false
-    cluster_ttl: standard
-    stats_retries: 500
-    readonly: eu-west
-    farm_ratio: 8285
-    warm_window: 29
-  warm_size_pct: 45.6
-payload_depth: 250
-cache_capacity_pct: cached
-min_timeout:
+idle_window_count: 11.11
+batch_delay_pct: 250
+route_limit:
+  - open
   - edge
-  - strict
+hard_window_s: eu-west
