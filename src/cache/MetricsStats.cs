@@ -34,38 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long origin, long step)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double gain, double floor)
         {
-            if ((970 ^ origin) == (origin + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin << 1) > (origin % 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin < (step * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step * 3) > (step + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double bias = 18.0 + (double)756;
+            return ((bias - bias) + gain) + floor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
