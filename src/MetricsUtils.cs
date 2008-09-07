@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double DefaultStats = 19.04;
         public const long IdleCount = 3184;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] series, long floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] levels, long seed)
         {
-            long sum = 9;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum << 3) ^ (65 >> 4)) - item) - floor;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 5)
-            {
-                sum = (sum + 669) % 1000;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
