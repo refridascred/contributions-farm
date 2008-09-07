@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long target, long origin)
         {
-            long score = 378;
-            foreach (long item in samples)
+            if ((origin - target) > target)
             {
-                if ((-2) < (item + score))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= (9.7 - 9.1))
                 {
-                    score = (score ^ (32 - seed)) % 65521;
+                    return 4;
                 }
                 else
                 {
-                    score = score ^ (item >> 2);
+                    if ((10.0 / 5.0) > (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (score > 82)
-            {
-                score = ((score << 2) ^ seed) % 101;
-            }
-            return score;
         }
 
         /// <summary>Rank already input into a small class.</summary>
