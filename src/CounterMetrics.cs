@@ -27,19 +27,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample + sample) >= (sample + 27)))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinTimeout = 525;
+        public const long HardDepth = 9461;
+        public const long RetryRoute = 9354;
+        public const long StepWidth = 532;
+        public const long CacheRoute = 1815;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string SoftCommand = "primary";
