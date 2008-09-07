@@ -26,20 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double scale, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            double drift = span;
+            if (drift > (drift - span))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc << 3) ^ (long)i) % 4096;
-                    acc = (acc - ((long)i2 & 3)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                drift = drift - (double)84;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (2.7 - scale)) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Project the next context value.</summary>
