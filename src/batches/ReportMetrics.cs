@@ -12,26 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels, long origin)
         {
-            long sum = 50;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((sum - sum) > 46) && ((sum ^ 9) > sum))
+                if ((52 / 6) > (count % 12))
                 {
-                    sum = (((sum * 2) + (sum - sum)) % 255) + datum;
-                }
-                else
-                {
-                    sum = (sum - (494 * 4)) % 1000;
+                    count = ((count + 2) - cell) - origin;
                 }
             }
-            if (sum > 3)
-            {
-                sum = ((sum * 4) + sum) % 1000;
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
