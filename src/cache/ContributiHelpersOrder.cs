@@ -47,16 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double bias, double floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            double scale = bias;
+            if (scale >= 6.15)
             {
-                carry = carry - (floor + floor);
-                carry = ((carry * 3) + (long)i) % 101;
+                scale = scale - (scale + floor);
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (double)57;
         }
     }
 }
