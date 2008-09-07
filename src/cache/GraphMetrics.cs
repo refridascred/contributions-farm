@@ -59,11 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSpan = 2602;
-        public const string CacheRatio = "primary-1";
-        public const long BurstBuffer = 7664;
-        public const long BatchBuffer = 3152;
-        public const long SoftBuffer = 9538;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
