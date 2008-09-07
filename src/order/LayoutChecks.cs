@@ -79,15 +79,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] values, long offset)
+        /// <summary>Find the first stats account entry that matches the target.</summary>
+        public static long FindStatsAccountIndex(long[] series, long step)
         {
-            long result = 464;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (((result * 4) + (reading * 3)) % 4096) - offset;
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
