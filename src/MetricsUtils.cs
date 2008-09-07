@@ -39,11 +39,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
