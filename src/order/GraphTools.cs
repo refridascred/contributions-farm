@@ -22,18 +22,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit record farm readings against a rule.</summary>
-        public static long CountRecordFarmOutliers(long[] samples)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((entry << 2) <= (entry ^ 542))
-                {
-                    count = count + 1;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the command class values.</summary>
