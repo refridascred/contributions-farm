@@ -20,14 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstRatio = "latest-edge";
+        public const long BurstSize = 1638;
+        public const long MinTimeout = 3075;
+        public const string RetryAlready = "strict";
+        public const long WindowDepth = 1537;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long floor, long origin)
