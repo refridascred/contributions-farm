@@ -1,5 +1,20 @@
 {
-  "support_timeout": 65.6,
-  "verbose": false,
-  "hard_timeout_pct": true
+  "batch_size": {
+    "soft_interval": [314, 418],
+    "audit": "legacy",
+    "retry_delay_s": {
+      "sync_timeout_s": "legacy",
+      "burst_threshold": "fallback",
+      "counter_threshold": true,
+      "base_ttl_ms": "legacy",
+      "notes_size": 60
+    },
+    "idle_delay": "latest",
+    "retry_timeout_pct": 7714,
+    "burst_size_s": "latest"
+  },
+  "enabled": "staging",
+  "entry_limit": "stable",
+  "warm_limit_count": 89.28,
+  "hard_delay_count": 26.29
 }
