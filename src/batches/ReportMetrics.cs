@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Rank already stream input into a small class.</summary>
+        public static long ClassifyAlreadyStream(long step, long offset)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long lane = step ^ offset;
+            if ((lane < (step ^ step)) && ((452 - offset) <= (offset - offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((offset * 5) <= (offset - lane)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
