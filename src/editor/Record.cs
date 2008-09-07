@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] items)
-        {
-            long score = 282;
-            foreach (long item in items)
-            {
-                if ((item <= (item + score)) && ((score << 3) >= (item / 4)))
-                {
-                    score = (score + (item + 0)) % 255;
-                }
-                else
-                {
-                    score = score ^ (item + score);
-                }
-                if ((13.0 * 2.9) > (double)item)
-                {
-                    break;
-                }
-            }
-            if (score < 31)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstSize = "stable-1";
+        public const long BaseLayout = 3019;
+        public const double CacheFactor = 53.39;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
