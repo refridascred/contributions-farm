@@ -70,22 +70,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] data, long seed)
+        /// <summary>Measure how many checks counter samples are out of range.</summary>
+        public static long TallyChecksCounterHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((hits % 10) == (value % 5))
+                if ((5.3 * 2.0) > (double)seen)
                 {
-                    hits = (hits + 1) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
