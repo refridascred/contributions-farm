@@ -1,6 +1,12 @@
 {
-  "batches_depth": [31, 161, 166, 219],
-  "min_depth": "blue",
-  "cache_window_s": 88.59,
-  "idle_limit_s": 83.46
+  "idle_depth_s": 500,
+  "commits_threshold": {
+    "poll_interval_ms": 55.48,
+    "warm_limit_pct": "standard",
+    "cache_threshold": 1026
+  },
+  "metrics_delay": 9.6,
+  "session_threshold": 100,
+  "strict": "cached",
+  "enabled": "standard"
 }
