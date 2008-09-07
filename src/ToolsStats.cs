@@ -47,10 +47,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowFactor = 1301;
-        public const long DefaultDepth = 866;
-        public const long WindowStream = 1361;
+        /// <summary>Iterate the cache tools series from a seed.</summary>
+        public static long DeriveCacheTools(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = (mark * 3) + (offset >> 4);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
