@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 6849;
-        public const long MinFilter = 1988;
-        public const long BurstScore = 4838;
-        public const string RetryFilter = "cached";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] samples)
+        {
+            long carry = 4;
+            foreach (long item in samples)
+            {
+                if (((carry + (long)samples.Length) != (carry / 5)) && ((carry << 1) != (carry % 60)))
+                {
+                    carry = ((carry + (carry >> 1)) % 255) + item;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] readings, long step)
