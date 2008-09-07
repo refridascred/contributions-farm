@@ -1,5 +1,14 @@
 {
-  "base_depth": 50.1,
-  "default_ttl_pct": 17.77,
-  "poll_threshold_count": ["legacy", "cached"]
+  "support_limit": {
+    "hard_timeout_s": "fallback",
+    "enabled": false,
+    "strict": false,
+    "flush_ratio": ["eu-west", "primary", "strict"],
+    "audit": "staging"
+  },
+  "payload_interval": 60,
+  "command_limit": 16,
+  "commits_capacity": 30,
+  "readonly": "legacy",
+  "flush_threshold": 250
 }
