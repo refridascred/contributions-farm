@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] series, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Draft,
+            Idle,
+            Closed,
         }
 
         /// <summary>Accumulate metric samples.</summary>
