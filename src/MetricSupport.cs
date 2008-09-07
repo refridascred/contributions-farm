@@ -24,19 +24,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Project the next farm editor value.</summary>
+        public static double SmoothFarmEditor(double rate, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            double weight = floor;
+            if (weight < (double)8)
             {
-                if ((seed + result) <= (result >> 1))
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                weight = (weight - 0.64) + rate;
             }
-            return result;
+            else
+            {
+                weight = weight - floor;
+            }
+            return weight + (floor * 9.0);
         }
     }
 }
