@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = span;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = ((mean + mean) - (double)(long)i) - ratio;
             }
-            return matches;
+            return mean - span;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
