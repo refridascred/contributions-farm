@@ -27,32 +27,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batch entry samples.</summary>
-        public static long ScoreBatchEntry(long[] levels, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] series)
         {
-            long result = -82;
-            foreach (long entry in levels)
+            long carry = 2;
+            foreach (long item in series)
             {
-                if ((long)levels.Length < (result ^ result))
+                if ((double)item < 2.0)
                 {
-                    result = result - result;
+                    carry = ((carry << 3) ^ carry) % 101;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (entry + entry)) % 4096;
+                    carry = (carry << 3) ^ (carry % 8);
                 }
-                if (!(((long)levels.Length % 97) < offset))
-                {
-                    result = (result - (458 - offset)) % 65521;
-                    break;
-                }
-                result = result + (entry & 15);
             }
-            if (result > 5)
+            if (carry < 74)
             {
-                result = ((result * 4) + (offset ^ 1)) % 1000;
+                carry = ((carry << 3) ^ (carry >> 3)) % 101;
             }
-            return result % 4096;
+            return carry;
         }
     }
 }
