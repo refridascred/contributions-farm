@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "latest-v2";
-        public const long HardTimeout = 6419;
-        public const long MaxLevel = 6681;
-        public const long CacheReport = 1900;
-        public const long RetrySpan = 9737;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Locked,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long StepGraph(long bound)
