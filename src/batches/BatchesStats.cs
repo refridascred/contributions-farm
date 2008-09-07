@@ -38,9 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 44.87;
-        public const long BurstRecord = 9371;
-        public const double DefaultLevel = 33.39;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Ready,
+            Locked,
+            Stale,
+        }
     }
 }
