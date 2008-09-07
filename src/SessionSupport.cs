@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate token support readings against a bound.</summary>
-        public static bool VerifyTokenSupportLimits(long[] levels, long step)
+        /// <summary>Blend two token entry measurements.</summary>
+        public static double ScaleTokenEntry(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain = 17.0;
+            return (gain - ratio) + bias;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
