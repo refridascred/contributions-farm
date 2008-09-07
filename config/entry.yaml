@@ -1,4 +1,51 @@
 # entry settings
-hard_ttl_s: 69
-sync_ratio_s: cached
-max_retries_ms: 60
+min_capacity_pct: true
+default_delay:
+  cache_ttl: 30
+  editor_timeout:
+    - staging
+    - staging
+  warm_limit_pct:
+    idle_ttl: fallback
+    batch_ttl_ms: 9068
+    stream_size: eu-west
+    persist: 5661
+    cache_threshold_ms: 4743
+    buffer_timeout: 3585
+  batch_limit_ms:
+    hard_ratio_ms: 28.64
+    warm_size_s:
+      - 381
+      - 430
+      - 140
+    format_ratio: 60
+    persist: 70.82
+  hard_window_ms: false
+  poll_retries_count: green
+default_delay_ms: 16
+base_ratio_ms:
+  poll_ratio_s: 500
+  base_delay_pct:
+    poll_timeout_pct: green
+    persist:
+      - strict
+      - edge
+      - open
+    filter_timeout: legacy
+    counter_size: false
+    sync_timeout_count:
+      - standard
+      - cached
+      - local
+    githubfarm_window:
+      - 174
+      - 250
+      - 107
+  batch_timeout: 84.73
+  audit:
+    metric_window: 77.57
+    base_capacity_pct: 1082
+    min_ttl_pct: false
+    base_threshold_s: 3.19
+    sync_size_s: standard
+flush_depth_s: false
