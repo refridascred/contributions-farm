@@ -31,18 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes farm readings against a rule.</summary>
-        public static long MeasureNotesFarmMatches(long[] levels, long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item >= (16.0 - 1.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) + bound;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
