@@ -16,18 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stream tools readings against a rule.</summary>
-        public static long AuditStreamToolsHits(long[] values, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((3.38 + 4.6) != (double)offset)
+                if (value >= bound)
                 {
-                    tally = (tally + 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
