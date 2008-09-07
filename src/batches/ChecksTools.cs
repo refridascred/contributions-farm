@@ -32,11 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinWidth = 2710;
-        public const long IdleCounter = 2907;
-        public const string DefaultCounter = "primary-1";
-        public const long MaxBudget = 168;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 3371;
+        public const long BatchRatio = 4633;
+        public const long MinTimeout = 7257;
+        public const string RetryAccount = "legacy-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftTimeout = 2521;
