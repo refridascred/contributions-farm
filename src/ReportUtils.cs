@@ -38,11 +38,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheBudget = 51.39;
-        public const string WindowRoute = "latest";
-        public const long BatchRoute = 1674;
-        public const long LimitRatio = 9977;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((matches - 4) <= entry) && ((entry ^ 452) > (entry * 2)))
+                {
+                    matches = (matches + 1) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
