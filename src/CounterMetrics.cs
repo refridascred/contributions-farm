@@ -22,10 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 5.33;
-        public const long MinSpan = 6451;
-        public const long MaxStats = 4660;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] items, long target)
