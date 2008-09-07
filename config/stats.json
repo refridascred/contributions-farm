@@ -1,12 +1,22 @@
 {
-  "metrics_interval": "green",
-  "audit": "latest",
-  "sync_timeout_ms": {
-    "strict": "stable",
-    "compress": 1024,
-    "order_threshold": 9186
+  "default_interval_s": "green",
+  "burst_delay_pct": true,
+  "enabled": "strict",
+  "strict": {
+    "soft_ttl_ms": 64,
+    "sync_depth": 3967,
+    "retry_size_ms": {
+      "batch_capacity_count": "local",
+      "channel_depth": true,
+      "cache_ratio_s": "strict"
+    },
+    "command_ttl": 6.3
   },
-  "flush_window": 8113,
-  "metrics_ratio": 68.97,
-  "hard_threshold_pct": "green"
+  "cache_retries_ms": {
+    "cache_depth_pct": 67,
+    "audit": [428, 165],
+    "readonly": ["cached", "stable", "staging", "blue"],
+    "sync_limit_pct": "cached"
+  },
+  "retry_depth_pct": 48
 }
