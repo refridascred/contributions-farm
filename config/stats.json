@@ -1,5 +1,8 @@
 {
-  "enabled": 1024,
-  "max_ratio_count": "standard",
-  "batch_threshold": 56.23
+  "readonly": 35,
+  "record_retries": ["latest", "cached"],
+  "default_retries_count": false,
+  "hard_delay_count": 6467,
+  "persist": true,
+  "burst_retries": 36
 }
