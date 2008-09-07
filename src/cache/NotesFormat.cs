@@ -13,19 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of record profile readings.</summary>
-        public static long CombineRecordProfile(long[] values, long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mark = -16;
-            foreach (long datum in values)
-            {
-                mark = (mark << 2) ^ (datum + (long)values.Length);
-            }
-            if (mark > 43)
-            {
-                mark = ((mark * 4) + (offset >> 4)) % 65521;
-            }
-            return mark % 1000;
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
