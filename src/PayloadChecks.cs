@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long FoldAlreadyAccount(long[] series)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] values, long target)
         {
-            long mark = 42;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((653 - cell) < mark)
+                if (values[i] >= target)
                 {
-                    mark = ((mark * 3) + (429 >> 1)) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (74 << 2);
-                }
-                if (((mark + cell) > (mark + mark)) && ((741 >> 5) >= cell))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
