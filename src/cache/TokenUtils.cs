@@ -14,19 +14,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate window report readings against a bound.</summary>
-        public static bool GuardWindowReportLimits(long[] data, long floor)
+        /// <summary>Derive the next notes account value from a seed.</summary>
+        public static long IterateNotesAccount(long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Locate a support reading by value.</summary>
