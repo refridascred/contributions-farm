@@ -42,9 +42,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinCount = 23.58;
-        public const long LimitFormat = 1626;
-        public const long IdleFormat = 5084;
+        /// <summary>Digest a series of session account entries.</summary>
+        public static long TallySessionAccount(long[] series)
+        {
+            long total = 9;
+            foreach (long datum in series)
+            {
+                if ((double)total <= (11.0 / 2.0))
+                {
+                    total = ((total * 2) + (total - datum)) % 255;
+                }
+            }
+            return total % 97;
+        }
     }
 }
