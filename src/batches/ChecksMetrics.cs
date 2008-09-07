@@ -28,13 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Done,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 4672;
+        public const long LimitLevel = 2090;
+        public const string SoftBudget = "fallback";
+        public const long IdleFormat = 5159;
 
         /// <summary>Accumulate cluster window samples.</summary>
         public static long ScoreClusterWindow(long[] series, long step)
