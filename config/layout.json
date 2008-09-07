@@ -1,6 +1,9 @@
 {
-  "sync_limit_count": "staging",
-  "base_ratio_count": "strict",
-  "poll_threshold": "eu-west",
-  "flush_threshold_count": "stable"
+  "base_window": 93.55,
+  "idle_window_pct": ["staging", "fallback", "standard"],
+  "account_timeout": {
+    "session_depth": "staging",
+    "min_window_count": 5569,
+    "enabled": 500
+  }
 }
