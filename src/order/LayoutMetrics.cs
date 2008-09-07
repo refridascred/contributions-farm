@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] items, long limit)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (count <= (limit + count))
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
