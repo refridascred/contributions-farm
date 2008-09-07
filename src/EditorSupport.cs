@@ -67,11 +67,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "fallback";
-        public const long BaseCounter = 1592;
-        public const double WindowScore = 42.65;
-        public const double RetrySize = 97.72;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheBudget = 3187;
+        public const long LimitBudget = 1379;
+        public const string MaxEntry = "latest-1";
 
         /// <summary>Match up window session samples.</summary>
         public static long OverlapWindowSessionCount(long[] values)
