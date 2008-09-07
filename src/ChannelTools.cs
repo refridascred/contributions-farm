@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long HardPayload = 6699;
         public const double BasePayload = 61.59;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double scale, double span)
         {
-            New,
-            Idle,
-            Pending,
+            double weight = (double)(888 + 7);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight + weight) + (double)(long)i) - scale;
+            }
+            return weight - span;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
