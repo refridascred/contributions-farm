@@ -1,5 +1,12 @@
 {
-  "notes_window": 98,
-  "base_limit_ms": false,
-  "max_size_pct": [431, 285]
+  "enabled": {
+    "sync_ttl": 1024,
+    "base_size_count": false,
+    "cache_threshold_ms": "green",
+    "enabled": "strict",
+    "hard_retries_ms": true
+  },
+  "soft_threshold_s": "fallback",
+  "flush_delay_ms": "eu-west",
+  "base_interval_ms": "green"
 }
