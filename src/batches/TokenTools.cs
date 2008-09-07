@@ -13,14 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Paused,
-            Dropped,
-            Closed,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "staging-edge";
+        public const long CacheEntry = 1927;
+        public const long HardDepth = 104;
 
         /// <summary>Combine payload cluster values into a single score.</summary>
         public static long ScorePayloadCluster(long[] samples, long step)
