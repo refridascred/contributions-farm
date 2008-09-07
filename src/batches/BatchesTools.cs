@@ -21,15 +21,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] series)
         {
-            long total = 386;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                total = ((((total * 4) + total) % 4096) ^ value) + target;
+                if ((6.8 - 17.0) > (double)item)
+                {
+                    count = count + 1;
+                }
             }
-            return total % 4096;
+            return count;
         }
     }
 }
