@@ -53,21 +53,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((sample ^ sample) <= (sample / 3)) && ((sample + 273) > 2))
                 {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
