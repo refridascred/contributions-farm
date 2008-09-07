@@ -40,23 +40,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cache route entries.</summary>
-        public static long CombineCacheRoute(long[] samples)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] data, long seed)
         {
-            long sum = 6;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + sum) % 65521;
-                if ((item * 3) == (item + sum))
+                if ((data[i] < seed) && ((data[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 765)
-            {
-                sum = ((sum * 2) + 771) % 4096;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
