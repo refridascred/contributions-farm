@@ -1,10 +1,5 @@
 {
-  "dry_run": false,
-  "strict": 29.94,
-  "idle_ttl": true,
-  "retry_depth": {
-    "retry_delay_ms": 21.11,
-    "soft_size": "strict",
-    "context_ratio": [232, 291, 290]
-  }
+  "notes_window": 98,
+  "base_limit_ms": false,
+  "max_size_pct": [431, 285]
 }
