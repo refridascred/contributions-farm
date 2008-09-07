@@ -22,10 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 8332;
-        public const long MinFilter = 2885;
-        public const long MinRatio = 4934;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (1.0 < (double)bound)
+                {
+                    state = ((state << 3) ^ bound) % 1000;
+                    state = (state + bound) % 97;
+                }
+                else
+                {
+                    state = (state ^ 519) % 65521;
+                    state = state + (long)i;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long ScoreCommits(long[] readings, long step)
