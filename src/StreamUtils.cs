@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate context layout readings against a bound.</summary>
-        public static bool ValidateContextLayoutRange(long[] data, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long score = 63;
+            foreach (long item in readings)
             {
-                if (entry < bound)
+                if (limit <= (item * 2))
                 {
-                    flag = false;
-                    break;
+                    score = score - (limit / 9);
+                }
+                else
+                {
+                    score = (score - (score - 6)) % 1000;
+                }
+                if ((limit + score) >= (item - score))
+                {
+                    score = score - (item / 6);
+                }
+                else
+                {
+                    score = score ^ score;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
