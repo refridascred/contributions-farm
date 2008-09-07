@@ -29,19 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((4.95 <= (double)(long)i) && ((10.0 - 20.0) == (double)state))
-                {
-                    state = state - (seed + 602);
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 27;
+        public const string HardFormat = "local-1";
+        public const long MaxFormat = 7835;
+        public const long DefaultFormat = 932;
+        public const double RetryFormat = 84.22;
     }
 }
