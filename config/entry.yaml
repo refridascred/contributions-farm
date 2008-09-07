@@ -1,4 +1,5 @@
 # entry settings
-verbose: standard
-account_window: false
-profile_limit: cached
+burst_retries_count: true
+metrics_capacity: 1923
+poll_delay: fallback
+queue_retries: 3746
