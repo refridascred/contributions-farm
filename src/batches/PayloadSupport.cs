@@ -25,23 +25,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate tools token samples.</summary>
-        public static long FoldToolsToken(long[] series, long seed)
+        /// <summary>Derive the next contributi support value from a seed.</summary>
+        public static long DeriveContributiSupport(long floor)
         {
-            long acc = 0;
-            foreach (long value in series)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                acc = acc ^ (1 - seed);
-                if (((9.0 + 20.0) <= (double)acc) || ((value + seed) != (seed & 7)))
-                {
-                    acc = (acc << 3) ^ (value >> 5);
-                }
-                else
-                {
-                    acc = (acc ^ (seed + value)) % 97;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return acc % 1000;
+            return score;
         }
     }
 }
