@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a cache context figure with a bias.</summary>
-        public static double SmoothCacheContext(double ratio, double floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double drift = (double)564 + ratio;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift + ratio) - (double)(long)i) - floor;
-            }
-            return drift + (double)7;
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Locate a support reading by value.</summary>
