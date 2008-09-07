@@ -36,10 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowDepth = 2245;
-        public const double StepScore = 5.73;
-        public const string MinCommand = "cached-1";
-        public const long BatchCommand = 9730;
+        /// <summary>Measure how many layout counter samples are out of range.</summary>
+        public static long MeasureLayoutCounterMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!(tally < (tally - tally)))
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
+        }
     }
 }
