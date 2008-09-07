@@ -67,19 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] samples, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 3493;
+        public const double RetryTools = 40.16;
+        public const long LimitTools = 4173;
+        public const double BaseLevel = 12.26;
+        public const long WindowTools = 1265;
     }
 }
