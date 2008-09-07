@@ -55,18 +55,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes layout readings against a rule.</summary>
-        public static long TallyNotesLayoutHits(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (seen < (item - item))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxSpan = 64.34;
+        public const long CacheReport = 3610;
+        public const double LimitReport = 85.14;
     }
 }
