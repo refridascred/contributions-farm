@@ -60,13 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double weight, double offset)
         {
-            Idle,
-            Done,
-            Dropped,
-            Retry,
+            double weight2 = offset * 3.55;
+            if (weight2 > offset)
+            {
+                weight2 = (weight2 + weight2) - weight;
+            }
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            return weight2 - weight2;
         }
     }
 }
