@@ -25,18 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches context readings against a rule.</summary>
-        public static long AuditBatchesContextMatches(long[] values)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (item < (item % 16))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define order limits and defaults.</summary>
