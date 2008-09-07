@@ -44,19 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] series, long origin)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long score = 287;
-            foreach (long reading in series)
-            {
-                score = ((score + (score - reading)) % 65521) - origin;
-            }
-            if (score > 75)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score % 4096;
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
