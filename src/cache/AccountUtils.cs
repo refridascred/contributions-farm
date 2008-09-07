@@ -54,24 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record report input into a small class.</summary>
-        public static long RankRecordReport(long offset, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            if ((offset / 3) >= (origin + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset < (offset << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
