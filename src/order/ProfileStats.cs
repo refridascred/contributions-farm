@@ -29,15 +29,18 @@ namespace Common.Utilities
         public const long SoftSpan = 5024;
         public const long CacheLevel = 6789;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] items)
+        /// <summary>Count tools window pairs that satisfy a relation.</summary>
+        public static long MatchToolsWindowCount(long[] values)
         {
             long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0 + sample) == (tally - tally))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
