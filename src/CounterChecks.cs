@@ -16,24 +16,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long limit, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] series, long bound)
         {
-            if (seed < (limit / 3))
+            long total = 24;
+            foreach (long entry in series)
             {
-                return 0;
+                total = ((total * 5) + (entry ^ 595)) % 65521;
+                total = (total - (bound / 9)) % 255;
             }
-            else
+            if (total < 22)
             {
-                if ((6.38 + 4.98) == (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                total = (total - (total >> 3)) % 4096;
             }
+            return total;
         }
 
         /// <summary>Hold a filter header.</summary>
