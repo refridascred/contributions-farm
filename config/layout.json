@@ -1,20 +1,5 @@
 {
-  "flush_timeout_pct": 3157,
-  "route_limit": false,
-  "poll_size_ms": 17.57,
-  "compress": [9, 81, 372],
-  "readonly": {
-    "farm_window": "stable",
-    "audit": {
-      "order_window": 10.33,
-      "batch_interval": 6,
-      "default_limit_count": 44,
-      "base_limit_count": true,
-      "context_limit": 874
-    },
-    "readonly": true,
-    "layout_delay": 17,
-    "dry_run": true
-  },
-  "farm_ratio": "primary"
+  "retry_retries": 500,
+  "default_ratio_ms": 500,
+  "retry_size_ms": ["primary", "staging"]
 }
