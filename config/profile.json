@@ -1,8 +1,13 @@
 {
-  "commits_limit": false,
-  "burst_delay": true,
-  "hard_depth_count": "staging",
-  "default_ratio": "edge",
-  "idle_ratio": 36.72,
-  "persist": false
+  "batch_capacity": "local",
+  "audit": {
+    "flush_depth_ms": ["standard", "open"],
+    "warm_depth_ms": 79.8,
+    "strict": ["green", "latest", "open"],
+    "profile_interval": true
+  },
+  "schema_delay": 26,
+  "enabled": 2591,
+  "batch_window": [318, 106, 470, 16],
+  "readonly": 56.32
 }
