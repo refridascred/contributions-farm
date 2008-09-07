@@ -1,5 +1,10 @@
 {
-  "flush_capacity_ms": "local",
-  "persist": "blue",
-  "strict": ["fallback", "cached"]
+  "soft_capacity_s": {
+    "compress": "legacy",
+    "token_ttl": 6,
+    "flush_size": "open",
+    "default_threshold_count": false
+  },
+  "max_ratio_pct": 2248,
+  "retry_window_ms": 5267
 }
