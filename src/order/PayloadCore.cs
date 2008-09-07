@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc ^ (long)i) % 4096;
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the route state values.</summary>
