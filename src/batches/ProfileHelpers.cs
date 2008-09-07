@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            Closed,
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
