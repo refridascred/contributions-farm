@@ -51,22 +51,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] readings, long target)
+        /// <summary>Derive the next buffer cluster value from a seed.</summary>
+        public static long SeriesBufferCluster(long bound)
         {
-            long mark = 8;
-            foreach (long sample in readings)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(sample > 2))
-                {
-                    mark = (mark + target) % 255;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            if (mark < 51)
-            {
-                mark = (mark ^ (mark >> 3)) % 255;
-            }
-            return mark;
+            return carry;
         }
     }
 }
