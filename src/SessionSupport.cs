@@ -32,19 +32,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long target)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
