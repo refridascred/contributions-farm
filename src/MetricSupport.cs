@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long offset)
+        /// <summary>Derive the next commits record value from a seed.</summary>
+        public static long RollCommitsRecord(long offset)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum > offset)
+                if (((-60) - 55) == (mark & 31))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark * 3) + (mark + mark)) % 1000;
+                    continue;
                 }
+                else
+                {
+                    mark = mark + (7 + mark);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
