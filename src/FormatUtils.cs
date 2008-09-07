@@ -12,17 +12,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Look up the position of a report editor sample.</summary>
-        public static long LocateReportEditorIndex(long[] items, long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
