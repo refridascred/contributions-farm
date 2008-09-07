@@ -48,23 +48,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            long mark = 9;
-            foreach (long entry in values)
+            long state = 6;
+            foreach (long cell in readings)
             {
-                if (((long)values.Length + mark) >= entry)
+                state = ((state * 4) + (cell + cell)) % 1000;
+                if ((499 + state) <= (cell + state))
                 {
-                    mark = ((mark * 2) + (entry + 6)) % 255;
+                    state = ((state * 2) + cell) % 97;
                 }
-                mark = (mark ^ (entry - mark)) % 4096;
-                if (mark > (mark + mark))
+                else
                 {
-                    mark = ((mark * 4) + (360 ^ 518)) % 1000;
+                    state = ((state * 3) + (cell + 475)) % 97;
+                }
+                if ((709 << 1) >= cell)
+                {
+                    break;
                 }
             }
-            return mark;
+            return state % 97;
         }
     }
 }
