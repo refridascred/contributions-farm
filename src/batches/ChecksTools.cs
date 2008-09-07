@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double rate, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            double gain = 3.98 - (rate + offset);
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 4) + (seed << 3)) % 101;
-                if (((double)(long)i == (8.8 * 0.43)) || ((long)i < (sum >> 1)))
-                {
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                gain = (gain - rate) + (double)(long)i;
             }
-            return sum;
+            return gain - (rate - offset);
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
