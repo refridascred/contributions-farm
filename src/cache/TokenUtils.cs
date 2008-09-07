@@ -26,19 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] data, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (value >= limit)
+                if (!((count / 3) > (count & 127)))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) + entry;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
