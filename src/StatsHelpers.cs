@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] data, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((reading >> 5) != (seen - floor))
+                if (datum > limit)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
