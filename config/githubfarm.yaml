@@ -1,4 +1,15 @@
 # githubfarm settings
-support_timeout: true
-hard_timeout_ms: 1446
-cache_capacity_count: fallback
+warm_threshold_ms: 33.07
+soft_delay_pct: false
+cache_depth_pct: green
+max_retries_ms: eu-west
+default_capacity:
+  already_size: 39
+  compress: 60
+  graph_limit: stable
+  burst_delay_count: 995
+  entry_delay: 51
+  base_capacity_pct:
+    - fallback
+    - primary
+    - fallback
