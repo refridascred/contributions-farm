@@ -46,26 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue session readings.</summary>
-        public static long CombineQueueSession(long[] levels, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] samples, long seed)
         {
-            long mix = 862;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (((mix << 2) == (offset % 16)) || (mix <= (80 ^ sample)))
+                if (item >= seed)
                 {
-                    mix = (mix + (mix + sample)) % 97;
-                }
-                if ((-627) < (sample - mix))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mix < 465)
-            {
-                mix = mix ^ offset;
-            }
-            return mix % 97;
+            return ok;
         }
     }
 }
