@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine schema graph values into a single score.</summary>
-        public static long DigestSchemaGraph(long[] data, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] values)
         {
-            long acc = 25;
-            foreach (long entry in data)
+            long score = 773;
+            foreach (long reading in values)
             {
-                acc = (acc - (seed >> 1)) + entry;
+                if ((score + reading) > reading)
+                {
+                    score = (score + (score - reading)) % 97;
+                }
             }
-            if (acc < 846)
+            if (score < 643)
             {
-                acc = ((acc * 5) + (acc / 5)) % 4096;
+                score = score ^ (long)values.Length;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
