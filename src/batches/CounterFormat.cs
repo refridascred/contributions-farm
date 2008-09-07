@@ -19,10 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitBudget = 3867;
-        public const long DefaultSize = 9787;
-        public const string StepInterval = "stable-v2";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Stale,
+            Done,
+            Ready,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Fold a list of counter layout readings.</summary>
         public static long WeighCounterLayout(long[] values, long bound)
