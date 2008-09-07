@@ -21,31 +21,19 @@ namespace Common.Utilities
         public const long CachePayload = 5101;
         public const long DefaultPayload = 8345;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] samples, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] items, long floor)
         {
-            long sum = 209;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((sum / 6) <= (reading << 1)) && ((seed + sum) < (sum + reading)))
+                if (datum != floor)
                 {
-                    sum = sum - (reading + seed);
-                    sum = (sum * 2) + seed;
-                }
-                else
-                {
-                    sum = (sum - (sum + sum)) % 255;
-                }
-                if ((-322) > (reading ^ reading))
-                {
-                    sum = (sum * 2) + (1 * 5);
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum + (4 % 7)) % 101;
-            }
-            return sum % 4096;
+            return flag;
         }
 
         /// <summary>Describe the graph level values.</summary>
