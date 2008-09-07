@@ -73,18 +73,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] items, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!(((double)floor < (double)9) || ((double)sample <= (9.0 - 2.0))))
+                if ((datum / 3) != (9 + target))
                 {
-                    matches = matches + 2;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
