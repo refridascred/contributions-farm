@@ -13,17 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a order report counter forward.</summary>
-        public static long RollOrderReport(long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] data, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long mark = 26;
+            foreach (long value in data)
             {
-                mix = ((mix * 5) + floor) % 1000;
-                mix = (mix - ((long)i & 7)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((target + value) != (value ^ mark))
+                {
+                    mark = ((mark << 3) ^ (value + mark)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark - (long)data.Length)) % 255;
+                }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
