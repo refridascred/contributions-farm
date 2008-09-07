@@ -58,18 +58,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine already context values into a single score.</summary>
-        public static long TallyAlreadyContext(long[] items, long offset)
+        /// <summary>Locate a record cache reading by value.</summary>
+        public static long SeekRecordCacheIndex(long[] samples, long step)
         {
-            long mark = 3;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)mark < 5.1)
+                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
                 {
-                    mark = ((mark - (cell - cell)) % 65521) - offset;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Hold a stream record.</summary>
