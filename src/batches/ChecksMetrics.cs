@@ -49,11 +49,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long target)
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a tools record.</summary>
