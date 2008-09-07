@@ -1,13 +1,11 @@
 # Command notes
 
-Use graph settings to tune how often layout data is refreshed.
-Defaults for filter live in the config folder and can be overridden per environment.
-
-Run the cache check before changing any cache limits.
-Each tools is validated before it reaches the batch queue.
+Each support is validated before it reaches the already queue.
+Use graph settings to tune how often metric data is refreshed.
+The metric report groups every cache by notes.
 
 ## Guidelines
 
-- Keep session values small
-- Document new graph fields
-- Validate route input early
+- Prefer format defaults
+- Log every tools change
+- Keep support values small
