@@ -40,10 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 7045;
-        public const long BatchAccount = 3987;
-        public const string SoftSize = "standard-edge";
-        public const double IdleAccount = 30.88;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    sum = ((sum + sum) % 4096) ^ (long)i3;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
