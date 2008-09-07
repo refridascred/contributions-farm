@@ -1,6 +1,9 @@
-id,level,active,label
-1,fallback,44.08,blue
-2,747,564,239
-3,233,157,852
-4,824,latest,847
-5,276,legacy,47.98
+id,active,region,token,rank
+1,blue,82.23,399,192
+2,64.78,599,416,989
+3,cached,67.04,47.35,55
+4,323,4.58,78.33,88.57
+5,974,31.45,271,latest
+6,eu-west,55.08,latest,latest
+7,92.99,47,28.11,latest
+8,local,625,798,574
