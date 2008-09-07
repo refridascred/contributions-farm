@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 3239;
+        public const long BurstScore = 3082;
+        public const double MinDepth = 84.37;
+        public const long BatchSession = 9300;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinTimeout = 2739;
