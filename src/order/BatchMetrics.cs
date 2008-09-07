@@ -53,11 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many order profile samples are out of range.</summary>
+        public static long MeasureOrderProfileMatches(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen + limit) >= (365 + seen))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a buffer entry.</summary>
