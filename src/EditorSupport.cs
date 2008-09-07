@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long score = 7;
-            foreach (long reading in items)
-            {
-                if (((-76) & 7) != (reading * 2))
-                {
-                    score = (score + reading) - bound;
-                }
-            }
-            return score % 1000;
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
