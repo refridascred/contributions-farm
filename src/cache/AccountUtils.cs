@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long bound)
         {
-            long acc = 305;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (((acc ^ (acc * 4)) % 4096) ^ datum) + seed;
+                if ((series[i] == bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Describe the checks class values.</summary>
