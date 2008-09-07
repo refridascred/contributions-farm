@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch queue entry that matches the target.</summary>
-        public static long FindBatchQueueIndex(long[] values, long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = 9.0;
+            if (gain >= (double)2)
             {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (double)8) - scale) + floor;
             }
-            return -1;
+            return gain - (7.05 * 6.8);
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
