@@ -1,8 +1,9 @@
 # entry settings
-farm_capacity:
-  - 233
-  - 42
-max_delay_pct: 90.57
-buffer_ratio: 77
-base_depth: cached
-compress: 11.23
+already_delay: fallback
+hard_interval: local
+default_ttl_pct:
+  - 59
+  - 253
+  - 408
+  - 194
+verbose: 85.23
