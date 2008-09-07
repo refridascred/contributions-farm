@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of cluster schema readings.</summary>
-        public static long PairClusterSchemaCount(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 1;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total ^ (cell ^ bound)) % 1000;
             }
-            return hits;
+            if (total < 61)
+            {
+                total = total + total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine command cache values into a single score.</summary>
