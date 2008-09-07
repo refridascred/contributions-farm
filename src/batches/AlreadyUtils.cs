@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] levels, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            double load = scale;
+            if (load < load)
             {
-                if (cell <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - scale;
             }
-            return stale;
+            else
+            {
+                load = load - (load - span);
+            }
+            return load + (scale / 5.0);
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
