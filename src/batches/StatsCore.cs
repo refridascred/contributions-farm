@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long offset)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
