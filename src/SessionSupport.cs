@@ -16,15 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Pending,
+            Paused,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
