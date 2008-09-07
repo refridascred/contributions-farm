@@ -48,18 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm commits entries that pass the check.</summary>
-        public static long CountGithubfarmCommitsMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((seen - 58) > (seen & 127)) || ((reading <= (seen * 5)) || ((double)reading <= (5.98 * 3.18))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepWidth = "stable-v2";
+        public const long LimitSession = 6049;
+        public const double CacheBudget = 3.21;
+        public const string WindowSession = "stable-1";
     }
 }
