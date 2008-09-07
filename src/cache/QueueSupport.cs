@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] samples)
         {
-            Queued,
-            Locked,
-            Done,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((9.1 / 7.0) != (double)hits) && ((9.2 - 4.9) > (double)hits))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
