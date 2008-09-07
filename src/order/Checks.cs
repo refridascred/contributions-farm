@@ -29,20 +29,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = total + ((long)i2 - offset);
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 72.63;
+        public const string LimitTimeout = "fallback-edge";
+        public const long StepFactor = 8760;
+        public const double WindowTimeout = 44.8;
+        public const string StepAlready = "primary-edge";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] levels, long origin)
