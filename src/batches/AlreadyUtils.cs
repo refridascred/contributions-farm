@@ -60,13 +60,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Find the first session graph entry that matches the target.</summary>
+        public static long SeekSessionGraphIndex(long[] items, long floor)
         {
-            New,
-            Done,
-            Ready,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
