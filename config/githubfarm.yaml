@@ -1,16 +1,10 @@
 # githubfarm settings
-profile_size: primary
-notes_limit:
-  hard_capacity: green
-  compress: 88.91
-  retry_threshold_count:
-    - eu-west
-    - edge
-  poll_interval: legacy
-  max_interval_s: 500
-  cache_depth_pct: false
-sync_ttl_s:
-  - stable
-  - staging
-  - cached
-  - green
+dry_run:
+  enabled: open
+  base_threshold: green
+  layout_ratio: 250
+flush_depth_pct: 1024
+burst_threshold_count: 31.91
+verbose: 32
+schema_delay: fallback
+context_delay: 77.4
