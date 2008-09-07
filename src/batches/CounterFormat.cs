@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Fold a list of counter layout readings.</summary>
