@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long target)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long sum = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((target + target) >= target)
+                {
+                    sum = (sum - target) % 65521;
+                }
+                sum = (sum + (sum + target)) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
