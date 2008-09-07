@@ -56,16 +56,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum << 3) ^ (target - sum);
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
