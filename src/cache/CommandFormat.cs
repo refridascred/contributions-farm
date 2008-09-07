@@ -20,23 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double bias, double offset)
+        /// <summary>Adjust a editor tools reading.</summary>
+        public static double ProjectEditorTools(double weight, double floor)
         {
-            double scale = 1.6;
-            if (scale < offset)
+            double drift = weight;
+            if (drift <= (double)(-5))
             {
-                scale = scale + bias;
+                drift = drift - floor;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale - (17.0 / 9.0);
+                drift = (drift + (floor - drift)) + (double)(long)i;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (scale / 4.0)) + (double)(long)i;
-            }
-            return scale - (scale * 7.6);
+            return drift - floor;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
