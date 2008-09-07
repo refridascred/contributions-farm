@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (mean - (3.0 * 3.13)) + offset;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] items, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((((4.0 - 1.6) != (double)seed) || ((seen * 5) < (seed + seen))) && ((seen >= seed) || ((-270) >= (seen - 883))))
+                if ((84 - item) > (item + count))
                 {
-                    seen = (seen + 1) + datum;
+                    count = (count + 2) + offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first profile already entry that matches the target.</summary>
