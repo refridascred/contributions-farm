@@ -20,10 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinTimeout = 2739;
-        public const string MinContributi = "strict-1";
-        public const double HardContributi = 24.92;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 2573;
+        public const string SoftOrder = "latest-edge";
+        public const long HardDepth = 1903;
+        public const long LimitOrder = 688;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] data)
