@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long carry = 4;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((carry + (long)samples.Length) != (carry / 5)) && ((carry << 1) != (carry % 60)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry + (carry >> 1)) % 255) + item;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Project the next channel value.</summary>
