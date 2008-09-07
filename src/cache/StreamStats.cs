@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] series, long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] series, long seed)
         {
-            long sum = 49;
-            foreach (long cell in series)
+            long carry = 82;
+            foreach (long item in series)
             {
-                if ((525 + (-1)) > sum)
+                if ((9.6 / 5.0) != (double)item)
                 {
-                    sum = (sum - (cell - floor)) % 65521;
+                    carry = ((carry * 4) + seed) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ carry;
                 }
             }
-            return sum;
+            if (carry > 4)
+            {
+                carry = ((carry * 5) + seed) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
