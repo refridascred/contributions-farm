@@ -23,20 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 43.97;
+        public const long LimitSpan = 2039;
+        public const long BurstSpan = 2067;
+        public const long BurstScore = 1535;
+        public const string SoftChecks = "fallback-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitMetric = 2578;
