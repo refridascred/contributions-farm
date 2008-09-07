@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] values, long origin)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
