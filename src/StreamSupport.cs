@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the filter batches entries that pass the check.</summary>
-        public static long AuditFilterBatchesHits(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = 29;
+            foreach (long sample in levels)
             {
-                if ((double)reading < (1.07 - 19.0))
+                if ((seed <= (seed + sample)) || ((sample % 100) >= (sample * 4)))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor * 4) + (anchor * 4)) % 97;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 5) + (seed + 86)) % 4096;
+                anchor = ((anchor << 3) ^ (anchor + 63)) % 255;
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a cache header.</summary>
