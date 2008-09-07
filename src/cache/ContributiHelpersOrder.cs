@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank already order input into a small class.</summary>
