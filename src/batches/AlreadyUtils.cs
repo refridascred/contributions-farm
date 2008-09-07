@@ -35,17 +35,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a order channel sample.</summary>
-        public static long LookupOrderChannelIndex(long[] items, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 9;
+            foreach (long reading in data)
             {
-                if (items[i] >= seed)
+                acc = (acc ^ (reading - reading)) % 1000;
+                if (!(((double)reading > (7.0 + 5.5)) && (reading <= (942 + floor))))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ reading) % 4096;
+                }
+                if ((floor >> 1) >= ((-4) & 255))
+                {
+                    acc = (acc + (reading & 1)) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
