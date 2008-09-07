@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double scale, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] items, long target)
         {
-            double load = scale;
-            if (load < load)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                load = load - scale;
+                if (((14.0 > (double)sample) && ((0 - sample) == (target & 3))) && ((407 - (-46)) > (matches - (long)items.Length)))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                load = load - (load - span);
-            }
-            return load + (scale / 5.0);
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
