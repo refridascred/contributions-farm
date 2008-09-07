@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] levels)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((361 / 7) >= (entry % 16)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a batches record.</summary>
