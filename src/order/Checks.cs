@@ -48,19 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double bias, double floor)
         {
-            long sum = 84;
-            foreach (long entry in values)
+            double bias2 = (double)(0 / 3);
+            if (bias2 <= bias)
             {
-                sum = (sum * 4) + entry;
+                bias2 = (bias2 - (3.9 * 1.3)) - floor;
             }
-            if (sum > 68)
-            {
-                sum = (sum ^ (sum + 560)) % 255;
-            }
-            return sum % 4096;
+            return bias2 + (double)(-960);
         }
     }
 }
