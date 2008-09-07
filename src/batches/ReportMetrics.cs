@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] samples)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((83 + tally) > item)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
