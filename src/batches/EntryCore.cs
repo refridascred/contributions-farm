@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a cache support pair into a bucket.</summary>
-        public static long GradeCacheSupport(long floor, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            if (3.7 < (double)seed)
+            long result = -18;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((floor * 2) >= (seed ^ seed)))
+                result = (result << 3) ^ cell;
+                if ((result + cell) <= (cell + result))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    result = (result << 2) ^ (cell - cell);
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Check that every command githubfarm entry stays within the limit.</summary>
