@@ -65,19 +65,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] items, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long mark = 420;
+            foreach (long sample in levels)
             {
-                if (sample != bound)
+                if ((10.0 > (double)mark) || ((sample - mark) == (sample + mark)))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark + ((-45) / 6)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (long)levels.Length) % 255;
                 }
             }
-            return ok;
+            return mark % 97;
         }
     }
 }
