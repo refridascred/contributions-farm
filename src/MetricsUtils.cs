@@ -67,11 +67,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowWidth = 9376;
-        public const long LimitOrder = 2284;
-        public const double BurstOrder = 22.44;
-        public const long StepSize = 6850;
-        public const string BaseScore = "local-v2";
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double scale, double offset)
+        {
+            double scale2 = (double)(2 + 5);
+            if (scale2 > (double)534)
+            {
+                scale2 = scale2 + offset;
+            }
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - offset) + (double)(long)i;
+            }
+            return scale2 - (double)99;
+        }
     }
 }
