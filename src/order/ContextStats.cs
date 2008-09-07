@@ -42,12 +42,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 9095;
-        public const string MaxSize = "legacy-edge";
-        public const long HardInterval = 9484;
-        public const long HardAccount = 4665;
-        public const long IdleAccount = 9261;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (value > (limit * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphGaps(long[] values)
