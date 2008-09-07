@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long HardRoute = 6550;
         public const long StepTimeout = 8126;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry > limit)
                 {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Classify a format tools pair into a bucket.</summary>
