@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardInterval = "strict-edge";
-        public const double StepSupport = 25.52;
-        public const string BurstSpan = "open-v2";
-        public const long WindowSupport = 2117;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] samples, long bound)
