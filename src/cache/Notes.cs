@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many support window samples are out of range.</summary>
-        public static long TallySupportWindowHits(long[] data)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits + value) >= 1)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a batches stats.</summary>
