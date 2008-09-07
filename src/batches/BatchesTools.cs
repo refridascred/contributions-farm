@@ -26,11 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double scale, double span)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double drift = 4.4 + (8.13 / 7.0);
-            return (drift + span) + scale;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
