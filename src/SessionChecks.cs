@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double rate, double offset)
         {
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
+            double rate2 = (double)(4 >> 5);
+            if (rate2 <= (double)415)
+            {
+                rate2 = rate2 - (rate2 - rate);
+            }
+            else
+            {
+                rate2 = rate2 - (offset - rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - offset) + (double)(long)i;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
