@@ -56,25 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long seed, long offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long gap = seed - offset;
-            if ((double)gap <= (6.0 + 20.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed * 3) <= (49 & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
