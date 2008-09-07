@@ -18,15 +18,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long seed)
         {
-            long mark = 618;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 3) ^ (value + value)) % 97;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
