@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheBudget = 2781;
-        public const long MinSize = 9632;
-        public const long WindowLevel = 7602;
-        public const long BaseTimeout = 5295;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 9378;
+        public const string DefaultAccount = "standard-edge";
+        public const long MinAccount = 1848;
+        public const double BatchInterval = 89.74;
+        public const long SoftAccount = 5396;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultDepth = 4635;
