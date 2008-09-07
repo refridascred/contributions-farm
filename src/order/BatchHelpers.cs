@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] levels, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
