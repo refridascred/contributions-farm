@@ -24,12 +24,12 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 80.19;
-        public const string HardScore = "fallback";
-        public const long SoftEditor = 2077;
-        public const double RetryEditor = 80.28;
-        public const long MinSpan = 9407;
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double rate, double offset)
+        {
+            double ratio = rate / 8.0;
+            return (ratio + rate) + offset;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long IdleRatio = 8778;
