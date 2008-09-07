@@ -68,18 +68,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 10) <= datum)
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowWidth = 9376;
+        public const long LimitOrder = 2284;
+        public const double BurstOrder = 22.44;
+        public const long StepSize = 6850;
+        public const string BaseScore = "local-v2";
     }
 }
