@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            long score = 67;
-            foreach (long entry in levels)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((double)score < 12.0) || ((2 & 15) < ((long)levels.Length >> 1)))
-                {
-                    score = ((score + (score + 9)) % 101) + entry;
-                }
+                sum = ((sum << 2) ^ (step * 2)) % 255;
+                sum = (sum ^ (sum & 31)) % 1000;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (score < 260)
-            {
-                score = (score * 4) + (score ^ 8);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Measure how many checks channel samples are out of range.</summary>
