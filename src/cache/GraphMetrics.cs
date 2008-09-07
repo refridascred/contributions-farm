@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of already commits entries.</summary>
-        public static long CombineAlreadyCommits(long[] values, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            long mix = 3;
-            foreach (long cell in values)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mix = mix - (step << 3);
-                if ((935 + cell) <= (287 + step))
+                if ((7.89 - 1.98) <= (double)result)
                 {
+                    result = (result << 2) ^ floor;
                     break;
                 }
+                if (!(((long)i & 31) > floor))
+                {
+                    result = ((result * 5) + result) % 97;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (mix < 0)
-            {
-                mix = (mix * 4) + ((long)values.Length % 5);
-            }
-            return mix % 4096;
+            return result;
         }
 
         /// <summary>Describe the queue level values.</summary>
