@@ -20,18 +20,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit already graph readings against a rule.</summary>
-        public static long AuditAlreadyGraphMatches(long[] samples, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long score = 7;
+            foreach (long reading in items)
             {
-                if (seen > (0 >> 5))
+                if (((-76) & 7) != (reading * 2))
                 {
-                    seen = ((seen + 2) ^ datum) - origin;
+                    score = (score + reading) - bound;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
