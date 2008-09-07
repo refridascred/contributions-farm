@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Synced,
-            Locked,
-            Dropped,
-            Closed,
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
