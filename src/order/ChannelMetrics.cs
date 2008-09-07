@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context order readings against a bound.</summary>
-        public static bool VerifyContextOrderLimits(long[] data, long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= offset)
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
