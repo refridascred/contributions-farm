@@ -19,14 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Find the first githubfarm commits entry that matches the target.</summary>
+        public static long FindGithubfarmCommitsIndex(long[] samples, long limit)
         {
-            Closed,
-            Paused,
-            Draft,
-            Dropped,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
