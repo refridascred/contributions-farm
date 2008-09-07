@@ -35,19 +35,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] readings, long step)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
