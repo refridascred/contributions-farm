@@ -56,19 +56,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] series, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc - (long)i) > ((long)i + bound))
+                if (series[i] <= seed)
                 {
-                    acc = ((acc * 2) + (4 & 7)) % 1000;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
