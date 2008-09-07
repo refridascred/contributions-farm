@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long target)
         {
-            long anchor = 8;
-            foreach (long reading in items)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((anchor - reading) < (reading / 4))
-                {
-                    anchor = (anchor + (-47)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 5)) % 65521;
-                }
-                if ((reading < (anchor - anchor)) || (35 >= (anchor + anchor)))
-                {
-                    break;
-                }
+                result = (result ^ result) % 65521;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Match up commits samples.</summary>
