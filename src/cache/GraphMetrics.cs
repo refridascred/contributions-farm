@@ -87,22 +87,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((cell - seen) > offset) && !((8.28 - 0.72) >= (double)seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSpan = 2602;
+        public const string CacheRatio = "primary-1";
+        public const long BurstBuffer = 7664;
+        public const long BatchBuffer = 3152;
+        public const long SoftBuffer = 9538;
     }
 }
