@@ -40,22 +40,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels)
         {
-            long result = 38;
-            foreach (long value in levels)
+            long carry = 4;
+            foreach (long sample in levels)
             {
-                if ((value << 2) < (9 >> 1))
+                if ((double)carry >= (double)sample)
                 {
-                    result = (result ^ (result ^ 25)) % 1000;
+                    carry = (carry ^ carry) % 65521;
+                }
+                if ((6.5 / 5.0) > (double)sample)
+                {
+                    break;
                 }
             }
-            if (result < 7)
+            if (carry < 201)
             {
-                result = (result - (2 + result)) % 255;
+                carry = carry ^ (519 - (long)levels.Length);
             }
-            return result % 1000;
+            return carry;
         }
     }
 }
