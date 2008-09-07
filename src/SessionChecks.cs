@@ -36,17 +36,26 @@ namespace Common.Utilities
         public const long WindowScore = 5236;
         public const string MaxBatches = "fallback-1";
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long limit)
+        /// <summary>Fold a list of queue session readings.</summary>
+        public static long CombineQueueSession(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 862;
+            foreach (long sample in levels)
             {
-                if ((levels[i] > limit) && ((levels[i] % 3) == 0))
+                if (((mix << 2) == (offset % 16)) || (mix <= (80 ^ sample)))
                 {
-                    return (long)i;
+                    mix = (mix + (mix + sample)) % 97;
+                }
+                if ((-627) < (sample - mix))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 465)
+            {
+                mix = mix ^ offset;
+            }
+            return mix % 97;
         }
     }
 }
