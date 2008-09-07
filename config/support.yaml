@@ -1,9 +1,5 @@
 # support settings
-cache_threshold:
-  githubfarm_size: 11.1
-  audit: 4587
-  cache_threshold_s: 53.13
-readonly:
-  - standard
-  - cached
-sync_window: 6306
+batch_size: eu-west
+retry_interval_pct: green
+idle_depth_count: true
+compress: true
