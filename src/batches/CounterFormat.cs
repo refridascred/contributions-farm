@@ -21,27 +21,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long origin)
         {
-            long state = 47;
-            foreach (long cell in values)
+            long edge = target - origin;
+            if ((0.94 / 3.0) < (13.0 + 19.0))
             {
-                state = (state * 4) + ((-5) << 2);
-                if ((8.81 - 1.1) >= (double)cell)
+                return 7;
+            }
+            else
+            {
+                if (edge >= origin)
                 {
-                    state = (state + (state + (-356))) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    state = ((state * 2) + (state >> 4)) % 97;
-                }
-                if ((state - state) <= (46 & 31))
-                {
-                    state = (state + (long)values.Length) % 65521;
+                    return 1;
                 }
             }
-            return state;
         }
     }
 }
