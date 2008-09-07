@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next notes schema value from a seed.</summary>
-        public static long SeriesNotesSchema(long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)total != (2.7 - 0.1))
-                {
-                    total = ((total * 5) + floor) % 97;
-                }
-                long next = total + (total * 4);
-                total = total - (total ^ next);
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the editor farm entries that pass the check.</summary>
