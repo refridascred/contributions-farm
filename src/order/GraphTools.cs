@@ -36,12 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit filter layout readings against a rule.</summary>
+        public static long AuditFilterLayoutGaps(long[] readings)
         {
-            Idle,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item == (9.0 / 2.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit format tools readings against a rule.</summary>
