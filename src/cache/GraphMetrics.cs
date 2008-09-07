@@ -40,39 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long step, long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long slot = step - origin;
-            if (((slot + 65) < (slot + slot)) || ((slot / 8) >= origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin) > (slot + 74)) && (slot <= (origin + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - 3) < (slot >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (slot < 388)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Accumulate record samples.</summary>
