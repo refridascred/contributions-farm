@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 3239;
-        public const long BurstScore = 3082;
-        public const double MinDepth = 84.37;
-        public const long BatchSession = 9300;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinTimeout = 2739;
