@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] series, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheFactor = 32.39;
+        public const long MaxCache = 5146;
+        public const string BatchCache = "latest-v2";
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] series, long floor)
