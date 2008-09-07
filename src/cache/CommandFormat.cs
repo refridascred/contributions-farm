@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate report counter readings against a bound.</summary>
-        public static bool VerifyReportCounterLimits(long[] values, long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every token report entry stays within the limit.</summary>
