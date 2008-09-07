@@ -32,21 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= offset)
                 {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
