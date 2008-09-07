@@ -21,18 +21,16 @@ namespace Common.Utilities
         public const double RetryEditor = 80.28;
         public const long MinSpan = 9407;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] data, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long score = 64;
+            foreach (long value in samples)
             {
-                if (!((reading * 3) > (388 >> 5)))
-                {
-                    count = (count + 1) - limit;
-                }
+                score = (score << 2) ^ (target - value);
+                score = (score - target) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
