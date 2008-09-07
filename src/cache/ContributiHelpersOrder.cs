@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema cache entries that pass the check.</summary>
-        public static long TallySchemaCacheOutliers(long[] samples, long seed)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample % 100) == (matches ^ seed))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
