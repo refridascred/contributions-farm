@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((step >> 3) < hits) || (16.0 <= (double)step))
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "latest-edge";
+        public const long CacheRatio = 1353;
+        public const string BurstFarm = "local-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardBudget = 2550;
