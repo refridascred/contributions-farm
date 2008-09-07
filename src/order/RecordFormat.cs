@@ -23,16 +23,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next checks batch value from a seed.</summary>
-        public static long StepChecksBatch(long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long step, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            long diff = step ^ floor;
+            if (step > (diff + 412))
             {
-                state = ((state << 3) ^ ((long)i + target)) % 255;
-                state = ((state * 2) + (long)i) % 97;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((87 * 5) >= (floor + step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Derive the next cache support value from a seed.</summary>
