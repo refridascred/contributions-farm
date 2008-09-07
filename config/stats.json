@@ -1,8 +1,16 @@
 {
-  "schema_retries": 500,
-  "batch_retries": 1024,
-  "filter_limit": 48.11,
-  "batch_limit": [194, 388],
-  "stats_capacity": false,
-  "audit": ["stable", "standard", "open", "local"]
+  "cache_ratio_count": {
+    "already_timeout": {
+      "cluster_depth": false,
+      "already_ttl": 75.83,
+      "window_size": 84,
+      "poll_size_ms": 7785,
+      "cache_ratio": 6818,
+      "flush_ratio": [246, 238, 461]
+    },
+    "burst_capacity": 55.58,
+    "flush_ratio_ms": 77.99
+  },
+  "schema_ratio": 83.83,
+  "default_ttl_count": "standard"
 }
