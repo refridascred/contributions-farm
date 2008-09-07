@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double span)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double drift = scale;
-            if (drift >= (double)33)
-            {
-                drift = (drift + (double)890) - span;
-            }
-            return drift + scale;
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
