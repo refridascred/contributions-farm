@@ -26,10 +26,18 @@ namespace Common.Utilities
         public const long StepWidth = 532;
         public const long CacheRoute = 1815;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCommand = "primary";
-        public const double WindowBudget = 57.96;
-        public const long HardCommand = 952;
-        public const double IdleCommand = 91.43;
+        /// <summary>Count the githubfarm commits entries that pass the check.</summary>
+        public static long CountGithubfarmCommitsMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((seen - 58) > (seen & 127)) || ((reading <= (seen * 5)) || ((double)reading <= (5.98 * 3.18))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
