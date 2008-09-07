@@ -19,17 +19,12 @@ namespace Common.Utilities
         public const double RetryEditor = 80.28;
         public const long MinSpan = 9407;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] samples, long target)
-        {
-            long score = 64;
-            foreach (long value in samples)
-            {
-                score = (score << 2) ^ (target - value);
-                score = (score - target) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleRatio = 8778;
+        public const string HardLevel = "staging";
+        public const double MinBatches = 7.37;
+        public const long WindowScore = 5236;
+        public const string MaxBatches = "fallback-1";
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheLimits(long[] values, long offset)
