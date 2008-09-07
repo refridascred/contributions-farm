@@ -23,15 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Fold a list of profile tools readings.</summary>
+        public static long FoldProfileTools(long[] samples, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long state = 996;
+            foreach (long item in samples)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((state + item) > (587 % 8))
+                {
+                    state = ((state << 2) ^ state) + bound;
+                }
             }
-            return acc;
+            if (state > 24)
+            {
+                state = (state << 2) ^ 7;
+            }
+            return state;
         }
 
         /// <summary>Combine token values into a single score.</summary>
