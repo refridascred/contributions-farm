@@ -12,17 +12,32 @@ namespace Common.Utilities
         public const string BatchTimeout = "primary-edge";
         public const double SoftToken = 55.2;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] readings, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = step + limit;
+            if ((limit >> 3) < (edge + step))
             {
-                if ((readings[i] > step) && ((readings[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((step & 15) <= (edge << 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + 11) > (step / 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
