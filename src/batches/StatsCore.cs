@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] values, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((double)count == (18.0 - 6.56))
+                if ((double)reading <= (double)matches)
                 {
-                    count = ((count + 3) ^ item) - step;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
