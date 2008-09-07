@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report channel reading.</summary>
-        public static double SmoothReportChannel(double weight, double bias)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] data, long origin)
         {
-            double mean = bias;
-            if (mean > (weight + weight))
+            long tally = 0;
+            foreach (long value in data)
             {
-                mean = mean + weight;
+                if ((origin + tally) <= (value >> 3))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mean + (weight + 14.0);
+            return tally;
         }
 
         /// <summary>Digest a series of token entries.</summary>
