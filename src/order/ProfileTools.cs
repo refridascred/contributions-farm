@@ -50,23 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings)
-        {
-            long result = 2;
-            foreach (long value in readings)
-            {
-                if ((value * 4) != (value * 5))
-                {
-                    result = (result ^ result) % 1000;
-                }
-            }
-            if (result > 264)
-            {
-                result = (result << 3) ^ (result >> 2);
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepBudget = 5597;
+        public const long WindowStats = 4010;
+        public const double MinStats = 70.34;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long CompareToolsCount(long[] values)
