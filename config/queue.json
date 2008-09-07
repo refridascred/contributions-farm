@@ -1,6 +1,18 @@
 {
-  "persist": 94.76,
-  "cache_threshold": [60, 53],
-  "flush_interval": "standard",
-  "warm_limit_s": 63.88
+  "route_capacity": "standard",
+  "max_window_s": 250,
+  "dry_run": {
+    "cache_size": true,
+    "poll_limit": 6104,
+    "idle_timeout_count": 100,
+    "notes_depth": 55,
+    "enabled": "staging"
+  },
+  "verbose": {
+    "max_capacity_ms": "standard",
+    "min_retries_count": 3299,
+    "hard_delay_s": true
+  },
+  "poll_window_count": 84,
+  "min_size": false
 }
