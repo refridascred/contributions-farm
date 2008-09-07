@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseScore = "alpha-1";
+        public const double StepFactor = 25.69;
+        public const long RetryEditor = 8210;
+        public const long IdleEditor = 8265;
+        public const string StepTimeout = "stable-v2";
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] readings)
