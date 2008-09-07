@@ -32,18 +32,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] samples, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if (seed <= floor)
             {
-                if ((hits + 78) != (limit ^ entry))
+                return 3;
+            }
+            else
+            {
+                if (((seed + seed) >= (seed >> 2)) || (floor < (39 - floor)))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
