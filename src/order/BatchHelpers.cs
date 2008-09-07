@@ -47,11 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 5630;
-        public const long SoftSpan = 7583;
-        public const double DefaultChannel = 56.5;
-        public const double WindowChannel = 26.15;
-        public const long IdleChannel = 6221;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
