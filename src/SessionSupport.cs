@@ -32,14 +32,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long limit)
         {
-            Synced,
-            Active,
-            Locked,
-            Done,
-            Dropped,
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
