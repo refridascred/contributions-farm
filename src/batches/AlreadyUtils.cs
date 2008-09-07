@@ -28,22 +28,14 @@ namespace Common.Utilities
         public const double MinBatch = 62.18;
         public const double CacheBatch = 54.84;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long result = 1;
-            foreach (long sample in series)
-            {
-                if (!((0.11 - 9.0) < (double)result))
-                {
-                    result = ((result + 92) % 97) + sample;
-                }
-            }
-            if (result > 969)
-            {
-                result = ((result << 3) ^ (result + result)) % 97;
-            }
-            return result;
+            Locked,
+            Closed,
+            Failed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
