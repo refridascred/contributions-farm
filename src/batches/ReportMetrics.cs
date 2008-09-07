@@ -52,18 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] readings, long seed)
+        /// <summary>Validate route buffer readings against a bound.</summary>
+        public static bool GuardRouteBufferBounds(long[] series, long floor)
         {
-            long carry = 5;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (((48 << 2) == (carry + (long)readings.Length)) || (seed < (496 * 5)))
+                if (item > floor)
                 {
-                    carry = ((carry * 2) + (640 % 5)) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
     }
 }
