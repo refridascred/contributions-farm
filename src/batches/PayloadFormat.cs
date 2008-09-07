@@ -31,10 +31,26 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetrySpan = 4186;
-        public const long BurstBuffer = 901;
-        public const string DefaultBuffer = "standard-edge";
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long target, long bound)
+        {
+            long prev = target ^ bound;
+            if (target > (bound ^ prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)prev != (8.5 + 6.5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Iterate the already queue series from a seed.</summary>
         public static long RollAlreadyQueue(long offset)
