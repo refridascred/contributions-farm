@@ -40,13 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Validate graph metrics readings against a bound.</summary>
+        public static bool GuardGraphMetricsBounds(long[] levels, long limit)
         {
-            Idle,
-            Queued,
-            Synced,
-            Draft,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate report stream readings against a bound.</summary>
