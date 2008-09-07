@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (seen <= 0)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 76.42;
+        public const double WindowReport = 65.63;
+        public const long IdleReport = 514;
+        public const string MinReport = "primary-1";
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long StepStream(long floor)
