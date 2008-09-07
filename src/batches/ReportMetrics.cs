@@ -26,18 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels, long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((52 / 6) > (count % 12))
-                {
-                    count = ((count + 2) - cell) - origin;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Rank checks record input into a small class.</summary>
