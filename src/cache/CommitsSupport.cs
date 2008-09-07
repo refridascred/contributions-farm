@@ -64,17 +64,39 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a order payload sample.</summary>
-        public static long LookupOrderPayloadIndex(long[] samples, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long step, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long bound = step - origin;
+            if ((step - 5) >= (bound - 5))
             {
-                if (samples[i] == bound)
+                return 1;
+            }
+            else
+            {
+                if (!((bound - bound) <= step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin % 97) >= (step ^ origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step % 8) == (755 + origin)) || ((208 & 7) == (bound - step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
