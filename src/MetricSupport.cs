@@ -33,19 +33,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next farm editor value.</summary>
-        public static double SmoothFarmEditor(double rate, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] items, long limit)
         {
-            double weight = floor;
-            if (weight < (double)8)
+            bool valid = true;
+            foreach (long value in items)
             {
-                weight = (weight - 0.64) + rate;
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            return weight + (floor * 9.0);
+            return valid;
         }
     }
 }
