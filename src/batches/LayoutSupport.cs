@@ -63,17 +63,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] samples, long bound)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
