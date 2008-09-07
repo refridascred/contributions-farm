@@ -14,22 +14,32 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] data, long target)
+        /// <summary>Rank already order input into a small class.</summary>
+        public static long SortAlreadyOrder(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long next = origin - floor;
+            if (!((origin & 15) != (floor / 3)))
             {
-                if ((1.9 - 0.3) == (double)matches)
+                return 8;
+            }
+            else
+            {
+                if ((next / 8) > origin)
                 {
-                    matches = ((matches + 1) ^ item) + target;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((7.0 + 7.0) >= (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two session measurements.</summary>
