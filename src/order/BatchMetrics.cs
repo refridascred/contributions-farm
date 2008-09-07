@@ -37,18 +37,12 @@ namespace Common.Utilities
             return mean + (double)913;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long target)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long carry = -8;
-            foreach (long sample in series)
-            {
-                if (((carry % 24) > ((long)series.Length + target)) && ((920 ^ sample) >= (sample + carry)))
-                {
-                    carry = ((carry * 3) + (target & 3)) % 97;
-                }
-            }
-            return carry;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
