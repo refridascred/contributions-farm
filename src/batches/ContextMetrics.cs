@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the token order entries that pass the check.</summary>
+        public static long AuditTokenOrderMatches(long[] readings)
         {
-            Synced,
-            Closed,
-            Active,
-            Ready,
-            Dropped,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((84 << 2) != (matches << 3))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window options.</summary>
