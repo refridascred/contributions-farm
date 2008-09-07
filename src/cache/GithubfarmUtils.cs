@@ -35,16 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] levels, long target)
+        /// <summary>Count already notes pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyNotesCount(long[] items)
         {
-            long mark = 266;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 3) + (6 << 1)) - target;
-                mark = (mark ^ reading) % 4096;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Match up metric samples.</summary>
