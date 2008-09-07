@@ -1,14 +1,31 @@
 # githubfarm settings
-flush_interval_count: false
-profile_limit: 17.37
-retry_threshold_pct:
-  cache_ratio: staging
-  readonly: 77
-  dry_run: edge
-  max_ttl: 80
-  githubfarm_capacity: 53.66
+default_ttl_count:
+  metrics_retries: 30
+  batch_capacity: 9841
+  sync_interval: 9280
+  min_retries: edge
+verbose:
+  verbose: fallback
   persist:
-    - 374
-    - 36
-default_limit: 60
-sync_size_s: 40.72
+    warm_limit_count: 30
+    account_limit: 68.31
+    burst_ttl:
+      - blue
+      - latest
+      - stable
+      - cached
+  idle_depth_ms:
+    channel_timeout: 12.42
+    order_threshold: true
+    default_ttl_pct: 60
+    min_threshold_s: 6.36
+    payload_limit: strict
+    soft_ratio: 100
+  entry_interval:
+    burst_limit_pct: true
+    stream_retries: 10
+    batch_depth_ms: false
+    base_size_count: 60
+    sync_delay: false
+batch_limit: 98.34
+entry_limit: false
