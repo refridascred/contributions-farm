@@ -21,24 +21,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            long total = 386;
+            foreach (long value in data)
             {
-                if (!((seed + carry) != (seed & 31)))
-                {
-                    carry = ((carry << 3) ^ ((long)i ^ seed)) % 97;
-                    continue;
-                }
-                if ((seed % 24) > (long)i)
-                {
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                total = ((((total * 4) + total) % 4096) ^ value) + target;
             }
-            return carry;
+            return total % 4096;
         }
     }
 }
