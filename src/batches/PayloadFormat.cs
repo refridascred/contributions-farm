@@ -61,19 +61,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next record schema value from a seed.</summary>
-        public static long RollRecordSchema(long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long mark = 1;
+            foreach (long sample in series)
             {
-                if ((offset - (long)i) != (score + score))
+                if ((6.3 + 2.0) <= (double)sample)
                 {
-                    score = (score * 5) + (offset & 63);
+                    mark = (mark * 3) + (sample % 64);
                 }
-                score = ((score * 4) + (long)i) % 1000;
+                if (origin > (mark - mark))
+                {
+                    mark = (mark - (4 + (long)series.Length)) % 65521;
+                }
+                if (((43 << 1) <= mark) || ((sample % 60) >= (origin ^ sample)))
+                {
+                    break;
+                }
             }
-            return score;
+            return mark;
         }
     }
 }
