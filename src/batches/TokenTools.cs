@@ -27,19 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Combine githubfarm support values into a single score.</summary>
+        public static long CombineGithubfarmSupport(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            long carry = 0;
+            foreach (long entry in samples)
             {
-                if (!!((6.24 + 11.0) <= (double)result))
+                if ((double)(long)samples.Length < (19.0 + 7.8))
                 {
-                    result = (result - (bound + bound)) % 101;
+                    carry = carry - (carry << 2);
                 }
-                result = ((result * 5) + (long)i) % 101;
+                else
+                {
+                    carry = carry + (entry % 24);
+                }
             }
-            return result;
+            return carry % 97;
         }
     }
 }
