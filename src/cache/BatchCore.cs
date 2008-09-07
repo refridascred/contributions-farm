@@ -40,18 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (reading <= (767 - 54))
+                if (reading <= limit)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
