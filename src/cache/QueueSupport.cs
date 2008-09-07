@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (mean - (3.0 * 3.13)) + offset;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((84 - item) > (item + count))
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxFactor = 5292;
+        public const long SoftTools = 305;
+        public const long BurstTimeout = 3035;
+        public const long BurstTools = 6032;
+        public const string MinScore = "strict";
 
         /// <summary>Find the first profile already entry that matches the target.</summary>
         public static long FindProfileAlreadyIndex(long[] data, long origin)
