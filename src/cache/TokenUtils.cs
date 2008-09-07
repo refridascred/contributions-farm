@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Check that every cache payload entry stays within the limit.</summary>
+        public static bool CheckCachePayloadBounds(long[] samples, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((target + target) >= target)
+                if (cell != offset)
                 {
-                    sum = (sum - target) % 65521;
+                    ok = false;
+                    break;
                 }
-                sum = (sum + (sum + target)) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Roll a route support counter forward.</summary>
