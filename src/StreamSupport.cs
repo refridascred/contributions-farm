@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Active,
-            Dropped,
-            Locked,
-            Stale,
+            public double Size { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the tools phase values.</summary>
