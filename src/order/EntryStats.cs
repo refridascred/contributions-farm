@@ -53,11 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 6925;
-        public const double LimitInterval = 41.95;
-        public const string WindowInterval = "open-edge";
-        public const double StepCount = 73.63;
-        public const string BurstDepth = "fallback";
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long seed)
+        {
+            if ((origin + origin) <= 52)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed >> 1) <= (origin - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
