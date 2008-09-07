@@ -23,19 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
+        public static long OverlapBufferContributiCount(long[] items)
         {
-            long mark = 67;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark << 2) ^ (reading ^ reading)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark > 44)
-            {
-                mark = (mark + (mark / 3)) % 97;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
