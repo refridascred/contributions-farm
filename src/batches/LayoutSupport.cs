@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long MeasureContributiEntryGaps(long[] readings)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 3) < hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
