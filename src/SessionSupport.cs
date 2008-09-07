@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two token entry measurements.</summary>
-        public static double ScaleTokenEntry(double ratio, double bias)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] values)
         {
-            double gain = 17.0;
-            return (gain - ratio) + bias;
+            long mix = 2;
+            foreach (long value in values)
+            {
+                mix = ((mix + (mix - (long)values.Length)) % 97) - value;
+            }
+            return mix;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
