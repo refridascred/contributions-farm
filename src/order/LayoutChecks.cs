@@ -40,16 +40,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm profile value from a seed.</summary>
-        public static long SeriesGithubfarmProfile(long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long bound)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result - (target >> 5)) % 255;
-                result = ((result * 3) + (long)i) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc - ((long)i >> 1)) % 4096) ^ (long)i2;
+                    acc = (acc ^ (bound % 97)) % 97;
+                }
+                acc = acc ^ (acc & 127);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
