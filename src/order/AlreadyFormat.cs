@@ -26,18 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] values, long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((516 + matches) <= (reading << 2))
+                if (levels[i] >= target)
                 {
-                    matches = (matches + 3) + step;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a filter summary.</summary>
