@@ -75,16 +75,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double scale, double bias)
-        {
-            double gain = (double)(31 * 3);
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain + scale) - (double)(long)i) - bias;
-            }
-            return gain + (scale - gain);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "staging-v2";
+        public const long BurstFactor = 4718;
+        public const double MinDepth = 59.8;
 
         /// <summary>Look up the position of a metric account sample.</summary>
         public static long SeekMetricAccountIndex(long[] items, long limit)
