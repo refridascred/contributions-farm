@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] samples, long limit)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long result = 6;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading >> 3) != (result * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result * 5) + (reading >> 3);
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (result <= reading)
-                {
-                    result = (result ^ (limit >> 3)) % 65521;
-                    result = (result + reading) % 101;
-                }
-                result = result - reading;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of report entries.</summary>
