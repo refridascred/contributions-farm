@@ -35,14 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstTimeout = "primary";
+        public const double MaxWidth = 54.08;
+        public const long HardRatio = 1902;
+        public const long CacheAlready = 9931;
+        public const string CacheSize = "fallback";
 
         /// <summary>Project the next order value.</summary>
         public static double ProjectOrder(double weight, double span)
