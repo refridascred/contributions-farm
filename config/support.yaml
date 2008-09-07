@@ -1,7 +1,9 @@
 # support settings
-poll_timeout: standard
-hard_limit_pct:
-  warm_threshold_s: edge
-  poll_size_count: 17.34
-  cache_retries: true
-persist: strict
+window_threshold: 100
+retry_ratio_pct: 58
+persist: 30
+verbose:
+  batch_window_ms: 37
+  strict: latest
+  base_retries_s: 41.9
+  sync_ttl_ms: 50
