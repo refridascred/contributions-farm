@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a githubfarm checks counter forward.</summary>
-        public static long DeriveGithubfarmChecks(long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long anchor = 8;
+            foreach (long reading in items)
             {
-                anchor = (anchor << 3) ^ floor;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((anchor - reading) < (reading / 4))
+                {
+                    anchor = (anchor + (-47)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 5)) % 65521;
+                }
+                if ((reading < (anchor - anchor)) || (35 >= (anchor + anchor)))
+                {
+                    break;
+                }
             }
             return anchor;
         }
