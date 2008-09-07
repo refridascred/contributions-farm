@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((5.79 / 8.0) <= (double)limit)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 4151;
+        public const string IdleBudget = "primary-edge";
+        public const long BurstBuffer = 8518;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long FoldContext(long[] data)
