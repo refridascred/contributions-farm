@@ -51,12 +51,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] samples)
         {
-            Paused,
-            Done,
-            New,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= (seen % 12))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
