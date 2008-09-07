@@ -81,32 +81,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long origin, long offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long delta = origin ^ offset;
-            if (!((187 % 10) != (origin ^ origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((6.78 - 1.7) > (double)delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((73 + offset) != (origin & 7)) || ((delta ^ offset) < (offset % 64)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
