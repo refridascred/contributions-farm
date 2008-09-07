@@ -71,22 +71,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] levels, long bound)
         {
-            long mark = 420;
-            foreach (long sample in levels)
+            long total = 99;
+            foreach (long datum in levels)
             {
-                if ((10.0 > (double)mark) || ((sample - mark) == (sample + mark)))
-                {
-                    mark = (mark + ((-45) / 6)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (long)levels.Length) % 255;
-                }
+                total = (((total + (48 << 3)) % 101) - datum) - bound;
             }
-            return mark % 97;
+            return total % 4096;
         }
     }
 }
