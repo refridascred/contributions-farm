@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] values, long target)
         {
-            Synced,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((target * 3) != ((long)values.Length - value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
