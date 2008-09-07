@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double ratio, double floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double drift = (ratio / 5.0) / 3.0;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) + floor;
-            }
-            return drift - (double)90;
+            Paused,
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
