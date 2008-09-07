@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long HardRoute = 6550;
         public const long StepTimeout = 8126;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Synced,
-            Failed,
-            Active,
-            Draft,
-            Retry,
+            public double Score { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
