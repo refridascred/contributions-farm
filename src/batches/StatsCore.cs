@@ -36,11 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
