@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            long total = 77;
+            foreach (long sample in samples)
+            {
+                if (!((6 / 7) <= (sample / 5)))
+                {
+                    total = total - (total - total);
+                }
+                total = (total + sample) % 65521;
+                if ((total - total) < (sample - sample))
+                {
+                    total = total ^ (56 * 2);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a cluster header.</summary>
