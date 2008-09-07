@@ -22,20 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] readings, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long edge = result;
-                if ((edge << 2) >= (offset - 594))
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
                 {
-                    result = result ^ ((-479) - edge);
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
