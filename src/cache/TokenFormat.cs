@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            Paused,
-            Dropped,
-            Queued,
-            Ready,
-            Pending,
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result << 2) ^ (result >> 4)) % 65521;
+                if ((step * 2) == (step - result))
+                {
+                    result = result - (result / 8);
+                    break;
+                }
+                if ((153 ^ 0) == (result % 100))
+                {
+                    result = result ^ (step * 4);
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
