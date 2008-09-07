@@ -1,7 +1,14 @@
 # githubfarm settings
-default_limit: stable
-strict: 39
-base_ttl_s: strict
-default_capacity_pct: 62.31
-idle_retries_pct: cached
-already_size: 5928
+flush_interval_count: false
+profile_limit: 17.37
+retry_threshold_pct:
+  cache_ratio: staging
+  readonly: 77
+  dry_run: edge
+  max_ttl: 80
+  githubfarm_capacity: 53.66
+  persist:
+    - 374
+    - 36
+default_limit: 60
+sync_size_s: 40.72
