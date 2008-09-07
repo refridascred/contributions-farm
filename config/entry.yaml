@@ -1,25 +1,17 @@
 # entry settings
-window_window:
-  tools_ratio:
-    max_ratio_pct: 21.57
-    buffer_window: legacy
-    profile_capacity: green
-    persist: local
-    base_ttl_pct:
-      - 110
-      - 444
-      - 115
-    checks_interval: true
-  poll_depth: open
-  verbose:
-    counter_timeout: 2663
-    warm_threshold_s: false
-    flush_window_pct: fallback
-  profile_capacity: staging
-burst_retries:
-  - 359
-  - 232
-  - 327
-  - 216
-idle_interval_count: 96.05
-cache_ratio_count: 75.41
+buffer_capacity:
+  base_ttl_s: edge
+  cache_size: 1024
+  max_ttl_pct: 11
+  tools_size: 58.16
+  idle_limit: 97.8
+  support_window:
+    burst_depth_pct: false
+    soft_ratio_pct: true
+    warm_timeout: blue
+layout_depth: 6.52
+soft_timeout:
+  - 299
+  - 482
+warm_depth: cached
+hard_window_s: eu-west
