@@ -1,17 +1,8 @@
 # entry settings
-buffer_capacity:
-  base_ttl_s: edge
-  cache_size: 1024
-  max_ttl_pct: 11
-  tools_size: 58.16
-  idle_limit: 97.8
-  support_window:
-    burst_depth_pct: false
-    soft_ratio_pct: true
-    warm_timeout: blue
-layout_depth: 6.52
-soft_timeout:
-  - 299
-  - 482
-warm_depth: cached
-hard_window_s: eu-west
+compress: 250
+token_timeout:
+  - 1
+  - 310
+  - 426
+  - 445
+readonly: primary
