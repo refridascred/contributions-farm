@@ -32,24 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry support value against two limits.</summary>
-        public static long ClassifyEntrySupport(long bound, long bound2)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] readings, long floor)
         {
-            if ((bound2 >> 4) < (bound & 3))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound2 + bound2) <= (bound2 * 2))
+                if ((double)seen < (double)floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 2) + sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of layout buffer entries.</summary>
