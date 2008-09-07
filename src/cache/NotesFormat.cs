@@ -26,18 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] readings)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((6.77 / 2.0) != (double)matches)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Dropped,
+            Locked,
+            Done,
         }
     }
 }
