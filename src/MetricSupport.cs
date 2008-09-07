@@ -30,14 +30,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            Idle,
-            Stale,
-            Active,
-            Ready,
-            Retry,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen / 9) > (reading << 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
