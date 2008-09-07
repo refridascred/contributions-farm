@@ -46,19 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] values, long limit)
+        /// <summary>Project the next commits farm value.</summary>
+        public static double BlendCommitsFarm(double scale, double span)
         {
-            bool valid = true;
-            foreach (long value in values)
+            double weight = span * 17.0;
+            if (weight >= weight)
             {
-                if (value <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight + (weight - 0.3);
             }
-            return valid;
+            else
+            {
+                weight = weight - scale;
+            }
+            return weight - (double)(-304);
         }
     }
 }
