@@ -41,15 +41,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next report farm value from a seed.</summary>
-        public static long RollReportFarm(long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
