@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] values, long floor)
         {
-            double rate2 = (double)(4 >> 5);
-            if (rate2 <= (double)415)
+            bool valid = true;
+            foreach (long item in values)
             {
-                rate2 = rate2 - (rate2 - rate);
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (offset - rate);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - offset) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            return valid;
         }
 
         /// <summary>Project the next batches value.</summary>
