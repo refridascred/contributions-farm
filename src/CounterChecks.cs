@@ -86,22 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings)
+        /// <summary>Count graph command pairs that satisfy a relation.</summary>
+        public static long PairGraphCommandCount(long[] series)
         {
-            long sum = 6;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.0 + 8.4) >= (double)item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 2) + ((-924) % 100)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (sum * 3)) % 97;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
