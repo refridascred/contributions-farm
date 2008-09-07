@@ -59,17 +59,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] series, long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed ^ target) != (seed >> 1))
             {
-                if (series[i] == seed)
+                return 6;
+            }
+            else
+            {
+                if (((seed / 2) != (target + target)) && ((target >> 4) >= seed))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((target * 4) <= (86 << 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
