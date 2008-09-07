@@ -16,17 +16,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first notes route entry that matches the target.</summary>
-        public static long LocateNotesRouteIndex(long[] series, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score << 3) ^ ((long)i ^ step);
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
