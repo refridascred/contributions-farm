@@ -36,15 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double scale, double bias)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double drift = scale;
-            if (drift < bias)
-            {
-                drift = drift + (bias + scale);
-            }
-            return drift - (7.9 / 3.0);
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
