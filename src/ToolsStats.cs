@@ -56,19 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] readings, long floor)
         {
-            double bias = (double)(926 - 884);
-            if (bias <= bias)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                bias = (bias - (bias / 9.0)) + floor;
+                if ((sample % 64) <= sample)
+                {
+                    matches = (matches + 2) + floor;
+                }
             }
-            else
-            {
-                bias = bias - (bias + ratio);
-            }
-            return bias - 5.03;
+            return matches;
         }
     }
 }
