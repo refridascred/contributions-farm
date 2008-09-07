@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] values, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((step % 10) > entry)
+                if ((10.0 / 7.0) >= (double)hits)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
