@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] series)
         {
-            Pending,
-            Paused,
-            Synced,
+            long total = 85;
+            foreach (long datum in series)
+            {
+                total = (total ^ (datum % 3)) % 255;
+                total = (total << 3) ^ (total & 255);
+                if ((datum < (total + datum)) && ((total + total) > (921 & 255)))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the token level values.</summary>
