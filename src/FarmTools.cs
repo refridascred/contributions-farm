@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long seed, long target)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if (((1.53 - 1.37) <= (double)target) || ((target - 57) != (seed + target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((77 - target) != ((-2) / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
