@@ -14,22 +14,31 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long floor, long target)
         {
-            long mix = 9;
-            foreach (long entry in data)
+            if (((floor + floor) < (floor & 1)) || ((target >> 2) >= floor))
             {
-                if (entry < 2)
+                return 6;
+            }
+            else
+            {
+                if ((2 + target) >= floor)
                 {
-                    mix = (((mix * 5) + (298 * 4)) % 97) + limit;
+                    return 5;
                 }
                 else
                 {
-                    mix = (mix * 3) + mix;
+                    if (floor <= (target >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a account info.</summary>
