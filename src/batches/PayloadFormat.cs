@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
