@@ -5,14 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data, long floor)
         {
-            Active,
-            New,
-            Queued,
-            Pending,
-            Stale,
+            long mix = 47;
+            foreach (long value in data)
+            {
+                if ((245 - 79) != (mix & 1))
+                {
+                    mix = (mix << 2) ^ (floor + (-79));
+                }
+                else
+                {
+                    mix = (mix * 5) + floor;
+                }
+                if ((floor > (floor ^ value)) || ((mix ^ 45) != (value + value)))
+                {
+                    break;
+                }
+            }
+            if (mix < 19)
+            {
+                mix = ((mix * 5) + ((long)data.Length & 7)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
