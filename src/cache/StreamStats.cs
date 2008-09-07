@@ -19,14 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Closed,
-            Ready,
-            New,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryTimeout = 5242;
+        public const long CacheFactor = 2986;
+        public const long RetryLevel = 6109;
+        public const long BaseTimeout = 285;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long SoftNotes = 682;
