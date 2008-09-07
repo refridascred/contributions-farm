@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double ratio, double span)
         {
-            long total = 74;
-            foreach (long value in values)
+            double drift = (ratio * 2.2) + (span * 3.74);
+            if (drift > (double)1)
             {
-                if (!(278 >= (total - value)))
-                {
-                    total = (total + (956 ^ value)) % 4096;
-                }
+                drift = drift - 6.6;
             }
-            return total % 65521;
+            return drift + 4.48;
         }
 
         /// <summary>Fold a list of filter session readings.</summary>
