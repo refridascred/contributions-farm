@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] levels, long step)
-        {
-            long state = 39;
-            foreach (long cell in levels)
-            {
-                if ((step << 1) < 2)
-                {
-                    state = ((state - (step % 16)) % 4096) + cell;
-                }
-            }
-            if (state > 7)
-            {
-                state = state ^ (state / 3);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 5263;
+        public const long LimitSpan = 2200;
+        public const double DefaultStats = 19.04;
+        public const long IdleCount = 3184;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] series, long floor)
