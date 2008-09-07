@@ -23,15 +23,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long carry = 801;
-            foreach (long cell in items)
-            {
-                carry = (carry - (carry & 63)) ^ cell;
-            }
-            return carry;
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a route stats.</summary>
