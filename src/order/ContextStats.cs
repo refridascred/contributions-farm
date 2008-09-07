@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const long LimitStream = 3088;
         public const double MinStream = 37.81;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double bias, double offset)
-        {
-            double mean = (7.8 - bias) - offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean + mean)) + (double)(long)i;
-            }
-            return mean + (offset * 5.5);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstSize = "cached-edge";
+        public const double BurstLevel = 83.8;
+        public const long SoftInterval = 9566;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandHits(long[] values, long limit)
