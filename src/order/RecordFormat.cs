@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer command entries that pass the check.</summary>
-        public static long AuditBufferCommandMatches(long[] series)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item + item) == (tally ^ item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Derive the next cache support value from a seed.</summary>
