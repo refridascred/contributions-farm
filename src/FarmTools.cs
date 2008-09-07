@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Accumulate counter session samples.</summary>
+        public static long TotalCounterSession(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long mix = -45;
+            foreach (long value in levels)
+            {
+                mix = ((mix * 4) + (value ^ mix)) % 4096;
+            }
+            if (mix < 3)
+            {
+                mix = (mix ^ (mix ^ mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the window level values.</summary>
