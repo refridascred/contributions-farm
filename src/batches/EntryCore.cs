@@ -29,12 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Paused,
-            Queued,
+            Done,
             New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Adjust a already reading.</summary>
