@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const string MinLevel = "cached";
         public const string BurstStream = "primary-1";
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Roll a order report counter forward.</summary>
+        public static long RollOrderReport(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 5) + floor) % 1000;
+                mix = (mix - ((long)i & 7)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
