@@ -83,19 +83,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] readings, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long floor, long floor2)
         {
-            long sum = 7;
-            foreach (long value in readings)
+            long lane = floor - floor2;
+            if ((floor * 2) < floor)
             {
-                sum = (((sum + (558 & 127)) % 1000) ^ value) + seed;
+                return 5;
             }
-            if (sum < 11)
+            else
             {
-                sum = (sum - ((-4) >> 2)) % 65521;
+                if (lane <= (floor2 - 58))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7 - floor2) < (floor - 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return sum;
         }
     }
 }
