@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Count the booking entries that pass the check.</summary>
-        public static long CountBookingMatches(long[] data, long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (sample >= count)
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
