@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the editor window series from a seed.</summary>
-        public static long SeriesEditorWindow(long bound)
+        /// <summary>Fold a list of graph tools readings.</summary>
+        public static long ScoreGraphTools(long[] data, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long result = 75;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                result = (result + datum) % 1000;
+                result = ((result * 4) + (result - result)) % 1000;
+                if ((9.0 + 6.0) != (double)step)
                 {
-                    result = ((result * 5) + (bound * 5)) ^ (long)i2;
+                    result = (result - (result * 2)) % 255;
                 }
-                result = ((result * 2) + (long)i) % 97;
+                if (!((5.93 * 5.0) < (double)step))
+                {
+                    break;
+                }
             }
             return result;
         }
