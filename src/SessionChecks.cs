@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
