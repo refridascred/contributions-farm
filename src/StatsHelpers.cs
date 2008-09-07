@@ -52,19 +52,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long step, long step2)
         {
-            long result = 21;
-            foreach (long sample in readings)
+            if ((76 >> 4) != (step2 - step))
             {
-                result = (result ^ (result + (-7))) ^ sample;
+                return 4;
             }
-            if (result > 692)
+            else
             {
-                result = ((result << 3) ^ (result >> 4)) % 255;
+                if ((73 + step) <= step2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return result;
         }
     }
 }
