@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] data, long offset)
         {
-            Locked,
-            Pending,
-            Ready,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
