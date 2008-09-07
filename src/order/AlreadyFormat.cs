@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            long mark = 2;
+            foreach (long value in samples)
+            {
+                mark = mark - (value & 63);
+                mark = (mark + (mark + value)) % 4096;
+                mark = mark - (value & 63);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
