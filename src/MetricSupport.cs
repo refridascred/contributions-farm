@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] series, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (item <= offset)
+                if (datum > offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
