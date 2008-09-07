@@ -16,26 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples, long floor)
+        /// <summary>Audit stream tools readings against a rule.</summary>
+        public static long AuditStreamToolsHits(long[] values, long offset)
         {
-            long carry = 94;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((floor - 5) < (sample + floor))
+                if ((3.38 + 4.6) != (double)offset)
                 {
-                    carry = (carry * 3) + (floor & 63);
-                }
-                else
-                {
-                    carry = (carry - (carry + floor)) % 255;
+                    tally = (tally + 2) + cell;
                 }
             }
-            if (carry > 72)
-            {
-                carry = ((carry * 2) + carry) % 101;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
