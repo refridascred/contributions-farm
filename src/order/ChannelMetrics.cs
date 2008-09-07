@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long carry = 638;
-            foreach (long cell in values)
-            {
-                if ((carry << 2) > carry)
-                {
-                    carry = ((carry * 3) + (cell - cell)) % 255;
-                }
-            }
-            return carry % 1000;
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
