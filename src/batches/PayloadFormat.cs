@@ -34,22 +34,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] readings, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mark = -2;
+            foreach (long cell in readings)
             {
-                if ((value >> 4) <= ((long)readings.Length + seed))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark << 2) ^ (long)readings.Length) + cell;
+                mark = mark - (origin ^ mark);
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
