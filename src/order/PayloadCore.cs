@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit profile batch readings against a rule.</summary>
-        public static long MeasureProfileBatchHits(long[] items, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] items)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((count - 928) == (2 + origin))
+                if ((matches - item) > item)
                 {
-                    count = (count + 2) ^ sample;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a already tools sample.</summary>
