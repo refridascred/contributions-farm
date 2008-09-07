@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] items, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (datum > limit)
+                if (value != origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Describe the metric phase values.</summary>
