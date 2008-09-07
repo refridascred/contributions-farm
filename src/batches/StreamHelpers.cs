@@ -36,13 +36,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long offset)
         {
-            Active,
-            Retry,
-            New,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
