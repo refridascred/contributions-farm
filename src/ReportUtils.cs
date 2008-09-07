@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 6557;
-        public const long BatchBudget = 8387;
-        public const long HardSize = 762;
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheOutliers(long[] samples, long step)
