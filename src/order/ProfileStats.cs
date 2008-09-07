@@ -24,10 +24,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinInterval = 5121;
-        public const long SoftSpan = 5024;
-        public const long CacheLevel = 6789;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] series, long limit)
+        {
+            long carry = 1;
+            foreach (long entry in series)
+            {
+                carry = ((carry - (limit / 9)) % 97) + entry;
+            }
+            if (carry < 71)
+            {
+                carry = ((carry * 4) + (limit ^ carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Count tools window pairs that satisfy a relation.</summary>
         public static long MatchToolsWindowCount(long[] values)
