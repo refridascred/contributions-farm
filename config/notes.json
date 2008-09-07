@@ -1,6 +1,5 @@
 {
-  "sync_interval": 60,
-  "notes_delay": 60.35,
-  "base_timeout_pct": 7255,
-  "min_interval_count": [246, 283]
+  "min_delay": "fallback",
+  "strict": true,
+  "default_interval": 100
 }
