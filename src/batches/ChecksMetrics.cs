@@ -51,24 +51,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long target)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double weight, double floor)
         {
-            if ((6.0 + 1.62) == (double)step)
+            double rate = 6.4;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                rate = ((rate - floor) - (double)(long)i) + weight;
             }
-            else
-            {
-                if (((target % 60) <= target) || ((4.0 - 20.0) == (double)target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return rate + (floor * 6.7);
         }
 
         /// <summary>Rank stats input into a small class.</summary>
