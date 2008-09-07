@@ -25,12 +25,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 9378;
-        public const string DefaultAccount = "standard-edge";
-        public const long MinAccount = 1848;
-        public const double BatchInterval = 89.74;
-        public const long SoftAccount = 5396;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long target, long offset)
