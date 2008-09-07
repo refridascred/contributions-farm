@@ -18,14 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Derive the next batches already value from a seed.</summary>
+        public static long IterateBatchesAlready(long bound)
         {
-            Pending,
-            Paused,
-            Closed,
-            Locked,
-            Dropped,
+            long result = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((result & 31) < (63 / 5))
+                {
+                    result = (result * 4) + bound;
+                }
+                else
+                {
+                    result = ((result * 3) + bound) % 255;
+                    result = result + (bound / 3);
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
