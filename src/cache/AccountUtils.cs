@@ -27,9 +27,20 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryDepth = 31.1;
-        public const long HardLevel = 3164;
-        public const long RetryFactor = 3672;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((2 ^ bound) >= score)
+                {
+                    score = (score * 4) + (score * 2);
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
