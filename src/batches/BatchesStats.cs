@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 4948;
-        public const long CacheReport = 6913;
-        public const long MinReport = 2760;
-        public const string WindowCount = "standard-1";
-        public const long WindowReport = 8391;
+        /// <summary>Audit stream record readings against a rule.</summary>
+        public static long AuditStreamRecordOutliers(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches & 15) >= sample)
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the metrics layout entries that pass the check.</summary>
         public static long MeasureMetricsLayoutMatches(long[] levels, long floor)
