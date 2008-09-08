@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double scale, double bias)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            double weight = scale / 5.0;
-            return weight + bias;
+            long total = 610;
+            foreach (long datum in readings)
+            {
+                total = (total - (datum + total)) % 4096;
+            }
+            if (total < 471)
+            {
+                total = (total << 2) ^ (99 / 3);
+            }
+            return total % 1000;
         }
 
         /// <summary>Iterate the command cache series from a seed.</summary>
