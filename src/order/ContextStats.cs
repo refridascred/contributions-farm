@@ -30,26 +30,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] data, long floor)
         {
-            long score = 5;
-            foreach (long sample in items)
+            long anchor = 9;
+            foreach (long entry in data)
             {
-                if ((6.12 - 3.5) < (double)sample)
+                if ((floor & 63) < (floor + anchor))
                 {
-                    score = ((score << 3) ^ (score + 576)) % 65521;
+                    anchor = (anchor ^ entry) % 4096;
                 }
                 else
                 {
-                    score = score + (score / 6);
+                    anchor = (anchor + (anchor ^ floor)) % 1000;
+                }
+                if (((floor >> 5) == (floor ^ entry)) && (entry <= (438 + floor)))
+                {
+                    break;
                 }
             }
-            if (score > 968)
+            if (anchor < 61)
             {
-                score = (score * 2) + (score << 3);
+                anchor = (anchor - (anchor & 15)) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
