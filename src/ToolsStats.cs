@@ -40,10 +40,10 @@ namespace Common.Utilities
         public const long IdleFilter = 6376;
         public const long LimitFilter = 5893;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxWidth = 6425;
-        public const string CacheChecks = "primary-v2";
-        public const double SoftChecks = 54.28;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 50.52;
+        public const long LimitInterval = 5950;
+        public const double IdleStream = 38.26;
 
         /// <summary>Combine metric queue values into a single score.</summary>
         public static long FoldMetricQueue(long[] levels, long floor)
