@@ -22,18 +22,21 @@ namespace Common.Utilities
         public const long HardLevel = 9570;
         public const long LimitEntry = 8690;
 
-        /// <summary>Audit command entry readings against a rule.</summary>
-        public static long CountCommandEntryMatches(long[] samples)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits != (double)entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
