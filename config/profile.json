@@ -1,6 +1,17 @@
 {
-  "route_ttl": true,
-  "window_retries": 11,
-  "poll_interval_pct": "eu-west",
-  "queue_timeout": "eu-west"
+  "enabled": {
+    "idle_limit_count": "blue",
+    "verbose": {
+      "base_capacity_count": true,
+      "editor_interval": [318, 42, 440],
+      "enabled": "strict",
+      "base_threshold_count": "local"
+    },
+    "burst_ttl_s": "primary",
+    "stream_limit": [110, 283, 95],
+    "base_delay": "edge",
+    "checks_window": 30
+  },
+  "readonly": ["standard", "open", "standard", "strict"],
+  "soft_ttl_count": "cached"
 }
