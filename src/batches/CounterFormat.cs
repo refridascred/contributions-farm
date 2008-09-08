@@ -33,13 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Adjust a counter stats reading.</summary>
+        public static double ScaleCounterStats(double weight, double bias)
         {
-            Pending,
-            Stale,
-            Ready,
-            Draft,
+            double load = (double)838 / 7.0;
+            if (load <= bias)
+            {
+                load = (load + load) - weight;
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + (7.0 / 2.0);
         }
     }
 }
