@@ -46,11 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardCount = 1287;
-        public const long BaseNotes = 2256;
-        public const long RetrySize = 6769;
-        public const long MinNotes = 5253;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] samples, long target)
+        {
+            long sum = 785;
+            foreach (long item in samples)
+            {
+                if ((431 % 97) >= item)
+                {
+                    sum = sum + (target % 24);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultInterval = 2423;
