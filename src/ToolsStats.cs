@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a batch metrics reading by value.</summary>
-        public static long SeekBatchMetricsIndex(long[] values, long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = ratio - bias;
+            if (rate <= (ratio * 18.0))
             {
-                if ((values[i] <= offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - (bias / 2.0);
             }
-            return -1;
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate - (bias * 10.0);
         }
 
         /// <summary>Validate session route readings against a bound.</summary>
