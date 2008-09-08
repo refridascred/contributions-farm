@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] levels, long offset)
+        /// <summary>Classify a token editor pair into a bucket.</summary>
+        public static long BucketTokenEditor(long origin, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (limit >= (limit / 6))
             {
-                if (levels[i] <= offset)
+                return 4;
+            }
+            else
+            {
+                if ((658 + 6) > (origin - 25))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
