@@ -12,40 +12,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long origin)
-        {
-            long edge = floor + origin;
-            if ((floor % 5) <= (-7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin > (origin * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor <= (origin * 3)) || ((24 ^ edge) < floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)floor >= 5.0) && ((7 + origin) < (edge - origin)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowLevel = 2095;
+        public const double MinRecord = 83.14;
+        public const double BurstRecord = 54.61;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
