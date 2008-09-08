@@ -54,25 +54,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the checks order series from a seed.</summary>
-        public static long StepChecksOrder(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((double)origin == (6.55 / 4.0)) || ((double)sum > (19.0 - 9.08)))
-                {
-                    sum = sum ^ (1 - origin);
-                    sum = (sum << 3) ^ (sum + sum);
-                }
-                if ((sum + (long)i) < (origin - 669))
-                {
-                    sum = (sum + 57) % 65521;
-                    sum = ((sum << 2) ^ (origin * 4)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardBudget = 4076;
+        public const double LimitLevel = 41.66;
+        public const long MaxSchema = 568;
+        public const double RetrySchema = 15.11;
+        public const double BatchSchema = 60.55;
     }
 }
