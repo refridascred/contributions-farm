@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double gain, double offset)
-        {
-            double rate = gain;
-            return rate + (offset * 6.4);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheCount = 1145;
+        public const long LimitSize = 4632;
+        public const long CacheProfile = 4400;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
