@@ -23,21 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of batch support readings.</summary>
-        public static long CompareBatchSupportCount(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < origin)
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Accumulate channel samples.</summary>
