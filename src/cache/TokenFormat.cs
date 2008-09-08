@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result << 2) ^ (result >> 4)) % 65521;
-                if ((step * 2) == (step - result))
-                {
-                    result = result - (result / 8);
-                    break;
-                }
-                if ((153 ^ 0) == (result % 100))
-                {
-                    result = result ^ (step * 4);
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
