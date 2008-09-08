@@ -1,5 +1,17 @@
 # support settings
-cache_retries: true
-sync_retries: latest
-window_limit: 93.41
-batch_capacity_s: 90
+base_ttl_ms:
+  - stable
+  - blue
+  - standard
+order_ttl:
+  tools_limit: 23.71
+  compress:
+    - 363
+    - 157
+    - 446
+    - 321
+  schema_delay: 62.93
+  filter_depth: standard
+  contributi_depth: 30
+  githubfarm_ttl: 93.84
+enabled: cached
