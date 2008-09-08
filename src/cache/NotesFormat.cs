@@ -20,13 +20,10 @@ namespace Common.Utilities
             return gain + 5.56;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleFactor = 4144;
+        public const long RetryRoute = 8189;
+        public const long CacheLevel = 3898;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueBounds(long[] values, long seed)
