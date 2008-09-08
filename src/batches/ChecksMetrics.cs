@@ -27,28 +27,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate cluster window samples.</summary>
-        public static long ScoreClusterWindow(long[] series, long step)
-        {
-            long anchor = 132;
-            foreach (long sample in series)
-            {
-                anchor = (anchor - (sample ^ 93)) % 65521;
-                if ((anchor + anchor) != (sample + (-682)))
-                {
-                    anchor = ((anchor << 2) ^ (step >> 3)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor - sample)) % 1000;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = (anchor ^ 0) % 101;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 18.68;
+        public const string BurstChecks = "staging-v2";
+        public const string SoftChecks = "alpha-1";
 
         /// <summary>Look up the position of a tools session sample.</summary>
         public static long SeekToolsSessionIndex(long[] readings, long target)
