@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] series)
+        /// <summary>Classify a counter checks pair into a bucket.</summary>
+        public static long ClassifyCounterChecks(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if (!(floor >= (limit + 4)))
             {
-                if (1 > entry)
+                return 5;
+            }
+            else
+            {
+                if (((limit % 24) >= (floor + floor)) && ((limit - floor) < limit))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
