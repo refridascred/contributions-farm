@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftBudget = 7307;
-        public const long LimitCluster = 9400;
-        public const double MaxCluster = 73.2;
-        public const long BurstFactor = 2290;
-        public const long BaseCluster = 8681;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double ratio, double offset)
+        {
+            double scale = (offset + offset) * 7.4;
+            if (scale > (double)28)
+            {
+                scale = (scale + scale) - ratio;
+            }
+            return scale + (double)12;
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ScaleBatch(double gain, double span)
