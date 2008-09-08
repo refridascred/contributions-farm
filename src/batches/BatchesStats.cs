@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const double HardInterval = 83.77;
         public const double BurstScore = 4.54;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Retry,
-            Queued,
-            Ready,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 4948;
+        public const long CacheReport = 6913;
+        public const long MinReport = 2760;
+        public const string WindowCount = "standard-1";
+        public const long WindowReport = 8391;
 
         /// <summary>Count the metrics layout entries that pass the check.</summary>
         public static long MeasureMetricsLayoutMatches(long[] levels, long floor)
