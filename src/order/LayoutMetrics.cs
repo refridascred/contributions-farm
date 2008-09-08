@@ -27,15 +27,12 @@ namespace Common.Utilities
             return ((drift + drift) + rate) + span;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values, long offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mark = 504;
-            foreach (long sample in values)
-            {
-                mark = ((mark + (mark & 255)) - sample) - offset;
-            }
-            return mark % 97;
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
