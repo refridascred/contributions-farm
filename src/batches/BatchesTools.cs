@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] values, long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Accumulate stream samples.</summary>
