@@ -55,12 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 89.53;
-        public const string DefaultWidth = "local";
-        public const long HardLevel = 3131;
-        public const string DefaultTimeout = "latest-edge";
-        public const double BaseRecord = 5.73;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings)
+        {
+            long sum = 10;
+            foreach (long entry in readings)
+            {
+                sum = ((sum * 3) + (entry - sum)) % 65521;
+                if ((entry & 127) == (entry - entry))
+                {
+                    sum = (sum ^ (sum << 3)) % 65521;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
