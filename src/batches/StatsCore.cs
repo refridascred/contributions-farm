@@ -81,11 +81,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardWidth = 634;
-        public const string SoftLevel = "local";
-        public const long MaxEntry = 7274;
-        public const string DefaultEntry = "primary-v2";
-        public const long StepLevel = 7880;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
