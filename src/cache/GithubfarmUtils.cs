@@ -55,15 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] data, long target)
         {
-            long total = 8;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                total = ((total * 3) + entry) % 65521;
+                if (datum < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
     }
 }
