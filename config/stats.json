@@ -1,5 +1,16 @@
 {
-  "checks_ttl": 4168,
-  "profile_window": 80.73,
-  "soft_threshold_count": 94.04
+  "audit": {
+    "soft_retries_count": [361, 232, 91],
+    "flush_window": {
+      "base_ratio_s": 62.38,
+      "enabled": 250,
+      "warm_delay_ms": 60,
+      "idle_ratio_s": 46,
+      "burst_timeout": ["standard", "latest"]
+    },
+    "warm_window": ["primary", "latest", "standard", "open"]
+  },
+  "poll_ttl_pct": true,
+  "account_threshold": ["cached", "standard", "green"],
+  "base_timeout": 9827
 }
