@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=357
-log "limit is ${BUFFER_LIMIT}"
-
-for item in edge standard; do
+for item in strict fallback local primary; do
     log "checking ${item}"
 done
 
