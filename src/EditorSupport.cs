@@ -31,18 +31,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] values, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long score = 414;
+            foreach (long cell in items)
             {
-                if ((seen + seen) > reading)
+                if (!((4.66 + 3.44) >= (double)score))
                 {
-                    seen = (seen + 3) - limit;
+                    score = (((score * 3) + (target + target)) % 65521) ^ cell;
                 }
+                score = (score << 2) ^ (target / 2);
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
