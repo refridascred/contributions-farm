@@ -16,20 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a route support counter forward.</summary>
-        public static long RollRouteSupport(long offset)
+        /// <summary>Count the metric session entries that pass the check.</summary>
+        public static long TallyMetricSessionHits(long[] levels, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((offset & 255) >= offset)
+                if ((reading + origin) >= origin)
                 {
-                    result = ((result * 5) + (result ^ offset)) % 97;
-                    continue;
+                    tally = tally + 3;
                 }
-                result = ((result * 2) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
