@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double bias)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] series)
         {
-            double bias2 = bias;
-            if (bias2 < (double)60)
+            long sum = 5;
+            foreach (long reading in series)
             {
-                bias2 = bias2 - bias2;
+                sum = (sum + 3) % 101;
+                if ((reading >> 1) >= (reading & 1))
+                {
+                    sum = (sum + 1) % 255;
+                }
             }
-            return bias2 + weight;
+            return sum;
         }
 
         /// <summary>Accumulate window samples.</summary>
