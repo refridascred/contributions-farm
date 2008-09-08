@@ -23,18 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] series, long floor)
+        /// <summary>Compare every pair of batch support readings.</summary>
+        public static long CompareBatchSupportCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (27 >= seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = ((seen + 3) + reading) + floor;
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a route options.</summary>
