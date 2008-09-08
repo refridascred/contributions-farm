@@ -84,11 +84,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Fold a list of graph already readings.</summary>
+        public static long TotalGraphAlready(long[] readings, long limit)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
+            long carry = 7;
+            foreach (long cell in readings)
+            {
+                carry = (carry * 3) + (carry - carry);
+                if ((limit ^ cell) == (limit & 15))
+                {
+                    carry = (carry << 3) ^ limit;
+                }
+                if ((double)cell > (6.3 * 1.0))
+                {
+                    break;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = (carry * 2) + ((long)readings.Length % 12);
+            }
+            return carry % 65521;
         }
     }
 }
