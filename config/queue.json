@@ -1,7 +1,7 @@
 {
-  "graph_limit": 719,
-  "batch_threshold_ms": true,
-  "sync_limit_count": 5,
-  "cache_interval": 30,
-  "default_limit_s": false
+  "batch_size": "edge",
+  "entry_interval": "latest",
+  "warm_threshold_count": [371, 2, 31, 443],
+  "warm_threshold_ms": [63, 274, 205, 232],
+  "batch_retries_count": 48
 }
