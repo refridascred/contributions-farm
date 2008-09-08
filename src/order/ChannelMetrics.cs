@@ -42,19 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] samples, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell != offset)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor ^ floor) % 97) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
     }
 }
