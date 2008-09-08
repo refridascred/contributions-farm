@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultToken = 61.52;
-        public const long HardToken = 3800;
-        public const double HardInterval = 83.77;
-        public const double BurstScore = 4.54;
+        /// <summary>Locate a tools graph reading by value.</summary>
+        public static long LookupToolsGraphIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleReport = 4948;
