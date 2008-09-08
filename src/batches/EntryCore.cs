@@ -37,19 +37,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((double)seen != (3.0 - 19.0)) || !((target - 3) <= target))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSize = 8379;
+        public const long StepChannel = 7650;
+        public const double HardWidth = 83.8;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] data, long origin)
