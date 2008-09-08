@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long seed)
-        {
-            long carry = 5;
-            foreach (long cell in samples)
-            {
-                carry = ((carry * 2) + (cell & 255)) % 1000;
-                if (seed < ((-6) ^ carry))
-                {
-                    carry = ((carry << 2) ^ (seed * 4)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardStats = "strict-edge";
+        public const double BatchStats = 88.11;
+        public const long SoftStats = 2443;
+        public const long RetrySpan = 8163;
+        public const long StepStats = 5919;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LookupOrderIndex(long[] readings, long offset)
