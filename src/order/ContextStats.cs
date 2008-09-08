@@ -56,18 +56,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches + matches) < (matches - matches))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Idle,
+            Done,
         }
     }
 }
