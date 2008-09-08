@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (bound > (30 / 7))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstSpan = 33;
+        public const long RetryCommand = 539;
+        public const string SoftLevel = "alpha";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
