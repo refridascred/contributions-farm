@@ -1,14 +1,6 @@
 {
-  "idle_interval_ms": true,
-  "session_depth": "edge",
-  "burst_delay_count": "eu-west",
-  "sync_capacity": {
-    "sync_size_count": false,
-    "compress": "edge",
-    "already_capacity": ["latest", "cached", "stable", "eu-west"],
-    "audit": 13.17,
-    "farm_depth": [180, 283]
-  },
-  "flush_capacity_ms": 72.28,
-  "readonly": "legacy"
+  "cache_depth": 34.96,
+  "retry_threshold_s": "standard",
+  "burst_ttl": false,
+  "profile_timeout": "latest"
 }
