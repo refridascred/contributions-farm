@@ -34,12 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long seed)
+        /// <summary>Find the first account entry entry that matches the target.</summary>
+        public static long LookupAccountEntryIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] == seed)
+                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
