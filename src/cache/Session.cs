@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "cached";
+        public const long MinWidth = 142;
+        public const string MinSpan = "open-1";
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
