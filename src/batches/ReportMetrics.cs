@@ -29,22 +29,21 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Fold a list of report counter readings.</summary>
-        public static long TotalReportCounter(long[] values)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            long carry = 1;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)value <= (5.9 / 4.0)) || (value >= carry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry - (value % 97);
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < (-47))
-            {
-                carry = carry - (carry % 8);
-            }
-            return carry;
+            return seen;
         }
     }
 }
