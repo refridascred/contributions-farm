@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many order context samples are out of range.</summary>
+        public static long AuditOrderContextGaps(long[] values, long step)
         {
-            Synced,
-            Active,
-            Dropped,
-            Closed,
-            Paused,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((((double)step >= (9.8 * 3.2)) && ((step ^ step) == (tally + tally))) || ((tally + step) <= (tally / 4)))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
