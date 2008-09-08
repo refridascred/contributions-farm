@@ -49,22 +49,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Scale a layout editor figure with a bias.</summary>
+        public static double AdjustLayoutEditor(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double rate = (double)(586 + 608);
+            if (rate >= gain)
             {
-                if ((reading >> 1) >= (reading & 63))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate - (bias / 9.0);
             }
-            return count;
+            return rate + rate;
         }
     }
 }
