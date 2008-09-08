@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] values, long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double rate = floor;
+            if (rate >= floor)
             {
-                if ((781 ^ cell) == (hits * 4))
-                {
-                    hits = (hits + 3) - offset;
-                }
+                rate = (rate - (floor * 2.89)) - bias;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - 4.47;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
