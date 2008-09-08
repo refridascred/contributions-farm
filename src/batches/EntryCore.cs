@@ -31,22 +31,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of graph channel readings.</summary>
-        public static long DigestGraphChannel(long[] readings, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] samples)
         {
-            long result = 3;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (((step >> 3) != (result % 5)) || ((5.7 * 2.4) != (double)result))
+                if (((4 << 1) <= (tally + 20)) || (entry <= (tally >> 4)))
                 {
-                    result = (((result << 3) ^ (91 + result)) % 97) + datum;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    result = (result - (step % 16)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the window class values.</summary>
