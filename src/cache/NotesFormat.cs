@@ -34,22 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] samples, long step)
-        {
-            long score = -211;
-            foreach (long item in samples)
-            {
-                if (item > (score + item))
-                {
-                    score = (score - (68 / 7)) % 4096;
-                }
-            }
-            if (score < 266)
-            {
-                score = score - step;
-            }
-            return score % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 6219;
+        public const long MinTimeout = 9161;
+        public const string WindowBatches = "open";
+        public const string StepBatches = "primary-v2";
+        public const long WindowRatio = 3244;
     }
 }
