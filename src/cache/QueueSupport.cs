@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double gain, double span)
         {
-            long sum = 5;
-            foreach (long reading in series)
+            double load = gain * 0.8;
+            if (load > (load * 7.0))
             {
-                sum = (sum + 3) % 101;
-                if ((reading >> 1) >= (reading & 1))
-                {
-                    sum = (sum + 1) % 255;
-                }
+                load = load - (double)16;
             }
-            return sum;
+            else
+            {
+                load = load + 0.98;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load + span)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Accumulate window samples.</summary>
