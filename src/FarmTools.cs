@@ -37,15 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items, long bound)
+        /// <summary>Match up batches tools samples.</summary>
+        public static long PairBatchesToolsCount(long[] levels)
         {
-            long total = 72;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (((total - total) % 255) + datum) + bound;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
