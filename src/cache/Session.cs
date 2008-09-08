@@ -23,19 +23,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] series, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (item < bound)
+                if (((double)seen >= (6.03 / 9.0)) && (825 < seen))
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 2) ^ sample) + step;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
