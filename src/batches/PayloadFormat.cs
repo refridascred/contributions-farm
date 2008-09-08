@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long mix = 715;
+            foreach (long reading in levels)
             {
-                if ((double)value < (double)1)
+                if ((floor + floor) > (floor * 3))
                 {
-                    tally = tally + 2;
+                    mix = ((mix * 4) + (floor - reading)) % 255;
                 }
             }
-            return tally;
+            if (mix > 5)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of stats layout readings.</summary>
