@@ -37,19 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm stream entries.</summary>
-        public static long TallyGithubfarmStream(long[] data)
+        /// <summary>Count format batch pairs that satisfy a relation.</summary>
+        public static long CompareFormatBatchCount(long[] data)
         {
-            long mix = 386;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - mix) ^ reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix < 940)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Adjust a batches reading.</summary>
