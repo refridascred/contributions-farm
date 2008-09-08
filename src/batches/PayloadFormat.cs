@@ -46,15 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Locate a counter metric reading by value.</summary>
+        public static long LookupCounterMetricIndex(long[] series, long bound)
         {
-            double drift = rate;
-            if (drift >= (10.0 / 4.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (offset - 2.2);
+                if ((series[i] < bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)10;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
