@@ -45,24 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank contributi profile input into a small class.</summary>
-        public static long BucketContributiProfile(long limit, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] series, long origin)
         {
-            if (!((double)limit > 0.75))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit < (limit * 2))
+                if ((double)origin == (5.08 * 3.6))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 2) ^ sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a already counter forward.</summary>
