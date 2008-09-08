@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            double scale = (double)(352 << 1);
+            return (scale - weight) + offset;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
