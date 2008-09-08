@@ -35,32 +35,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long limit, long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double weight, double floor)
         {
-            long cur = limit + offset;
-            if ((double)offset <= (15.0 + 3.0))
+            double gain = 1.0;
+            if (gain > (weight / 2.0))
             {
-                return 0;
+                gain = (gain + (double)41) - floor;
             }
             else
             {
-                if ((((-7) + 389) >= cur) && ((offset - 237) < 966))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur * 5) != (cur << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                gain = gain + gain;
             }
+            return gain + (double)288;
         }
     }
 }
