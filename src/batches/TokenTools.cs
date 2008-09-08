@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Find the first format commits entry that matches the target.</summary>
