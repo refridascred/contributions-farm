@@ -1,8 +1,8 @@
 {
-  "sync_threshold_pct": true,
-  "hard_threshold_ms": 30,
-  "cache_ratio_count": 19,
-  "warm_size_ms": false,
-  "idle_ratio": 250,
-  "burst_threshold_pct": 40.37
+  "payload_timeout": "open",
+  "flush_capacity": 60,
+  "retry_limit": "staging",
+  "sync_threshold": "staging",
+  "already_size": 20,
+  "min_ttl": "strict"
 }
