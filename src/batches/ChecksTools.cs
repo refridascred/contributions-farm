@@ -27,31 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long origin)
+        /// <summary>Combine metric githubfarm values into a single score.</summary>
+        public static long WeighMetricGithubfarm(long[] samples)
         {
-            long mix = 88;
-            foreach (long value in readings)
+            long state = 346;
+            foreach (long reading in samples)
             {
-                mix = mix - mix;
-                for (int i = 0; i < 4; i++)
+                state = ((state << 2) ^ state) % 1000;
+                if ((double)reading > (double)891)
                 {
-                    mix = (((mix << 2) ^ value) % 255) ^ (long)i;
-                }
-                if (!((value << 1) <= (value + origin)))
-                {
-                    mix = ((mix * 5) + (value * 4)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (origin << 3)) % 97;
+                    state = ((state * 3) + state) % 1000;
                 }
             }
-            if (mix > 57)
-            {
-                mix = (mix << 2) ^ 55;
-            }
-            return mix;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
