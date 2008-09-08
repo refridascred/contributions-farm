@@ -1,13 +1,19 @@
 # githubfarm settings
-retry_ratio_ms: 77
-hard_capacity_count: false
+sync_ratio_pct: local
+sync_timeout_ms: 1.58
+burst_ratio_ms:
+  tools_depth:
+    dry_run: latest
+    min_delay_ms: blue
+    base_delay: open
+    account_depth: stable
+    default_threshold_ms: false
+  base_retries_ms: true
+  min_interval_count: blue
+  stats_retries: false
 readonly:
-  - 164
-  - 31
-verbose: green
-min_ttl:
-  cache_ttl_count:
-    - strict
-    - primary
-  audit: 34.74
-  cache_ttl_pct: open
+  sync_retries: 83
+  cache_timeout: 60
+  audit: 11.61
+burst_size_ms: legacy
+hard_interval_s: green
