@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] values, long offset)
+        /// <summary>Find the first buffer checks entry that matches the target.</summary>
+        public static long LookupBufferChecksIndex(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != offset)
+                if (samples[i] >= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Rank report input into a small class.</summary>
