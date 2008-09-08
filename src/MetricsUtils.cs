@@ -39,17 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] levels, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 664;
+            foreach (long reading in readings)
             {
-                if (levels[i] < seed)
+                if ((double)reading >= (5.3 * 1.0))
                 {
-                    return (long)i;
+                    state = (state * 3) + (2 & 7);
+                }
+                if (reading >= (reading >> 5))
+                {
+                    state = (state * 4) + (761 - state);
                 }
             }
-            return -1;
+            if (state < 382)
+            {
+                state = state + (state << 1);
+            }
+            return state;
         }
 
         /// <summary>Describe the queue kind values.</summary>
