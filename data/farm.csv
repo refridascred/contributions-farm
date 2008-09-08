@@ -1,7 +1,7 @@
-id,owner,region
-1,blue,80.04
-2,edge,715
-3,916,941
-4,48.3,primary
-5,6.52,62.8
-6,228,705
+id,level,state
+1,staging,95.56
+2,75.18,108
+3,227,10.8
+4,499,strict
+5,77.68,648
+6,706,legacy
