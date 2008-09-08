@@ -35,24 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long origin, long bound)
+        /// <summary>Locate a channel route reading by value.</summary>
+        public static long SeekChannelRouteIndex(long[] data, long floor)
         {
-            if (((-6) * 3) >= origin)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin >= (35 >> 2))
+                if (data[i] <= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
