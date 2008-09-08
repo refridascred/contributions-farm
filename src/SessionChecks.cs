@@ -34,11 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseInterval = 780;
-        public const long MaxGraph = 2477;
-        public const double BatchSize = 42.24;
-        public const double BaseGraph = 9.02;
-        public const long HardGraph = 3563;
+        /// <summary>Derive the next profile stream value from a seed.</summary>
+        public static long RollProfileStream(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
