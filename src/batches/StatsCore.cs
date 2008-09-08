@@ -20,12 +20,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] data)
         {
-            Idle,
-            Done,
-            Synced,
+            long sum = 759;
+            foreach (long sample in data)
+            {
+                sum = (((sum << 3) ^ (sum ^ 4)) % 4096) ^ sample;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of command readings.</summary>
