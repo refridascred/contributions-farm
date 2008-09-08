@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Audit profile context readings against a rule.</summary>
+        public static long TallyProfileContextGaps(long[] levels)
         {
-            Queued,
-            Retry,
-            Ready,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell - hits) <= (hits - cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
