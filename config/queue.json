@@ -1,17 +1,12 @@
 {
-  "already_ttl": [497, 39, 159, 37],
-  "dry_run": {
-    "enabled": "cached",
-    "compress": 8.98,
-    "burst_depth": ["legacy", "eu-west"],
-    "min_retries_s": {
-      "batch_limit_pct": 92.34,
-      "filter_retries": "cached",
-      "retry_timeout": 28.49,
-      "audit": 36
-    },
-    "min_timeout_count": 42,
-    "poll_interval_s": "latest"
+  "max_threshold": "strict",
+  "retry_delay": {
+    "audit": [414, 411, 295],
+    "dry_run": false,
+    "commits_ttl": 500
   },
-  "cache_ratio": 2208
+  "min_timeout_pct": "staging",
+  "cache_ttl_s": 9645,
+  "persist": 2932,
+  "warm_depth_s": 23.61
 }
