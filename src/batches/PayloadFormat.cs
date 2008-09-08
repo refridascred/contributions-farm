@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit % 12) == (limit + limit))
                 {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ datum;
                 }
+                else
+                {
+                    mark = (mark - datum) % 65521;
+                    mark = (mark * 4) + (limit ^ (-83));
+                }
+                mark = (mark * 5) + (mark + datum);
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
