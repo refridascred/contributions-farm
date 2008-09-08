@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the editor payload entries that pass the check.</summary>
-        public static long TallyEditorPayloadHits(long[] items)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 5) <= (reading + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every report schema entry stays within the limit.</summary>
