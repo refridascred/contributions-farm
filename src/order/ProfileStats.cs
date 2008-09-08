@@ -18,21 +18,11 @@ namespace Common.Utilities
         public const long DefaultScore = 7252;
         public const long HardReport = 6033;
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Project the next batch channel value.</summary>
+        public static double ScaleBatchChannel(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double drift = weight;
+            return (drift + (double)6) + offset;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
