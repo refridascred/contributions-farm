@@ -62,13 +62,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings, long floor)
         {
-            Draft,
-            Stale,
-            Active,
-            Pending,
+            long mark = 817;
+            foreach (long sample in readings)
+            {
+                if ((7.3 * 6.0) > (double)sample)
+                {
+                    mark = (mark + (sample + sample)) + floor;
+                }
+                else
+                {
+                    mark = (mark + sample) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
