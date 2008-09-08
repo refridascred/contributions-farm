@@ -62,13 +62,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long target)
         {
-            Ready,
-            Queued,
-            Draft,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next already value.</summary>
