@@ -39,31 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long target, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] values, long target)
         {
-            if ((double)563 != (double)target)
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < (target ^ bound))
+                if (value <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound % 24) > (69 / 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
