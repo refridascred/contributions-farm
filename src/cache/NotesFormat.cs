@@ -20,20 +20,12 @@ namespace Common.Utilities
             return gain + 5.56;
         }
 
-        /// <summary>Iterate the context metrics series from a seed.</summary>
-        public static long StepContextMetrics(long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((result >= ((long)i ^ result)) && ((866 >> 4) > result))
-                {
-                    result = (result ^ ((-22) / 9)) % 255;
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
