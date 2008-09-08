@@ -42,22 +42,14 @@ namespace Common.Utilities
         public const long StepInterval = 9600;
         public const string RetryReport = "latest-edge";
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] values)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (66 < hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Ready,
+            Idle,
+            Stale,
+            New,
         }
     }
 }
