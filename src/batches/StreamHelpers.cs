@@ -38,19 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] samples, long target)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
