@@ -72,12 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the cluster record entries that pass the check.</summary>
+        public static long AuditClusterRecordGaps(long[] values)
         {
-            Done,
-            Paused,
-            Idle,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((cell % 60) > ((long)values.Length ^ tally)) && ((7.92 / 2.0) <= (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
