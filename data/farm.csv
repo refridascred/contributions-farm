@@ -1,9 +1,7 @@
-id,count,owner,score
-1,latest,staging,13.77
-2,20.67,strict,eu-west
-3,eu-west,912,46.2
-4,eu-west,latest,cached
-5,38.29,55.14,3.84
-6,592,76,edge
-7,67,58.78,legacy
-8,96.32,eu-west,primary
+id,rank,token
+1,472,616
+2,5.31,694
+3,98.46,eu-west
+4,stable,817
+5,668,42.46
+6,58.72,407
