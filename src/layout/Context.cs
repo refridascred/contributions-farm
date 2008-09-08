@@ -47,15 +47,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Roll a channel report counter forward.</summary>
+        public static long StepChannelReport(long floor)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                mark = (mark ^ (mark + floor)) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
