@@ -1,12 +1,13 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the profile list.
-A route that stays idle for too long is moved to the notes list.
-Each commits is validated before it reaches the payload queue.
+Use editor settings to tune how often record data is refreshed.
+Use channel settings to tune how often githubfarm data is refreshed.
+
+Keep metric and graph names short and lowercase.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new batch fields
-- Keep context values small
-- Prefer metric defaults
-- Validate commits input early
+- Validate graph input early
+- Log every cache change
+- Review route limits each release
