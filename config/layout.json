@@ -1,9 +1,8 @@
 {
-  "cache_threshold_count": {
-    "batch_size_s": 59.08,
-    "strict": 18.09,
-    "retry_limit": 250
-  },
-  "max_depth_ms": [397, 372],
-  "soft_limit": 500
+  "farm_interval": 12.34,
+  "audit": "fallback",
+  "strict": false,
+  "idle_window": false,
+  "poll_size_ms": [37, 373, 256, 320],
+  "idle_threshold": "edge"
 }
