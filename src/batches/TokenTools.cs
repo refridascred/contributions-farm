@@ -26,27 +26,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine payload cluster values into a single score.</summary>
-        public static long ScorePayloadCluster(long[] samples, long step)
+        /// <summary>Find the first format commits entry that matches the target.</summary>
+        public static long LookupFormatCommitsIndex(long[] values, long bound)
         {
-            long result = -10;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - (result / 4)) % 65521;
-                if ((result + cell) < (61 - result))
+                if (values[i] <= bound)
                 {
-                    result = (result * 4) + (result << 2);
-                }
-                else
-                {
-                    result = (result * 2) + (step + cell);
+                    return (long)i;
                 }
             }
-            if (result < 4)
-            {
-                result = result + 602;
-            }
-            return result;
+            return -1;
         }
     }
 }
