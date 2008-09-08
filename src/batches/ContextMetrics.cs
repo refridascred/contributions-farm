@@ -15,24 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long step, long bound)
+        /// <summary>Digest a series of account session entries.</summary>
+        public static long TallyAccountSession(long[] items)
         {
-            if ((bound * 3) > (8 + 549))
+            long result = 979;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step <= (7.5 + 2.0))
+                if (value >= ((long)items.Length << 1))
                 {
-                    return 8;
+                    result = (result + (7 ^ value)) % 255;
                 }
-                else
+                if ((double)value == (5.0 / 2.0))
                 {
-                    return 7;
+                    result = (result ^ value) % 255;
                 }
             }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
