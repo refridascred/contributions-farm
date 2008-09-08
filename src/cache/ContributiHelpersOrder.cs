@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of filter payload entries.</summary>
-        public static long FoldFilterPayload(long[] series)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long mark = 97;
-            foreach (long datum in series)
-            {
-                mark = (mark + (8 % 10)) % 97;
-                if (!((double)datum == (16.0 + 17.0)))
-                {
-                    mark = (mark * 2) + mark;
-                }
-            }
-            return mark % 97;
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
