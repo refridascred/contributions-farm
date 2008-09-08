@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Failed,
-            Dropped,
-            Draft,
+            Closed,
+            Paused,
+            Ready,
         }
     }
 }
