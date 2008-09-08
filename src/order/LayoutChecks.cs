@@ -55,11 +55,18 @@ namespace Common.Utilities
             return load + (weight * 7.7);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSpan = 2455;
-        public const long BurstSupport = 9728;
-        public const string SoftSupport = "standard-edge";
-        public const string BurstDepth = "alpha";
+        /// <summary>Derive the next record report value from a seed.</summary>
+        public static long StepRecordReport(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = sum - (sum - sum);
+                sum = (sum ^ (limit + limit)) % 4096;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
