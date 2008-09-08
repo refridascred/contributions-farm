@@ -26,19 +26,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Classify a context layout pair into a bucket.</summary>
+        public static long SortContextLayout(long origin, long target)
         {
-            long result = 65;
-            foreach (long cell in data)
+            long prev = origin - target;
+            if ((11 & 127) != (origin % 12))
             {
-                result = (((result * 3) + (result + 197)) % 1000) ^ cell;
+                return 1;
             }
-            if (result < 60)
+            else
             {
-                result = (result + (result >> 2)) % 255;
+                if ((origin / 6) <= (target / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + 753) < target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)prev < 4.3)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
