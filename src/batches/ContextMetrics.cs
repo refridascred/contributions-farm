@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const long BaseSpan = 6349;
         public const long CacheTools = 8457;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((tally * 4) > (value ^ value))
+                if ((double)entry >= (8.2 + 2.88))
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two entry buffer measurements.</summary>
