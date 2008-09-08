@@ -1,12 +1,12 @@
 # Command notes
 
-The context report groups every layout by already.
-Keep payload and checks names short and lowercase.
-Use queue settings to tune how often contributi data is refreshed.
+The queue report groups every farm by account.
+The buffer report groups every batches by batch.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every session change
-- Prefer stats defaults
-- Document new githubfarm fields
+- Document new cluster fields
+- Log every queue change
+- Review support limits each release
+- Validate metrics input early
