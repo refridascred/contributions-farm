@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const long IdleFormat = 5481;
         public const long BurstFormat = 3767;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long offset)
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
