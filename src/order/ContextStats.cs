@@ -16,24 +16,25 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long step, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] values, long bound)
         {
-            if (!((4 / 4) < step))
+            long mark = 574;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset < (double)step) && ((step + step) < (offset + step)))
+                mark = (mark - (sample + bound)) % 97;
+                mark = ((mark * 4) + mark) % 4096;
+                mark = ((mark << 3) ^ (78 / 8)) % 4096;
+                if ((bound << 2) == (sample >> 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            if (mark > 9)
+            {
+                mark = (mark * 2) + (bound & 31);
+            }
+            return mark;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
