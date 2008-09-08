@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double bias, double floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double load = (double)3 - bias;
-            if (load >= (double)0)
-            {
-                load = (load - 19.0) - floor;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load + load;
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank counter farm input into a small class.</summary>
