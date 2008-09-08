@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] values, long limit)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double load = (double)(847 - 81);
+            return (load - (scale + load)) + floor;
         }
 
         /// <summary>Accumulate contributi payload samples.</summary>
