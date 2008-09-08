@@ -1,15 +1,6 @@
 # support settings
-dry_run: true
-channel_threshold:
-  hard_timeout:
-    - green
-    - primary
-    - legacy
-  compress: true
-  warm_window_ms: 2217
-  poll_threshold_count: 250
-  persist: 63.71
-audit: 25
-burst_retries_pct:
-  - edge
-  - latest
+default_ratio_s: staging
+min_limit: open
+flush_window_s: 0.18
+commits_ttl: true
+verbose: true
