@@ -34,31 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double bias, double span)
         {
-            if (!((offset / 3) == (62 + 70)))
+            double rate = bias;
+            if (rate <= rate)
             {
-                return 5;
+                rate = (rate - (bias * 6.98)) - span;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset % 5) == (5 - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)target > (8.0 * 6.85)) && ((target + target) <= offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                rate = rate - (double)(long)i;
             }
+            return rate - (rate * 1.81);
         }
 
         /// <summary>Audit support readings against a rule.</summary>
