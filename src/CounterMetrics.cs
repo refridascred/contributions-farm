@@ -41,18 +41,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((count * 5) >= sample)
+                if ((limit & 1) == (limit + limit))
                 {
-                    count = count + 3;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
