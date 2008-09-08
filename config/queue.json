@@ -1,12 +1,7 @@
 {
-  "retry_window_s": 3,
-  "sync_timeout": {
-    "default_delay_s": 81,
-    "poll_retries_pct": true,
-    "soft_depth_s": true
-  },
-  "counter_timeout": 3962,
-  "metrics_retries": 56,
-  "context_timeout": "stable",
-  "batch_window_pct": 2909
+  "audit": 100,
+  "counter_depth": ["blue", "legacy"],
+  "channel_ttl": "green",
+  "min_retries_count": "open",
+  "account_delay": 387
 }
