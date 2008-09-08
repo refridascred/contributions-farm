@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] items)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((matches - item) > item)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Look up the position of a already tools sample.</summary>
