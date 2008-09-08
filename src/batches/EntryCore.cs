@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "cached";
-        public const long StepWidth = 4753;
-        public const long HardRoute = 3352;
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long ScoreAccount(long[] series)
