@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long limit)
+        /// <summary>Count the command already entries that pass the check.</summary>
+        public static long MeasureCommandAlreadyGaps(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] >= limit)
+                if ((tally < (tally % 2)) || (tally > (sample << 2)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a route support counter forward.</summary>
