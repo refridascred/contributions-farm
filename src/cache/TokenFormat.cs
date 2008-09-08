@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
