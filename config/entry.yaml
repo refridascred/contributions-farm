@@ -1,8 +1,17 @@
 # entry settings
-soft_retries_s: primary
-max_delay: 100
-sync_limit:
-  strict: true
-  profile_size: false
-  batch_size: false
-  enabled: false
+dry_run: 51.81
+burst_interval: 94
+hard_threshold: 250
+readonly:
+  metrics_window:
+    - 339
+    - 284
+    - 29
+  max_size_ms: false
+  audit:
+    - cached
+    - open
+  compress: 4447
+  route_timeout: blue
+default_threshold: strict
+sync_ttl_s: 3799
