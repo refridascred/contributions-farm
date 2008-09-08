@@ -36,11 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            Done,
+            Ready,
+            Dropped,
+            Pending,
+            Idle,
         }
     }
 }
