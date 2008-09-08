@@ -32,18 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] samples, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long sum = 785;
-            foreach (long item in samples)
-            {
-                if ((431 % 97) >= item)
-                {
-                    sum = sum + (target % 24);
-                }
-            }
-            return sum;
+            Failed,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
