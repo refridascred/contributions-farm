@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long offset, long target)
+        /// <summary>Find the first githubfarm buffer entry that matches the target.</summary>
+        public static long SeekGithubfarmBufferIndex(long[] series, long target)
         {
-            long diff = offset - target;
-            if ((8.7 - 5.88) != (double)target)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.7 * 16.0) > (double)diff)
+                if (series[i] <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset << 1) < (offset & 255)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
