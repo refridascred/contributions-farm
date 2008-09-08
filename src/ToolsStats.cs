@@ -59,40 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm window value against two limits.</summary>
-        public static long GradeGithubfarmWindow(long origin, long bound)
-        {
-            long prev = origin - bound;
-            if ((3.8 * 15.0) >= (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)bound >= (3.98 / 6.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin % 100) >= 4)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((prev + prev) > (prev / 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseSize = 88.13;
+        public const long LimitLevel = 7877;
+        public const long BaseFilter = 5533;
+        public const long IdleFilter = 6376;
+        public const long LimitFilter = 5893;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MaxWidth = 6425;
