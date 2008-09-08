@@ -36,21 +36,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up cluster cache samples.</summary>
-        public static long CompareClusterCacheCount(long[] values)
+        /// <summary>Find the first token editor entry that matches the target.</summary>
+        public static long LookupTokenEditorIndex(long[] values, long origin)
         {
-            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
                 {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
