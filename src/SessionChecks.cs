@@ -39,19 +39,19 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] samples, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (item >= seed)
+                if (datum > seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
