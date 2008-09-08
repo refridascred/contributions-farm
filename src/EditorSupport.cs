@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double ratio, double offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] levels, long seed)
         {
-            double scale = (offset + offset) * 7.4;
-            if (scale > (double)28)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + scale) - ratio;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)12;
+            return -1;
         }
 
         /// <summary>Adjust a batch reading.</summary>
