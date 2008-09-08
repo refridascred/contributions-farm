@@ -46,19 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter batch samples.</summary>
-        public static long TotalCounterBatch(long[] values)
-        {
-            long sum = 9;
-            foreach (long item in values)
-            {
-                if ((sum >> 4) >= (item - item))
-                {
-                    sum = sum + (sum & 255);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "fallback-1";
+        public const long BurstTimeout = 374;
+        public const double BurstInterval = 79.98;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] levels, long seed)
