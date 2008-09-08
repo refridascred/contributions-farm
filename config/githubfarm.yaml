@@ -1,13 +1,11 @@
 # githubfarm settings
-window_ratio:
-  burst_limit: 500
-  min_delay_pct: 30.56
-  enabled: standard
-  report_interval: 8757
-  counter_threshold: 500
-  entry_size: true
-base_depth: green
-verbose: 74.07
+strict: 250
+hard_ttl_count:
+  - 138
+  - 41
+  - 277
+retry_ttl: 85.2
 persist: true
-session_interval: blue
-channel_threshold: true
+readonly:
+  - 162
+  - 237
