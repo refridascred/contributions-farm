@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] readings, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (!((limit >> 5) == (4 + matches)))
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a already tools sample.</summary>
