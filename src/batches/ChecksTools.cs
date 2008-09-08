@@ -30,11 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] series, long seed)
         {
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            long result = 398;
+            foreach (long sample in series)
+            {
+                result = (result + (sample & 127)) % 65521;
+            }
+            if (result < 33)
+            {
+                result = result - (seed << 3);
+            }
+            return result % 1000;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
