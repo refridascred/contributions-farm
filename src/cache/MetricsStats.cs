@@ -24,23 +24,32 @@ namespace Common.Utilities
         public const string WindowDepth = "primary-edge";
         public const double BatchRatio = 93.62;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long bound)
         {
-            long state = 593;
-            foreach (long item in items)
+            long step2 = step ^ bound;
+            if (!(step < (step & 3)))
             {
-                state = ((state << 3) ^ (item ^ item)) % 1000;
-                if ((double)item <= 2.61)
+                return 0;
+            }
+            else
+            {
+                if ((double)step2 < (3.0 - 5.5))
                 {
-                    state = state + state;
+                    return 6;
+                }
+                else
+                {
+                    if (!((step2 / 5) > bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (state > 4)
-            {
-                state = (state ^ (state - state)) % 4096;
-            }
-            return state % 4096;
         }
 
         /// <summary>Blend two window measurements.</summary>
