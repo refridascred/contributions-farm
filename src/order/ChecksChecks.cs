@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate contributi githubfarm samples.</summary>
-        public static long WeighContributiGithubfarm(long[] series, long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long total = 70;
-            foreach (long reading in series)
-            {
-                total = (((total ^ ((-75) * 2)) % 65521) - reading) - origin;
-            }
-            return total % 97;
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
