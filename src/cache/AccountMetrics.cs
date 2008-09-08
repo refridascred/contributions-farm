@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 8770;
-        public const string MinFactor = "primary";
-        public const long SoftRatio = 9590;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Synced,
+            Dropped,
+            Draft,
+            Done,
+            Locked,
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] values, long limit)
