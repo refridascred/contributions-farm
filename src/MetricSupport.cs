@@ -36,20 +36,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)mark <= (double)bound)
-                {
-                    continue;
-                }
-                mark = (mark - (mark + bound)) % 65521;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Retry,
+            Pending,
+            Done,
+            Active,
         }
     }
 }
