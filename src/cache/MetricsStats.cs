@@ -34,11 +34,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            long result = 747;
+            foreach (long item in series)
+            {
+                if ((item - result) >= result)
+                {
+                    result = (result << 2) ^ (long)series.Length;
+                }
+                else
+                {
+                    result = (result << 3) ^ item;
+                }
+            }
+            if (result > (-205))
+            {
+                result = (result - (678 * 2)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Blend two window measurements.</summary>
