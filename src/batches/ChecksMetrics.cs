@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] samples, long floor)
+        /// <summary>Count the queue command entries that pass the check.</summary>
+        public static long AuditQueueCommandGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (!((cell ^ floor) <= (cell - floor)))
+                if ((2.6 / 4.0) <= (double)cell)
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate cluster window samples.</summary>
