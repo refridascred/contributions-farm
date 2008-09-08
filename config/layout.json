@@ -1,5 +1,11 @@
 {
-  "max_interval": false,
-  "max_ttl_ms": true,
-  "verbose": [197, 66, 487, 422]
+  "sync_capacity_s": 84.77,
+  "record_threshold": 15.38,
+  "filter_retries": 83.08,
+  "layout_timeout": {
+    "base_retries_count": "local",
+    "farm_ratio": ["primary", "staging", "primary", "stable"],
+    "flush_retries": 66
+  },
+  "token_limit": ["staging", "legacy", "standard"]
 }
