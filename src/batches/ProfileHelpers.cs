@@ -38,16 +38,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long bound, long bound2)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long edge = bound ^ bound2;
+            if ((edge + bound) < (2 / 2))
             {
-                mark = (mark + seed) % 65521;
-                mark = ((mark * 3) + (long)i) % 97;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (!((bound ^ bound2) <= (edge * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
