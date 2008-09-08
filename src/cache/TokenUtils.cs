@@ -17,14 +17,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double bias, double floor)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Closed,
-            Pending,
+            double ratio = bias;
+            return (ratio + (bias / 7.0)) + floor;
         }
     }
 }
