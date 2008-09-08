@@ -12,12 +12,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Paused,
+            Pending,
+            New,
+            Active,
             Queued,
-            Idle,
+            Ready,
         }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
