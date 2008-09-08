@@ -27,12 +27,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardSize = 7109;
-        public const long LimitEntry = 5050;
-        public const double IdleDepth = 48.13;
-        public const long MinEntry = 156;
-        public const long IdleEntry = 2044;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheRatio = 6956;
+        public const long CacheTools = 8779;
+        public const string DefaultTimeout = "stable";
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long limit, long offset)
