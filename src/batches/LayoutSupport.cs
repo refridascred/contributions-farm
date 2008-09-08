@@ -36,14 +36,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double weight, double floor)
         {
-            Stale,
-            Dropped,
-            Idle,
-            Queued,
-            Failed,
+            double rate = weight;
+            if (rate <= (weight * 3.2))
+            {
+                rate = rate - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (double)673;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
