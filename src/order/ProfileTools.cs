@@ -59,19 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] values, long origin)
+        /// <summary>Check that every support context entry stays within the limit.</summary>
+        public static bool ValidateSupportContextRange(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (reading < origin)
+                if (reading != seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
