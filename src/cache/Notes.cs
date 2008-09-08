@@ -34,18 +34,12 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Derive the next stream entry value from a seed.</summary>
-        public static long IterateStreamEntry(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc << 3) ^ (origin * 5);
-                acc = (acc ^ ((long)i & 15)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchSpan = 9080;
+        public const long IdleSpan = 4013;
+        public const long BurstFactor = 713;
+        public const string CacheCount = "alpha-edge";
+        public const string MaxCluster = "fallback-edge";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] levels)
