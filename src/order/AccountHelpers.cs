@@ -55,16 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double span)
-        {
-            double scale = span;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale + (scale - scale)) + (double)(long)i) + weight;
-            }
-            return scale + (double)2;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 6277;
+        public const double RetryCount = 79.59;
+        public const string RetryLevel = "strict-edge";
+        public const string HardScore = "local-1";
+        public const long SoftReport = 5690;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
