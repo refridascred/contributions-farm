@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] levels, long target)
         {
-            if ((double)21 <= (double)seed)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - limit) <= (seed + seed))
+                if ((((double)target != (20.0 / 9.0)) && ((hits * 3) <= sample)) && ((sample - target) == (hits + sample)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (87 < (seed - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
