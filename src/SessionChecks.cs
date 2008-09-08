@@ -21,13 +21,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] items)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((3 - cell) != (cell ^ cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next profile stream value from a seed.</summary>
