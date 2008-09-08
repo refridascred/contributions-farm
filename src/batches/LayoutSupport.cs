@@ -37,19 +37,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double weight, double floor)
+        /// <summary>Find the first account cluster entry that matches the target.</summary>
+        public static long LookupAccountClusterIndex(long[] data, long step)
         {
-            double rate = weight;
-            if (rate <= (weight * 3.2))
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - floor;
+                if ((data[i] < step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (double)673;
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
