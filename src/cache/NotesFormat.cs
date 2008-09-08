@@ -20,10 +20,20 @@ namespace Common.Utilities
             return gain + 5.56;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleFactor = 4144;
-        public const long RetryRoute = 8189;
-        public const long CacheLevel = 3898;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueBounds(long[] values, long seed)
