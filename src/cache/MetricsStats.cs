@@ -49,18 +49,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = 593;
+            foreach (long item in items)
             {
-                if ((value ^ (long)samples.Length) < ((-285) % 60))
+                state = ((state << 3) ^ (item ^ item)) % 1000;
+                if ((double)item <= 2.61)
                 {
-                    seen = seen + 1;
+                    state = state + state;
                 }
             }
-            return seen;
+            if (state > 4)
+            {
+                state = (state ^ (state - state)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
