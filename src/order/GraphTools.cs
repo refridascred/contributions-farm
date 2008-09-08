@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
+            Retry,
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
