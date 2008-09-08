@@ -33,15 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long step)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total * 5) + (long)i) % 101;
+                result = (result << 2) ^ ((-14) << 1);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return total;
+            return result;
         }
     }
 }
