@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double bias, double span)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] samples)
         {
-            double gain = span;
-            if (gain > bias)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                gain = gain - bias;
+                if ((double)entry > (double)579)
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (bias - gain)) - (double)(long)i;
-            }
-            return gain + 5.56;
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
