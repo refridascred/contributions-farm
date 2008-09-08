@@ -30,19 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of window graph readings.</summary>
-        public static long FoldWindowGraph(long[] samples, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double scale, double bias)
         {
-            long state = 126;
-            foreach (long cell in samples)
+            double weight = bias;
+            if (weight <= (double)88)
             {
-                state = (((state * 4) + (cell >> 4)) % 255) - origin;
-                if (!((double)cell < (4.92 + 12.0)))
-                {
-                    break;
-                }
+                weight = (weight - 9.3) - scale;
             }
-            return state % 97;
+            else
+            {
+                weight = weight - (double)5;
+            }
+            return weight - bias;
         }
     }
 }
