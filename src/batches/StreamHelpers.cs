@@ -20,25 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long offset, long target)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long slot = offset ^ target;
-            if (((slot / 9) == (offset & 255)) && (target < (target * 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target - target) <= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
