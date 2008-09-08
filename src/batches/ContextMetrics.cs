@@ -21,14 +21,18 @@ namespace Common.Utilities
         public const long BaseSpan = 6349;
         public const long CacheTools = 8457;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] items)
         {
-            Idle,
-            Active,
-            Closed,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally * 4) > (value ^ value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two entry buffer measurements.</summary>
