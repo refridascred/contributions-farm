@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the command already entries that pass the check.</summary>
-        public static long MeasureCommandAlreadyGaps(long[] series, long floor)
+        /// <summary>Roll a metric githubfarm counter forward.</summary>
+        public static long IterateMetricGithubfarm(long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((tally < (tally % 2)) || (tally > (sample << 2)))
-                {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Roll a route support counter forward.</summary>
