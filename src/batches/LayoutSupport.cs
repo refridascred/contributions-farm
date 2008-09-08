@@ -28,12 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] levels, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] levels, long bound)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= floor)
+                if (levels[i] > bound)
                 {
                     return (long)i;
                 }
