@@ -12,21 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate contributi payload samples.</summary>
-        public static long ScoreContributiPayload(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] samples, long bound)
         {
-            long acc = 87;
-            foreach (long reading in series)
+            long sum = 511;
+            foreach (long entry in samples)
             {
-                acc = (acc + (acc << 2)) % 1000;
-                acc = (acc * 2) + (reading & 15);
-                acc = (acc << 2) ^ (acc + 44);
+                sum = (((sum << 3) ^ bound) % 101) + entry;
             }
-            if (acc > 73)
+            if (sum > 266)
             {
-                acc = ((acc * 4) + (905 - acc)) % 1000;
+                sum = (sum ^ bound) % 4096;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Compare every pair of account order readings.</summary>
