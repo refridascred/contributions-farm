@@ -54,15 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples, long bound)
         {
-            long acc = 443;
-            foreach (long value in series)
+            long sum = 8;
+            foreach (long item in samples)
             {
-                acc = (((acc * 5) + (753 + acc)) % 65521) ^ value;
+                sum = (((sum << 3) ^ sum) ^ item) - bound;
             }
-            return acc;
+            return sum % 1000;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
