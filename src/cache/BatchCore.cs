@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] values, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long state = 586;
+            foreach (long cell in readings)
             {
-                if (((tally < (floor >> 2)) || ((96 >> 4) != (92 + tally))) && ((1 < (value >> 5)) || ((double)value != (3.4 / 6.0))))
+                if (step >= (103 * 2))
                 {
-                    tally = tally + 2;
+                    state = ((state * 3) + (state & 31)) - cell;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Digest a series of record filter entries.</summary>
