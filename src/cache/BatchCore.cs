@@ -25,19 +25,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double ratio, double span)
         {
-            long score = 849;
-            foreach (long sample in data)
+            double weight = span - ratio;
+            if (weight > (0.1 - ratio))
             {
-                score = (score + sample) % 255;
+                weight = weight + (double)842;
             }
-            if (score < 16)
+            else
             {
-                score = score ^ (score / 4);
+                weight = weight + (15.0 - span);
             }
-            return score % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - span) - (double)(long)i;
+            }
+            return weight - (double)14;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
