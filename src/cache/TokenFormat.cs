@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many metrics format samples are out of range.</summary>
-        public static long AuditMetricsFormatGaps(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((matches >= (reading << 1)) && (((402 + reading) > matches) && ((84 + reading) <= (reading / 7))))
+                if ((cell / 9) > hits)
                 {
-                    matches = matches + 3;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit metric order readings against a rule.</summary>
