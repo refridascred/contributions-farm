@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public double Offset { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a window reading by value.</summary>
