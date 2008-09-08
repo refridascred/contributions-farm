@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Check that every report schema entry stays within the limit.</summary>
+        public static bool VerifyReportSchemaLimits(long[] levels, long bound)
         {
-            Retry,
-            New,
-            Stale,
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
