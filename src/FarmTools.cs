@@ -30,11 +30,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long offset)
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
