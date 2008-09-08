@@ -30,15 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next filter profile value.</summary>
-        public static double ScaleFilterProfile(double bias, double span)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] series, long bound)
         {
-            double gain = 5.88 / 5.0;
-            if (gain > (span + 7.77))
+            bool stale = true;
+            foreach (long value in series)
             {
-                gain = (gain + (double)5) + bias;
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain - span;
+            return stale;
         }
     }
 }
