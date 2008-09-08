@@ -28,22 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mark = 85;
-            foreach (long value in values)
-            {
-                if (!((double)value >= 3.2))
-                {
-                    mark = (mark + mark) % 4096;
-                }
-                if ((value + value) == (6 + value))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            Retry,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the report kind values.</summary>
