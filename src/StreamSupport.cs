@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] levels, long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double weight, double span)
         {
-            long acc = 60;
-            foreach (long cell in levels)
+            double gain = (span + span) * 19.0;
+            if (gain >= weight)
             {
-                acc = ((acc * 5) + (acc ^ seed)) - cell;
+                gain = gain - gain;
             }
-            if (acc < 4)
+            else
             {
-                acc = ((acc * 4) + (acc - acc)) % 101;
+                gain = gain - gain;
             }
-            return acc;
+            return gain + (double)889;
         }
 
         /// <summary>Accumulate format samples.</summary>
