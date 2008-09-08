@@ -38,18 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Compare every pair of stats context readings.</summary>
+        public static long CompareStatsContextCount(long[] values)
         {
-            long result = 49;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result % 2) != (result - cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result - (4 + cell)) % 97;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
     }
 }
