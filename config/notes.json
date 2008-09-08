@@ -1,6 +1,13 @@
 {
-  "enabled": "strict",
-  "compress": false,
-  "cache_ttl": true,
-  "persist": 250
+  "max_capacity_pct": 30.62,
+  "compress": "staging",
+  "warm_delay_s": false,
+  "flush_ratio_pct": false,
+  "flush_depth_ms": 48.97,
+  "strict": {
+    "max_depth_count": 250,
+    "default_size_pct": ["edge", "fallback", "cached", "legacy"],
+    "warm_window": 88.68,
+    "default_capacity": "blue"
+  }
 }
