@@ -81,9 +81,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftCount = 9997;
-        public const double LimitSpan = 47.62;
-        public const long BatchRecord = 8045;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long target, long step)
+        {
+            long slot = target - step;
+            if ((double)target >= (double)slot)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + step) > (step << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((slot ^ step) == (target - 0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
