@@ -1,5 +1,9 @@
 # support settings
-stream_window: 77.72
-batches_timeout: 95.12
-metric_capacity: 1024
-payload_timeout: staging
+entry_ratio: 65.94
+flush_depth_pct:
+  - latest
+  - cached
+soft_depth_count: eu-west
+batch_limit: 30.41
+max_delay: 49
+strict: blue
