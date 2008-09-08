@@ -34,21 +34,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample != target)
                 {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
