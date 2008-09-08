@@ -1,27 +1,17 @@
 # githubfarm settings
-account_window:
-  batch_timeout_count:
-    - 89
-    - 120
-    - 138
-    - 457
-  readonly:
-    - blue
-    - fallback
-  cache_depth: 42.47
-  persist: latest
-  tools_retries: false
-  poll_delay_count:
-    warm_limit_pct:
-      - 147
-      - 167
-    layout_retries:
-      - strict
-      - stable
-      - standard
-    verbose:
-      - 132
-      - 500
-soft_threshold_ms: 60
-editor_timeout: 8.21
-batch_timeout_s: local
+compress: 1024
+persist: 55
+max_depth_ms: false
+cache_delay:
+  notes_threshold:
+    - green
+    - eu-west
+  token_delay: true
+  support_capacity: 64.48
+  audit: 96.91
+  retry_timeout:
+    strict: 57.93
+    sync_ttl_ms: 3.69
+    batches_interval: 74.86
+    default_window_s: false
+    sync_retries_s: 36.58
