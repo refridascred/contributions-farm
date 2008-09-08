@@ -15,18 +15,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] levels, long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long target, long floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if (2.0 <= (double)target)
             {
-                if ((2 - reading) >= (reading % 60))
+                return 7;
+            }
+            else
+            {
+                if ((target - 477) > (floor - 499))
                 {
-                    count = (count + 3) - target;
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 3) <= (247 ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target ^ target) != (floor << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
