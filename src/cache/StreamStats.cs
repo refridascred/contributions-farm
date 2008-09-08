@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next cluster record value from a seed.</summary>
-        public static long IterateClusterRecord(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                state = (state * 3) + (4 + origin);
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxSession = 95.95;
+        public const long SoftFactor = 154;
+        public const string SoftSession = "legacy-v2";
+        public const long SoftDepth = 1799;
+        public const long BatchSpan = 965;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double gain, double bias)
