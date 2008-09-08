@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] values)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally % 2) <= (datum / 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Locate a already reading by value.</summary>
