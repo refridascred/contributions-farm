@@ -1,4 +1,14 @@
 # entry settings
-batch_threshold: false
-strict: 71
-sync_window: false
+batch_ratio:
+  - 159
+  - 321
+  - 186
+idle_capacity: 41.22
+sync_size_s:
+  - 96
+  - 437
+persist: standard
+flush_ttl_pct:
+  - 109
+  - 474
+  - 22
