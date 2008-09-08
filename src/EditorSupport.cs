@@ -68,19 +68,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] samples, long bound)
+        /// <summary>Fold a list of metric filter readings.</summary>
+        public static long WeighMetricFilter(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long anchor = -558;
+            foreach (long datum in readings)
             {
-                if (reading >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor + (93 << 3)) % 101) + datum;
+                anchor = anchor - anchor;
             }
-            return ready;
+            if (anchor > 2)
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
