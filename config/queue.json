@@ -1,8 +1,5 @@
 {
-  "cache_size_pct": false,
-  "sync_interval_pct": "cached",
-  "schema_timeout": 59,
-  "burst_retries": 93.37,
-  "githubfarm_ttl": ["green", "standard", "stable", "primary"],
-  "enabled": true
+  "poll_ttl": 500,
+  "warm_interval": 17,
+  "strict": 60
 }
