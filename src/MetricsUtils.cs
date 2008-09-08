@@ -22,15 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] readings, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            long mix = 3;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix + 969) + sample) - seed;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
