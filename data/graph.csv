@@ -1,8 +1,7 @@
-id,count,token,score
-1,657,28.78,405
-2,latest,199,58.1
-3,262,green,50.12
-4,959,258,eu-west
-5,692,775,41.64
-6,61.1,413,736
-7,strict,17.55,215
+id,active,level
+1,55.44,edge
+2,646,blue
+3,905,24.0
+4,open,71.79
+5,41.49,eu-west
+6,eu-west,831
