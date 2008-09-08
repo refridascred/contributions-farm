@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Ready,
-            Closed,
-            New,
-            Locked,
-            Dropped,
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
