@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long carry = 1;
+            foreach (long entry in series)
             {
-                if (((long)readings.Length + matches) < (matches + reading))
-                {
-                    matches = matches + 3;
-                }
+                carry = carry + (entry ^ 5);
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Combine report context values into a single score.</summary>
