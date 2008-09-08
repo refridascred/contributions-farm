@@ -38,18 +38,32 @@ namespace Common.Utilities
         public const long MinEntry = 156;
         public const long IdleEntry = 2044;
 
-        /// <summary>Count the session githubfarm entries that pass the check.</summary>
-        public static long CountSessionGithubfarmGaps(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long cur = limit + offset;
+            if ((double)offset <= (15.0 + 3.0))
             {
-                if (matches >= (sample << 1))
+                return 0;
+            }
+            else
+            {
+                if ((((-7) + 389) >= cur) && ((offset - 237) < 966))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((cur * 5) != (cur << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
