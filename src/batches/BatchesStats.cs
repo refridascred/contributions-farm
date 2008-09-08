@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 3) != (entry - entry))
-                {
-                    tally = (tally + 2) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultToken = 61.52;
+        public const long HardToken = 3800;
+        public const double HardInterval = 83.77;
+        public const double BurstScore = 4.54;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
