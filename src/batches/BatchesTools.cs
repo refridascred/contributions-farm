@@ -34,14 +34,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels, long limit)
         {
-            Locked,
-            Idle,
-            New,
-            Stale,
-            Active,
+            long mark = 8;
+            foreach (long reading in levels)
+            {
+                if ((double)mark < (4.21 + 1.0))
+                {
+                    mark = (mark + reading) + limit;
+                }
+            }
+            return mark;
         }
     }
 }
