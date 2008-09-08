@@ -1,15 +1,6 @@
 {
-  "cache_threshold_ms": {
-    "compress": 45.03,
-    "batch_timeout_s": true,
-    "route_delay": true,
-    "min_interval_pct": 89,
-    "order_depth": [485, 333, 166, 332],
-    "max_threshold_s": "latest"
-  },
-  "metrics_threshold": "standard",
-  "hard_window_ms": [95, 127, 322, 375],
-  "audit": "blue",
-  "burst_retries": "eu-west",
-  "strict": 1024
+  "route_ttl": true,
+  "window_retries": 11,
+  "poll_interval_pct": "eu-west",
+  "queue_timeout": "eu-west"
 }
