@@ -30,19 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] data, long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
