@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double scale, double span)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] series, long limit)
         {
-            double rate = 5.9;
-            if (rate <= scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - 1.2;
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (rate - span);
-            }
-            return rate + (double)96;
+            return -1;
         }
 
         /// <summary>Adjust a payload reading.</summary>
