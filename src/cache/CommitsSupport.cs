@@ -89,11 +89,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftCount = 9997;
+        public const double LimitSpan = 47.62;
+        public const long BatchRecord = 8045;
     }
 }
