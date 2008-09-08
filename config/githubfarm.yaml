@@ -1,9 +1,10 @@
 # githubfarm settings
-schema_timeout: stable
-hard_window_ms: 74.83
-idle_interval_ms: true
-githubfarm_ratio:
-  - blue
+soft_window_ms:
   - strict
   - primary
-cluster_ratio: 100
+  - stable
+  - green
+readonly: fallback
+counter_capacity: 61
+idle_retries_pct: cached
+flush_threshold_pct: 100
