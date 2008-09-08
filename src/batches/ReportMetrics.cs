@@ -21,19 +21,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every route commits entry stays within the limit.</summary>
-        public static bool VerifyRouteCommitsLimits(long[] levels, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            double bias3 = (bias2 + bias2) * 19.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                bias3 = ((bias3 - 2.21) + (double)(long)i) - bias;
             }
-            return ready;
+            return bias3 - bias3;
         }
     }
 }
