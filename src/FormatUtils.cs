@@ -45,22 +45,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] levels, long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((floor - item) == (tally & 15)) && ((tally + item) > (floor & 127)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            New,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
