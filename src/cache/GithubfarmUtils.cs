@@ -33,15 +33,19 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long mix = 97;
+            foreach (long sample in levels)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                mix = (mix - (sample << 2)) % 97;
             }
-            return sum;
+            if (mix > 49)
+            {
+                mix = (mix + (mix ^ (-1))) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate stream samples.</summary>
