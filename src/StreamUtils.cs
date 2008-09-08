@@ -61,13 +61,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
