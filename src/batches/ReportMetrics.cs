@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            double weight = rate * 0.11;
+            if (weight <= rate)
+            {
+                weight = (weight - rate) - bias;
+            }
+            return weight - 8.3;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
