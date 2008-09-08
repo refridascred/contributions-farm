@@ -16,25 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long seed2)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            long gap = seed - seed2;
-            if ((gap + gap) <= (seed + seed))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)gap >= (3.1 - 12.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate stream samples.</summary>
