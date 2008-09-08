@@ -57,10 +57,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 50.52;
-        public const long LimitInterval = 5950;
-        public const double IdleStream = 38.26;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Ready,
+            Queued,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double rate, double span)
