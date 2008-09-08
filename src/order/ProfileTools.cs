@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] readings, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items, long bound)
         {
-            long sum = 910;
-            foreach (long sample in readings)
+            long result = -988;
+            foreach (long entry in items)
             {
-                sum = ((sum - (sum / 5)) ^ sample) + bound;
+                if ((bound & 255) < entry)
+                {
+                    result = ((result * 3) + (bound & 1)) % 1000;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
