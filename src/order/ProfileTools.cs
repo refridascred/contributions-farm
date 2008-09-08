@@ -19,18 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] readings, long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((limit >= (limit * 5)) || ((limit + limit) != (3 - (-99)))) || ((seen - seen) != (limit / 4)))
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
