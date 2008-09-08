@@ -32,32 +32,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long offset, long offset2)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long next = offset - offset2;
-            if (((next / 5) != (7 & 63)) || ((1.0 - 6.5) < (double)next))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((73 >> 5) == (offset & 15))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset % 100) >= (offset >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
