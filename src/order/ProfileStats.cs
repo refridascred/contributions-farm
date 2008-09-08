@@ -35,19 +35,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double weight, double floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] samples, long seed)
         {
-            double gain = 1.0;
-            if (gain > (weight / 2.0))
+            long carry = 3;
+            foreach (long item in samples)
             {
-                gain = (gain + (double)41) - floor;
+                carry = ((carry - (long)samples.Length) % 4096) + item;
+                carry = (carry * 3) + seed;
             }
-            else
+            if (carry < 7)
             {
-                gain = gain + gain;
+                carry = carry + (carry << 2);
             }
-            return gain + (double)288;
+            return carry % 97;
         }
     }
 }
