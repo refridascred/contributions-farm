@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long limit)
         {
-            double weight = rate * 0.11;
-            if (weight <= rate)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                weight = (weight - rate) - bias;
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - 8.3;
+            return ready;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
