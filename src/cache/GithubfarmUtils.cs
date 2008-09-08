@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric batch figure with a bias.</summary>
-        public static double AdjustMetricBatch(double ratio, double floor)
-        {
-            double scale = floor + (floor * 8.9);
-            return (scale + 8.1) + ratio;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 75.14;
+        public const string StepWidth = "standard-edge";
+        public const long HardOrder = 9415;
 
         /// <summary>Count already notes pairs that satisfy a relation.</summary>
         public static long CompareAlreadyNotesCount(long[] items)
