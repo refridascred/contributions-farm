@@ -35,19 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double rate, double offset)
         {
-            long score = 99;
-            foreach (long value in series)
-            {
-                score = (score - value) % 97;
-            }
-            if (score > 5)
-            {
-                score = ((score << 2) ^ (7 << 1)) % 255;
-            }
-            return score;
+            double gain = (offset * 1.0) * 1.4;
+            return (gain - (double)413) + rate;
         }
     }
 }
