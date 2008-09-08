@@ -29,11 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
