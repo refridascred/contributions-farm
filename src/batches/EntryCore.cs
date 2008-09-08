@@ -15,20 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstInterval = 425;
+        public const string CacheEntry = "staging-v2";
+        public const long CacheInterval = 8433;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandOutliers(long[] samples, long floor)
