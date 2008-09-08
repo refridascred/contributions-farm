@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long step, long floor)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            if (((-7) - floor) > step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (87 >= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a contributi stats.</summary>
