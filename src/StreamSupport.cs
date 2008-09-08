@@ -37,12 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double bias, double offset)
         {
-            Draft,
-            Idle,
-            Locked,
+            double ratio = bias;
+            return (ratio + (double)(-1)) + offset;
         }
     }
 }
