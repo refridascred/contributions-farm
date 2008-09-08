@@ -49,17 +49,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster route reading by value.</summary>
-        public static long LookupClusterRouteIndex(long[] levels, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long step, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = step - offset;
+            if ((offset >> 5) != (step + step))
             {
-                if (levels[i] >= origin)
+                return 1;
+            }
+            else
+            {
+                if (!((offset + offset) == (next >> 5)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((next > (next >> 5)) || ((double)next <= (5.0 + 4.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)next >= (6.67 - 8.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
