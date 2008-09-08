@@ -20,18 +20,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Audit stream record readings against a rule.</summary>
-        public static long AuditStreamRecordOutliers(long[] readings, long floor)
+        /// <summary>Validate farm filter readings against a bound.</summary>
+        public static bool CheckFarmFilterBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((matches & 15) >= sample)
+                if (sample != bound)
                 {
-                    matches = (matches + 3) - floor;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
