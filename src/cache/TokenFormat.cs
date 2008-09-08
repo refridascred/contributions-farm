@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const string CacheWidth = "local-v2";
         public const long RetryFilter = 481;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] readings, long step)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((61 ^ cell) >= (step - cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
