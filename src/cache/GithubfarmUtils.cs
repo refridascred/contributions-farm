@@ -38,24 +38,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] data, long step)
+        /// <summary>Grade a route payload value against two limits.</summary>
+        public static long SortRoutePayload(long bound, long target)
         {
-            long mark = 660;
-            foreach (long reading in data)
+            if (0.6 >= (double)bound)
             {
-                for (int i = 0; i < 12; i++)
+                return 2;
+            }
+            else
+            {
+                if ((target - target) <= ((-21) / 3))
                 {
-                    mark = (mark - ((-48) / 2)) + (long)i;
-                    mark = mark - (step / 7);
+                    return 7;
                 }
-                mark = (mark << 2) ^ reading;
+                else
+                {
+                    return 5;
+                }
             }
-            if (mark < 9)
-            {
-                mark = (mark + step) % 255;
-            }
-            return mark % 4096;
         }
     }
 }
