@@ -1,8 +1,7 @@
 {
-  "poll_threshold_s": 1,
-  "dry_run": 87,
-  "enabled": ["green", "standard"],
-  "persist": [468, 463, 152, 175],
-  "default_window": false,
-  "batch_interval_count": 500
+  "graph_limit": 719,
+  "batch_threshold_ms": true,
+  "sync_limit_count": 5,
+  "cache_interval": 30,
+  "default_limit_s": false
 }
