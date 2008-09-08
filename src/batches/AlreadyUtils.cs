@@ -59,13 +59,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Locked,
-            Dropped,
-            Draft,
-            Retry,
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
