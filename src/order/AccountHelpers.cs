@@ -53,21 +53,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count order contributi pairs that satisfy a relation.</summary>
-        public static long CompareOrderContributiCount(long[] readings)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = bias;
+            if (bias2 > 7.0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 + bias2;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - (double)857;
+            }
+            return bias2 - (scale / 7.0);
         }
 
         /// <summary>Iterate the layout support series from a seed.</summary>
