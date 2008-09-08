@@ -1,12 +1,15 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the already list.
-Each token is validated before it reaches the session queue.
-Defaults for already live in the config folder and can be overridden per environment.
+Use batches settings to tune how often batch data is refreshed.
+Each support is validated before it reaches the editor queue.
+Use counter settings to tune how often metrics data is refreshed.
+
+Each account is validated before it reaches the cluster queue.
+When a stats fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every support change
+- Review checks limits each release
+- Validate checks input early
 - Document new layout fields
-- Review stats limits each release
-- Validate payload input early
+- Prefer queue defaults
