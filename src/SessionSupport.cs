@@ -48,10 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
             public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Total { get; set; }
             public long Weight { get; set; }
         }
     }
