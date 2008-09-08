@@ -46,20 +46,12 @@ namespace Common.Utilities
         public const long BatchEntry = 2837;
         public const string BurstEntry = "cached";
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultInterval = 2423;
+        public const long BaseCommits = 8254;
+        public const long WindowInterval = 7862;
+        public const string IdleTimeout = "stable";
+        public const long DefaultDepth = 547;
 
         /// <summary>Project the next cache value.</summary>
         public static double ProjectCache(double ratio, double offset)
