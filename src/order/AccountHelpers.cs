@@ -40,24 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] samples, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long carry = -554;
-            foreach (long reading in samples)
-            {
-                carry = (carry * 4) + (carry - reading);
-                if (((7.3 * 9.3) >= (double)carry) && (reading <= (floor + (-12))))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = carry - (carry / 8);
-                }
-                carry = ((carry * 4) + (floor + floor)) % 4096;
-            }
-            return carry;
+            Ready,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
