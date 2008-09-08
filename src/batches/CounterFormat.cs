@@ -24,14 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] values, long limit)
         {
-            Queued,
-            Closed,
-            Synced,
-            Done,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
