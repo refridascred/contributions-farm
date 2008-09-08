@@ -56,14 +56,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long seed)
         {
-            Failed,
-            Synced,
-            Retry,
-            Done,
-            Paused,
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (506 >= (seed / 5))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (long)i;
+                }
+                if ((2.0 + 2.2) != (double)acc)
+                {
+                    acc = (acc - (acc >> 3)) % 101;
+                }
+                if (!((2.44 - 5.47) == (double)acc))
+                {
+                    acc = acc + (seed ^ seed);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
