@@ -35,11 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            Idle,
+            Synced,
+            Retry,
+            Done,
+            Queued,
         }
 
         /// <summary>Match up command samples.</summary>
