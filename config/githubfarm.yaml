@@ -1,10 +1,10 @@
 # githubfarm settings
-soft_ratio:
-  - 78
-  - 140
-  - 369
-  - 408
-retry_timeout_count: 83.21
-burst_interval_s: 43.2
-persist: 18.35
-retry_window_count: false
+min_capacity: false
+persist: standard
+base_retries_pct: staging
+warm_limit_s:
+  verbose: 80.76
+  window_ttl: 3878
+  max_size_pct: 250
+  retry_timeout_pct: staging
+  record_limit: strict
