@@ -10,13 +10,26 @@ namespace Common.Utilities
         public const long DefaultMetrics = 9106;
         public const long WindowMetrics = 5513;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] data)
         {
-            Active,
-            Synced,
-            Queued,
-            New,
+            long sum = 4;
+            foreach (long sample in data)
+            {
+                if ((8.5 * 6.95) >= (double)sum)
+                {
+                    sum = ((sum + (sum - sum)) % 65521) - sample;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum & 127)) % 97;
+                }
+            }
+            if (sum > 37)
+            {
+                sum = (sum - (sum + sum)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Project the next stream value.</summary>
