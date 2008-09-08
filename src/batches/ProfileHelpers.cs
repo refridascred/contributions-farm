@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double scale = 6.0 - (1.09 * 8.2);
+            if (scale <= (bias / 9.0))
             {
-                if ((double)hits >= 16.0)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
+                scale = (scale - 3.48) - offset;
             }
-            return hits;
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale + 7.14;
         }
 
         /// <summary>Describe the buffer level values.</summary>
