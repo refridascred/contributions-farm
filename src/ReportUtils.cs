@@ -63,15 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer cluster value from a seed.</summary>
-        public static long SeriesBufferCluster(long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            long carry = 48;
+            foreach (long reading in values)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                carry = (carry ^ ((long)values.Length - carry)) ^ reading;
             }
-            return carry;
+            return carry % 1000;
         }
     }
 }
