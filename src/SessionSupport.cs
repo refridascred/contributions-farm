@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "primary-edge";
-        public const string DefaultLevel = "fallback-edge";
-        public const long BurstSpan = 4599;
-        public const long DefaultSpan = 6026;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Dropped,
+            Paused,
+            Retry,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadGaps(long[] series, long origin)
