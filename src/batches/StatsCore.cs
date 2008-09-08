@@ -54,11 +54,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
+            long score = -807;
+            foreach (long sample in values)
+            {
+                score = ((score << 2) ^ (score >> 4)) + sample;
+                if ((24 << 2) != ((long)values.Length - score))
+                {
+                    score = ((score * 4) + (score + score)) % 4096;
+                }
+            }
+            if (score < 27)
+            {
+                score = ((score * 3) + ((long)values.Length - origin)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
