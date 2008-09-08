@@ -25,23 +25,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double span)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long limit, long seed)
         {
-            double weight = span - ratio;
-            if (weight > (0.1 - ratio))
+            long bound = limit + seed;
+            if ((6.57 - 3.6) >= (double)bound)
             {
-                weight = weight + (double)842;
+                return 5;
             }
             else
             {
-                weight = weight + (15.0 - span);
+                if ((double)limit == (6.0 * 10.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound >= (seed / 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound + seed) <= (bound ^ bound)) || (limit <= (limit - limit)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - span) - (double)(long)i;
-            }
-            return weight - (double)14;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
