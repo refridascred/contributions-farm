@@ -24,16 +24,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                anchor = anchor - ((long)i & 15);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (((long)values.Length + 385) >= entry)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the support kind values.</summary>
