@@ -11,24 +11,14 @@ namespace Common.Utilities
         public const string WindowSchema = "cached-1";
         public const long StepDepth = 8805;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long step, long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            if ((bound + step) < (bound + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step % 10) < (bound >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Pending,
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
