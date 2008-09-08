@@ -42,14 +42,18 @@ namespace Common.Utilities
         public const long StepInterval = 9600;
         public const string RetryReport = "latest-edge";
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] levels, long step)
         {
-            Pending,
-            Ready,
-            Idle,
-            Stale,
-            New,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)24 > (double)count)
+                {
+                    count = ((count + 1) ^ item) - step;
+                }
+            }
+            return count;
         }
     }
 }
