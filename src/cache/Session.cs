@@ -23,18 +23,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] levels, long step)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)seen >= (6.03 / 9.0)) && (825 < seen))
-                {
-                    seen = ((seen + 2) ^ sample) + step;
-                }
-            }
-            return seen;
+            Synced,
+            Locked,
+            Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
