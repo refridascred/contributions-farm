@@ -44,24 +44,18 @@ namespace Common.Utilities
             return mean + (4.8 * 9.0);
         }
 
-        /// <summary>Grade a route payload value against two limits.</summary>
-        public static long SortRoutePayload(long bound, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] series, long offset)
         {
-            if (0.6 >= (double)bound)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - target) <= ((-21) / 3))
+                if ((((281 ^ 97) <= matches) || ((double)datum >= (2.1 + 2.01))) || ((double)matches < 1.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 3) + offset;
                 }
             }
+            return matches;
         }
     }
 }
