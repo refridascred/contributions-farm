@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Queued,
-            Retry,
-            New,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 80.99;
+        public const long StepCount = 3972;
+        public const string BurstReport = "alpha-edge";
+        public const long BaseDepth = 8607;
+        public const double HardCount = 5.38;
 
         /// <summary>Digest a series of account session entries.</summary>
         public static long TallyAccountSession(long[] items)
