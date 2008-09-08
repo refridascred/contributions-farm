@@ -30,10 +30,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSpan = 8175;
-        public const double CacheAlready = 75.45;
-        public const long CacheBudget = 1609;
-        public const double BurstSize = 38.46;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
