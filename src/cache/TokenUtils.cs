@@ -34,17 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first support account entry that matches the target.</summary>
-        public static long FindSupportAccountIndex(long[] items, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 18;
+            foreach (long value in levels)
             {
-                if (items[i] <= bound)
+                if ((double)total == (double)value)
                 {
-                    return (long)i;
+                    total = (total + ((-52) % 8)) + step;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
