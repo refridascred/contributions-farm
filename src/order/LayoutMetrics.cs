@@ -15,16 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score ^ (origin * 2)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Idle,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
