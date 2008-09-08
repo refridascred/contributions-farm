@@ -24,18 +24,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] readings, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((-4) > (sample ^ sample))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
+            double scale = gain;
+            return scale + (bias * 9.6);
         }
 
         /// <summary>Describe the window state values.</summary>
