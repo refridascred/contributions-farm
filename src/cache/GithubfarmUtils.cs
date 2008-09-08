@@ -61,15 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double gain, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long seed)
         {
-            double gain2 = (double)(5 >> 2);
-            if (gain2 <= gain2)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = (gain2 + offset) - gain;
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + (double)80;
+            return -1;
         }
 
         /// <summary>Accumulate stream samples.</summary>
