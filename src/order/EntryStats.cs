@@ -55,11 +55,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
+            Closed,
+            Retry,
+            Dropped,
+            Active,
         }
     }
 }
