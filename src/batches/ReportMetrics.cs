@@ -33,18 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks stream values into a single score.</summary>
-        public static long DigestChecksStream(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long result = 344;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((14 >> 1) == (result / 6)) && ((33 >> 4) > (result ^ cell)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 3) ^ (result / 2)) % 97;
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
