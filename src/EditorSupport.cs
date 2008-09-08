@@ -22,10 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 9443;
-        public const long MinSpan = 4619;
-        public const double BatchFormat = 65.0;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 3495;
+        public const long WindowScore = 7487;
+        public const long StepSpan = 1836;
+        public const double IdleTimeout = 38.29;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] levels)
