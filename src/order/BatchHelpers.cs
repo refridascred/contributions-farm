@@ -32,18 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples, long target)
+        /// <summary>Roll a commits notes counter forward.</summary>
+        public static long DeriveCommitsNotes(long offset)
         {
-            long sum = 33;
-            foreach (long item in samples)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (sum > (item / 7))
-                {
-                    sum = (sum - (target << 3)) % 97;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
     }
 }
