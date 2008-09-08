@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double load = gain * 0.8;
-            if (load > (load * 7.0))
-            {
-                load = load - (double)16;
-            }
-            else
-            {
-                load = load + 0.98;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (load + span)) + (double)(long)i;
-            }
-            return load - load;
+            Retry,
+            New,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Accumulate window samples.</summary>
