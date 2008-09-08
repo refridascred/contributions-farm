@@ -1,13 +1,17 @@
 {
-  "max_capacity_pct": 30.62,
-  "compress": "staging",
-  "warm_delay_s": false,
-  "flush_ratio_pct": false,
-  "flush_depth_ms": 48.97,
-  "strict": {
-    "max_depth_count": 250,
-    "default_size_pct": ["edge", "fallback", "cached", "legacy"],
-    "warm_window": 88.68,
-    "default_capacity": "blue"
+  "verbose": 94.15,
+  "flush_capacity_s": 37,
+  "batch_delay": "strict",
+  "warm_retries": true,
+  "default_size_ms": true,
+  "retry_timeout_count": {
+    "readonly": {
+      "retry_ratio_count": "standard",
+      "max_threshold_ms": 9955,
+      "flush_threshold": 87.1,
+      "checks_depth": true
+    },
+    "enabled": 47.61,
+    "hard_limit_pct": "green"
   }
 }
