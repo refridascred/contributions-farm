@@ -37,21 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of token layout readings.</summary>
-        public static long MatchTokenLayoutCount(long[] levels)
+        /// <summary>Measure how many entry format samples are out of range.</summary>
+        public static long TallyEntryFormatMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((sample ^ matches) <= (matches - sample)) && ((matches & 63) >= (76 & 1)))
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a booking info.</summary>
