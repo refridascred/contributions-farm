@@ -1,9 +1,6 @@
-id,token,state,owner
-1,842,953,open
-2,staging,57.22,eu-west
-3,638,strict,local
-4,strict,34.33,622
-5,141,1.84,743
-6,standard,848,63.38
-7,86.67,latest,733
-8,22.61,local,957
+id,state,score,level,weight
+1,blue,eu-west,592,cached
+2,407,127,738,69.32
+3,68.83,fallback,53.25,36.76
+4,97.9,latest,local,40.55
+5,782,staging,875,199
