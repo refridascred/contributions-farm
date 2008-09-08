@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] values, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((87 ^ state) < 60)
+                if ((781 ^ cell) == (hits * 4))
                 {
-                    long prev = state + (target - state);
-                    state = ((state << 2) ^ (prev - 2)) % 97;
+                    hits = (hits + 3) - offset;
                 }
-                state = ((state * 4) + ((long)i ^ target)) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Project the next batches format value.</summary>
