@@ -30,11 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardScore = "local-1";
-        public const long HardCount = 2551;
-        public const string IdleTools = "staging-edge";
-        public const long BurstWidth = 2647;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchInterval = 1037;
+        public const long MaxRatio = 6764;
+        public const long HardCluster = 6166;
+        public const long MinFactor = 3320;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterMatches(long[] levels)
