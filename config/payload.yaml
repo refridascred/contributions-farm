@@ -1,16 +1,12 @@
 # payload settings
-warm_delay_count: 6810
-default_capacity:
-  - 264
-  - 22
-  - 492
-  - 90
-readonly:
+batch_timeout:
+  - latest
   - staging
-  - cached
-  - legacy
-  - stable
-soft_delay_s:
-  flush_size_count: 30
-  poll_timeout_s: eu-west
-  checks_interval: true
+  - latest
+  - open
+flush_interval: 12
+poll_delay: staging
+flush_ratio_pct: false
+warm_delay_ms:
+  - 129
+  - 343
