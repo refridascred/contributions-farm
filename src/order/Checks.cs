@@ -78,13 +78,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
