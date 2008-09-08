@@ -19,14 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            Failed,
-            Draft,
-            Synced,
-            Retry,
-            Locked,
+            long score = step;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a support snapshot.</summary>
