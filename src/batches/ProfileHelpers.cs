@@ -69,13 +69,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long bound, long step)
         {
-            Pending,
-            Dropped,
-            Failed,
-            Locked,
+            if (((double)step > (1.96 + 8.2)) && ((step - step) > (step & 7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step < (6.0 * 3.12))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
