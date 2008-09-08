@@ -34,19 +34,17 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] series, long origin)
+        /// <summary>Derive the next stream entry value from a seed.</summary>
+        public static long IterateStreamEntry(long origin)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc << 3) ^ (origin * 5);
+                acc = (acc ^ ((long)i & 15)) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
