@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long bound, long offset)
-        {
-            long gap = bound - offset;
-            if ((offset << 2) == (259 >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound << 1) > gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((12.0 + 1.05) <= (double)gap) && ((gap << 2) <= (bound - gap)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((13.0 * 3.7) > (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSpan = "primary-v2";
+        public const double RetrySchema = 80.52;
+        public const long CacheLevel = 3310;
+        public const long StepBudget = 5028;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long offset)
