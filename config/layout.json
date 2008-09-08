@@ -1,17 +1,16 @@
 {
-  "retry_depth": {
-    "dry_run": 1.35,
-    "hard_retries_count": false,
-    "batch_size_pct": 76.33,
-    "max_retries": 2335,
-    "queue_ttl": 60,
-    "default_ttl_count": {
-      "graph_interval": false,
-      "counter_delay": 500,
-      "already_ratio": false,
-      "readonly": [283, 175, 490, 241]
-    }
+  "filter_ttl": [439, 177, 460],
+  "base_interval_s": {
+    "persist": "staging",
+    "record_threshold": false,
+    "hard_retries": "staging"
   },
-  "route_depth": "fallback",
-  "readonly": 32.35
+  "burst_threshold": 23.89,
+  "verbose": "open",
+  "poll_size": {
+    "burst_timeout_pct": 35.02,
+    "compress": [127, 312, 331, 178],
+    "readonly": "green"
+  },
+  "flush_depth_s": [470, 349, 227, 105]
 }
