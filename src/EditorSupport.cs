@@ -81,10 +81,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 85.38;
-        public const long WindowRatio = 9276;
-        public const long BatchWidth = 9644;
-        public const long StepFarm = 6610;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen & 63) < (seen ^ sample))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
