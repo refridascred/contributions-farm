@@ -58,12 +58,20 @@ namespace Common.Utilities
         public const double CacheRecord = 68.26;
         public const double SoftRecord = 16.89;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 94.64;
-        public const long IdleTimeout = 3329;
-        public const long CacheLayout = 4361;
-        public const long BatchLayout = 5809;
-        public const string MinLayout = "open-edge";
+        /// <summary>Validate batch metrics readings against a bound.</summary>
+        public static bool CheckBatchMetricsRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string MinEntry = "stable-v2";
