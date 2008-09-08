@@ -30,24 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long limit, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] values)
         {
-            if (((8 % 64) != (limit ^ 81)) || ((86 + 65) <= (seed * 4)))
+            long anchor = 63;
+            foreach (long entry in values)
             {
-                return 3;
+                anchor = anchor - entry;
             }
-            else
-            {
-                if (((seed << 2) < (limit - seed)) && (limit > (limit * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
     }
 }
