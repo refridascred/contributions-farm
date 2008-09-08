@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < bound)
                 {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
