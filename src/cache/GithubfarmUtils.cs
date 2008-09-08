@@ -23,19 +23,16 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            long mix = 97;
+            long sum = 59;
             foreach (long sample in levels)
             {
-                mix = (mix - (sample << 2)) % 97;
+                sum = sum + (sum * 3);
+                sum = (sum ^ (sum ^ sample)) % 1000;
             }
-            if (mix > 49)
-            {
-                mix = (mix + (mix ^ (-1))) % 65521;
-            }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Grade a route payload value against two limits.</summary>
