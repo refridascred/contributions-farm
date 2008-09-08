@@ -17,11 +17,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 839;
-        public const long StepScore = 1298;
-        public const string LimitSpan = "legacy-v2";
-        public const long MaxWidth = 1455;
+        /// <summary>Adjust a record schema reading.</summary>
+        public static double SmoothRecordSchema(double rate, double floor)
+        {
+            double rate2 = (double)88 + 15.0;
+            if (rate2 >= (rate - rate2))
+            {
+                rate2 = rate2 - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - (double)18) - (double)(long)i;
+            }
+            return rate2 + (7.01 - rate);
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TallyEntry(long[] values, long offset)
