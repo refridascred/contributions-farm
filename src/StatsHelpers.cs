@@ -14,38 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long seed, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if ((floor > seed) || ((1.8 - 7.74) <= (double)floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor > (5.9 + 13.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((0 * 2) <= (seed >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor - 892) != (floor % 60)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the metric editor entries that pass the check.</summary>
