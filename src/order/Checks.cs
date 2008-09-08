@@ -58,13 +58,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long bound, long step)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
+            if (!((step + step) <= (step / 9)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound >> 3) > (6 + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a command entry.</summary>
