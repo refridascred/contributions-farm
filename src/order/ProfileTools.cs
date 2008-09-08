@@ -39,18 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] levels)
+        /// <summary>Audit order route readings against a rule.</summary>
+        public static long CountOrderRouteGaps(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((0 << 2) != (count << 1))
+                if (tally >= (value << 3))
                 {
-                    count = (count + 3) - reading;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
