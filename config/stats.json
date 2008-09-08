@@ -1,29 +1,24 @@
 {
-  "sync_threshold_count": 48,
-  "base_interval_pct": {
-    "min_retries": ["primary", "stable", "staging", "standard"],
-    "poll_threshold_ms": "stable",
-    "idle_retries_s": 96,
-    "entry_ttl": {
-      "compress": "cached",
-      "dry_run": [486, 239, 267, 455],
-      "soft_depth_s": 65.46,
-      "burst_timeout": 100,
-      "min_size_ms": false,
-      "payload_window": "local"
+  "warm_ttl_ms": 250,
+  "compress": {
+    "batch_limit_count": {
+      "verbose": false,
+      "idle_window": "edge",
+      "readonly": 17.32,
+      "batch_retries_count": 80.42,
+      "warm_size": 7285,
+      "idle_retries": [346, 422, 457, 296]
     },
-    "format_retries": "fallback",
-    "max_window_s": "green"
+    "strict": true,
+    "commits_retries": "blue",
+    "default_window_pct": {
+      "counter_ttl": 89.31,
+      "batch_interval_pct": "cached",
+      "dry_run": "stable",
+      "strict": true,
+      "max_depth": 1656
+    }
   },
-  "burst_interval_count": {
-    "base_interval_s": "fallback",
-    "flush_retries_ms": "cached",
-    "contributi_interval": [134, 270, 264],
-    "warm_size": 60,
-    "audit": 1048,
-    "token_interval": "blue"
-  },
-  "warm_capacity_pct": 250,
-  "readonly": ["local", "eu-west", "stable"],
-  "batch_retries_pct": 42
+  "flush_ttl_count": false,
+  "batch_threshold": 217
 }
