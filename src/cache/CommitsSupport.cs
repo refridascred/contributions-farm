@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((mark + mark) >= (limit + 88))
+                if (((bound / 5) != (carry & 1)) || ((carry ^ carry) < (carry & 7)))
                 {
-                    mark = (mark - limit) % 65521;
+                    carry = (carry << 2) ^ (carry & 7);
                 }
-                mark = mark - mark;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (!((179 ^ bound) > carry))
+                {
+                    carry = (carry ^ (bound - bound)) % 101;
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Accumulate metrics batch samples.</summary>
