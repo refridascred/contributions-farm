@@ -1,9 +1,12 @@
 {
-  "max_timeout": 60,
-  "enabled": {
-    "idle_timeout_pct": 26.15,
-    "commits_capacity": ["local", "blue"],
-    "default_limit_pct": ["latest", "stable", "cached"]
+  "dry_run": true,
+  "format_ratio": 62.64,
+  "warm_ttl": {
+    "min_timeout_ms": ["blue", "legacy", "local", "latest"],
+    "report_size": 6146,
+    "cache_limit_count": "latest",
+    "filter_retries": false
   },
-  "layout_depth": 100
+  "idle_window": 30,
+  "warm_ratio": ["staging", "latest", "standard"]
 }
