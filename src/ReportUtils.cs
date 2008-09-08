@@ -55,15 +55,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double weight, double bias)
+        /// <summary>Grade a notes batch value against two limits.</summary>
+        public static long SortNotesBatch(long step, long limit)
         {
-            double scale = (double)368 * 7.96;
-            for (int i = 0; i < 6; i++)
+            long diff = step + limit;
+            if (((diff >> 3) <= (step << 2)) && ((double)diff <= 9.88))
             {
-                scale = ((scale - scale) - (double)(long)i) - bias;
+                return 1;
             }
-            return scale + (weight * 0.69);
+            else
+            {
+                if (((step << 2) < (-5)) && ((10.0 + 17.0) >= (double)limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
