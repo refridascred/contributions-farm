@@ -61,12 +61,18 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many notes token samples are out of range.</summary>
+        public static long MeasureNotesTokenGaps(long[] samples, long offset)
         {
-            Locked,
-            Idle,
-            Closed,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((54 + 52) != (offset % 12))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
