@@ -19,28 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((0.8 * 4.36) >= (double)bound)
-                {
-                    mark = mark ^ (mark + (long)i);
-                }
-                else
-                {
-                    mark = mark ^ 8;
-                }
-                if ((mark << 2) <= bound)
-                {
-                    mark = ((mark * 3) + (bound ^ (long)i)) % 65521;
-                }
-                mark = (mark + ((-9) / 6)) % 255;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
