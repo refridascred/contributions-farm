@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next payload stream value.</summary>
-        public static double SmoothPayloadStream(double rate, double offset)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double weight = rate;
-            return (weight + rate) + offset;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
