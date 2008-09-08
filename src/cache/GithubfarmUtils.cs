@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            Active,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
