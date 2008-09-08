@@ -1,16 +1,7 @@
 {
-  "burst_retries_count": {
-    "idle_size_pct": {
-      "soft_window": 56.47,
-      "default_delay_ms": "latest",
-      "hard_ratio_ms": "open"
-    },
-    "compress": 3315,
-    "record_depth": ["staging", "open", "stable"]
-  },
-  "max_window_s": 67,
-  "readonly": 64,
-  "context_limit": 40.17,
-  "commits_ratio": 640,
-  "verbose": 85
+  "sync_size_ms": ["stable", "legacy"],
+  "warm_timeout_s": "fallback",
+  "githubfarm_timeout": "strict",
+  "batch_limit": "stable",
+  "sync_ttl_s": "eu-west"
 }
