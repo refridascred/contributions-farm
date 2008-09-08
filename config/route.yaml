@@ -1,26 +1,11 @@
 # route settings
-poll_window_pct:
-  dry_run: open
-  readonly: 37
-  burst_retries: open
-  batch_ttl: 95
-  idle_retries_ms: stable
-base_depth: 87.06
-cache_capacity_pct: false
-audit:
-  cache_capacity_pct: false
-  batch_depth_pct: true
-  default_depth: 33.61
-  already_retries: 83.27
-batch_interval_ms: legacy
-soft_depth:
-  schema_capacity: 35.09
-  min_ratio_s: true
-  base_interval:
-    - 122
-    - 95
-    - 89
-    - 239
-  strict: 500
-  retry_retries: staging
-  hard_ttl_ms: 4094
+hard_depth: local
+retry_threshold_count:
+  - strict
+  - legacy
+verbose: false
+max_threshold: 60
+checks_interval:
+  - edge
+  - stable
+compress: 100
