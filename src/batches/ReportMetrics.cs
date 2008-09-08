@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double ratio, double span)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] levels, long floor)
         {
-            double bias = ratio;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + (double)53) - (double)(long)i;
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + span;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
