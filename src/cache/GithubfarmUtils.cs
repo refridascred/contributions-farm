@@ -26,15 +26,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the commits farm series from a seed.</summary>
-        public static long SeriesCommitsFarm(long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((double)(long)i != (2.0 - 2.1))
+                {
+                    sum = (sum * 5) + sum;
+                    sum = (sum << 3) ^ 64;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
