@@ -35,17 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] data, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
+                if ((double)matches < 3.0)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a payload reading.</summary>
