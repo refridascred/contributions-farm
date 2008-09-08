@@ -57,11 +57,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseLevel = 6976;
-        public const long DefaultBudget = 5445;
-        public const long BurstAccount = 8151;
-        public const string BatchCount = "open";
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double offset)
+        {
+            double load = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Count the notes queue entries that pass the check.</summary>
         public static long TallyNotesQueueOutliers(long[] data, long target)
