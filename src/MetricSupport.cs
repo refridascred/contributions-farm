@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxDepth = 2924;
-        public const long LimitFarm = 4969;
-        public const long CacheFarm = 8688;
-        public const long MaxFarm = 3943;
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next filter profile value.</summary>
         public static double ScaleFilterProfile(double bias, double span)
