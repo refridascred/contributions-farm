@@ -23,11 +23,21 @@ namespace Common.Utilities
             return gain - 9.18;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardBudget = 2550;
-        public const double StepTimeout = 61.82;
-        public const double MinMetrics = 87.23;
-        public const long LimitSize = 6547;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values)
+        {
+            long mark = 715;
+            foreach (long entry in values)
+            {
+                mark = (mark + (46 % 24)) % 65521;
+                mark = mark ^ (entry % 12);
+            }
+            if (mark < 5)
+            {
+                mark = mark - (mark / 9);
+            }
+            return mark;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] levels)
