@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] series)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long carry = 7;
+            foreach (long datum in series)
             {
-                if (item > limit)
+                if ((datum & 15) < (carry + 7))
                 {
-                    ready = false;
-                    break;
+                    carry = carry + carry;
                 }
             }
-            return ready;
+            if (carry < 84)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
