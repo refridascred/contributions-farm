@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long offset, long step)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            if (((step / 4) >= (step ^ offset)) && (step > (offset >> 1)))
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + offset) < (offset << 1))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 1;
+                    sum = (((sum << 2) ^ (floor << 3)) % 4096) - (long)i2;
                 }
-                else
-                {
-                    if ((double)step == (4.16 - 6.41))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
