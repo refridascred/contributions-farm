@@ -40,18 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] levels, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mix = -71;
+            foreach (long cell in values)
             {
-                if (((4.79 * 1.91) >= (double)reading) || !((5.68 * 3.4) > (double)origin))
+                if ((cell - cell) > cell)
                 {
-                    seen = seen + 2;
+                    mix = mix ^ (mix - mix);
                 }
             }
-            return seen;
+            if (mix < 2)
+            {
+                mix = ((mix * 5) + mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the entry level values.</summary>
