@@ -41,18 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] series, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((double)origin == (5.08 * 3.6))
+                if ((1.0 * 9.24) < (double)sample)
                 {
-                    seen = (seen + 2) ^ sample;
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
