@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Iterate the graph format series from a seed.</summary>
+        public static long StepGraphFormat(long limit)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
