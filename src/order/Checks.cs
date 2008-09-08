@@ -37,13 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
