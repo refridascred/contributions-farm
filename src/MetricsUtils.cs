@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            double gain = 8.87;
-            if (gain >= (double)264)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - (double)324;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (double)54;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - offset) - (double)(long)i;
-            }
-            return gain + bias;
+            return matches;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
