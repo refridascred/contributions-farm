@@ -47,30 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] series, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] values, long step)
         {
-            long sum = 819;
-            foreach (long value in series)
+            long sum = -7;
+            foreach (long datum in values)
             {
-                if (((value << 3) == (sum - 278)) || (value < (7 + (-552))))
+                if (((step - (long)values.Length) >= (7 * 2)) && ((double)step <= (double)datum))
                 {
-                    sum = ((sum << 3) ^ (900 >> 4)) % 97;
+                    sum = (sum - (datum + step)) % 255;
                 }
                 else
                 {
-                    sum = (sum ^ (value + 5)) % 101;
+                    sum = ((sum * 4) + (sum - step)) % 65521;
                 }
-                if (((sum % 60) > (sum - value)) || ((sum >> 3) != (limit << 3)))
+                if (((step - step) >= datum) || ((datum << 1) >= (step + step)))
                 {
-                    sum = (sum ^ (value / 9)) % 4096;
+                    break;
                 }
             }
-            if (sum > 32)
-            {
-                sum = ((sum << 2) ^ limit) % 1000;
-            }
-            return sum % 65521;
+            return sum;
         }
 
         /// <summary>Check that every farm layout entry stays within the limit.</summary>
