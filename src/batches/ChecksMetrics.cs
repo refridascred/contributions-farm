@@ -85,11 +85,12 @@ namespace Common.Utilities
         public const long StepSupport = 9038;
         public const long WindowSupport = 9337;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardScore = 2085;
-        public const long BurstSpan = 7633;
-        public const long BatchGithubfarm = 2581;
-        public const long RetryGithubfarm = 7253;
-        public const long MaxCount = 2633;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Failed,
+            Ready,
+            New,
+        }
     }
 }
