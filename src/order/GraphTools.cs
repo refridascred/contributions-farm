@@ -75,9 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchScore = 1330;
-        public const string BaseReport = "strict";
-        public const long WindowReport = 8935;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((10.0 * 0.1) >= (0.84 / 8.0)) && ((origin + 8) > origin))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
+        }
     }
 }
