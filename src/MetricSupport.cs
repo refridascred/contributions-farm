@@ -35,12 +35,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Project the next filter profile value.</summary>
+        public static double ScaleFilterProfile(double bias, double span)
         {
-            Queued,
-            Dropped,
-            Closed,
+            double gain = 5.88 / 5.0;
+            if (gain > (span + 7.77))
+            {
+                gain = (gain + (double)5) + bias;
+            }
+            return gain - span;
         }
     }
 }
