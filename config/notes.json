@@ -1,12 +1,12 @@
 {
-  "strict": {
-    "soft_ttl": 56,
-    "contributi_capacity": true,
-    "account_delay": ["stable", "latest"]
+  "base_size_ms": {
+    "githubfarm_capacity": false,
+    "format_depth": "green",
+    "cache_ratio_pct": "stable",
+    "max_retries_pct": "eu-west",
+    "notes_delay": "eu-west"
   },
-  "default_ttl_pct": false,
-  "flush_limit_ms": 1289,
-  "min_depth": 16,
-  "report_retries": 74.62,
-  "batch_threshold": false
+  "default_depth_pct": "edge",
+  "base_threshold_ms": false,
+  "compress": "standard"
 }
