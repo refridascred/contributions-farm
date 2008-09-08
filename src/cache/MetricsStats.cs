@@ -19,10 +19,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 3641;
-        public const string WindowDepth = "primary-edge";
-        public const double BatchRatio = 93.62;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
