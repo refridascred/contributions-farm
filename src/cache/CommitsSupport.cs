@@ -25,18 +25,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics batch samples.</summary>
-        public static long CombineMetricsBatch(long[] levels, long target)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            long total = 6;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)total <= (7.4 + 6.13))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total - (total & 31)) - entry) + target;
+                    if ((items[i] ^ items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a schema record.</summary>
