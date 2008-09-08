@@ -26,13 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            Synced,
+            Active,
+            Ready,
         }
     }
 }
