@@ -1,8 +1,5 @@
 {
-  "max_ttl_s": 19.52,
-  "poll_depth": 60,
-  "notes_retries": 33.7,
-  "sync_retries": 17.0,
-  "persist": true,
-  "audit": [82, 126, 189]
+  "min_depth_count": "fallback",
+  "persist": 30,
+  "sync_retries_pct": 82.79
 }
