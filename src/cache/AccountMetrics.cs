@@ -30,17 +30,18 @@ namespace Common.Utilities
             return rate + (double)2;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] readings, long target)
+        /// <summary>Audit account window readings against a rule.</summary>
+        public static long MeasureAccountWindowHits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] <= target)
+                if (((8.0 * 1.4) < (double)sample) && ((1.03 - 3.0) <= (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
