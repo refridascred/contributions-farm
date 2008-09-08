@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Scale a entry queue figure with a bias.</summary>
+        public static double ProjectEntryQueue(double bias, double floor)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            double gain = (double)(1 ^ 299);
+            if (gain >= gain)
+            {
+                gain = ((gain + (double)145) - bias) + floor;
+            }
+            return gain - gain;
         }
 
         /// <summary>Define report limits and defaults.</summary>
