@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            long anchor = -536;
+            foreach (long value in series)
+            {
+                anchor = (anchor - 7) % 65521;
+                if ((value + 62) < floor)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
