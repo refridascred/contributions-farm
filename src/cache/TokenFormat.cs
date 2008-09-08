@@ -16,11 +16,20 @@ namespace Common.Utilities
             return weight - (ratio / 8.0);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 137;
-        public const double HardFilter = 14.16;
-        public const string CacheWidth = "local-v2";
-        public const long RetryFilter = 481;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] samples, long floor)
+        {
+            long mix = 3;
+            foreach (long entry in samples)
+            {
+                mix = (((mix * 3) + (floor - floor)) % 65521) ^ entry;
+            }
+            if (mix < (-24))
+            {
+                mix = mix + (mix + floor);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long step)
