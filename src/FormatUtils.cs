@@ -26,12 +26,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Failed,
+            Locked,
             Paused,
-            Synced,
-            Draft,
+            Ready,
         }
 
         /// <summary>Describe the tools level values.</summary>
