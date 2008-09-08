@@ -40,22 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data, long offset)
         {
-            long mix = -71;
-            foreach (long cell in values)
+            long total = 930;
+            foreach (long entry in data)
             {
-                if ((cell - cell) > cell)
+                if ((offset - entry) != (offset - total))
                 {
-                    mix = mix ^ (mix - mix);
+                    total = total ^ (278 - entry);
                 }
             }
-            if (mix < 2)
-            {
-                mix = ((mix * 5) + mix) % 101;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Describe the entry level values.</summary>
