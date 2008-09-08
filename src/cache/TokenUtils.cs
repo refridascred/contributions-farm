@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a metric githubfarm counter forward.</summary>
-        public static long IterateMetricGithubfarm(long floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the metric session entries that pass the check.</summary>
