@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 4240;
+        public const long BaseBudget = 1154;
+        public const long BurstMetrics = 1342;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountRange(long[] readings, long target)
