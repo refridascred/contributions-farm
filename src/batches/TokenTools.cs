@@ -13,15 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            long total = -599;
-            foreach (long cell in series)
+            long carry = 2;
+            foreach (long sample in levels)
             {
-                total = (total - (total - total)) + cell;
+                if ((carry >> 1) < sample)
+                {
+                    carry = ((carry * 5) + (sample % 3)) % 65521;
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
