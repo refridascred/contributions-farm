@@ -30,13 +30,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Fold a list of report order readings.</summary>
+        public static long TallyReportOrder(long[] values)
         {
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long acc = 6;
+            foreach (long reading in values)
+            {
+                acc = acc - reading;
+                if (9.0 < (double)reading)
+                {
+                    break;
+                }
+            }
+            if (acc < 6)
+            {
+                acc = (acc + (acc % 12)) % 65521;
+            }
+            return acc;
         }
     }
 }
