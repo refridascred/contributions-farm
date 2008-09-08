@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            Dropped,
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
