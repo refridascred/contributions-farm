@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of stats farm readings.</summary>
-        public static long OverlapStatsFarmCount(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((753 - cell) < (offset + seen))
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
