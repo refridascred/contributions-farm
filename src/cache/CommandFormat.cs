@@ -40,23 +40,11 @@ namespace Common.Utilities
         public const long BatchMetric = 3175;
         public const long StepMetric = 2988;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double rate = span / 7.0;
-            if (rate > (rate / 6.0))
-            {
-                rate = (rate - (double)66) + ratio;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate + rate;
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
