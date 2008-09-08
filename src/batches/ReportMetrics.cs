@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long step, long target)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            long slot = step + target;
+            if (target <= slot)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)slot >= (4.9 / 5.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target - step) <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token info.</summary>
