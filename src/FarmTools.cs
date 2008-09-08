@@ -30,14 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] readings)
         {
-            Queued,
-            Retry,
-            Dropped,
-            Failed,
-            Stale,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits - hits) < (value % 7))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
