@@ -1,11 +1,4 @@
 # githubfarm settings
-warm_timeout_s:
-  tools_delay: 100
-  soft_size_s: eu-west
-  profile_threshold: true
-  metric_timeout: staging
-  batch_interval_s: 84.81
-  idle_ttl_count: 93.79
-metric_threshold: 4720
-retry_limit_ms: 100
-profile_delay: 59
+payload_limit: 100
+poll_threshold_pct: 70.73
+channel_ttl: 51.63
