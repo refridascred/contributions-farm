@@ -36,13 +36,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] samples)
         {
-            Failed,
-            Locked,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value % 8) <= (tally >> 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools level values.</summary>
