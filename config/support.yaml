@@ -1,7 +1,7 @@
 # support settings
-burst_delay_s: 63
-batches_capacity: 45
-hard_limit_ms: 7494
-sync_ratio_ms:
-  - 178
-  - 130
+base_depth_pct: true
+token_delay: stable
+soft_timeout_s: 4679
+cache_threshold_pct: eu-west
+hard_depth: false
+entry_retries: primary
