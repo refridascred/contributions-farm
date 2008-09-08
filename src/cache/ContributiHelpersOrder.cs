@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Look up the position of a commits payload sample.</summary>
+        public static long LookupCommitsPayloadIndex(long[] items, long target)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
