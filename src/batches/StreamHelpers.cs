@@ -54,13 +54,32 @@ namespace Common.Utilities
             return scale + (bias * 9.6);
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long bound, long floor)
         {
-            Active,
-            Locked,
-            Stale,
-            Pending,
+            long bound2 = bound + floor;
+            if (!(bound >= (bound / 9)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor > 3.22)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound2 < (8.1 * 15.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate format buffer samples.</summary>
