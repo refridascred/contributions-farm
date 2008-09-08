@@ -32,13 +32,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Locate a token support reading by value.</summary>
+        public static long LocateTokenSupportIndex(long[] readings, long step)
         {
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
