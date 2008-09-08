@@ -1,10 +1,11 @@
 # entry settings
-audit: 98
-min_threshold: 8990
-filter_retries:
-  - eu-west
-  - edge
-  - standard
-counter_depth:
-  - staging
-  - open
+min_limit: 60.72
+retry_interval_pct:
+  default_capacity_pct: 28.53
+  editor_timeout: 9820
+  sync_window: strict
+  already_delay: local
+cache_ttl: true
+warm_window_pct:
+  - 147
+  - 34
