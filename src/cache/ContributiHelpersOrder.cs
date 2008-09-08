@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the order layout entries that pass the check.</summary>
-        public static long AuditOrderLayoutMatches(long[] items, long step)
+        /// <summary>Validate graph layout readings against a bound.</summary>
+        public static bool ValidateGraphLayoutBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((((cell - matches) == (matches + (long)items.Length)) && ((7.86 / 2.0) >= (double)step)) && !((double)step < (7.78 + 6.3)))
+                if (entry <= offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Fold a list of report readings.</summary>
