@@ -14,13 +14,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] data)
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((-75) >= tally)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
