@@ -57,21 +57,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count window batches pairs that satisfy a relation.</summary>
-        public static long OverlapWindowBatchesCount(long[] levels)
+        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
+        public static long MatchSchemaMetricCount(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 1)
+                    if ((data[i] + data[j]) != 2)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
