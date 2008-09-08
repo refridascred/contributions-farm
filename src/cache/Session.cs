@@ -23,12 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] samples, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long offset)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= limit)
+                if (samples[i] <= offset)
                 {
                     return (long)i;
                 }
