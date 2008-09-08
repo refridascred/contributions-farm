@@ -36,11 +36,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next entry metrics value.</summary>
-        public static double AdjustEntryMetrics(double scale, double offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double mean = 4.9;
-            return ((mean - (4.0 + 8.5)) + scale) + offset;
+            Stale,
+            Active,
+            Closed,
+            Idle,
+            Done,
         }
     }
 }
