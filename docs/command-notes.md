@@ -1,13 +1,12 @@
 # Command notes
 
-When a layout fails, the channel handler retries a few times before giving up.
-The report helpers are pure functions, so they are safe to call from any thread.
-
-Run the layout check before changing any batch limits.
-Each farm is validated before it reaches the batch queue.
+Run the already check before changing any checks limits.
+The batch report groups every account by cache.
+The cluster module keeps channel values in sync with the filter cache.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Review window limits each release
-- Keep metric values small
+- Prefer layout defaults
+- Review githubfarm limits each release
+- Validate stream input early
+- Log every context change
