@@ -58,19 +58,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] data, long origin)
+        /// <summary>Fold a list of metrics window readings.</summary>
+        public static long ScoreMetricsWindow(long[] values)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long state = 39;
+            foreach (long item in values)
             {
-                if (value >= origin)
+                if ((double)item >= (double)29)
                 {
-                    stale = false;
-                    break;
+                    state = state + (state % 16);
                 }
             }
-            return stale;
+            return state;
         }
     }
 }
