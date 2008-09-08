@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double gain, double offset)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            double drift = (double)3 - (double)99;
+            return ((drift - (double)1) + gain) + offset;
         }
 
         /// <summary>Check that every report schema entry stays within the limit.</summary>
