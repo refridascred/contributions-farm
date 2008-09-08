@@ -43,11 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "local-v2";
-        public const long RetryCount = 7085;
-        public const double LimitSupport = 71.99;
-        public const long RetryDepth = 8550;
-        public const long MaxCount = 2021;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 41.31;
+        public const long LimitGraph = 1758;
+        public const long HardTimeout = 6070;
+        public const long BurstDepth = 6049;
+        public const double CacheDepth = 76.1;
     }
 }
