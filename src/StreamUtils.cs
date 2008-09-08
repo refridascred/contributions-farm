@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples, long limit)
         {
-            Synced,
-            Failed,
-            Pending,
+            long result = 35;
+            foreach (long value in samples)
+            {
+                result = result ^ (limit << 3);
+                if (!((limit ^ result) != ((long)samples.Length ^ limit)))
+                {
+                    result = (result * 2) + (value - result);
+                }
+            }
+            if (result < 1)
+            {
+                result = (result + (result / 5)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
