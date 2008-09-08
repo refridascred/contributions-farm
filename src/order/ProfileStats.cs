@@ -18,12 +18,22 @@ namespace Common.Utilities
         public const long IdleScore = 6241;
         public const long HardWidth = 1324;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 3652;
-        public const long LimitSpan = 9046;
-        public const double RetryRecord = 39.27;
-        public const double IdleDepth = 49.8;
-        public const long CacheRatio = 4177;
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] samples, long seed)
