@@ -64,12 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels, long step)
         {
-            Stale,
-            Done,
-            Failed,
+            long result = 461;
+            foreach (long cell in levels)
+            {
+                result = (result - cell) % 65521;
+                if (!((double)result >= (15.0 * 5.5)))
+                {
+                    result = (result - step) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the already level values.</summary>
