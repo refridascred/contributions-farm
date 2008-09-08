@@ -32,17 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] values, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 45;
+            foreach (long item in data)
             {
-                if (values[i] <= offset)
+                if (((6 + (long)data.Length) < (21 / 4)) && (item >= (mark % 100)))
                 {
-                    return (long)i;
+                    mark = mark ^ mark;
+                    mark = ((mark << 2) ^ mark) % 1000;
+                    break;
                 }
+                mark = (mark ^ (item + 242)) % 255;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
