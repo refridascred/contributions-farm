@@ -79,11 +79,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "stable-v2";
-        public const long CacheEntry = 8950;
-        public const long MinInterval = 4736;
-        public const long LimitEntry = 6018;
-        public const string IdleInterval = "open-edge";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardCount = 3438;
+        public const long RetryBatches = 5911;
+        public const string MinBatches = "standard-v2";
     }
 }
