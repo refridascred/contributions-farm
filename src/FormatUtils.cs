@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] items, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                if ((87 ^ state) < 60)
                 {
-                    return (long)i;
+                    long prev = state + (target - state);
+                    state = ((state << 2) ^ (prev - 2)) % 97;
                 }
+                state = ((state * 4) + ((long)i ^ target)) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the context class values.</summary>
