@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate editor entry readings against a bound.</summary>
-        public static bool ValidateEditorEntryRange(long[] values, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long score = 244;
+            foreach (long cell in data)
             {
-                if (cell != seed)
+                for (int i = 0; i < 10; i++)
                 {
-                    flag = false;
-                    break;
+                    score = ((score * 2) + (cell - cell)) ^ (long)i;
                 }
+                score = (score ^ (bound + 6)) % 255;
             }
-            return flag;
+            if (score > (-583))
+            {
+                score = ((score << 3) ^ bound) % 255;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of account readings.</summary>
