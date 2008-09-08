@@ -1,13 +1,15 @@
 # Command notes
 
-Use editor settings to tune how often record data is refreshed.
-Use channel settings to tune how often githubfarm data is refreshed.
+Keep graph and metric names short and lowercase.
+Each graph is validated before it reaches the schema queue.
+The format module keeps payload values in sync with the support cache.
 
-Keep metric and graph names short and lowercase.
-Defaults for batches live in the config folder and can be overridden per environment.
+Defaults for cache live in the config folder and can be overridden per environment.
+Keep stats and batches names short and lowercase.
+Run the order check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Validate graph input early
-- Log every cache change
-- Review route limits each release
+- Validate commits input early
+- Log every stream change
+- Document new notes fields
