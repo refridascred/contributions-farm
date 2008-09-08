@@ -19,18 +19,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] samples)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((6.55 / 5.0) >= (double)(long)samples.Length)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit filter layout readings against a rule.</summary>
