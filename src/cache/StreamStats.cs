@@ -33,12 +33,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            long carry = 243;
+            foreach (long sample in items)
+            {
+                if (((double)6 >= (double)carry) && ((sample << 3) <= (carry + sample)))
+                {
+                    carry = (carry ^ sample) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ ((-447) % 100)) % 101;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
