@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinBudget = 914;
-        public const long StepTimeout = 4609;
-        public const double LimitLevel = 38.87;
-        public const long CacheFactor = 3807;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Synced,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
