@@ -1,11 +1,6 @@
-id,ratio,label,rank
-1,57.11,510,21.87
-2,stable,52.74,local
-3,324,staging,blue
-4,18.47,legacy,eu-west
-5,721,73.99,864
-6,standard,stable,266
-7,257,162,331
-8,401,33,eu-west
-9,latest,cached,738
-10,18.12,4.68,618
+id,score,token,active,rank
+1,32.08,63.03,497,blue
+2,fallback,367,primary,primary
+3,234,94.01,standard,461
+4,89.05,2.5,326,973
+5,7.1,289,912,486
