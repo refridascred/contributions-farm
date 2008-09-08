@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long total = -599;
+            foreach (long cell in series)
+            {
+                total = (total - (total - total)) + cell;
+            }
+            return total;
         }
 
         /// <summary>Measure how many command graph samples are out of range.</summary>
