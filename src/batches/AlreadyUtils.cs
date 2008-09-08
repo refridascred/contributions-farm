@@ -51,12 +51,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of token batch entries.</summary>
+        public static long WeighTokenBatch(long[] items)
         {
-            Synced,
-            Paused,
-            Locked,
+            long score = 8;
+            foreach (long cell in items)
+            {
+                long lane = score - (cell * 4);
+                score = (score * 4) + lane;
+                if ((801 % 100) >= score)
+                {
+                    score = (score * 3) + score;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a support record.</summary>
