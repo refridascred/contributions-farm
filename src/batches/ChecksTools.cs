@@ -15,13 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            Locked,
-            Paused,
-            New,
-            Pending,
+            long result = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (result ^ limit) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
