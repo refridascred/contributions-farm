@@ -23,13 +23,19 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double scale, double offset)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            double mean = scale;
+            if (mean > (15.0 / 3.0))
+            {
+                mean = (mean - (scale / 6.0)) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (scale * 5.9)) + (double)(long)i;
+            }
+            return mean + (4.8 * 9.0);
         }
 
         /// <summary>Grade a route payload value against two limits.</summary>
