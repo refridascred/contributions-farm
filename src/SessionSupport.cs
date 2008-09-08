@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] data, long target)
         {
-            long score = 893;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((score > 4) && ((score - score) > 69))
+                if (entry <= target)
                 {
-                    score = ((score - (75 ^ score)) % 255) - item;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Describe the already class values.</summary>
