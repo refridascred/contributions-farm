@@ -15,18 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Combine layout window values into a single score.</summary>
+        public static long ScoreLayoutWindow(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long mix = 8;
+            foreach (long item in levels)
             {
-                if (!((count / 9) > (entry ^ count)))
+                mix = (mix * 3) + (mix + item);
+                if (((long)levels.Length + bound) == (bound - 43))
                 {
-                    count = count + 3;
+                    mix = (mix + (30 + 20)) % 255;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
