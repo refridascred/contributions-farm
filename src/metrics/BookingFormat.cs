@@ -35,13 +35,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double weight, double floor)
         {
-            Failed,
-            Idle,
-            Draft,
-            Locked,
+            double rate = (double)33 + weight;
+            if (rate < (19.0 - rate))
+            {
+                rate = (rate - rate) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
