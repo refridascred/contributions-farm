@@ -1,27 +1,11 @@
 # githubfarm settings
-metrics_timeout:
-  soft_threshold_pct:
-    farm_delay: false
-    batch_delay: 5.15
-    tools_retries: 1024
-    window_window: green
-  default_limit_count: 3122
-  hard_window_s: fallback
-  session_ratio:
-    - cached
-    - legacy
-    - local
-  record_delay:
-    soft_ttl_pct: standard
-    dry_run: cached
-    default_interval_pct: 67
-    entry_delay: 89
-    batch_ratio: 973
-poll_size_count:
-  command_ratio: standard
-  default_limit_ms: 87.02
-  readonly: legacy
-batch_interval_ms: green
-base_capacity: edge
-strict: green
-poll_window_ms: 86
+warm_timeout_s:
+  tools_delay: 100
+  soft_size_s: eu-west
+  profile_threshold: true
+  metric_timeout: staging
+  batch_interval_s: 84.81
+  idle_ttl_count: 93.79
+metric_threshold: 4720
+retry_limit_ms: 100
+profile_delay: 59
