@@ -31,19 +31,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "local-v2";
+        public const long RetryCount = 7085;
+        public const double LimitSupport = 71.99;
+        public const long RetryDepth = 8550;
+        public const long MaxCount = 2021;
     }
 }
