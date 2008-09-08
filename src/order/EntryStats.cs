@@ -60,18 +60,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels, long floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            long mark = 9;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((11.0 - 14.0) > (double)mark)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (((mark << 3) ^ reading) % 65521) - floor;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Describe the stream state values.</summary>
