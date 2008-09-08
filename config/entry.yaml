@@ -1,5 +1,7 @@
 # entry settings
-soft_window_count: blue
-sync_threshold_count: 68
-base_depth_ms: 60
-poll_limit_pct: 40.49
+burst_timeout_count: strict
+poll_retries: standard
+max_ttl_pct: 47
+queue_ratio: 1024
+burst_size_pct: 60
+enabled: 1024
