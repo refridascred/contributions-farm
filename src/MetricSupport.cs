@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a contributi tools figure with a bias.</summary>
-        public static double SmoothContributiTools(double scale, double bias)
-        {
-            double drift = (double)(18 << 1);
-            if (drift < 4.7)
-            {
-                drift = (drift + bias) - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleSpan = 44.33;
+        public const long HardCount = 6166;
+        public const long BurstEditor = 914;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long ClassifyQueue(long origin, long bound)
