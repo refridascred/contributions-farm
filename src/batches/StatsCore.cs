@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings, long seed)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long carry = 918;
-            foreach (long entry in readings)
-            {
-                carry = ((carry + (entry - 80)) % 101) + seed;
-            }
-            if (carry < 161)
-            {
-                carry = ((carry * 4) + carry) % 255;
-            }
-            return carry % 65521;
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
