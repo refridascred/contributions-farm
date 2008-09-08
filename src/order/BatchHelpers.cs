@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] series)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value + 89) >= ((long)series.Length + value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
