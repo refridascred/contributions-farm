@@ -40,19 +40,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum << 1) >= (2 % 10))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryTimeout = "strict-edge";
+        public const double BatchCount = 15.11;
+        public const long DefaultFactor = 4595;
+        public const long WindowSize = 90;
+        public const long DefaultMetric = 5310;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] values, long seed)
