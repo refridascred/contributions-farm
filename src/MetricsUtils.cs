@@ -64,11 +64,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 2609;
-        public const long BaseSize = 2769;
-        public const double LimitSchema = 26.69;
-        public const long BaseScore = 4144;
-        public const long WindowSchema = 549;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            New,
+            Draft,
+            Retry,
+            Closed,
+        }
     }
 }
