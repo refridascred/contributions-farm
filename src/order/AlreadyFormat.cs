@@ -33,12 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] series, long floor)
         {
-            Pending,
-            Stale,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
