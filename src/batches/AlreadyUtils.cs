@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long score = 244;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = ((score * 2) + (cell - cell)) ^ (long)i;
-                }
-                score = (score ^ (bound + 6)) % 255;
-            }
-            if (score > (-583))
-            {
-                score = ((score << 3) ^ bound) % 255;
-            }
-            return score;
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
