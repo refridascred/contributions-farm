@@ -12,8 +12,12 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-cached}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
