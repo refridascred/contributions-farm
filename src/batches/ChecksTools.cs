@@ -17,14 +17,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long origin)
         {
-            Done,
-            Retry,
-            Pending,
-            Paused,
-            New,
+            long gap = offset + origin;
+            if ((double)offset >= (4.31 + 20.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((gap ^ origin) > gap) || ((gap / 2) > (offset + offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((gap + origin) < (16 << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)gap >= (1.0 - 19.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metric githubfarm values into a single score.</summary>
