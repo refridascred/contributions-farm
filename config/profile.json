@@ -1,8 +1,5 @@
 {
-  "hard_retries_s": "latest",
-  "retry_ttl": "latest",
-  "batch_ratio": "green",
-  "min_capacity_count": [339, 307, 198],
-  "retry_timeout_s": 23,
-  "queue_window": 17.67
+  "soft_limit_pct": false,
+  "default_retries_ms": 7550,
+  "enabled": [472, 91]
 }
