@@ -32,32 +32,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a session channel pair into a bucket.</summary>
-        public static long RankSessionChannel(long origin, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings, long limit)
         {
-            long step2 = origin ^ step;
-            if ((double)step == (double)origin)
+            long score = 7;
+            foreach (long value in readings)
             {
-                return 2;
+                score = ((score - (value >> 2)) % 255) - limit;
             }
-            else
+            if (score > 8)
             {
-                if (!((5.17 + 18.0) >= (4.35 * 20.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step2 / 2) < (34 + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                score = (score - (6 >> 5)) % 1000;
             }
+            return score;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
