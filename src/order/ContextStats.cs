@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftFactor = 9722;
-        public const long BatchCount = 9402;
-        public const long HardPayload = 107;
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenOutliers(long[] samples)
