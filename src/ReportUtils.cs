@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long MaxChecks = 8046;
         public const long CacheChecks = 4265;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] > bound)
+                if ((values[i] >= offset) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
