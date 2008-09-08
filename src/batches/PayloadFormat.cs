@@ -43,30 +43,21 @@ namespace Common.Utilities
         public const long StepInterval = 9600;
         public const string RetryReport = "latest-edge";
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            long carry = 5;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)levels.Length != (datum - carry)) || ((carry << 1) >= (datum & 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry + datum) % 4096;
-                }
-                else
-                {
-                    carry = carry + (78 - datum);
-                }
-                if (((carry % 64) <= carry) || ((datum - carry) >= ((-1) + carry)))
-                {
-                    carry = (carry * 2) + (carry - (-39));
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 86)
-            {
-                carry = carry - (carry << 2);
-            }
-            return carry;
+            return seen;
         }
     }
 }
