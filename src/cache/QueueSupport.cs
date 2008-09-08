@@ -16,13 +16,18 @@ namespace Common.Utilities
             return bias2 + weight;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            long mix = 366;
+            foreach (long entry in items)
+            {
+                if (!((entry ^ entry) < entry))
+                {
+                    mix = mix - (75 + mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Roll a session counter forward.</summary>
