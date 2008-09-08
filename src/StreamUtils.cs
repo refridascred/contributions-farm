@@ -12,11 +12,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 98.35;
-        public const string HardCommits = "cached";
-        public const string WindowCommits = "open-1";
-        public const long LimitCommits = 3714;
+        /// <summary>Count token context pairs that satisfy a relation.</summary>
+        public static long CompareTokenContextCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
         public static long TallyCounterAccountHits(long[] series)
