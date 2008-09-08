@@ -1,7 +1,10 @@
-id,level,label
-1,664,20.88
-2,primary,985
-3,858,51.54
-4,94.7,25.36
-5,702,276
-6,staging,134
+id,ratio,score,count,level
+1,477,437,79.05,14.8
+2,strict,384,471,94.27
+3,669,705,edge,315
+4,576,898,851,edge
+5,strict,green,53.35,4
+6,edge,primary,cached,open
+7,770,80.84,open,69.64
+8,637,874,strict,fallback
+9,65.26,cached,stable,23.06
