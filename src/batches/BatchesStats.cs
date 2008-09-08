@@ -34,10 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 8141;
-        public const long RetryNotes = 5283;
-        public const long StepSize = 7228;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 89.53;
+        public const string DefaultWidth = "local";
+        public const long HardLevel = 3131;
+        public const string DefaultTimeout = "latest-edge";
+        public const double BaseRecord = 5.73;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
