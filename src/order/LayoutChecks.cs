@@ -44,15 +44,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Queued,
-            Done,
-            Paused,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSpan = 2455;
+        public const long BurstSupport = 9728;
+        public const string SoftSupport = "standard-edge";
+        public const string BurstDepth = "alpha";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] items, long floor)
