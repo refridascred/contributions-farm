@@ -31,14 +31,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] series, long origin)
         {
-            Retry,
-            Queued,
-            Stale,
-            Synced,
-            Closed,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
