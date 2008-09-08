@@ -21,18 +21,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the command counter entries that pass the check.</summary>
-        public static long AuditCommandCounterOutliers(long[] values)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long floor, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long delta = floor + step;
+            if ((14.0 - 5.0) < (double)step)
             {
-                if ((tally - tally) >= 405)
+                return 6;
+            }
+            else
+            {
+                if (((floor ^ delta) >= (delta % 64)) && (floor <= (delta << 3)))
                 {
-                    tally = (tally + 1) + cell;
+                    return 0;
+                }
+                else
+                {
+                    if ((delta ^ delta) == (step ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
