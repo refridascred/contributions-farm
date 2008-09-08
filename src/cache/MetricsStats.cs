@@ -23,11 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] levels, long limit)
         {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
