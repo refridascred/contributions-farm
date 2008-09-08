@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            Dropped,
-            Paused,
-            Failed,
-            Pending,
-            Draft,
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((2 % 97) < ((long)i + (long)i))
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
