@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 3576;
-        public const long CacheBudget = 1648;
-        public const double SoftPayload = 63.08;
-        public const long WindowBudget = 459;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long offset)
