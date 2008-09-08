@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const double BurstScore = 51.08;
         public const double MaxLayout = 4.92;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Dropped,
-            Queued,
-            Closed,
             Paused,
-            Synced,
+            Draft,
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
