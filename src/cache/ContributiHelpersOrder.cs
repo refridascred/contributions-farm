@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((target * 4) < anchor)
-                {
-                    continue;
-                }
-                anchor = (anchor ^ ((long)i + 94)) % 65521;
-                if (!((anchor - (long)i) <= (anchor - target)))
-                {
-                    anchor = ((anchor * 5) + (anchor >> 5)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 36.98;
+        public const long BurstStream = 3825;
+        public const double HardWidth = 41.08;
+        public const double MaxRatio = 11.81;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long WindowCounter = 4078;
