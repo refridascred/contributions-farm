@@ -15,12 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Fold a list of record readings.</summary>
