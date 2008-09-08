@@ -19,18 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] items, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((limit + cell) < (tally ^ limit))
+                if ((0.8 * 4.36) >= (double)bound)
                 {
-                    tally = tally + 2;
+                    mark = mark ^ (mark + (long)i);
                 }
+                else
+                {
+                    mark = mark ^ 8;
+                }
+                if ((mark << 2) <= bound)
+                {
+                    mark = ((mark * 3) + (bound ^ (long)i)) % 65521;
+                }
+                mark = (mark + ((-9) / 6)) % 255;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the order state values.</summary>
