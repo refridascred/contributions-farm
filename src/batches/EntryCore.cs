@@ -24,15 +24,31 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long floor, long floor2)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            if (floor >= (460 ^ 401))
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((10.0 - 6.22) > (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor < (floor2 + floor2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a window reading by value.</summary>
