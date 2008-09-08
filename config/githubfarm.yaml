@@ -1,24 +1,4 @@
 # githubfarm settings
-graph_capacity:
-  - cached
-  - eu-west
-  - local
-  - staging
-warm_timeout: stable
-burst_interval_s:
-  burst_delay_count: 500
-  verbose:
-    min_timeout_ms: staging
-    batch_interval_ms:
-      - fallback
-      - eu-west
-      - cached
-    order_retries: fallback
-  checks_ttl: 93.02
-  soft_ttl:
-    - 408
-    - 406
-    - 486
-  default_retries: fallback
-burst_depth_s: false
-layout_retries: 93.84
+strict: 30
+flush_threshold_pct: fallback
+idle_ratio_pct: edge
