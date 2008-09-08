@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Active,
-            Closed,
-            Locked,
-            Idle,
-            Draft,
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every format channel entry stays within the limit.</summary>
