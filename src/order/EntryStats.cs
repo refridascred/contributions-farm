@@ -56,27 +56,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next batch tools value from a seed.</summary>
-        public static long IterateBatchTools(long offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)offset < (4.25 / 9.0))
-                {
-                    score = (score - ((long)i / 8)) % 65521;
-                    score = (score * 3) + (offset & 63);
-                    continue;
-                }
-                else
-                {
-                    score = (score - (offset + score)) % 4096;
-                    score = ((score * 5) + (0 - score)) % 255;
-                }
-                score = score ^ (score * 4);
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
