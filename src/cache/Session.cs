@@ -33,10 +33,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleInterval = 17.36;
-        public const double BaseInterval = 14.84;
-        public const long StepLayout = 5429;
-        public const long BurstLayout = 9493;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
