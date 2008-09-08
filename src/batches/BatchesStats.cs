@@ -35,13 +35,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Idle,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 8141;
+        public const long RetryNotes = 5283;
+        public const long StepSize = 7228;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
