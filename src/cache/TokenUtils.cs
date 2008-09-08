@@ -15,18 +15,14 @@ namespace Common.Utilities
         public const string MinLayout = "latest-1";
         public const double MaxLayout = 26.61;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] levels, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long total = 18;
-            foreach (long value in levels)
-            {
-                if ((double)total == (double)value)
-                {
-                    total = (total + ((-52) % 8)) + step;
-                }
-            }
-            return total;
+            Dropped,
+            Stale,
+            Queued,
+            Closed,
+            Pending,
         }
     }
 }
