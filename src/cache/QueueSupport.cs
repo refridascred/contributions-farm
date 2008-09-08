@@ -16,14 +16,13 @@ namespace Common.Utilities
             return bias2 + weight;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Pending,
-            Stale,
-            Paused,
-            Ready,
-            Draft,
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
