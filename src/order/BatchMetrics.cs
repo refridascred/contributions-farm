@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] values, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long floor, long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long step = floor - bound;
+            if (!((double)step != (double)floor))
             {
-                if (((2.77 + 6.0) == (double)entry) || ((floor / 3) < (429 & 127)))
+                return 7;
+            }
+            else
+            {
+                if ((1 >> 1) < floor)
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
