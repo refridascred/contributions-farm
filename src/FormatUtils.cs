@@ -40,18 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] readings, long bound)
+        /// <summary>Grade a stream context value against two limits.</summary>
+        public static long GradeStreamContext(long target, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if (((target & 127) <= (bound - target)) || ((target - target) >= (target / 3)))
             {
-                if ((double)reading < (double)bound)
+                return 3;
+            }
+            else
+            {
+                if ((bound - 9) <= (target & 127))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (!(bound < target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.7 / 6.0) < (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the layout state values.</summary>
