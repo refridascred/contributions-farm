@@ -30,13 +30,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Classify a metric cache pair into a bucket.</summary>
+        public static long GradeMetricCache(long offset, long origin)
         {
-            Pending,
-            Locked,
-            Ready,
-            Paused,
+            if (((offset & 127) < (offset - offset)) && (offset > (origin * 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset == (11.0 + 0.34))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
