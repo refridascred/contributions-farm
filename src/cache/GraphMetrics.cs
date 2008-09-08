@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream account entry stays within the limit.</summary>
-        public static bool CheckStreamAccountBounds(long[] levels, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (reading <= target)
+                if (value >= target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Define session limits and defaults.</summary>
