@@ -19,13 +19,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Done,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryScore = 5252;
+        public const long HardTimeout = 9847;
+        public const string MaxToken = "local-1";
+        public const double BatchToken = 47.48;
+        public const double BaseToken = 3.44;
 
         /// <summary>Blend two format measurements.</summary>
         public static double ScaleFormat(double ratio, double floor)
