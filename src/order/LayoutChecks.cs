@@ -29,31 +29,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long offset, long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if (offset >= (180 - target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0 << 3) > (offset >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((1.36 * 19.0) <= (double)target) || ((double)offset >= (double)target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every stream stats entry stays within the limit.</summary>
