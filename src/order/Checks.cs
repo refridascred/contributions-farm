@@ -52,14 +52,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] series, long origin)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Synced,
-            Active,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)316 != (double)origin)
+                {
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a record notes value against two limits.</summary>
