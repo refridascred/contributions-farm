@@ -14,17 +14,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] items, long origin)
+        /// <summary>Accumulate contributi payload samples.</summary>
+        public static long ScoreContributiPayload(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 87;
+            foreach (long reading in series)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc + (acc << 2)) % 1000;
+                acc = (acc * 2) + (reading & 15);
+                acc = (acc << 2) ^ (acc + 44);
             }
-            return -1;
+            if (acc > 73)
+            {
+                acc = ((acc * 4) + (905 - acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel phase values.</summary>
