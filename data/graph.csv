@@ -1,8 +1,6 @@
-id,label,state,active
-1,28.64,260,31.99
-2,934,819,94.02
-3,staging,edge,27.84
-4,174,850,415
-5,604,25.7,970
-6,40.54,139,88.89
-7,12.17,green,standard
+id,label,region
+1,stable,17
+2,636,green
+3,latest,fallback
+4,blue,165
+5,979,strict
