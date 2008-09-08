@@ -54,24 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account command pair into a bucket.</summary>
-        public static long RankAccountCommand(long limit, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if ((double)step != (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((18.0 >= (double)limit) && ((3 + limit) > (step << 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
