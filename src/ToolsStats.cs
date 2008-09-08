@@ -42,12 +42,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the cache tools series from a seed.</summary>
