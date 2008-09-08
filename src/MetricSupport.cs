@@ -10,13 +10,20 @@ namespace Common.Utilities
         public const long HardCount = 6166;
         public const long BurstEditor = 914;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Roll a layout metrics counter forward.</summary>
+        public static long SeriesLayoutMetrics(long floor)
         {
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((mark >= ((long)i + floor)) && (((long)i - mark) <= (floor + floor)))
+                {
+                    mark = mark ^ (40 + mark);
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
