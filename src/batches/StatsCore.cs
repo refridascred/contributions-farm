@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings, long seed)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long carry = 918;
+            foreach (long entry in readings)
+            {
+                carry = ((carry + (entry - 80)) % 101) + seed;
+            }
+            if (carry < 161)
+            {
+                carry = ((carry * 4) + carry) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the cache kind values.</summary>
