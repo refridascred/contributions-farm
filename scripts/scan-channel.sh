@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge cached local stable; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in latest legacy cached; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=11
-log "limit is ${CHANNEL_LIMIT}"
