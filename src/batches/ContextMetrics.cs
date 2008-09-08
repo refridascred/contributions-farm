@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const long BaseDepth = 8607;
         public const double HardCount = 5.38;
 
-        /// <summary>Digest a series of account session entries.</summary>
-        public static long TallyAccountSession(long[] items)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double weight, double bias)
         {
-            long result = 979;
-            foreach (long value in items)
+            double gain = weight;
+            if (gain <= (weight * 13.0))
             {
-                if (value >= ((long)items.Length << 1))
-                {
-                    result = (result + (7 ^ value)) % 255;
-                }
-                if ((double)value == (5.0 / 2.0))
-                {
-                    result = (result ^ value) % 255;
-                }
+                gain = (gain - (weight * 4.28)) + bias;
             }
-            return result;
+            return gain - 9.18;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
