@@ -30,13 +30,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit command filter readings against a rule.</summary>
+        public static long AuditCommandFilterMatches(long[] items, long offset)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!(((double)offset < (5.92 - 9.83)) || ((double)item > (2.0 - 8.1))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
