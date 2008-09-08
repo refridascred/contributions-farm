@@ -29,12 +29,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 6165;
+        public const long WindowSpan = 2286;
+        public const long BatchCount = 6434;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long DigestMetric(long[] series, long origin)
