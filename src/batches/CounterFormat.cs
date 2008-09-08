@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const long BatchWidth = 6462;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstDepth = 6059;
-        public const double MinScore = 23.33;
-        public const string BatchChannel = "standard-v2";
-        public const long RetryChannel = 2362;
-        public const long IdleChannel = 7613;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricGaps(long[] readings, long limit)
