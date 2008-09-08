@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many command format samples are out of range.</summary>
-        public static long AuditCommandFormatGaps(long[] series, long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)seed >= (double)31)
-                {
-                    tally = (tally + 2) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Fold a list of token readings.</summary>
