@@ -41,22 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] items, long limit)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((1.0 * 9.24) < (double)sample)
-                {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
