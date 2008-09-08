@@ -33,31 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            if ((double)step >= (9.01 - 4.34))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 1) <= (6 - (-85)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (1 <= (step + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
