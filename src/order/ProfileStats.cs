@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseProfile = 59.05;
-        public const long BurstWidth = 7066;
-        public const double LimitProfile = 18.62;
-        public const long DefaultCount = 4653;
-        public const string WindowTimeout = "open-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 8789;
+        public const long MinToken = 1047;
+        public const double IdleToken = 36.58;
+        public const double DefaultInterval = 13.16;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowInterval = 1885;
