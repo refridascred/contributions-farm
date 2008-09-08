@@ -36,15 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Stale,
-            New,
-            Retry,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSize = 1052;
+        public const string LimitScore = "legacy-v2";
+        public const double BurstScore = 20.71;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] values)
