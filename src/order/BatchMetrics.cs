@@ -55,12 +55,11 @@ namespace Common.Utilities
         public const long BatchLayout = 5809;
         public const string MinLayout = "open-edge";
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Done,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "stable-v2";
+        public const long CacheEntry = 8950;
+        public const long MinInterval = 4736;
+        public const long LimitEntry = 6018;
+        public const string IdleInterval = "open-edge";
     }
 }
