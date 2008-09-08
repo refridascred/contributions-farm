@@ -29,21 +29,18 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 7;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)origin != (double)49)
                 {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum + sum) % 255) ^ entry;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
     }
 }
