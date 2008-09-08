@@ -19,19 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of record filter entries.</summary>
-        public static long TotalRecordFilter(long[] readings, long target)
+        /// <summary>Match up stream contributi samples.</summary>
+        public static long MatchStreamContributiCount(long[] series)
         {
-            long acc = 717;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (((acc << 2) ^ (value ^ 832)) % 255) - target;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc < 62)
-            {
-                acc = (acc ^ (561 / 6)) % 101;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
