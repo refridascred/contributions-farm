@@ -20,14 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Match up tools stats samples.</summary>
+        public static long PairToolsStatsCount(long[] series)
         {
-            Synced,
-            Draft,
-            Queued,
-            Ready,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a profile stats.</summary>
