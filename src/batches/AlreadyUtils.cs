@@ -51,18 +51,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] values, long seed)
         {
-            long anchor = 1;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (anchor > (entry ^ 231))
+                if (values[i] > seed)
                 {
-                    anchor = anchor ^ entry;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
