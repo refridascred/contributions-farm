@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 927;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((2.01 - 2.0) != (double)offset))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix + (item ^ offset);
+                }
+                else
+                {
+                    mix = (mix ^ item) % 101;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Locate a stats counter reading by value.</summary>
