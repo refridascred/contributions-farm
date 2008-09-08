@@ -42,18 +42,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardFactor = 1116;
+        public const long BurstSupport = 8283;
+        public const long RetryBudget = 2112;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowNotes = 6613;
