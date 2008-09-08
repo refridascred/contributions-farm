@@ -34,10 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 3573;
-        public const string BaseLevel = "standard-v2";
-        public const long IdleTimeout = 7365;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((2.86 * 7.0) >= (double)floor)
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchLayout = 7170;
