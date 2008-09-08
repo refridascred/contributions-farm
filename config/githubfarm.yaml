@@ -1,10 +1,13 @@
 # githubfarm settings
-soft_window_ms:
-  - strict
-  - primary
-  - stable
-  - green
-readonly: fallback
-counter_capacity: 61
-idle_retries_pct: cached
-flush_threshold_pct: 100
+idle_window:
+  - latest
+  - cached
+token_capacity:
+  - 488
+  - 449
+  - 10
+  - 176
+min_limit_count: 54.89
+min_depth_count:
+  - staging
+  - local
