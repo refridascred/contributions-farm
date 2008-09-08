@@ -19,28 +19,18 @@ namespace Common.Utilities
         public const long MaxReport = 526;
         public const long IdleWidth = 4742;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] levels, long floor)
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long AuditMetricsCommitsOutliers(long[] readings)
         {
-            long sum = 989;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((6.11 * 8.6) <= (double)item)
+                if ((((cell * 5) < ((long)readings.Length - tally)) && ((double)tally <= (2.87 / 6.0))) && !((7.0 / 6.0) < (double)tally))
                 {
-                    sum = ((sum * 4) + (sum >> 3)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ ((-2) % 2)) % 1000;
-                }
-                sum = ((sum << 3) ^ (sum & 63)) % 4096;
-                if ((((-72) & 1) <= (item ^ item)) && (item > (floor - 1)))
-                {
-                    sum = sum + 880;
+                    tally = tally + 2;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a order info.</summary>
