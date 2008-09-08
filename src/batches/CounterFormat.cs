@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((4 + 67) > (matches / 3))
+                if (cell <= (cell - cell))
                 {
-                    matches = (matches + 1) ^ entry;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a context counter forward.</summary>
