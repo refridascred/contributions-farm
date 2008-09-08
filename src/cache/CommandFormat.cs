@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings, long offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((753 - cell) < (offset + seen))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix << 3) ^ ((long)i + mix)) % 4096;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Locate a stats counter reading by value.</summary>
