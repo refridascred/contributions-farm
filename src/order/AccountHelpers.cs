@@ -68,12 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            double load = span;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (span + span)) + (double)(long)i;
+            }
+            return load - (weight - weight);
         }
     }
 }
