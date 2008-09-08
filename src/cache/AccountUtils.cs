@@ -33,16 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long bound, long bound2)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            if ((double)bound >= (double)bound2)
             {
-                result = (result << 2) ^ ((-14) << 1);
-                result = ((result * 3) + (long)i) % 97;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((((-894) * 4) <= (bound - bound2)) || ((bound + bound2) == (129 >> 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
