@@ -1,10 +1,10 @@
 # support settings
-dry_run: 87.43
-flush_window_pct:
-  soft_ratio_ms: true
-  order_ratio: eu-west
-  max_depth_pct: stable
-  sync_limit: true
-default_limit_pct: false
-hard_capacity_count: 5723
-poll_retries_s: fallback
+retry_threshold:
+  - 268
+  - 32
+  - 199
+compress: 30
+cache_window: false
+batch_ttl_s: 1024
+dry_run: 62.7
+cache_capacity: 500
