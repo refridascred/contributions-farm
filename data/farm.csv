@@ -1,9 +1,7 @@
-id,state,weight,level
-1,legacy,local,604
-2,open,350,83
-3,890,90.14,1
-4,641,eu-west,legacy
-5,40.98,394,997
-6,599,11.6,standard
-7,11,3.86,371
-8,standard,stable,407
+id,token,count
+1,14.21,standard
+2,151,47.3
+3,414,184
+4,678,open
+5,212,845
+6,754,299
