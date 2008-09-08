@@ -76,13 +76,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((8.3 + 6.36) >= (double)floor)
+                {
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
