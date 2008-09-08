@@ -50,15 +50,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two checks support measurements.</summary>
-        public static double BlendChecksSupport(double ratio, double bias)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] readings, long limit)
         {
-            double ratio2 = (double)(52 - 36);
-            if (ratio2 <= (bias - ratio2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = ratio2 - (double)77;
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 - ratio;
+            return -1;
         }
     }
 }
