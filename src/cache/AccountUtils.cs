@@ -31,17 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] series, long step)
+        /// <summary>Adjust a commits order reading.</summary>
+        public static double AdjustCommitsOrder(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(62 ^ 6);
+            if (rate >= span)
             {
-                if ((series[i] == step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + (span + span)) + weight;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)53;
+            }
+            return rate - rate;
         }
     }
 }
