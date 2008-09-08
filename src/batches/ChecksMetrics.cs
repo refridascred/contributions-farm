@@ -26,10 +26,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 18.68;
-        public const string BurstChecks = "staging-v2";
-        public const string SoftChecks = "alpha-1";
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double offset)
+        {
+            double rate = offset / 3.0;
+            if (rate < bias)
+            {
+                rate = rate + bias;
+            }
+            return rate - (rate * 6.64);
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long MatchProfileCount(long[] items)
