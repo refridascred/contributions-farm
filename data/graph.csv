@@ -1,7 +1,6 @@
-id,active,level
-1,55.44,edge
-2,646,blue
-3,905,24.0
-4,open,71.79
-5,41.49,eu-west
-6,eu-west,831
+id,score,ratio,weight
+1,789,93,893
+2,eu-west,3.34,open
+3,fallback,cached,blue
+4,347,20.49,13.52
+5,2.39,64.79,90.71
