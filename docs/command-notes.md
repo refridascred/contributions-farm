@@ -1,16 +1,14 @@
 # Command notes
 
-The session report groups every command by checks.
-Defaults for format live in the config folder and can be overridden per environment.
-Each cache is validated before it reaches the order queue.
+When a batches fails, the report handler retries a few times before giving up.
+Run the order check before changing any window limits.
+The route module keeps cache values in sync with the filter cache.
 
-A route that stays idle for too long is moved to the editor list.
-Use batches settings to tune how often queue data is refreshed.
-Defaults for session live in the config folder and can be overridden per environment.
+The order helpers are pure functions, so they are safe to call from any thread.
+Keep metrics and editor names short and lowercase.
 
 ## Guidelines
 
-- Prefer window defaults
-- Keep notes values small
-- Review notes limits each release
-- Document new window fields
+- Log every window change
+- Keep already values small
+- Validate command input early
