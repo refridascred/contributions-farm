@@ -1,11 +1,10 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Each buffer is validated before it reaches the order queue.
+Defaults for layout live in the config folder and can be overridden per environment.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new session fields
-- Review window limits each release
-- Prefer queue defaults
-- Log every counter change
+- Review queue limits each release
+- Log every session change
+- Validate command input early
