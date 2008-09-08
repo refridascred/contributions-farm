@@ -54,18 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload support reading by value.</summary>
-        public static long LocatePayloadSupportIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxLevel = 97.37;
+        public const long SoftTools = 5473;
+        public const string MaxWidth = "cached-edge";
 
         /// <summary>Project the next window value.</summary>
         public static double ProjectWindow(double bias, double bias2)
