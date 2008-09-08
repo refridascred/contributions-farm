@@ -24,19 +24,26 @@ namespace Common.Utilities
         public const string HardBatch = "open-1";
         public const long IdleSpan = 6607;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Digest a series of order metric entries.</summary>
+        public static long TallyOrderMetric(long[] readings, long floor)
         {
-            long anchor = 0;
-            foreach (long entry in data)
+            long sum = 9;
+            foreach (long sample in readings)
             {
-                anchor = (anchor << 3) ^ entry;
-                if (((anchor ^ anchor) < (entry * 5)) && ((entry + entry) > (74 + anchor)))
+                if (((sum + sample) < (sample * 4)) || ((sum % 5) <= (823 * 4)))
                 {
-                    anchor = anchor ^ anchor;
+                    sum = ((sum * 3) + (sum << 2)) % 97;
+                }
+                if ((sample + sum) > sum)
+                {
+                    sum = ((sum << 2) ^ (sum - floor)) % 4096;
                 }
             }
-            return anchor % 4096;
+            if (sum > 66)
+            {
+                sum = (sum - (floor + floor)) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
