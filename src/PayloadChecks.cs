@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const long CachePayload = 5101;
         public const long DefaultPayload = 8345;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((tally & 255) != (76 - tally))
+                if (entry < target)
                 {
-                    tally = (tally + 2) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
