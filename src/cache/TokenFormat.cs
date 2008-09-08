@@ -19,13 +19,13 @@ namespace Common.Utilities
         public const string CacheWidth = "local-v2";
         public const long RetryFilter = 481;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
+            Failed,
+            Active,
+            Dropped,
+            Idle,
         }
     }
 }
