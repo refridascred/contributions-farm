@@ -22,19 +22,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] series, long origin)
+        /// <summary>Count the entry support entries that pass the check.</summary>
+        public static long TallyEntrySupportGaps(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (reading != origin)
+                if (((floor + floor) > ((long)values.Length & 127)) || ((value & 31) == (550 & 1)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
