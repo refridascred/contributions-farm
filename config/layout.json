@@ -1,6 +1,7 @@
 {
-  "context_retries": 250,
-  "entry_window": "local",
-  "poll_retries_ms": 45,
-  "soft_size_count": [153, 328]
+  "commits_retries": ["primary", "staging", "edge"],
+  "counter_depth": "primary",
+  "account_depth": false,
+  "readonly": 9.26,
+  "burst_ttl": false
 }
