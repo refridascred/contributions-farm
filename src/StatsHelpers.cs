@@ -25,38 +25,18 @@ namespace Common.Utilities
         public const long RetryMetric = 5344;
         public const long RetrySize = 4181;
 
-        /// <summary>Classify a report filter pair into a bucket.</summary>
-        public static long ClassifyReportFilter(long origin, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] values)
         {
-            if ((origin - step) < (53 & 1))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((0.6 * 5.95) >= (double)origin) && (origin < (step + origin)))
+                if ((seen % 60) <= cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin - 3) >= (step ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step * 5) != (step % 64))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a session options.</summary>
