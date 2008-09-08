@@ -23,17 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] readings, long floor)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
