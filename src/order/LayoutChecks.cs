@@ -53,16 +53,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark << 3) ^ (mark + 23)) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((cell << 2) < (tally ^ cell))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the order phase values.</summary>
