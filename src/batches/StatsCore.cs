@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitDepth = 30.74;
+        public const long LimitQueue = 5222;
+        public const long CacheSpan = 8999;
+        public const string MaxDepth = "local-v2";
+        public const long DefaultInterval = 3861;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long bound)
