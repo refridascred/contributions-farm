@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            New,
+            Locked,
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a filter record.</summary>
