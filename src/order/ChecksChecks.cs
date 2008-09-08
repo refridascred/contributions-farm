@@ -12,12 +12,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] items, long seed)
         {
-            Failed,
-            Queued,
-            Draft,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((226 * 2) <= (seed - matches)) || ((829 ^ item) <= (matches - matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
