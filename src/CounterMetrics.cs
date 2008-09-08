@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double scale, double floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            double load = (double)(847 - 81);
-            return (load - (scale + load)) + floor;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate contributi payload samples.</summary>
