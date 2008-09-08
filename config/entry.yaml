@@ -1,6 +1,6 @@
 # entry settings
-dry_run: open
-strict: local
-stats_timeout: staging
-soft_depth_count: 75.06
-audit: true
+max_size_pct: true
+context_delay: 6895
+filter_interval: false
+enabled: 3912
+soft_size_ms: true
