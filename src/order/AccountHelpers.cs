@@ -65,15 +65,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double weight, double span)
-        {
-            double load = span;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (span + span)) + (double)(long)i;
-            }
-            return load - (weight - weight);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 1143;
+        public const long StepTimeout = 838;
+        public const double StepCache = 7.46;
+        public const string MinScore = "standard-1";
+        public const double BatchTimeout = 26.1;
     }
 }
