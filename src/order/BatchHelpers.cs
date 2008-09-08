@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] data, long target)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long item in data)
             {
-                if ((3.34 + 2.0) <= (double)entry)
+                if ((target & 127) > (166 >> 5))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) + item;
                 }
             }
             return seen;
