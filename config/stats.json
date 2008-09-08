@@ -1,8 +1,13 @@
 {
-  "flush_window_count": "eu-west",
-  "flush_retries": 86,
-  "retry_depth_ms": true,
-  "poll_ratio_ms": 250,
-  "channel_ratio": "fallback",
-  "payload_size": ["legacy", "blue", "legacy", "blue"]
+  "compress": "staging",
+  "flush_threshold": 250,
+  "soft_limit": true,
+  "metrics_window": {
+    "verbose": "blue",
+    "poll_retries_count": [422, 335],
+    "order_timeout": "edge",
+    "min_interval_ms": 2593,
+    "idle_depth_ms": 22.29,
+    "batch_ttl_count": true
+  }
 }
