@@ -46,9 +46,13 @@ namespace Common.Utilities
         public const long BurstBatches = 2861;
         public const long MaxBatches = 2833;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 6666;
-        public const string MinInterval = "latest-edge";
-        public const string WindowCluster = "legacy-1";
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
