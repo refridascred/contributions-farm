@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long anchor = 647;
-            foreach (long datum in series)
-            {
-                if ((anchor & 63) < (3 >> 2))
-                {
-                    anchor = (anchor + (anchor % 60)) % 4096;
-                }
-                anchor = ((anchor << 2) ^ (anchor + datum)) % 255;
-            }
-            if (anchor < (-3))
-            {
-                anchor = (anchor ^ (-48)) % 4096;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
