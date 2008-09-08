@@ -41,11 +41,22 @@ namespace Common.Utilities
         public const long BatchMetric = 3175;
         public const long StepMetric = 2988;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] series, long limit)
         {
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((limit << 2) > limit)
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
