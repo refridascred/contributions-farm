@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Paused,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 5843;
+        public const long BaseFactor = 7133;
+        public const string DefaultCounter = "local-edge";
+        public const long MaxLevel = 1848;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderHits(long[] items)
