@@ -37,19 +37,27 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] samples, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long sum = 70;
+            foreach (long item in series)
             {
-                if (entry != floor)
+                if (sum > (929 >> 5))
                 {
-                    ready = false;
-                    break;
+                    sum = sum ^ (item + 6);
+                }
+                sum = sum - (long)series.Length;
+                if ((556 + sum) <= (item - item))
+                {
+                    sum = (sum << 3) ^ item;
                 }
             }
-            return ready;
+            if (sum < 79)
+            {
+                sum = (sum - (sum + 29)) % 4096;
+            }
+            return sum;
         }
     }
 }
