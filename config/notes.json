@@ -1,10 +1,5 @@
 {
-  "max_interval_pct": ["cached", "eu-west", "edge", "green"],
-  "burst_interval_ms": {
-    "max_window_pct": "fallback",
-    "cache_retries": "latest",
-    "default_threshold": 92.71
-  },
-  "poll_ratio": "latest",
-  "batch_interval_pct": "standard"
+  "dry_run": "latest",
+  "min_capacity_ms": 60,
+  "max_delay": "blue"
 }
