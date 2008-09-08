@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Retry,
-            Stale,
-            Pending,
-            Idle,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchScore = 6032;
+        public const long LimitSpan = 7364;
+        public const double MinInterval = 97.65;
+        public const long MaxChannel = 2511;
+        public const long SoftSpan = 3785;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsGaps(long[] data)
