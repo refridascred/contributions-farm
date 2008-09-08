@@ -29,10 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseSpan = 10.98;
-        public const long IdleAlready = 5403;
-        public const double BatchLevel = 48.71;
-        public const long BurstAlready = 622;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double span)
+        {
+            double load = span;
+            return (load - 7.0) + gain;
+        }
     }
 }
