@@ -36,17 +36,19 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] levels, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 44;
+            foreach (long item in data)
             {
-                if (levels[i] <= bound)
+                acc = ((acc << 3) ^ (acc + item)) % 65521;
+                if ((acc / 8) != (item + acc))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (item ^ acc);
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
