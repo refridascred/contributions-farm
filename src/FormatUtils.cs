@@ -40,38 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream context value against two limits.</summary>
-        public static long GradeStreamContext(long target, long bound)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            if (((target & 127) <= (bound - target)) || ((target - target) >= (target / 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound - 9) <= (target & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(bound < target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.7 / 6.0) < (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
