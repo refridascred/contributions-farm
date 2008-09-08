@@ -73,11 +73,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 85.4;
-        public const long BurstTimeout = 5982;
-        public const string DefaultGraph = "local";
-        public const long WindowGraph = 7657;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string RetryRoute = "stable-edge";
