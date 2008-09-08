@@ -51,18 +51,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of metrics window readings.</summary>
-        public static long ScoreMetricsWindow(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double weight, double offset)
         {
-            long state = 39;
-            foreach (long item in values)
+            double bias = (weight + weight) * 5.0;
+            if (bias >= (bias / 7.0))
             {
-                if ((double)item >= (double)29)
-                {
-                    state = state + (state % 16);
-                }
+                bias = bias - (bias * 6.8);
             }
-            return state;
+            else
+            {
+                bias = bias - (bias + offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)813) - (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
