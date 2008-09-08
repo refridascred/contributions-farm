@@ -41,19 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] items, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long mark = 9;
+            foreach (long reading in levels)
             {
-                if (value != floor)
+                if ((11.0 - 14.0) > (double)mark)
                 {
-                    flag = false;
-                    break;
+                    mark = (((mark << 3) ^ reading) % 65521) - floor;
                 }
             }
-            return flag;
+            return mark % 65521;
         }
 
         /// <summary>Hold a payload record.</summary>
