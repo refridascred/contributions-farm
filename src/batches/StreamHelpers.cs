@@ -29,18 +29,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] series, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] readings, long target)
         {
-            long score = -1;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (61 > (score ^ score))
+                if ((-4) > (sample ^ sample))
                 {
-                    score = ((score ^ ((long)series.Length * 4)) - value) - origin;
+                    matches = (matches + 1) + target;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Audit githubfarm cache readings against a rule.</summary>
