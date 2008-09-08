@@ -30,17 +30,14 @@ namespace Common.Utilities
         public const long BatchFactor = 8051;
         public const long CacheCount = 5768;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                long step = (total + total) % 8;
-                total = (total * 4) + (step + seed);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Pending,
+            Locked,
+            Closed,
+            Paused,
+            Idle,
         }
     }
 }
