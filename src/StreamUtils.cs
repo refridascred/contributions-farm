@@ -45,21 +45,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Rank contributi profile input into a small class.</summary>
+        public static long BucketContributiProfile(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((double)limit > 0.75))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (limit < (limit * 2))
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a already counter forward.</summary>
