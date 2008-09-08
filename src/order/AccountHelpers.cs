@@ -15,23 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double bias, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] series)
         {
-            double rate = 7.0;
-            if (rate >= (bias + rate))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                rate = rate - (floor + bias);
+                if (((seen - datum) != (seen & 63)) || ((seen + 7) > (datum + seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                rate = rate + (bias + floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (floor - rate)) - (double)(long)i;
-            }
-            return rate + (double)139;
+            return seen;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
