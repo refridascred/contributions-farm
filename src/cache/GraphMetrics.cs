@@ -41,25 +41,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long limit, long offset)
+        /// <summary>Validate schema route readings against a bound.</summary>
+        public static bool CheckSchemaRouteRange(long[] values, long origin)
         {
-            long lane = limit ^ offset;
-            if ((lane >> 4) > (limit / 8))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset / 6) > 3)
+                if (sample <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
