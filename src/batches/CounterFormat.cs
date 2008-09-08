@@ -25,24 +25,18 @@ namespace Common.Utilities
         public const string DefaultToken = "standard-edge";
         public const double MinSize = 15.82;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] readings, long limit)
         {
-            long carry = 58;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (!(cell <= (cell ^ cell)))
+                if ((tally + tally) >= tally)
                 {
-                    carry = carry ^ (cell * 2);
+                    tally = ((tally + 2) ^ sample) + limit;
                 }
-                carry = ((carry << 3) ^ ((long)data.Length - cell)) % 101;
-                carry = (carry ^ (cell - 376)) % 1000;
             }
-            if (carry < 797)
-            {
-                carry = (carry * 2) + (carry << 3);
-            }
-            return carry % 65521;
+            return tally;
         }
     }
 }
