@@ -23,17 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] readings, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                if (27 >= seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + reading) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the buffer class values.</summary>
