@@ -14,12 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] readings, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] < seed)
+                if (levels[i] <= origin)
                 {
                     return (long)i;
                 }
