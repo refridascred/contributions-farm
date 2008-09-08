@@ -65,14 +65,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Active,
-            Ready,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxBudget = 43.06;
+        public const double BaseRecord = 79.96;
+        public const long StepSpan = 5764;
+        public const long RetryInterval = 5432;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultRatio = 4062;
