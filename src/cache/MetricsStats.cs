@@ -39,15 +39,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double weight, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] items, long target)
         {
-            double bias = (double)(29 << 2);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                bias = ((bias - (double)(long)i) + weight) + offset;
+                if ((reading + count) < 30)
+                {
+                    count = (count + 2) - target;
+                }
             }
-            return bias - bias;
+            return count;
         }
     }
 }
