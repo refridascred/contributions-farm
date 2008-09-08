@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long limit)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long cur = seed ^ limit;
-            if (((limit + 69) >= seed) || (limit >= cur))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit <= (seed + 6))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (cur < (limit ^ seed))
+                    if ((values[i] - values[j]) != 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
