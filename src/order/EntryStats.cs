@@ -13,13 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] levels, long offset)
         {
-            New,
-            Paused,
-            Closed,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
