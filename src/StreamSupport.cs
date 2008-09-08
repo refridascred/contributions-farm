@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            Draft,
-            Locked,
-            Idle,
-            Done,
+            double rate = bias;
+            return (rate + 11.0) + floor;
         }
 
         /// <summary>Describe the farm status values.</summary>
