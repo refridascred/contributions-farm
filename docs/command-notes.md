@@ -1,14 +1,16 @@
 # Command notes
 
-The queue module keeps layout values in sync with the tools cache.
-The queue report groups every support by route.
-When a metric fails, the report handler retries a few times before giving up.
+The session report groups every command by checks.
+Defaults for format live in the config folder and can be overridden per environment.
+Each cache is validated before it reaches the order queue.
 
-Each counter is validated before it reaches the session queue.
-Use already settings to tune how often commits data is refreshed.
+A route that stays idle for too long is moved to the editor list.
+Use batches settings to tune how often queue data is refreshed.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep layout values small
-- Prefer context defaults
-- Document new already fields
+- Prefer window defaults
+- Keep notes values small
+- Review notes limits each release
+- Document new window fields
