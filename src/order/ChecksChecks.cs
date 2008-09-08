@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate schema cluster readings against a bound.</summary>
-        public static bool VerifySchemaClusterLimits(long[] levels, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 27.72;
+        public const double HardBatches = 89.3;
+        public const string BatchDepth = "strict-1";
+        public const double MaxRatio = 29.14;
+        public const long MaxWidth = 6571;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] series)
