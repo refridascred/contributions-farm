@@ -76,18 +76,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] data, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = 80;
+            foreach (long cell in series)
             {
-                if (((10.0 * 0.1) >= (0.84 / 8.0)) && ((origin + 8) > origin))
+                if ((cell - anchor) <= anchor)
                 {
-                    hits = (hits + 3) ^ reading;
+                    anchor = (anchor ^ anchor) % 255;
+                }
+                if ((anchor - anchor) <= anchor)
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
     }
 }
