@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every channel entry entry stays within the limit.</summary>
+        public static bool VerifyChannelEntryRange(long[] items, long bound)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
