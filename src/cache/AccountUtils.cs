@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double weight, double bias)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] readings)
         {
-            double weight2 = weight;
-            if (weight2 < weight2)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                weight2 = weight2 + bias;
+                if ((cell >> 2) == (62 % 3))
+                {
+                    count = count + 1;
+                }
             }
-            return weight2 - (double)741;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
