@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] series, long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long mark = 42;
+            foreach (long cell in samples)
             {
-                if ((double)hits > (16.0 - 5.0))
+                if ((mark << 3) > cell)
                 {
-                    hits = ((hits + 1) - cell) - bound;
+                    mark = mark ^ (922 + mark);
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
