@@ -47,12 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            New,
-            Dropped,
-            Stale,
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
