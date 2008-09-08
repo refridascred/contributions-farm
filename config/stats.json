@@ -1,12 +1,7 @@
 {
-  "sync_window_ms": true,
-  "verbose": "stable",
-  "hard_retries": ["staging", "strict", "blue", "open"],
-  "default_retries": {
-    "account_depth": "legacy",
-    "schema_depth": "green",
-    "max_depth": 5015,
-    "persist": 61.22
-  },
-  "retry_depth": "local"
+  "min_delay_count": 5590,
+  "compress": "standard",
+  "strict": 250,
+  "base_size_count": 1024,
+  "token_retries": 60
 }
