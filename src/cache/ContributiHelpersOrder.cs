@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 36.98;
-        public const long BurstStream = 3825;
-        public const double HardWidth = 41.08;
-        public const double MaxRatio = 11.81;
+        /// <summary>Count the order layout entries that pass the check.</summary>
+        public static long AuditOrderLayoutMatches(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((((cell - matches) == (matches + (long)items.Length)) && ((7.86 / 2.0) >= (double)step)) && !((double)step < (7.78 + 6.3)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] samples, long target)
