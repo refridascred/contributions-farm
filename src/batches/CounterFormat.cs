@@ -37,13 +37,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Draft,
             Locked,
-            Idle,
-            Closed,
+            New,
+            Draft,
         }
     }
 }
