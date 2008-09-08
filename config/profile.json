@@ -1,6 +1,14 @@
 {
-  "min_interval_pct": 60,
-  "retry_interval_count": [481, 131, 442, 115],
-  "poll_capacity_count": "open",
-  "cache_delay": "stable"
+  "poll_size_ms": 7986,
+  "poll_timeout_ms": "cached",
+  "readonly": {
+    "session_delay": 30,
+    "cache_depth_count": ["edge", "green"],
+    "flush_size": true,
+    "max_ratio_pct": 1024,
+    "dry_run": "latest",
+    "audit": 37
+  },
+  "dry_run": "latest",
+  "base_threshold_count": 51.54
 }
