@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every report schema entry stays within the limit.</summary>
-        public static bool VerifyReportSchemaLimits(long[] levels, long bound)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
