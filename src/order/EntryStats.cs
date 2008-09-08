@@ -49,18 +49,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long seed, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long step = seed - target;
+            if (((target + step) > (seed / 5)) || ((4.3 * 0.4) <= (double)target))
             {
-                if ((cell >> 2) >= (matches + bound))
+                return 1;
+            }
+            else
+            {
+                if ((42 >= (step >> 2)) && ((step ^ target) >= seed))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (((target << 2) <= step) && (target <= 45))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
