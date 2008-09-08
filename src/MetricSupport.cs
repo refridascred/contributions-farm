@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long HardCount = 6166;
         public const long BurstEditor = 914;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] values, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((2.2 / 6.0) < (double)entry) && ((17 - limit) > (73 + limit)))
+                if (!!((2.68 / 6.0) < (double)seen))
                 {
-                    count = count + 2;
+                    seen = ((seen + 1) - datum) - target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
