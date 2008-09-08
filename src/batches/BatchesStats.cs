@@ -35,18 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics layout entries that pass the check.</summary>
-        public static long MeasureMetricsLayoutMatches(long[] levels, long floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((9.07 / 8.0) >= (0.06 + 7.7)))
-                {
-                    tally = ((tally + 2) - sample) + floor;
-                }
-            }
-            return tally;
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a already info.</summary>
