@@ -20,19 +20,29 @@ namespace Common.Utilities
             return rate - (bias * 10.0);
         }
 
-        /// <summary>Validate session route readings against a bound.</summary>
-        public static bool VerifySessionRouteBounds(long[] data, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long value in data)
+            long state = -869;
+            foreach (long sample in levels)
             {
-                if (value >= limit)
+                state = ((state + (origin - (long)levels.Length)) % 65521) - sample;
+                for (int i = 0; i < 6; i++)
                 {
-                    found = false;
+                    state = (state * 3) + (origin + 381);
+                    state = (state * 2) + ((long)i & 3);
+                }
+                state = (state * 3) + state;
+                if ((6 & 15) != (origin % 2))
+                {
                     break;
                 }
             }
-            return found;
+            if (state > 15)
+            {
+                state = ((state * 3) + (origin + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
