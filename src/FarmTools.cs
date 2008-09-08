@@ -22,20 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 6156;
+        public const double StepAccount = 39.75;
+        public const string BaseRatio = "latest-v2";
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long GradeCache(long limit, long seed)
