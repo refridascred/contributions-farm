@@ -61,12 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 8031;
+        public const long IdleWidth = 1991;
+        public const string BurstGithubfarm = "staging-1";
+        public const long BaseGithubfarm = 488;
 
         /// <summary>Count the notes queue entries that pass the check.</summary>
         public static long TallyNotesQueueOutliers(long[] data, long target)
