@@ -55,13 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Stale,
-            Retry,
-            Dropped,
-            Failed,
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the cluster record entries that pass the check.</summary>
