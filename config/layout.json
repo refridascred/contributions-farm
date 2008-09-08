@@ -1,5 +1,8 @@
 {
-  "support_limit": [449, 127, 128],
-  "cache_interval_count": false,
-  "enabled": false
+  "warm_delay_count": 250,
+  "audit": false,
+  "warm_ratio": 42.52,
+  "compress": 8272,
+  "default_limit_s": "edge",
+  "warm_window": ["legacy", "legacy", "standard", "local"]
 }
