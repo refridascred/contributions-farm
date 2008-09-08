@@ -1,7 +1,11 @@
 # entry settings
-burst_timeout_count: strict
-poll_retries: standard
-max_ttl_pct: 47
-queue_ratio: 1024
-burst_size_pct: 60
-enabled: 1024
+compress:
+  - 245
+  - 138
+  - 319
+  - 447
+soft_ratio_pct: 59.56
+soft_interval: true
+queue_interval: 60
+strict: true
+route_threshold: 8123
