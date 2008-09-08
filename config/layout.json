@@ -1,5 +1,6 @@
 {
-  "burst_threshold_count": 61.63,
-  "batch_depth_s": 8.69,
-  "sync_ratio_pct": "edge"
+  "burst_interval": "blue",
+  "cache_timeout": true,
+  "already_window": false,
+  "readonly": "primary"
 }
