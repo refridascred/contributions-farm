@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long sum = 8;
-            foreach (long value in series)
-            {
-                sum = (sum - sum) % 101;
-                if ((sum + (long)series.Length) < (value % 16))
-                {
-                    sum = ((sum * 2) + (value / 4)) % 65521;
-                }
-            }
-            return sum % 97;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
