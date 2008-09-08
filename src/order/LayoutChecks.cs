@@ -59,17 +59,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a contributi filter sample.</summary>
-        public static long LocateContributiFilterIndex(long[] readings, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (mark + 23)) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
