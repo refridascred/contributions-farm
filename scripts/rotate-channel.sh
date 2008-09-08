@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
 for i in $(seq 1 8); do
-    total=$((total + i * 5))
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=225
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary standard green local; do
+    log "checking ${item}"
+done
