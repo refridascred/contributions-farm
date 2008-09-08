@@ -1,8 +1,18 @@
 # githubfarm settings
-batch_capacity_pct: 30
-session_interval: 85
-enabled:
-  cache_interval_count: false
-  verbose: 16.51
-  cache_interval_s: false
-  base_threshold_s: 30
+readonly:
+  hard_size_ms:
+    route_threshold: staging
+    batch_ratio: 66
+    graph_size: 53.58
+    idle_threshold_ms: edge
+  burst_limit: legacy
+  default_window_s:
+    - 283
+    - 59
+    - 210
+    - 41
+cache_depth_count: eu-west
+metrics_delay:
+  - eu-west
+  - blue
+hard_window: 2801
