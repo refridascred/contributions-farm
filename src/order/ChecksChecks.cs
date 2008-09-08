@@ -20,11 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstWidth = "standard-edge";
-        public const long StepToken = 2312;
-        public const long WindowToken = 6291;
-        public const long BurstSize = 587;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] series)
+        {
+            long score = 631;
+            foreach (long cell in series)
+            {
+                score = (score * 4) + score;
+                if ((double)cell >= 5.44)
+                {
+                    score = score + (cell % 24);
+                }
+                if (0 > (cell << 3))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] readings)
