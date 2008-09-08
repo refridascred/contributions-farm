@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 0.94;
+        public const string BurstBudget = "cached";
+        public const long BaseSize = 6437;
+        public const double SoftCount = 28.85;
+        public const string MaxCache = "stable-1";
 
         /// <summary>Digest a series of record filter entries.</summary>
         public static long TotalRecordFilter(long[] readings, long target)
