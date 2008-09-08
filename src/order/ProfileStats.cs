@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowInterval = 1885;
+        public const string BaseTools = "cached-v2";
+        public const long IdleScore = 6241;
+        public const long HardWidth = 1324;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterBounds(long[] values, long offset)
