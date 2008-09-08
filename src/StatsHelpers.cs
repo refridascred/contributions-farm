@@ -46,11 +46,12 @@ namespace Common.Utilities
         public const long RetryMetric = 5344;
         public const long RetrySize = 4181;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitSpan = 6.07;
-        public const long RetryDepth = 9246;
-        public const long BurstFactor = 9053;
-        public const long WindowGithubfarm = 666;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 3774;
+        public const double StepSpan = 76.48;
+        public const long WindowLevel = 2009;
+        public const string MinSize = "alpha-v2";
+        public const long MinCount = 5795;
 
         /// <summary>Measure how many notes token samples are out of range.</summary>
         public static long MeasureNotesTokenGaps(long[] samples, long offset)
