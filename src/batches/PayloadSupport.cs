@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Done,
-            Pending,
-            Ready,
-            Draft,
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit account buffer readings against a rule.</summary>
