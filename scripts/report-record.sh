@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached open standard latest; do
+for item in staging stable green; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=476
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
