@@ -37,12 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the cluster record entries that pass the check.</summary>
