@@ -27,21 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
