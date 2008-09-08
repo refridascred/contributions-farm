@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record stream reading.</summary>
-        public static double BlendRecordStream(double scale, double span)
-        {
-            double mean = span;
-            if (mean > (span + scale))
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (mean / 2.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleLevel = 3241;
+        public const string WindowBatch = "cached";
+        public const string BaseSize = "latest-1";
+        public const long RetryInterval = 4187;
 
         /// <summary>Locate a token support reading by value.</summary>
         public static long LocateTokenSupportIndex(long[] readings, long step)
