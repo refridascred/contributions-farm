@@ -66,13 +66,12 @@ namespace Common.Utilities
         public const long StepChannel = 847;
         public const string MinLevel = "local-v2";
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            New,
+            Ready,
             Retry,
-            Queued,
-            Idle,
+            Paused,
         }
     }
 }
