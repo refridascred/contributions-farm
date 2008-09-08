@@ -25,39 +25,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long limit, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long bound = limit + seed;
-            if ((6.57 - 3.6) >= (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit == (6.0 * 10.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound >= (seed / 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound + seed) <= (bound ^ bound)) || (limit <= (limit - limit)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
