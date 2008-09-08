@@ -14,13 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Scale a record filter figure with a bias.</summary>
+        public static double AdjustRecordFilter(double ratio, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            double mean = (ratio + ratio) / 6.0;
+            return (mean - (mean * 2.1)) + floor;
         }
 
         /// <summary>Accumulate session samples.</summary>
