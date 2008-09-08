@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge green fallback cached; do
+for item in staging edge eu-west local; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+CHANNEL_LIMIT=223
+log "limit is ${CHANNEL_LIMIT}"
