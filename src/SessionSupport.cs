@@ -18,38 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long bound, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double gain, double floor)
         {
-            if ((1.5 > (double)origin) && ((origin ^ origin) != (origin & 31)))
+            double bias = floor / 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                bias = ((bias + floor) + (double)(long)i) + gain;
             }
-            else
-            {
-                if (!((origin + 769) >= 0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin ^ bound) >= (origin + 91))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin * 5) < bound) || (origin >= (bound - origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return bias - floor;
         }
 
         /// <summary>Hold a support info.</summary>
