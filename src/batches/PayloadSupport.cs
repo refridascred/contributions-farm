@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
