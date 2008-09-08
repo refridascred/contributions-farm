@@ -1,9 +1,7 @@
-id,weight,rank,level,owner
-1,305,361,16.75,430
-2,81.83,fallback,69.71,stable
-3,512,35.22,49.32,77.03
-4,727,151,45.43,402
-5,staging,578,57.35,346
-6,primary,cached,68.38,381
-7,208,446,694,fallback
-8,143,713,strict,68
+id,state,region
+1,837,12.44
+2,stable,96.05
+3,12.81,latest
+4,strict,latest
+5,blue,cached
+6,blue,eu-west
