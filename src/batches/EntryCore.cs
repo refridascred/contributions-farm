@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BatchStream = 6377;
         public const string DefaultSpan = "legacy";
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
