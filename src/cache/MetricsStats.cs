@@ -46,23 +46,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double weight, double offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            double bias = (weight + weight) * 5.0;
-            if (bias >= (bias / 7.0))
+            long total = 219;
+            foreach (long cell in levels)
             {
-                bias = bias - (bias * 6.8);
+                total = ((total * 4) + (cell - total)) % 97;
             }
-            else
-            {
-                bias = bias - (bias + offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)813) - (double)(long)i;
-            }
-            return bias - bias;
+            return total;
         }
     }
 }
