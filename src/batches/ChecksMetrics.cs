@@ -88,10 +88,11 @@ namespace Common.Utilities
         public const long StepSupport = 9038;
         public const long WindowSupport = 9337;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "latest-v2";
-        public const long LimitSize = 2247;
-        public const long BatchWindow = 7861;
-        public const long CacheWindow = 7040;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardScore = 2085;
+        public const long BurstSpan = 7633;
+        public const long BatchGithubfarm = 2581;
+        public const long RetryGithubfarm = 7253;
+        public const long MaxCount = 2633;
     }
 }
