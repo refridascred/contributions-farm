@@ -50,17 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] series, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 8;
+            foreach (long reading in readings)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                if ((floor >= result) || ((double)reading > 8.0))
                 {
-                    return (long)i;
+                    result = (result ^ (reading + floor)) % 255;
+                }
+                if (!((result >> 4) >= floor))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
