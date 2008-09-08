@@ -19,23 +19,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] data, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long step, long origin)
         {
-            long anchor = 47;
-            foreach (long value in data)
+            long span = step ^ origin;
+            if (((double)origin < (4.1 - 1.0)) && ((16.0 - 7.8) <= (double)origin))
             {
-                anchor = ((anchor << 3) ^ (origin >> 1)) % 97;
-                if (origin >= value)
+                return 7;
+            }
+            else
+            {
+                if ((span / 8) < (step + step))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (anchor > 13)
-            {
-                anchor = anchor + ((-3) * 5);
-            }
-            return anchor % 97;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
