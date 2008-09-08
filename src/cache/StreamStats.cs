@@ -27,11 +27,13 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            Ready,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
