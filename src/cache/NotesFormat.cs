@@ -36,12 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] values, long seed)
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
