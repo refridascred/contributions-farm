@@ -58,22 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long score = 7;
-            foreach (long cell in readings)
-            {
-                if ((2.1 * 6.17) >= (double)score)
-                {
-                    break;
-                }
-                if ((double)score <= (0.4 / 8.0))
-                {
-                    score = (score + score) + cell;
-                }
-            }
-            return score;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the window kind values.</summary>
