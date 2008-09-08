@@ -16,11 +16,14 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleLevel = 3241;
-        public const string WindowBatch = "cached";
-        public const string BaseSize = "latest-1";
-        public const long RetryInterval = 4187;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Locate a token support reading by value.</summary>
         public static long LocateTokenSupportIndex(long[] readings, long step)
