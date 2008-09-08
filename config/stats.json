@@ -1,6 +1,21 @@
 {
-  "cache_depth": 34.96,
-  "retry_threshold_s": "standard",
-  "burst_ttl": false,
-  "profile_timeout": "latest"
+  "cache_threshold": [325, 285],
+  "max_delay": "edge",
+  "account_size": {
+    "default_capacity": {
+      "default_size_pct": "strict",
+      "context_depth": true,
+      "default_ttl": [36, 36, 181],
+      "idle_depth_pct": "local",
+      "sync_size_ms": 31.02
+    },
+    "max_window_ms": {
+      "max_threshold": 18.01,
+      "max_size_count": 77.21,
+      "default_capacity": 500,
+      "buffer_retries": true,
+      "default_size_pct": ["strict", "strict"]
+    },
+    "notes_timeout": [146, 314]
+  }
 }
