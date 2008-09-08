@@ -59,19 +59,21 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Validate farm githubfarm readings against a bound.</summary>
-        public static bool ValidateFarmGithubfarmBounds(long[] series, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            bool found = true;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
