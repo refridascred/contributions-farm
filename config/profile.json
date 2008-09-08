@@ -1,11 +1,10 @@
 {
-  "sync_capacity_pct": "blue",
-  "idle_limit": 57.26,
-  "max_threshold_ms": "edge",
-  "audit": {
-    "poll_delay_s": "cached",
-    "githubfarm_limit": 30.39,
-    "soft_ratio_ms": true
+  "editor_retries": ["cached", "primary", "strict"],
+  "warm_size_s": 9211,
+  "idle_delay": {
+    "soft_size": 66,
+    "min_threshold_s": 21,
+    "persist": "primary"
   },
-  "commits_capacity": 60
+  "profile_size": 2862
 }
