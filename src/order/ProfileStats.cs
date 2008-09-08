@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] readings, long origin)
+        /// <summary>Derive the next layout record value from a seed.</summary>
+        public static long IterateLayoutRecord(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] > origin)
+                if (!((double)(long)i != (1.0 / 2.0)))
                 {
-                    return (long)i;
+                    sum = sum ^ (78 + floor);
+                    sum = ((sum << 3) ^ (-555)) % 65521;
                 }
+                sum = (sum + ((long)i & 1)) % 4096;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
