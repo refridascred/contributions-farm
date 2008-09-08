@@ -45,12 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 7541;
-        public const long MaxQueue = 6285;
-        public const string IdleFactor = "local-v2";
-        public const long StepWidth = 610;
-        public const double HardRatio = 12.68;
+        /// <summary>Compare every pair of schema channel readings.</summary>
+        public static long CompareSchemaChannelCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long DefaultProfile = 374;
