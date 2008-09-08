@@ -34,11 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 2440;
-        public const string WindowSize = "alpha-1";
-        public const long RetryFormat = 8269;
-        public const string CacheFormat = "local-1";
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileMatches(long[] readings, long bound)
