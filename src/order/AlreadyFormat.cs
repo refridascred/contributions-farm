@@ -33,17 +33,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] series, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long target, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((101 + target) != (seed - target))
             {
-                if (series[i] >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((115 % 7) >= seed)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((2 % 3) <= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((seed % 8) == ((-763) >> 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
