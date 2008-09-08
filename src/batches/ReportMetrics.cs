@@ -24,12 +24,9 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Pending,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstRatio = "cached-v2";
+        public const long BatchWindow = 6102;
+        public const string BurstTimeout = "strict-1";
     }
 }
