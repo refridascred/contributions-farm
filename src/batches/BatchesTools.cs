@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] samples, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (double)(-3) * 0.46;
+            return ((bias - bias) + gain) + floor;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
