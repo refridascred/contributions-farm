@@ -68,24 +68,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long bound, long step)
+        /// <summary>Count the notes queue entries that pass the check.</summary>
+        public static long TallyNotesQueueOutliers(long[] data, long target)
         {
-            if (((double)step > (1.96 + 8.2)) && ((step - step) > (step & 7)))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step < (6.0 * 3.12))
+                if (((matches + entry) > 7) && ((entry * 2) > 8))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) - target;
                 }
             }
+            return matches;
         }
     }
 }
