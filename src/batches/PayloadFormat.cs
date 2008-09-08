@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] series, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long limit)
         {
-            long mark = 0;
-            foreach (long datum in series)
+            long cur = seed ^ limit;
+            if (((limit + 69) >= seed) || (limit >= cur))
             {
-                if ((limit % 12) == (limit + limit))
+                return 0;
+            }
+            else
+            {
+                if (limit <= (seed + 6))
                 {
-                    mark = mark ^ datum;
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark - datum) % 65521;
-                    mark = (mark * 4) + (limit ^ (-83));
+                    if (cur < (limit ^ seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                mark = (mark * 5) + (mark + datum);
             }
-            return mark;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
