@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const long DefaultScore = 7252;
         public const long HardReport = 6033;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] values, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long acc = -6;
+            foreach (long reading in data)
             {
-                if (cell >= target)
+                if (((double)reading <= (double)acc) || (reading > (696 + reading)))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ (2 - acc)) % 255;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
