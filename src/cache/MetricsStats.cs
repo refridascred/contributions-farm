@@ -49,12 +49,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstTimeout = "primary";
-        public const double MaxWidth = 54.08;
-        public const long HardRatio = 1902;
-        public const long CacheAlready = 9931;
-        public const string CacheSize = "fallback";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value ^ (long)samples.Length) < ((-285) % 60))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] samples, long offset)
