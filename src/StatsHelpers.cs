@@ -14,10 +14,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 941;
-        public const long MaxReport = 526;
-        public const long IdleWidth = 4742;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long seed, long floor)
+        {
+            if ((floor > seed) || ((1.8 - 7.74) <= (double)floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > (5.9 + 13.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0 * 2) <= (seed >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor - 892) != (floor % 60)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the metric editor entries that pass the check.</summary>
         public static long MeasureMetricEditorGaps(long[] readings, long limit)
