@@ -1,17 +1,6 @@
 {
-  "stream_size": "legacy",
-  "batch_retries_pct": {
-    "entry_size": "edge",
-    "cluster_threshold": 2,
-    "min_retries_s": "local",
-    "burst_window_ms": true
-  },
-  "warm_threshold_ms": 83.71,
-  "graph_retries": 500,
-  "default_window_count": {
-    "channel_limit": ["open", "latest"],
-    "persist": [446, 229],
-    "default_ttl_ms": false,
-    "dry_run": "green"
-  }
+  "buffer_size": 4733,
+  "cache_retries": "standard",
+  "max_ratio": 110,
+  "command_capacity": false
 }
