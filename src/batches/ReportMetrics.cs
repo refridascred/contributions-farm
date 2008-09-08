@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double gain, double bias)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double mean = (double)(8 - 36);
-            if (mean <= (mean / 8.0))
-            {
-                mean = (mean + 5.76) - bias;
-            }
-            return mean - (gain * 0.88);
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
