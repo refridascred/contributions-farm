@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchInterval = 2684;
-        public const double CacheMetric = 98.99;
-        public const string WindowRatio = "stable-1";
-        public const long BatchWidth = 6462;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Queued,
+            Synced,
+            New,
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsHits(long[] items)
