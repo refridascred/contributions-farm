@@ -65,24 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long bound, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if (!((step + step) <= (step / 9)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 3) > (6 + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the already level values.</summary>
