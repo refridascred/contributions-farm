@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 18.9;
+        public const double SoftBatch = 1.01;
+        public const long IdleWidth = 3849;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmGaps(long[] values)
