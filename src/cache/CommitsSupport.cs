@@ -66,19 +66,22 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] samples, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (datum < limit)
+                if ((double)bound < (5.7 * 9.8))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
