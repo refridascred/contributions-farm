@@ -1,17 +1,19 @@
 # support settings
-base_ttl_ms:
-  - stable
-  - blue
-  - standard
-order_ttl:
-  tools_limit: 23.71
-  compress:
-    - 363
-    - 157
-    - 446
-    - 321
-  schema_delay: 62.93
-  filter_depth: standard
-  contributi_depth: 30
-  githubfarm_ttl: 93.84
-enabled: cached
+batch_delay:
+  default_delay: 7.69
+  format_ttl: 77
+  payload_retries: stable
+compress: false
+batches_timeout:
+  audit: strict
+  max_depth_ms:
+    compress: edge
+    retry_ratio: fallback
+    soft_limit_s: legacy
+    dry_run:
+      - eu-west
+      - staging
+  strict: 1574
+  editor_interval: 11.94
+  persist: 56
+warm_retries_s: 63.01
