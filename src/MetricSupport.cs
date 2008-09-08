@@ -20,21 +20,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of session token readings.</summary>
-        public static long MatchSessionTokenCount(long[] data)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 5) + (limit << 2)) % 101;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
     }
 }
