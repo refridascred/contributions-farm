@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] items, long limit)
         {
-            Idle,
-            Ready,
-            Draft,
-            New,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
