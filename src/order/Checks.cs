@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] series, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] levels, long seed)
         {
-            long score = 657;
-            foreach (long item in series)
+            long score = 790;
+            foreach (long sample in levels)
             {
-                if ((item & 15) == (item * 3))
-                {
-                    score = (score ^ (origin * 4)) % 1000;
-                }
+                score = ((score + (seed * 2)) % 97) ^ sample;
             }
-            if (score < 628)
+            if (score < 0)
             {
-                score = ((score << 2) ^ (867 - 77)) % 97;
+                score = (score - (seed + seed)) % 4096;
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
