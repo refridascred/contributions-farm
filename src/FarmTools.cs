@@ -37,12 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double gain, double span)
         {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
+            double mean = (double)6 * 5.4;
+            if (mean < mean)
+            {
+                mean = ((mean - (mean * 7.15)) - gain) - span;
+            }
+            return mean - mean;
         }
     }
 }
