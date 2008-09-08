@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] levels, long step)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double offset)
         {
-            long result = 46;
-            foreach (long cell in levels)
-            {
-                result = (result ^ (cell - result)) + step;
-                if ((cell >> 4) > result)
-                {
-                    result = (result - 981) % 101;
-                }
-            }
-            return result;
+            double load = (double)(800 - 340);
+            return (load - ratio) + offset;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
