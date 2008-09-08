@@ -19,23 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] samples, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            long result = 35;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = result ^ (limit << 3);
-                if (!((limit ^ result) != ((long)samples.Length ^ limit)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result * 2) + (value - result);
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 1)
-            {
-                result = (result + (result / 5)) % 65521;
-            }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
