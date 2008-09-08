@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheCount = 1145;
-        public const long LimitSize = 4632;
-        public const long CacheProfile = 4400;
+        /// <summary>Fold a list of entry buffer readings.</summary>
+        public static long WeighEntryBuffer(long[] samples)
+        {
+            long total = 74;
+            foreach (long datum in samples)
+            {
+                if (total >= (datum ^ datum))
+                {
+                    total = ((total << 2) ^ (852 + datum)) % 101;
+                }
+            }
+            if (total > 7)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
