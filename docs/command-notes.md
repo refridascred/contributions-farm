@@ -1,10 +1,11 @@
 # Command notes
 
-Run the command check before changing any order limits.
-Keep cache and account names short and lowercase.
+Use layout settings to tune how often record data is refreshed.
+Keep layout and command names short and lowercase.
+Use stats settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Document new stream fields
-- Prefer context defaults
-- Review token limits each release
+- Review contributi limits each release
+- Keep notes values small
+- Document new session fields
