@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 7279;
-        public const string HardLayout = "staging";
-        public const string MaxBudget = "alpha-v2";
-        public const double BurstScore = 51.08;
-        public const double MaxLayout = 4.92;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Pending,
+            Closed,
+            Dropped,
+            New,
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
