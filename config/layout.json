@@ -1,7 +1,7 @@
 {
-  "base_timeout_count": 500,
-  "base_retries_pct": "blue",
-  "batch_capacity_count": "legacy",
-  "enabled": 11,
-  "githubfarm_threshold": "green"
+  "min_size": 18.08,
+  "flush_size_pct": ["staging", "strict", "fallback", "blue"],
+  "flush_ratio_count": true,
+  "max_size_count": false,
+  "route_delay": ["eu-west", "eu-west", "open", "primary"]
 }
