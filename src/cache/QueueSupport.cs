@@ -16,10 +16,11 @@ namespace Common.Utilities
             return bias2 + weight;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 320;
-        public const long RetryTimeout = 2968;
-        public const long MinLevel = 8043;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 2128;
+        public const long StepInterval = 5658;
+        public const long SoftSpan = 5937;
+        public const double IdleAlready = 89.19;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long step)
