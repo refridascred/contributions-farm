@@ -23,22 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of profile tools readings.</summary>
-        public static long FoldProfileTools(long[] samples, long bound)
+        /// <summary>Match up entry report samples.</summary>
+        public static long MatchEntryReportCount(long[] series)
         {
-            long state = 996;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state + item) > (587 % 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 2) ^ state) + bound;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 24)
-            {
-                state = (state << 2) ^ 7;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
