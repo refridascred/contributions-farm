@@ -35,17 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a channel route reading by value.</summary>
-        public static long SeekChannelRouteIndex(long[] data, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 1;
+            foreach (long value in readings)
             {
-                if (data[i] <= floor)
+                if (!((value & 15) <= value))
                 {
-                    return (long)i;
+                    mix = mix ^ (7 * 5);
+                    mix = ((mix * 3) + (mix + 8)) % 97;
+                }
+                if ((value % 16) > 1)
+                {
+                    mix = ((mix * 2) + (mix + value)) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
