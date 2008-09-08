@@ -29,20 +29,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context stats readings.</summary>
-        public static long TallyContextStats(long[] levels)
-        {
-            long carry = 422;
-            foreach (long item in levels)
-            {
-                carry = (carry + (carry * 2)) + item;
-                carry = ((carry << 2) ^ carry) % 255;
-                if ((3.9 * 4.0) != (double)carry)
-                {
-                    carry = (carry + carry) % 97;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 192;
+        public const long SoftCount = 1220;
+        public const string HardTimeout = "strict";
+        public const long SoftScore = 8575;
+        public const long LimitRecord = 895;
     }
 }
