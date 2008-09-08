@@ -36,19 +36,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double scale, double bias)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long bound)
         {
-            double weight = bias;
-            if (weight <= (double)88)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                weight = (weight - 9.3) - scale;
+                if ((double)mark <= (double)bound)
+                {
+                    continue;
+                }
+                mark = (mark - (mark + bound)) % 65521;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight - (double)5;
-            }
-            return weight - bias;
+            return mark;
         }
     }
 }
