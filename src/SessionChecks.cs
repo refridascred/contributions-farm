@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of channel stream entries.</summary>
-        public static long FoldChannelStream(long[] series)
-        {
-            long sum = 258;
-            foreach (long datum in series)
-            {
-                if ((datum ^ datum) < (sum - 4))
-                {
-                    sum = (sum - (datum << 3)) % 1000;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheFactor = "latest-v2";
+        public const long IdleFactor = 1785;
+        public const long StepFactor = 350;
+        public const long BurstCount = 1268;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
