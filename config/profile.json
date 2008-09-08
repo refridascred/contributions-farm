@@ -1,5 +1,12 @@
 {
-  "dry_run": "stable",
-  "idle_retries": "cached",
-  "default_ttl": 18.64
+  "notes_window": 94.97,
+  "cache_ttl_count": 40,
+  "editor_threshold": "staging",
+  "session_ttl": {
+    "compress": "latest",
+    "batch_ttl_s": true,
+    "enabled": "green"
+  },
+  "compress": 75,
+  "dry_run": 250
 }
