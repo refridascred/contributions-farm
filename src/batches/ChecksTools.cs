@@ -26,19 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] series, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] values, long step)
         {
-            long result = 398;
-            foreach (long sample in series)
+            long carry = 2;
+            foreach (long entry in values)
             {
-                result = (result + (sample & 127)) % 65521;
+                if (step > entry)
+                {
+                    carry = ((carry << 3) ^ (carry << 2)) % 4096;
+                }
             }
-            if (result < 33)
+            if (carry < 3)
             {
-                result = result - (seed << 3);
+                carry = ((carry * 2) + carry) % 97;
             }
-            return result % 1000;
+            return carry;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
