@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] items, long floor)
+        /// <summary>Measure how many command format samples are out of range.</summary>
+        public static long AuditCommandFormatGaps(long[] series, long seed)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long reading in series)
             {
-                if ((11.0 / 6.0) <= (double)floor)
+                if ((double)seed >= (double)31)
                 {
-                    tally = (tally + 1) ^ sample;
+                    tally = (tally + 2) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
