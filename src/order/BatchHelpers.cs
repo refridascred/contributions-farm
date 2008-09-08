@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Validate githubfarm command readings against a bound.</summary>
+        public static bool VerifyGithubfarmCommandRange(long[] series, long seed)
         {
-            double scale = (double)(352 << 1);
-            return (scale - weight) + offset;
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
