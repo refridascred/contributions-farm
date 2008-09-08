@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long seed, long origin)
+        /// <summary>Compare every pair of graph githubfarm readings.</summary>
+        public static long MatchGraphGithubfarmCount(long[] samples)
         {
-            if ((origin + seed) >= (seed / 5))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (seed / 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)seed != (5.7 / 9.0)) && ((origin ^ 30) >= origin))
+                    if ((samples[i] + samples[j]) != 7)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a schema graph reading.</summary>
