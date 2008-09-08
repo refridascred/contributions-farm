@@ -41,10 +41,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "standard";
-        public const long BurstBatches = 2861;
-        public const long MaxBatches = 2833;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long limit, long offset)
+        {
+            long lane = limit ^ offset;
+            if ((lane >> 4) > (limit / 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset / 6) > 3)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
