@@ -16,22 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] values, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long origin)
         {
-            long score = 57;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (!((score - value) < (4 / 7)))
+                if (datum <= origin)
                 {
-                    score = (score << 2) ^ (offset * 4);
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 76)
-            {
-                score = score - (offset % 60);
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Hold a layout header.</summary>
