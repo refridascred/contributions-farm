@@ -64,25 +64,21 @@ namespace Common.Utilities
             return rate - (rate * 6.64);
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long target, long offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            long delta = target ^ offset;
-            if ((target <= (offset - offset)) || ((offset + delta) < (offset ^ (-77))))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (target < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
