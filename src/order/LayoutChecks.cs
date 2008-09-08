@@ -33,22 +33,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of channel editor entries.</summary>
-        public static long TallyChannelEditor(long[] series, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            long sum = 7;
-            foreach (long reading in series)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((reading / 4) > sum)
-                {
-                    sum = ((sum << 2) ^ step) % 255;
-                }
+                mix = (mix - step) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (sum < 16)
-            {
-                sum = ((sum * 2) + (step & 15)) % 255;
-            }
-            return sum % 65521;
+            return mix;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
