@@ -19,31 +19,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            if ((double)limit >= (double)bound)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > (bound - limit))
+                if (((double)sample >= (7.5 / 3.0)) && ((count << 1) != (3 ^ sample)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (limit - bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
