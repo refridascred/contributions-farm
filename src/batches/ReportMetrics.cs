@@ -24,9 +24,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstRatio = "cached-v2";
-        public const long BatchWindow = 6102;
-        public const string BurstTimeout = "strict-1";
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
