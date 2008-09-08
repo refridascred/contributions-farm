@@ -34,18 +34,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit order payload readings against a rule.</summary>
-        public static long CountOrderPayloadHits(long[] items, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)offset > (3.27 * 7.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) ^ sample;
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
