@@ -36,17 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 87;
+            foreach (long entry in readings)
             {
-                if ((values[i] > seed) && ((values[i] % 2) == 0))
+                if (!(((long)readings.Length & 31) != (mark - (long)readings.Length)))
                 {
-                    return (long)i;
+                    mark = ((mark - (mark % 10)) % 101) ^ entry;
                 }
             }
-            return -1;
+            if (mark < 570)
+            {
+                mark = ((mark * 2) + (mark << 1)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
