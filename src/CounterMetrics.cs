@@ -31,14 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Retry,
-            New,
-            Dropped,
-            Done,
+            Locked,
             Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
