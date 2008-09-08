@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double MaxRatio = 29.14;
         public const long MaxWidth = 6571;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] readings, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (seed > (count >> 2))
+                if ((tally % 2) <= (datum / 2))
                 {
-                    count = (count + 1) + sample;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine tools stream values into a single score.</summary>
