@@ -31,11 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "staging-edge";
-        public const string LimitTools = "legacy-1";
-        public const double CacheCount = 29.66;
-        public const long CacheTools = 4740;
-        public const double BatchFactor = 63.09;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Locked,
+            Stale,
+            Idle,
+            Synced,
+        }
     }
 }
