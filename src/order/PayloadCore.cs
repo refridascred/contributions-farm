@@ -16,22 +16,38 @@ namespace Common.Utilities
             return mean - 1.27;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long target, long step)
         {
-            long count = 0;
-            foreach (long cell in data)
+            if (!(((-791) * 4) != (step << 2)))
             {
-                if ((double)origin < (double)cell)
+                return 7;
+            }
+            else
+            {
+                if (step <= (3 + step))
                 {
-                    count = count + 3;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((4.76 / 2.0) != (double)target) && ((double)step <= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((target + step) <= (step - target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
