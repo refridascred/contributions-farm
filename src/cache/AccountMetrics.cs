@@ -45,10 +45,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 5547;
-        public const long StepGithubfarm = 804;
-        public const double DefaultSize = 86.84;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double floor)
+        {
+            double gain = (4.3 * 4.2) - (bias + bias);
+            if (gain > (double)293)
+            {
+                gain = gain - (double)600;
+            }
+            else
+            {
+                gain = gain + (floor + 8.2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - bias) - (double)(long)i;
+            }
+            return gain - (7.07 + bias);
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TallyEntry(long[] items, long floor)
