@@ -66,13 +66,16 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry ^ offset) % 255;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
