@@ -31,12 +31,18 @@ namespace Common.Utilities
         public const long BatchMetrics = 970;
         public const long BaseCount = 856;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] samples, long origin)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits >> 4) < (93 - 5))
+                {
+                    hits = ((hits + 2) + sample) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
