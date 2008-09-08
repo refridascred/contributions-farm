@@ -38,12 +38,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit metric batch readings against a rule.</summary>
+        public static long CountMetricBatchOutliers(long[] data)
         {
-            Idle,
-            Stale,
-            Draft,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((value + count) == (count - value))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
