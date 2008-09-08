@@ -17,13 +17,15 @@ namespace Common.Utilities
         public const string CacheWidth = "local-v2";
         public const long RetryFilter = 481;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long step)
         {
-            Queued,
-            Retry,
-            Pending,
-            New,
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
