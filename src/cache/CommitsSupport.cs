@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up checks entry samples.</summary>
-        public static long PairChecksEntryCount(long[] values)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark + mark) >= (limit + 88))
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - limit) % 65521;
                 }
+                mark = mark - mark;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Fold a list of already readings.</summary>
