@@ -15,19 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] data, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long bound)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum <= floor)
+                long gap = result % 100;
+                if (result <= (long)i)
                 {
-                    flag = false;
-                    break;
+                    result = result ^ gap;
+                    gap = (gap * 3) + (result + 0);
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
