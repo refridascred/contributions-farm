@@ -66,16 +66,12 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry ^ offset) % 255;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Idle,
+            Retry,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
