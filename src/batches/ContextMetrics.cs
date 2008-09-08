@@ -49,14 +49,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long bound)
         {
-            Done,
-            Draft,
-            Retry,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (tally > (bound - 0))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
     }
 }
