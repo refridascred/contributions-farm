@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] data, long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((target & 127) > (166 >> 5))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a commits notes counter forward.</summary>
