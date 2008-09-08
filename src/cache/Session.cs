@@ -23,31 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] series, long bound)
         {
-            long mix = 561;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long item in series)
             {
-                mix = mix - cell;
-                if ((cell * 4) != (cell << 1))
+                if (item < bound)
                 {
-                    mix = (mix ^ mix) % 97;
-                }
-                else
-                {
-                    mix = (mix - (cell ^ cell)) % 101;
-                }
-                if ((mix >= cell) || ((cell >> 1) <= cell))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (mix > 6)
-            {
-                mix = mix + (785 % 24);
-            }
-            return mix % 65521;
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
