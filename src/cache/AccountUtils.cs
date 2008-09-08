@@ -22,12 +22,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
