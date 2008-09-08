@@ -30,19 +30,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((17 >> 2) >= (matches * 5))
                 {
-                    anchor = ((anchor ^ floor) % 97) ^ (long)i2;
+                    matches = (matches + 1) + value;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
