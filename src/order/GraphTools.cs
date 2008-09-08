@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinDepth = 730;
-        public const double SoftProfile = 89.42;
-        public const long HardSize = 8448;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items, long step)
+        {
+            long result = -3;
+            foreach (long datum in items)
+            {
+                result = (((result ^ (result * 4)) % 4096) - datum) - step;
+            }
+            return result;
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
