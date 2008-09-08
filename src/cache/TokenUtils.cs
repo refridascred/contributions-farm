@@ -12,11 +12,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "fallback-v2";
-        public const string BatchRatio = "legacy";
-        public const long MinCount = 5761;
-        public const double CacheLevel = 49.7;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((mark / 5) > mark))
+                {
+                    mark = mark ^ (long)i;
+                    mark = ((mark << 2) ^ ((long)i * 3)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
         public static long TallyGraphBufferHits(long[] series, long floor)
