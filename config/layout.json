@@ -1,6 +1,15 @@
 {
-  "burst_timeout_ms": 100,
-  "enabled": 500,
-  "retry_capacity_ms": ["cached", "latest"],
-  "flush_window_pct": "open"
+  "max_threshold": 250,
+  "batch_window_ms": "edge",
+  "compress": 60,
+  "retry_delay": {
+    "filter_ratio": "stable",
+    "warm_ratio_ms": 59.54,
+    "poll_timeout_s": "local",
+    "batch_delay_s": "local",
+    "flush_ratio_count": ["legacy", "fallback"],
+    "base_depth_pct": 500
+  },
+  "max_delay": "primary",
+  "idle_delay_pct": ["green", "legacy", "staging"]
 }
