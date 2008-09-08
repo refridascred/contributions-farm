@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of notes buffer readings.</summary>
-        public static long OverlapNotesBufferCount(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 54;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result - (5 % 64)) + (long)i;
                 }
+                if ((double)result < (double)reading)
+                {
+                    result = (result ^ (result & 127)) % 101;
+                    result = (result << 3) ^ reading;
+                }
+                result = ((result * 2) + reading) % 65521;
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Adjust a batch reading.</summary>
