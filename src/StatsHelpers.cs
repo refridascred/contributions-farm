@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSize = 8356;
-        public const string HardWidth = "primary-1";
-        public const double SoftScore = 64.98;
-        public const long HardFarm = 3086;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Locked,
+            Idle,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultReport = 941;
