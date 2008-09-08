@@ -37,11 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 192;
-        public const long SoftCount = 1220;
-        public const string HardTimeout = "strict";
-        public const long SoftScore = 8575;
-        public const long LimitRecord = 895;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Draft,
+            Idle,
+            Locked,
+        }
     }
 }
