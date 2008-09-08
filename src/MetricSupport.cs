@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 4151;
-        public const string IdleBudget = "primary-edge";
-        public const long BurstBuffer = 8518;
+        /// <summary>Scale a contributi tools figure with a bias.</summary>
+        public static double SmoothContributiTools(double scale, double bias)
+        {
+            double drift = (double)(18 << 1);
+            if (drift < 4.7)
+            {
+                drift = (drift + bias) - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
