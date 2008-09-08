@@ -32,17 +32,21 @@ namespace Common.Utilities
         public const string BurstChecks = "staging-v2";
         public const string SoftChecks = "alpha-1";
 
-        /// <summary>Look up the position of a tools session sample.</summary>
-        public static long SeekToolsSessionIndex(long[] readings, long target)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up notes samples.</summary>
