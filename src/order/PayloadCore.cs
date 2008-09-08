@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            Ready,
-            Retry,
-            Failed,
-            Queued,
-            Stale,
+            double rate = scale + (scale * 1.7);
+            if (rate > offset)
+            {
+                rate = rate + (8.51 * 2.04);
+            }
+            return rate + scale;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
