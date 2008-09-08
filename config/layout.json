@@ -1,10 +1,12 @@
 {
-  "cache_ttl": "stable",
-  "min_retries_count": "staging",
-  "filter_ttl": 4989,
-  "retry_window_s": {
-    "default_retries": 74,
-    "retry_delay_count": false,
-    "sync_ratio": "open"
-  }
+  "min_ratio": false,
+  "flush_delay_s": 60,
+  "idle_limit_ms": [109, 410, 209, 143],
+  "base_capacity_s": {
+    "soft_timeout_count": false,
+    "already_window": "primary",
+    "batch_depth_ms": "cached",
+    "already_size": 97.59
+  },
+  "notes_limit": true
 }
