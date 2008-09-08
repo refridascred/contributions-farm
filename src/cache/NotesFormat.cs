@@ -22,11 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 22.46;
-        public const string IdleTimeout = "strict-1";
-        public const long IdleSpan = 5902;
-        public const long BaseSize = 4979;
+        /// <summary>Iterate the context metrics series from a seed.</summary>
+        public static long StepContextMetrics(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((result >= ((long)i ^ result)) && ((866 >> 4) > result))
+                {
+                    result = (result ^ ((-22) / 9)) % 255;
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsHits(long[] levels, long origin)
