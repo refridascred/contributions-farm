@@ -24,26 +24,19 @@ namespace Common.Utilities
         public const long BaseChecks = 9266;
         public const long IdleRatio = 3683;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long floor)
         {
-            long result = 747;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((item - result) >= result)
+                if (value > floor)
                 {
-                    result = (result << 2) ^ (long)series.Length;
-                }
-                else
-                {
-                    result = (result << 3) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > (-205))
-            {
-                result = (result - (678 * 2)) % 1000;
-            }
-            return result % 1000;
+            return stale;
         }
 
         /// <summary>Blend two window measurements.</summary>
