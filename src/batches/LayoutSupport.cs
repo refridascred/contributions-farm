@@ -51,10 +51,14 @@ namespace Common.Utilities
             return rate + (double)673;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBudget = "open";
-        public const long StepRatio = 9397;
-        public const long CacheLevel = 699;
-        public const long BatchBuffer = 4846;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Retry,
+            Failed,
+            Stale,
+            New,
+            Synced,
+        }
     }
 }
