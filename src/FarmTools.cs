@@ -30,21 +30,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count stats queue pairs that satisfy a relation.</summary>
-        public static long MatchStatsQueueCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSpan = 8175;
+        public const double CacheAlready = 75.45;
+        public const long CacheBudget = 1609;
+        public const double BurstSize = 38.46;
     }
 }
