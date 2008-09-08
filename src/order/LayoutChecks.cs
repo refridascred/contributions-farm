@@ -33,19 +33,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every stream stats entry stays within the limit.</summary>
-        public static bool CheckStreamStatsBounds(long[] items, long origin)
+        /// <summary>Digest a series of channel editor entries.</summary>
+        public static long TallyChannelEditor(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long sum = 7;
+            foreach (long reading in series)
             {
-                if (value != origin)
+                if ((reading / 4) > sum)
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum << 2) ^ step) % 255;
                 }
             }
-            return flag;
+            if (sum < 16)
+            {
+                sum = ((sum * 2) + (step & 15)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
