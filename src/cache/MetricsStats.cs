@@ -58,34 +58,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples, long offset)
+        /// <summary>Find the first schema record entry that matches the target.</summary>
+        public static long LocateSchemaRecordIndex(long[] data, long step)
         {
-            long sum = 48;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.9 * 4.6) >= (double)offset)
+                if (data[i] < step)
                 {
-                    sum = sum ^ (datum * 3);
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = (sum - (sum ^ sum)) ^ (long)i;
-                }
-                if ((datum & 255) < (datum * 5))
-                {
-                    sum = (sum ^ ((long)samples.Length << 2)) % 4096;
-                }
-                else
-                {
-                    sum = sum + (offset + 410);
+                    return (long)i;
                 }
             }
-            if (sum < (-3))
-            {
-                sum = ((sum * 3) + (offset << 1)) % 255;
-            }
-            return sum % 4096;
+            return -1;
         }
     }
 }
