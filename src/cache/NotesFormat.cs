@@ -34,9 +34,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 738;
-        public const string BaseProfile = "cached";
-        public const long LimitRatio = 3247;
+        /// <summary>Audit metrics cache readings against a rule.</summary>
+        public static long AuditMetricsCacheOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)value > 20.0)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
