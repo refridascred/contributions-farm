@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Pending,
-            Closed,
+            Active,
+            Failed,
+            Paused,
             Dropped,
-            New,
+            Closed,
         }
 
         /// <summary>Find the first token layout entry that matches the target.</summary>
