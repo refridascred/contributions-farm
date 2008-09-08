@@ -37,21 +37,25 @@ namespace Common.Utilities
             return rate - (rate * 6.64);
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = target ^ offset;
+            if ((target <= (offset - offset)) || ((offset + delta) < (offset ^ (-77))))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (target < offset)
                 {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of entry queue readings.</summary>
