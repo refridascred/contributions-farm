@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] readings, long offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((offset << 2) > offset)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the profile mode values.</summary>
