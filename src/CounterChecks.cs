@@ -80,21 +80,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long anchor = 136;
-            foreach (long value in values)
-            {
-                if ((95 ^ limit) > (value << 2))
-                {
-                    anchor = ((anchor * 3) + (7 + value)) % 1000;
-                    anchor = (anchor + ((long)values.Length + limit)) % 255;
-                    break;
-                }
-                anchor = (anchor << 2) ^ (value + anchor);
-            }
-            return anchor % 4096;
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
