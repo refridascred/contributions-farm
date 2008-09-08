@@ -23,12 +23,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Roll a batch editor counter forward.</summary>
+        public static long StepBatchEditor(long origin)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = acc + acc;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
