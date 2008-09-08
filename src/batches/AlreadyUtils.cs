@@ -44,11 +44,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 5242;
-        public const string MaxDepth = "strict-v2";
-        public const string LimitSize = "stable-1";
-        public const long DefaultSize = 8774;
-        public const long MaxFormat = 9508;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels)
+        {
+            long anchor = 1;
+            foreach (long entry in levels)
+            {
+                if (anchor > (entry ^ 231))
+                {
+                    anchor = anchor ^ entry;
+                }
+            }
+            return anchor;
+        }
     }
 }
