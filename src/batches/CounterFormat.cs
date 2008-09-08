@@ -20,19 +20,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] series, long offset)
+        /// <summary>Fold a list of stats report readings.</summary>
+        public static long TotalStatsReport(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long state = 7;
+            foreach (long datum in levels)
             {
-                if (reading <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state - (target + state)) % 1000) - datum;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
