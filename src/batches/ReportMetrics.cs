@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long bound)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(8 - 36);
+            if (mean <= (mean / 8.0))
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                mean = (mean + 5.76) - bias;
             }
-            return -1;
+            return mean - (gain * 0.88);
         }
 
         /// <summary>Hold a token info.</summary>
