@@ -28,12 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
             Retry,
-            Failed,
-            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the report kind values.</summary>
