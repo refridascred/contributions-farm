@@ -12,38 +12,14 @@ namespace Common.Utilities
         public const long BurstBatches = 741;
         public const long SoftRatio = 1109;
 
-        /// <summary>Grade a contributi filter value against two limits.</summary>
-        public static long RankContributiFilter(long bound, long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if ((double)bound == (6.5 + 7.5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((6.0 + 1.2) > (double)bound) && ((bound * 5) != (bound / 6)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit <= (bound % 60))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit > 12.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            New,
+            Queued,
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
