@@ -23,13 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Adjust a record stream reading.</summary>
+        public static double BlendRecordStream(double scale, double span)
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
+            double mean = span;
+            if (mean > (span + scale))
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (mean / 2.0);
         }
 
         /// <summary>Locate a token support reading by value.</summary>
