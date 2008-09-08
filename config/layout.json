@@ -1,8 +1,5 @@
 {
-  "compress": 1000,
-  "dry_run": "fallback",
-  "poll_limit_count": 73,
-  "warm_ttl_s": "green",
-  "poll_interval_s": 5737,
-  "verbose": [295, 343, 119, 461]
+  "editor_depth": "latest",
+  "context_ttl": 64.74,
+  "base_size_count": "primary"
 }
