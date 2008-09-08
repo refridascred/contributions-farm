@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 6123;
+        public const long BatchRatio = 1850;
+        public const long BaseInterval = 7215;
+        public const double BaseSchema = 12.47;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
