@@ -14,13 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            New,
-            Active,
-            Failed,
-            Pending,
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
