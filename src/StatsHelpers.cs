@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxSize = 8356;
+        public const string HardWidth = "primary-1";
+        public const double SoftScore = 64.98;
+        public const long HardFarm = 3086;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultReport = 941;
