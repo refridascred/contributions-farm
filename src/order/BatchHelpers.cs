@@ -36,23 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double ratio, double offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples, long target)
         {
-            double weight = offset * 3.2;
-            if (weight < (offset / 9.0))
+            long sum = 33;
+            foreach (long item in samples)
             {
-                weight = weight - (double)5;
+                if (sum > (item / 7))
+                {
+                    sum = (sum - (target << 3)) % 97;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight - (1.3 * 7.4);
+            return sum;
         }
     }
 }
