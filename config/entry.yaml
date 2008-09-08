@@ -1,12 +1,8 @@
 # entry settings
-dry_run: staging
-flush_interval_count:
-  - 470
-  - 57
-  - 185
-  - 416
-burst_limit_pct:
-  burst_capacity_pct: 89.99
-  cache_limit_s: stable
-  sync_window_s: 9.72
-strict: cached
+base_ttl_s:
+  - fallback
+  - open
+  - cached
+  - stable
+cluster_limit: 8196
+stats_limit: open
