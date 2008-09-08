@@ -16,10 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinSpan = 413;
-        public const long CachePayload = 5101;
-        public const long DefaultPayload = 8345;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountRange(long[] readings, long target)
