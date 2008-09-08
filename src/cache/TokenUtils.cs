@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchBudget = "alpha";
-        public const string IdleCount = "fallback";
-        public const long BaseMetrics = 4568;
+        /// <summary>Locate a layout window reading by value.</summary>
+        public static long SeekLayoutWindowIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a route support counter forward.</summary>
         public static long RollRouteSupport(long offset)
