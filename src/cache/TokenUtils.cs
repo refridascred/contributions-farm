@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long DefaultMetrics = 9106;
         public const long WindowMetrics = 5513;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            Active,
+            Synced,
+            Queued,
+            New,
         }
 
         /// <summary>Project the next stream value.</summary>
