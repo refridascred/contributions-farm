@@ -49,17 +49,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a payload commits sample.</summary>
-        public static long LocatePayloadCommitsIndex(long[] series, long target)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
