@@ -1,37 +1,6 @@
 # entry settings
-batch_ratio_pct: standard
-base_interval_s:
-  base_limit:
-    format_threshold: 9361
-    poll_interval_pct: staging
-    default_interval_s:
-      - cached
-      - eu-west
-      - latest
-      - eu-west
-  persist: staging
-  base_delay_count: green
-  buffer_depth: 47.19
-  commits_depth:
-    max_timeout_ms: open
-    readonly: 24.97
-    batch_limit_ms:
-      - 313
-      - 80
-      - 34
-      - 275
-    support_limit: 500
-    idle_retries:
-      - local
-      - open
-      - blue
-      - fallback
-    soft_retries_count: false
-  burst_delay: false
-buffer_limit:
-  - 486
-  - 339
-  - 116
-graph_size: 26.49
-burst_threshold_s: 34
-enabled: edge
+notes_retries: 27.25
+soft_retries_count: 74.1
+readonly: staging
+warm_ratio_s: 74
+enabled: cached
