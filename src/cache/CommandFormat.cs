@@ -15,12 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowBudget = 5358;
-        public const string MinTools = "primary-v2";
-        public const string BaseRatio = "fallback-1";
-        public const double RetryTools = 0.69;
-        public const double CacheTools = 76.45;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
