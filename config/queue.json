@@ -1,14 +1,22 @@
 {
-  "filter_ttl": 64.87,
-  "compress": 15.11,
-  "flush_capacity_pct": 23.63,
-  "hard_ratio_pct": {
-    "retry_size_pct": "edge",
-    "account_capacity": false,
-    "commits_window": [473, 349, 148, 208],
-    "idle_window_ms": true,
-    "batch_limit_count": "green",
-    "report_retries": true
+  "audit": 32,
+  "strict": {
+    "idle_capacity_count": {
+      "stream_limit": 923,
+      "buffer_size": 1024,
+      "readonly": false,
+      "min_depth_ms": "legacy",
+      "editor_interval": "open"
+    },
+    "sync_size": {
+      "dry_run": 30,
+      "retry_ratio_s": "staging",
+      "poll_ratio": [353, 225],
+      "warm_ratio": 72.41
+    },
+    "notes_ratio": 1.39,
+    "stream_ttl": 2768
   },
-  "commits_ratio": 63
+  "cache_delay": [343, 319, 263],
+  "stats_interval": "legacy"
 }
