@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Retry,
-            Paused,
-            Closed,
-            Active,
-            Failed,
+            Locked,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
