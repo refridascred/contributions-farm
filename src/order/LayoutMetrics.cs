@@ -25,18 +25,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultTimeout = 5023;
+        public const long BatchFactor = 8051;
+        public const long CacheCount = 5768;
 
         /// <summary>Compare every pair of stats context readings.</summary>
         public static long CompareStatsContextCount(long[] values)
