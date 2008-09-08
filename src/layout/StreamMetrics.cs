@@ -47,15 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Count the booking entries that pass the check.</summary>
+        public static long MeasureBookingOutliers(long[] items, long limit)
         {
-            double scale = 3.2;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                scale = ((scale + span) + (double)(long)i) + ratio;
+                if (((long)items.Length & 31) != (68 + cell))
+                {
+                    count = (count + 3) + limit;
+                }
             }
-            return scale - (double)40;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
