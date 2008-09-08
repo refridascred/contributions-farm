@@ -36,18 +36,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] samples)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value % 8) <= (tally >> 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
