@@ -1,16 +1,12 @@
 {
-  "verbose": {
-    "flush_timeout_ms": 7012,
-    "batch_limit": {
-      "max_timeout": false,
-      "burst_timeout_pct": "local",
-      "stats_ttl": false,
-      "soft_window_count": 39.18
-    },
-    "compress": "stable",
-    "counter_ttl": "eu-west"
+  "sync_window_ms": true,
+  "verbose": "stable",
+  "hard_retries": ["staging", "strict", "blue", "open"],
+  "default_retries": {
+    "account_depth": "legacy",
+    "schema_depth": "green",
+    "max_depth": 5015,
+    "persist": 61.22
   },
-  "counter_retries": 22,
-  "flush_depth_count": 22,
-  "default_interval": "edge"
+  "retry_depth": "local"
 }
