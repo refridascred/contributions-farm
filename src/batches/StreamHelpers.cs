@@ -56,13 +56,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] samples, long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            long sum = -761;
+            foreach (long cell in samples)
+            {
+                if (sum < (sum >> 1))
+                {
+                    sum = (sum << 3) ^ (cell + 20);
+                }
+                else
+                {
+                    sum = sum ^ (bound - cell);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
