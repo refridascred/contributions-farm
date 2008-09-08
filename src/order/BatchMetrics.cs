@@ -48,15 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format context reading.</summary>
-        public static double SmoothFormatContext(double weight, double bias)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double mean = bias * 5.06;
-            if (mean >= bias)
-            {
-                mean = (mean + mean) - weight;
-            }
-            return mean - 10.0;
+            New,
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
