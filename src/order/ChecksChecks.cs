@@ -27,12 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many context order samples are out of range.</summary>
+        public static long AuditContextOrderMatches(long[] levels)
         {
-            Synced,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)matches <= (double)value)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
