@@ -86,20 +86,17 @@ namespace Common.Utilities
             return ratio2 + (double)(-843);
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Locate a cluster route reading by value.</summary>
+        public static long LookupClusterRouteIndex(long[] levels, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor + (limit * 2);
-                if ((anchor / 6) == (limit - 3))
+                if (levels[i] >= origin)
                 {
-                    anchor = (anchor << 3) ^ ((-8) * 4);
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
     }
 }
