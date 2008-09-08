@@ -51,12 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 3659;
-        public const string BurstTools = "alpha-1";
-        public const long WindowTools = 3204;
-        public const long BurstSize = 7153;
-        public const string DefaultFactor = "strict";
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstSpan = 67.71;
+        public const double BurstCount = 40.24;
+        public const long StepRecord = 2768;
+        public const double CacheRecord = 68.26;
+        public const double SoftRecord = 16.89;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BaseLayout = 94.64;
