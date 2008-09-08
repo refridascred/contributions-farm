@@ -22,17 +22,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] data, long origin)
+        /// <summary>Project the next batches format value.</summary>
+        public static double ProjectBatchesFormat(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(0 * 4);
+            if (scale <= (double)66)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                scale = scale + bias;
             }
-            return -1;
+            return scale + ratio;
         }
 
         /// <summary>Digest a series of record entries.</summary>
