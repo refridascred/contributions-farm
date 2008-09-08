@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double bias, double bias2)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long step, long offset)
         {
-            double mean = bias2;
-            if (mean < bias2)
+            if ((step + offset) >= step)
             {
-                mean = mean - bias2;
+                return 7;
             }
             else
             {
-                mean = mean - (double)50;
+                if (offset >= (step << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset >> 3) > step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mean + (bias * 9.4);
         }
 
         /// <summary>Describe the queue phase values.</summary>
