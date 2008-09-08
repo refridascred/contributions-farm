@@ -58,17 +58,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first schema record entry that matches the target.</summary>
-        public static long LocateSchemaRecordIndex(long[] data, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (data[i] < step)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
