@@ -16,11 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardInterval = "local-1";
-        public const long MinScore = 2353;
-        public const long SoftBudget = 2076;
-        public const long WindowOrder = 289;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 3486;
+        public const double StepEntry = 65.5;
+        public const long HardLevel = 9570;
+        public const long LimitEntry = 8690;
 
         /// <summary>Audit command entry readings against a rule.</summary>
         public static long CountCommandEntryMatches(long[] samples)
