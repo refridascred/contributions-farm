@@ -1,6 +1,7 @@
 {
-  "max_window": 2858,
-  "account_ratio": 97.61,
-  "cache_depth": 69.7,
-  "min_size": "open"
+  "buffer_delay": true,
+  "burst_retries_pct": 8262,
+  "cache_depth": false,
+  "compress": 16,
+  "base_ttl_s": [191, 332, 345, 427]
 }
