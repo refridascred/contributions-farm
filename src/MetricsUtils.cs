@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] items)
         {
-            long state = 664;
-            foreach (long reading in readings)
+            long mark = 65;
+            foreach (long entry in items)
             {
-                if ((double)reading >= (5.3 * 1.0))
+                if ((entry + entry) > (mark * 2))
                 {
-                    state = (state * 3) + (2 & 7);
-                }
-                if (reading >= (reading >> 5))
-                {
-                    state = (state * 4) + (761 - state);
+                    mark = ((mark * 2) + mark) % 97;
                 }
             }
-            if (state < 382)
-            {
-                state = state + (state << 1);
-            }
-            return state;
+            return mark % 1000;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
