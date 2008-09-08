@@ -1,5 +1,7 @@
 {
-  "default_interval": true,
-  "persist": false,
-  "hard_size_s": 49
+  "stream_window": 60,
+  "sync_threshold_s": "staging",
+  "already_depth": ["primary", "edge"],
+  "schema_window": "eu-west",
+  "stats_ttl": 60
 }
