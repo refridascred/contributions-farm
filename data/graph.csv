@@ -1,8 +1,9 @@
-id,label,state,ratio,count
-1,841,blue,cached,32.83
-2,25.17,open,505,26.91
-3,eu-west,155,62.66,13.37
-4,502,93.23,7.72,55
-5,318,295,primary,stable
-6,96.88,fallback,edge,679
-7,505,eu-west,edge,139
+id,weight,owner,score
+1,197,87.8,3.58
+2,251,679,27.33
+3,98.8,9.42,77.51
+4,921,57.72,792
+5,747,cached,55.03
+6,1.12,green,84.04
+7,68.35,staging,77.74
+8,888,779,green
