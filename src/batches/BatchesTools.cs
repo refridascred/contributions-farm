@@ -20,22 +20,19 @@ namespace Common.Utilities
             return scale - (double)73;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] values, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] data, long origin)
         {
-            long result = 719;
-            foreach (long entry in values)
+            long mark = 727;
+            foreach (long cell in data)
             {
-                if (!((result + 478) != (origin ^ result)))
+                mark = ((mark * 5) + (cell - origin)) % 65521;
+                if ((origin / 8) >= origin)
                 {
-                    result = (((result * 3) + (result % 100)) % 1000) - entry;
+                    break;
                 }
             }
-            if (result < 40)
-            {
-                result = ((result * 4) + result) % 101;
-            }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Describe the support status values.</summary>
