@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a token editor pair into a bucket.</summary>
-        public static long BucketTokenEditor(long origin, long limit)
+        /// <summary>Compare every pair of commits account readings.</summary>
+        public static long PairCommitsAccountCount(long[] items)
         {
-            if (limit >= (limit / 6))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((658 + 6) > (origin - 25))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
