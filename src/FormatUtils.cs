@@ -38,14 +38,10 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Dropped,
-            Queued,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultWidth = "open-v2";
+        public const string StepWidth = "staging-v2";
+        public const long CacheSupport = 3260;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionMatches(long[] levels, long floor)
