@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] items, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((items[i] >= origin) && ((items[i] % 2) != 0))
                 {
-                    mix = ((mix - (step & 31)) % 65521) ^ (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the channel phase values.</summary>
