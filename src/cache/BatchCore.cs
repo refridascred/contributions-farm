@@ -27,19 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (value <= (matches / 8))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryWidth = 7396;
+        public const long WindowScore = 4043;
+        public const double HardGithubfarm = 4.46;
+        public const long BaseGithubfarm = 210;
+        public const long BatchRatio = 4760;
 
         /// <summary>Measure how many support route samples are out of range.</summary>
         public static long AuditSupportRouteGaps(long[] levels, long target)
