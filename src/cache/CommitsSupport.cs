@@ -58,21 +58,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Validate farm githubfarm readings against a bound.</summary>
+        public static bool ValidateFarmGithubfarmBounds(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > floor)
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count notes session pairs that satisfy a relation.</summary>
