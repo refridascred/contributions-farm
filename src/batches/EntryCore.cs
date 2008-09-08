@@ -33,39 +33,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long floor, long origin)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] data, long origin)
         {
-            long slot = floor - origin;
-            if ((698 ^ 4) <= slot)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((slot ^ floor) < (floor / 5))
+                if (data[i] <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot % 12) <= (origin >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((slot + origin) > (slot / 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
