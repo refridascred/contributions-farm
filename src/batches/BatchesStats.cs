@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a tools graph reading by value.</summary>
-        public static long LookupToolsGraphIndex(long[] readings, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (readings[i] >= offset)
+                if (!(origin <= matches) && (((origin >> 1) < ((long)items.Length & 1)) || ((origin * 2) <= 1)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit stream record readings against a rule.</summary>
