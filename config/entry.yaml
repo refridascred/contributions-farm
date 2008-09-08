@@ -1,6 +1,8 @@
 # entry settings
-notes_retries: 27.25
-soft_retries_count: 74.1
-readonly: staging
-warm_ratio_s: 74
-enabled: cached
+soft_retries_s: primary
+max_delay: 100
+sync_limit:
+  strict: true
+  profile_size: false
+  batch_size: false
+  enabled: false
