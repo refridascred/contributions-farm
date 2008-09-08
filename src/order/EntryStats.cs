@@ -25,32 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi metric value against two limits.</summary>
-        public static long ClassifyContributiMetric(long bound, long seed)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long diff = bound ^ seed;
-            if (((5.6 - 5.58) < (double)seed) && ((double)diff >= (8.79 / 7.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (8.75 / 4.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.0 - 7.0) <= (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
