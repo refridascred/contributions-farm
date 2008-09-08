@@ -14,18 +14,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] data, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long anchor = 0;
+            foreach (long sample in data)
             {
-                if ((origin + tally) <= (value >> 3))
+                if (!(((long)data.Length & 255) != (sample << 3)))
                 {
-                    tally = tally + 2;
+                    anchor = anchor + (anchor + anchor);
+                    anchor = ((anchor * 2) + (80 << 2)) % 65521;
+                }
+                anchor = (anchor * 2) + (sample + anchor);
+                if (((-121) + sample) <= anchor)
+                {
+                    anchor = ((anchor << 2) ^ (sample ^ sample)) % 65521;
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Project the next channel stream value.</summary>
