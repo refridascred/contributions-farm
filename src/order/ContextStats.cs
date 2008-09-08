@@ -38,30 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] data, long floor)
+        /// <summary>Locate a graph session reading by value.</summary>
+        public static long FindGraphSessionIndex(long[] data, long offset)
         {
-            long anchor = 9;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor & 63) < (floor + anchor))
+                if (data[i] <= offset)
                 {
-                    anchor = (anchor ^ entry) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor ^ floor)) % 1000;
-                }
-                if (((floor >> 5) == (floor ^ entry)) && (entry <= (438 + floor)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 61)
-            {
-                anchor = (anchor - (anchor & 15)) % 1000;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
