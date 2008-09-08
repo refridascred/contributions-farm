@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] readings, long seed)
         {
-            double scale = floor + floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale + (ratio - ratio)) + (double)(long)i;
+                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + floor;
+            return -1;
         }
 
         /// <summary>Hold a token stats.</summary>
