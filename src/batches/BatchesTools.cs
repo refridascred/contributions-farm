@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every format channel entry stays within the limit.</summary>
-        public static bool VerifyFormatChannelRange(long[] readings, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (value <= origin)
+                if ((cell >> 3) > (count + count))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Fold a list of report order readings.</summary>
