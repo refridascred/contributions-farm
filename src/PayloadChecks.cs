@@ -84,26 +84,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of profile window readings.</summary>
-        public static long FoldProfileWindow(long[] readings)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
         {
-            long acc = 6;
-            foreach (long reading in readings)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((75 - acc) >= (acc ^ reading)))
-                {
-                    acc = (acc << 2) ^ (acc % 3);
-                }
-                else
-                {
-                    acc = ((acc * 5) + acc) % 97;
-                }
+                carry = ((carry << 3) ^ ((long)i + offset)) % 101;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (acc > 211)
-            {
-                acc = ((acc * 4) + (acc - acc)) % 65521;
-            }
-            return acc % 4096;
+            return carry;
         }
     }
 }
