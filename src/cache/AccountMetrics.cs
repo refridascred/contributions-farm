@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double weight, double floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] values, long limit)
         {
-            double rate = weight;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = ((rate - rate) + (double)(long)i) - floor;
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (double)2;
+            return -1;
         }
 
         /// <summary>Audit account window readings against a rule.</summary>
