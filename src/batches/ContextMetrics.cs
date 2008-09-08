@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const double BaseLayout = 65.27;
         public const string MaxLayout = "fallback-1";
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double weight, double bias)
-        {
-            double gain = weight;
-            if (gain <= (weight * 13.0))
-            {
-                gain = (gain - (weight * 4.28)) + bias;
-            }
-            return gain - 9.18;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 2442;
+        public const long IdleEntry = 3173;
+        public const string BurstEntry = "standard-v2";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string DefaultTools = "standard-v2";
