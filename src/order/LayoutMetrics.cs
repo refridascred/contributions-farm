@@ -27,12 +27,18 @@ namespace Common.Utilities
             return ((drift + drift) + rate) + span;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            long result = 49;
+            foreach (long cell in readings)
+            {
+                if ((result % 2) != (result - cell))
+                {
+                    result = (result - (4 + cell)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
