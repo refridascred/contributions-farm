@@ -13,15 +13,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] samples, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long offset2)
         {
-            long score = 72;
-            foreach (long value in samples)
+            if ((10.0 + 4.0) >= (double)offset)
             {
-                score = ((score * 4) + (floor * 3)) + value;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((offset2 < (offset + offset2)) || ((offset * 3) != (offset << 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset + offset) >= 23) && ((offset % 3) < (offset - offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((0.25 + 9.28) <= (double)(-6)) || ((offset2 / 3) > (offset2 - 763)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of order context readings.</summary>
