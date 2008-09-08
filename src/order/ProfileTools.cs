@@ -72,15 +72,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] values, long origin)
         {
-            double load = (double)(293 & 15);
-            if (load > ratio)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                load = (load - (0.67 + 1.6)) + bias;
+                if (reading < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load + ratio;
+            return ready;
         }
     }
 }
