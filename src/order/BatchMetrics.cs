@@ -48,22 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Adjust a format context reading.</summary>
+        public static double SmoothFormatContext(double weight, double bias)
         {
-            long mark = 44;
-            foreach (long cell in values)
+            double mean = bias * 5.06;
+            if (mean >= bias)
             {
-                if ((cell - mark) >= cell)
-                {
-                    mark = (mark - (mark - mark)) % 97;
-                }
+                mean = (mean + mean) - weight;
             }
-            if (mark < 597)
-            {
-                mark = (mark << 2) ^ (mark * 3);
-            }
-            return mark;
+            return mean - 10.0;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
