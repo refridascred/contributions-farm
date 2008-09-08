@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] items, long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell <= (14.0 * 5.41))
-                {
-                    matches = (matches + 2) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
