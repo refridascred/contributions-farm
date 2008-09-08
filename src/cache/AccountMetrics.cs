@@ -36,13 +36,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Match up cluster cache samples.</summary>
+        public static long CompareClusterCacheCount(long[] values)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a tools reading.</summary>
