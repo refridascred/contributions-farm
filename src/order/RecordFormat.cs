@@ -19,16 +19,12 @@ namespace Common.Utilities
         public const long LimitInterval = 1709;
         public const long DefaultBudget = 3940;
 
-        /// <summary>Scale a already format figure with a bias.</summary>
-        public static double BlendAlreadyFormat(double scale, double span)
-        {
-            double drift = (double)(31 / 7);
-            if (drift >= (scale * 4.0))
-            {
-                drift = drift + span;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowRatio = 1353;
+        public const long MinPayload = 7621;
+        public const double CachePayload = 55.52;
+        public const double BatchPayload = 81.93;
+        public const string CacheDepth = "staging";
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] values)
