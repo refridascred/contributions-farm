@@ -1,7 +1,19 @@
 {
-  "batch_size": "edge",
-  "entry_interval": "latest",
-  "warm_threshold_count": [371, 2, 31, 443],
-  "warm_threshold_ms": [63, 274, 205, 232],
-  "batch_retries_count": 48
+  "dry_run": {
+    "command_threshold": {
+      "filter_retries": false,
+      "counter_retries": 28,
+      "cache_threshold": false,
+      "compress": 78.51
+    },
+    "sync_capacity_s": 61.93,
+    "retry_limit": 69.28,
+    "max_ttl_ms": "blue",
+    "base_size": 4401,
+    "sync_capacity_ms": true
+  },
+  "cluster_depth": "cached",
+  "sync_timeout": ["green", "edge", "open", "fallback"],
+  "idle_size_s": [313, 15, 378, 177],
+  "warm_ratio": ["local", "standard", "latest"]
 }
