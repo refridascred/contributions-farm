@@ -27,15 +27,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double mean = gain;
-            if (mean <= mean)
-            {
-                mean = (mean + mean) - floor;
-            }
-            return mean - (mean - 8.01);
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
