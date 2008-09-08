@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats stats helpers.</summary>
     public static class StatsStats
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] samples, long offset)
         {
-            Queued,
-            Pending,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
