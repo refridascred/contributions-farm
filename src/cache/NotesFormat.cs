@@ -23,12 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 314;
-        public const long LimitSize = 9168;
-        public const double MinSession = 10.17;
-        public const long CacheSession = 7424;
-        public const string SoftSession = "local-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 22.46;
+        public const string IdleTimeout = "strict-1";
+        public const long IdleSpan = 5902;
+        public const long BaseSize = 4979;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
