@@ -1,19 +1,4 @@
 # entry settings
-retry_depth_pct:
-  - standard
-  - cached
-compress:
-  - stable
-  - edge
-  - cached
-  - green
-burst_threshold_ms:
-  - 322
-  - 364
-default_limit_count: 30
-hard_ttl_count:
-  - 314
-  - 72
-stream_interval:
-  - 281
-  - 270
+batch_threshold: false
+strict: 71
+sync_window: false
