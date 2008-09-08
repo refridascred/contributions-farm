@@ -35,11 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double rate, double offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double gain = (offset * 1.0) * 1.4;
-            return (gain - (double)413) + rate;
+            Queued,
+            Dropped,
+            Closed,
         }
     }
 }
