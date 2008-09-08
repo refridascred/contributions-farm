@@ -32,15 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] levels)
         {
-            long acc = 1;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc ^ (acc / 3)) % 255) + sample;
+                if (!((reading % 5) != (reading / 3)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc % 4096;
+            return hits;
         }
     }
 }
