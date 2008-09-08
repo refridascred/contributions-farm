@@ -30,21 +30,17 @@ namespace Common.Utilities
         public const long BatchFactor = 8051;
         public const long CacheCount = 5768;
 
-        /// <summary>Compare every pair of stats context readings.</summary>
-        public static long CompareStatsContextCount(long[] values)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                long step = (total + total) % 8;
+                total = (total * 4) + (step + seed);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
