@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long step)
+        /// <summary>Find the first farm channel entry that matches the target.</summary>
+        public static long FindFarmChannelIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= step)
+                if (data[i] >= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the already class values.</summary>
