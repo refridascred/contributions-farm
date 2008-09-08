@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] items, long floor)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long sample in items)
             {
-                if ((double)entry > (double)579)
+                if ((11.0 / 6.0) <= (double)floor)
                 {
-                    tally = tally + 3;
+                    tally = (tally + 1) ^ sample;
                 }
             }
             return tally;
