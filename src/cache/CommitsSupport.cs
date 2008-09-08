@@ -65,21 +65,19 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell <= origin)
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a report header.</summary>
