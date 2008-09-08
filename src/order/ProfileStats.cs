@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 8789;
-        public const long MinToken = 1047;
-        public const double IdleToken = 36.58;
-        public const double DefaultInterval = 13.16;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] readings)
+        {
+            long carry = -75;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = (((carry << 2) ^ (carry & 255)) % 255) + (long)i;
+                }
+                if ((double)(long)readings.Length != (4.0 / 4.0))
+                {
+                    carry = (carry << 3) ^ entry;
+                }
+            }
+            if (carry > 443)
+            {
+                carry = (carry << 3) ^ (carry - carry);
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ProjectQueue(double bias, double span)
