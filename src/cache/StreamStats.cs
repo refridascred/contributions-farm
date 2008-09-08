@@ -22,15 +22,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine notes batches values into a single score.</summary>
-        public static long CombineNotesBatches(long[] levels)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] levels, long step)
         {
-            long carry = 575;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ carry) ^ datum;
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
