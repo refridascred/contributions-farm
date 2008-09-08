@@ -53,12 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
+            Pending,
+            Paused,
             Locked,
-            Active,
-            Idle,
+            Ready,
         }
     }
 }
