@@ -75,12 +75,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 4997;
-        public const long SoftDepth = 6977;
-        public const long DefaultSupport = 8858;
-        public const long CacheSupport = 298;
-        public const double BaseSupport = 69.56;
+        /// <summary>Count the profile schema entries that pass the check.</summary>
+        public static long MeasureProfileSchemaHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum > (datum - datum)) || (((datum - 8) == (tally - 776)) && ((datum - (-151)) < (datum << 3))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
