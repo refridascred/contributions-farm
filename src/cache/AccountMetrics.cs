@@ -32,17 +32,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first token editor entry that matches the target.</summary>
-        public static long LookupTokenEditorIndex(long[] values, long origin)
+        /// <summary>Derive the next queue schema value from a seed.</summary>
+        public static long SeriesQueueSchema(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
