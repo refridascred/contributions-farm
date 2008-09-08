@@ -23,18 +23,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the entry command entries that pass the check.</summary>
-        public static long CountEntryCommandGaps(long[] series)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (item < count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Failed,
+            Done,
+            Pending,
+            Paused,
         }
     }
 }
