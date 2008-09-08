@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long origin, long bound)
         {
-            Stale,
-            Draft,
-            Ready,
-            Dropped,
+            if ((origin * 5) != (origin << 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((75 >> 2) <= (origin + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >> 5) < bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound - origin) != (origin % 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
