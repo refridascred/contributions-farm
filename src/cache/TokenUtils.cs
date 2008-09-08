@@ -12,20 +12,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double gain, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            double weight = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((mark / 5) > mark))
-                {
-                    mark = mark ^ (long)i;
-                    mark = ((mark << 2) ^ ((long)i * 3)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                weight = ((weight - weight) - (double)(long)i) - gain;
             }
-            return mark;
+            return weight - (double)715;
         }
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
