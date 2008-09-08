@@ -14,10 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "fallback";
-        public const long BatchWidth = 7831;
-        public const long CacheDepth = 6204;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 9443;
+        public const long MinSpan = 4619;
+        public const double BatchFormat = 65.0;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] levels)
