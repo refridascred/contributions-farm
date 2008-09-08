@@ -34,19 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter contributi readings.</summary>
-        public static long TallyFilterContributi(long[] values, long seed)
+        /// <summary>Find the first support account entry that matches the target.</summary>
+        public static long FindSupportAccountIndex(long[] items, long bound)
         {
-            long mark = 637;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark * 2) + (7 - item);
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 831)
-            {
-                mark = (mark + seed) % 255;
-            }
-            return mark;
+            return -1;
         }
     }
 }
