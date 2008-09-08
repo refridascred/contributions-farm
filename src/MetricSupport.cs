@@ -20,14 +20,38 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long bound)
         {
-            Done,
-            Pending,
-            Retry,
-            New,
-            Paused,
+            if ((4.0 - 4.61) < (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin >= (7 * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin == (4.45 + 9.7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin < (9.69 - 16.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
