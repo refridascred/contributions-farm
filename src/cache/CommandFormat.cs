@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            Ready,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Check that every token report entry stays within the limit.</summary>
