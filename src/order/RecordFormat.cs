@@ -77,21 +77,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 525;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc << 2) ^ acc;
+                if (acc > (acc + acc))
                 {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc - (item + acc);
                 }
             }
-            return tally;
+            return acc % 65521;
         }
     }
 }
