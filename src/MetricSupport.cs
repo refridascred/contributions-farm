@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two layout tools measurements.</summary>
-        public static double AdjustLayoutTools(double scale, double bias)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] items, long step)
         {
-            double ratio = bias;
-            if (ratio > scale)
+            long anchor = 35;
+            foreach (long sample in items)
             {
-                ratio = ratio - (8.9 / 3.0);
+                anchor = ((anchor ^ (anchor + anchor)) % 97) + sample;
+                if ((double)anchor >= 4.11)
+                {
+                    anchor = anchor ^ anchor;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (anchor < 3)
             {
-                ratio = (ratio + scale) + (double)(long)i;
+                anchor = (anchor ^ step) % 255;
             }
-            return ratio + (double)165;
+            return anchor;
         }
 
         /// <summary>Combine order values into a single score.</summary>
