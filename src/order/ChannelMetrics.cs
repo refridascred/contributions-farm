@@ -30,22 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] values)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((17 >> 2) >= (matches * 5))
+                if (value < target)
                 {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
