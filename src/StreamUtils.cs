@@ -29,18 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter account samples are out of range.</summary>
-        public static long TallyCounterAccountHits(long[] series)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seen + 51) == (cell - (-775)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
