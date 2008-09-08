@@ -34,13 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            public bool Label { get; set; }
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public double Owner { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark + seed) % 65521;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
