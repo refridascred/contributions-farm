@@ -31,14 +31,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Synced,
-            Locked,
-            Active,
-            Failed,
-            Paused,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a record entry.</summary>
