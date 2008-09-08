@@ -44,18 +44,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] readings, long bound)
+        /// <summary>Classify a session channel pair into a bucket.</summary>
+        public static long RankSessionChannel(long origin, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long step2 = origin ^ step;
+            if ((double)step == (double)origin)
             {
-                if ((hits & 63) < (bound % 60))
+                return 2;
+            }
+            else
+            {
+                if (!((5.17 + 18.0) >= (4.35 * 20.0)))
                 {
-                    hits = (hits + 3) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if ((step2 / 2) < (34 + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a metric entry.</summary>
