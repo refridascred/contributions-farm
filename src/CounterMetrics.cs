@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double rate, double offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long step)
         {
-            double ratio = rate;
-            if (ratio >= rate)
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = (ratio + (ratio * 4.91)) + offset;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix - (step & 31)) % 65521) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return ratio - (20.0 + rate);
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
