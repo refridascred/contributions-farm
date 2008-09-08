@@ -12,10 +12,18 @@ namespace Common.Utilities
             return (scale - weight) + offset;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "fallback-1";
-        public const string BurstChecks = "staging-edge";
-        public const double SoftChecks = 0.31;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
