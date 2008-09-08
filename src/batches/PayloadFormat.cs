@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a command graph value against two limits.</summary>
-        public static long GradeCommandGraph(long offset, long limit)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long diff = offset + limit;
-            if ((double)diff >= 7.73)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.43 / 7.0) != (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Compare every pair of stats layout readings.</summary>
