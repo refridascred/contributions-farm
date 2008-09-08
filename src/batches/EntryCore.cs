@@ -49,15 +49,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a layout editor figure with a bias.</summary>
-        public static double AdjustLayoutEditor(double gain, double bias)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double rate = (double)(586 + 608);
-            if (rate >= gain)
-            {
-                rate = rate - (bias / 9.0);
-            }
-            return rate + rate;
+            Retry,
+            Dropped,
+            Closed,
+            Locked,
         }
     }
 }
