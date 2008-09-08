@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Failed,
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Accumulate format samples.</summary>
