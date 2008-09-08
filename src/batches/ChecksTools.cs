@@ -15,19 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] readings, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((906 >> 2) < reading)
                 {
-                    result = (result ^ limit) ^ (long)i2;
+                    hits = (hits + 3) + seed;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine record values into a single score.</summary>
