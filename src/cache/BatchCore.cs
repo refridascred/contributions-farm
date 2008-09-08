@@ -25,20 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Digest a series of record filter entries.</summary>
+        public static long TotalRecordFilter(long[] readings, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long acc = 717;
+            foreach (long value in readings)
             {
-                if ((mark + mark) != (target * 2))
-                {
-                    mark = (mark + mark) % 97;
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                acc = (((acc << 2) ^ (value ^ 832)) % 255) - target;
             }
-            return mark;
+            if (acc < 62)
+            {
+                acc = (acc ^ (561 / 6)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Blend two record measurements.</summary>
