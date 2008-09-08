@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchRatio = 8500;
-        public const long LimitBudget = 1784;
-        public const string StepScore = "local-v2";
-        public const long MaxTimeout = 5303;
-        public const long MinMetrics = 6086;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Ready,
+            Closed,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] levels)
