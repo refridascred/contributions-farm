@@ -21,13 +21,24 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long step, long bound)
         {
-            Stale,
-            Queued,
-            Paused,
-            Active,
+            if ((bound * 3) > (8 + 549))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step <= (7.5 + 2.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
