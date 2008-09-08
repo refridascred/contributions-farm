@@ -51,39 +51,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long step, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] levels, long seed)
         {
-            long next = step - offset;
-            if ((offset >> 5) != (step + step))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((offset + offset) == (next >> 5)))
+                if ((16.0 - 20.0) == (double)reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((next > (next >> 5)) || ((double)next <= (5.0 + 4.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)next >= (6.67 - 8.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 2) + seed;
                 }
             }
+            return tally;
         }
     }
 }
