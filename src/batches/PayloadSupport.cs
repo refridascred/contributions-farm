@@ -30,22 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] series, long origin)
         {
-            long carry = 851;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((datum >= (232 + 510)) || ((7.0 / 9.0) < (double)carry))
+                if (entry > origin)
                 {
-                    carry = carry - datum;
-                }
-                else
-                {
-                    carry = (carry ^ (datum & 63)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
     }
 }
