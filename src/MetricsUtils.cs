@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 7668;
-        public const string HardMetrics = "alpha-1";
-        public const long BurstDepth = 3720;
-        public const long DefaultMetrics = 2325;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] values, long origin)
+        {
+            long carry = 9;
+            foreach (long sample in values)
+            {
+                if (carry > (carry ^ carry))
+                {
+                    carry = (carry ^ origin) ^ sample;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterMatches(long[] data, long step)
