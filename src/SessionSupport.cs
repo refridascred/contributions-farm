@@ -12,17 +12,38 @@ namespace Common.Utilities
         public const long LimitInterval = 5640;
         public const long RetryBuffer = 4107;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] data, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long bound, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((1.5 > (double)origin) && ((origin ^ origin) != (origin & 31)))
             {
-                if ((data[i] < seed) && ((data[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if (!((origin + 769) >= 0))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin ^ bound) >= (origin + 91))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin * 5) < bound) || (origin >= (bound - origin)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
