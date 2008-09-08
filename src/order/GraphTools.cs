@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] levels, long limit)
         {
-            public double Stamp { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((((limit - limit) != ((long)levels.Length & 63)) || (11 > (sample + hits))) && ((hits + hits) == (limit - limit)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit command buffer readings against a rule.</summary>
