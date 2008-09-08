@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowBuffer = "staging-edge";
-        public const string WindowRatio = "latest-1";
-        public const long MinSpan = 3065;
-        public const long LimitInterval = 5640;
-        public const long RetryBuffer = 4107;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Draft,
+            Retry,
+            Done,
+            Paused,
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long BucketSupport(long bound, long origin)
