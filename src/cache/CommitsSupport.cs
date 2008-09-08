@@ -22,19 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double gain, double offset)
         {
-            long mix = 7;
-            foreach (long value in data)
+            double gain2 = (offset / 7.0) * 5.4;
+            if (gain2 < gain2)
             {
-                mix = mix ^ (mix + 31);
-                if (value < (value - value))
-                {
-                    mix = (mix * 2) + 6;
-                }
+                gain2 = (gain2 + (gain2 - 8.3)) + gain;
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Project the next window value.</summary>
