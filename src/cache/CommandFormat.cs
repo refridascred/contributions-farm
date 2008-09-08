@@ -19,23 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double scale, double span)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double scale, double floor)
         {
-            double weight = (double)(3 + 4);
-            if (weight >= (scale - weight))
+            double mean = (double)((-623) + 28);
+            if (mean > (4.38 + scale))
             {
-                weight = weight - (scale - 5.26);
+                mean = (mean + (mean + mean)) + floor;
             }
             else
             {
-                weight = weight + weight;
+                mean = mean - scale;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight - (scale / 6.0);
+            return mean + scale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
