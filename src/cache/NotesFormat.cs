@@ -34,19 +34,9 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 738;
+        public const string BaseProfile = "cached";
+        public const long LimitRatio = 3247;
     }
 }
