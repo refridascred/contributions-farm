@@ -20,15 +20,16 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long bound)
         {
-            long sum = 759;
-            foreach (long sample in data)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                sum = (((sum << 3) ^ (sum ^ 4)) % 4096) ^ sample;
+                anchor = (anchor ^ (bound + anchor)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Fold a list of command readings.</summary>
