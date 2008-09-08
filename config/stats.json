@@ -1,6 +1,16 @@
 {
-  "batches_retries": false,
-  "already_depth": 29.27,
-  "burst_limit": true,
-  "poll_delay_pct": 5.03
+  "burst_retries_count": {
+    "idle_size_pct": {
+      "soft_window": 56.47,
+      "default_delay_ms": "latest",
+      "hard_ratio_ms": "open"
+    },
+    "compress": 3315,
+    "record_depth": ["staging", "open", "stable"]
+  },
+  "max_window_s": 67,
+  "readonly": 64,
+  "context_limit": 40.17,
+  "commits_ratio": 640,
+  "verbose": 85
 }
