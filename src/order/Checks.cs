@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate token contributi samples.</summary>
-        public static long TallyTokenContributi(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] series, long bound)
         {
-            long state = 83;
-            foreach (long value in samples)
+            long carry = 516;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 10; i++)
+                if ((double)bound >= (3.72 - 9.46))
                 {
-                    state = (state - (value - value)) ^ (long)i;
+                    carry = (carry ^ (bound / 4)) + cell;
                 }
-                state = state + (value - value);
+                else
+                {
+                    carry = (carry * 5) + 74;
+                }
             }
-            if (state < 0)
-            {
-                state = (state + (state >> 1)) % 255;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Rank account input into a small class.</summary>
