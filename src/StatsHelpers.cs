@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of session buffer entries.</summary>
+        public static long TallySessionBuffer(long[] data, long target)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = -595;
+            foreach (long sample in data)
+            {
+                anchor = (anchor - sample) + target;
+                anchor = (anchor - (sample % 7)) % 65521;
+                anchor = ((anchor * 2) + anchor) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
