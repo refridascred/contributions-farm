@@ -1,6 +1,18 @@
 {
-  "soft_timeout": 7105,
-  "cache_threshold_pct": 44.99,
-  "context_capacity": "standard",
-  "sync_window": 7845
+  "sync_threshold": "fallback",
+  "poll_ttl_ms": 1003,
+  "burst_retries_ms": 84,
+  "order_limit": {
+    "cache_ttl": 43,
+    "max_interval": "green",
+    "burst_limit": [234, 478, 378, 467],
+    "idle_window_count": {
+      "burst_ttl_s": 500,
+      "hard_interval_s": 7.91,
+      "tools_limit": "eu-west",
+      "dry_run": "latest",
+      "session_timeout": true
+    }
+  },
+  "readonly": "fallback"
 }
