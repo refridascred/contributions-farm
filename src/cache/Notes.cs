@@ -49,26 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] items, long floor)
+        /// <summary>Derive the next report already value from a seed.</summary>
+        public static long DeriveReportAlready(long offset)
         {
-            long anchor = 209;
-            foreach (long cell in items)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((anchor >> 2) > anchor)
+                if ((double)sum > (3.72 + 5.3))
                 {
-                    anchor = (((anchor << 2) ^ (anchor - cell)) % 255) - floor;
+                    sum = (sum * 5) + (offset >> 3);
                 }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (anchor > 774)
-            {
-                anchor = (anchor * 3) + 78;
-            }
-            return anchor;
+            return sum;
         }
     }
 }
