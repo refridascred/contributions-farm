@@ -82,17 +82,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = carry ^ (carry % 97);
-                carry = (carry ^ ((long)i << 1)) % 97;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
