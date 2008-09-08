@@ -41,10 +41,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepWidth = 9290;
-        public const long SoftSpan = 6104;
-        public const string RetryEntry = "open-1";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchScore = 1330;
