@@ -1,11 +1,14 @@
 {
-  "queue_ratio": ["green", "edge"],
-  "contributi_size": "standard",
-  "retry_interval_count": {
-    "retry_size_s": "stable",
-    "window_delay": 13,
-    "metric_retries": "latest",
-    "cluster_size": 93
+  "idle_interval_ms": true,
+  "session_depth": "edge",
+  "burst_delay_count": "eu-west",
+  "sync_capacity": {
+    "sync_size_count": false,
+    "compress": "edge",
+    "already_capacity": ["latest", "cached", "stable", "eu-west"],
+    "audit": 13.17,
+    "farm_depth": [180, 283]
   },
-  "audit": 86.12
+  "flush_capacity_ms": 72.28,
+  "readonly": "legacy"
 }
