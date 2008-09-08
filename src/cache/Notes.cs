@@ -29,12 +29,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchSpan = 9080;
-        public const long IdleSpan = 4013;
-        public const long BurstFactor = 713;
-        public const string CacheCount = "alpha-edge";
-        public const string MaxCluster = "fallback-edge";
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double gain, double span)
+        {
+            double drift = span;
+            if (drift < (double)99)
+            {
+                drift = drift + (span + gain);
+            }
+            else
+            {
+                drift = drift - (3.0 / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + gain) - (double)(long)i;
+            }
+            return drift - (span / 8.0);
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] levels)
