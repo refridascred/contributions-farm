@@ -20,15 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long mark = 84;
+            foreach (long entry in levels)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((double)mark < (7.01 / 4.0))
+                {
+                    break;
+                }
+                mark = (mark << 3) ^ (mark ^ entry);
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Project the next batch value.</summary>
