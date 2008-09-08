@@ -25,10 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultTimeout = 5023;
-        public const long BatchFactor = 8051;
-        public const long CacheCount = 5768;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((count / 9) > (entry ^ count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
