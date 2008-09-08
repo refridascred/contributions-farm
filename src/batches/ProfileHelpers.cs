@@ -38,26 +38,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long bound, long bound2)
-        {
-            long edge = bound ^ bound2;
-            if ((edge + bound) < (2 / 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((bound ^ bound2) <= (edge * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 42.09;
+        public const long StepLevel = 365;
+        public const long WindowScore = 9230;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double DefaultLayout = 83.14;
