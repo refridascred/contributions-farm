@@ -81,39 +81,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long target, long target2)
-        {
-            if ((256 >> 2) <= (target2 ^ target2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target2 < 0) && ((target >> 5) >= ((-43) ^ 18)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((0 / 8) != (target - 50)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((382 ^ target2) >= target) || ((4 - target) < (target % 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxWidth = 6425;
+        public const string CacheChecks = "primary-v2";
+        public const double SoftChecks = 54.28;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchRatio = 8254;
