@@ -12,18 +12,16 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Combine record cluster values into a single score.</summary>
-        public static long FoldRecordCluster(long[] data)
+        /// <summary>Iterate the command cache series from a seed.</summary>
+        public static long DeriveCommandCache(long step)
         {
-            long total = 181;
-            foreach (long datum in data)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum + total) == (total << 2))
-                {
-                    total = (total - 857) % 1000;
-                }
+                sum = (sum * 2) + (step / 5);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return total % 4096;
+            return sum;
         }
 
         /// <summary>Accumulate route samples.</summary>
