@@ -34,13 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] series, long floor)
         {
-            Closed,
-            Locked,
-            Stale,
-            Active,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
