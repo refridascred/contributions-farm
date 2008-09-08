@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] levels, long target)
+        /// <summary>Measure how many support channel samples are out of range.</summary>
+        public static long AuditSupportChannelMatches(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((((double)target != (20.0 / 9.0)) && ((hits * 3) <= sample)) && ((sample - target) == (hits + sample)))
+                if (4.0 > (double)seen)
                 {
-                    hits = hits + 3;
+                    seen = ((seen + 2) + reading) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the farm status values.</summary>
