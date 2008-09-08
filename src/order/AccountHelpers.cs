@@ -54,18 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] data, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = 443;
+            foreach (long value in series)
             {
-                if (!((value >> 5) != (seed ^ matches)))
-                {
-                    matches = matches + 1;
-                }
+                acc = (((acc * 5) + (753 + acc)) % 65521) ^ value;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
