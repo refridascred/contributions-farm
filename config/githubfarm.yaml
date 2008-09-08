@@ -1,18 +1,12 @@
 # githubfarm settings
-readonly:
-  hard_size_ms:
-    route_threshold: staging
-    batch_ratio: 66
-    graph_size: 53.58
-    idle_threshold_ms: edge
-  burst_limit: legacy
-  default_window_s:
-    - 283
-    - 59
-    - 210
-    - 41
-cache_depth_count: eu-west
-metrics_delay:
+soft_ttl:
+  - fallback
   - eu-west
-  - blue
-hard_window: 2801
+metrics_size: green
+base_size: legacy
+token_retries: legacy
+base_depth_pct:
+  - standard
+  - latest
+  - standard
+  - green
