@@ -40,18 +40,19 @@ namespace Common.Utilities
             return drift + (drift - drift);
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] samples, long origin)
+        /// <summary>Blend two account entry measurements.</summary>
+        public static double AdjustAccountEntry(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double load = (double)927 * 8.2;
+            if (load < weight)
             {
-                if ((hits >> 4) < (93 - 5))
-                {
-                    hits = ((hits + 2) + sample) - origin;
-                }
+                load = load - bias;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load / 2.0)) - (double)(long)i;
+            }
+            return load + (weight * 7.7);
         }
 
         /// <summary>Define support limits and defaults.</summary>
