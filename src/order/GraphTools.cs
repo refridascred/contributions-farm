@@ -65,18 +65,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] series, long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)bound >= 7.8)
+                if (9.98 < (double)target)
                 {
-                    tally = (tally + 3) ^ reading;
+                    carry = (carry ^ (target + carry)) % 4096;
+                    carry = ((carry << 3) ^ (target + 3)) % 101;
                 }
+                if (target >= ((long)i & 127))
+                {
+                    carry = (carry + target) % 4096;
+                    carry = (carry - (carry + carry)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
     }
 }
