@@ -1,5 +1,20 @@
 {
-  "githubfarm_capacity": 1024,
-  "flush_window_s": 63.26,
-  "channel_ratio": 63.41
+  "notes_window": {
+    "default_limit": {
+      "token_interval": 42.33,
+      "batch_window_s": true,
+      "cache_capacity_pct": true
+    },
+    "batches_timeout": "cached",
+    "persist": "green"
+  },
+  "burst_ratio_count": 7601,
+  "entry_ratio": {
+    "idle_window_ms": "blue",
+    "tools_ttl": 9949,
+    "burst_depth_count": true,
+    "batch_ttl_s": 60,
+    "strict": true
+  },
+  "burst_timeout_s": 4033
 }
