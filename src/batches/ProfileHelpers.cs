@@ -29,12 +29,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
