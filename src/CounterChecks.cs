@@ -20,32 +20,26 @@ namespace Common.Utilities
             return scale + (rate * 4.47);
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long bound, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] series, long limit)
         {
-            long edge = bound ^ offset;
-            if ((14.0 * 0.7) >= (double)bound)
+            long mix = 57;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((edge - offset) <= edge))
+                if ((reading % 10) != (reading / 4))
                 {
-                    return 4;
+                    mix = (mix ^ 20) % 65521;
                 }
                 else
                 {
-                    if (offset <= (483 >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = ((mix << 3) ^ 845) % 101;
+                }
+                if ((limit & 127) != (reading + 0))
+                {
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Hold a record options.</summary>
