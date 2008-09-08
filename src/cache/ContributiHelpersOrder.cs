@@ -22,21 +22,19 @@ namespace Common.Utilities
         public const long HardLevel = 9570;
         public const long LimitEntry = 8690;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Adjust a record buffer reading.</summary>
+        public static double ScaleRecordBuffer(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = weight;
+            if (mean < (8.04 + 18.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + weight) + bias;
             }
-            return matches;
+            else
+            {
+                mean = mean + (double)1;
+            }
+            return mean - (mean - weight);
         }
     }
 }
