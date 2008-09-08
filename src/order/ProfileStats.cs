@@ -27,13 +27,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            double bias2 = ratio;
+            return (bias2 - bias2) + bias;
         }
 
         /// <summary>Match up already samples.</summary>
