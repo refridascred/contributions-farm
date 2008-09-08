@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSpan = 8257;
-        public const long StepFactor = 5085;
-        public const double DefaultDepth = 59.67;
-        public const string MinCount = "strict-v2";
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double ratio, double offset)
+        {
+            double weight = 3.0 * 8.94;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - (double)2) + (double)(long)i) + offset;
+            }
+            return weight - (ratio / 8.0);
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheFilter = 137;
