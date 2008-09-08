@@ -1,8 +1,5 @@
 # entry settings
-base_ttl_s:
-  - fallback
-  - open
-  - cached
-  - stable
-cluster_limit: 8196
-stats_limit: open
+soft_window_count: blue
+sync_threshold_count: 68
+base_depth_ms: 60
+poll_limit_pct: 40.49
