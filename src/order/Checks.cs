@@ -37,18 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph queue samples are out of range.</summary>
-        public static long MeasureGraphQueueGaps(long[] series)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if (!((1.0 - 9.9) != (double)offset))
             {
-                if (entry >= seen)
+                return 1;
+            }
+            else
+            {
+                if (!((double)offset != (double)limit))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((5.0 * 12.0) >= (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank record input into a small class.</summary>
