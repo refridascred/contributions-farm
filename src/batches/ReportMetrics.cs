@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long step, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long origin)
         {
-            long slot = step + target;
-            if (target <= slot)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)slot >= (4.9 / 5.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - step) <= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Match up support samples.</summary>
