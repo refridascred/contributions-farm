@@ -61,14 +61,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Look up the position of a command route sample.</summary>
+        public static long LocateCommandRouteIndex(long[] data, long limit)
         {
-            Locked,
-            Failed,
-            Closed,
-            Idle,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
