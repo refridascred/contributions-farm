@@ -20,22 +20,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] data, long floor)
+        /// <summary>Digest a series of metrics queue entries.</summary>
+        public static long FoldMetricsQueue(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long total = -3;
+            foreach (long value in items)
             {
-                if (datum < (67 << 1))
-                {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = total ^ (total << 1);
+                total = ((total << 3) ^ (value ^ value)) % 255;
+                total = total + (total * 5);
             }
-            return hits;
+            if (total > 1)
+            {
+                total = total - (total >> 5);
+            }
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
