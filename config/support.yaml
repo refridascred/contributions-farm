@@ -1,19 +1,15 @@
 # support settings
-batch_delay:
-  default_delay: 7.69
-  format_ttl: 77
-  payload_retries: stable
-compress: false
-batches_timeout:
-  audit: strict
-  max_depth_ms:
-    compress: edge
-    retry_ratio: fallback
-    soft_limit_s: legacy
-    dry_run:
-      - eu-west
-      - staging
-  strict: 1574
-  editor_interval: 11.94
-  persist: 56
-warm_retries_s: 63.01
+dry_run: true
+channel_threshold:
+  hard_timeout:
+    - green
+    - primary
+    - legacy
+  compress: true
+  warm_window_ms: 2217
+  poll_threshold_count: 250
+  persist: 63.71
+audit: 25
+burst_retries_pct:
+  - edge
+  - latest
