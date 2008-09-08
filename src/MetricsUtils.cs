@@ -47,33 +47,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long origin, long origin2)
-        {
-            long gap = origin ^ origin2;
-            if ((1 & 255) >= (gap - gap))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((8.6 + 3.8) >= (double)origin2) && ((gap - origin2) < (gap * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((gap % 24) >= origin) || ((40 % 12) != (gap & 255)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitSize = "primary-1";
+        public const long DefaultSpan = 3561;
+        public const string LimitEditor = "cached-v2";
+        public const long HardEditor = 7592;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutHits(long[] data, long bound)
