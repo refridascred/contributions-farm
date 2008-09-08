@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double floor)
         {
-            Failed,
-            Dropped,
-            Stale,
-            Queued,
-            Synced,
+            double scale = floor + floor;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (ratio - ratio)) + (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
