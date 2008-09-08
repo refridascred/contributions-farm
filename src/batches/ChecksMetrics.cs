@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const string DefaultCounter = "local-edge";
         public const long MaxLevel = 1848;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] items, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long target)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix << 2) ^ mix;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
