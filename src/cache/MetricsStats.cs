@@ -17,21 +17,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count support counter pairs that satisfy a relation.</summary>
-        public static long CompareSupportCounterCount(long[] data)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Idle,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
