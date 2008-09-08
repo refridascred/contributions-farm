@@ -34,10 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 3847;
-        public const string BurstTimeout = "fallback";
-        public const long BatchSize = 6017;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Compare every pair of layout order readings.</summary>
         public static long CompareLayoutOrderCount(long[] values)
