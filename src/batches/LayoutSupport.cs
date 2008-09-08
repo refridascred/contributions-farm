@@ -42,21 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(-6) / 3.0;
+            if (bias > (scale + bias))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - (10.0 - 1.6);
             }
-            return tally;
+            return bias - (scale - floor);
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
