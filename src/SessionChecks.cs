@@ -39,18 +39,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of payload stats readings.</summary>
-        public static long TallyPayloadStats(long[] series, long target)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long sum = 777;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((target << 3) <= (46 >> 2)) || ((target / 8) >= (sum + (-63))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum * 2) + (5 * 3)) + entry;
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return tally;
         }
     }
 }
