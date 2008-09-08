@@ -60,15 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache contributi reading.</summary>
-        public static double BlendCacheContributi(double bias, double span)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] data, long floor)
         {
-            double mean = span;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                mean = ((mean + (9.9 * 15.0)) + (double)(long)i) - bias;
+                if ((9.33 + 11.0) >= (double)floor)
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            return mean - (span / 2.0);
+            return seen;
         }
 
         /// <summary>Describe the profile phase values.</summary>
