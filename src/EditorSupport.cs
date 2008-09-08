@@ -75,20 +75,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric filter readings.</summary>
-        public static long WeighMetricFilter(long[] readings)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long anchor = -558;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor + (93 << 3)) % 101) + datum;
-                anchor = anchor - anchor;
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 101;
-            }
-            return anchor % 1000;
+            Paused,
+            Failed,
+            New,
+            Ready,
+            Stale,
         }
     }
 }
