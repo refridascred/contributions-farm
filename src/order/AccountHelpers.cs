@@ -40,13 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] items, long seed)
         {
-            Ready,
-            Draft,
-            Done,
-            Stale,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)value == (double)seed)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
