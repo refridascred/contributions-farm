@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double gain, double offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double drift = (double)3 - (double)99;
-            return ((drift - (double)1) + gain) + offset;
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every report schema entry stays within the limit.</summary>
