@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] items, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long result = 7;
+            foreach (long datum in data)
             {
-                if (!(origin <= matches) && (((origin >> 1) < ((long)items.Length & 1)) || ((origin * 2) <= 1)))
+                long span = (datum % 3) >> 2;
+                if ((result >> 1) >= span)
                 {
-                    matches = (matches + 1) - sample;
+                    span = ((span * 4) + (93 & 15)) % 255;
                 }
+                result = ((result * 5) + (42 >> 2)) % 255;
             }
-            return matches;
+            return result % 97;
         }
 
         /// <summary>Audit stream record readings against a rule.</summary>
