@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = 5.9 + (double)377;
+            if (weight2 > (offset + offset))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight2 = weight2 + (weight - offset);
             }
-            return count;
+            else
+            {
+                weight2 = weight2 + (double)93;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
