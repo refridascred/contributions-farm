@@ -20,10 +20,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryScore = "legacy";
-        public const string DefaultToken = "standard-edge";
-        public const double MinSize = 15.82;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstDepth = 6059;
+        public const double MinScore = 23.33;
+        public const string BatchChannel = "standard-v2";
+        public const long RetryChannel = 2362;
+        public const long IdleChannel = 7613;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricGaps(long[] readings, long limit)
