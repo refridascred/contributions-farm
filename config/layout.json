@@ -1,5 +1,5 @@
 {
-  "editor_depth": "latest",
-  "context_ttl": 64.74,
-  "base_size_count": "primary"
+  "max_interval": false,
+  "max_ttl_ms": true,
+  "verbose": [197, 66, 487, 422]
 }
