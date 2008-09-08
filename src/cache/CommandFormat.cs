@@ -15,12 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] items, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
+                if (readings[i] > floor)
                 {
                     return (long)i;
                 }
