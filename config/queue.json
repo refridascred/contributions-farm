@@ -1,7 +1,17 @@
 {
-  "hard_retries": 9646,
-  "stats_size": true,
-  "report_interval": 7249,
-  "verbose": ["open", "edge", "open"],
-  "compress": false
+  "metrics_ratio": ["latest", "latest"],
+  "cache_limit": {
+    "verbose": "edge",
+    "burst_delay_s": "legacy",
+    "batches_capacity": {
+      "flush_timeout": "legacy",
+      "default_delay": 100,
+      "soft_retries": 2167,
+      "soft_size_count": 71.11
+    },
+    "burst_threshold_count": [163, 496, 235, 186],
+    "format_depth": "primary"
+  },
+  "commits_size": [14, 21],
+  "readonly": true
 }
