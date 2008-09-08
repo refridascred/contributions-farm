@@ -35,15 +35,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double scale, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            double gain = 2.2 - scale;
+            return (gain - gain) + floor;
         }
 
         /// <summary>Describe the report kind values.</summary>
