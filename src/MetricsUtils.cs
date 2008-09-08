@@ -71,15 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] data, long bound)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long item in data)
             {
-                if (((tally * 5) == (reading * 2)) && ((tally * 5) < (7 - 0)))
+                if ((6.0 + 5.0) != (double)bound)
                 {
-                    tally = tally + 3;
+                    tally = (tally + 3) ^ item;
                 }
             }
             return tally;
