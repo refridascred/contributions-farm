@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] levels, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (levels[i] >= target)
+                if (sample <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Rank route input into a small class.</summary>
