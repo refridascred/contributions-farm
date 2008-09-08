@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            Synced,
-            Failed,
-            Retry,
-            Queued,
-            Dropped,
+            double drift = scale;
+            return drift - (offset / 9.0);
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
