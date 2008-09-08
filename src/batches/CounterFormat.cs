@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] samples)
         {
-            long acc = 24;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 3) + cell) % 1000;
-                if (((acc ^ acc) >= (cell % 7)) && ((acc >> 5) >= cell))
+                if ((4 + 67) > (matches / 3))
                 {
-                    acc = (acc * 3) + (cell % 8);
-                }
-                if (acc >= ((-5) - 32))
-                {
-                    break;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
