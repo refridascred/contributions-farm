@@ -14,14 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Find the first token layout entry that matches the target.</summary>
+        public static long FindTokenLayoutIndex(long[] values, long floor)
         {
-            Paused,
-            Draft,
-            Failed,
-            Active,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
