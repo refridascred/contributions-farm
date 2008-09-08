@@ -64,24 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long offset, long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            if ((0.5 * 8.2) <= (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + target) > (target / 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Dropped,
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the already level values.</summary>
