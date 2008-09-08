@@ -69,22 +69,14 @@ namespace Common.Utilities
             return mean - (span / 2.0);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] data)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen & 63) < (seen ^ sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Closed,
+            Active,
+            Retry,
+            Ready,
         }
     }
 }
