@@ -18,17 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context graph value from a seed.</summary>
-        public static long RollContextGraph(long limit)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] readings, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - (long)i) % 1000;
-                carry = (carry * 5) + (limit << 2);
-                carry = ((carry * 3) + (long)i) % 97;
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
