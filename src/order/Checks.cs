@@ -37,31 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long offset, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long target)
         {
-            if (!((1.0 - 9.9) != (double)offset))
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)offset != (double)limit))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 2;
+                    sum = ((sum * 3) + 63) ^ (long)i2;
                 }
-                else
-                {
-                    if ((5.0 * 12.0) >= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Describe the payload status values.</summary>
