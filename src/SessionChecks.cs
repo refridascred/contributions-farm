@@ -19,18 +19,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] readings, long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)limit == (double)count)
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Blend two account queue measurements.</summary>
