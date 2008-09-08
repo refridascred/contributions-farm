@@ -26,15 +26,11 @@ namespace Common.Utilities
         public const double BatchToken = 47.48;
         public const double BaseToken = 3.44;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double scale = 8.3;
-            if (scale <= (floor * 3.85))
-            {
-                scale = scale - 9.8;
-            }
-            return scale + ratio;
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up command samples.</summary>
