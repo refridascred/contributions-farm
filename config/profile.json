@@ -1,8 +1,5 @@
 {
-  "payload_timeout": "open",
-  "flush_capacity": 60,
-  "retry_limit": "staging",
-  "sync_threshold": "staging",
-  "already_size": 20,
-  "min_ttl": "strict"
+  "githubfarm_capacity": 1024,
+  "flush_window_s": 63.26,
+  "channel_ratio": 63.41
 }
