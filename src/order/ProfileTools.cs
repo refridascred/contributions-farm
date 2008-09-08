@@ -29,18 +29,31 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] data, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            if (52 >= (step / 9))
             {
-                if ((count ^ count) < (bound - bound))
+                return 8;
+            }
+            else
+            {
+                if ((bound << 2) <= ((-3) >> 2))
                 {
-                    count = (count + 1) + value;
+                    return 2;
+                }
+                else
+                {
+                    if ((4.94 - 3.0) >= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
