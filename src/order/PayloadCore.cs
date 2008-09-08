@@ -37,32 +37,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank support schema input into a small class.</summary>
-        public static long GradeSupportSchema(long step, long step2)
+        /// <summary>Check that every farm layout entry stays within the limit.</summary>
+        public static bool ValidateFarmLayoutRange(long[] series, long offset)
         {
-            long slot = step - step2;
-            if (!((step + slot) >= (6 ^ step2)))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.7 * 8.0) <= (double)slot)
+                if (reading >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step2 <= (double)slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
