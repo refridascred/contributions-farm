@@ -1,19 +1,12 @@
 {
-  "dry_run": {
-    "command_threshold": {
-      "filter_retries": false,
-      "counter_retries": 28,
-      "cache_threshold": false,
-      "compress": 78.51
-    },
-    "sync_capacity_s": 61.93,
-    "retry_limit": 69.28,
-    "max_ttl_ms": "blue",
-    "base_size": 4401,
-    "sync_capacity_ms": true
+  "retry_window_s": 3,
+  "sync_timeout": {
+    "default_delay_s": 81,
+    "poll_retries_pct": true,
+    "soft_depth_s": true
   },
-  "cluster_depth": "cached",
-  "sync_timeout": ["green", "edge", "open", "fallback"],
-  "idle_size_s": [313, 15, 378, 177],
-  "warm_ratio": ["local", "standard", "latest"]
+  "counter_timeout": 3962,
+  "metrics_retries": 56,
+  "context_timeout": "stable",
+  "batch_window_pct": 2909
 }
