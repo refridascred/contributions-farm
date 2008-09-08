@@ -38,17 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph session reading by value.</summary>
-        public static long FindGraphSessionIndex(long[] data, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
