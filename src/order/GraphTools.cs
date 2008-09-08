@@ -34,15 +34,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit filter layout readings against a rule.</summary>
-        public static long AuditFilterLayoutGaps(long[] readings)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
             long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item == (9.0 / 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
