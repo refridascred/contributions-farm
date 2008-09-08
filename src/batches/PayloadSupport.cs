@@ -30,19 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] series, long origin)
+        /// <summary>Check that every already order entry stays within the limit.</summary>
+        public static bool CheckAlreadyOrderBounds(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (entry > origin)
+                if (sample < bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
