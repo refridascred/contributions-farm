@@ -61,13 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            double gain2 = (double)(5 >> 2);
+            if (gain2 <= gain2)
+            {
+                gain2 = (gain2 + offset) - gain;
+            }
+            return gain2 + (double)80;
         }
 
         /// <summary>Accumulate stream samples.</summary>
