@@ -12,23 +12,13 @@ namespace Common.Utilities
         public const double MaxRatio = 29.14;
         public const long MaxWidth = 6571;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long score = 631;
-            foreach (long cell in series)
-            {
-                score = (score * 4) + score;
-                if ((double)cell >= 5.44)
-                {
-                    score = score + (cell % 24);
-                }
-                if (0 > (cell << 3))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Failed,
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a tools header.</summary>
