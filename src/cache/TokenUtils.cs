@@ -16,11 +16,13 @@ namespace Common.Utilities
         public const long MinCount = 5761;
         public const double CacheLevel = 49.7;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double bias, double floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double ratio = bias;
-            return (ratio + (bias / 7.0)) + floor;
+            Ready,
+            Dropped,
+            Queued,
+            Draft,
         }
     }
 }
