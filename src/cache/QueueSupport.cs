@@ -42,14 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Stale,
-            Active,
-            Closed,
-            Idle,
-            Done,
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
