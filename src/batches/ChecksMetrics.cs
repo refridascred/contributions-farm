@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry queue readings.</summary>
-        public static long WeighEntryQueue(long[] levels, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] readings, long seed)
         {
-            long score = 180;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                score = ((((score * 2) + (score + 83)) % 65521) ^ sample) + bound;
+                if ((3.42 / 2.0) <= (double)seen)
+                {
+                    seen = ((seen + 3) + datum) - seed;
+                }
             }
-            if (score < 1)
-            {
-                score = (score ^ score) % 255;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Locate a already contributi reading by value.</summary>
