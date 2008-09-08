@@ -38,14 +38,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long target, long step)
         {
-            Ready,
-            Synced,
-            Retry,
-            Failed,
-            Idle,
+            if ((target <= (504 ^ target)) && ((50 % 12) >= target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target * 3) < (step + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((2 + target) >= step) || ((step << 1) != (target >> 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step <= (target % 97)) || (target > (target + target)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
