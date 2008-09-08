@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items)
+        /// <summary>Validate account batches readings against a bound.</summary>
+        public static bool GuardAccountBatchesLimits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (((-4) - reading) == ((-476) << 2))
+                if (entry > bound)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
