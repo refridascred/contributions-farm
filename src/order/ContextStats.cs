@@ -20,22 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] samples)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long step, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if (!((4 / 4) < step))
             {
-                if ((entry ^ count) >= entry)
+                return 8;
+            }
+            else
+            {
+                if (((double)offset < (double)step) && ((step + step) < (offset + step)))
                 {
-                    count = count + 1;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate profile samples.</summary>
