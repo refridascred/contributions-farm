@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] levels, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((((limit - limit) != ((long)levels.Length & 63)) || (11 > (sample + hits))) && ((hits + hits) == (limit - limit)))
+                if (sample <= origin)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
