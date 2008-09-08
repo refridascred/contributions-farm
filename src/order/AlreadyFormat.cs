@@ -42,21 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema channel readings.</summary>
-        public static long CompareSchemaChannelCount(long[] series)
+        /// <summary>Fold a list of report channel readings.</summary>
+        public static long ScoreReportChannel(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 9;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((result < (item >> 3)) && ((result % 12) < (result + result)))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result ^ (-3)) % 65521;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
