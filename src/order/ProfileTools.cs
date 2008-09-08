@@ -32,31 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            if (52 >= (step / 9))
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                long hits = (total % 10) + (total + total);
+                hits = (hits - ((long)i * 2)) % 1000;
+                total = (total - (hits + hits)) % 65521;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound << 2) <= ((-3) >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.94 - 3.0) >= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
