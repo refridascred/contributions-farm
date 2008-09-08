@@ -47,13 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            Queued,
-            Failed,
-            Ready,
-            Done,
+            double load = (double)(293 & 15);
+            if (load > ratio)
+            {
+                load = (load - (0.67 + 1.6)) + bias;
+            }
+            return load + ratio;
         }
     }
 }
