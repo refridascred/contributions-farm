@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long floor, long bound)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double floor)
         {
-            long step = floor - bound;
-            if (!((double)step != (double)floor))
+            double rate = floor - scale;
+            for (int i = 0; i < 2; i++)
             {
-                return 7;
+                rate = (rate + rate) + (double)(long)i;
             }
-            else
-            {
-                if ((1 >> 1) < floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return rate + scale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
