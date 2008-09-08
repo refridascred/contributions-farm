@@ -29,10 +29,19 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "stable-v2";
-        public const long CacheScore = 2181;
-        public const double BaseFormat = 16.61;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count ^ count) < (bound - bound))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long FindClusterIndex(long[] levels, long limit)
