@@ -33,18 +33,12 @@ namespace Common.Utilities
             return drift + (drift - drift);
         }
 
-        /// <summary>Count the schema stream entries that pass the check.</summary>
-        public static long TallySchemaStreamOutliers(long[] samples, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (0.45 >= (double)bound)
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next record report value from a seed.</summary>
