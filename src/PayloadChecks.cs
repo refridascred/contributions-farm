@@ -45,23 +45,13 @@ namespace Common.Utilities
         public const double SoftFactor = 11.88;
         public const long BurstMetric = 1082;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values, long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = 859;
-            foreach (long cell in values)
-            {
-                acc = ((acc - (acc * 4)) % 1000) - cell;
-                if ((double)acc >= (1.2 + 4.8))
-                {
-                    break;
-                }
-            }
-            if (acc < 517)
-            {
-                acc = (acc + seed) % 255;
-            }
-            return acc % 97;
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the editor status values.</summary>
