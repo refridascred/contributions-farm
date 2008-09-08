@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double bias, double offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double scale = 6.0 - (1.09 * 8.2);
-            if (scale <= (bias / 9.0))
-            {
-                scale = (scale - 3.48) - offset;
-            }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale + 7.14;
+            Pending,
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
