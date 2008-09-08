@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] series, long seed)
+        /// <summary>Derive the next cluster record value from a seed.</summary>
+        public static long IterateClusterRecord(long origin)
         {
-            long carry = 82;
-            foreach (long item in series)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((9.6 / 5.0) != (double)item)
-                {
-                    carry = ((carry * 4) + seed) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ carry;
-                }
+                state = (state * 3) + (4 + origin);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (carry > 4)
-            {
-                carry = ((carry * 5) + seed) % 4096;
-            }
-            return carry % 97;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
