@@ -69,19 +69,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every farm layout entry stays within the limit.</summary>
-        public static bool ValidateFarmLayoutRange(long[] series, long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Stale,
+            Active,
+            Pending,
         }
     }
 }
