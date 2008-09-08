@@ -67,15 +67,9 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] readings, long seed)
-        {
-            long sum = -57;
-            foreach (long sample in readings)
-            {
-                sum = ((sum ^ (-7)) - sample) - seed;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 7170;
+        public const long RetryLayout = 6530;
+        public const double MinLayout = 36.53;
     }
 }
