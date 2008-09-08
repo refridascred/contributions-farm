@@ -16,19 +16,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] data, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long seed2)
         {
-            long mark = 727;
-            foreach (long cell in data)
+            long gap = seed - seed2;
+            if ((gap + gap) <= (seed + seed))
             {
-                mark = ((mark * 5) + (cell - origin)) % 65521;
-                if ((origin / 8) >= origin)
+                return 3;
+            }
+            else
+            {
+                if ((double)gap >= (3.1 - 12.0))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Accumulate stream samples.</summary>
