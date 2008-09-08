@@ -14,16 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long limit)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score ^ ((long)i + score)) % 4096;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Done,
+            Retry,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
