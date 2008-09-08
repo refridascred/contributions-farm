@@ -72,19 +72,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double scale, double span)
+        /// <summary>Count notes session pairs that satisfy a relation.</summary>
+        public static long OverlapNotesSessionCount(long[] samples)
         {
-            double scale2 = scale;
-            if (scale2 > span)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 - (scale2 / 6.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + scale2;
+            return seen;
         }
     }
 }
