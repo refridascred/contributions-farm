@@ -13,12 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] data, long offset)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 64) >= (tally + 84))
+                {
+                    tally = (tally + 1) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
