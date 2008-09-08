@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] series, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] readings, long floor)
         {
             bool ready = true;
-            foreach (long datum in series)
+            foreach (long sample in readings)
             {
-                if (datum < target)
+                if (sample > floor)
                 {
                     ready = false;
                     break;
