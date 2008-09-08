@@ -19,17 +19,31 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Find the first cache notes entry that matches the target.</summary>
-        public static long LocateCacheNotesIndex(long[] data, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit >= (double)bound)
             {
-                if (data[i] > step)
+                return 6;
+            }
+            else
+            {
+                if (bound > (bound - limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (limit - bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
