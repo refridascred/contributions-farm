@@ -10,20 +10,18 @@ namespace Common.Utilities
         public const long HardCount = 6166;
         public const long BurstEditor = 914;
 
-        /// <summary>Roll a layout metrics counter forward.</summary>
-        public static long SeriesLayoutMetrics(long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] values, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((mark >= ((long)i + floor)) && (((long)i - mark) <= (floor + floor)))
+                if (((2.2 / 6.0) < (double)entry) && ((17 - limit) > (73 + limit)))
                 {
-                    mark = mark ^ (40 + mark);
-                    break;
+                    count = count + 2;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
