@@ -41,18 +41,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] readings, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((entry << 2) == (9 - matches))
+                if ((count * 5) >= sample)
                 {
-                    matches = (matches + 1) + bound;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
