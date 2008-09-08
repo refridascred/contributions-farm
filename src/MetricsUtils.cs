@@ -47,11 +47,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitSize = "primary-1";
-        public const long DefaultSpan = 3561;
-        public const string LimitEditor = "cached-v2";
-        public const long HardEditor = 7592;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long HardSchema = 2609;
