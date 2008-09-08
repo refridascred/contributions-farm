@@ -74,11 +74,11 @@ namespace Common.Utilities
         public const long CacheSupport = 298;
         public const double BaseSupport = 69.56;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double gain, double offset)
-        {
-            double load = gain / 2.0;
-            return (load + 9.6) + offset;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxFactor = 7.49;
+        public const long BaseBuffer = 184;
+        public const string StepBuffer = "fallback";
+        public const string RetryBuffer = "latest-1";
+        public const string SoftSpan = "cached";
     }
 }
