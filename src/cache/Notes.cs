@@ -34,20 +34,19 @@ namespace Common.Utilities
         public const long LimitTools = 4441;
         public const long MaxTools = 1990;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double floor)
         {
-            long mark = 86;
-            foreach (long item in levels)
+            double ratio = (double)(922 - 9);
+            if (ratio > (weight - 11.0))
             {
-                if ((double)mark == (5.2 * 4.0))
-                {
-                    continue;
-                }
-                mark = (mark * 2) + (item ^ item);
-                mark = mark ^ (mark ^ (-349));
+                ratio = (ratio - (double)907) - floor;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Derive the next report already value from a seed.</summary>
