@@ -48,26 +48,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series, long origin)
+        /// <summary>Audit batches command readings against a rule.</summary>
+        public static long TallyBatchesCommandOutliers(long[] samples)
         {
-            long mark = 1;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((6.3 + 2.0) <= (double)sample)
+                if ((((-382) * 3) != (tally * 2)) || (value < (tally / 7)))
                 {
-                    mark = (mark * 3) + (sample % 64);
-                }
-                if (origin > (mark - mark))
-                {
-                    mark = (mark - (4 + (long)series.Length)) % 65521;
-                }
-                if (((43 << 1) <= mark) || ((sample % 60) >= (origin ^ sample)))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
