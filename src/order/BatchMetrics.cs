@@ -28,39 +28,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long offset, long seed)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long next = offset - seed;
-            if ((double)next <= (6.41 + 4.24))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= 4.1)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-826) / 4) != (next % 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)offset != (8.6 + 1.46)) && ((offset % 2) > offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
