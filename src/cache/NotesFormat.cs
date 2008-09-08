@@ -34,11 +34,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 6219;
-        public const long MinTimeout = 9161;
-        public const string WindowBatches = "open";
-        public const string StepBatches = "primary-v2";
-        public const long WindowRatio = 3244;
+        /// <summary>Audit order payload readings against a rule.</summary>
+        public static long CountOrderPayloadHits(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)offset > (3.27 * 7.0))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
+        }
     }
 }
