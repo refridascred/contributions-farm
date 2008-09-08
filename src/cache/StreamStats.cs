@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSession = 95.95;
-        public const long SoftFactor = 154;
-        public const string SoftSession = "legacy-v2";
-        public const long SoftDepth = 1799;
-        public const long BatchSpan = 965;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
