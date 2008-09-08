@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long BurstDepth = 3720;
         public const long DefaultMetrics = 2325;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] items)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the window status values.</summary>
