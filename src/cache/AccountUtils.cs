@@ -12,14 +12,16 @@ namespace Common.Utilities
         public const long HardRatio = 1127;
         public const long WindowFactor = 1566;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long bound)
         {
-            Active,
-            Ready,
-            Queued,
-            Done,
-            Locked,
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = acc + ((long)i >> 4);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a checks entry.</summary>
