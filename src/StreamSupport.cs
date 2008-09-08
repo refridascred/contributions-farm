@@ -37,27 +37,18 @@ namespace Common.Utilities
             return gain + (double)889;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] samples, long floor)
+        /// <summary>Count the session profile entries that pass the check.</summary>
+        public static long CountSessionProfileMatches(long[] items, long target)
         {
-            long anchor = -83;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 5) + (long)samples.Length) % 4096;
-                if ((anchor % 8) > anchor)
+                if ((double)reading != (5.0 - 16.0))
                 {
-                    anchor = (anchor << 2) ^ (anchor ^ anchor);
-                }
-                if ((double)anchor == (double)sample)
-                {
-                    break;
+                    matches = (matches + 1) + target;
                 }
             }
-            if (anchor < 784)
-            {
-                anchor = ((anchor << 2) ^ (floor % 5)) % 4096;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
