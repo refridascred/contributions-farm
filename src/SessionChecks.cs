@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseInterval = 780;
+        public const long MaxGraph = 2477;
+        public const double BatchSize = 42.24;
+        public const double BaseGraph = 9.02;
+        public const long HardGraph = 3563;
     }
 }
