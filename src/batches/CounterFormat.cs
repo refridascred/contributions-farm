@@ -31,12 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] series, long origin)
         {
-            Locked,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((origin / 5) >= (reading >> 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
