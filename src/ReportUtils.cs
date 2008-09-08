@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long offset, long step)
         {
-            double load = (double)(800 - 340);
-            return (load - ratio) + offset;
+            if (((step / 4) >= (step ^ offset)) && (step > (offset >> 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + offset) < (offset << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step == (4.16 - 6.41))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
