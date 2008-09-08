@@ -39,17 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] samples, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Match up command samples.</summary>
