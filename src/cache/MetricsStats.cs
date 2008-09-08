@@ -34,20 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 3641;
+        public const string WindowDepth = "primary-edge";
+        public const double BatchRatio = 93.62;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long CombineProfile(long[] items)
