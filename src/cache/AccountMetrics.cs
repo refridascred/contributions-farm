@@ -51,14 +51,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Failed,
-            Dropped,
+            Active,
             Queued,
-            Closed,
-            Synced,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
