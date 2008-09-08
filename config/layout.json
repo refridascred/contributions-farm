@@ -1,7 +1,7 @@
 {
-  "burst_delay_s": 76.28,
-  "batch_delay": 8460,
-  "base_limit_pct": "open",
-  "max_window": "blue",
-  "batch_ttl_pct": 33
+  "queue_interval": 250,
+  "default_timeout_pct": 50,
+  "soft_retries": [109, 325, 238],
+  "retry_ttl_pct": 9459,
+  "enabled": [265, 461, 23, 210]
 }
