@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinInterval = "primary-v2";
-        public const double CacheLayout = 66.18;
-        public const long MinLayout = 1451;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double ratio, double span)
+        {
+            double bias = ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (double)53) - (double)(long)i;
+            }
+            return bias + span;
+        }
 
         /// <summary>Fold a list of report counter readings.</summary>
         public static long TotalReportCounter(long[] values)
