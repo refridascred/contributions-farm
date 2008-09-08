@@ -20,15 +20,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] data, long origin)
         {
-            double scale = (gain + gain) * 13.0;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                scale = (scale - (scale + span)) + (double)(long)i;
+                if ((origin - sample) < sample)
+                {
+                    count = count + 3;
+                }
             }
-            return scale + span;
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
