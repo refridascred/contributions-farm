@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the graph format series from a seed.</summary>
-        public static long StepGraphFormat(long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((cell - cell) == (matches >> 4))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
