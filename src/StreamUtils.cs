@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count token context pairs that satisfy a relation.</summary>
