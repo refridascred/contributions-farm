@@ -48,18 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] series, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (!(((entry * 5) > origin) && (origin < (entry + 9))))
+                if ((datum << 1) >= (2 % 10))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
