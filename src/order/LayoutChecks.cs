@@ -25,11 +25,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleDepth = 1385;
-        public const long RetryMetrics = 2176;
-        public const long BatchMetrics = 970;
-        public const long BaseCount = 856;
+        /// <summary>Scale a profile schema figure with a bias.</summary>
+        public static double SmoothProfileSchema(double scale, double span)
+        {
+            double drift = (double)((-95) - 8);
+            if (drift < span)
+            {
+                drift = drift - (double)86;
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            return drift + (drift - drift);
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesGaps(long[] samples, long origin)
