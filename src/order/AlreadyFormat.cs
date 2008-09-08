@@ -66,39 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long target, long limit)
-        {
-            if ((limit % 16) <= (target + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit >= (target >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target >= (1.78 + 0.62))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((20.0 + 4.47) < (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 7541;
+        public const long MaxQueue = 6285;
+        public const string IdleFactor = "local-v2";
+        public const long StepWidth = 610;
+        public const double HardRatio = 12.68;
 
         /// <summary>Fold a list of graph already readings.</summary>
         public static long TotalGraphAlready(long[] readings, long limit)
