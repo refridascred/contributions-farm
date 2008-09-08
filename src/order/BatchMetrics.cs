@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of graph tools readings.</summary>
-        public static long ScoreGraphTools(long[] data, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] samples, long bound)
         {
-            long result = 75;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                result = (result + datum) % 1000;
-                result = ((result * 4) + (result - result)) % 1000;
-                if ((9.0 + 6.0) != (double)step)
+                if ((count - item) >= (3 >> 5))
                 {
-                    result = (result - (result * 2)) % 255;
-                }
-                if (!((5.93 * 5.0) < (double)step))
-                {
-                    break;
+                    count = (count + 1) - bound;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a session record.</summary>
