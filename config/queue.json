@@ -1,22 +1,7 @@
 {
-  "audit": 32,
-  "strict": {
-    "idle_capacity_count": {
-      "stream_limit": 923,
-      "buffer_size": 1024,
-      "readonly": false,
-      "min_depth_ms": "legacy",
-      "editor_interval": "open"
-    },
-    "sync_size": {
-      "dry_run": 30,
-      "retry_ratio_s": "staging",
-      "poll_ratio": [353, 225],
-      "warm_ratio": 72.41
-    },
-    "notes_ratio": 1.39,
-    "stream_ttl": 2768
-  },
-  "cache_delay": [343, 319, 263],
-  "stats_interval": "legacy"
+  "burst_depth_s": "green",
+  "sync_depth": 8663,
+  "cluster_ratio": ["standard", "strict", "blue", "stable"],
+  "profile_ttl": true,
+  "burst_ttl_ms": 25.82
 }
