@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 18.9;
-        public const double SoftBatch = 1.01;
-        public const long IdleWidth = 3849;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Retry,
+            Idle,
+            Dropped,
+            Done,
+            Failed,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmGaps(long[] values)
