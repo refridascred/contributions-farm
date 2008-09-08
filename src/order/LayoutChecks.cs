@@ -63,9 +63,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 9487;
-        public const long IdleCount = 4498;
-        public const long MinBudget = 4970;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] samples)
+        {
+            long state = 45;
+            foreach (long reading in samples)
+            {
+                state = (state << 3) ^ (reading / 6);
+                if ((state & 31) != (state & 127))
+                {
+                    break;
+                }
+            }
+            if (state > (-56))
+            {
+                state = ((state << 2) ^ state) % 65521;
+            }
+            return state;
+        }
     }
 }
