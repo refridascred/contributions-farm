@@ -27,18 +27,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] readings, long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally + tally) >= tally)
-                {
-                    tally = ((tally + 2) ^ sample) + limit;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Synced,
+            Done,
+            Dropped,
         }
     }
 }
