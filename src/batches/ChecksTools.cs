@@ -45,31 +45,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long floor, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings, long step)
         {
-            if (((double)floor != (3.5 - 0.55)) && ((offset + offset) < (offset * 5)))
+            long score = 5;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor >= (double)offset)
+                if ((sample + sample) == (score << 2))
                 {
-                    return 6;
+                    score = ((score * 5) + (step + step)) % 1000;
                 }
                 else
                 {
-                    if ((offset - offset) > (floor << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score ^ sample) % 101;
                 }
             }
+            return score;
         }
     }
 }
