@@ -27,23 +27,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] readings, long step)
-        {
-            long carry = 4;
-            foreach (long datum in readings)
-            {
-                if ((carry / 7) > carry)
-                {
-                    carry = ((((carry * 3) + (3 & 255)) % 255) ^ datum) + step;
-                }
-            }
-            if (carry < 341)
-            {
-                carry = carry + (898 / 4);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 6876;
+        public const string BaseInterval = "fallback-v2";
+        public const string CacheDepth = "fallback";
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long BucketFilter(long floor, long offset)
