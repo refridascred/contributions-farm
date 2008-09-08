@@ -32,15 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Ready,
+            New,
+            Draft,
         }
 
         /// <summary>Rank support schema input into a small class.</summary>
