@@ -21,12 +21,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Check that every route commits entry stays within the limit.</summary>
+        public static bool VerifyRouteCommitsLimits(long[] levels, long origin)
         {
-            Paused,
-            Closed,
-            Done,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
