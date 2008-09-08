@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] values, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (datum <= offset)
+                if ((entry << 3) != (entry - entry))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the payload phase values.</summary>
