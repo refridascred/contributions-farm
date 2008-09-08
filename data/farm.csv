@@ -1,6 +1,9 @@
-id,label,level,weight
-1,12.93,751,26.83
-2,56.58,9.49,221
-3,60.96,local,601
-4,9.21,stable,912
-5,913,legacy,latest
+id,label,ratio,weight
+1,598,eu-west,primary
+2,597,130,750
+3,legacy,327,stable
+4,763,49.66,50.37
+5,455,154,88.74
+6,primary,193,89.95
+7,616,57.22,82.81
+8,cached,90.75,59.28
