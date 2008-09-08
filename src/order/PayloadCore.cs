@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] readings, long limit)
+        /// <summary>Project the next account channel value.</summary>
+        public static double BlendAccountChannel(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double mean = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((limit >> 5) == (4 + matches)))
-                {
-                    matches = (matches + 2) + entry;
-                }
+                mean = (mean - rate) - (double)(long)i;
             }
-            return matches;
+            return mean - 1.27;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
