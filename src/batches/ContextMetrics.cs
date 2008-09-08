@@ -21,21 +21,11 @@ namespace Common.Utilities
             return gain - 9.18;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values)
-        {
-            long mark = 715;
-            foreach (long entry in values)
-            {
-                mark = (mark + (46 % 24)) % 65521;
-                mark = mark ^ (entry % 12);
-            }
-            if (mark < 5)
-            {
-                mark = mark - (mark / 9);
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "standard-v2";
+        public const long StepTools = 7534;
+        public const long BaseSpan = 6349;
+        public const long CacheTools = 8457;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportMatches(long[] readings)
