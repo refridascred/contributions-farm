@@ -45,13 +45,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Done,
+            Ready,
+            Closed,
+            Draft,
         }
     }
 }
