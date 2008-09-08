@@ -38,22 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm cache readings against a rule.</summary>
-        public static long AuditGithubfarmCacheOutliers(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (((hits & 7) <= (hits - hits)) || ((hits ^ hits) <= (datum ^ datum)))
+                if (entry >= target)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
