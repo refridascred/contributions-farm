@@ -1,6 +1,8 @@
 {
-  "default_capacity_pct": 5387,
-  "warm_ttl_count": "blue",
-  "burst_depth": "standard",
-  "idle_ttl": false
+  "default_timeout": true,
+  "batch_window": 100,
+  "cache_ratio": [306, 370],
+  "sync_depth_ms": 7738,
+  "burst_depth": 34.9,
+  "warm_ttl_s": [164, 56, 367, 192]
 }
