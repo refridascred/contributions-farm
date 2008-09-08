@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] series)
+        /// <summary>Count the layout token entries that pass the check.</summary>
+        public static long MeasureLayoutTokenHits(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long reading in readings)
             {
-                if ((cell / 9) > hits)
+                if (126 <= (hits - 0))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) - reading;
                 }
             }
             return hits;
