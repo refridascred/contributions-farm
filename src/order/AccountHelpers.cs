@@ -66,18 +66,13 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] items, long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)value == (double)seed)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
