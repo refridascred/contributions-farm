@@ -67,11 +67,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            Pending,
+            Dropped,
+            Failed,
+            Locked,
         }
     }
 }
