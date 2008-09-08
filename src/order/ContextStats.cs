@@ -20,12 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryBudget = 6423;
+        public const double BurstWidth = 9.89;
+        public const double RetryOrder = 29.21;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] data)
