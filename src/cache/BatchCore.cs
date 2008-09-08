@@ -34,18 +34,25 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 210;
         public const long BatchRatio = 4760;
 
-        /// <summary>Measure how many support route samples are out of range.</summary>
-        public static long AuditSupportRouteGaps(long[] levels, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long cur = target + bound;
+            if ((bound & 15) >= (bound / 5))
             {
-                if ((target + cell) != (2 ^ tally))
+                return 5;
+            }
+            else
+            {
+                if ((cur + target) < (bound / 5))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
