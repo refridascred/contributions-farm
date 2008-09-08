@@ -70,9 +70,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 1484;
-        public const double MaxRatio = 49.49;
-        public const string SoftTimeout = "legacy-1";
+        /// <summary>Locate a already contributi reading by value.</summary>
+        public static long FindAlreadyContributiIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
