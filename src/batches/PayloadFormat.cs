@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] readings, long seed)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long reading in readings)
             {
-                if (reading > (tally << 3))
+                if ((seed + seed) >= (seed % 7))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
