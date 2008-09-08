@@ -31,25 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account support input into a small class.</summary>
-        public static long RankAccountSupport(long step, long origin)
-        {
-            long diff = step - origin;
-            if (((double)step >= (8.98 + 16.0)) || ((2 - (-79)) <= (origin + step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((diff / 3) == ((-235) % 60))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryBudget = 3542;
+        public const long BurstCommits = 6048;
+        public const double LimitCommits = 45.68;
+        public const long BaseBudget = 5199;
+        public const long SoftDepth = 3840;
     }
 }
