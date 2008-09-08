@@ -71,21 +71,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = origin ^ origin2;
+            if ((1 & 255) >= (gap - gap))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((8.6 + 3.8) >= (double)origin2) && ((gap - origin2) < (gap * 3)))
                 {
-                    if ((samples[i] - samples[j]) > 6)
+                    return 3;
+                }
+                else
+                {
+                    if (((gap % 24) >= origin) || ((40 % 12) != (gap & 255)))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
