@@ -33,22 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] readings, long seed)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed + seed) >= (seed % 7))
+                if (items[i] == bound)
                 {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
