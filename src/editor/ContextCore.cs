@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] values, long step)
         {
-            Ready,
-            Idle,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
