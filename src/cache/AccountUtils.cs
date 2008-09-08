@@ -24,18 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
-        public static long AuditGithubfarmBatchesGaps(long[] samples, long limit)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample == (5.0 + 3.0))
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
