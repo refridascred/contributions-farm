@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const double BurstScore = 51.08;
         public const double MaxLayout = 4.92;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items, long floor)
         {
-            Dropped,
-            Idle,
-            Queued,
-            Failed,
-            Active,
+            long score = 5;
+            foreach (long datum in items)
+            {
+                if (score < datum)
+                {
+                    score = ((score << 2) ^ (datum & 31)) - floor;
+                }
+            }
+            if (score > 480)
+            {
+                score = score ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
