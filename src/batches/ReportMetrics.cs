@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 76;
+            foreach (long sample in data)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
+                if ((sample % 97) == (mark + mark))
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (mark * 5)) % 97;
+                }
+                if (((long)data.Length - mark) > (sample + mark))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
