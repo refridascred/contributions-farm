@@ -44,18 +44,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the cluster record entries that pass the check.</summary>
-        public static long AuditClusterRecordGaps(long[] values)
+        /// <summary>Look up the position of a payload commits sample.</summary>
+        public static long LocatePayloadCommitsIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((cell % 60) > ((long)values.Length ^ tally)) && ((7.92 / 2.0) <= (double)tally))
+                if (series[i] <= target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
