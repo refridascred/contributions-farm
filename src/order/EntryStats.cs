@@ -19,17 +19,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] levels, long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 47;
+            foreach (long value in data)
             {
-                if (levels[i] < offset)
+                anchor = ((anchor << 3) ^ (origin >> 1)) % 97;
+                if (origin >= value)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 13)
+            {
+                anchor = anchor + ((-3) * 5);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
