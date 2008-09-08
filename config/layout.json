@@ -1,6 +1,6 @@
 {
-  "warm_window_s": 95,
-  "filter_timeout": 500,
-  "warm_threshold_count": 250,
-  "audit": 8802
+  "default_capacity_pct": 5387,
+  "warm_ttl_count": "blue",
+  "burst_depth": "standard",
+  "idle_ttl": false
 }
