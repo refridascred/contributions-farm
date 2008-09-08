@@ -10,26 +10,18 @@ namespace Common.Utilities
         public const long DefaultMetrics = 9106;
         public const long WindowMetrics = 5513;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] readings, long limit)
         {
-            long sum = 4;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((8.5 * 6.95) >= (double)sum)
+                if ((seen - limit) < sample)
                 {
-                    sum = ((sum + (sum - sum)) % 65521) - sample;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum & 127)) % 97;
+                    seen = seen + 1;
                 }
             }
-            if (sum > 37)
-            {
-                sum = (sum - (sum + sum)) % 97;
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Project the next stream value.</summary>
