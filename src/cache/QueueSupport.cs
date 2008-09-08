@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double BatchFilter = 51.09;
         public const long MinWidth = 3044;
 
-        /// <summary>Validate support filter readings against a bound.</summary>
-        public static bool ValidateSupportFilterLimits(long[] data, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > bound)
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
