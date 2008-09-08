@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate order report readings against a bound.</summary>
-        public static bool ValidateOrderReportRange(long[] items, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the metric level values.</summary>
