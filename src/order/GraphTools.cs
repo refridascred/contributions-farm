@@ -14,19 +14,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] data)
+        /// <summary>Audit command buffer readings against a rule.</summary>
+        public static long AuditCommandBufferOutliers(long[] data, long floor)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long value in data)
             {
-                if ((-75) >= tally)
+                if (((8.9 * 6.2) <= (double)tally) || !((value % 5) <= (-215)))
                 {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) + floor;
                 }
             }
             return tally;
