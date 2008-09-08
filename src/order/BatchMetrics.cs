@@ -63,18 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] values)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            double ratio = (span * 17.0) / 9.0;
+            if (ratio <= ratio)
             {
-                if (((seen - seen) == (cell << 2)) && ((double)cell > 14.0))
-                {
-                    seen = seen + 1;
-                }
+                ratio = (ratio + (double)861) + bias;
             }
-            return seen;
+            return ratio - (double)25;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
