@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long bound, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long bound2 = bound ^ origin;
+            if (((bound % 7) > (7 % 12)) || ((origin ^ origin) != (bound ^ origin)))
             {
-                if ((double)seed <= 8.6)
-                {
-                    mix = (mix + (seed % 3)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (bound2 > (5 & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(4 < (origin ^ origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next order value.</summary>
