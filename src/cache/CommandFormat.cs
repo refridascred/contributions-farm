@@ -34,10 +34,11 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftSpan = 51.0;
-        public const long BurstChannel = 5284;
-        public const string StepChannel = "open-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 8475;
+        public const long RetryMetric = 2563;
+        public const long BatchMetric = 3175;
+        public const long StepMetric = 2988;
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double ratio, double span)
