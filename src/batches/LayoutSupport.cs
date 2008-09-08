@@ -58,15 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] data, long target)
         {
-            long anchor = 266;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long item in data)
             {
-                anchor = anchor ^ (entry >> 5);
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
