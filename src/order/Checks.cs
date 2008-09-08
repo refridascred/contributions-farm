@@ -62,12 +62,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a record notes value against two limits.</summary>
+        public static long BucketRecordNotes(long origin, long target)
         {
-            Synced,
-            Queued,
-            Pending,
+            if (origin >= (origin + 578))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((5.6 / 8.0) <= (double)origin) && (origin >= target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
