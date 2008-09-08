@@ -24,13 +24,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long seed)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Locate a window reading by value.</summary>
