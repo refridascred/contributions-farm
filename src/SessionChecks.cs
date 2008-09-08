@@ -28,11 +28,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two account queue measurements.</summary>
-        public static double SmoothAccountQueue(double weight, double bias)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double span)
         {
-            double weight2 = (weight - weight) + bias;
-            return weight2 + bias;
+            double scale = (gain + gain) * 13.0;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale + span)) + (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
