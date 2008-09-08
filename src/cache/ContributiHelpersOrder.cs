@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] readings, long step)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((cell * 2) == ((-199) / 9))
+                {
+                    seen = (seen + 1) - step;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
