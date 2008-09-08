@@ -56,15 +56,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels, long offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long anchor = 355;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor - (offset % 16)) % 97) ^ sample;
-            }
-            return anchor;
+            Done,
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
