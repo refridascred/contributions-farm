@@ -42,17 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = acc ^ (19 - (long)i);
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "stable-edge";
+        public const long DefaultFilter = 9602;
+        public const long MinDepth = 213;
+        public const double StepFilter = 68.49;
+        public const long WindowDepth = 5885;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] items, long limit)
