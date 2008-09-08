@@ -1,17 +1,19 @@
 # entry settings
-dry_run: 51.81
-burst_interval: 94
-hard_threshold: 250
-readonly:
-  metrics_window:
-    - 339
-    - 284
-    - 29
-  max_size_ms: false
-  audit:
-    - cached
-    - open
-  compress: 4447
-  route_timeout: blue
-default_threshold: strict
-sync_ttl_s: 3799
+retry_depth_pct:
+  - standard
+  - cached
+compress:
+  - stable
+  - edge
+  - cached
+  - green
+burst_threshold_ms:
+  - 322
+  - 364
+default_limit_count: 30
+hard_ttl_count:
+  - 314
+  - 72
+stream_interval:
+  - 281
+  - 270
