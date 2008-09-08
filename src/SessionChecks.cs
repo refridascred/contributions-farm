@@ -35,15 +35,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile stream value from a seed.</summary>
-        public static long RollProfileStream(long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long origin, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            if (((-6) * 3) >= origin)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (origin >= (35 >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
