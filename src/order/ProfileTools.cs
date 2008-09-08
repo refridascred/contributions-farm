@@ -32,18 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] values, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long hits = (total % 10) + (total + total);
-                hits = (hits - ((long)i * 2)) % 1000;
-                total = (total - (hits + hits)) % 65521;
-                total = ((total * 4) + (long)i) % 97;
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
