@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string DefaultCounter = "local-edge";
         public const long MaxLevel = 1848;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] items, long bound)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
