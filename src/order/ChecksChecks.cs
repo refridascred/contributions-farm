@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double MaxRatio = 29.14;
         public const long MaxWidth = 6571;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] readings, long seed)
         {
-            Failed,
-            Paused,
-            New,
-            Closed,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (seed > (count >> 2))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools header.</summary>
