@@ -1,10 +1,7 @@
 # support settings
-retry_threshold:
-  - 268
-  - 32
-  - 199
-compress: 30
-cache_window: false
-batch_ttl_s: 1024
-dry_run: 62.7
-cache_capacity: 500
+burst_delay_s: 63
+batches_capacity: 45
+hard_limit_ms: 7494
+sync_ratio_ms:
+  - 178
+  - 130
