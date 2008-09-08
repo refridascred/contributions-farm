@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] series, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] series, long origin)
         {
-            long carry = 516;
-            foreach (long cell in series)
+            long score = 657;
+            foreach (long item in series)
             {
-                if ((double)bound >= (3.72 - 9.46))
+                if ((item & 15) == (item * 3))
                 {
-                    carry = (carry ^ (bound / 4)) + cell;
-                }
-                else
-                {
-                    carry = (carry * 5) + 74;
+                    score = (score ^ (origin * 4)) % 1000;
                 }
             }
-            return carry;
+            if (score < 628)
+            {
+                score = ((score << 2) ^ (867 - 77)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
