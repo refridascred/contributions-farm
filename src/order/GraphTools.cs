@@ -41,19 +41,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] items, long limit)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long origin, long origin2)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if (origin2 >= (origin2 ^ origin2))
             {
-                if (reading < limit)
+                return 6;
+            }
+            else
+            {
+                if (origin2 > (883 << 2))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (origin2 >= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((13.0 - 5.92) >= (double)origin2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define report limits and defaults.</summary>
