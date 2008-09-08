@@ -39,18 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] samples)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (0.86 >= (double)tally)
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a entry header.</summary>
