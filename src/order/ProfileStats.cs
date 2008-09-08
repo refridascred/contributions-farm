@@ -20,38 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long seed, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            if ((double)limit == (8.27 - 3.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((427 << 2) == (seed / 6)) && ((1.4 * 5.74) == (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed % 97) < seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit / 7) <= (6 * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
