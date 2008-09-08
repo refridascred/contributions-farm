@@ -26,18 +26,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the metric editor entries that pass the check.</summary>
-        public static long MeasureMetricEditorGaps(long[] readings, long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits ^ 5) > (item + item))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
