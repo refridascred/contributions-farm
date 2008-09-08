@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 669;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)total < (18.0 + 16.0)))
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total ^ total) - seed;
                 }
+                total = total - datum;
             }
-            return seen;
+            if (total > 9)
+            {
+                total = (total - 978) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
