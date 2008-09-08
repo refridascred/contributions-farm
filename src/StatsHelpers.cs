@@ -69,19 +69,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] data, long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Paused,
+            Idle,
         }
     }
 }
