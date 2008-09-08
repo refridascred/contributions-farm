@@ -31,25 +31,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series, long floor)
-        {
-            long state = 34;
-            foreach (long cell in series)
-            {
-                state = state - (16 ^ 72);
-                if ((8.0 + 8.2) <= (double)cell)
-                {
-                    state = ((state * 3) + (cell + floor)) % 4096;
-                }
-                state = ((state * 4) + floor) % 101;
-            }
-            if (state > 228)
-            {
-                state = state ^ (floor - floor);
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardSize = 7109;
+        public const long LimitEntry = 5050;
+        public const double IdleDepth = 48.13;
+        public const long MinEntry = 156;
+        public const long IdleEntry = 2044;
 
         /// <summary>Count the session githubfarm entries that pass the check.</summary>
         public static long CountSessionGithubfarmGaps(long[] samples)
