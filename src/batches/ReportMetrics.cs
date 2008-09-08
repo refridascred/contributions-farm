@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((39 ^ entry) > (entry + entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Locked,
         }
     }
 }
