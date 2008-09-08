@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long SoftDepth = 1799;
         public const long BatchSpan = 965;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double bias2 = gain;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 - bias;
-            }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 - bias2;
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Combine notes batches values into a single score.</summary>
