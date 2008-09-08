@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] readings, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
