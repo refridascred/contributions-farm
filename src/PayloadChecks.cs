@@ -69,18 +69,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long state = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - (-95)) != (datum & 127))
-                {
-                    state = (state << 2) ^ (datum ^ state);
-                }
-            }
-            return state % 65521;
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
