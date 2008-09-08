@@ -20,10 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryBudget = 6423;
-        public const double BurstWidth = 9.89;
-        public const double RetryOrder = 29.21;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] data)
