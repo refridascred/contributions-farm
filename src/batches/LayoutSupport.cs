@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((value - (long)items.Length) != (tally + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Failed,
+            Draft,
+            Synced,
+            Retry,
+            Locked,
         }
 
         /// <summary>Locate a token reading by value.</summary>
