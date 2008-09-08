@@ -1,11 +1,9 @@
 # entry settings
-compress:
-  - 245
-  - 138
-  - 319
-  - 447
-soft_ratio_pct: 59.56
-soft_interval: true
-queue_interval: 60
-strict: true
-route_threshold: 8123
+flush_size: open
+enabled: 79.36
+sync_depth_count: 5108
+queue_capacity:
+  - 58
+  - 300
+  - 26
+  - 195
