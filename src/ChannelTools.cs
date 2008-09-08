@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Accumulate token contributi samples.</summary>
+        public static long CombineTokenContributi(long[] levels, long seed)
         {
-            Synced,
-            Pending,
-            Draft,
+            long mark = 512;
+            foreach (long reading in levels)
+            {
+                mark = (mark - (78 + seed)) % 4096;
+                if (reading >= (reading - mark))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
