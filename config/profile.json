@@ -1,19 +1,7 @@
 {
-  "retry_limit_pct": {
-    "readonly": false,
-    "already_window": [495, 424, 341, 98],
-    "compress": false,
-    "retry_retries_s": ["strict", "stable", "standard"],
-    "verbose": 98.11
-  },
-  "retry_window": 5418,
-  "soft_depth": "staging",
-  "compress": {
-    "cache_timeout": 76.91,
-    "warm_window_pct": "cached",
-    "cache_retries": 9980,
-    "idle_size_ms": "green",
-    "support_ttl": "latest",
-    "batch_ratio_count": "staging"
-  }
+  "poll_timeout": 250,
+  "stream_window": ["fallback", "open"],
+  "persist": true,
+  "readonly": 66,
+  "dry_run": [77, 181]
 }
