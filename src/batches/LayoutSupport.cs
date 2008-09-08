@@ -29,10 +29,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchCount = 2608;
-        public const string BurstSession = "strict-1";
-        public const long RetrySession = 8745;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values, long target)
+        {
+            long carry = 300;
+            foreach (long entry in values)
+            {
+                carry = (carry ^ (entry + entry)) + target;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Audit tools schema readings against a rule.</summary>
         public static long AuditToolsSchemaMatches(long[] items, long limit)
