@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] samples)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            if (!((offset - floor) <= floor))
             {
-                if ((reading - seen) != (reading + 66))
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) != (offset / 2))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset != (9.0 + 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first stream farm entry that matches the target.</summary>
