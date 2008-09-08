@@ -37,9 +37,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleRatio = 2918;
-        public const long IdleInterval = 7599;
-        public const double WindowSize = 30.23;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long limit, long seed)
+        {
+            if ((double)limit < (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed * 4) != (seed + (-4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
