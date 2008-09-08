@@ -28,11 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double scale, double floor)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            double bias = 1.96;
+            if (bias <= (scale - floor))
+            {
+                bias = bias + (scale * 1.93);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - floor;
         }
     }
 }
