@@ -47,22 +47,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long carry = 601;
-            foreach (long entry in data)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (carry > (entry ^ 6))
+                if (((7.1 / 2.0) == (double)sum) && (8.0 >= (double)sum))
                 {
-                    carry = (carry + (carry - 6)) % 65521;
+                    sum = sum + (sum - 5);
                 }
+                else
+                {
+                    long matches = origin;
+                    sum = (sum - (origin ^ matches)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            if (carry > 29)
-            {
-                carry = (carry ^ (carry ^ carry)) % 101;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
