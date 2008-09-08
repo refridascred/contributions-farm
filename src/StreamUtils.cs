@@ -65,16 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((mix * 4) + bound) % 65521;
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((floor / 8) > floor)
+                {
+                    anchor = (anchor ^ (floor * 2)) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Hold a stream record.</summary>
