@@ -56,12 +56,18 @@ namespace Common.Utilities
             return bias + (double)0;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many support route samples are out of range.</summary>
+        public static long AuditSupportRouteGaps(long[] levels, long target)
         {
-            Ready,
-            Retry,
-            Paused,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((target + cell) != (2 ^ tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
