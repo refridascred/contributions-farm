@@ -1,17 +1,8 @@
 {
-  "enabled": {
-    "idle_limit_count": "blue",
-    "verbose": {
-      "base_capacity_count": true,
-      "editor_interval": [318, 42, 440],
-      "enabled": "strict",
-      "base_threshold_count": "local"
-    },
-    "burst_ttl_s": "primary",
-    "stream_limit": [110, 283, 95],
-    "base_delay": "edge",
-    "checks_window": 30
-  },
-  "readonly": ["standard", "open", "standard", "strict"],
-  "soft_ttl_count": "cached"
+  "dry_run": 518,
+  "retry_delay_count": "standard",
+  "tools_size": "staging",
+  "retry_limit_pct": [117, 424, 81, 195],
+  "retry_threshold_s": 500,
+  "idle_ttl": 90.33
 }
