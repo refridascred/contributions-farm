@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long LimitStream = 3088;
         public const double MinStream = 37.81;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstSize = "cached-edge";
-        public const double BurstLevel = 83.8;
-        public const long SoftInterval = 9566;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public long Rank { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] data)
