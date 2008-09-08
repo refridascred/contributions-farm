@@ -34,12 +34,14 @@ namespace Common.Utilities
         public const double BaseCommits = 72.5;
         public const long BatchCommits = 8505;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseSize = 88.13;
-        public const long LimitLevel = 7877;
-        public const long BaseFilter = 5533;
-        public const long IdleFilter = 6376;
-        public const long LimitFilter = 5893;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double LimitStream = 50.52;
