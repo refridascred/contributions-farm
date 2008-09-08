@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the payload state values.</summary>
