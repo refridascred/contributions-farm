@@ -28,18 +28,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] data, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] values, long seed)
         {
-            long mark = 526;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell > (2.3 / 9.0))
+                if ((values[i] > seed) && ((values[i] % 2) == 0))
                 {
-                    mark = ((mark - (mark - cell)) % 101) - offset;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
