@@ -69,17 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a already contributi reading by value.</summary>
-        public static long FindAlreadyContributiIndex(long[] values, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Locked,
+            Synced,
         }
     }
 }
