@@ -72,21 +72,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up buffer metrics samples.</summary>
-        public static long MatchBufferMetricsCount(long[] data)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Failed,
+            Dropped,
+            Active,
         }
     }
 }
