@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] values)
-        {
-            long anchor = 4;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor + 613) % 65521) + entry;
-                anchor = (anchor - (anchor * 4)) % 65521;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 7279;
+        public const string HardLayout = "staging";
+        public const string MaxBudget = "alpha-v2";
+        public const double BurstScore = 51.08;
+        public const double MaxLayout = 4.92;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
