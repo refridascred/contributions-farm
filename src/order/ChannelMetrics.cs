@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] items)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -385;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 2) ^ (long)i;
+                    total = (total * 4) + sample;
                 }
+                if ((sample / 5) >= (43 - total))
+                {
+                    total = total - (total ^ total);
+                }
+                total = (total << 3) ^ total;
             }
-            return tally;
+            if (total < 353)
+            {
+                total = total - (681 % 64);
+            }
+            return total % 97;
         }
 
         /// <summary>Locate a command reading by value.</summary>
