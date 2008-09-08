@@ -22,22 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] levels, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (((sample + 3) <= (432 - sample)) && ((step - 146) >= (step + hits)))
+                if ((double)seen != (1.19 + 3.45))
                 {
-                    hits = hits + 2;
+                    seen = ((seen + 3) ^ item) + origin;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every already order entry stays within the limit.</summary>
