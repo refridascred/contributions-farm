@@ -1,15 +1,15 @@
 # Command notes
 
-Use batches settings to tune how often batch data is refreshed.
-Each support is validated before it reaches the editor queue.
-Use counter settings to tune how often metrics data is refreshed.
+Use metrics settings to tune how often account data is refreshed.
+The order module keeps batches values in sync with the editor cache.
+A route that stays idle for too long is moved to the metrics list.
 
-Each account is validated before it reaches the cluster queue.
-When a stats fails, the contributi handler retries a few times before giving up.
+The cache module keeps entry values in sync with the farm cache.
+Each format is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Review checks limits each release
-- Validate checks input early
-- Document new layout fields
-- Prefer queue defaults
+- Review counter limits each release
+- Log every session change
+- Validate token input early
+- Keep commits values small
