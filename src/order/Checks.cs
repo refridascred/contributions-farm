@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] levels, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long score = 790;
-            foreach (long sample in levels)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score + (seed * 2)) % 97) ^ sample;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (score < 0)
-            {
-                score = (score - (seed + seed)) % 4096;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
