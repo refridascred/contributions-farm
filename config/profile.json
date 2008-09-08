@@ -1,7 +1,7 @@
 {
-  "base_timeout_ms": 912,
-  "retry_capacity": 72,
-  "retry_capacity_s": 2958,
-  "report_interval": "fallback",
-  "flush_delay": "stable"
+  "min_ttl": 26,
+  "sync_ratio_s": true,
+  "record_ttl": 3779,
+  "route_timeout": "edge",
+  "farm_interval": 93
 }
