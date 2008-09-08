@@ -20,12 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Derive the next context graph value from a seed.</summary>
+        public static long RollContextGraph(long limit)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry - (long)i) % 1000;
+                carry = (carry * 5) + (limit << 2);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
