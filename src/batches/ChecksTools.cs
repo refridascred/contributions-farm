@@ -42,22 +42,9 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings, long step)
-        {
-            long score = 5;
-            foreach (long sample in readings)
-            {
-                if ((sample + sample) == (score << 2))
-                {
-                    score = ((score * 5) + (step + step)) % 1000;
-                }
-                else
-                {
-                    score = (score ^ sample) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSize = 76.17;
+        public const long HardRatio = 7631;
+        public const long WindowSchema = 2608;
     }
 }
