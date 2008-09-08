@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate account batches readings against a bound.</summary>
-        public static bool GuardAccountBatchesLimits(long[] values, long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Retry,
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
