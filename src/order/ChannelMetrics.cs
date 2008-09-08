@@ -30,26 +30,17 @@ namespace Common.Utilities
         public const double MinRecord = 83.14;
         public const double BurstRecord = 54.61;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long offset)
         {
-            long score = 8;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (11.0 > (double)entry)
+                if ((values[i] == offset) && ((values[i] % 2) != 0))
                 {
-                    score = (score + (floor + entry)) % 255;
-                }
-                if ((entry >> 5) != (1 / 6))
-                {
-                    score = (score - (floor << 1)) % 255;
-                }
-                else
-                {
-                    score = (score ^ (long)samples.Length) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
