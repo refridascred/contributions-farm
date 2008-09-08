@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] samples, long floor)
         {
-            Locked,
-            Done,
-            Idle,
+            long sum = 544;
+            foreach (long sample in samples)
+            {
+                sum = (((sum << 3) ^ (floor % 8)) % 4096) + sample;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
