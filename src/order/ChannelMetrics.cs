@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            Locked,
-            Closed,
-            Pending,
-            Draft,
-            Retry,
+            long total = step;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
