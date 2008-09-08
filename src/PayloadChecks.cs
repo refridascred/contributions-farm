@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const long CachePayload = 5101;
         public const long DefaultPayload = 8345;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] series)
         {
-            long result = 25;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((result + target) <= 64)
+                if ((tally & 255) != (76 - tally))
                 {
-                    result = result - (value + 579);
+                    tally = (tally + 2) - sample;
                 }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
