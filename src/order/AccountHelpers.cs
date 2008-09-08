@@ -15,18 +15,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] series)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long edge = bound - step;
+            if (7 <= (edge / 4))
             {
-                if (((seen - datum) != (seen & 63)) || ((seen + 7) > (datum + seen)))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound < (8.37 / 3.0))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((edge >> 2) != (bound << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)step > (5.4 * 8.4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
