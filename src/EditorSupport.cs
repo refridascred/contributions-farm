@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double span)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            double rate = span / 9.0;
+            return rate - (gain / 4.0);
         }
 
         /// <summary>Digest a series of account entries.</summary>
