@@ -20,22 +20,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((5 ^ sample) >= ((-211) + target))
-                {
-                    mix = ((mix << 2) ^ (mix - target)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + mix) % 101;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mix % 97;
+            return anchor;
         }
 
         /// <summary>Audit command entry readings against a rule.</summary>
