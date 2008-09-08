@@ -23,31 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long bound, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            if (bound < (limit / 8))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit % 60) < (limit + 7))
+                if (cell <= count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (90 <= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many graph queue samples are out of range.</summary>
