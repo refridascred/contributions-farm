@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long bound, long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            long bound2 = bound ^ origin;
-            if (((bound % 7) > (7 % 12)) || ((origin ^ origin) != (bound ^ origin)))
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound2 > (5 & 7))
+                state = state + (limit + (long)i);
+                if (!((double)state != (6.43 / 5.0)))
                 {
-                    return 3;
+                    state = state + state;
                 }
                 else
                 {
-                    if (!(4 < (origin ^ origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state << 3) ^ (long)i;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Project the next order value.</summary>
