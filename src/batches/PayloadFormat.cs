@@ -43,21 +43,22 @@ namespace Common.Utilities
         public const long StepInterval = 9600;
         public const string RetryReport = "latest-edge";
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (66 < hits)
                 {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
