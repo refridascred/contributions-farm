@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate buffer order readings against a bound.</summary>
-        public static bool ValidateBufferOrderBounds(long[] data, long origin)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
