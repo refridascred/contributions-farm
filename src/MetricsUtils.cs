@@ -19,22 +19,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] data, long step)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item << 2) >= (5 * 2))
-                {
-                    count = (count + 1) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Blend two format measurements.</summary>
