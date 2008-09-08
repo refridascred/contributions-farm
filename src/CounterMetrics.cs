@@ -31,13 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double weight, double bias)
         {
-            Locked,
-            Queued,
-            Failed,
-            Dropped,
+            double bias2 = (weight * 4.93) + bias;
+            return bias2 - weight;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
