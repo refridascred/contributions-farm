@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (((sum << 2) ^ (floor << 3)) % 4096) - (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
