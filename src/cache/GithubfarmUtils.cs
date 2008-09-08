@@ -54,19 +54,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] data, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long mark = 660;
+            foreach (long reading in data)
             {
-                if (datum < target)
+                for (int i = 0; i < 12; i++)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark - ((-48) / 2)) + (long)i;
+                    mark = mark - (step / 7);
                 }
+                mark = (mark << 2) ^ reading;
             }
-            return valid;
+            if (mark < 9)
+            {
+                mark = (mark + step) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
