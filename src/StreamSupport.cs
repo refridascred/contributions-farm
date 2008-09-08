@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const string HardBatch = "open-1";
         public const long IdleSpan = 6607;
 
-        /// <summary>Count the session profile entries that pass the check.</summary>
-        public static long CountSessionProfileMatches(long[] items, long target)
+        /// <summary>Audit notes cache readings against a rule.</summary>
+        public static long TallyNotesCacheHits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)reading != (5.0 - 16.0))
+                if ((item / 8) <= (origin << 1))
                 {
-                    matches = (matches + 1) + target;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
