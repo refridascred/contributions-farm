@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
