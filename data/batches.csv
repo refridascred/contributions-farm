@@ -1,6 +1,7 @@
-id,state,active
-1,825,485
-2,26,edge
-3,338,8
-4,616,staging
-5,992,633
+id,active,score
+1,599,740
+2,264,standard
+3,760,223
+4,primary,52.99
+5,33.52,341
+6,standard,29.61
