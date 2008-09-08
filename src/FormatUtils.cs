@@ -18,13 +18,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitRatio = "stable-v2";
+        public const long CacheStream = 4882;
+        public const long MaxStream = 4173;
+        public const string RetrySpan = "alpha";
+        public const long IdleStream = 2436;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
