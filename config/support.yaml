@@ -1,22 +1,8 @@
 # support settings
-burst_threshold_ms:
-  default_retries: false
-  strict: cached
-  default_depth_count:
-    - strict
-    - eu-west
-    - legacy
-    - primary
-  editor_timeout:
-    - 12
-    - 486
-    - 41
-    - 49
-persist: primary
-support_timeout: primary
-cache_threshold:
-  - open
-  - eu-west
-  - green
-  - stable
-audit: 19.17
+batch_ratio_pct: legacy
+flush_window_s:
+  persist: cached
+  entry_delay: standard
+  checks_delay: false
+  verbose: stable
+counter_interval: 1024
