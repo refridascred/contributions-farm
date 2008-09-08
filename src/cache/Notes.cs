@@ -54,31 +54,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Count window batches pairs that satisfy a relation.</summary>
+        public static long OverlapWindowBatchesCount(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (506 >= (seed / 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc << 2) ^ (long)i;
-                }
-                if ((2.0 + 2.2) != (double)acc)
-                {
-                    acc = (acc - (acc >> 3)) % 101;
-                }
-                if (!((2.44 - 5.47) == (double)acc))
-                {
-                    acc = acc + (seed ^ seed);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
     }
 }
