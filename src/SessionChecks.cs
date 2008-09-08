@@ -19,18 +19,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] series, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (4.14 > (double)seed)
+                if ((double)limit == (double)count)
                 {
-                    tally = (tally + 3) - item;
+                    count = (count + 1) - datum;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two account queue measurements.</summary>
