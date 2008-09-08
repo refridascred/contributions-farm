@@ -1,15 +1,11 @@
 # Command notes
 
-The notes module keeps schema values in sync with the metrics cache.
-Each record is validated before it reaches the metrics queue.
-Keep editor and cluster names short and lowercase.
-
-When a cache fails, the cluster handler retries a few times before giving up.
-Defaults for profile live in the config folder and can be overridden per environment.
-Defaults for schema live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the record list.
+Keep tools and metrics names short and lowercase.
+Each context is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Review channel limits each release
-- Keep metric values small
-- Validate payload input early
+- Prefer already defaults
+- Log every order change
+- Validate account input early
