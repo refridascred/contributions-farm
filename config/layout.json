@@ -1,13 +1,5 @@
 {
-  "enabled": {
-    "queue_depth": 9,
-    "queue_retries": 39.04,
-    "min_size": 3212,
-    "poll_ttl_pct": 42.07,
-    "compress": false
-  },
-  "sync_capacity": true,
-  "burst_delay_ms": 60,
-  "cache_size": [242, 456],
-  "max_limit_count": 30
+  "support_limit": [449, 127, 128],
+  "cache_interval_count": false,
+  "enabled": false
 }
