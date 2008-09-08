@@ -66,22 +66,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile schema entries that pass the check.</summary>
-        public static long MeasureProfileSchemaHits(long[] values)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long target, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            if ((limit % 16) <= (target + limit))
             {
-                if ((datum > (datum - datum)) || (((datum - 8) == (tally - 776)) && ((datum - (-151)) < (datum << 3))))
+                return 8;
+            }
+            else
+            {
+                if (limit >= (target >> 4))
                 {
-                    tally = tally + 3;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)target >= (1.78 + 0.62))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((20.0 + 4.47) < (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of graph already readings.</summary>
