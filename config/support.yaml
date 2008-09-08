@@ -1,25 +1,10 @@
 # support settings
-layout_size: false
-stream_ttl: 60.15
-retry_ratio_s:
-  batches_limit:
-    - 313
-    - 221
-    - 371
-  idle_ttl_count:
-    retry_limit_count: fallback
-    poll_retries_pct: 1890
-    soft_size_count: false
-    poll_ratio_pct:
-      - 384
-      - 343
-      - 243
-    batch_ratio_ms: eu-west
-    filter_ttl: 3479
-  cache_retries: 9014
-  batch_depth: cached
-  queue_limit: true
-burst_delay:
-  - 41
-  - 183
-  - 395
+audit: staging
+cache_interval: stable
+farm_ttl: 2270
+cache_size_pct: 8539
+readonly: stable
+persist:
+  - open
+  - latest
+  - legacy
