@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "strict-1";
-        public const long BatchStream = 6377;
-        public const string DefaultSpan = "legacy";
+        /// <summary>Project the next order record value.</summary>
+        public static double ScaleOrderRecord(double rate, double bias)
+        {
+            double mean = bias / 4.0;
+            if (mean <= bias)
+            {
+                mean = (mean + (mean * 9.7)) - rate;
+            }
+            return mean + (double)(-86);
+        }
 
         /// <summary>Count the editor format entries that pass the check.</summary>
         public static long TallyEditorFormatGaps(long[] levels, long seed)
