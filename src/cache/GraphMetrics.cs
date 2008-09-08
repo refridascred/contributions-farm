@@ -33,13 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 4527;
+        public const long BaseSession = 6874;
+        public const string CacheRatio = "alpha";
+        public const long BaseLevel = 2971;
+        public const long IdleScore = 7529;
 
         /// <summary>Validate schema route readings against a bound.</summary>
         public static bool CheckSchemaRouteRange(long[] values, long origin)
