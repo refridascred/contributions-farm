@@ -1,5 +1,7 @@
 {
-  "poll_ttl": 500,
-  "warm_interval": 17,
-  "strict": 60
+  "flush_ttl_ms": [364, 154, 67, 235],
+  "strict": 16.34,
+  "audit": 20.13,
+  "min_window_s": 2023,
+  "record_limit": 2293
 }
