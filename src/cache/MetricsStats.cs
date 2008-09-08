@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double gain, double offset)
         {
-            Active,
-            Failed,
-            Paused,
-            Dropped,
-            Closed,
+            double rate = gain;
+            return rate + (offset * 6.4);
         }
 
         /// <summary>Find the first token layout entry that matches the target.</summary>
