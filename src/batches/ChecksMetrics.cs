@@ -64,21 +64,18 @@ namespace Common.Utilities
             return rate - (rate * 6.64);
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 6;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (2.0 > (double)score)
                 {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    score = (((score - (1 >> 4)) % 65521) ^ reading) - seed;
                 }
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
