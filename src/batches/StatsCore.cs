@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryLevel = 6417;
-        public const double LimitCache = 95.88;
-        public const double BurstCache = 23.27;
-        public const string WindowSize = "local-1";
-        public const long CacheDepth = 5568;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Ready,
+            Closed,
+            New,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] items)
