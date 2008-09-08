@@ -1,7 +1,6 @@
 {
-  "retry_timeout": 442,
-  "warm_limit_pct": 60,
-  "compress": [384, 19, 497],
-  "contributi_capacity": false,
-  "hard_interval_s": 6225
+  "max_window": 2858,
+  "account_ratio": 97.61,
+  "cache_depth": 69.7,
+  "min_size": "open"
 }
