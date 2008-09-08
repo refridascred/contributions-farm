@@ -24,19 +24,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] values, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (cell > limit)
+                if (count < (95 ^ sample))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
