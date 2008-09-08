@@ -39,13 +39,24 @@ namespace Common.Utilities
             return drift + (double)32;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long target, long bound)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            if (!(bound <= (target & 255)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.4 * 5.4) > 8.7)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the commits kind values.</summary>
