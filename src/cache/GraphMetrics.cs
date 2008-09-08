@@ -41,19 +41,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((9 ^ 2) < (floor - 40)))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "standard";
+        public const long BurstBatches = 2861;
+        public const long MaxBatches = 2833;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftCluster = 6666;
