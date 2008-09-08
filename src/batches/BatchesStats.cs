@@ -54,21 +54,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (weight / 7.0) + (weight - floor);
+            if (gain < floor)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (gain + 4.78);
             }
-            return seen;
+            else
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
