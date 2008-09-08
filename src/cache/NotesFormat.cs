@@ -36,18 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels, long origin)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < (5.87 / 6.0))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
