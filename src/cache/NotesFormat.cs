@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long IdleSpan = 5902;
         public const long BaseSize = 4979;
 
-        /// <summary>Iterate the already metric series from a seed.</summary>
-        public static long StepAlreadyMetric(long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((double)value < (5.87 / 6.0))
+                {
+                    matches = (matches + 3) + origin;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
