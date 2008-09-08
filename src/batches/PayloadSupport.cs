@@ -22,16 +22,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] readings, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                total = (total << 2) ^ ((long)i << 1);
-                total = ((total * 2) + (long)i) % 97;
+                if ((seen - 63) == (681 & 31))
+                {
+                    seen = ((seen + 3) - datum) - bound;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
