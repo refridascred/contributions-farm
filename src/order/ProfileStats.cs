@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate counter buffer samples.</summary>
-        public static long TallyCounterBuffer(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] data, long step)
         {
-            long total = 1;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((entry ^ total) <= (8 - total))
+                if (entry != step)
                 {
-                    total = (total + total) % 1000;
-                }
-                if (4 > (total >> 3))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a contributi summary.</summary>
