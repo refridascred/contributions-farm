@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            New,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleSpan = 8257;
+        public const long StepFactor = 5085;
+        public const double DefaultDepth = 59.67;
+        public const string MinCount = "strict-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheFilter = 137;
