@@ -20,16 +20,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardInterval = "local-1";
+        public const long MinScore = 2353;
+        public const long SoftBudget = 2076;
+        public const long WindowOrder = 289;
 
         /// <summary>Audit command entry readings against a rule.</summary>
         public static long CountCommandEntryMatches(long[] samples)
