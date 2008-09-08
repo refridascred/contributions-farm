@@ -47,17 +47,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] series, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 86;
+            foreach (long item in levels)
             {
-                if (series[i] >= floor)
+                if ((double)mark == (5.2 * 4.0))
                 {
-                    return (long)i;
+                    continue;
                 }
+                mark = (mark * 2) + (item ^ item);
+                mark = mark ^ (mark ^ (-349));
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine context values into a single score.</summary>
