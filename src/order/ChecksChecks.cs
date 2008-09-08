@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 6355;
-        public const string DefaultInterval = "fallback-edge";
-        public const long HardScore = 5025;
-        public const string BaseBudget = "staging-1";
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Failed,
+            Paused,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueOutliers(long[] items, long seed)
