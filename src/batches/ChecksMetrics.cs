@@ -49,15 +49,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Look up the position of a tools session sample.</summary>
+        public static long SeekToolsSessionIndex(long[] readings, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a tools record.</summary>
