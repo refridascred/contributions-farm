@@ -22,12 +22,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Look up the position of a layout tools sample.</summary>
