@@ -99,12 +99,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Draft,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "latest-v2";
+        public const long LimitSize = 2247;
+        public const long BatchWindow = 7861;
+        public const long CacheWindow = 7040;
     }
 }
