@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] samples, long offset)
         {
-            New,
-            Draft,
-            Synced,
-            Failed,
-            Queued,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample & 63) > (tally + (long)samples.Length))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
