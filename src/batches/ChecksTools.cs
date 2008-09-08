@@ -30,10 +30,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 6876;
-        public const string BaseInterval = "fallback-v2";
-        public const string CacheDepth = "fallback";
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] values, long target)
+        {
+            long mix = 8;
+            foreach (long item in values)
+            {
+                mix = (((mix - ((long)values.Length << 1)) % 255) ^ item) - target;
+            }
+            if (mix > 413)
+            {
+                mix = (mix + (221 * 4)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long BucketFilter(long floor, long offset)
