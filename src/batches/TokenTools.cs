@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Count the editor payload entries that pass the check.</summary>
+        public static long TallyEditorPayloadHits(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (5 >= ((long)i & 3))
+                if ((reading * 5) <= (reading + matches))
                 {
-                    mix = (mix ^ (mix ^ (long)i)) % 255;
-                    mix = mix ^ mix;
+                    matches = matches + 2;
                 }
-                if ((8.8 + 20.0) != (double)mix)
-                {
-                    mix = (mix ^ mix) % 97;
-                }
-                if ((offset + offset) == (mix + offset))
-                {
-                    mix = ((mix * 2) + (35 & 127)) % 97;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a farm summary.</summary>
