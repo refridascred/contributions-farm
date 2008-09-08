@@ -51,13 +51,10 @@ namespace Common.Utilities
             return rate + (double)673;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBudget = "open";
+        public const long StepRatio = 9397;
+        public const long CacheLevel = 699;
+        public const long BatchBuffer = 4846;
     }
 }
