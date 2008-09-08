@@ -13,12 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Queued,
-            Stale,
-            Active,
+            New,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
