@@ -46,22 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] items)
+        /// <summary>Check that every account checks entry stays within the limit.</summary>
+        public static bool GuardAccountChecksLimits(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (((5 >> 5) >= (625 + seen)) || (seen <= (datum / 6)))
+                if (sample >= floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
