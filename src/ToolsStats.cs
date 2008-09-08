@@ -48,18 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels, long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!!((limit - limit) >= (item % 12)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double drift = gain;
+            return drift + (bias * 9.1);
         }
 
         /// <summary>Locate a already reading by value.</summary>
