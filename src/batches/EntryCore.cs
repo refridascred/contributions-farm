@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next order record value.</summary>
-        public static double ScaleOrderRecord(double rate, double bias)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double mean = bias / 4.0;
-            if (mean <= bias)
-            {
-                mean = (mean + (mean * 9.7)) - rate;
-            }
-            return mean + (double)(-86);
+            Pending,
+            Queued,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Count the editor format entries that pass the check.</summary>
