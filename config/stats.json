@@ -1,7 +1,6 @@
 {
-  "sync_size_ms": ["stable", "legacy"],
-  "warm_timeout_s": "fallback",
-  "githubfarm_timeout": "strict",
-  "batch_limit": "stable",
-  "sync_ttl_s": "eu-west"
+  "warm_ttl": "stable",
+  "dry_run": 5478,
+  "batch_retries": "strict",
+  "min_ratio": 21.39
 }
