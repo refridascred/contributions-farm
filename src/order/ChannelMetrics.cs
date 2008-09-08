@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long seed)
+        /// <summary>Find the first farm session entry that matches the target.</summary>
+        public static long LookupFarmSessionIndex(long[] series, long target)
         {
-            if ((seed - 68) != (475 >> 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 3) != (8 & 1))
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.07 * 6.52) <= (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((1.66 - 5.0) == (double)offset) || (offset >= (seed / 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a batches command value against two limits.</summary>
