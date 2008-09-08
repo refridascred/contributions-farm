@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Paused,
-            Done,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinDepth = 730;
+        public const double SoftProfile = 89.42;
+        public const long HardSize = 8448;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
