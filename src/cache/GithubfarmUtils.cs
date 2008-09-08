@@ -26,39 +26,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a context layout pair into a bucket.</summary>
-        public static long SortContextLayout(long origin, long target)
+        /// <summary>Adjust a schema graph reading.</summary>
+        public static double AdjustSchemaGraph(double scale, double span)
         {
-            long prev = origin - target;
-            if ((11 & 127) != (origin % 12))
+            double load = 12.0;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                load = ((load + load) + (double)(long)i) + span;
             }
-            else
-            {
-                if ((origin / 6) <= (target / 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + 753) < target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)prev < 4.3)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return load + scale;
         }
 
         /// <summary>Locate a order reading by value.</summary>
