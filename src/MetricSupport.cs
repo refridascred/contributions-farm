@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long HardCount = 6166;
         public const long BurstEditor = 914;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] data, long target)
+        /// <summary>Combine record cluster values into a single score.</summary>
+        public static long FoldRecordCluster(long[] data)
         {
-            long seen = 0;
+            long total = 181;
             foreach (long datum in data)
             {
-                if (!!((2.68 / 6.0) < (double)seen))
+                if ((datum + total) == (total << 2))
                 {
-                    seen = ((seen + 1) - datum) - target;
+                    total = (total - 857) % 1000;
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Accumulate route samples.</summary>
