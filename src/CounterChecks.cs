@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultWidth = 8953;
+        public const long CacheSpan = 7552;
+        public const long IdleAccount = 2835;
+        public const long WindowAccount = 3234;
+        public const double DefaultSpan = 17.08;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
