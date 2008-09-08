@@ -55,18 +55,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] levels, long origin)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((8 % 3) > seen))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = ((seen + 2) + item) - origin;
+                    long cur = (step * 4) >> 2;
+                    score = ((score - (cur + score)) % 97) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Accumulate notes profile samples.</summary>
