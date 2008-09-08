@@ -24,11 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchSpan = 5670;
-        public const long DefaultFilter = 2348;
-        public const double BurstTimeout = 57.54;
-        public const string BatchScore = "staging-v2";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((limit + cell) < (tally ^ limit))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
