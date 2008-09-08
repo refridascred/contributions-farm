@@ -32,19 +32,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings, long limit)
+        /// <summary>Roll a route entry counter forward.</summary>
+        public static long DeriveRouteEntry(long bound)
         {
-            long score = 7;
-            foreach (long value in readings)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score - (value >> 2)) % 255) - limit;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            if (score > 8)
-            {
-                score = (score - (6 >> 5)) % 1000;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
