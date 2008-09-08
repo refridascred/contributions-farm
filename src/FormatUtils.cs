@@ -47,13 +47,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Done,
-            Idle,
+            Stale,
             Locked,
-            Retry,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
