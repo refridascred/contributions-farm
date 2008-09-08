@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of account stream entries.</summary>
-        public static long CombineAccountStream(long[] readings)
-        {
-            long carry = 55;
-            foreach (long item in readings)
-            {
-                carry = (carry ^ (item >> 5)) % 97;
-                if ((carry - 0) >= (carry - item))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (item + carry)) % 1000;
-                    carry = (carry + (item * 3)) % 4096;
-                }
-                if ((carry % 100) >= 98)
-                {
-                    carry = (carry ^ (carry + carry)) % 255;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryLevel = 6417;
+        public const double LimitCache = 95.88;
+        public const double BurstCache = 23.27;
+        public const string WindowSize = "local-1";
+        public const long CacheDepth = 5568;
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] items)
