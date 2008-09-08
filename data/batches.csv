@@ -1,6 +1,11 @@
-id,owner,count,label
-1,stable,30.53,702
-2,fallback,75.69,222
-3,blue,689,369
-4,blue,staging,open
-5,local,776,265
+id,label,ratio,weight
+1,primary,671,195
+2,95.79,fallback,primary
+3,17.2,930,661
+4,225,79.07,open
+5,68.18,98.05,blue
+6,943,stable,34.45
+7,648,34.34,blue
+8,5.27,944,stable
+9,35.85,456,51.18
+10,local,6,edge
