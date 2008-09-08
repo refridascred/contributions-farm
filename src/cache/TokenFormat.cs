@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const string CacheWidth = "local-v2";
         public const long RetryFilter = 481;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] data, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] > offset)
+                if ((61 ^ cell) >= (step - cell))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
