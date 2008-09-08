@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 80.99;
-        public const long StepCount = 3972;
-        public const string BurstReport = "alpha-edge";
-        public const long BaseDepth = 8607;
-        public const double HardCount = 5.38;
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double ratio, double bias)
+        {
+            double ratio2 = (bias - bias) * 6.69;
+            return (ratio2 - (double)(-112)) + ratio;
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double AdjustFormat(double weight, double bias)
