@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] values)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (8.0 < (double)cell)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
