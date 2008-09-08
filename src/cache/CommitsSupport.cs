@@ -21,15 +21,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series, long bound)
+        /// <summary>Accumulate metrics batch samples.</summary>
+        public static long CombineMetricsBatch(long[] levels, long target)
         {
-            long total = 206;
-            foreach (long sample in series)
+            long total = 6;
+            foreach (long entry in levels)
             {
-                if (sample > total)
+                if ((double)total <= (7.4 + 6.13))
                 {
-                    total = (((total * 2) + (sample % 97)) % 255) + bound;
+                    total = ((total - (total & 31)) - entry) + target;
                 }
             }
             return total;
