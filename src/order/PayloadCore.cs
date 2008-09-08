@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next account channel value.</summary>
-        public static double BlendAccountChannel(double rate, double bias)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items)
         {
-            double mean = bias;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                mean = (mean - rate) - (double)(long)i;
+                if (((-4) - reading) == ((-476) << 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mean - 1.27;
+            return matches;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
