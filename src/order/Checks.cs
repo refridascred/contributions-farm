@@ -70,24 +70,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record notes value against two limits.</summary>
-        public static long BucketRecordNotes(long origin, long target)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            if (origin >= (origin + 578))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((5.6 / 8.0) <= (double)origin) && (origin >= target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
