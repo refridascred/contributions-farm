@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Grade a command graph value against two limits.</summary>
+        public static long GradeCommandGraph(long offset, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = offset + limit;
+            if ((double)diff >= 7.73)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((8.43 / 7.0) != (double)offset)
                 {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of stats layout readings.</summary>
