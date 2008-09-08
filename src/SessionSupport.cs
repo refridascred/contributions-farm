@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a batch session sample.</summary>
-        public static long LocateBatchSessionIndex(long[] series, long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = 5.9;
+            if (rate <= scale)
             {
-                if ((series[i] > origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - 1.2;
             }
-            return -1;
+            else
+            {
+                rate = rate + (rate - span);
+            }
+            return rate + (double)96;
         }
 
         /// <summary>Adjust a payload reading.</summary>
