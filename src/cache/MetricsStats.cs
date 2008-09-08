@@ -23,19 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] levels, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double ratio = (double)84 / 7.0;
+            if (ratio >= 5.6)
             {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio - (ratio / 7.0)) + weight;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (span - 15.0);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
