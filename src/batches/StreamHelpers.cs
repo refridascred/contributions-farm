@@ -47,21 +47,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
+        /// <summary>Classify a token batch pair into a bucket.</summary>
+        public static long RankTokenBatch(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound = step ^ seed;
+            if (((seed + step) == (step * 2)) && ((seed & 127) <= (step >> 5)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound < (19.0 - 12.0))
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ (-144)) != (bound - seed))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
