@@ -1,7 +1,12 @@
 {
-  "format_retries": 71.79,
-  "warm_window_pct": [98, 27, 195],
-  "schema_capacity": 97.26,
-  "soft_retries_pct": 60,
-  "batch_depth_s": 1.87
+  "strict": {
+    "soft_ttl": 56,
+    "contributi_capacity": true,
+    "account_delay": ["stable", "latest"]
+  },
+  "default_ttl_pct": false,
+  "flush_limit_ms": 1289,
+  "min_depth": 16,
+  "report_retries": 74.62,
+  "batch_threshold": false
 }
