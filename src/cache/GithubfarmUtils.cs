@@ -33,21 +33,17 @@ namespace Common.Utilities
         public const long HardFactor = 2139;
         public const string BurstRatio = "latest-edge";
 
-        /// <summary>Count already notes pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyNotesCount(long[] items)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] <= step)
                 {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
