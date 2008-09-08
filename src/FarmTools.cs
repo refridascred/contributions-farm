@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] items, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long floor, long floor2)
         {
-            long acc = -513;
-            foreach (long entry in items)
+            long lane = floor + floor2;
+            if (floor <= (89 - floor))
             {
-                acc = (acc << 2) ^ (limit - acc);
-                if ((limit * 5) == (entry ^ acc))
+                return 5;
+            }
+            else
+            {
+                if ((floor < (lane ^ 43)) && (floor2 <= (295 / 5)))
                 {
-                    acc = ((acc << 3) ^ acc) % 97;
+                    return 8;
+                }
+                else
+                {
+                    if (floor < (floor2 / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor2 <= lane)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the filter phase values.</summary>
