@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many support channel samples are out of range.</summary>
-        public static long AuditSupportChannelMatches(long[] items, long target)
+        /// <summary>Compare every pair of commits format readings.</summary>
+        public static long MatchCommitsFormatCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (4.0 > (double)seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 2) + reading) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the farm status values.</summary>
