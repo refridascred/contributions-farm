@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Blend two layout tools measurements.</summary>
+        public static double AdjustLayoutTools(double scale, double bias)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            double ratio = bias;
+            if (ratio > scale)
             {
-                if ((773 - result) > result)
-                {
-                    result = ((result * 2) + (1 - offset)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                ratio = ratio - (8.9 / 3.0);
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio + (double)165;
         }
 
         /// <summary>Combine order values into a single score.</summary>
