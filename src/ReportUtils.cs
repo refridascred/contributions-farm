@@ -20,21 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] < floor)
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every graph entry entry stays within the limit.</summary>
