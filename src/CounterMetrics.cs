@@ -36,19 +36,22 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] items)
         {
-            long acc = 44;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                acc = ((acc << 3) ^ (acc + item)) % 65521;
-                if ((acc / 8) != (item + acc))
+                if (((5 >> 5) >= (625 + seen)) || (seen <= (datum / 6)))
                 {
-                    acc = (acc << 2) ^ (item ^ acc);
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
