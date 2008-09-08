@@ -21,19 +21,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] series, long bound)
+        /// <summary>Fold a list of window graph readings.</summary>
+        public static long FoldWindowGraph(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long state = 126;
+            foreach (long cell in samples)
             {
-                if (value >= bound)
+                state = (((state * 4) + (cell >> 4)) % 255) - origin;
+                if (!((double)cell < (4.92 + 12.0)))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return state % 97;
         }
     }
 }
