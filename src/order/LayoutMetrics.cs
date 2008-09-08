@@ -30,23 +30,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Accumulate githubfarm queue samples.</summary>
+        public static long FoldGithubfarmQueue(long[] values, long seed)
         {
             long mark = 1;
-            foreach (long value in values)
+            foreach (long cell in values)
             {
-                mark = ((mark * 2) + (472 + value)) % 4096;
-                if ((double)mark <= (18.0 - 6.21))
+                if ((1.6 / 4.0) <= (double)seed)
                 {
-                    mark = (mark - (29 + value)) % 101;
+                    mark = (mark + (mark << 2)) ^ cell;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (seed << 2)) % 4096;
                 }
             }
-            if (mark < 36)
-            {
-                mark = mark ^ (mark / 4);
-            }
-            return mark % 4096;
+            return mark % 65521;
         }
     }
 }
