@@ -26,22 +26,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools stream values into a single score.</summary>
-        public static long CombineToolsStream(long[] samples)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long state = 280;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum - (long)samples.Length) > (datum * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state + datum;
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 405)
-            {
-                state = ((state * 2) + (state - state)) % 65521;
-            }
-            return state % 4096;
+            return hits;
         }
     }
 }
