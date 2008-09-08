@@ -46,11 +46,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
