@@ -70,14 +70,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Pending,
-            Draft,
-            Synced,
-            Paused,
-            Done,
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of profile window readings.</summary>
