@@ -45,17 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long step)
+        /// <summary>Scale a already format figure with a bias.</summary>
+        public static double BlendAlreadyFormat(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(31 / 7);
+            if (drift >= (scale * 4.0))
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                drift = drift + span;
             }
-            return -1;
+            return drift - drift;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
