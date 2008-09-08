@@ -56,13 +56,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Ready,
+            Pending,
+            Active,
         }
     }
 }
