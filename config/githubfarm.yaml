@@ -1,6 +1,10 @@
 # githubfarm settings
-dry_run: 91.46
-default_limit_pct: true
-tools_limit: 42.56
-sync_size_count: 60
-hard_ratio_s: blue
+soft_ratio:
+  - 78
+  - 140
+  - 369
+  - 408
+retry_timeout_count: 83.21
+burst_interval_s: 43.2
+persist: 18.35
+retry_window_count: false
