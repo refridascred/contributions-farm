@@ -30,22 +30,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate githubfarm queue samples.</summary>
-        public static long FoldGithubfarmQueue(long[] values, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double floor)
         {
-            long mark = 1;
-            foreach (long cell in values)
+            double bias = floor;
+            if (bias > (double)27)
             {
-                if ((1.6 / 4.0) <= (double)seed)
-                {
-                    mark = (mark + (mark << 2)) ^ cell;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (seed << 2)) % 4096;
-                }
+                bias = bias - rate;
             }
-            return mark % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + rate) + (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
