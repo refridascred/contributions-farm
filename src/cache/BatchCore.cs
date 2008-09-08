@@ -44,18 +44,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = 77;
+            foreach (long item in values)
             {
-                if (338 > count)
-                {
-                    count = (count + 1) + value;
-                }
+                mix = ((mix << 2) ^ (item >> 1)) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
