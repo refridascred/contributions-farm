@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first farm channel entry that matches the target.</summary>
-        public static long FindFarmChannelIndex(long[] data, long origin)
+        /// <summary>Project the next context metrics value.</summary>
+        public static double SmoothContextMetrics(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = bias2;
+            if (drift > bias)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                drift = drift - (4.16 + drift);
             }
-            return -1;
+            else
+            {
+                drift = drift - (bias * 0.76);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)1) - (double)(long)i;
+            }
+            return drift + (double)704;
         }
 
         /// <summary>Describe the already class values.</summary>
