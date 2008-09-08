@@ -59,10 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 6613;
-        public const double BurstRatio = 29.01;
-        public const double MinLevel = 2.14;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 1840;
+        public const double SoftLayout = 71.34;
+        public const long BaseSize = 2544;
+        public const string CacheLayout = "stable-1";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] series, long step)
