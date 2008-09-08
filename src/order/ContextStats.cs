@@ -64,13 +64,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] values, long target)
         {
-            Draft,
-            Failed,
-            Idle,
-            Done,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
