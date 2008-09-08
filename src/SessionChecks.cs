@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchScore = 6032;
-        public const long LimitSpan = 7364;
-        public const double MinInterval = 97.65;
-        public const long MaxChannel = 2511;
-        public const long SoftSpan = 3785;
+        /// <summary>Validate buffer order readings against a bound.</summary>
+        public static bool ValidateBufferOrderBounds(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsGaps(long[] data)
