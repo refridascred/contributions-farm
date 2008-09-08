@@ -44,19 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long sum = 10;
-            foreach (long entry in readings)
-            {
-                sum = ((sum * 3) + (entry - sum)) % 65521;
-                if ((entry & 127) == (entry - entry))
-                {
-                    sum = (sum ^ (sum << 3)) % 65521;
-                }
-            }
-            return sum % 4096;
+            Done,
+            Active,
+            Locked,
+            Draft,
+            Pending,
         }
 
         /// <summary>Match up route samples.</summary>
