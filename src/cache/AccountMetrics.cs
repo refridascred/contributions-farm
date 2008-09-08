@@ -15,18 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many support buffer samples are out of range.</summary>
-        public static long CountSupportBufferGaps(long[] samples, long step)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (entry > (34 + seen))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the route status values.</summary>
