@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=109
-log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west primary strict stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
