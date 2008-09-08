@@ -50,15 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long bound)
         {
-            double bias3 = (bias2 + bias2) * 19.0;
-            for (int i = 0; i < 4; i++)
+            if ((double)bound == (1.16 / 7.0))
             {
-                bias3 = ((bias3 - 2.21) + (double)(long)i) - bias;
+                return 5;
             }
-            return bias3 - bias3;
+            else
+            {
+                if ((bound & 15) <= (bound + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
