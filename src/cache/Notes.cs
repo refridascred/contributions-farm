@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string HardSession = "strict-v2";
         public const long SoftSize = 1086;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] values)
         {
-            Closed,
-            Stale,
-            Paused,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((6.6 + 2.0) >= (double)reading)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
