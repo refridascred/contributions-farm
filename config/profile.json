@@ -1,6 +1,6 @@
 {
-  "strict": [150, 371],
-  "order_depth": "staging",
-  "audit": false,
-  "verbose": 9898
+  "min_interval_pct": 60,
+  "retry_interval_count": [481, 131, 442, 115],
+  "poll_capacity_count": "open",
+  "cache_delay": "stable"
 }
