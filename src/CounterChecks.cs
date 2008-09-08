@@ -34,13 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long offset)
         {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public double Label { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark << 3) ^ (offset / 2)) % 1000;
+                if ((mark * 2) == ((long)i * 2))
+                {
+                    mark = ((mark * 5) + (mark + offset)) % 1000;
+                    mark = ((mark * 5) + (2 ^ mark)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of layout order readings.</summary>
