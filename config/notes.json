@@ -1,6 +1,13 @@
 {
-  "idle_limit_count": 100,
-  "strict": true,
-  "enabled": "stable",
-  "dry_run": "local"
+  "batch_ratio": {
+    "soft_ratio": true,
+    "persist": true,
+    "hard_window_count": "fallback",
+    "command_limit": true,
+    "default_capacity_ms": "strict",
+    "sync_window_ms": 500
+  },
+  "flush_window_count": 9168,
+  "command_interval": "staging",
+  "idle_depth": 60
 }
