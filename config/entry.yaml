@@ -1,11 +1,11 @@
 # entry settings
-soft_ratio_count: 1024
-readonly: 1098
-batches_threshold:
-  - 267
-  - 116
-  - 482
-default_window_ms:
-  burst_capacity_ms: false
-  base_window: strict
-  format_size: 5148
+poll_ratio: 75
+buffer_threshold:
+  sync_depth: 98.95
+  sync_delay_pct: green
+  hard_limit: strict
+  idle_ratio_ms: staging
+  readonly: true
+audit: 6434
+batch_limit: latest
+persist: blue
