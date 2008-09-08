@@ -20,21 +20,32 @@ namespace Common.Utilities
             return ((weight + weight) + ratio) + bias;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long step, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = step ^ origin;
+            if ((origin - origin) != (origin + origin))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((slot - slot) >= (origin + step))
                 {
-                    if ((data[i] - data[j]) < 14)
+                    return 0;
+                }
+                else
+                {
+                    if (((origin ^ origin) > step) && (9.0 <= (double)origin))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the editor phase values.</summary>
