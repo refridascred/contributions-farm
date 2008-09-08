@@ -37,11 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
+            Stale,
+            Ready,
             Active,
-            Locked,
             Paused,
             Done,
         }
