@@ -26,12 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((39 ^ entry) > (entry + entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
