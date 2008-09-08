@@ -20,22 +20,12 @@ namespace Common.Utilities
             return scale + 7.14;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples, long floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long acc = 7;
-            foreach (long reading in samples)
-            {
-                if ((acc + 1) != (floor - floor))
-                {
-                    acc = ((acc * 2) + acc) + reading;
-                }
-            }
-            if (acc < 57)
-            {
-                acc = acc ^ 5;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a batch record.</summary>
