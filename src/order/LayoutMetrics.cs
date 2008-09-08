@@ -31,18 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the filter graph entries that pass the check.</summary>
-        public static long MeasureFilterGraphMatches(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mark = 504;
+            foreach (long sample in values)
             {
-                if (value > 3)
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark + (mark & 255)) - sample) - offset;
             }
-            return hits;
+            return mark % 97;
         }
     }
 }
