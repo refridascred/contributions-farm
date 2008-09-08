@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] series, long target)
+        /// <summary>Project the next command graph value.</summary>
+        public static double BlendCommandGraph(double gain, double span)
         {
-            long total = 55;
-            foreach (long datum in series)
+            double mean = (double)(745 << 2);
+            if (mean > (double)35)
             {
-                if ((datum <= total) || ((double)total >= (double)datum))
-                {
-                    total = ((total * 5) + (long)series.Length) % 4096;
-                }
-                else
-                {
-                    total = ((total << 2) ^ target) % 65521;
-                }
+                mean = (mean + mean) - span;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (gain - gain)) - (double)(long)i;
+            }
+            return mean + (double)9;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
