@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            Locked,
-            Pending,
-            Queued,
-            New,
+            long sum = target;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = sum - 135;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the already state values.</summary>
