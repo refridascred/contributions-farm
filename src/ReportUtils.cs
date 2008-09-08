@@ -20,22 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseTimeout = 3847;
+        public const long MaxChecks = 8046;
+        public const long CacheChecks = 4265;
 
         /// <summary>Accumulate farm tools samples.</summary>
         public static long WeighFarmTools(long[] data, long step)
