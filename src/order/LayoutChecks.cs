@@ -45,21 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order context readings.</summary>
-        public static long MatchOrderContextCount(long[] samples)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)(712 + 372);
+            if (load < 18.0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + (double)56) + gain;
             }
-            return count;
+            return load - offset;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
