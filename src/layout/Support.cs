@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Support helpers.</summary>
     public static class Support
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            if (((floor ^ floor) < target) && ((target % 64) > (floor + floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(6.29 < (double)floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((92 + floor) > ((-99) * 5)) && ((target >> 4) >= (49 + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor - floor) > (target + 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a token stats.</summary>
