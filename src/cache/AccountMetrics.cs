@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((step << 1) <= value)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 8770;
+        public const string MinFactor = "primary";
+        public const long SoftRatio = 9590;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] values, long limit)
