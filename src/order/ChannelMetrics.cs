@@ -14,13 +14,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Grade a buffer report value against two limits.</summary>
+        public static long SortBufferReport(long limit, long step)
         {
-            Idle,
-            Dropped,
-            Locked,
-            New,
+            if ((double)limit >= 9.16)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((-804) > (limit + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 3) <= (step + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload class values.</summary>
