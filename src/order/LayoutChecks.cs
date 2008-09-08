@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Pending,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "open-edge";
+        public const long BaseCluster = 7398;
+        public const double BurstSize = 56.51;
+        public const long StepBudget = 9767;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long GradeFarm(long offset, long offset2)
