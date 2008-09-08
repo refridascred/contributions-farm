@@ -1,5 +1,8 @@
 {
-  "readonly": [426, 118, 370, 48],
-  "base_size_s": 6.41,
-  "persist": 26.99
+  "compress": 1000,
+  "dry_run": "fallback",
+  "poll_limit_count": 73,
+  "warm_ttl_s": "green",
+  "poll_interval_s": 5737,
+  "verbose": [295, 343, 119, 461]
 }
