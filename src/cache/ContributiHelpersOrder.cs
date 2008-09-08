@@ -39,17 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long limit)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
