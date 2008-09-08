@@ -1,14 +1,8 @@
 {
-  "sync_interval_pct": true,
-  "cache_delay": false,
-  "channel_limit": false,
-  "poll_threshold": "open",
-  "cache_limit": "open",
-  "cache_retries_s": {
-    "verbose": "stable",
-    "layout_interval": false,
-    "audit": "legacy",
-    "base_limit": "open",
-    "dry_run": 79.69
-  }
+  "hard_retries_s": "latest",
+  "retry_ttl": "latest",
+  "batch_ratio": "green",
+  "min_capacity_count": [339, 307, 198],
+  "retry_timeout_s": 23,
+  "queue_window": 17.67
 }
