@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "strict-edge";
-        public const double BatchStats = 88.11;
-        public const long SoftStats = 2443;
-        public const long RetrySpan = 8163;
-        public const long StepStats = 5919;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftFactor = 9722;
+        public const long BatchCount = 9402;
+        public const long HardPayload = 107;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenOutliers(long[] samples)
