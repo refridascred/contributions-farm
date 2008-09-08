@@ -24,13 +24,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Compare every pair of order context readings.</summary>
+        public static long MatchOrderContextCount(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
