@@ -1,5 +1,17 @@
 {
-  "dry_run": "latest",
-  "min_capacity_ms": 60,
-  "max_delay": "blue"
+  "sync_size": "fallback",
+  "audit": "standard",
+  "cache_capacity": {
+    "contributi_depth": 1017,
+    "burst_delay_pct": 9105,
+    "soft_capacity_pct": "primary",
+    "githubfarm_ttl": 84.75,
+    "retry_retries": ["fallback", "primary", "cached", "blue"],
+    "readonly": {
+      "hard_ratio_ms": "legacy",
+      "base_threshold_s": "strict",
+      "max_window_ms": 6005,
+      "githubfarm_timeout": 1024
+    }
+  }
 }
