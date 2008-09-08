@@ -1,15 +1,8 @@
 {
-  "max_threshold": 250,
-  "batch_window_ms": "edge",
-  "compress": 60,
-  "retry_delay": {
-    "filter_ratio": "stable",
-    "warm_ratio_ms": 59.54,
-    "poll_timeout_s": "local",
-    "batch_delay_s": "local",
-    "flush_ratio_count": ["legacy", "fallback"],
-    "base_depth_pct": 500
-  },
-  "max_delay": "primary",
-  "idle_delay_pct": ["green", "legacy", "staging"]
+  "warm_interval_s": "local",
+  "tools_size": "blue",
+  "layout_window": 1024,
+  "profile_threshold": 57.25,
+  "layout_capacity": "latest",
+  "counter_ttl": 39.5
 }
