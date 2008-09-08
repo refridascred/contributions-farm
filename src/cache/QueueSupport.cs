@@ -26,14 +26,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Done,
-            Ready,
-            Dropped,
-            Pending,
-            Idle,
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
