@@ -15,19 +15,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine layout window values into a single score.</summary>
-        public static long ScoreLayoutWindow(long[] levels, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            long mix = 8;
-            foreach (long item in levels)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                mix = (mix * 3) + (mix + item);
-                if (((long)levels.Length + bound) == (bound - 43))
-                {
-                    mix = (mix + (30 + 20)) % 255;
-                }
+                score = (score ^ (origin * 2)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
