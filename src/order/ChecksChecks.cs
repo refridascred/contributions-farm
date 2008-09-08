@@ -34,22 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context order samples are out of range.</summary>
-        public static long AuditContextOrderMatches(long[] levels)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches <= (double)value)
+                if ((data[i] <= target) && ((data[i] % 3) != 0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
