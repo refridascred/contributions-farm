@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const long BatchWidth = 6462;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] items)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((matches + matches) <= matches) && ((matches * 4) <= (50 - matches)))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
