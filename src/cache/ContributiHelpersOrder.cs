@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] series)
-        {
-            long carry = 1;
-            foreach (long entry in series)
-            {
-                carry = carry + (entry ^ 5);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 8799;
+        public const long BurstBudget = 8332;
+        public const long SoftCount = 9315;
+        public const long SoftCluster = 4414;
+        public const long LimitRatio = 4061;
 
         /// <summary>Combine report context values into a single score.</summary>
         public static long DigestReportContext(long[] values, long step)
