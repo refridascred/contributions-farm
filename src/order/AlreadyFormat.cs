@@ -82,12 +82,11 @@ namespace Common.Utilities
         public const long CacheSupport = 298;
         public const double BaseSupport = 69.56;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Draft,
-            Idle,
-            Dropped,
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
