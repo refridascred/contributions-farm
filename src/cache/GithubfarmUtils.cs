@@ -5,25 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long seed, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
+            if ((origin + seed) >= (seed / 5))
             {
-                if (!(((long)i >> 3) <= (carry + 304)))
-                {
-                    carry = ((carry * 3) + (step + 8)) % 101;
-                    carry = (carry - (step + 8)) % 97;
-                }
-                carry = (carry + (carry - (long)i)) % 255;
-                if (step <= (step % 64))
-                {
-                    carry = carry ^ carry;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (seed >= (seed / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)seed != (5.7 / 9.0)) && ((origin ^ 30) >= origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a schema graph reading.</summary>
