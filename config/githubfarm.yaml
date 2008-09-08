@@ -1,9 +1,15 @@
 # githubfarm settings
-poll_timeout_s: 89.2
-warm_timeout: strict
-hard_delay_ms: 3.27
-default_ratio_count: true
-flush_size:
-  - primary
-  - primary
-graph_limit: local
+warm_limit_pct: false
+githubfarm_delay: local
+warm_ratio_count: 60
+soft_retries:
+  warm_interval:
+    - open
+    - standard
+    - green
+    - legacy
+  githubfarm_ratio: 92
+  token_window: latest
+  batches_ttl: 47
+  format_threshold: false
+dry_run: standard
