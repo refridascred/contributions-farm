@@ -30,18 +30,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = 13;
+            foreach (long reading in readings)
             {
-                if ((hits - hits) < (value % 7))
-                {
-                    hits = hits + 2;
-                }
+                state = ((state + ((-61) % 8)) % 255) - reading;
+                state = state ^ (state << 2);
             }
-            return hits;
+            if (state > 41)
+            {
+                state = (state + (step * 5)) % 1000;
+            }
+            return state;
         }
     }
 }
