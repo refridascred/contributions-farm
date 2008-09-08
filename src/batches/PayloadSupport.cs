@@ -30,10 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftTimeout = 46.27;
-        public const string HardSize = "standard-1";
-        public const long BaseMetric = 492;
-        public const long IdleInterval = 9497;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] readings)
+        {
+            long carry = 851;
+            foreach (long datum in readings)
+            {
+                if ((datum >= (232 + 510)) || ((7.0 / 9.0) < (double)carry))
+                {
+                    carry = carry - datum;
+                }
+                else
+                {
+                    carry = (carry ^ (datum & 63)) % 97;
+                }
+            }
+            return carry;
+        }
     }
 }
