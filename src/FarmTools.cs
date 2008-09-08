@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long floor, long floor2)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long seed, long origin)
         {
-            long lane = floor + floor2;
-            if (floor <= (89 - floor))
+            if (origin >= seed)
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((floor < (lane ^ 43)) && (floor2 <= (295 / 5)))
+                if (((0.52 - 1.25) >= (double)seed) || ((1 >> 1) > (origin ^ seed)))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if (floor < (floor2 / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor2 <= lane)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
