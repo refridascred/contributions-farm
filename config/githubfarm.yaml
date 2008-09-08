@@ -1,10 +1,4 @@
 # githubfarm settings
-verbose: cached
-batches_size: primary
-metrics_delay: edge
-hard_timeout: 89.62
-soft_retries: 66
-idle_depth_count:
-  - legacy
-  - green
-  - open
+sync_limit_count: 2500
+burst_delay: primary
+base_limit_ms: 7116
