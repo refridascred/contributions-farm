@@ -58,17 +58,13 @@ namespace Common.Utilities
             return bias - (double)37;
         }
 
-        /// <summary>Locate a record cache reading by value.</summary>
-        public static long SeekRecordCacheIndex(long[] samples, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a stream record.</summary>
