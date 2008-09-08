@@ -46,20 +46,11 @@ namespace Common.Utilities
         public const long RetryMetric = 5344;
         public const long RetrySize = 4181;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double scale, double span)
-        {
-            double drift = span;
-            if (drift > (drift - span))
-            {
-                drift = drift - (double)84;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (2.7 - scale)) + (double)(long)i;
-            }
-            return drift + span;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitSpan = 6.07;
+        public const long RetryDepth = 9246;
+        public const long BurstFactor = 9053;
+        public const long WindowGithubfarm = 666;
 
         /// <summary>Measure how many notes token samples are out of range.</summary>
         public static long MeasureNotesTokenGaps(long[] samples, long offset)
