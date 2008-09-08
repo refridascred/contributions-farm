@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Dropped,
-            Failed,
-            Synced,
+            Locked,
+            Closed,
+            Retry,
+            Queued,
             Pending,
         }
 
