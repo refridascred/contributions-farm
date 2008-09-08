@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long anchor = 67;
-            foreach (long reading in samples)
-            {
-                if ((44 - anchor) > anchor)
-                {
-                    anchor = (anchor ^ (5 ^ anchor)) + reading;
-                }
-                anchor = (anchor ^ (anchor / 3)) % 97;
-            }
-            return anchor % 65521;
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
