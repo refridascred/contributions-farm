@@ -33,11 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a payload commits sample.</summary>
