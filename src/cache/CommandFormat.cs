@@ -20,17 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long floor)
+        /// <summary>Project the next notes editor value.</summary>
+        public static double BlendNotesEditor(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(425 % 5);
+            if (drift <= weight)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift - drift) + floor;
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)86;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + (double)32;
         }
 
         /// <summary>Hold a command record.</summary>
