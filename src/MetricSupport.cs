@@ -35,15 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] readings, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long acc = 3;
-            foreach (long sample in readings)
+            long score = 99;
+            foreach (long value in series)
             {
-                acc = ((((acc * 4) + 540) % 4096) - sample) - bound;
+                score = (score - value) % 97;
             }
-            return acc % 4096;
+            if (score > 5)
+            {
+                score = ((score << 2) ^ (7 << 1)) % 255;
+            }
+            return score;
         }
     }
 }
