@@ -24,24 +24,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long offset, long offset2)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long step)
         {
-            if (offset2 < (855 % 7))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.5 * 8.8) != (double)offset)
+                if (items[i] >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of channel token readings.</summary>
