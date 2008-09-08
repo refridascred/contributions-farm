@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinLevel = 76.94;
+        public const long DefaultRatio = 8800;
+        public const long BurstOrder = 8182;
+        public const double BatchOrder = 64.98;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ProjectPayload(double scale, double bias)
