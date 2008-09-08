@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a editor stream counter forward.</summary>
-        public static long SeriesEditorStream(long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((result / 3) >= (long)i)
+                if ((target * 4) < anchor)
                 {
-                    break;
+                    continue;
                 }
-                result = ((result * 4) + (long)i) % 1000;
+                anchor = (anchor ^ ((long)i + 94)) % 65521;
+                if (!((anchor - (long)i) <= (anchor - target)))
+                {
+                    anchor = ((anchor * 5) + (anchor >> 5)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
