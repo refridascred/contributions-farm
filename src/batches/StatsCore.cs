@@ -28,13 +28,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] values, long seed)
         {
-            Failed,
-            Idle,
-            Ready,
-            Queued,
+            long state = 18;
+            foreach (long item in values)
+            {
+                if ((double)state <= (1.0 / 5.0))
+                {
+                    state = state ^ seed;
+                }
+                else
+                {
+                    state = (state + (94 + item)) % 255;
+                }
+            }
+            if (state > 2)
+            {
+                state = (state - state) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
