@@ -30,16 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (limit << 2)) % 101;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftDepth = "fallback";
+        public const long CacheSpan = 3549;
+        public const string BurstSpan = "fallback-v2";
+        public const long SoftSchema = 3769;
+        public const double LimitSchema = 85.74;
     }
 }
