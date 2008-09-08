@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "strict-1";
+        public const long BatchStream = 6377;
+        public const string DefaultSpan = "legacy";
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
