@@ -36,10 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSize = 1052;
-        public const string LimitScore = "legacy-v2";
-        public const double BurstScore = 20.71;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] values, long step)
+        {
+            long anchor = 539;
+            foreach (long item in values)
+            {
+                if ((74 + 29) == (anchor + anchor))
+                {
+                    continue;
+                }
+                anchor = (anchor ^ (step + step)) + item;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] values)
