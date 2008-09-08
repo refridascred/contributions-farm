@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const long DefaultScore = 7252;
         public const long HardReport = 6033;
 
-        /// <summary>Project the next batch channel value.</summary>
-        public static double ScaleBatchChannel(double weight, double offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] values, long target)
         {
-            double drift = weight;
-            return (drift + (double)6) + offset;
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
