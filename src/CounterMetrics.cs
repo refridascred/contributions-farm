@@ -34,11 +34,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            Retry,
+            New,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
