@@ -36,17 +36,19 @@ namespace Common.Utilities
         public const string IdleTimeout = "stable";
         public const long DefaultDepth = 547;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (levels[i] >= step)
+                if (cell > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
