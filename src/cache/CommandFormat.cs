@@ -23,21 +23,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a token profile counter forward.</summary>
-        public static long RollTokenProfile(long seed)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double scale, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            double weight = (double)(3 + 4);
+            if (weight >= (scale - weight))
             {
-                mark = (mark + seed) % 101;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (mark - ((long)i2 / 7)) % 101;
-                    mark = mark ^ (mark / 9);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                weight = weight - (scale - 5.26);
             }
-            return mark;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - (scale / 6.0);
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
