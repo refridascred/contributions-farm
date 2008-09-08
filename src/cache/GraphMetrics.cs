@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 8898;
+        public const double CacheSpan = 96.82;
+        public const double SoftStats = 27.79;
+        public const string HardFactor = "stable-v2";
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long FoldChecks(long[] data, long seed)
