@@ -53,14 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            New,
-            Failed,
-            Done,
-            Pending,
-            Paused,
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
