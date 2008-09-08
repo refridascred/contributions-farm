@@ -33,22 +33,16 @@ namespace Common.Utilities
         public const long RetryLevel = 6109;
         public const long BaseTimeout = 285;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long step)
         {
-            long carry = 40;
-            foreach (long reading in readings)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= floor)
-                {
-                    carry = carry + 84;
-                }
+                anchor = ((anchor << 3) ^ (long)i) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (carry > 3)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
