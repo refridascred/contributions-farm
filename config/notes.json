@@ -1,12 +1,7 @@
 {
-  "base_size_ms": {
-    "githubfarm_capacity": false,
-    "format_depth": "green",
-    "cache_ratio_pct": "stable",
-    "max_retries_pct": "eu-west",
-    "notes_delay": "eu-west"
-  },
-  "default_depth_pct": "edge",
-  "base_threshold_ms": false,
-  "compress": "standard"
+  "min_ratio_ms": [48, 433, 389],
+  "tools_retries": "latest",
+  "readonly": false,
+  "burst_interval_pct": true,
+  "already_ttl": 85.64
 }
