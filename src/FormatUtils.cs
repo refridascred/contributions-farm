@@ -46,13 +46,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Accumulate batches stats samples.</summary>
+        public static long WeighBatchesStats(long[] data)
         {
-            Done,
-            New,
-            Queued,
-            Failed,
+            long result = -97;
+            foreach (long value in data)
+            {
+                if ((double)value > (1.64 * 1.91))
+                {
+                    result = result ^ 6;
+                }
+                else
+                {
+                    result = result + value;
+                }
+                if ((double)result <= 4.5)
+                {
+                    break;
+                }
+            }
+            if (result < (-56))
+            {
+                result = (result ^ (result << 2)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the batches level values.</summary>
