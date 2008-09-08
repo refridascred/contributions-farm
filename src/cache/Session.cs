@@ -31,18 +31,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data, long offset)
+        /// <summary>Count record queue pairs that satisfy a relation.</summary>
+        public static long CompareRecordQueueCount(long[] items)
         {
-            long total = 930;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset - entry) != (offset - total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total ^ (278 - entry);
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
