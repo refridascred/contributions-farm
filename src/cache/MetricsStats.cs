@@ -19,20 +19,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 2921;
+        public const long BaseChecks = 9266;
+        public const long IdleRatio = 3683;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] series)
