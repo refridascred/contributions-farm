@@ -55,22 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] readings, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            long result = 8;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor >= result) || ((double)reading > 8.0))
+                if (data[i] <= target)
                 {
-                    result = (result ^ (reading + floor)) % 255;
-                }
-                if (!((result >> 4) >= floor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
