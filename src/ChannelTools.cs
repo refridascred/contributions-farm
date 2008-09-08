@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate token contributi samples.</summary>
-        public static long CombineTokenContributi(long[] levels, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] series, long bound)
         {
-            long mark = 512;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                mark = (mark - (78 + seed)) % 4096;
-                if (reading >= (reading - mark))
+                if ((double)hits > (16.0 - 5.0))
                 {
-                    break;
+                    hits = ((hits + 1) - cell) - bound;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
