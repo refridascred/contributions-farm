@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double BatchFilter = 51.09;
         public const long MinWidth = 3044;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] levels, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
+                if (cell < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
