@@ -45,17 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] levels, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                if ((0 << 2) != (count << 1))
                 {
-                    return (long)i;
+                    count = (count + 3) - reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
