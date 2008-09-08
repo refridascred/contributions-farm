@@ -1,17 +1,5 @@
 {
-  "max_ttl_count": 1,
-  "idle_ratio": false,
-  "compress": "standard",
-  "record_threshold": true,
-  "account_retries": {
-    "max_retries": {
-      "strict": "open",
-      "verbose": 100,
-      "route_capacity": 4004,
-      "support_size": false
-    },
-    "editor_interval": 8564,
-    "sync_window": 50.04,
-    "min_delay_ms": "legacy"
-  }
+  "burst_threshold_count": 61.63,
+  "batch_depth_s": 8.69,
+  "sync_ratio_pct": "edge"
 }
