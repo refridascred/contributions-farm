@@ -37,19 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = ((sum * 3) + 63) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the cluster phase values.</summary>
