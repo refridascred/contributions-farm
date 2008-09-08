@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Ready,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchInterval = 2684;
+        public const double CacheMetric = 98.99;
+        public const string WindowRatio = "stable-1";
+        public const long BatchWidth = 6462;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstDepth = 6059;
