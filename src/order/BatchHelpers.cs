@@ -34,24 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long limit, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            if (((8 % 64) != (limit ^ 81)) || ((86 + 65) <= (seed * 4)))
             {
-                if ((16.0 / 3.0) <= (double)(long)i)
+                return 3;
+            }
+            else
+            {
+                if (((seed << 2) < (limit - seed)) && (limit > (limit * 5)))
                 {
-                    break;
+                    return 1;
                 }
                 else
                 {
-                    carry = ((carry * 4) + ((long)i >> 5)) % 97;
+                    return 4;
                 }
-                carry = (carry << 3) ^ 7;
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
         }
     }
 }
