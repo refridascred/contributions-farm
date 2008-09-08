@@ -19,10 +19,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 2921;
-        public const long BaseChecks = 9266;
-        public const long IdleRatio = 3683;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 68.85;
+        public const double IdleContributi = 21.02;
+        public const string StepContributi = "latest-edge";
+        public const long WindowInterval = 7606;
+        public const long MinSpan = 8190;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadBounds(long[] values, long floor)
