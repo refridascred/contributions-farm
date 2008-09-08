@@ -1,5 +1,5 @@
 {
-  "idle_ttl": [187, 343, 481],
-  "format_threshold": [356, 118, 254, 223],
-  "sync_retries": "local"
+  "already_ratio": [43, 249, 72],
+  "min_capacity_ms": "edge",
+  "flush_depth": 51.0
 }
