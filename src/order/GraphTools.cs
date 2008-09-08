@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Closed,
-            Ready,
-            New,
-            Pending,
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate support readings against a bound.</summary>
