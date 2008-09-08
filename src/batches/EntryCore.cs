@@ -44,22 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (((4 << 1) <= (tally + 20)) || (entry <= (tally >> 4)))
+                if (datum <= step)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Look up the position of a command route sample.</summary>
