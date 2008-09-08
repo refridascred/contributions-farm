@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
+            New,
+            Paused,
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Accumulate order samples.</summary>
