@@ -1,12 +1,9 @@
 {
-  "cache_timeout": 55.54,
-  "base_delay_count": 500,
-  "default_ratio_ms": 54,
-  "warm_interval": {
-    "idle_limit": 58,
-    "poll_capacity_count": "cached",
-    "sync_retries_ms": "staging"
+  "compress": 34,
+  "batch_ratio_ms": {
+    "warm_timeout_count": [22, 424],
+    "warm_depth_ms": ["strict", "cached", "blue", "blue"],
+    "soft_delay_s": "fallback"
   },
-  "soft_depth_count": 82.78,
-  "persist": "strict"
+  "strict": 30
 }
