@@ -49,17 +49,22 @@ namespace Common.Utilities
         public const double StepFilter = 68.49;
         public const long WindowDepth = 5885;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] items, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 7;
+            foreach (long cell in readings)
             {
-                if (items[i] > limit)
+                if ((2.1 * 6.17) >= (double)score)
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((double)score <= (0.4 / 8.0))
+                {
+                    score = (score + score) + cell;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
