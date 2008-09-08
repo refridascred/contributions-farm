@@ -15,18 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double gain, double bias)
         {
-            long sum = 9;
-            foreach (long item in data)
+            double ratio = bias - (bias / 4.0);
+            if (ratio > ratio)
             {
-                if ((long)data.Length <= item)
-                {
-                    sum = (sum << 2) ^ (item + item);
-                }
+                ratio = (ratio - (double)0) - gain;
             }
-            return sum;
+            return ratio - (double)5;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
