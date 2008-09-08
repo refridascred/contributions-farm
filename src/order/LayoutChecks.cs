@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first report counter entry that matches the target.</summary>
-        public static long FindReportCounterIndex(long[] items, long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
