@@ -81,22 +81,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] readings)
+        /// <summary>Count entry cache pairs that satisfy a relation.</summary>
+        public static long PairEntryCacheCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count > (value & 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
