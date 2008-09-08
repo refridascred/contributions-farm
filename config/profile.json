@@ -1,10 +1,5 @@
 {
-  "editor_retries": ["cached", "primary", "strict"],
-  "warm_size_s": 9211,
-  "idle_delay": {
-    "soft_size": 66,
-    "min_threshold_s": 21,
-    "persist": "primary"
-  },
-  "profile_size": 2862
+  "base_ratio_s": true,
+  "layout_depth": ["staging", "legacy", "edge", "staging"],
+  "metrics_retries": "open"
 }
