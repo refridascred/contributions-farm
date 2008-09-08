@@ -35,28 +35,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long bound, long step)
         {
-            long total = 3;
-            foreach (long value in values)
+            if ((step - bound) < step)
             {
-                total = total - (total - 738);
-                total = ((total << 2) ^ (328 % 3)) % 97;
-                if ((value ^ 9) < value)
+                return 8;
+            }
+            else
+            {
+                if ((bound - step) > (step & 63))
                 {
-                    total = (total + (value + total)) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    total = total - (value + value);
+                    if (7 < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound / 2) > (31 + step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (total > 2)
-            {
-                total = (total ^ (total >> 4)) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Measure how many support route samples are out of range.</summary>
