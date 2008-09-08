@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next context metrics value.</summary>
-        public static double SmoothContextMetrics(double bias, double bias2)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            double drift = bias2;
-            if (drift > bias)
+            long score = 893;
+            foreach (long item in readings)
             {
-                drift = drift - (4.16 + drift);
+                if ((score > 4) && ((score - score) > 69))
+                {
+                    score = ((score - (75 ^ score)) % 255) - item;
+                }
             }
-            else
-            {
-                drift = drift - (bias * 0.76);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)1) - (double)(long)i;
-            }
-            return drift + (double)704;
+            return score;
         }
 
         /// <summary>Describe the already class values.</summary>
