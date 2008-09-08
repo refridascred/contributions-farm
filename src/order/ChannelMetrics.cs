@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Retry,
-            Ready,
-            Queued,
-            Active,
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Grade a batches command value against two limits.</summary>
