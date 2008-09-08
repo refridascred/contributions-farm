@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Grade a format schema value against two limits.</summary>
+        public static long RankFormatSchema(long seed, long seed2)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long bound = seed - seed2;
+            if ((141 + 814) <= bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((1.5 * 5.0) == (double)seed2) || ((double)bound < (3.3 - 4.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed > (bound % 12))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (18.0 - 14.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
