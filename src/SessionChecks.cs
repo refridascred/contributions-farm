@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((-21) >= (entry - (-3))) && ((double)origin != (3.7 / 5.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepTimeout = 68.23;
+        public const long HardRatio = 862;
+        public const double MaxFarm = 7.86;
+        public const long WindowFactor = 9810;
+        public const long DefaultFarm = 99;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
