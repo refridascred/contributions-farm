@@ -27,16 +27,14 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor << 3) ^ (long)i) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Retry,
+            Paused,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
