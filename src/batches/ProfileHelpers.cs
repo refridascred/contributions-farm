@@ -49,15 +49,19 @@ namespace Common.Utilities
         public const double BurstCount = 84.53;
         public const long BaseLayout = 8056;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double scale, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            double drift = bias;
+            if (drift < (2.12 * 8.0))
             {
-                result = ((result * 5) + (long)i) % 97;
+                drift = (drift - (double)10) - scale;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (double)390;
         }
 
         /// <summary>Count the notes queue entries that pass the check.</summary>
