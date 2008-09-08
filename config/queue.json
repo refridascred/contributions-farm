@@ -1,6 +1,6 @@
 {
-  "batch_delay_count": "legacy",
-  "flush_retries_pct": 9957,
-  "hard_timeout_s": "latest",
-  "dry_run": 54.43
+  "soft_timeout": 7105,
+  "cache_threshold_pct": 44.99,
+  "context_capacity": "standard",
+  "sync_window": 7845
 }
