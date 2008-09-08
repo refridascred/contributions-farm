@@ -20,19 +20,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] series, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long offset)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample <= floor)
+                long span = 27;
+                if ((span >= ((long)i + acc)) && ((double)acc == (double)offset))
                 {
-                    ready = false;
-                    break;
+                    acc = acc + ((-3) << 3);
+                    span = (span * 2) + acc;
                 }
+                else
+                {
+                    span = ((span * 5) + offset) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Rank route input into a small class.</summary>
