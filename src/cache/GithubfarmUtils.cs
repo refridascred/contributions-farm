@@ -35,10 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSpan = 7395;
-        public const double CacheAccount = 42.42;
-        public const long SoftAccount = 9624;
-        public const long BatchAccount = 2120;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (714 < value)
+                {
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
