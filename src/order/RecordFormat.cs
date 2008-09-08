@@ -12,32 +12,12 @@ namespace Common.Utilities
             return (weight + rate) + offset;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long origin, long seed)
-        {
-            if ((double)origin > (8.97 * 4.19))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 8) >= (seed + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + 22) >= (-5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "cached-edge";
+        public const long HardScore = 9857;
+        public const double IdleScore = 11.87;
+        public const long LimitInterval = 1709;
+        public const long DefaultBudget = 3940;
 
         /// <summary>Scale a already format figure with a bias.</summary>
         public static double BlendAlreadyFormat(double scale, double span)
