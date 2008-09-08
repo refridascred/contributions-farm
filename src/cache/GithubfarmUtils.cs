@@ -13,10 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 75.14;
-        public const string StepWidth = "standard-edge";
-        public const long HardOrder = 9415;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTimeout = 22.08;
+        public const long BatchTimeout = 4519;
+        public const double CacheTools = 20.7;
+        public const long HardFactor = 2139;
+        public const string BurstRatio = "latest-edge";
 
         /// <summary>Count already notes pairs that satisfy a relation.</summary>
         public static long CompareAlreadyNotesCount(long[] items)
