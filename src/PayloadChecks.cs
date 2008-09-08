@@ -53,21 +53,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > target)
                 {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a filter header.</summary>
