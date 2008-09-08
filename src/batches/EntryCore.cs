@@ -59,17 +59,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a command route sample.</summary>
-        public static long LocateCommandRouteIndex(long[] data, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (data[i] < limit)
+                if ((reading >> 1) >= (reading & 63))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
