@@ -33,22 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] samples, long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            long carry = 3;
-            foreach (long entry in samples)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((356 & 31) != (entry - entry))
-                {
-                    carry = carry - (5 + seed);
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (carry > 6)
-            {
-                carry = carry ^ (carry + seed);
-            }
-            return carry % 1000;
+            return total;
         }
     }
 }
