@@ -1,13 +1,6 @@
 {
-  "warm_depth_s": [276, 131, 2],
-  "soft_ttl": 27.28,
-  "batch_retries": 57.01,
-  "poll_capacity_ms": 7624,
-  "batch_interval": {
-    "cache_interval": ["eu-west", "legacy", "cached"],
-    "min_ratio": "stable",
-    "burst_retries_count": "fallback",
-    "retry_ttl": "stable"
-  },
-  "channel_delay": "legacy"
+  "enabled": "strict",
+  "compress": false,
+  "cache_ttl": true,
+  "persist": 250
 }
