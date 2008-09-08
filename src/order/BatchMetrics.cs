@@ -32,13 +32,32 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long offset, long offset2)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long next = offset - offset2;
+            if (((next / 5) != (7 & 63)) || ((1.0 - 6.5) < (double)next))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((73 >> 5) == (offset & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset % 100) >= (offset >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
