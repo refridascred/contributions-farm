@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double LimitLevel = 38.87;
         public const long CacheFactor = 3807;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] levels, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (entry > step)
+                if ((double)tally < (5.4 + 6.56))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Grade a contributi metric value against two limits.</summary>
