@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] series, long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= origin)
+                if (items[i] >= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
