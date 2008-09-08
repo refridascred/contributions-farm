@@ -42,19 +42,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seen < (19.0 / 9.0))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepRatio = "latest-v2";
+        public const long BatchCluster = 1190;
+        public const long StepWidth = 5609;
+        public const string StepCluster = "open-v2";
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TallyRoute(long[] values)
