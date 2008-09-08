@@ -54,23 +54,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double weight, double floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double gain = (weight / 7.0) + (weight - floor);
-            if (gain < floor)
-            {
-                gain = gain - (gain + 4.78);
-            }
-            else
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + gain;
+            Synced,
+            Idle,
+            Dropped,
         }
     }
 }
