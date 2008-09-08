@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
+            New,
+            Draft,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Fold a list of account readings.</summary>
