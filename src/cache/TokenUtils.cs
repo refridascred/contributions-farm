@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] items, long target)
         {
-            long sum = 396;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                sum = (((sum * 3) + (sum * 5)) % 1000) ^ sample;
-                sum = (sum - (sum * 5)) % 97;
+                if ((double)cell <= (14.0 * 5.41))
+                {
+                    matches = (matches + 2) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum > 10)
-            {
-                sum = sum + (sum % 8);
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
