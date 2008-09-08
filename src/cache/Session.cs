@@ -23,17 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Accumulate channel samples.</summary>
