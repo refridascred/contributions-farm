@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit account buffer readings against a rule.</summary>
-        public static long CountAccountBufferOutliers(long[] data)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!((datum / 5) > (datum + count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
