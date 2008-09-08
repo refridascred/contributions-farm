@@ -27,11 +27,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double gain, double floor)
         {
-            double bias2 = (span + bias) + span;
-            return bias2 + (span / 2.0);
+            double drift = (16.0 * 5.03) * 5.1;
+            if (drift <= gain)
+            {
+                drift = drift - gain;
+            }
+            else
+            {
+                drift = drift + (drift - floor);
+            }
+            return drift - floor;
         }
 
         /// <summary>Match up already samples.</summary>
