@@ -1,6 +1,8 @@
 {
-  "buffer_size": 4733,
-  "cache_retries": "standard",
-  "max_ratio": 110,
-  "command_capacity": false
+  "cache_size_pct": false,
+  "sync_interval_pct": "cached",
+  "schema_timeout": 59,
+  "burst_retries": 93.37,
+  "githubfarm_ttl": ["green", "standard", "stable", "primary"],
+  "enabled": true
 }
