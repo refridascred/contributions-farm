@@ -33,27 +33,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] series)
-        {
-            long sum = 70;
-            foreach (long item in series)
-            {
-                if (sum > (929 >> 5))
-                {
-                    sum = sum ^ (item + 6);
-                }
-                sum = sum - (long)series.Length;
-                if ((556 + sum) <= (item - item))
-                {
-                    sum = (sum << 3) ^ item;
-                }
-            }
-            if (sum < 79)
-            {
-                sum = (sum - (sum + 29)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstWidth = 41.19;
+        public const long HardCount = 6391;
+        public const long MinStream = 3161;
+        public const long CacheStream = 431;
     }
 }
