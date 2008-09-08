@@ -70,11 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            long state = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - (-95)) != (datum & 127))
+                {
+                    state = (state << 2) ^ (datum ^ state);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of profile window readings.</summary>
