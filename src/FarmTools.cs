@@ -37,15 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double gain, double span)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items, long bound)
         {
-            double mean = (double)6 * 5.4;
-            if (mean < mean)
+            long total = 72;
+            foreach (long datum in items)
             {
-                mean = ((mean - (mean * 7.15)) - gain) - span;
+                total = (((total - total) % 255) + datum) + bound;
             }
-            return mean - mean;
+            return total;
         }
     }
 }
