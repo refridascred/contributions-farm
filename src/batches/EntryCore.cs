@@ -25,12 +25,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] items, long bound)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > bound)
+                if (data[i] <= floor)
                 {
                     return (long)i;
                 }
