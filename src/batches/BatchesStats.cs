@@ -20,19 +20,39 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Validate farm filter readings against a bound.</summary>
-        public static bool CheckFarmFilterBounds(long[] series, long bound)
+        /// <summary>Rank counter farm input into a small class.</summary>
+        public static long SortCounterFarm(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long cur = seed - bound;
+            if (((cur * 4) >= cur) && (885 <= (bound - bound)))
             {
-                if (sample != bound)
+                return 1;
+            }
+            else
+            {
+                if (((bound - (-78)) < bound) || (103 <= bound))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((cur << 3) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(6.8 <= (double)seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
