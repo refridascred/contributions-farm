@@ -27,14 +27,11 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Retry,
-            Paused,
-            New,
-            Queued,
-            Closed,
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
