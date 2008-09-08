@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = span;
+            if (gain > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - bias;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (bias - gain)) - (double)(long)i;
+            }
+            return gain + 5.56;
         }
 
         /// <summary>Iterate the context metrics series from a seed.</summary>
