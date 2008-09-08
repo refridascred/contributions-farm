@@ -22,10 +22,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxLevel = 97.37;
-        public const long SoftTools = 5473;
-        public const string MaxWidth = "cached-edge";
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] data)
+        {
+            long mix = 7;
+            foreach (long value in data)
+            {
+                mix = mix ^ (mix + 31);
+                if (value < (value - value))
+                {
+                    mix = (mix * 2) + 6;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double ProjectWindow(double bias, double bias2)
