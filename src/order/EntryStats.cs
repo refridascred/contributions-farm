@@ -21,18 +21,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of graph stats entries.</summary>
-        public static long DigestGraphStats(long[] readings)
+        /// <summary>Grade a contributi metric value against two limits.</summary>
+        public static long ClassifyContributiMetric(long bound, long seed)
         {
-            long carry = 49;
-            foreach (long reading in readings)
+            long diff = bound ^ seed;
+            if (((5.6 - 5.58) < (double)seed) && ((double)diff >= (8.79 / 7.0)))
             {
-                if (((-938) >> 2) >= (carry - 22))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= (8.75 / 4.0))
                 {
-                    carry = ((carry << 2) ^ (reading - carry)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if ((6.0 - 7.0) <= (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
