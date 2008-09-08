@@ -61,17 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] values, long step)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
