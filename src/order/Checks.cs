@@ -51,19 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long offset, long target)
         {
-            long result = 461;
-            foreach (long cell in levels)
+            if ((0.5 * 8.2) <= (double)target)
             {
-                result = (result - cell) % 65521;
-                if (!((double)result >= (15.0 * 5.5)))
+                return 7;
+            }
+            else
+            {
+                if ((offset + target) > (target / 4))
                 {
-                    result = (result - step) % 97;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the already level values.</summary>
