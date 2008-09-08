@@ -20,12 +20,18 @@ namespace Common.Utilities
             return scale + 7.14;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum >> 5) != (844 << 1))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch record.</summary>
