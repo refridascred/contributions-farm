@@ -1,4 +1,10 @@
 # githubfarm settings
-strict: 30
-flush_threshold_pct: fallback
-idle_ratio_pct: edge
+verbose: cached
+batches_size: primary
+metrics_delay: edge
+hard_timeout: 89.62
+soft_retries: 66
+idle_depth_count:
+  - legacy
+  - green
+  - open
