@@ -22,10 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowLevel = 2095;
-        public const double MinRecord = 83.14;
-        public const double BurstRecord = 54.61;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LocateMetricsIndex(long[] values, long offset)
