@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 910;
+            foreach (long sample in readings)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum - (sum / 5)) ^ sample) + bound;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
