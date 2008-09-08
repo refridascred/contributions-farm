@@ -37,21 +37,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric schema pairs that satisfy a relation.</summary>
-        public static long PairMetricSchemaCount(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = floor - origin;
+            if ((698 ^ 4) <= slot)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((slot ^ floor) < (floor / 5))
                 {
-                    if ((data[i] + data[j]) > 2)
+                    return 4;
+                }
+                else
+                {
+                    if ((slot % 12) <= (origin >> 3))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((slot + origin) > (slot / 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
