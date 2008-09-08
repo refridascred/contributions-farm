@@ -29,18 +29,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchCount = 2608;
+        public const string BurstSession = "strict-1";
+        public const long RetrySession = 8745;
 
         /// <summary>Audit tools schema readings against a rule.</summary>
         public static long AuditToolsSchemaMatches(long[] items, long limit)
