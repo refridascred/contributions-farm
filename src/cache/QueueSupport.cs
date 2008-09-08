@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepInterval = 3145;
-        public const double BatchFilter = 51.09;
-        public const long MinWidth = 3044;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 < (double)60)
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 + weight;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MaxPayload = 320;
