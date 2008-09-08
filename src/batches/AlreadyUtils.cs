@@ -35,22 +35,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long target)
         {
-            long acc = 843;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((value + acc) < (acc - acc))
-                {
-                    acc = ((acc << 3) ^ (acc - 247)) % 65521;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (acc < 86)
-            {
-                acc = (acc * 3) + (acc - acc);
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Describe the report kind values.</summary>
