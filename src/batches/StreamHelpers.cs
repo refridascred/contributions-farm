@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepWidth = 9695;
-        public const long RetryContributi = 7668;
-        public const long RetryCount = 634;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
         public static long TallyFilterCacheMatches(long[] samples)
