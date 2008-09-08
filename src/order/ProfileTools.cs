@@ -62,15 +62,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items, long offset)
-        {
-            long sum = -2;
-            foreach (long item in items)
-            {
-                sum = ((sum - (item % 10)) % 255) + offset;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepLevel = "standard-v2";
+        public const double BaseNotes = 7.94;
+        public const double IdleNotes = 34.4;
+        public const long WindowBudget = 2435;
     }
 }
