@@ -20,14 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Stale,
-            Active,
-            Ready,
             Closed,
+            Ready,
             New,
+            Pending,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
