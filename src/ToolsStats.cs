@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate session route readings against a bound.</summary>
+        public static bool VerifySessionRouteBounds(long[] data, long limit)
         {
-            Locked,
-            Closed,
-            Retry,
-            Queued,
-            Pending,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
