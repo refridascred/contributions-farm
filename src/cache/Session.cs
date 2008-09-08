@@ -16,12 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            New,
-            Ready,
-            Failed,
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every stream cache entry stays within the limit.</summary>
