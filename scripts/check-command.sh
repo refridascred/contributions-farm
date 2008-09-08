@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west staging; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=59
+log "limit is ${COMMAND_LIMIT}"
 
 count=0
 while [ "${count}" -lt 2 ]; do
@@ -16,12 +15,6 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-staging}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in blue fallback cached edge; do
+    log "checking ${item}"
+done
