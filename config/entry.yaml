@@ -1,6 +1,31 @@
 # entry settings
-max_size_pct: true
-context_delay: 6895
-filter_interval: false
-enabled: 3912
-soft_size_ms: true
+hard_limit_pct: 78.39
+idle_delay_ms: eu-west
+enabled: eu-west
+default_limit_ms:
+  stream_size:
+    - fallback
+    - local
+  dry_run:
+    base_interval_s: 4143
+    sync_threshold: true
+    idle_depth_pct: 60
+    soft_ratio_ms: true
+    default_interval_ms: legacy
+  support_delay:
+    record_capacity:
+      - local
+      - edge
+    enabled: 500
+    batch_threshold_pct: true
+    flush_timeout_pct: 24.62
+    order_delay:
+      - latest
+      - cached
+      - edge
+      - green
+  warm_size: staging
+  poll_threshold_count: 53.59
+  order_threshold: 731
+token_capacity: 7459
+channel_ttl: 60
