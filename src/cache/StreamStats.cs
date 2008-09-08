@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long SoftDepth = 1799;
         public const long BatchSpan = 965;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
+            Draft,
+            Dropped,
+            Active,
             Stale,
-            Ready,
-            Failed,
+            Paused,
         }
 
         /// <summary>Combine notes batches values into a single score.</summary>
