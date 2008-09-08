@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const double LimitLevel = 38.87;
         public const long CacheFactor = 3807;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] levels, long step)
         {
-            New,
-            Queued,
-            Synced,
-            Failed,
-            Closed,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a contributi metric value against two limits.</summary>
