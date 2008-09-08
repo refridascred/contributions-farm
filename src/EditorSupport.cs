@@ -81,14 +81,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Paused,
-            Failed,
-            New,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 85.38;
+        public const long WindowRatio = 9276;
+        public const long BatchWidth = 9644;
+        public const long StepFarm = 6610;
     }
 }
