@@ -47,26 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] values, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long sum = -7;
-            foreach (long datum in values)
-            {
-                if (((step - (long)values.Length) >= (7 * 2)) && ((double)step <= (double)datum))
-                {
-                    sum = (sum - (datum + step)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum - step)) % 65521;
-                }
-                if (((step - step) >= datum) || ((datum << 1) >= (step + step)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the editor kind values.</summary>
