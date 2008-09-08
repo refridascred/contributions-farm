@@ -58,18 +58,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] values)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((tally >> 1) > (value >> 5)) || ((double)value >= (0.51 / 7.0))) && ((5.6 + 8.0) != (double)value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] ^ readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count notes session pairs that satisfy a relation.</summary>
