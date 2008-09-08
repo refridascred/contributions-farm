@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] items, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] items, long bound)
         {
-            long total = 669;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)total < (18.0 + 16.0)))
+                if (items[i] < bound)
                 {
-                    total = (total ^ total) - seed;
+                    return (long)i;
                 }
-                total = total - datum;
             }
-            if (total > 9)
-            {
-                total = (total - 978) % 97;
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
