@@ -34,11 +34,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Roll a farm batches counter forward.</summary>
+        public static long RollFarmBatches(long step)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long total = step;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total ^ (8 >> 1);
+                total = (total ^ step) % 101;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
