@@ -35,24 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long bound)
+        /// <summary>Fold a list of report counter readings.</summary>
+        public static long TotalReportCounter(long[] values)
         {
-            if ((double)bound == (1.16 / 7.0))
+            long carry = 1;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 15) <= (bound + bound))
+                if (((double)value <= (5.9 / 4.0)) || (value >= carry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    carry = carry - (value % 97);
                 }
             }
+            if (carry < (-47))
+            {
+                carry = carry - (carry % 8);
+            }
+            return carry;
         }
     }
 }
