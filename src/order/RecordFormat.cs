@@ -73,19 +73,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Classify a account command pair into a bucket.</summary>
+        public static long RankAccountCommand(long limit, long step)
         {
-            long acc = 525;
-            foreach (long item in levels)
+            if ((double)step != (double)limit)
             {
-                acc = (acc << 2) ^ acc;
-                if (acc > (acc + acc))
+                return 5;
+            }
+            else
+            {
+                if ((18.0 >= (double)limit) && ((3 + limit) > (step << 3)))
                 {
-                    acc = acc - (item + acc);
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return acc % 65521;
         }
     }
 }
