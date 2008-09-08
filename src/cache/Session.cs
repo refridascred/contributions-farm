@@ -23,22 +23,31 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] readings, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = 561;
+            foreach (long cell in series)
             {
-                if ((floor & 7) < (floor >> 1))
+                mix = mix - cell;
+                if ((cell * 4) != (cell << 1))
                 {
-                    matches = (matches + 3) + entry;
+                    mix = (mix ^ mix) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = (mix - (cell ^ cell)) % 101;
+                }
+                if ((mix >= cell) || ((cell >> 1) <= cell))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mix > 6)
+            {
+                mix = mix + (785 % 24);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
