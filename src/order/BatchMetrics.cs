@@ -25,19 +25,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double gain, double floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long limit, long floor)
         {
-            double mean = floor;
-            if (mean <= mean)
+            if (limit >= (limit * 4))
             {
-                mean = (mean - (floor / 4.0)) + gain;
+                return 4;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean - (double)6) + (double)(long)i;
+                if ((limit - floor) >= (limit & 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mean - mean;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
