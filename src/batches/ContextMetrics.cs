@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 4589;
+        public const double BaseLayout = 65.27;
+        public const string MaxLayout = "fallback-1";
 
         /// <summary>Adjust a format reading.</summary>
         public static double AdjustFormat(double weight, double bias)
