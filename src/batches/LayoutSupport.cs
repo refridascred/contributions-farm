@@ -29,15 +29,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values, long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long carry = 300;
-            foreach (long entry in values)
-            {
-                carry = (carry ^ (entry + entry)) + target;
-            }
-            return carry % 65521;
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
