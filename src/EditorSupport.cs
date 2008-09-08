@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] readings, long offset)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Done,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (184 > (tally ^ value))
+                {
+                    tally = (tally + 2) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
