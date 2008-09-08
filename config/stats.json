@@ -1,5 +1,5 @@
 {
-  "cache_threshold_ms": 32.81,
-  "burst_timeout_count": 22.84,
-  "dry_run": 4595
+  "soft_window_s": 30,
+  "sync_delay_pct": ["open", "fallback"],
+  "verbose": ["fallback", "open"]
 }
