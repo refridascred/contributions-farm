@@ -74,22 +74,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] items, long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (4.0 < (double)floor)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = carry ^ (carry % 97);
+                carry = (carry ^ ((long)i << 1)) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
     }
 }
