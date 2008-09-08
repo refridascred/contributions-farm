@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] readings, long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
             long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (184 > (tally ^ value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
