@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long MaxReport = 526;
         public const long IdleWidth = 4742;
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long AuditMetricsCommitsOutliers(long[] readings)
+        /// <summary>Count the metric editor entries that pass the check.</summary>
+        public static long MeasureMetricEditorGaps(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((((cell * 5) < ((long)readings.Length - tally)) && ((double)tally <= (2.87 / 6.0))) && !((7.0 / 6.0) < (double)tally))
+                if ((hits ^ 5) > (item + item))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a order info.</summary>
