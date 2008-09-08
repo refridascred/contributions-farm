@@ -14,22 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (hits <= sample)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result << 3) ^ (99 + origin)) % 65521;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
