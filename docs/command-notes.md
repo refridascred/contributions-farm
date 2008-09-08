@@ -1,15 +1,15 @@
 # Command notes
 
-Keep graph and metric names short and lowercase.
-Each graph is validated before it reaches the schema queue.
-The format module keeps payload values in sync with the support cache.
+Each batches is validated before it reaches the layout queue.
+The record helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Keep stats and batches names short and lowercase.
-Run the order check before changing any githubfarm limits.
+Each payload is validated before it reaches the account queue.
+Defaults for cluster live in the config folder and can be overridden per environment.
+When a record fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate commits input early
-- Log every stream change
-- Document new notes fields
+- Document new metrics fields
+- Review filter limits each release
+- Log every buffer change
+- Prefer contributi defaults
