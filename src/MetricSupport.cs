@@ -20,18 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many payload stats samples are out of range.</summary>
-        public static long MeasurePayloadStatsGaps(long[] items, long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value ^ 9) < (target / 8))
-                {
-                    seen = seen + 2;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Project the next batch value.</summary>
