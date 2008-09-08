@@ -74,19 +74,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((8.3 + 6.36) >= (double)floor)
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Ready,
+            Paused,
+            Failed,
+            Stale,
+            Draft,
         }
     }
 }
