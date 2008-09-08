@@ -1,12 +1,14 @@
 {
-  "max_threshold": "strict",
-  "retry_delay": {
-    "audit": [414, 411, 295],
-    "dry_run": false,
-    "commits_ttl": 500
+  "filter_ttl": 64.87,
+  "compress": 15.11,
+  "flush_capacity_pct": 23.63,
+  "hard_ratio_pct": {
+    "retry_size_pct": "edge",
+    "account_capacity": false,
+    "commits_window": [473, 349, 148, 208],
+    "idle_window_ms": true,
+    "batch_limit_count": "green",
+    "report_retries": true
   },
-  "min_timeout_pct": "staging",
-  "cache_ttl_s": 9645,
-  "persist": 2932,
-  "warm_depth_s": 23.61
+  "commits_ratio": 63
 }
