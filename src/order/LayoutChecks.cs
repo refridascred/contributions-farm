@@ -76,22 +76,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] items)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 2) < (tally ^ cell))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Done,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Locate a account reading by value.</summary>
