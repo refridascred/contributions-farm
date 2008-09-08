@@ -35,19 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] values, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long score = -211;
+            foreach (long item in samples)
             {
-                if (reading < seed)
+                if (item > (score + item))
                 {
-                    found = false;
-                    break;
+                    score = (score - (68 / 7)) % 4096;
                 }
             }
-            return found;
+            if (score < 266)
+            {
+                score = score - step;
+            }
+            return score % 97;
         }
     }
 }
