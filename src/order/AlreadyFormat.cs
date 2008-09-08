@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] readings, long limit)
+        /// <summary>Project the next format account value.</summary>
+        public static double SmoothFormatAccount(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(11 << 3);
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = ((scale - floor) + (double)(long)i) - bias;
             }
-            return -1;
+            return scale - (scale * 4.6);
         }
 
         /// <summary>Fold a list of report channel readings.</summary>
