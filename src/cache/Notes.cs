@@ -54,21 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
-        public static long MatchSchemaMetricCount(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample > limit)
                 {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
