@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Queued,
+            Done,
+            Ready,
+            Retry,
             Stale,
-            Paused,
-            Failed,
         }
 
         /// <summary>Hold a metric stats.</summary>
