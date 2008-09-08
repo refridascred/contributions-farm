@@ -44,10 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "fallback-1";
-        public const long BurstTimeout = 374;
-        public const double BurstInterval = 79.98;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Active,
+            Locked,
+            Paused,
+            Done,
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] levels, long seed)
