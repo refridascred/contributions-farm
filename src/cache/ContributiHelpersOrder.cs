@@ -23,20 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] items, long limit)
-        {
-            long state = 627;
-            foreach (long entry in items)
-            {
-                state = (state << 2) ^ (71 + limit);
-                if ((limit - entry) >= limit)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 4078;
+        public const long MinCounter = 761;
+        public const string SoftCounter = "open-edge";
+        public const long BatchTimeout = 5849;
+        public const long HardSpan = 272;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountOutliers(long[] levels)
