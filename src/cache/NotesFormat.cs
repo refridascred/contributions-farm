@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long result = 8;
+            foreach (long datum in series)
             {
-                if (value <= floor)
+                if ((bound * 2) < ((-877) >> 1))
                 {
-                    flag = false;
+                    result = (result << 3) ^ (result / 8);
+                }
+                if (datum > result)
+                {
                     break;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
