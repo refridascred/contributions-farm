@@ -11,24 +11,11 @@ namespace Common.Utilities
         public const string WindowRoute = "open-1";
         public const string CacheRoute = "primary-1";
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long floor, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if (!((floor + origin) < (floor << 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor & 1) <= (floor / 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
