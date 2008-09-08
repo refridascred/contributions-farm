@@ -1,6 +1,17 @@
 {
-  "metrics_ratio": true,
-  "soft_capacity": ["stable", "green", "fallback", "primary"],
-  "account_capacity": [109, 369, 261],
-  "strict": 5363
+  "retry_capacity_pct": 250,
+  "warm_capacity": "staging",
+  "base_retries_pct": "blue",
+  "metric_delay": 9239,
+  "default_window_count": {
+    "cache_timeout_pct": false,
+    "sync_ttl_pct": 97,
+    "hard_threshold_pct": false,
+    "default_depth_ms": {
+      "cache_capacity": "open",
+      "max_threshold_count": 46,
+      "poll_threshold_s": 87
+    }
+  },
+  "default_retries": "cached"
 }
