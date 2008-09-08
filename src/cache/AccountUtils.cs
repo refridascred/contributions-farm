@@ -33,21 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 3;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((356 & 31) != (entry - entry))
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry - (5 + seed);
                 }
             }
-            return tally;
+            if (carry > 6)
+            {
+                carry = carry ^ (carry + seed);
+            }
+            return carry % 1000;
         }
     }
 }
