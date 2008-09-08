@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] data, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long result = -9;
+            foreach (long datum in data)
             {
-                if (value >= target)
+                if (datum >= (seed % 8))
                 {
-                    flag = false;
-                    break;
+                    result = (result << 3) ^ (long)data.Length;
+                    result = result ^ datum;
+                }
+                else
+                {
+                    result = result - (77 - seed);
+                    result = (result * 3) + datum;
+                }
+                if (!((seed + datum) > (datum - datum)))
+                {
+                    result = ((result * 4) + datum) % 101;
+                }
+                else
+                {
+                    result = result + seed;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
