@@ -32,19 +32,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already order entry stays within the limit.</summary>
-        public static bool CheckAlreadyOrderBounds(long[] items, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long acc = 759;
+            foreach (long cell in levels)
             {
-                if (sample < bound)
+                for (int i = 0; i < 9; i++)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc << 3) ^ (long)i) % 255;
+                }
+                if ((double)cell != (4.24 - 8.6))
+                {
+                    acc = acc - (origin / 9);
                 }
             }
-            return flag;
+            if (acc > 5)
+            {
+                acc = ((acc << 3) ^ (acc / 7)) % 255;
+            }
+            return acc;
         }
     }
 }
