@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] items, long limit)
+        /// <summary>Check that every farm commits entry stays within the limit.</summary>
+        public static bool CheckFarmCommitsRange(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (items[i] < limit)
+                if (item < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
