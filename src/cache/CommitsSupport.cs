@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 1461;
+        public const long DefaultDepth = 3658;
+        public const double SoftBatches = 11.61;
+        public const long BurstBatches = 741;
+        public const long SoftRatio = 1109;
 
         /// <summary>Grade a contributi filter value against two limits.</summary>
         public static long RankContributiFilter(long bound, long limit)
