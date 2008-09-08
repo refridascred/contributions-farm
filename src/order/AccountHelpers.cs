@@ -20,39 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long edge = bound - step;
-            if (7 <= (edge / 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound < (8.37 / 3.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((edge >> 2) != (bound << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)step > (5.4 * 8.4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
