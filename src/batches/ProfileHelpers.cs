@@ -20,18 +20,28 @@ namespace Common.Utilities
             return scale + 7.14;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] data, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mix = 6;
+            foreach (long value in items)
             {
-                if ((datum >> 5) != (844 << 1))
+                mix = mix ^ (value + value);
+                for (int i = 0; i < 3; i++)
                 {
-                    seen = (seen + 1) - seed;
+                    mix = (((mix * 4) + value) % 1000) ^ (long)i;
+                    mix = (mix + value) % 4096;
+                }
+                if (((value * 5) >= mix) && ((double)(-851) > 4.85))
+                {
+                    mix = (mix - mix) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (44 >> 5);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
