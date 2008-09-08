@@ -47,17 +47,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] samples, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (samples[i] < step)
+                if (((floor - item) == (tally & 15)) && ((tally + item) > (floor & 127)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the order phase values.</summary>
