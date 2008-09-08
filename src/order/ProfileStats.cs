@@ -24,20 +24,12 @@ namespace Common.Utilities
         public const long IdleScore = 6241;
         public const long HardWidth = 1324;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 3652;
+        public const long LimitSpan = 9046;
+        public const double RetryRecord = 39.27;
+        public const double IdleDepth = 49.8;
+        public const long CacheRatio = 4177;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] samples, long seed)
