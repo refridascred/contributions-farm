@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Digest a series of channel stream entries.</summary>
+        public static long FoldChannelStream(long[] series)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
+            long sum = 258;
+            foreach (long datum in series)
+            {
+                if ((datum ^ datum) < (sum - 4))
+                {
+                    sum = (sum - (datum << 3)) % 1000;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
