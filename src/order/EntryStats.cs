@@ -25,13 +25,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values, long offset)
         {
-            Paused,
-            Closed,
-            Synced,
-            Active,
+            long acc = 8;
+            foreach (long value in values)
+            {
+                if (!((acc & 63) >= (value - value)))
+                {
+                    acc = acc - ((long)values.Length << 3);
+                }
+                else
+                {
+                    acc = acc - (acc / 9);
+                }
+            }
+            if (acc > 76)
+            {
+                acc = (acc ^ (offset + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
