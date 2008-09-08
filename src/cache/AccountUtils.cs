@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] values)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches / 6) <= value)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
