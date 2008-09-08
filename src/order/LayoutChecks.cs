@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const double BurstSize = 56.51;
         public const long StepBudget = 9767;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long offset2)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] series)
         {
-            if ((10.0 + 4.0) >= (double)offset)
+            long anchor = 917;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 < (offset + offset2)) || ((offset * 3) != (offset << 2)))
+                if ((anchor + anchor) > (69 + entry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset + offset) >= 23) && ((offset % 3) < (offset - offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((0.25 + 9.28) <= (double)(-6)) || ((offset2 / 3) > (offset2 - 763)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = anchor ^ (entry ^ 74);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Blend two report measurements.</summary>
