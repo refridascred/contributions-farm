@@ -1,6 +1,6 @@
-id,rank,label
-1,latest,stable
-2,790,377
-3,335,96.09
-4,1.64,292
-5,52.7,latest
+id,owner,count,label
+1,stable,30.53,702
+2,fallback,75.69,222
+3,blue,689,369
+4,blue,staging,open
+5,local,776,265
