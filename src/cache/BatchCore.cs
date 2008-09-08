@@ -46,10 +46,13 @@ namespace Common.Utilities
         public const long StepChannel = 847;
         public const string MinLevel = "local-v2";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "primary-v2";
-        public const long CacheWidth = 8596;
-        public const string SoftTimeout = "stable-1";
-        public const long BurstFactor = 5941;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            New,
+            Retry,
+            Queued,
+            Idle,
+        }
     }
 }
