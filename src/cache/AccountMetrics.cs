@@ -45,15 +45,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Active,
-            Queued,
-            Paused,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 5547;
+        public const long StepGithubfarm = 804;
+        public const double DefaultSize = 86.84;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TallyEntry(long[] items, long floor)
