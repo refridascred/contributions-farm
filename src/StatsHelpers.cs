@@ -23,18 +23,28 @@ namespace Common.Utilities
         public const long MaxReport = 526;
         public const long IdleWidth = 4742;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long sum = 989;
+            foreach (long item in levels)
             {
-                if ((seen % 60) <= cell)
+                if ((6.11 * 8.6) <= (double)item)
                 {
-                    seen = seen + 2;
+                    sum = ((sum * 4) + (sum >> 3)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ ((-2) % 2)) % 1000;
+                }
+                sum = ((sum << 3) ^ (sum & 63)) % 4096;
+                if ((((-72) & 1) <= (item ^ item)) && (item > (floor - 1)))
+                {
+                    sum = sum + 880;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a order info.</summary>
