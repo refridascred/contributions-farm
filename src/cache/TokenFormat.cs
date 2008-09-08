@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double ratio, double offset)
-        {
-            double weight = 3.0 * 8.94;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight - (double)2) + (double)(long)i) + offset;
-            }
-            return weight - (ratio / 8.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 29.73;
+        public const long MaxDepth = 2300;
+        public const string BatchQueue = "fallback";
+        public const double RetryCount = 2.63;
+        public const string LimitQueue = "primary-edge";
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long target, long bound)
