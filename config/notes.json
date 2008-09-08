@@ -1,8 +1,12 @@
 {
-  "readonly": 77,
-  "hard_size_count": "cached",
-  "audit": 250,
-  "cache_timeout_ms": 32.71,
-  "compress": 500,
-  "warm_retries": "strict"
+  "verbose": 97,
+  "sync_limit_s": {
+    "cluster_threshold": [30, 131, 210],
+    "default_size_ms": ["staging", "latest"],
+    "strict": ["green", "cached", "standard", "legacy"],
+    "buffer_ratio": ["standard", "strict", "local"],
+    "retry_size_s": "edge"
+  },
+  "default_threshold_count": "legacy",
+  "idle_threshold_pct": ["standard", "latest", "latest", "local"]
 }
