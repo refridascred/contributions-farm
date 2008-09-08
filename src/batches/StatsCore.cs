@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of cluster tools readings.</summary>
-        public static long OverlapClusterToolsCount(long[] series)
+        /// <summary>Digest a series of account stream entries.</summary>
+        public static long CombineAccountStream(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 55;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = (carry ^ (item >> 5)) % 97;
+                if ((carry - 0) >= (carry - item))
                 {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (item + carry)) % 1000;
+                    carry = (carry + (item * 3)) % 4096;
+                }
+                if ((carry % 100) >= 98)
+                {
+                    carry = (carry ^ (carry + carry)) % 255;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Match up batches samples.</summary>
