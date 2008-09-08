@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double gain, double floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long limit)
         {
-            double bias = floor / 6.0;
-            for (int i = 0; i < 8; i++)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                bias = ((bias + floor) + (double)(long)i) + gain;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (((acc << 3) ^ (limit - limit)) % 101) ^ (long)i2;
+                }
+                if (acc < (limit << 3))
+                {
+                    acc = (acc - limit) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return bias - floor;
+            return acc;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
