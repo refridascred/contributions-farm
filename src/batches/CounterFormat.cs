@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 6501;
-        public const long WindowAccount = 1668;
-        public const string HardFactor = "legacy-edge";
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Synced,
+            Locked,
+            Ready,
+            Done,
+            New,
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsHits(long[] items)
