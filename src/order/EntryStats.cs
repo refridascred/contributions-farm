@@ -34,32 +34,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long seed, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] items, long floor)
         {
-            long step = seed - target;
-            if (((target + step) > (seed / 5)) || ((4.3 * 0.4) <= (double)target))
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((42 >= (step >> 2)) && ((step ^ target) >= seed))
+                if (value != floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((target << 2) <= step) && (target <= 45))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
