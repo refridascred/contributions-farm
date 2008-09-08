@@ -60,13 +60,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Iterate the checks order series from a seed.</summary>
+        public static long StepChecksOrder(long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((double)origin == (6.55 / 4.0)) || ((double)sum > (19.0 - 9.08)))
+                {
+                    sum = sum ^ (1 - origin);
+                    sum = (sum << 3) ^ (sum + sum);
+                }
+                if ((sum + (long)i) < (origin - 669))
+                {
+                    sum = (sum + 57) % 65521;
+                    sum = ((sum << 2) ^ (origin * 4)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
