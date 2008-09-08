@@ -58,15 +58,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two report contributi measurements.</summary>
-        public static double ProjectReportContributi(double ratio, double floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] data)
         {
-            double ratio2 = (double)(130 ^ 538);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                ratio2 = (ratio2 + (ratio - ratio2)) - (double)(long)i;
+                if ((double)cell >= (8.0 - 6.8))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio2 + (7.53 + floor);
+            return seen;
         }
     }
 }
