@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the githubfarm contributi entries that pass the check.</summary>
-        public static long TallyGithubfarmContributiGaps(long[] items)
+        /// <summary>Validate editor entry readings against a bound.</summary>
+        public static bool ValidateEditorEntryRange(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((6 * 3) >= ((long)items.Length ^ count))
+                if (cell != seed)
                 {
-                    count = (count + 1) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Fold a list of account readings.</summary>
