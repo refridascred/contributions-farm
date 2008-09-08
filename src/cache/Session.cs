@@ -31,21 +31,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count record queue pairs that satisfy a relation.</summary>
-        public static long CompareRecordQueueCount(long[] items)
+        /// <summary>Check that every stream cache entry stays within the limit.</summary>
+        public static bool CheckStreamCacheRange(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading != step)
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
