@@ -1,8 +1,8 @@
 {
-  "persist": 13,
-  "buffer_ratio": 9466,
-  "stats_size": ["latest", "strict", "stable", "edge"],
-  "min_interval": "open",
-  "flush_size": 77.92,
-  "cache_size_ms": false
+  "retry_timeout_count": 2055,
+  "persist": 2.68,
+  "retry_threshold_pct": "local",
+  "warm_capacity_pct": ["open", "edge", "strict"],
+  "readonly": true,
+  "min_timeout_count": 99
 }
