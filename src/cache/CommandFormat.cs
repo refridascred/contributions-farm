@@ -15,20 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every token report entry stays within the limit.</summary>
-        public static bool CheckTokenReportBounds(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowBudget = 5358;
+        public const string MinTools = "primary-v2";
+        public const string BaseRatio = "fallback-1";
+        public const double RetryTools = 0.69;
+        public const double CacheTools = 76.45;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
