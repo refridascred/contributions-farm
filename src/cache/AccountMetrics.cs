@@ -15,17 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] values, long limit)
+        /// <summary>Measure how many support buffer samples are out of range.</summary>
+        public static long CountSupportBufferGaps(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((values[i] > limit) && ((values[i] % 3) == 0))
+                if (entry > (34 + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the route status values.</summary>
