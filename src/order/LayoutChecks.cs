@@ -68,13 +68,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] series, long origin)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (origin > (9 & 15))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
