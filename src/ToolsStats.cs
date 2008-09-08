@@ -69,16 +69,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache tools series from a seed.</summary>
-        public static long DeriveCacheTools(long offset)
+        /// <summary>Grade a githubfarm window value against two limits.</summary>
+        public static long GradeGithubfarmWindow(long origin, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long prev = origin - bound;
+            if ((3.8 * 15.0) >= (double)origin)
             {
-                mark = (mark * 3) + (offset >> 4);
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (!((double)bound >= (3.98 / 6.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin % 100) >= 4)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((prev + prev) > (prev / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
