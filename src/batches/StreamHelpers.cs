@@ -82,10 +82,9 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "stable-edge";
-        public const double LimitRoute = 90.26;
-        public const double StepDepth = 90.36;
-        public const long CacheDepth = 8936;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryTimeout = "fallback-v2";
+        public const long RetryCommand = 909;
+        public const long BurstCommand = 683;
     }
 }
