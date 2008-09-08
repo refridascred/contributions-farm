@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepTimeout = 68.23;
-        public const long HardRatio = 862;
-        public const double MaxFarm = 7.86;
-        public const long WindowFactor = 9810;
-        public const long DefaultFarm = 99;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
