@@ -14,11 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a record filter figure with a bias.</summary>
-        public static double AdjustRecordFilter(double ratio, double floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double mean = (ratio + ratio) / 6.0;
-            return (mean - (mean * 2.1)) + floor;
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
