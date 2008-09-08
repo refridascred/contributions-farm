@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a tools buffer counter forward.</summary>
-        public static long IterateToolsBuffer(long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                score = ((score << 2) ^ ((long)i + bound)) % 255;
-                score = ((score * 3) + (long)i) % 65521;
+                if (!!((reading + reading) < (5 + 36)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
