@@ -34,20 +34,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine metric githubfarm values into a single score.</summary>
-        public static long WeighMetricGithubfarm(long[] samples)
-        {
-            long state = 346;
-            foreach (long reading in samples)
-            {
-                state = ((state << 2) ^ state) % 1000;
-                if ((double)reading > (double)891)
-                {
-                    state = ((state * 3) + state) % 1000;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 3573;
+        public const string BaseLevel = "standard-v2";
+        public const long IdleTimeout = 7365;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchLayout = 7170;
