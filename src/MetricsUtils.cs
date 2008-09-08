@@ -47,15 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long sum = 986;
-            foreach (long reading in values)
-            {
-                sum = (sum << 2) ^ ((long)values.Length + reading);
-            }
-            return sum;
+            Retry,
+            New,
+            Pending,
+            Dropped,
         }
     }
 }
