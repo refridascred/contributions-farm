@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] items, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] series)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value < bound)
+                if (reading > (tally << 3))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
