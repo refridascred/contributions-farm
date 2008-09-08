@@ -1,20 +1,8 @@
 {
-  "verbose": 40.96,
-  "compress": 36.44,
-  "flush_threshold_ms": {
-    "max_ratio": "staging",
-    "counter_window": "eu-west",
-    "min_depth": {
-      "burst_interval_pct": "strict",
-      "dry_run": 5913,
-      "min_window_count": "standard",
-      "report_ttl": 56.35,
-      "record_ratio": 6294,
-      "idle_capacity": 46
-    },
-    "cluster_ratio": true
-  },
-  "hard_depth_s": 59.36,
-  "channel_capacity": [299, 178, 217, 241],
-  "strict": 8319
+  "poll_timeout_ms": "latest",
+  "default_interval_count": "stable",
+  "poll_ttl_s": "latest",
+  "retry_delay": [484, 203, 382, 249],
+  "stream_window": [465, 200],
+  "batch_size": 250
 }
