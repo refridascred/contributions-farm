@@ -37,14 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Stale,
-            Ready,
-            Active,
-            Paused,
-            Done,
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
