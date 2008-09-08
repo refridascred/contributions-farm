@@ -43,26 +43,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a notes batch value against two limits.</summary>
-        public static long SortNotesBatch(long step, long limit)
-        {
-            long diff = step + limit;
-            if (((diff >> 3) <= (step << 2)) && ((double)diff <= 9.88))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step << 2) < (-5)) && ((10.0 + 17.0) >= (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 6613;
+        public const double BurstRatio = 29.01;
+        public const double MinLevel = 2.14;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] series, long step)
