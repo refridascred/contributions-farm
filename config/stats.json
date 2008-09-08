@@ -1,7 +1,6 @@
 {
-  "notes_ratio": "latest",
-  "counter_timeout": 2.97,
-  "strict": 306,
-  "verbose": ["standard", "fallback", "eu-west"],
-  "retry_capacity_s": 79.17
+  "flush_capacity": 3707,
+  "burst_ratio_count": true,
+  "readonly": 1548,
+  "poll_timeout": 16
 }
