@@ -1,5 +1,5 @@
 {
-  "default_ratio": "fallback",
-  "soft_retries": [484, 190],
-  "soft_limit_pct": [33, 324, 122, 151]
+  "checks_size": 99,
+  "retry_size_count": "standard",
+  "retry_window_s": "green"
 }
