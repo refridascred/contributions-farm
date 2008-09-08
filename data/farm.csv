@@ -1,7 +1,8 @@
-id,active,owner
-1,primary,green
-2,513,156
-3,legacy,fallback
-4,941,81.52
-5,55.16,42.09
-6,542,742
+id,level,score,weight
+1,74.94,54.7,384
+2,blue,143,449
+3,171,fallback,817
+4,blue,standard,strict
+5,566,3.66,940
+6,legacy,440,32.94
+7,legacy,cached,legacy
