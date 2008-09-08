@@ -62,25 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue counter pair into a bucket.</summary>
-        public static long SortQueueCounter(long step, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values)
         {
-            long lane = step - limit;
-            if (step <= (limit - lane))
+            long sum = 986;
+            foreach (long reading in values)
             {
-                return 4;
+                sum = (sum << 2) ^ ((long)values.Length + reading);
             }
-            else
-            {
-                if ((limit << 2) < step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum;
         }
     }
 }
