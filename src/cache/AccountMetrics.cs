@@ -64,26 +64,22 @@ namespace Common.Utilities
             return gain - (7.07 + bias);
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] items, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values, long target)
         {
-            long mix = 4;
-            foreach (long reading in items)
+            long total = 90;
+            foreach (long cell in values)
             {
-                if ((double)mix <= 0.9)
+                if ((cell - target) <= (total & 31))
                 {
-                    mix = mix + (floor & 31);
+                    total = (total * 5) + (total >> 4);
                 }
-                if ((reading > (reading << 2)) && (reading > (mix - reading)))
+                if (((long)values.Length >> 3) <= cell)
                 {
-                    break;
+                    total = total + total;
                 }
             }
-            if (mix > 6)
-            {
-                mix = ((mix << 3) ^ (63 ^ mix)) % 97;
-            }
-            return mix;
+            return total;
         }
     }
 }
