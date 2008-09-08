@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] series, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the metric phase values.</summary>
