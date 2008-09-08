@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long StepWidth = 4753;
         public const long HardRoute = 3352;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "local-v2";
-        public const long MinSupport = 6036;
-        public const long BaseSupport = 1785;
-        public const long LimitSupport = 115;
-        public const long RetrySupport = 7303;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series)
+        {
+            long sum = 8;
+            foreach (long value in series)
+            {
+                sum = (sum - sum) % 101;
+                if ((sum + (long)series.Length) < (value % 16))
+                {
+                    sum = ((sum * 2) + (value / 4)) % 65521;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
