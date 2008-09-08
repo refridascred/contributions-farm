@@ -1,6 +1,25 @@
 {
-  "cache_capacity": 7.85,
-  "cache_capacity_s": 1024,
-  "batch_limit_s": true,
-  "strict": 8087
+  "base_interval": {
+    "warm_interval_pct": 250,
+    "dry_run": 250,
+    "filter_size": ["stable", "fallback", "blue", "fallback"],
+    "batch_size_pct": 88.25,
+    "sync_threshold_count": 85.09,
+    "payload_ttl": "local"
+  },
+  "verbose": {
+    "base_timeout": {
+      "flush_limit_ms": "edge",
+      "sync_capacity_ms": 49.08,
+      "audit": true,
+      "filter_window": 8.56
+    },
+    "cache_threshold": 250,
+    "audit": 3791,
+    "soft_retries": "stable",
+    "token_size": "legacy"
+  },
+  "default_depth": 1024,
+  "stats_ttl": 30.39,
+  "flush_limit_s": 60
 }
