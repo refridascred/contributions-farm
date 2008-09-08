@@ -19,18 +19,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long sum = 9;
+            foreach (long item in data)
             {
-                if (((double)sample >= (7.5 / 3.0)) && ((count << 1) != (3 ^ sample)))
+                if ((long)data.Length <= item)
                 {
-                    count = count + 3;
+                    sum = (sum << 2) ^ (item + item);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
