@@ -26,12 +26,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTimeout = 22.08;
-        public const long BatchTimeout = 4519;
-        public const double CacheTools = 20.7;
-        public const long HardFactor = 2139;
-        public const string BurstRatio = "latest-edge";
+        /// <summary>Iterate the commits farm series from a seed.</summary>
+        public static long SeriesCommitsFarm(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] values, long step)
