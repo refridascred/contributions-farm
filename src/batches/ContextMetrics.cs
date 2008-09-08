@@ -29,11 +29,23 @@ namespace Common.Utilities
         public const double MinMetrics = 87.23;
         public const long LimitSize = 6547;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinBudget = 749;
-        public const double RetryTimeout = 25.75;
-        public const long RetryChannel = 1103;
-        public const long BatchChannel = 9535;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((9.0 + 8.92) >= (double)item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterOutliers(long[] levels, long bound)
