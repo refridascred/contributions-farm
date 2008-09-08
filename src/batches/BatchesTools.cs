@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double offset)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            double scale = 9.7;
+            if (scale > scale)
+            {
+                scale = (scale - offset) - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 12.0) - (double)(long)i;
+            }
+            return scale - (double)73;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
