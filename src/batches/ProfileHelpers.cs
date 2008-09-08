@@ -43,19 +43,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((1.5 + 19.0) < (double)matches)
-                {
-                    matches = ((matches + 2) ^ reading) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 83.14;
+        public const long HardFactor = 5141;
+        public const double BurstCount = 84.53;
+        public const long BaseLayout = 8056;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double BlendGithubfarm(double rate, double offset)
