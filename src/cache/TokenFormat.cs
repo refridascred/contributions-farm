@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long origin, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] samples, long offset)
         {
-            if ((origin * 5) != (origin << 1))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((75 >> 2) <= (origin + bound))
+                if (samples[i] >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound >> 5) < bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound - origin) != (origin % 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit metric order readings against a rule.</summary>
