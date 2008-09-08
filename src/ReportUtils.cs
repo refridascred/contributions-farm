@@ -42,10 +42,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardFactor = 1116;
-        public const long BurstSupport = 8283;
-        public const long RetryBudget = 2112;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowNotes = 6613;
