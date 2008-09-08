@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double floor)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            double scale = (double)97 + (floor + bias);
+            if (scale <= bias)
+            {
+                scale = scale + (double)82;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (double)62;
         }
 
         /// <summary>Combine support command values into a single score.</summary>
