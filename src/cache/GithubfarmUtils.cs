@@ -37,22 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] items, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long total = 8;
+            foreach (long entry in series)
             {
-                if (714 < value)
-                {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 3) + entry) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
