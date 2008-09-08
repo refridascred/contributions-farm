@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long bound)
         {
-            long carry = 7;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum & 15) < (carry + 7))
+                if (samples[i] == bound)
                 {
-                    carry = carry + carry;
+                    return (long)i;
                 }
             }
-            if (carry < 84)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a token info.</summary>
