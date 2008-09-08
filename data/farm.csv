@@ -1,8 +1,7 @@
-id,active
-1,765
-2,59.03
-3,6.78
-4,eu-west
-5,eu-west
-6,687
-7,64.76
+id,weight,label
+1,377,83.6
+2,910,green
+3,721,504
+4,eu-west,74.5
+5,edge,green
+6,eu-west,local
