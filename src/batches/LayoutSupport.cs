@@ -29,12 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] levels, long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] > bound)
+                if (series[i] > offset)
                 {
                     return (long)i;
                 }
