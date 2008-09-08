@@ -14,10 +14,27 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseTimeout = 3847;
-        public const long MaxChecks = 8046;
-        public const long CacheChecks = 4265;
+        /// <summary>Combine support command values into a single score.</summary>
+        public static long CombineSupportCommand(long[] samples)
+        {
+            long total = 8;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= (double)total)
+                {
+                    total = (total + (sample + total)) % 1000;
+                }
+                else
+                {
+                    total = total ^ (total & 1);
+                }
+            }
+            if (total < 7)
+            {
+                total = ((total << 3) ^ (36 << 1)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LocateContributiIndex(long[] values, long offset)
