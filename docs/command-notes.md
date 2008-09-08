@@ -1,13 +1,12 @@
 # Command notes
 
-A format that stays idle for too long is moved to the counter list.
-Each entry is validated before it reaches the batch queue.
-
-A support that stays idle for too long is moved to the commits list.
-When a editor fails, the batches handler retries a few times before giving up.
+Use cache settings to tune how often route data is refreshed.
+A format that stays idle for too long is moved to the token list.
+The cluster module keeps filter values in sync with the filter cache.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new cache fields
-- Prefer githubfarm defaults
+- Log every format change
+- Document new batch fields
+- Validate metric input early
+- Review account limits each release
