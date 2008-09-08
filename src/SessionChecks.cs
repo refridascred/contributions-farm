@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheFactor = "latest-v2";
-        public const long IdleFactor = 1785;
-        public const long StepFactor = 350;
-        public const long BurstCount = 1268;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((-21) >= (entry - (-3))) && ((double)origin != (3.7 / 5.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
