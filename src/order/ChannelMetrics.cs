@@ -17,13 +17,26 @@ namespace Common.Utilities
         public const double MinRecord = 83.14;
         public const double BurstRecord = 54.61;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples, long floor)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public double Flag { get; set; }
+            long score = 8;
+            foreach (long entry in samples)
+            {
+                if (11.0 > (double)entry)
+                {
+                    score = (score + (floor + entry)) % 255;
+                }
+                if ((entry >> 5) != (1 / 6))
+                {
+                    score = (score - (floor << 1)) % 255;
+                }
+                else
+                {
+                    score = (score ^ (long)samples.Length) % 65521;
+                }
+            }
+            return score;
         }
     }
 }
