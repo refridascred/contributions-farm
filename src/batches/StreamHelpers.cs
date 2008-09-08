@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((bound < ((long)i - (long)i)) || ((anchor / 6) < anchor))
-                {
-                    anchor = (anchor ^ bound) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepWidth = 9695;
+        public const long RetryContributi = 7668;
+        public const long RetryCount = 634;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long seed, long target)
