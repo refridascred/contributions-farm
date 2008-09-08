@@ -34,18 +34,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] series, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mix = 42;
+            foreach (long value in samples)
             {
-                if ((origin / 5) >= (reading >> 1))
+                long hits = value;
+                for (int i = 0; i < 3; i++)
                 {
-                    count = count + 2;
+                    mix = ((mix - (hits + 461)) % 101) ^ (long)i;
+                    mix = (mix << 3) ^ hits;
+                }
+                mix = mix ^ (49 / 5);
+                if ((718 << 1) <= mix)
+                {
+                    break;
                 }
             }
-            return count;
+            return mix % 97;
         }
     }
 }
