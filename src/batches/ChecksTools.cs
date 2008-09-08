@@ -27,18 +27,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] readings, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mix = 88;
+            foreach (long value in readings)
             {
-                if ((entry / 6) > (entry ^ (long)readings.Length))
+                mix = mix - mix;
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = (hits + 3) - target;
+                    mix = (((mix << 2) ^ value) % 255) ^ (long)i;
+                }
+                if (!((value << 1) <= (value + origin)))
+                {
+                    mix = ((mix * 5) + (value * 4)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (origin << 3)) % 97;
                 }
             }
-            return hits;
+            if (mix > 57)
+            {
+                mix = (mix << 2) ^ 55;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
