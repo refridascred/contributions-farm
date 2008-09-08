@@ -69,12 +69,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] readings)
         {
-            Dropped,
-            Queued,
-            Stale,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (count > (value & 3))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
