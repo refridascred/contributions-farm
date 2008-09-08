@@ -58,26 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel token readings.</summary>
-        public static long CombineChannelToken(long[] samples, long step)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            long sum = 69;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum ^ ((long)i * 4);
-                }
-                if (!((585 + 354) <= step))
-                {
-                    sum = (sum << 3) ^ (326 + datum);
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 1)
-            {
-                sum = ((sum << 3) ^ (sum - sum)) % 4096;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Classify a account command pair into a bucket.</summary>
