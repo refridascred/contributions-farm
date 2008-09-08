@@ -31,11 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Rank account support input into a small class.</summary>
+        public static long RankAccountSupport(long step, long origin)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long diff = step - origin;
+            if (((double)step >= (8.98 + 16.0)) || ((2 - (-79)) <= (origin + step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((diff / 3) == ((-235) % 60))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
