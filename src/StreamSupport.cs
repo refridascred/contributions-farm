@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
