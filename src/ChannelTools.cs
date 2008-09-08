@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            long mark = 42;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark << 3) > cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = mark ^ (922 + mark);
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
