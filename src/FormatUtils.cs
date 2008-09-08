@@ -18,12 +18,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitRatio = "stable-v2";
-        public const long CacheStream = 4882;
-        public const long MaxStream = 4173;
-        public const string RetrySpan = "alpha";
-        public const long IdleStream = 2436;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
