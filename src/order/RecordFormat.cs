@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long target)
+        /// <summary>Project the next payload stream value.</summary>
+        public static double SmoothPayloadStream(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = rate;
+            return (weight + rate) + offset;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
