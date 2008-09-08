@@ -24,32 +24,11 @@ namespace Common.Utilities
         public const string WindowDepth = "primary-edge";
         public const double BatchRatio = 93.62;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long bound)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long step2 = step ^ bound;
-            if (!(step < (step & 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step2 < (3.0 - 5.5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step2 / 5) > bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
