@@ -26,12 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Combine tools stream values into a single score.</summary>
+        public static long CombineToolsStream(long[] samples)
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            long state = 280;
+            foreach (long datum in samples)
+            {
+                if ((datum - (long)samples.Length) > (datum * 3))
+                {
+                    state = state + datum;
+                }
+            }
+            if (state > 405)
+            {
+                state = ((state * 2) + (state - state)) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
