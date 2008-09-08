@@ -37,13 +37,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Done,
-            Paused,
-            Retry,
-            Active,
+            Draft,
+            Locked,
+            Idle,
+            Closed,
         }
     }
 }
