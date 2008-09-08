@@ -18,12 +18,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardWidth = 3601;
-        public const long DefaultFactor = 9240;
-        public const string SoftCount = "stable";
-        public const long RetryMetric = 5344;
-        public const long RetrySize = 4181;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((tally + tally) > (cell - cell)) || ((double)(-6) <= (double)tally))
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiOutliers(long[] values)
