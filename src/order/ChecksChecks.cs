@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a already payload reading by value.</summary>
-        public static long FindAlreadyPayloadIndex(long[] data, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
