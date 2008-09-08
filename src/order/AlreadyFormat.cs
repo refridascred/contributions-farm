@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((reading - seen) != (reading + 66))
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Find the first stream farm entry that matches the target.</summary>
