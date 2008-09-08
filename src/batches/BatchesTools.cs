@@ -30,18 +30,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit command filter readings against a rule.</summary>
-        public static long AuditCommandFilterMatches(long[] items, long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!(((double)offset < (5.92 - 9.83)) || ((double)item > (2.0 - 8.1))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
