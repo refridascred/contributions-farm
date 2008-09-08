@@ -26,22 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] values, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] readings, long target)
         {
-            long carry = 2;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (step > entry)
+                if ((entry / 6) > (entry ^ (long)readings.Length))
                 {
-                    carry = ((carry << 3) ^ (carry << 2)) % 4096;
+                    hits = (hits + 3) - target;
                 }
             }
-            if (carry < 3)
-            {
-                carry = ((carry * 2) + carry) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
