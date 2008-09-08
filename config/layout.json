@@ -1,6 +1,6 @@
 {
-  "sync_size": 63.93,
-  "sync_delay_count": 5893,
-  "persist": "strict",
-  "warm_timeout": false
+  "metrics_ratio": true,
+  "soft_capacity": ["stable", "green", "fallback", "primary"],
+  "account_capacity": [109, 369, 261],
+  "strict": 5363
 }
