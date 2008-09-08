@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -513;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = (acc << 2) ^ (limit - acc);
+                if ((limit * 5) == (entry ^ acc))
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 3) ^ acc) % 97;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
