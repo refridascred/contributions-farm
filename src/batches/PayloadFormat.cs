@@ -51,11 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double rate, double offset)
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            double drift = rate;
+            if (drift >= (10.0 / 4.0))
+            {
+                drift = drift + (offset - 2.2);
+            }
+            return drift + (double)10;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
