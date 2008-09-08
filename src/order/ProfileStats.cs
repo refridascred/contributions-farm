@@ -51,22 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] readings, long limit)
+        /// <summary>Count the session githubfarm entries that pass the check.</summary>
+        public static long CountSessionGithubfarmGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((10.0 * 7.0) >= (double)seen)
+                if (matches >= (sample << 1))
                 {
-                    seen = ((seen + 2) ^ datum) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
