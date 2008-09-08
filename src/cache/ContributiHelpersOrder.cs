@@ -19,12 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 8799;
-        public const long BurstBudget = 8332;
-        public const long SoftCount = 9315;
-        public const long SoftCluster = 4414;
-        public const long LimitRatio = 4061;
+        /// <summary>Grade a commits record value against two limits.</summary>
+        public static long GradeCommitsRecord(long bound, long step)
+        {
+            if ((double)bound >= (4.23 / 6.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 3) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Combine report context values into a single score.</summary>
         public static long DigestReportContext(long[] values, long step)
