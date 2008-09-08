@@ -1,8 +1,4 @@
 # support settings
-batch_ratio_pct: legacy
-flush_window_s:
-  persist: cached
-  entry_delay: standard
-  checks_delay: false
-  verbose: stable
-counter_interval: 1024
+default_ratio: 84.81
+command_threshold: 500
+hard_interval_ms: 80.21
