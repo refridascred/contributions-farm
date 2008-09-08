@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = 67;
+            foreach (long reading in samples)
             {
-                if (cell <= (cell - cell))
+                if ((44 - anchor) > anchor)
                 {
-                    tally = tally + 2;
+                    anchor = (anchor ^ (5 ^ anchor)) + reading;
                 }
+                anchor = (anchor ^ (anchor / 3)) % 97;
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
