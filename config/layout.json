@@ -1,6 +1,6 @@
 {
-  "burst_interval": "blue",
-  "cache_timeout": true,
-  "already_window": false,
-  "readonly": "primary"
+  "persist": "latest",
+  "readonly": false,
+  "retry_capacity_s": ["green", "green"],
+  "default_interval": [190, 158, 206]
 }
