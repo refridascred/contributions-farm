@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] data, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            long mix = 927;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((2.01 - 2.0) != (double)offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = mix + (item ^ offset);
-                }
-                else
-                {
-                    mix = (mix ^ item) % 101;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Project the next filter value.</summary>
