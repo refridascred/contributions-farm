@@ -23,31 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long seed, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            if (offset > (seed + offset))
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - offset) >= (seed * 2))
+                if (!((origin + acc) > (acc / 3)))
                 {
-                    return 3;
+                    acc = (acc ^ (origin % 3)) % 255;
+                    continue;
                 }
-                else
-                {
-                    if ((offset + offset) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
+            return acc;
         }
     }
 }
