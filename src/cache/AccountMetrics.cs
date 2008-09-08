@@ -22,12 +22,15 @@ namespace Common.Utilities
         public const double IdleEditor = 92.12;
         public const long BatchRatio = 2514;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine cluster session values into a single score.</summary>
+        public static long WeighClusterSession(long[] readings, long floor)
         {
-            Failed,
-            Closed,
-            Synced,
+            long total = 23;
+            foreach (long datum in readings)
+            {
+                total = ((total + floor) % 65521) ^ datum;
+            }
+            return total;
         }
 
         /// <summary>Derive the next queue schema value from a seed.</summary>
