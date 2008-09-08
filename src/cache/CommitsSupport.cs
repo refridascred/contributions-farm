@@ -37,11 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Locate a payload support reading by value.</summary>
+        public static long LocatePayloadSupportIndex(long[] items, long step)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next window value.</summary>
