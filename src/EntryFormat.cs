@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryWidth = 8180;
-        public const long BatchQueue = 6838;
-        public const double StepQueue = 69.49;
-        public const string BaseQueue = "alpha-1";
+        /// <summary>Find the first schema checks entry that matches the target.</summary>
+        public static long LocateSchemaChecksIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterGaps(long[] samples)
