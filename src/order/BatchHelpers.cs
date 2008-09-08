@@ -27,13 +27,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Closed,
+            Paused,
+            Retry,
+            Pending,
         }
     }
 }
