@@ -30,11 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchInterval = 1037;
-        public const long MaxRatio = 6764;
-        public const long HardCluster = 6166;
-        public const long MinFactor = 3320;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterMatches(long[] levels)
