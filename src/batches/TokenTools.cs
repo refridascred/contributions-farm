@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Audit cluster format readings against a rule.</summary>
+        public static long AuditClusterFormatMatches(long[] readings)
         {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)matches < (3.48 * 3.13))
+                {
+                    matches = (matches + 2) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm summary.</summary>
