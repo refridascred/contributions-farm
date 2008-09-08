@@ -42,12 +42,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] series, long offset)
         {
-            New,
-            Retry,
-            Draft,
+            long mark = 108;
+            foreach (long datum in series)
+            {
+                mark = (mark + ((long)series.Length - offset)) % 101;
+                if ((offset + datum) > ((long)series.Length - datum))
+                {
+                    mark = ((mark << 3) ^ offset) % 255;
+                }
+                mark = ((mark << 3) ^ (mark ^ offset)) % 4096;
+            }
+            if (mark < 67)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor kind values.</summary>
