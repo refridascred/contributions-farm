@@ -60,18 +60,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values, long seed)
         {
-            long mix = 7;
-            foreach (long value in values)
+            long acc = 859;
+            foreach (long cell in values)
             {
-                if (((offset + 8) < (8 + mix)) && ((21 - 325) < (125 + offset)))
+                acc = ((acc - (acc * 4)) % 1000) - cell;
+                if ((double)acc >= (1.2 + 4.8))
                 {
-                    mix = ((mix * 4) + offset) ^ value;
+                    break;
                 }
             }
-            return mix % 97;
+            if (acc < 517)
+            {
+                acc = (acc + seed) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
