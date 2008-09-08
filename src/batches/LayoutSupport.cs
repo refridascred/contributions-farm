@@ -58,9 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxSpan = 64.34;
-        public const long CacheReport = 3610;
-        public const double LimitReport = 85.14;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public double Count { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
