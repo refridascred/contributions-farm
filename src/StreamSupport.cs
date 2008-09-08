@@ -14,22 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] data)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (entry < (entry + entry))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
