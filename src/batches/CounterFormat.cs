@@ -19,13 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] readings, long step)
         {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
