@@ -15,21 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                long gap = result % 100;
-                if (result <= (long)i)
-                {
-                    result = result ^ gap;
-                    gap = (gap * 3) + (result + 0);
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Paused,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
