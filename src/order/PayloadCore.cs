@@ -50,19 +50,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window format readings against a bound.</summary>
-        public static bool GuardWindowFormatRange(long[] data, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long sum = 819;
+            foreach (long value in series)
             {
-                if (reading != step)
+                if (((value << 3) == (sum - 278)) || (value < (7 + (-552))))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum << 3) ^ (900 >> 4)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (value + 5)) % 101;
+                }
+                if (((sum % 60) > (sum - value)) || ((sum >> 3) != (limit << 3)))
+                {
+                    sum = (sum ^ (value / 9)) % 4096;
                 }
             }
-            return flag;
+            if (sum > 32)
+            {
+                sum = ((sum << 2) ^ limit) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Check that every farm layout entry stays within the limit.</summary>
