@@ -60,13 +60,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Classify a queue counter pair into a bucket.</summary>
+        public static long SortQueueCounter(long step, long limit)
         {
-            New,
-            Draft,
-            Retry,
-            Closed,
+            long lane = step - limit;
+            if (step <= (limit - lane))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit << 2) < step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
