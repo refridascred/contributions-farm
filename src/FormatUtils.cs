@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 5684;
-        public const double StepFactor = 47.21;
-        public const string WindowRoute = "open-1";
-        public const string CacheRoute = "primary-1";
+        /// <summary>Project the next session stream value.</summary>
+        public static double ScaleSessionStream(double bias, double floor)
+        {
+            double weight = bias / 6.0;
+            if (weight <= (weight / 8.0))
+            {
+                weight = (weight + 20.0) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (9.0 / 6.0)) + (double)(long)i;
+            }
+            return weight + (double)195;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
