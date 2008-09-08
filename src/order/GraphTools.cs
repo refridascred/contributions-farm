@@ -20,20 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples, long seed)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long acc = -819;
-            foreach (long sample in samples)
-            {
-                acc = (acc + (seed >> 5)) % 255;
-                acc = acc - (487 * 4);
-                if ((double)sample != (8.6 - 19.0))
-                {
-                    acc = acc + (-4);
-                }
-            }
-            return acc;
+            Stale,
+            Active,
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
