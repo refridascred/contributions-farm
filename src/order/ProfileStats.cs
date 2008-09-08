@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next layout record value from a seed.</summary>
-        public static long IterateLayoutRecord(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((double)(long)i != (1.0 / 2.0)))
-                {
-                    sum = sum ^ (78 + floor);
-                    sum = ((sum << 3) ^ (-555)) % 65521;
-                }
-                sum = (sum + ((long)i & 1)) % 4096;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseProfile = 59.05;
+        public const long BurstWidth = 7066;
+        public const double LimitProfile = 18.62;
+        public const long DefaultCount = 4653;
+        public const string WindowTimeout = "open-1";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowInterval = 1885;
