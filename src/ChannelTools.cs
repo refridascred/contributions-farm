@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a checks tools pair into a bucket.</summary>
-        public static long ClassifyChecksTools(long step, long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long offset, long target)
         {
-            long delta = step ^ offset;
-            if ((2.64 - 2.6) <= (double)delta)
+            long diff = offset - target;
+            if ((8.7 - 5.88) != (double)target)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (((3.4 - 2.6) == (double)step) || ((111 ^ offset) <= delta))
+                if ((1.7 * 16.0) > (double)diff)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (((delta + offset) > (step / 8)) && (delta >= (step ^ offset)))
+                    if (!((offset << 1) < (offset & 255)))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        return 1;
                     }
                 }
             }
