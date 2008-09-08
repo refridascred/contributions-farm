@@ -1,11 +1,6 @@
-id,count,score,weight
-1,511,blue,16.47
-2,923,standard,360
-3,51.53,198,primary
-4,local,eu-west,legacy
-5,40.0,blue,edge
-6,433,55.67,77.91
-7,348,205,984
-8,187,standard,57
-9,30.41,15.56,cached
-10,22.6,90.51,92.93
+id,label,level,weight
+1,12.93,751,26.83
+2,56.58,9.49,221
+3,60.96,local,601
+4,9.21,stable,912
+5,913,legacy,latest
