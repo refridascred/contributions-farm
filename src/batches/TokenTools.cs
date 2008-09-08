@@ -13,18 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] readings, long step)
         {
-            long carry = 2;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((carry >> 1) < sample)
+                if ((seen * 5) != (step + 75))
                 {
-                    carry = ((carry * 5) + (sample % 3)) % 65521;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
