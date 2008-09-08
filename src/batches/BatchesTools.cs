@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (10.0 >= (double)count)
+                if (!!(matches <= datum))
                 {
-                    count = (count + 2) + item;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
