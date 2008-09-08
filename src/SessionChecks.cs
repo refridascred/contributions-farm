@@ -28,18 +28,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] samples, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((1.3 * 9.06) == (double)count)
-                {
-                    count = ((count + 2) - reading) - target;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next profile stream value from a seed.</summary>
