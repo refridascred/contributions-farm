@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] series, long offset)
         {
-            long sum = -67;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((662 + sum) == (791 / 8))
+                if (reading <= offset)
                 {
-                    sum = (sum << 3) ^ (cell * 4);
-                }
-                else
-                {
-                    sum = ((sum * 2) + (cell - cell)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return ready;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
