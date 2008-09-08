@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double bias)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] items)
         {
-            double rate = ratio - bias;
-            if (rate <= (ratio * 18.0))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                rate = rate - (bias / 2.0);
+                if ((6.6 * 8.1) <= (double)matches)
+                {
+                    matches = (matches + 2) - cell;
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate - (bias * 10.0);
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
