@@ -27,13 +27,15 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine notes batches values into a single score.</summary>
+        public static long CombineNotesBatches(long[] levels)
         {
-            Ready,
-            Locked,
-            Synced,
-            Stale,
+            long carry = 575;
+            foreach (long datum in levels)
+            {
+                carry = (carry ^ carry) ^ datum;
+            }
+            return carry;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
