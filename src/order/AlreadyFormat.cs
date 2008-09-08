@@ -32,38 +32,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long target, long seed)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] readings, long limit)
         {
-            if ((101 + target) != (seed - target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((115 % 7) >= seed)
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2 % 3) <= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((seed % 8) == ((-763) >> 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
