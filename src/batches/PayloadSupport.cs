@@ -14,22 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] values, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)seen != (1.19 + 3.45))
-                {
-                    seen = ((seen + 3) ^ item) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate session samples.</summary>
