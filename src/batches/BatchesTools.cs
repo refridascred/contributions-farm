@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] data, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long acc = -7;
-            foreach (long reading in data)
-            {
-                if ((18.0 + 1.56) >= (double)reading)
-                {
-                    acc = ((acc * 3) + (4 - reading)) - step;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = (acc ^ acc) % 4096;
-            }
-            return acc % 65521;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
