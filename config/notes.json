@@ -1,13 +1,15 @@
 {
-  "batch_ratio": {
-    "soft_ratio": true,
-    "persist": true,
-    "hard_window_count": "fallback",
-    "command_limit": true,
-    "default_capacity_ms": "strict",
-    "sync_window_ms": 500
+  "idle_threshold_s": [346, 169, 160],
+  "dry_run": "open",
+  "stats_threshold": {
+    "base_ttl_pct": "standard",
+    "compress": "open",
+    "idle_delay": 35.19
   },
-  "flush_window_count": 9168,
-  "command_interval": "staging",
-  "idle_depth": 60
+  "payload_limit": 71,
+  "warm_size": {
+    "enabled": false,
+    "max_capacity_count": "stable",
+    "idle_size_ms": 21
+  }
 }
