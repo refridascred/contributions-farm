@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a counter checks pair into a bucket.</summary>
-        public static long ClassifyCounterChecks(long floor, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] values, long step)
         {
-            if (!(floor >= (limit + 4)))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit % 24) >= (floor + floor)) && ((limit - floor) < limit))
+                if (sample < step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
