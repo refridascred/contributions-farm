@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 41.31;
-        public const long LimitGraph = 1758;
-        public const long HardTimeout = 6070;
-        public const long BurstDepth = 6049;
-        public const double CacheDepth = 76.1;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Failed,
+            Dropped,
+            Draft,
+        }
     }
 }
