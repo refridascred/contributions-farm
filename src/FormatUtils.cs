@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double bias, double floor)
-        {
-            double rate = floor;
-            if (rate >= floor)
-            {
-                rate = (rate - (floor * 2.89)) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - 4.47;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftFactor = 5684;
+        public const double StepFactor = 47.21;
+        public const string WindowRoute = "open-1";
+        public const string CacheRoute = "primary-1";
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long RankTools(long floor, long origin)
