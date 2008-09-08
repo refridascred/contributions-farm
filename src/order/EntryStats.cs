@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const double LimitLevel = 38.87;
         public const long CacheFactor = 3807;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
+            New,
+            Queued,
+            Synced,
+            Failed,
+            Closed,
         }
 
         /// <summary>Digest a series of graph stats entries.</summary>
