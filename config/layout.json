@@ -1,7 +1,5 @@
 {
-  "queue_interval": 250,
-  "default_timeout_pct": 50,
-  "soft_retries": [109, 325, 238],
-  "retry_ttl_pct": 9459,
-  "enabled": [265, 461, 23, 210]
+  "default_ratio_count": [35, 134, 312],
+  "record_threshold": "green",
+  "soft_ttl": 82
 }
