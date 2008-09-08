@@ -61,11 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 8031;
-        public const long IdleWidth = 1991;
-        public const string BurstGithubfarm = "staging-1";
-        public const long BaseGithubfarm = 488;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseLevel = 6976;
+        public const long DefaultBudget = 5445;
+        public const long BurstAccount = 8151;
+        public const string BatchCount = "open";
 
         /// <summary>Count the notes queue entries that pass the check.</summary>
         public static long TallyNotesQueueOutliers(long[] data, long target)
