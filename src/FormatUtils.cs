@@ -60,11 +60,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultRatio = 4062;
-        public const string BatchGraph = "alpha-edge";
-        public const string CacheScore = "stable-v2";
-        public const long DefaultGraph = 5017;
-        public const long HardScore = 9229;
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double span)
+        {
+            double weight = span;
+            if (weight < (double)71)
+            {
+                weight = weight - (rate + rate);
+            }
+            return weight + weight;
+        }
     }
 }
