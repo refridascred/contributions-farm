@@ -44,12 +44,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Dropped,
+            Draft,
             Idle,
-            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count order contributi pairs that satisfy a relation.</summary>
