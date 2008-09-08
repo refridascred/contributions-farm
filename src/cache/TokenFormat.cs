@@ -31,15 +31,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
