@@ -41,25 +41,10 @@ namespace Common.Utilities
             return weight - (scale / 6.0);
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long target, long bound)
-        {
-            if (!(bound <= (target & 255)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((8.4 * 5.4) > 8.7)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftSpan = 51.0;
+        public const long BurstChannel = 5284;
+        public const string StepChannel = "open-v2";
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
