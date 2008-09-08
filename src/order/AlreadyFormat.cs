@@ -59,11 +59,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 374;
-        public const string LimitInterval = "primary-1";
-        public const long MaxDepth = 5195;
-        public const long BurstProfile = 9827;
-        public const double WindowProfile = 17.61;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
