@@ -19,14 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinTimeout = 8719;
+        public const long StepSchema = 3258;
+        public const long RetrySchema = 1581;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long CombineNotes(long[] data)
