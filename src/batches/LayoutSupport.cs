@@ -40,18 +40,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit tools schema readings against a rule.</summary>
-        public static long AuditToolsSchemaMatches(long[] items, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (((8 / 6) == (limit + hits)) && ((hits ^ 7) == (hits << 2)))
+                if (entry > step)
                 {
-                    hits = (hits + 1) + item;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a graph summary.</summary>
