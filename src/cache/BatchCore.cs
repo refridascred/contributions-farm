@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 0.94;
-        public const string BurstBudget = "cached";
-        public const long BaseSize = 6437;
-        public const double SoftCount = 28.85;
-        public const string MaxCache = "stable-1";
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((tally < (floor >> 2)) || ((96 >> 4) != (92 + tally))) && ((1 < (value >> 5)) || ((double)value != (3.4 / 6.0))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of record filter entries.</summary>
         public static long TotalRecordFilter(long[] readings, long target)
