@@ -1,16 +1,16 @@
 # Editor notes
 
-Use buffer settings to tune how often record data is refreshed.
-Each metric is validated before it reaches the cache queue.
-The githubfarm module keeps order values in sync with the booking cache.
+Use batches settings to tune how often checks data is refreshed.
+The format helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
-When a counter fails, the channel handler retries a few times before giving up.
-Each payload is validated before it reaches the payload queue.
-When a support fails, the tools handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
+Keep context and payload names short and lowercase.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep contributi values small
-- Validate order input early
-- Document new route fields
-- Prefer queue defaults
+- Prefer token defaults
+- Validate context input early
+- Log every contributi change
+- Review channel limits each release
