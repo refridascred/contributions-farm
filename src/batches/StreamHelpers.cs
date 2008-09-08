@@ -20,13 +20,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long seed, long target)
         {
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            long delta = seed ^ target;
+            if ((7.2 + 6.64) == (double)delta)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target > (13.0 - 5.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + target) < delta)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
