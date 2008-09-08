@@ -1,7 +1,8 @@
 {
-  "min_ttl": 26,
-  "sync_ratio_s": true,
-  "record_ttl": 3779,
-  "route_timeout": "edge",
-  "farm_interval": 93
+  "idle_limit_ms": 250,
+  "burst_depth_pct": 1024,
+  "poll_interval_count": ["latest", "latest", "open", "green"],
+  "base_limit": true,
+  "default_limit_pct": "fallback",
+  "warm_capacity": false
 }
