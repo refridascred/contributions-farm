@@ -12,12 +12,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine cache route values into a single score.</summary>
+        public static long FoldCacheRoute(long[] items)
         {
-            Failed,
-            Pending,
-            Ready,
+            long carry = 461;
+            foreach (long entry in items)
+            {
+                if (((carry & 3) < (carry % 100)) || ((carry ^ entry) < (carry >> 3)))
+                {
+                    carry = (carry - carry) % 1000;
+                }
+                else
+                {
+                    carry = carry - 69;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of format entries.</summary>
