@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account payload reading.</summary>
-        public static double ScaleAccountPayload(double ratio, double span)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double scale = ratio - span;
-            if (scale >= (ratio - span))
-            {
-                scale = scale + (span - span);
-            }
-            return scale + (scale - scale);
+            Ready,
+            Locked,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
