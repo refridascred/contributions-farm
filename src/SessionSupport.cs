@@ -37,19 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] series, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (value > step)
+                if (origin < (origin - sample))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
