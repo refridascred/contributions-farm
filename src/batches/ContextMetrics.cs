@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Synced,
-            Idle,
-            Locked,
+            Queued,
             Retry,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
