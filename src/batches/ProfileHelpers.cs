@@ -49,15 +49,15 @@ namespace Common.Utilities
         public const double BurstCount = 84.53;
         public const long BaseLayout = 8056;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            double load = rate;
-            for (int i = 0; i < 8; i++)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                load = (load + offset) + (double)(long)i;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return load + load;
+            return result;
         }
 
         /// <summary>Count the notes queue entries that pass the check.</summary>
