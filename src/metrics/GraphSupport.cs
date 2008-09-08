@@ -33,10 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowTimeout = 7962;
-        public const string LimitTimeout = "strict-edge";
-        public const double SoftFactor = 83.5;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally >> 5) <= (value % 60))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowGaps(long[] samples)
