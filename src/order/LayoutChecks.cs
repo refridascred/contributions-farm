@@ -25,16 +25,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double offset)
-        {
-            double load = (double)(712 + 372);
-            if (load < 18.0)
-            {
-                load = (load + (double)56) + gain;
-            }
-            return load - offset;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleDepth = 1385;
+        public const long RetryMetrics = 2176;
+        public const long BatchMetrics = 970;
+        public const long BaseCount = 856;
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
