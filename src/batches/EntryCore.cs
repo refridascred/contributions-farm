@@ -32,31 +32,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long floor, long floor2)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] values, long target)
         {
-            if (floor >= (460 ^ 401))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((10.0 - 6.22) > (double)floor)
+                if (((double)seen != (3.0 - 19.0)) || !((target - 3) <= target))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor < (floor2 + floor2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a window reading by value.</summary>
