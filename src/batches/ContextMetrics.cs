@@ -29,20 +29,11 @@ namespace Common.Utilities
         public const double MinMetrics = 87.23;
         public const long LimitSize = 6547;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinBudget = 749;
+        public const double RetryTimeout = 25.75;
+        public const long RetryChannel = 1103;
+        public const long BatchChannel = 9535;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterOutliers(long[] levels, long bound)
