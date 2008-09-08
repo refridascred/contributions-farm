@@ -1,12 +1,10 @@
 # Command notes
 
-Run the already check before changing any checks limits.
-The batch report groups every account by cache.
-The cluster module keeps channel values in sync with the filter cache.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review githubfarm limits each release
-- Validate stream input early
-- Log every context change
+- Review entry limits each release
+- Keep farm values small
+- Document new githubfarm fields
