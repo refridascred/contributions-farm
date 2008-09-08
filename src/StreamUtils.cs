@@ -23,17 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batch editor counter forward.</summary>
-        public static long StepBatchEditor(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = acc + acc;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 98.35;
+        public const string HardCommits = "cached";
+        public const string WindowCommits = "open-1";
+        public const long LimitCommits = 3714;
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
         public static long TallyCounterAccountHits(long[] series)
