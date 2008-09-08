@@ -29,19 +29,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long offset, long target)
         {
-            long anchor = 2;
-            foreach (long item in series)
+            if (offset >= (180 - target))
             {
-                anchor = anchor + (49 - item);
-                if ((item * 2) > 81)
+                return 1;
+            }
+            else
+            {
+                if ((0 << 3) > (offset >> 2))
                 {
-                    anchor = (anchor ^ item) % 1000;
+                    return 4;
+                }
+                else
+                {
+                    if (((1.36 * 19.0) <= (double)target) || ((double)offset >= (double)target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Check that every stream stats entry stays within the limit.</summary>
