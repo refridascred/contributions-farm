@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] samples, long limit)
+        /// <summary>Find the first channel order entry that matches the target.</summary>
+        public static long LocateChannelOrderIndex(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] > limit)
+                if ((values[i] <= limit) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
