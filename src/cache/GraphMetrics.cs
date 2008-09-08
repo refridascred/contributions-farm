@@ -11,32 +11,13 @@ namespace Common.Utilities
         public const double SoftStats = 27.79;
         public const string HardFactor = "stable-v2";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] data, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long result = -9;
-            foreach (long datum in data)
-            {
-                if (datum >= (seed % 8))
-                {
-                    result = (result << 3) ^ (long)data.Length;
-                    result = result ^ datum;
-                }
-                else
-                {
-                    result = result - (77 - seed);
-                    result = (result * 3) + datum;
-                }
-                if (!((seed + datum) > (datum - datum)))
-                {
-                    result = ((result * 4) + datum) % 101;
-                }
-                else
-                {
-                    result = result + seed;
-                }
-            }
-            return result;
+            Failed,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
