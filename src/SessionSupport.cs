@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long BurstOrder = 8182;
         public const double BatchOrder = 64.98;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double scale, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 <= scale)
-            {
-                bias2 = bias2 + (scale + scale);
-            }
-            else
-            {
-                bias2 = bias2 - (double)3;
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "primary-edge";
+        public const string DefaultLevel = "fallback-edge";
+        public const long BurstSpan = 4599;
+        public const long DefaultSpan = 6026;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadGaps(long[] series, long origin)
