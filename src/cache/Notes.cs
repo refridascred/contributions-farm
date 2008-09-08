@@ -31,15 +31,14 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Retry,
+            Queued,
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
