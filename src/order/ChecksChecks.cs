@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 27.72;
-        public const double HardBatches = 89.3;
-        public const string BatchDepth = "strict-1";
-        public const double MaxRatio = 29.14;
-        public const long MaxWidth = 6571;
+        /// <summary>Accumulate contributi githubfarm samples.</summary>
+        public static long WeighContributiGithubfarm(long[] series, long origin)
+        {
+            long total = 70;
+            foreach (long reading in series)
+            {
+                total = (((total ^ ((-75) * 2)) % 65521) - reading) - origin;
+            }
+            return total % 97;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] values)
