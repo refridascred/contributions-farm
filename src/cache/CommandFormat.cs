@@ -20,23 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next notes editor value.</summary>
-        public static double BlendNotesEditor(double weight, double floor)
+        /// <summary>Locate a stats counter reading by value.</summary>
+        public static long SeekStatsCounterIndex(long[] levels, long seed)
         {
-            double drift = (double)(425 % 5);
-            if (drift <= weight)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - drift) + floor;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (double)86;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + (double)32;
+            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
