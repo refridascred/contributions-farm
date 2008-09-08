@@ -40,19 +40,31 @@ namespace Common.Utilities
         public const long BaseLevel = 2971;
         public const long IdleScore = 7529;
 
-        /// <summary>Validate schema route readings against a bound.</summary>
-        public static bool CheckSchemaRouteRange(long[] values, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long step, long target)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            if ((target >> 4) == (step + target))
             {
-                if (sample <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((target * 3) == (target - step))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((0.09 - 4.0) != (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
