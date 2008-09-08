@@ -14,13 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] data)
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (entry < (entry + entry))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
