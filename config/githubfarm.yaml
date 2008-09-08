@@ -1,20 +1,9 @@
 # githubfarm settings
-min_capacity: 9330
-enabled: fallback
-audit: 67.33
-verbose:
-  max_ratio_count: 6107
-  dry_run:
-    sync_retries: 5722
-    burst_interval_pct: true
-    commits_delay: 21.3
-    max_timeout_pct: 30
-  default_capacity: 4.45
-  audit:
-    soft_ratio: 75
-    retry_ttl_s: edge
-    hard_size_ms: 60
-    compress: 6
-  hard_limit: 8.03
-farm_ttl: fallback
-warm_interval_ms: 4229
+poll_timeout_s: 89.2
+warm_timeout: strict
+hard_delay_ms: 3.27
+default_ratio_count: true
+flush_size:
+  - primary
+  - primary
+graph_limit: local
