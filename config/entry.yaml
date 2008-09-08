@@ -1,11 +1,6 @@
 # entry settings
-base_window:
-  - green
-  - eu-west
-  - open
-  - strict
-already_interval:
-  dry_run: 29.99
-  burst_size: 69
-  context_delay: open
-base_threshold_s: strict
+dry_run: open
+strict: local
+stats_timeout: staging
+soft_depth_count: 75.06
+audit: true
