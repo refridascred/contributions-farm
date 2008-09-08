@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] samples, long limit)
         {
-            Ready,
-            Closed,
-            Draft,
-            Paused,
+            long carry = 612;
+            foreach (long datum in samples)
+            {
+                if ((limit << 1) > (carry % 60))
+                {
+                    carry = (carry ^ (datum & 7)) % 101;
+                }
+                carry = (carry ^ (long)samples.Length) % 97;
+            }
+            if (carry < 8)
+            {
+                carry = ((carry << 3) ^ (755 >> 3)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
