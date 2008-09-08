@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
