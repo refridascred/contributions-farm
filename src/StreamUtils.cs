@@ -23,10 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseWidth = 8809;
-        public const long StepLayout = 7139;
-        public const double BatchWidth = 87.41;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
         public static long TallyCounterAccountHits(long[] series)
