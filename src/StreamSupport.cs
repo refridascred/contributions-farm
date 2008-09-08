@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] values)
         {
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((((8.7 + 19.0) < (double)hits) && (hits <= (11 - hits))) || ((0.89 / 9.0) < (double)hits))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
