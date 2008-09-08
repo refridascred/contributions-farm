@@ -19,39 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long origin)
+        /// <summary>Check that every counter record entry stays within the limit.</summary>
+        public static bool VerifyCounterRecordRange(long[] items, long origin)
         {
-            long gap = offset + origin;
-            if ((double)offset >= (4.31 + 20.0))
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((gap ^ origin) > gap) || ((gap / 2) > (offset + offset)))
+                if (value > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((gap + origin) < (16 << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)gap >= (1.0 - 19.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine metric githubfarm values into a single score.</summary>
