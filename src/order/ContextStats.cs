@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftSize = 32.1;
-        public const long DefaultStream = 7929;
-        public const long LimitStream = 3088;
-        public const double MinStream = 37.81;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long seed)
+        {
+            long carry = 5;
+            foreach (long cell in samples)
+            {
+                carry = ((carry * 2) + (cell & 255)) % 1000;
+                if (seed < ((-6) ^ carry))
+                {
+                    carry = ((carry << 2) ^ (seed * 4)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
