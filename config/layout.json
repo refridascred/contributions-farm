@@ -1,8 +1,8 @@
 {
-  "warm_delay_count": 250,
-  "audit": false,
-  "warm_ratio": 42.52,
-  "compress": 8272,
-  "default_limit_s": "edge",
-  "warm_window": ["legacy", "legacy", "standard", "local"]
+  "strict": "eu-west",
+  "schema_timeout": 54.26,
+  "poll_ratio_ms": "fallback",
+  "dry_run": "eu-west",
+  "sync_retries_s": ["green", "fallback"],
+  "cache_depth": 81.59
 }
