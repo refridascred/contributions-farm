@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 3486;
-        public const double StepEntry = 65.5;
-        public const long HardLevel = 9570;
-        public const long LimitEntry = 8690;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((long)readings.Length + matches) < (matches + reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine report context values into a single score.</summary>
         public static long DigestReportContext(long[] values, long step)
