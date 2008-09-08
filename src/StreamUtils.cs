@@ -62,13 +62,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
         {
-            Ready,
-            Paused,
-            Stale,
-            Active,
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 4) + bound) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stream record.</summary>
