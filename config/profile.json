@@ -1,6 +1,15 @@
 {
-  "burst_limit_pct": "green",
-  "hard_size": ["staging", "primary", "fallback"],
-  "dry_run": 21.69,
-  "persist": "local"
+  "cache_threshold_ms": {
+    "compress": 45.03,
+    "batch_timeout_s": true,
+    "route_delay": true,
+    "min_interval_pct": 89,
+    "order_depth": [485, 333, 166, 332],
+    "max_threshold_s": "latest"
+  },
+  "metrics_threshold": "standard",
+  "hard_window_ms": [95, 127, 322, 375],
+  "audit": "blue",
+  "burst_retries": "eu-west",
+  "strict": 1024
 }
