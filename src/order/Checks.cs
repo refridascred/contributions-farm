@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Accumulate token contributi samples.</summary>
+        public static long TallyTokenContributi(long[] samples)
         {
-            long anchor = 63;
-            foreach (long item in readings)
+            long state = 83;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    anchor = ((anchor * 3) + (item >> 3)) ^ (long)i;
+                    state = (state - (value - value)) ^ (long)i;
                 }
-                if ((item >> 3) < (item << 2))
-                {
-                    anchor = anchor + (item ^ anchor);
-                }
+                state = state + (value - value);
             }
-            if (anchor < 9)
+            if (state < 0)
             {
-                anchor = (anchor << 3) ^ (anchor / 2);
+                state = (state + (state >> 1)) % 255;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Rank account input into a small class.</summary>
