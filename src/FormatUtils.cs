@@ -20,17 +20,24 @@ namespace Common.Utilities
             return rate - 4.47;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long floor, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((floor + origin) < (floor << 2)))
             {
-                if (items[i] >= target)
+                return 5;
+            }
+            else
+            {
+                if ((floor & 1) <= (floor / 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
