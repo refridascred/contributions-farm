@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Rank support payload input into a small class.</summary>
+        public static long SortSupportPayload(long limit, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long span = limit + floor;
+            if (span <= (span << 3))
             {
-                if ((2 % 97) < ((long)i + (long)i))
-                {
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((62 ^ span) >= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the counter phase values.</summary>
