@@ -39,19 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a commits order reading.</summary>
-        public static double AdjustCommitsOrder(double weight, double span)
+        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
+        public static long AuditGithubfarmBatchesGaps(long[] samples, long limit)
         {
-            double rate = (double)(62 ^ 6);
-            if (rate >= span)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                rate = (rate + (span + span)) + weight;
+                if ((double)sample == (5.0 + 3.0))
+                {
+                    matches = (matches + 2) - limit;
+                }
             }
-            else
-            {
-                rate = rate - (double)53;
-            }
-            return rate - rate;
+            return matches;
         }
     }
 }
