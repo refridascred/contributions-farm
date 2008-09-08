@@ -1,14 +1,10 @@
 # entry settings
-batch_ratio:
-  - 159
-  - 321
-  - 186
-idle_capacity: 41.22
-sync_size_s:
-  - 96
-  - 437
-persist: standard
-flush_ttl_pct:
-  - 109
-  - 474
-  - 22
+audit: 98
+min_threshold: 8990
+filter_retries:
+  - eu-west
+  - edge
+  - standard
+counter_depth:
+  - staging
+  - open
