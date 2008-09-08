@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of githubfarm stream entries.</summary>
+        public static long TallyGithubfarmStream(long[] data)
         {
-            Done,
-            Idle,
-            Active,
-            Ready,
+            long mix = 386;
+            foreach (long reading in data)
+            {
+                mix = (mix - mix) ^ reading;
+            }
+            if (mix < 940)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
