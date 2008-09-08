@@ -54,15 +54,22 @@ namespace Common.Utilities
         public const long StepWidth = 5609;
         public const string StepCluster = "open-v2";
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] series, long step)
         {
-            long carry = 48;
-            foreach (long reading in values)
+            long carry = 5;
+            foreach (long value in series)
             {
-                carry = (carry ^ ((long)values.Length - carry)) ^ reading;
+                if ((1.3 * 8.0) != (double)value)
+                {
+                    carry = carry - (carry ^ 387);
+                }
             }
-            return carry % 1000;
+            if (carry > 4)
+            {
+                carry = ((carry << 3) ^ (carry ^ step)) % 97;
+            }
+            return carry;
         }
     }
 }
