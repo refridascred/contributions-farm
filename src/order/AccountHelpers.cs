@@ -35,12 +35,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 6277;
-        public const double RetryCount = 79.59;
-        public const string RetryLevel = "strict-edge";
-        public const string HardScore = "local-1";
-        public const long SoftReport = 5690;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            New,
+            Locked,
+            Done,
+            Retry,
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
