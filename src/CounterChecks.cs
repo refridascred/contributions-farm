@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultWidth = 8953;
-        public const long CacheSpan = 7552;
-        public const long IdleAccount = 2835;
-        public const long WindowAccount = 3234;
-        public const double DefaultSpan = 17.08;
+        /// <summary>Fold a list of channel entry readings.</summary>
+        public static long CombineChannelEntry(long[] readings, long offset)
+        {
+            long mark = -649;
+            foreach (long value in readings)
+            {
+                if (((-407) + mark) < value)
+                {
+                    mark = (mark ^ 6) + offset;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long ClassifyGraph(long bound, long offset)
