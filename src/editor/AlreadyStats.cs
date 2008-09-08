@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (1.0 > (double)datum)
+                if ((7.0 / 7.0) < (double)hits)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = ((hits + 1) + datum) + limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the metric profile entries that pass the check.</summary>
