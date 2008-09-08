@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const double BatchFilter = 51.09;
         public const long MinWidth = 3044;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double bias, double offset)
-        {
-            double scale = offset * 9.71;
-            if (scale < (double)559)
-            {
-                scale = scale - offset;
-            }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale - (double)11;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 320;
+        public const long RetryTimeout = 2968;
+        public const long MinLevel = 8043;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long StepToken(long origin)
