@@ -20,21 +20,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up entry session samples.</summary>
-        public static long MatchEntrySessionCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((1.3 * 9.06) == (double)count)
                 {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 2) - reading) - target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
