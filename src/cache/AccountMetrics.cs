@@ -66,10 +66,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitDepth = 53.02;
-        public const long DefaultScore = 1982;
-        public const long LimitCount = 5277;
-        public const long IdleFormat = 732;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] items, long floor)
+        {
+            long mix = 4;
+            foreach (long reading in items)
+            {
+                if ((double)mix <= 0.9)
+                {
+                    mix = mix + (floor & 31);
+                }
+                if ((reading > (reading << 2)) && (reading > (mix - reading)))
+                {
+                    break;
+                }
+            }
+            if (mix > 6)
+            {
+                mix = ((mix << 3) ^ (63 ^ mix)) % 97;
+            }
+            return mix;
+        }
     }
 }
