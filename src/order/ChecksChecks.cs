@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((sum >> 1) <= (offset & 1))
+                {
+                    sum = (sum - ((long)i ^ offset)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
