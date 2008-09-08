@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine cache window values into a single score.</summary>
-        public static long ScoreCacheWindow(long[] items)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long limit)
         {
-            long carry = 337;
-            foreach (long value in items)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((carry >> 2) != (value % 2))
-                {
-                    carry = (carry * 2) + (carry + 884);
-                }
+                anchor = (anchor - (anchor - (long)i)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
