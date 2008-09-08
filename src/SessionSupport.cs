@@ -46,16 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result - (long)i) % 255;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
