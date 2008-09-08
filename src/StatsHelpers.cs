@@ -40,13 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a payload commits sample.</summary>
