@@ -27,10 +27,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheRatio = 6956;
-        public const long CacheTools = 8779;
-        public const string DefaultTimeout = "stable";
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double gain, double floor)
+        {
+            double mean = gain;
+            if (mean <= mean)
+            {
+                mean = (mean + mean) - floor;
+            }
+            return mean - (mean - 8.01);
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long limit, long offset)
