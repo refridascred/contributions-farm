@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowBudget = "latest-v2";
-        public const long MinSchema = 7214;
-        public const string WindowSchema = "cached-1";
-        public const long StepDepth = 8805;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((773 - result) > result)
+                {
+                    result = ((result * 2) + (1 - offset)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
