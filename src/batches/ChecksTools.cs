@@ -30,19 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] values, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mix = 8;
-            foreach (long item in values)
-            {
-                mix = (((mix - ((long)values.Length << 1)) % 255) ^ item) - target;
-            }
-            if (mix > 413)
-            {
-                mix = (mix + (221 * 4)) % 65521;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
