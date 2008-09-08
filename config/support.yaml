@@ -1,29 +1,29 @@
 # support settings
-burst_delay_pct: 32.25
-max_window_count:
-  poll_ttl_ms:
-    persist: 5721
-    metric_retries:
-      - 7
-      - 450
-    idle_threshold_count:
-      - 268
-      - 374
-      - 106
-  hard_retries_s: 83
-  cache_retries_ms: true
-  base_window_count:
-    - 36
-    - 406
-    - 481
-soft_window_s:
-  batch_ratio_pct: latest
-  batch_limit:
-    - 36
-    - 472
-  notes_window: strict
-  warm_retries_pct: 31.13
-  hard_ratio:
-    sync_ratio_count: stable
-    enabled: true
-    burst_window: 98.89
+audit:
+  default_size_s:
+    - strict
+    - legacy
+  poll_limit_pct:
+    - 225
+    - 416
+    - 198
+  min_retries_count:
+    base_ratio_ms: true
+    max_ttl:
+      - 245
+      - 133
+      - 440
+    context_limit: 22
+    graph_interval: true
+    idle_interval_ms: 95
+  persist: 3.24
+compress:
+  - 416
+  - 245
+sync_limit: legacy
+cache_window: 16
+hard_ttl_count: eu-west
+soft_window_count:
+  - 56
+  - 12
+  - 123
