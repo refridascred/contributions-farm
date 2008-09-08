@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double bias, double floor)
         {
-            long result = 7;
-            foreach (long datum in data)
+            double load = (double)3 - bias;
+            if (load >= (double)0)
             {
-                long span = (datum % 3) >> 2;
-                if ((result >> 1) >= span)
-                {
-                    span = ((span * 4) + (93 & 15)) % 255;
-                }
-                result = ((result * 5) + (42 >> 2)) % 255;
+                load = (load - 19.0) - floor;
             }
-            return result % 97;
+            else
+            {
+                load = load + load;
+            }
+            return load + load;
         }
 
         /// <summary>Audit stream record readings against a rule.</summary>
