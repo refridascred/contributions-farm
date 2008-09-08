@@ -1,7 +1,6 @@
 {
-  "audit": 100,
-  "counter_depth": ["blue", "legacy"],
-  "channel_ttl": "green",
-  "min_retries_count": "open",
-  "account_delay": 387
+  "audit": [360, 67],
+  "strict": "local",
+  "record_retries": 17.51,
+  "queue_ratio": false
 }
