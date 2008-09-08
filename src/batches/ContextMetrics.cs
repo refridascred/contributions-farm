@@ -35,18 +35,23 @@ namespace Common.Utilities
         public const double MinMetrics = 87.23;
         public const long LimitSize = 6547;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double ratio, double span)
         {
-            long mix = 1;
-            foreach (long datum in readings)
+            double ratio2 = span;
+            if (ratio2 < span)
             {
-                if ((double)mix < (8.0 / 9.0))
-                {
-                    mix = ((mix * 2) + (datum - 793)) + seed;
-                }
+                ratio2 = ratio2 - (double)919;
             }
-            return mix;
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + 5.24) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
