@@ -34,19 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double bias, double span)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double rate = bias;
-            if (rate <= rate)
-            {
-                rate = (rate - (bias * 6.98)) - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (rate * 1.81);
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
