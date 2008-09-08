@@ -30,11 +30,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftDepth = "fallback";
-        public const long CacheSpan = 3549;
-        public const string BurstSpan = "fallback-v2";
-        public const long SoftSchema = 3769;
-        public const double LimitSchema = 85.74;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchLevel = 59.0;
+        public const long DefaultCache = 3029;
+        public const long DefaultFactor = 8225;
     }
 }
