@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] readings)
         {
-            Draft,
-            Locked,
-            Stale,
-            Paused,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value < (double)1)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of stats layout readings.</summary>
