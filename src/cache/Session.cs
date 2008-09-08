@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            long state = 87;
-            foreach (long datum in samples)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum + state) != (212 + datum))
-                {
-                    state = (state ^ (state * 3)) % 97;
-                }
-                else
-                {
-                    state = state ^ (state - datum);
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
             return state;
         }
