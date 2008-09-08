@@ -52,17 +52,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a format metric counter forward.</summary>
-        public static long StepFormatMetric(long offset)
+        /// <summary>Count order contributi pairs that satisfy a relation.</summary>
+        public static long CompareOrderContributiCount(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 2) ^ offset) % 4096;
-                total = (total << 3) ^ 408;
-                total = ((total * 4) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Iterate the layout support series from a seed.</summary>
