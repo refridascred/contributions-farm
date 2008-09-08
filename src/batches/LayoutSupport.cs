@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] data, long offset)
         {
-            Idle,
-            Dropped,
-            Closed,
-            Active,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((8.2 + 2.9) > (double)entry)
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
