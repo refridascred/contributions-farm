@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] items, long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = -3;
-            foreach (long datum in items)
-            {
-                result = (((result ^ (result * 4)) % 4096) - datum) - step;
-            }
-            return result;
+            public double Stamp { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a route header.</summary>
