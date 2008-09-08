@@ -34,14 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
         {
-            Synced,
-            Closed,
-            Paused,
-            Retry,
-            Pending,
+            long carry = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((16.0 / 3.0) <= (double)(long)i)
+                {
+                    break;
+                }
+                else
+                {
+                    carry = ((carry * 4) + ((long)i >> 5)) % 97;
+                }
+                carry = (carry << 3) ^ 7;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
