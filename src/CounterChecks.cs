@@ -57,21 +57,34 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback";
         public const long BatchSize = 6017;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 3;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 3) + (-56)) + (long)i;
+                }
+                if ((datum + datum) > target)
+                {
+                    sum = (sum << 3) ^ (sum - datum);
+                }
+                if ((datum ^ datum) == (61 - 804))
+                {
+                    sum = ((sum * 4) + (sum % 12)) % 97;
+                }
+                else
+                {
+                    sum = (sum + (datum % 10)) % 255;
                 }
             }
-            return tally;
+            if (sum < 76)
+            {
+                sum = (sum - (sum ^ sum)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate profile samples.</summary>
