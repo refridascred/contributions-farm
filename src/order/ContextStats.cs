@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long RetrySpan = 8163;
         public const long StepStats = 5919;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] readings, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                if ((double)sample != (7.4 - 0.15))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
