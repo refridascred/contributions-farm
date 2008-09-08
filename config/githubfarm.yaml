@@ -1,10 +1,27 @@
 # githubfarm settings
-min_capacity: false
-persist: standard
-base_retries_pct: staging
-warm_limit_s:
-  verbose: 80.76
-  window_ttl: 3878
-  max_size_pct: 250
-  retry_timeout_pct: staging
-  record_limit: strict
+account_window:
+  batch_timeout_count:
+    - 89
+    - 120
+    - 138
+    - 457
+  readonly:
+    - blue
+    - fallback
+  cache_depth: 42.47
+  persist: latest
+  tools_retries: false
+  poll_delay_count:
+    warm_limit_pct:
+      - 147
+      - 167
+    layout_retries:
+      - strict
+      - stable
+      - standard
+    verbose:
+      - 132
+      - 500
+soft_threshold_ms: 60
+editor_timeout: 8.21
+batch_timeout_s: local
