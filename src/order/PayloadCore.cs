@@ -19,18 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] series, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if (seed >= (seed2 - 69))
             {
-                if ((double)entry > (2.8 / 8.0))
+                return 6;
+            }
+            else
+            {
+                if (((double)seed2 < (2.15 / 3.0)) || ((seed - seed) < seed2))
                 {
-                    tally = (tally + 2) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if ((432 - seed) == (seed << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
