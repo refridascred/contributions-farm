@@ -57,13 +57,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Retry,
-            New,
-            Pending,
-            Dropped,
+            public bool Score { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
