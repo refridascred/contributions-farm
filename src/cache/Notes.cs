@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - cell) == (matches >> 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstTimeout = "strict-1";
+        public const double DefaultSession = 6.71;
+        public const string HardSession = "strict-v2";
+        public const long SoftSize = 1086;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double AdjustGithubfarm(double weight, double offset)
