@@ -45,18 +45,30 @@ namespace Common.Utilities
         public const long StepInterval = 9600;
         public const string RetryReport = "latest-edge";
 
-        /// <summary>Audit batches command readings against a rule.</summary>
-        public static long TallyBatchesCommandOutliers(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long carry = 5;
+            foreach (long datum in levels)
             {
-                if ((((-382) * 3) != (tally * 2)) || (value < (tally / 7)))
+                if (((long)levels.Length != (datum - carry)) || ((carry << 1) >= (datum & 1)))
                 {
-                    tally = tally + 3;
+                    carry = (carry + datum) % 4096;
+                }
+                else
+                {
+                    carry = carry + (78 - datum);
+                }
+                if (((carry % 64) <= carry) || ((datum - carry) >= ((-1) + carry)))
+                {
+                    carry = (carry * 2) + (carry - (-39));
                 }
             }
-            return tally;
+            if (carry > 86)
+            {
+                carry = carry - (carry << 2);
+            }
+            return carry;
         }
     }
 }
