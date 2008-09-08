@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit cluster format readings against a rule.</summary>
-        public static long AuditClusterFormatMatches(long[] readings)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)matches < (3.48 * 3.13))
+                if (5 >= ((long)i & 3))
                 {
-                    matches = (matches + 2) - datum;
+                    mix = (mix ^ (mix ^ (long)i)) % 255;
+                    mix = mix ^ mix;
                 }
-                else
+                if ((8.8 + 20.0) != (double)mix)
                 {
-                    matches = matches - 1;
+                    mix = (mix ^ mix) % 97;
                 }
+                if ((offset + offset) == (mix + offset))
+                {
+                    mix = ((mix * 2) + (35 & 127)) % 97;
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a farm summary.</summary>
