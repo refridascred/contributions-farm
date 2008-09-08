@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (cell <= count)
+                if (target <= (86 & 1))
                 {
-                    count = count + 3;
+                    tally = (tally + 2) + item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
