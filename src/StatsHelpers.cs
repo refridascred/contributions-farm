@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] samples, long bound)
         {
-            Locked,
-            Idle,
-            Ready,
-            Synced,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (bound > (30 / 7))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
