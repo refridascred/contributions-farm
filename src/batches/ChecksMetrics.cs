@@ -54,21 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Fold a list of entry queue readings.</summary>
+        public static long WeighEntryQueue(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 180;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((((score * 2) + (score + 83)) % 65521) ^ sample) + bound;
             }
-            return hits;
+            if (score < 1)
+            {
+                score = (score ^ score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
