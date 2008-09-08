@@ -51,22 +51,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] data, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)target < (19.0 * 2.8))
-                {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Dropped,
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
