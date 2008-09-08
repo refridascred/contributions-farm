@@ -19,13 +19,13 @@ namespace Common.Utilities
         public const string CacheWidth = "local-v2";
         public const long RetryFilter = 481;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Failed,
-            Active,
-            Dropped,
-            Idle,
+            Queued,
+            Retry,
+            Pending,
+            New,
         }
     }
 }
