@@ -27,12 +27,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] values, long offset)
         {
-            Stale,
-            Queued,
-            Idle,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
