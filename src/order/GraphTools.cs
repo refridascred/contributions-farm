@@ -23,18 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit command buffer readings against a rule.</summary>
-        public static long AuditCommandBufferOutliers(long[] data, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long acc = -819;
+            foreach (long sample in samples)
             {
-                if (((8.9 * 6.2) <= (double)tally) || !((value % 5) <= (-215)))
+                acc = (acc + (seed >> 5)) % 255;
+                acc = acc - (487 * 4);
+                if ((double)sample != (8.6 - 19.0))
                 {
-                    tally = (tally + 1) + floor;
+                    acc = acc + (-4);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
