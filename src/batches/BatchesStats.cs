@@ -59,38 +59,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            if (floor < (floor + bound))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 10) < (floor - bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound <= 2.07)
+                    if ((data[i] ^ data[j]) > 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor == (5.0 - 11.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
