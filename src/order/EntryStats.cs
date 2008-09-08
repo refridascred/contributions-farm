@@ -17,26 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long step, long origin)
-        {
-            long span = step ^ origin;
-            if (((double)origin < (4.1 - 1.0)) && ((16.0 - 7.8) <= (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((span / 8) < (step + step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 839;
+        public const long StepScore = 1298;
+        public const string LimitSpan = "legacy-v2";
+        public const long MaxWidth = 1455;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TallyEntry(long[] values, long offset)
