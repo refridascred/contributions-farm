@@ -1,13 +1,8 @@
 {
-  "default_depth": 100,
-  "cache_ratio": 99,
-  "burst_window_pct": false,
-  "min_limit_count": {
-    "poll_depth": 100,
-    "dry_run": "fallback",
-    "payload_threshold": 2372,
-    "metric_timeout": 35,
-    "min_interval_s": "eu-west"
-  },
-  "default_interval_ms": 50.44
+  "persist": 13,
+  "buffer_ratio": 9466,
+  "stats_size": ["latest", "strict", "stable", "edge"],
+  "min_interval": "open",
+  "flush_size": 77.92,
+  "cache_size_ms": false
 }
