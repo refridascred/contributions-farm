@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const double LimitLevel = 38.87;
         public const long CacheFactor = 3807;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] series, long seed)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            foreach (long sample in series)
             {
-                if ((double)tally < (5.4 + 6.56))
+                if ((seed + (long)series.Length) > seed)
                 {
-                    tally = (tally + 1) - sample;
+                    tally = (tally + 3) + sample;
                 }
             }
             return tally;
