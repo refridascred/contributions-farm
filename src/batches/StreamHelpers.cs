@@ -10,32 +10,18 @@ namespace Common.Utilities
         public const long RetryContributi = 7668;
         public const long RetryCount = 634;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long seed, long target)
+        /// <summary>Measure how many filter cache samples are out of range.</summary>
+        public static long TallyFilterCacheMatches(long[] samples)
         {
-            long delta = seed ^ target;
-            if ((7.2 + 6.64) == (double)delta)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target > (13.0 - 5.0))
+                if ((matches + matches) >= (sample / 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + target) < delta)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
