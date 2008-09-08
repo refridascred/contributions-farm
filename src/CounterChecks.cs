@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] levels, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (cell != limit)
+                if ((double)count != (double)cell)
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
