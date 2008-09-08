@@ -52,15 +52,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double weight, double offset)
         {
-            long total = 219;
-            foreach (long cell in levels)
+            double bias = (double)(29 << 2);
+            for (int i = 0; i < 2; i++)
             {
-                total = ((total * 4) + (cell - total)) % 97;
+                bias = ((bias - (double)(long)i) + weight) + offset;
             }
-            return total;
+            return bias - bias;
         }
     }
 }
