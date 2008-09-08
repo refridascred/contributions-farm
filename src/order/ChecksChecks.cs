@@ -26,21 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
