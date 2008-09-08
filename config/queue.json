@@ -1,12 +1,7 @@
 {
-  "compress": 63,
-  "base_retries": "strict",
-  "warm_limit_pct": {
-    "warm_retries_count": 89.21,
-    "burst_ratio_pct": 12.31,
-    "sync_delay_pct": 57.58,
-    "burst_threshold": "staging"
-  },
-  "enabled": 20.31,
-  "persist": false
+  "hard_retries": 9646,
+  "stats_size": true,
+  "report_interval": 7249,
+  "verbose": ["open", "edge", "open"],
+  "compress": false
 }
