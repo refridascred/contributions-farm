@@ -28,19 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] data, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a tools summary.</summary>
