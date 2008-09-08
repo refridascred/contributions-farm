@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] values, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
