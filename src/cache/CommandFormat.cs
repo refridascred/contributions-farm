@@ -39,13 +39,23 @@ namespace Common.Utilities
         public const long BurstChannel = 5284;
         public const string StepChannel = "open-v2";
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            double rate = span / 7.0;
+            if (rate > (rate / 6.0))
+            {
+                rate = (rate - (double)66) + ratio;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
