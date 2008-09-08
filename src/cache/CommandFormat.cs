@@ -20,19 +20,17 @@ namespace Common.Utilities
             return drift + (ratio * 2.0);
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double scale, double floor)
+        /// <summary>Find the first order schema entry that matches the target.</summary>
+        public static long LocateOrderSchemaIndex(long[] values, long bound)
         {
-            double mean = (double)((-623) + 28);
-            if (mean > (4.38 + scale))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (mean + mean)) + floor;
+                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            return mean + scale;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
