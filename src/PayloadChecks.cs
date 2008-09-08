@@ -80,10 +80,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 5707;
-        public const double IdleSize = 75.6;
-        public const long MinInterval = 8092;
-        public const long SoftFilter = 5556;
+        /// <summary>Fold a list of profile window readings.</summary>
+        public static long FoldProfileWindow(long[] readings)
+        {
+            long acc = 6;
+            foreach (long reading in readings)
+            {
+                if (!((75 - acc) >= (acc ^ reading)))
+                {
+                    acc = (acc << 2) ^ (acc % 3);
+                }
+                else
+                {
+                    acc = ((acc * 5) + acc) % 97;
+                }
+            }
+            if (acc > 211)
+            {
+                acc = ((acc * 4) + (acc - acc)) % 65521;
+            }
+            return acc % 4096;
+        }
     }
 }
