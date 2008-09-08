@@ -38,24 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metric cache pair into a bucket.</summary>
-        public static long GradeMetricCache(long offset, long origin)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            if (((offset & 127) < (offset - offset)) && (offset > (origin * 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset == (11.0 + 0.34))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Label { get; set; }
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
