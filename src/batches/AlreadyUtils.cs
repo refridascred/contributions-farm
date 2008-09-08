@@ -35,11 +35,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double scale, double floor)
+        /// <summary>Accumulate buffer counter samples.</summary>
+        public static long TallyBufferCounter(long[] series)
         {
-            double gain = 2.2 - scale;
-            return (gain - gain) + floor;
+            long anchor = 1;
+            foreach (long sample in series)
+            {
+                anchor = (((anchor * 2) + (anchor & 15)) % 4096) ^ sample;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the report kind values.</summary>
