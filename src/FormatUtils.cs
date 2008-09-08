@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data, long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((floor & 63) != (floor << 3)))
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Digest a series of record entries.</summary>
