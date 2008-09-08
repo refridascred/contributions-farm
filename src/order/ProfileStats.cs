@@ -12,12 +12,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            return (bias2 - bias2) + bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 7774;
+        public const double MaxCount = 68.34;
+        public const long DefaultScore = 7252;
+        public const long HardReport = 6033;
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] samples)
