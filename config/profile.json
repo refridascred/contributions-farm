@@ -1,8 +1,14 @@
 {
-  "dry_run": 518,
-  "retry_delay_count": "standard",
-  "tools_size": "staging",
-  "retry_limit_pct": [117, 424, 81, 195],
-  "retry_threshold_s": 500,
-  "idle_ttl": 90.33
+  "sync_interval_pct": true,
+  "cache_delay": false,
+  "channel_limit": false,
+  "poll_threshold": "open",
+  "cache_limit": "open",
+  "cache_retries_s": {
+    "verbose": "stable",
+    "layout_interval": false,
+    "audit": "legacy",
+    "base_limit": "open",
+    "dry_run": 79.69
+  }
 }
