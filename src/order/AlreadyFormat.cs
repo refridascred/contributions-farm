@@ -46,13 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Failed,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 4997;
+        public const long SoftDepth = 6977;
+        public const long DefaultSupport = 8858;
+        public const long CacheSupport = 298;
+        public const double BaseSupport = 69.56;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double AdjustMetrics(double gain, double offset)
