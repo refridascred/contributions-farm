@@ -1,17 +1,5 @@
 # support settings
-already_limit: open
-default_ratio_ms: true
-base_capacity:
-  soft_limit_pct:
-    - 148
-    - 317
-    - 196
-    - 195
-  report_window: 8912
-  stats_retries: 79
-  hard_delay_count: true
-batch_size_ms: 68.4
-strict:
-  - 320
-  - 133
-  - 480
+cache_retries: true
+sync_retries: latest
+window_limit: 93.41
+batch_capacity_s: 90
