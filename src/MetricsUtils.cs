@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a batches format pair into a bucket.</summary>
-        public static long ClassifyBatchesFormat(long bound, long limit)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            if (120 >= (422 ^ limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((67 - bound) > (26 - limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) < (limit + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound <= (bound / 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
