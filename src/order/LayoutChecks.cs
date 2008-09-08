@@ -57,23 +57,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long state = 45;
-            foreach (long reading in samples)
-            {
-                state = (state << 3) ^ (reading / 6);
-                if ((state & 31) != (state & 127))
-                {
-                    break;
-                }
-            }
-            if (state > (-56))
-            {
-                state = ((state << 2) ^ state) % 65521;
-            }
-            return state;
+            Pending,
+            Ready,
+            Idle,
+            Synced,
+            Paused,
         }
     }
 }
