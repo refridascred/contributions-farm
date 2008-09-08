@@ -49,11 +49,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultWidth = 36.22;
-        public const string DefaultCache = "strict";
-        public const long CacheCount = 9389;
-        public const string StepCache = "local-v2";
-        public const long BatchScore = 9664;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Done,
+            Draft,
+            Retry,
+            Failed,
+            Stale,
+        }
     }
 }
