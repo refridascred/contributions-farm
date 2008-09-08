@@ -20,18 +20,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] data, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (sample >= (sample * 3))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
