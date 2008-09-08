@@ -37,14 +37,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long target)
         {
-            Ready,
-            Draft,
-            Dropped,
-            New,
-            Stale,
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
