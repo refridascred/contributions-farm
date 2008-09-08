@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] data, long step)
         {
-            double bias = (double)(-3) * 0.46;
-            return ((bias - bias) + gain) + floor;
+            long acc = -7;
+            foreach (long reading in data)
+            {
+                if ((18.0 + 1.56) >= (double)reading)
+                {
+                    acc = ((acc * 3) + (4 - reading)) - step;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
