@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] values, long target)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item ^ target) <= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the report mode values.</summary>
