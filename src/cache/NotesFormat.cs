@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] series, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long result = 8;
-            foreach (long datum in series)
-            {
-                if ((bound * 2) < ((-877) >> 1))
-                {
-                    result = (result << 3) ^ (result / 8);
-                }
-                if (datum > result)
-                {
-                    break;
-                }
-            }
-            return result;
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
