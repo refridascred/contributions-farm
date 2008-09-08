@@ -25,17 +25,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long floor)
+        /// <summary>Fold a list of graph channel readings.</summary>
+        public static long DigestGraphChannel(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 3;
+            foreach (long datum in readings)
             {
-                if (data[i] <= floor)
+                if (((step >> 3) != (result % 5)) || ((5.7 * 2.4) != (double)result))
                 {
-                    return (long)i;
+                    result = (((result << 3) ^ (91 + result)) % 97) + datum;
+                }
+                else
+                {
+                    result = (result - (step % 16)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the window class values.</summary>
