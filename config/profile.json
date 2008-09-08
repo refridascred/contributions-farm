@@ -1,15 +1,5 @@
 {
-  "retry_depth": 100,
-  "retry_ttl_ms": 33,
-  "min_interval_count": {
-    "context_delay": 3830,
-    "poll_interval_s": 48,
-    "cache_ttl_s": "eu-west",
-    "min_threshold_pct": ["strict", "legacy"],
-    "compress": "edge",
-    "cache_window_count": false
-  },
-  "flush_threshold_pct": "latest",
-  "batch_threshold_count": 250,
-  "buffer_depth": [3, 343, 159, 448]
+  "queue_interval": "open",
+  "schema_limit": 1024,
+  "burst_limit_ms": false
 }
