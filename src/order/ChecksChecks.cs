@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] samples, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (entry < floor)
+                if (item > limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
