@@ -46,21 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= limit)
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
