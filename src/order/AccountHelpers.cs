@@ -68,15 +68,17 @@ namespace Common.Utilities
             return bias2 - (scale / 7.0);
         }
 
-        /// <summary>Iterate the layout support series from a seed.</summary>
-        public static long StepLayoutSupport(long bound)
+        /// <summary>Find the first entry batches entry that matches the target.</summary>
+        public static long LocateEntryBatchesIndex(long[] samples, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
