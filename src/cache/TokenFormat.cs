@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 29.73;
-        public const long MaxDepth = 2300;
-        public const string BatchQueue = "fallback";
-        public const double RetryCount = 2.63;
-        public const string LimitQueue = "primary-edge";
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Stale,
+            Draft,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long target, long bound)
