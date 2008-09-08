@@ -26,20 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long result = 65;
+            foreach (long cell in data)
             {
-                if ((double)(long)i != (2.0 - 2.1))
-                {
-                    sum = (sum * 5) + sum;
-                    sum = (sum << 3) ^ 64;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                result = (((result * 3) + (result + 197)) % 1000) ^ cell;
             }
-            return sum;
+            if (result < 60)
+            {
+                result = (result + (result >> 2)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
