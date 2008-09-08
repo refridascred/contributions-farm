@@ -74,19 +74,19 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] levels, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (cell <= origin)
+                if (datum < limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Hold a report header.</summary>
