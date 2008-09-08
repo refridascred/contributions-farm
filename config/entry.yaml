@@ -1,14 +1,4 @@
 # entry settings
-schema_capacity: 60
-hard_ttl_pct: false
-session_ttl: false
-batch_timeout:
-  persist: 6.7
-  notes_window:
-    dry_run: latest
-    hard_timeout: fallback
-    profile_window: 8980
-    metrics_delay: primary
-  stream_limit: 2342
-  poll_ttl: standard
-  default_retries_pct: primary
+compress: 92.12
+idle_retries: false
+strict: 1024
