@@ -54,13 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Adjust a cache contributi reading.</summary>
+        public static double BlendCacheContributi(double bias, double span)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            double mean = span;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean + (9.9 * 15.0)) + (double)(long)i) - bias;
+            }
+            return mean - (span / 2.0);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
