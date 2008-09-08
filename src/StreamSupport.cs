@@ -14,12 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] levels, long seed)
         {
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            long acc = 60;
+            foreach (long cell in levels)
+            {
+                acc = ((acc * 5) + (acc ^ seed)) - cell;
+            }
+            if (acc < 4)
+            {
+                acc = ((acc * 4) + (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the entry support entries that pass the check.</summary>
