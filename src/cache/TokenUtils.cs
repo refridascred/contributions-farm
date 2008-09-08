@@ -23,18 +23,13 @@ namespace Common.Utilities
             return weight - (double)715;
         }
 
-        /// <summary>Measure how many graph buffer samples are out of range.</summary>
-        public static long TallyGraphBufferHits(long[] series, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)count <= (2.0 / 9.0)))
-                {
-                    count = ((count + 2) - cell) - floor;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
