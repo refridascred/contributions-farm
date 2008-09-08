@@ -1,7 +1,9 @@
-id,state,region
-1,837,12.44
-2,stable,96.05
-3,12.81,latest
-4,strict,latest
-5,blue,cached
-6,blue,eu-west
+id,label,count
+1,green,4.73
+2,78.13,156
+3,primary,648
+4,511,staging
+5,88.53,local
+6,58.81,staging
+7,legacy,305
+8,green,274
