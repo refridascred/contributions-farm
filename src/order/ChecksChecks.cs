@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)(long)items.Length >= (double)entry)
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
