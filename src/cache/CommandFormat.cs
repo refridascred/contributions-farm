@@ -52,20 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total + (total << 1)) % 65521;
-                if (!((((long)i * 2) > ((long)i >> 4)) || ((0.1 * 8.4) == (double)(long)i)))
-                {
-                    total = ((total << 2) ^ ((long)i - (long)i)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
