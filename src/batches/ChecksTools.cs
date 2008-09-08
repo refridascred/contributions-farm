@@ -42,9 +42,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSize = 76.17;
-        public const long HardRatio = 7631;
-        public const long WindowSchema = 2608;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] readings, long seed)
+        {
+            long sum = -57;
+            foreach (long sample in readings)
+            {
+                sum = ((sum ^ (-7)) - sample) - seed;
+            }
+            return sum;
+        }
     }
 }
