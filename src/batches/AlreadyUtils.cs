@@ -51,20 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of token batch entries.</summary>
-        public static long WeighTokenBatch(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] levels, long origin)
         {
-            long score = 8;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                long lane = score - (cell * 4);
-                score = (score * 4) + lane;
-                if ((801 % 100) >= score)
+                if (!((8 % 3) > seen))
                 {
-                    score = (score * 3) + score;
+                    seen = ((seen + 2) + item) - origin;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a support record.</summary>
