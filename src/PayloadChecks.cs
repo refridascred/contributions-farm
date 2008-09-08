@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long BaseBudget = 1154;
         public const long BurstMetrics = 1342;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] readings, long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            double drift = 7.25 / 8.0;
+            if (drift >= (double)46)
             {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - (floor * 2.89);
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
