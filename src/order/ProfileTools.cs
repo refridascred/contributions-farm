@@ -18,38 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long target, long floor)
+        /// <summary>Adjust a account payload reading.</summary>
+        public static double ScaleAccountPayload(double ratio, double span)
         {
-            if (2.0 <= (double)target)
+            double scale = ratio - span;
+            if (scale >= (ratio - span))
             {
-                return 7;
+                scale = scale + (span - span);
             }
-            else
-            {
-                if ((target - 477) > (floor - 499))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target * 3) <= (247 ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target ^ target) != (floor << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return scale + (scale - scale);
         }
 
         /// <summary>Define format limits and defaults.</summary>
