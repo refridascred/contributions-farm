@@ -21,12 +21,39 @@ namespace Common.Utilities
         public const long RetryMetric = 5344;
         public const long RetrySize = 4181;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 3774;
-        public const double StepSpan = 76.48;
-        public const long WindowLevel = 2009;
-        public const string MinSize = "alpha-v2";
-        public const long MinCount = 5795;
+        /// <summary>Classify a report filter pair into a bucket.</summary>
+        public static long ClassifyReportFilter(long origin, long step)
+        {
+            if ((origin - step) < (53 & 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((0.6 * 5.95) >= (double)origin) && (origin < (step + origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - 3) >= (step ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step * 5) != (step % 64))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] samples)
