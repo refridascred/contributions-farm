@@ -34,19 +34,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next channel stream value.</summary>
-        public static double ProjectChannelStream(double ratio, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            double gain = span;
-            if (gain >= span)
+            long acc = 843;
+            foreach (long value in levels)
             {
-                gain = gain + 4.0;
+                if ((value + acc) < (acc - acc))
+                {
+                    acc = ((acc << 3) ^ (acc - 247)) % 65521;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (acc < 86)
             {
-                gain = (gain + (ratio * 2.9)) + (double)(long)i;
+                acc = (acc * 3) + (acc - acc);
             }
-            return gain - gain;
+            return acc;
         }
 
         /// <summary>Describe the report kind values.</summary>
