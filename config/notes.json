@@ -1,12 +1,14 @@
 {
-  "verbose": 97,
-  "sync_limit_s": {
-    "cluster_threshold": [30, 131, 210],
-    "default_size_ms": ["staging", "latest"],
-    "strict": ["green", "cached", "standard", "legacy"],
-    "buffer_ratio": ["standard", "strict", "local"],
-    "retry_size_s": "edge"
+  "strict": {
+    "poll_window": "edge",
+    "warm_interval_count": {
+      "max_interval_s": 2.49,
+      "burst_size_pct": [422, 446, 400, 454],
+      "base_delay_count": 2089
+    },
+    "editor_capacity": 177,
+    "stream_depth": ["primary", "staging", "eu-west", "latest"]
   },
-  "default_threshold_count": "legacy",
-  "idle_threshold_pct": ["standard", "latest", "latest", "local"]
+  "idle_retries_pct": ["eu-west", "standard", "staging"],
+  "min_size": 250
 }
