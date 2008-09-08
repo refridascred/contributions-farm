@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long limit, long limit2)
         {
-            Synced,
-            Locked,
-            Ready,
-            Done,
-            New,
+            long cur = limit + limit2;
+            if (!(limit > (limit << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit2 << 1) < (49 + limit2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit << 3) <= limit2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit2 - 681) <= cur)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
