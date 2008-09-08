@@ -23,18 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the queue checks entries that pass the check.</summary>
-        public static long TallyQueueChecksHits(long[] series, long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((datum + offset) >= seen) || (datum >= ((long)series.Length - datum)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
