@@ -23,22 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache route values into a single score.</summary>
-        public static long FoldCacheRoute(long[] items)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long target)
         {
-            long carry = 461;
-            foreach (long entry in items)
+            long diff = origin + target;
+            if ((diff + diff) >= (target / 4))
             {
-                if (((carry & 3) < (carry % 100)) || ((carry ^ entry) < (carry >> 3)))
+                return 2;
+            }
+            else
+            {
+                if (((diff & 7) > (target + target)) || ((double)target >= (1.0 - 5.9)))
                 {
-                    carry = (carry - carry) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    carry = carry - 69;
+                    return 1;
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Digest a series of format entries.</summary>
