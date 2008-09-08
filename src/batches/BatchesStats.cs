@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] readings, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Digest a series of format entries.</summary>
