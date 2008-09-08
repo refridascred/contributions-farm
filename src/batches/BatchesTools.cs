@@ -29,18 +29,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels, long limit)
-        {
-            long mark = 8;
-            foreach (long reading in levels)
-            {
-                if ((double)mark < (4.21 + 1.0))
-                {
-                    mark = (mark + reading) + limit;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstScore = 282;
+        public const double BatchCache = 66.36;
+        public const long BaseCache = 6750;
+        public const long HardCache = 7982;
+        public const double DefaultSize = 19.67;
     }
 }
