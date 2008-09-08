@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long RetryTimeout = 2968;
         public const long MinLevel = 8043;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((origin + acc) > (acc / 3)))
-                {
-                    acc = (acc ^ (origin % 3)) % 255;
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
             return acc;
         }
