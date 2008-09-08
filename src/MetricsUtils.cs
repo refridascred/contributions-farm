@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long limit)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = 8.87;
+            if (gain >= (double)264)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)324;
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)54;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - offset) - (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
