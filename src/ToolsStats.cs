@@ -35,11 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstWidth = 6058;
-        public const long HardCommits = 748;
-        public const double BaseCommits = 72.5;
-        public const long BatchCommits = 8505;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
