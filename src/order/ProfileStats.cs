@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const double IdleToken = 36.58;
         public const double DefaultInterval = 13.16;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowInterval = 1885;
-        public const string BaseTools = "cached-v2";
-        public const long IdleScore = 6241;
-        public const long HardWidth = 1324;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double span)
+        {
+            double bias2 = (span + bias) + span;
+            return bias2 + (span / 2.0);
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] samples)
