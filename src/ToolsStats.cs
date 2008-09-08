@@ -48,13 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long limit)
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!!((limit - limit) >= (item % 12)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch mode values.</summary>
