@@ -57,17 +57,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long seed)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Draft,
+            Retry,
         }
     }
 }
