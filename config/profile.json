@@ -1,5 +1,18 @@
 {
-  "commits_threshold": 1810,
-  "audit": false,
-  "tools_capacity": [20, 463]
+  "batch_size_s": {
+    "format_window": "staging",
+    "notes_ratio": true,
+    "farm_depth": "latest"
+  },
+  "order_limit": 90,
+  "dry_run": 35.64,
+  "strict": "staging",
+  "warm_window_s": 60,
+  "batch_timeout_ms": {
+    "readonly": "primary",
+    "compress": 9861,
+    "githubfarm_ttl": 32.21,
+    "audit": 5146,
+    "githubfarm_timeout": "green"
+  }
 }
