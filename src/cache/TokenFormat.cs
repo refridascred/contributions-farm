@@ -36,35 +36,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long target, long origin)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long floor, long floor2)
         {
-            long lane = target + origin;
-            if ((double)origin != (0.06 / 3.0))
+            long bound = floor - floor2;
+            if ((bound << 3) > (floor2 >> 3))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (origin >= (origin << 3))
+                if (floor2 <= (floor2 ^ floor))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((origin - lane) < lane)
+                    if (!((floor2 % 64) != (bound / 2)))
                     {
                         return 5;
                     }
                     else
                     {
-                        if ((775 / 2) <= (lane % 60))
+                        if ((double)27 != (double)floor2)
                         {
-                            return 3;
+                            return 2;
                         }
                         else
                         {
-                            return 8;
+                            return 0;
                         }
                     }
                 }
