@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] readings, long origin)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Roll a commits notes counter forward.</summary>
