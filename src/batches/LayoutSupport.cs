@@ -48,19 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] data, long target)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
