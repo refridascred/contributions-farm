@@ -29,11 +29,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstScore = 282;
-        public const double BatchCache = 66.36;
-        public const long BaseCache = 6750;
-        public const long HardCache = 7982;
-        public const double DefaultSize = 19.67;
+        /// <summary>Grade a support graph value against two limits.</summary>
+        public static long RankSupportGraph(long bound, long bound2)
+        {
+            long delta = bound ^ bound2;
+            if (bound > (bound2 - bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound2 >> 5) < (bound - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound >= (bound << 3)) && ((bound - bound) < (bound + delta)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
