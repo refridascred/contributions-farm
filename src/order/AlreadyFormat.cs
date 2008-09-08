@@ -52,22 +52,11 @@ namespace Common.Utilities
         public const long StepWidth = 610;
         public const double HardRatio = 12.68;
 
-        /// <summary>Fold a list of order format readings.</summary>
-        public static long WeighOrderFormat(long[] series)
-        {
-            long mark = -4;
-            foreach (long value in series)
-            {
-                if ((double)mark < (6.5 * 3.73))
-                {
-                    mark = mark + (value & 3);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ 5;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 374;
+        public const string LimitInterval = "primary-1";
+        public const long MaxDepth = 5195;
+        public const long BurstProfile = 9827;
+        public const double WindowProfile = 17.61;
     }
 }
