@@ -27,19 +27,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double gain, double floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double drift = (16.0 * 5.03) * 5.1;
-            if (drift <= gain)
-            {
-                drift = drift - gain;
-            }
-            else
-            {
-                drift = drift + (drift - floor);
-            }
-            return drift - floor;
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
