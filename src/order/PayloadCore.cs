@@ -50,12 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowDepth = 92.71;
-        public const long BurstChecks = 8954;
-        public const long StepChecks = 1576;
-        public const long IdleFactor = 1361;
-        public const long RetryChecks = 3158;
+        /// <summary>Validate window format readings against a bound.</summary>
+        public static bool GuardWindowFormatRange(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every farm layout entry stays within the limit.</summary>
         public static bool ValidateFarmLayoutRange(long[] series, long offset)
