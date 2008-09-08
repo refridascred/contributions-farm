@@ -41,11 +41,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryTimeout = "strict-edge";
-        public const double BatchCount = 15.11;
-        public const long DefaultFactor = 4595;
-        public const long WindowSize = 90;
-        public const long DefaultMetric = 5310;
+        public const string IdleMetric = "primary-1";
+        public const double SoftFactor = 11.88;
+        public const long BurstMetric = 1082;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] values, long seed)
