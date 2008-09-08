@@ -15,13 +15,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long origin, long seed)
         {
-            Paused,
-            Locked,
-            Draft,
-            Closed,
+            if ((double)origin > (8.97 * 4.19))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed % 8) >= (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + 22) >= (-5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
