@@ -50,11 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            long mix = 7;
+            foreach (long value in values)
+            {
+                if (((offset + 8) < (8 + mix)) && ((21 - 325) < (125 + offset)))
+                {
+                    mix = ((mix * 4) + offset) ^ value;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
