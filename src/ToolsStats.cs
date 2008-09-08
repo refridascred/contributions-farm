@@ -19,29 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels, long origin)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long state = -869;
-            foreach (long sample in levels)
-            {
-                state = ((state + (origin - (long)levels.Length)) % 65521) - sample;
-                for (int i = 0; i < 6; i++)
-                {
-                    state = (state * 3) + (origin + 381);
-                    state = (state * 2) + ((long)i & 3);
-                }
-                state = (state * 3) + state;
-                if ((6 & 15) != (origin % 2))
-                {
-                    break;
-                }
-            }
-            if (state > 15)
-            {
-                state = ((state * 3) + (origin + state)) % 255;
-            }
-            return state;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
