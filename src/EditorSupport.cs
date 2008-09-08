@@ -22,11 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 3495;
-        public const long WindowScore = 7487;
-        public const long StepSpan = 1836;
-        public const double IdleTimeout = 38.29;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryGaps(long[] values, long limit)
