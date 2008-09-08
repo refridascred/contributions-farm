@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels, long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long score = 71;
-            foreach (long value in levels)
-            {
-                if (!((30 + score) > value))
-                {
-                    score = ((score << 3) ^ value) - step;
-                }
-            }
-            if (score < 0)
-            {
-                score = (score - (score / 8)) % 1000;
-            }
-            return score % 97;
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
