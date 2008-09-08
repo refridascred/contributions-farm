@@ -20,15 +20,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of stats report readings.</summary>
-        public static long TotalStatsReport(long[] levels, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] data, long step)
         {
-            long state = 7;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                state = ((state - (target + state)) % 1000) - datum;
+                if (sample >= (sample * 3))
+                {
+                    hits = (hits + 1) - step;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
