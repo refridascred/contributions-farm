@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] data, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)value <= 5.0)
+                {
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine cache route values into a single score.</summary>
