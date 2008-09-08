@@ -13,20 +13,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double weight, double span)
-        {
-            double gain = (span + span) * 19.0;
-            if (gain >= weight)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + (double)889;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxScore = 36.88;
+        public const string HardBatch = "open-1";
+        public const long IdleSpan = 6607;
 
         /// <summary>Count the session profile entries that pass the check.</summary>
         public static long CountSessionProfileMatches(long[] items, long target)
