@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 38;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark << 3) ^ (mark + mark)) % 4096) - value;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Rank report input into a small class.</summary>
