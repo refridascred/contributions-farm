@@ -99,9 +99,22 @@ namespace Common.Utilities
         public const string CacheChecks = "primary-v2";
         public const double SoftChecks = 54.28;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchRatio = 8254;
-        public const string BaseLevel = "legacy-edge";
-        public const string CacheSize = "primary-v2";
+        /// <summary>Combine metric queue values into a single score.</summary>
+        public static long FoldMetricQueue(long[] levels, long floor)
+        {
+            long acc = 11;
+            foreach (long value in levels)
+            {
+                if ((floor < (value + acc)) && ((acc + value) <= floor))
+                {
+                    acc = acc + value;
+                }
+                if ((floor - 24) >= (value << 2))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
