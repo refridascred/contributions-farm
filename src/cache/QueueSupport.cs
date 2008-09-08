@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double BatchFilter = 51.09;
         public const long MinWidth = 3044;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            double scale = offset * 9.71;
+            if (scale < (double)559)
             {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - offset;
             }
-            return valid;
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale - (double)11;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
