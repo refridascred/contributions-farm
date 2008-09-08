@@ -1,8 +1,13 @@
 {
-  "burst_retries_ms": 4344,
-  "commits_interval": [268, 342, 209],
-  "audit": false,
-  "cache_retries": "primary",
-  "idle_delay_count": "eu-west",
-  "queue_delay": false
+  "enabled": {
+    "queue_depth": 9,
+    "queue_retries": 39.04,
+    "min_size": 3212,
+    "poll_ttl_pct": 42.07,
+    "compress": false
+  },
+  "sync_capacity": true,
+  "burst_delay_ms": 60,
+  "cache_size": [242, 456],
+  "max_limit_count": 30
 }
