@@ -21,18 +21,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long acc = 48;
+            foreach (long sample in values)
             {
-                if ((3 - cell) != (cell ^ cell))
+                if ((6.0 * 7.5) != (double)limit)
                 {
-                    hits = hits + 2;
+                    acc = ((acc ^ (-758)) % 1000) ^ sample;
                 }
             }
-            return hits;
+            if (acc > 0)
+            {
+                acc = acc - (limit * 2);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate token samples.</summary>
