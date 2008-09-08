@@ -1,7 +1,5 @@
 # support settings
-base_depth_pct: true
-token_delay: stable
-soft_timeout_s: 4679
-cache_threshold_pct: eu-west
-hard_depth: false
-entry_retries: primary
+stream_window: 77.72
+batches_timeout: 95.12
+metric_capacity: 1024
+payload_timeout: staging
