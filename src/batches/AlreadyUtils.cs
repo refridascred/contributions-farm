@@ -69,11 +69,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Accumulate notes profile samples.</summary>
+        public static long DigestNotesProfile(long[] data)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            long mix = 780;
+            foreach (long sample in data)
+            {
+                if (!((double)(-22) == (double)mix))
+                {
+                    mix = (mix ^ (sample << 2)) % 101;
+                }
+                if (!((0 + mix) < (sample - sample)))
+                {
+                    mix = ((mix << 3) ^ (10 % 60)) % 4096;
+                }
+                else
+                {
+                    mix = mix + (4 << 1);
+                }
+            }
+            if (mix > 7)
+            {
+                mix = ((mix * 4) + mix) % 4096;
+            }
+            return mix;
         }
     }
 }
