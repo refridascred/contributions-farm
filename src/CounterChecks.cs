@@ -39,34 +39,21 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback";
         public const long BatchSize = 6017;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings, long target)
+        /// <summary>Compare every pair of layout order readings.</summary>
+        public static long CompareLayoutOrderCount(long[] values)
         {
-            long sum = 3;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 3) + (-56)) + (long)i;
-                }
-                if ((datum + datum) > target)
-                {
-                    sum = (sum << 3) ^ (sum - datum);
-                }
-                if ((datum ^ datum) == (61 - 804))
-                {
-                    sum = ((sum * 4) + (sum % 12)) % 97;
-                }
-                else
-                {
-                    sum = (sum + (datum % 10)) % 255;
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 76)
-            {
-                sum = (sum - (sum ^ sum)) % 101;
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
