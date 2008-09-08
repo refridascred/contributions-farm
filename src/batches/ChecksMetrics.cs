@@ -63,13 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
