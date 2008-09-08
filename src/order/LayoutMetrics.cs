@@ -25,11 +25,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double rate, double span)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            double drift = (double)(2 & 1);
-            return ((drift + drift) + rate) + span;
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
