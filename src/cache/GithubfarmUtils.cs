@@ -23,16 +23,13 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long sum = 59;
-            foreach (long sample in levels)
-            {
-                sum = sum + (sum * 3);
-                sum = (sum ^ (sum ^ sample)) % 1000;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a route payload value against two limits.</summary>
