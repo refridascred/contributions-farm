@@ -36,19 +36,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            double bias = 5.2;
-            if (bias <= ratio)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (offset - ratio);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (bias * 2.0);
-            }
-            return bias - (double)37;
+            return tally;
         }
 
         /// <summary>Describe the payload level values.</summary>
