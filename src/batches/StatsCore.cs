@@ -67,23 +67,17 @@ namespace Common.Utilities
         public const string IdleTimeout = "stable";
         public const long DefaultDepth = 547;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double ratio, double offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] levels, long step)
         {
-            double ratio2 = (offset * 9.0) * 1.0;
-            if (ratio2 >= ratio2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 - (7.0 * 9.9);
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio + 20.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 + (double)(-843);
+            return -1;
         }
 
         /// <summary>Locate a cluster route reading by value.</summary>
