@@ -53,18 +53,11 @@ namespace Common.Utilities
         public const string LimitEditor = "cached-v2";
         public const long HardEditor = 7592;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((6.0 + 5.0) != (double)bound)
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 2609;
+        public const long BaseSize = 2769;
+        public const double LimitSchema = 26.69;
+        public const long BaseScore = 4144;
+        public const long WindowSchema = 549;
     }
 }
