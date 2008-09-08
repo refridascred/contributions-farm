@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const long MaxChecks = 8046;
         public const long CacheChecks = 4265;
 
-        /// <summary>Accumulate farm tools samples.</summary>
-        public static long WeighFarmTools(long[] data, long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] samples, long bound)
         {
-            long mix = 94;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((double)mix >= (19.0 * 5.4)))
+                if (samples[i] > bound)
                 {
-                    mix = (mix + step) % 65521;
-                }
-                if (0 <= value)
-                {
-                    mix = mix + mix;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
