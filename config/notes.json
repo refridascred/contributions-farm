@@ -1,23 +1,6 @@
 {
-  "already_ttl": {
-    "enabled": {
-      "channel_ratio": "fallback",
-      "sync_capacity_pct": "stable",
-      "filter_threshold": false
-    },
-    "hard_retries_count": 67.06,
-    "graph_timeout": false,
-    "stats_size": {
-      "sync_limit": "edge",
-      "strict": 43.3,
-      "batch_size": false,
-      "soft_limit": [119, 325, 499, 376],
-      "graph_retries": "open",
-      "contributi_ttl": 15.57
-    },
-    "soft_threshold": ["staging", "latest", "strict", "eu-west"],
-    "tools_ttl": "blue"
-  },
-  "metrics_interval": 60,
-  "tools_delay": "fallback"
+  "idle_limit_count": 100,
+  "strict": true,
+  "enabled": "stable",
+  "dry_run": "local"
 }
