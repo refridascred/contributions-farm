@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of session buffer entries.</summary>
-        public static long TallySessionBuffer(long[] data, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long anchor = -595;
-            foreach (long sample in data)
-            {
-                anchor = (anchor - sample) + target;
-                anchor = (anchor - (sample % 7)) % 65521;
-                anchor = ((anchor * 2) + anchor) % 4096;
-            }
-            return anchor % 97;
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
