@@ -1,29 +1,17 @@
 # support settings
-audit:
-  default_size_s:
-    - strict
-    - legacy
-  poll_limit_pct:
-    - 225
-    - 416
-    - 198
-  min_retries_count:
-    base_ratio_ms: true
-    max_ttl:
-      - 245
-      - 133
-      - 440
-    context_limit: 22
-    graph_interval: true
-    idle_interval_ms: 95
-  persist: 3.24
-compress:
-  - 416
-  - 245
-sync_limit: legacy
-cache_window: 16
-hard_ttl_count: eu-west
-soft_window_count:
-  - 56
-  - 12
-  - 123
+already_limit: open
+default_ratio_ms: true
+base_capacity:
+  soft_limit_pct:
+    - 148
+    - 317
+    - 196
+    - 195
+  report_window: 8912
+  stats_retries: 79
+  hard_delay_count: true
+batch_size_ms: 68.4
+strict:
+  - 320
+  - 133
+  - 480
