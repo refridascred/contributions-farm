@@ -1,6 +1,5 @@
 # githubfarm settings
-warm_limit: true
-notes_capacity: latest
-context_depth: 28.17
-soft_retries: 30
-soft_size_ms: standard
+hard_ratio: edge
+flush_threshold_s: false
+burst_interval_ms: primary
+batch_capacity: edge
