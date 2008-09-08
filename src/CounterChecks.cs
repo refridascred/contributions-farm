@@ -20,18 +20,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)count != (double)cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a commits counter forward.</summary>
