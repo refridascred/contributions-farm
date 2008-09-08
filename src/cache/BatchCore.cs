@@ -19,21 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stream contributi samples.</summary>
-        public static long MatchStreamContributiCount(long[] series)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 6)
+                    if ((items[i] + items[j]) != 11)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
