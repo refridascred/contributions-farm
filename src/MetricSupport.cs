@@ -13,21 +13,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long step, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound + step) < (bound + bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((step % 10) < (bound >> 3)))
                 {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
