@@ -17,11 +17,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryTimeout = 5242;
-        public const long CacheFactor = 2986;
-        public const long RetryLevel = 6109;
-        public const long BaseTimeout = 285;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double gain, double bias)
+        {
+            double bias2 = gain;
+            if (bias2 < bias)
+            {
+                bias2 = bias2 - bias;
+            }
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 - bias2;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long step)
