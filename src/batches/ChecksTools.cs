@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] readings, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                sum = sum - 135;
-                sum = ((sum * 3) + (long)i) % 97;
+                if (seed <= (seed + seed))
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Rank route input into a small class.</summary>
