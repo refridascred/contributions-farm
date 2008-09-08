@@ -19,17 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] readings, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -67;
+            foreach (long cell in levels)
             {
-                if (readings[i] > step)
+                if ((662 + sum) == (791 / 8))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (cell * 4);
+                }
+                else
+                {
+                    sum = ((sum * 2) + (cell - cell)) % 1000;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Describe the order state values.</summary>
