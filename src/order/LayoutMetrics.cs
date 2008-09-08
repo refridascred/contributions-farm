@@ -31,19 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of metrics route entries.</summary>
-        public static long TotalMetricsRoute(long[] values)
+        /// <summary>Count the filter graph entries that pass the check.</summary>
+        public static long MeasureFilterGraphMatches(long[] levels)
         {
-            long acc = 5;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                acc = (acc - sample) % 4096;
+                if (value > 3)
+                {
+                    hits = hits + 1;
+                }
             }
-            if (acc > 1)
-            {
-                acc = (acc - (acc / 9)) % 4096;
-            }
-            return acc;
+            return hits;
         }
     }
 }
