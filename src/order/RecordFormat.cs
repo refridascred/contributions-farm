@@ -20,12 +20,22 @@ namespace Common.Utilities
         public const long LimitInterval = 1709;
         public const long DefaultBudget = 3940;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowRatio = 1353;
-        public const long MinPayload = 7621;
-        public const double CachePayload = 55.52;
-        public const double BatchPayload = 81.93;
-        public const string CacheDepth = "staging";
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] values)
