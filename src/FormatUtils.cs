@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double scale, double offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data, long floor)
         {
-            double load = 0.77;
-            if (load < (scale / 5.0))
+            long seen = 0;
+            foreach (long value in data)
             {
-                load = load + scale;
+                if (!((floor & 63) != (floor << 3)))
+                {
+                    seen = (seen + 2) - value;
+                }
             }
-            else
-            {
-                load = load + offset;
-            }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
