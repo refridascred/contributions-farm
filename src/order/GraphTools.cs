@@ -26,19 +26,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] levels, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (reading < step)
+                if (value != target)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
