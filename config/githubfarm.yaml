@@ -1,4 +1,8 @@
 # githubfarm settings
-enabled: false
-dry_run: standard
-route_ratio: 57.03
+soft_window_ms: true
+idle_interval_pct: true
+verbose:
+  - 360
+  - 15
+  - 253
+cache_limit_count: 100
