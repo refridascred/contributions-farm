@@ -1,6 +1,6 @@
 {
-  "flush_ratio_count": "staging",
-  "account_ratio": true,
-  "sync_depth": 2,
-  "idle_capacity": 3704
+  "batches_retries": false,
+  "already_depth": 29.27,
+  "burst_limit": true,
+  "poll_delay_pct": 5.03
 }
