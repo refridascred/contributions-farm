@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] readings, long target)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the tools phase values.</summary>
