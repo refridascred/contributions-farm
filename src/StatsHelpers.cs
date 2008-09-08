@@ -61,18 +61,12 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (5.42 <= (double)936)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
