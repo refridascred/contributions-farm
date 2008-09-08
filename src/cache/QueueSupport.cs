@@ -16,11 +16,15 @@ namespace Common.Utilities
             return bias2 + weight;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 2128;
-        public const long StepInterval = 5658;
-        public const long SoftSpan = 5937;
-        public const double IdleAlready = 89.19;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Pending,
+            Stale,
+            Paused,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long step)
