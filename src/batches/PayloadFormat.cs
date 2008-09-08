@@ -40,11 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 6302;
-        public const long HardRatio = 351;
-        public const long StepInterval = 9600;
-        public const string RetryReport = "latest-edge";
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Blend two report contributi measurements.</summary>
         public static double ProjectReportContributi(double ratio, double floor)
