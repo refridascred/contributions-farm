@@ -19,13 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
+            Pending,
+            Queued,
+            Retry,
+            Locked,
+            Stale,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
