@@ -1,14 +1,8 @@
 {
-  "batch_threshold_s": {
-    "verbose": 3076,
-    "dry_run": false,
-    "payload_capacity": 98.38,
-    "warm_depth": "strict",
-    "graph_ratio": 12.78,
-    "poll_retries_pct": "cached"
-  },
-  "commits_limit": 69.21,
-  "dry_run": 250,
-  "flush_depth_ms": 500,
-  "burst_capacity_s": 9931
+  "poll_threshold_s": 1,
+  "dry_run": 87,
+  "enabled": ["green", "standard"],
+  "persist": [468, 463, 152, 175],
+  "default_window": false,
+  "batch_interval_count": 500
 }
