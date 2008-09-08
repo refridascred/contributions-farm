@@ -14,15 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] series, long seed)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long item in series)
             {
-                if (!((sample + tally) >= sample))
+                if (4.14 > (double)seed)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 3) - item;
                 }
             }
             return tally;
