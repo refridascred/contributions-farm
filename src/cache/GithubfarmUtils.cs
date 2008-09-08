@@ -12,15 +12,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Adjust a schema graph reading.</summary>
-        public static double AdjustSchemaGraph(double scale, double span)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            double load = 12.0;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load + load) + (double)(long)i) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + scale;
+            return matches;
         }
 
         /// <summary>Blend two batch measurements.</summary>
