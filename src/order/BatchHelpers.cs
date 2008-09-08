@@ -31,11 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryBudget = 3542;
-        public const long BurstCommits = 6048;
-        public const double LimitCommits = 45.68;
-        public const long BaseBudget = 5199;
-        public const long SoftDepth = 3840;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double ratio, double offset)
+        {
+            double weight = offset * 3.2;
+            if (weight < (offset / 9.0))
+            {
+                weight = weight - (double)5;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight - (1.3 * 7.4);
+        }
     }
 }
