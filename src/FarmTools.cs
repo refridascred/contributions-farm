@@ -30,13 +30,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Locked,
+            Queued,
+            Retry,
+            Dropped,
+            Failed,
             Stale,
-            Idle,
-            Synced,
         }
     }
 }
