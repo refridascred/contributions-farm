@@ -37,11 +37,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] samples, long floor)
         {
-            double ratio = bias;
-            return (ratio + (double)(-1)) + offset;
+            long anchor = -83;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor * 5) + (long)samples.Length) % 4096;
+                if ((anchor % 8) > anchor)
+                {
+                    anchor = (anchor << 2) ^ (anchor ^ anchor);
+                }
+                if ((double)anchor == (double)sample)
+                {
+                    break;
+                }
+            }
+            if (anchor < 784)
+            {
+                anchor = ((anchor << 2) ^ (floor % 5)) % 4096;
+            }
+            return anchor;
         }
     }
 }
