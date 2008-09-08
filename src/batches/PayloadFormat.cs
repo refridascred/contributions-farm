@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] levels, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long limit)
         {
-            long mix = 715;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((floor + floor) > (floor * 3))
+                if (sample >= limit)
                 {
-                    mix = ((mix * 4) + (floor - reading)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix - mix) % 4096;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Compare every pair of stats layout readings.</summary>
