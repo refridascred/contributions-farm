@@ -30,15 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double bias, double span)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double bias2 = bias;
-            if (bias2 >= span)
-            {
-                bias2 = bias2 - span;
-            }
-            return bias2 - bias2;
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a contributi record.</summary>
