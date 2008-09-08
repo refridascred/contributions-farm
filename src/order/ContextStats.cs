@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((hits - hits) != (81 << 1))
+                if ((70 + count) > (count / 2))
                 {
-                    hits = (hits + 1) + value;
+                    count = (count + 2) + sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the context level values.</summary>
