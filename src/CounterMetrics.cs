@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((2 + cell) <= (cell + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
