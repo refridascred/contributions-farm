@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] values, long limit)
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate contributi payload samples.</summary>
