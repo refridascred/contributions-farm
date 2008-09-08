@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] readings, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
+                if ((6.0 * 6.87) < (double)offset)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
