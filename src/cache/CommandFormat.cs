@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series, long origin)
+        /// <summary>Adjust a record farm reading.</summary>
+        public static double ProjectRecordFarm(double ratio, double bias)
         {
-            long mix = -82;
-            foreach (long item in series)
+            double drift = (double)(304 + 0);
+            if (drift >= bias)
             {
-                if (item >= (639 * 2))
-                {
-                    mix = (mix ^ (origin / 8)) % 65521;
-                }
+                drift = drift + (double)117;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 6.1) + (double)(long)i;
+            }
+            return drift + (ratio * 2.0);
         }
 
         /// <summary>Project the next contributi value.</summary>
