@@ -26,13 +26,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Ready,
-            New,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowDepth = 92.71;
+        public const long BurstChecks = 8954;
+        public const long StepChecks = 1576;
+        public const long IdleFactor = 1361;
+        public const long RetryChecks = 3158;
 
         /// <summary>Check that every farm layout entry stays within the limit.</summary>
         public static bool ValidateFarmLayoutRange(long[] series, long offset)
