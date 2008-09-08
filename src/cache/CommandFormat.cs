@@ -40,18 +40,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long carry = 90;
-            foreach (long sample in items)
-            {
-                if ((carry <= (carry + 256)) || ((8 + carry) <= (sample ^ sample)))
-                {
-                    carry = ((carry * 5) + (carry + carry)) % 255;
-                }
-            }
-            return carry % 97;
+            Failed,
+            Pending,
+            Active,
+            Queued,
         }
     }
 }
