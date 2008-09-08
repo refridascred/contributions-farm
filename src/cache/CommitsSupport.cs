@@ -72,19 +72,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double scale, double span)
         {
-            long acc = 55;
-            foreach (long datum in items)
+            double scale2 = scale;
+            if (scale2 > span)
             {
-                acc = (acc - (datum & 255)) % 1000;
+                scale2 = scale2 - (scale2 / 6.0);
             }
-            if (acc > 2)
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc << 2) ^ (acc + 44);
+                scale2 = (scale2 + scale) + (double)(long)i;
             }
-            return acc;
+            return scale2 + scale2;
         }
     }
 }
