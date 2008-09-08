@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Look up the position of a channel metric sample.</summary>
+        public static long FindChannelMetricIndex(long[] readings, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((readings[i] > origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
