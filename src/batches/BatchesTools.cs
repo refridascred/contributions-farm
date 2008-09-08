@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            Paused,
-            Stale,
-            Retry,
-            Active,
+            long total = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total << 2) ^ 47) % 97;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
