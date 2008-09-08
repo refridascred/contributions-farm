@@ -31,11 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] data, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            long mark = 526;
+            foreach (long cell in data)
+            {
+                if ((double)cell > (2.3 / 9.0))
+                {
+                    mark = ((mark - (mark - cell)) % 101) - offset;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
