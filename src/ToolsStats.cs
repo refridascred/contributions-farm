@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings, long limit)
+        /// <summary>Locate a batch metrics reading by value.</summary>
+        public static long SeekBatchMetricsIndex(long[] values, long offset)
         {
-            long acc = 44;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.24 + 0.71) >= (double)cell)
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
                 {
-                    acc = (acc - (limit ^ 255)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ limit) % 65521;
-                }
-                acc = ((acc * 2) + (acc * 3)) % 4096;
             }
-            if (acc > 391)
-            {
-                acc = (acc * 5) + (0 + acc);
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
