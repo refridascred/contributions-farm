@@ -37,13 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] data, long origin)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up metrics samples.</summary>
