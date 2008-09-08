@@ -23,14 +23,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] series, long origin)
         {
-            Idle,
-            Pending,
-            Retry,
-            Queued,
-            Synced,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
