@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long BurstDepth = 3720;
         public const long DefaultMetrics = 2325;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data, long step)
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item << 2) >= (5 * 2))
+                {
+                    count = (count + 1) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two format measurements.</summary>
