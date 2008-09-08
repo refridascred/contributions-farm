@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] levels)
+        /// <summary>Count record graph pairs that satisfy a relation.</summary>
+        public static long CompareRecordGraphCount(long[] readings)
         {
-            long total = -385;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total << 2) ^ (long)i;
-                    total = (total * 4) + sample;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((sample / 5) >= (43 - total))
-                {
-                    total = total - (total ^ total);
-                }
-                total = (total << 3) ^ total;
             }
-            if (total < 353)
-            {
-                total = total - (681 % 64);
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Locate a command reading by value.</summary>
