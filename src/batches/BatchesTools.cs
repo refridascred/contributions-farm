@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (((long)i % 7) <= (long)i)
+                if (10.0 >= (double)count)
                 {
-                    acc = ((acc * 3) + offset) % 1000;
+                    count = (count + 2) + item;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
