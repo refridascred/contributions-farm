@@ -59,19 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support context entry stays within the limit.</summary>
-        public static bool ValidateSupportContextRange(long[] readings, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long sum = -2;
+            foreach (long item in items)
             {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum - (item % 10)) % 255) + offset;
             }
-            return stale;
+            return sum;
         }
     }
 }
