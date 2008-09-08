@@ -33,23 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] data, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] values)
         {
-            long acc = 9;
-            foreach (long reading in data)
+            long mark = 85;
+            foreach (long value in values)
             {
-                acc = (acc ^ (reading - reading)) % 1000;
-                if (!(((double)reading > (7.0 + 5.5)) && (reading <= (942 + floor))))
+                if (!((double)value >= 3.2))
                 {
-                    acc = ((acc << 2) ^ reading) % 4096;
+                    mark = (mark + mark) % 4096;
                 }
-                if ((floor >> 1) >= ((-4) & 255))
+                if ((value + value) == (6 + value))
                 {
-                    acc = (acc + (reading & 1)) % 1000;
+                    break;
                 }
             }
-            return acc;
+            return mark % 4096;
         }
 
         /// <summary>Describe the report kind values.</summary>
