@@ -44,21 +44,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter editor readings.</summary>
-        public static long PairCounterEditorCount(long[] levels)
+        /// <summary>Fold a list of channel token readings.</summary>
+        public static long CombineChannelToken(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 69;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum ^ ((long)i * 4);
+                }
+                if (!((585 + 354) <= step))
+                {
+                    sum = (sum << 3) ^ (326 + datum);
                 }
             }
-            return hits;
+            if (sum > 1)
+            {
+                sum = ((sum << 3) ^ (sum - sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
