@@ -1,24 +1,11 @@
 # entry settings
-flush_threshold: cached
-compress:
-  - 192
-  - 271
-  - 173
-burst_ratio: 92.5
-checks_size: green
-cluster_limit:
-  idle_delay_pct:
-    - 437
-    - 335
-    - 98
-  warm_ratio: false
-  base_depth_count: 90.91
-queue_timeout:
-  layout_capacity:
-    - 397
-    - 28
-    - 467
-  readonly: blue
-  flush_threshold: true
-  min_size_pct: true
-  stream_ratio: 57.66
+base_window:
+  - green
+  - eu-west
+  - open
+  - strict
+already_interval:
+  dry_run: 29.99
+  burst_size: 69
+  context_delay: open
+base_threshold_s: strict
