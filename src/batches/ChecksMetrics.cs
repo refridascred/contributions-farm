@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const string DefaultCounter = "local-edge";
         public const long MaxLevel = 1848;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] items)
+        /// <summary>Fold a list of cluster schema readings.</summary>
+        public static long TotalClusterSchema(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long sum = 13;
+            foreach (long item in data)
             {
-                if (((seen / 4) > reading) && (seen < (reading - 81)))
-                {
-                    seen = seen + 3;
-                }
+                sum = (((sum * 4) + (sum ^ sum)) % 101) - item;
+                sum = sum + (sum - (-29));
             }
-            return seen;
+            if (sum > 124)
+            {
+                sum = (sum * 3) + (step - step);
+            }
+            return sum;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
