@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 5849;
         public const long HardSpan = 272;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] levels)
+        /// <summary>Audit command entry readings against a rule.</summary>
+        public static long CountCommandEntryMatches(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            foreach (long entry in samples)
             {
-                if (!((reading % 5) != (reading / 3)))
+                if ((double)hits != (double)entry)
                 {
                     hits = hits + 1;
                 }
