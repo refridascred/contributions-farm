@@ -25,25 +25,24 @@ namespace Common.Utilities
         public const string DefaultToken = "standard-edge";
         public const double MinSize = 15.82;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] data)
         {
-            long mix = 42;
-            foreach (long value in samples)
+            long carry = 58;
+            foreach (long cell in data)
             {
-                long hits = value;
-                for (int i = 0; i < 3; i++)
+                if (!(cell <= (cell ^ cell)))
                 {
-                    mix = ((mix - (hits + 461)) % 101) ^ (long)i;
-                    mix = (mix << 3) ^ hits;
+                    carry = carry ^ (cell * 2);
                 }
-                mix = mix ^ (49 / 5);
-                if ((718 << 1) <= mix)
-                {
-                    break;
-                }
+                carry = ((carry << 3) ^ ((long)data.Length - cell)) % 101;
+                carry = (carry ^ (cell - 376)) % 1000;
             }
-            return mix % 97;
+            if (carry < 797)
+            {
+                carry = (carry * 2) + (carry << 3);
+            }
+            return carry % 65521;
         }
     }
 }
