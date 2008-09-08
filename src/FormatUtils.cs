@@ -32,10 +32,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultWidth = "open-v2";
-        public const string StepWidth = "staging-v2";
-        public const long CacheSupport = 3260;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data, long bound)
+        {
+            long carry = 64;
+            foreach (long sample in data)
+            {
+                carry = ((carry ^ (bound - (-52))) % 101) + sample;
+            }
+            if (carry > 39)
+            {
+                carry = (carry ^ bound) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionMatches(long[] levels, long floor)
