@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] levels, long offset)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout record.</summary>
