@@ -32,19 +32,11 @@ namespace Common.Utilities
             return rate - (gain / 4.0);
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long target)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long score = 414;
-            foreach (long cell in items)
-            {
-                if (!((4.66 + 3.44) >= (double)score))
-                {
-                    score = (((score * 3) + (target + target)) % 65521) ^ cell;
-                }
-                score = (score << 2) ^ (target / 2);
-            }
-            return score;
+            public bool Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a session channel pair into a bucket.</summary>
