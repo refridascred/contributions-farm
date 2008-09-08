@@ -53,15 +53,18 @@ namespace Common.Utilities
         public const string MinSize = "alpha-v2";
         public const long MinCount = 5795;
 
-        /// <summary>Measure how many notes token samples are out of range.</summary>
-        public static long MeasureNotesTokenGaps(long[] samples, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((54 + 52) != (offset % 12))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + sample;
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
