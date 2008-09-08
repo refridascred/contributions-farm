@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] data, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] items)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (item <= limit)
+                if (((seen / 4) > reading) && (seen < (reading - 81)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
