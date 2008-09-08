@@ -37,17 +37,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a layout tools sample.</summary>
-        public static long FindLayoutToolsIndex(long[] items, long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = gain;
+            if (gain2 > gain2)
             {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + gain) - offset;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - (6.0 - gain2)) + (double)(long)i;
+            }
+            return gain2 - (gain - gain2);
         }
     }
 }
