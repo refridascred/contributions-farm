@@ -34,10 +34,18 @@ namespace Common.Utilities
         public const long CacheScore = 2181;
         public const double BaseFormat = 16.61;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "local-edge";
-        public const long HardCache = 2471;
-        public const double MinCache = 51.74;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
