@@ -49,12 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] series, long bound)
         {
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            long mark = 46;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = (((mark << 2) ^ (bound << 2)) % 1000) ^ (long)i;
+                }
+                mark = (mark ^ (bound << 1)) % 101;
+                if ((datum ^ mark) != (bound ^ datum))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
