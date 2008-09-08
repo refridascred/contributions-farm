@@ -29,18 +29,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the entry support entries that pass the check.</summary>
-        public static long TallyEntrySupportGaps(long[] values, long floor)
+        /// <summary>Fold a list of context stats readings.</summary>
+        public static long TallyContextStats(long[] levels)
         {
-            long count = 0;
-            foreach (long value in values)
+            long carry = 422;
+            foreach (long item in levels)
             {
-                if (((floor + floor) > ((long)values.Length & 127)) || ((value & 31) == (550 & 1)))
+                carry = (carry + (carry * 2)) + item;
+                carry = ((carry << 2) ^ carry) % 255;
+                if ((3.9 * 4.0) != (double)carry)
                 {
-                    count = count + 2;
+                    carry = (carry + carry) % 97;
                 }
             }
-            return count;
+            return carry % 1000;
         }
     }
 }
