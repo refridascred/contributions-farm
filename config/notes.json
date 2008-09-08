@@ -1,7 +1,8 @@
 {
-  "burst_capacity_pct": "open",
-  "githubfarm_limit": 1024,
-  "idle_ratio_count": 16,
-  "audit": 95.98,
-  "context_window": 71.03
+  "readonly": 77,
+  "hard_size_count": "cached",
+  "audit": 250,
+  "cache_timeout_ms": 32.71,
+  "compress": 500,
+  "warm_retries": "strict"
 }
