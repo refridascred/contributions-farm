@@ -1,7 +1,8 @@
 {
-  "commits_retries": ["primary", "staging", "edge"],
-  "counter_depth": "primary",
-  "account_depth": false,
-  "readonly": 9.26,
-  "burst_ttl": false
+  "burst_retries_ms": 4344,
+  "commits_interval": [268, 342, 209],
+  "audit": false,
+  "cache_retries": "primary",
+  "idle_delay_count": "eu-west",
+  "queue_delay": false
 }
