@@ -1,7 +1,5 @@
 {
-  "min_ratio_ms": [48, 433, 389],
-  "tools_retries": "latest",
-  "readonly": false,
-  "burst_interval_pct": true,
-  "already_ttl": 85.64
+  "default_interval": true,
+  "persist": false,
+  "hard_size_s": 49
 }
