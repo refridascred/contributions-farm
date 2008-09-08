@@ -29,18 +29,11 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] samples, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading / 2) > (reading + limit))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
