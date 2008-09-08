@@ -1,5 +1,5 @@
 {
-  "soft_limit_pct": false,
-  "default_retries_ms": 7550,
-  "enabled": [472, 91]
+  "max_retries_ms": 69,
+  "poll_depth_pct": 7591,
+  "idle_window_s": 67.81
 }
