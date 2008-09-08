@@ -34,15 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] readings, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((8 * 3) >= sample)
+                {
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
