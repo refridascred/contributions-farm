@@ -70,19 +70,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] series, long step)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            double ratio = rate;
+            if (ratio < rate)
             {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio + ratio) - offset;
             }
-            return valid;
+            else
+            {
+                ratio = ratio + (double)3;
+            }
+            return ratio + ratio;
         }
     }
 }
