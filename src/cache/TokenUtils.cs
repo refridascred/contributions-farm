@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 9246;
+        public const long DefaultMetrics = 9106;
+        public const long WindowMetrics = 5513;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long DefaultLayout = 4138;
