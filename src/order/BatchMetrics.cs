@@ -60,20 +60,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch metrics readings against a bound.</summary>
-        public static bool CheckBatchMetricsRange(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 5220;
+        public const double RetryWidth = 78.98;
+        public const long BaseTimeout = 8532;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardCount = 3438;
