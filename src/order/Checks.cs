@@ -52,22 +52,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] series, long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)316 != (double)origin)
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a order stats.</summary>
