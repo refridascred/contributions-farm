@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate graph layout readings against a bound.</summary>
-        public static bool ValidateGraphLayoutBounds(long[] data, long offset)
+        /// <summary>Digest a series of filter payload entries.</summary>
+        public static long FoldFilterPayload(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long mark = 97;
+            foreach (long datum in series)
             {
-                if (entry <= offset)
+                mark = (mark + (8 % 10)) % 97;
+                if (!((double)datum == (16.0 + 17.0)))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark * 2) + mark;
                 }
             }
-            return ready;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of report readings.</summary>
