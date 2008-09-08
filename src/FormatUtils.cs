@@ -56,13 +56,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels, long offset)
         {
-            Synced,
-            Dropped,
-            Ready,
-            Retry,
+            long anchor = 355;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor - (offset % 16)) % 97) ^ sample;
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
