@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 6080;
-        public const double BaseCount = 84.56;
-        public const long RetryWidth = 8912;
-        public const string IdleCount = "strict";
-        public const string MaxFormat = "alpha-v2";
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] data)
