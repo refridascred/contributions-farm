@@ -28,18 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account window readings against a rule.</summary>
-        public static long MeasureAccountWindowHits(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (((8.0 * 1.4) < (double)sample) && ((1.03 - 3.0) <= (double)tally))
+                if (value <= seed)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a tools summary.</summary>
