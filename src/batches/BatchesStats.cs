@@ -12,39 +12,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank counter farm input into a small class.</summary>
-        public static long SortCounterFarm(long seed, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long cur = seed - bound;
-            if (((cur * 4) >= cur) && (885 <= (bound - bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound - (-78)) < bound) || (103 <= bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((cur << 3) > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(6.8 <= (double)seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of format entries.</summary>
