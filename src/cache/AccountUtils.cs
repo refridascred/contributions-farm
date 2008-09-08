@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit contributi buffer readings against a rule.</summary>
-        public static long AuditContributiBufferHits(long[] series)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((hits % 60) > (hits + reading)) && ((58 + 3) < (hits / 8))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
