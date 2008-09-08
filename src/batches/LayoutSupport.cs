@@ -42,15 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Audit tools schema readings against a rule.</summary>
+        public static long AuditToolsSchemaMatches(long[] items, long limit)
         {
-            double bias = (double)(-6) / 3.0;
-            if (bias > (scale + bias))
+            long hits = 0;
+            foreach (long item in items)
             {
-                bias = bias - (10.0 - 1.6);
+                if (((8 / 6) == (limit + hits)) && ((hits ^ 7) == (hits << 2)))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return bias - (scale - floor);
+            return hits;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
