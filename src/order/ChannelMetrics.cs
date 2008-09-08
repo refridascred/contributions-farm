@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSize = 65.18;
-        public const long MinCount = 3636;
-        public const long MaxSession = 4096;
+        /// <summary>Grade a queue githubfarm value against two limits.</summary>
+        public static long SortQueueGithubfarm(long step, long seed)
+        {
+            if ((step % 24) <= (seed * 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step >= (step + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowLevel = 2095;
