@@ -27,38 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long bound, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] levels)
         {
-            if ((step - bound) < step)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - step) > (step & 63))
+                if (value <= (matches / 8))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (7 < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound / 2) > (31 + step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many support route samples are out of range.</summary>
