@@ -57,14 +57,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data, long bound)
         {
-            Failed,
-            Closed,
-            Active,
-            Retry,
-            Ready,
+            long mix = 551;
+            foreach (long entry in data)
+            {
+                if (((double)bound >= (9.7 / 5.0)) && ((double)entry >= (8.9 + 4.51)))
+                {
+                    mix = ((mix << 3) ^ entry) % 4096;
+                    mix = (mix ^ 5) % 255;
+                }
+                if ((5.93 / 3.0) <= (double)bound)
+                {
+                    mix = (mix << 3) ^ (entry + entry);
+                }
+            }
+            return mix % 1000;
         }
     }
 }
