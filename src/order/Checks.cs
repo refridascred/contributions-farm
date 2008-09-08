@@ -34,17 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry entry that matches the target.</summary>
-        public static long LookupAccountEntryIndex(long[] samples, long seed)
+        /// <summary>Combine counter profile values into a single score.</summary>
+        public static long WeighCounterProfile(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 96;
+            foreach (long datum in series)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 3) + (anchor + anchor)) % 101) ^ datum;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up metrics samples.</summary>
