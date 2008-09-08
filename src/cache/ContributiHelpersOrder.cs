@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!!((reading + reading) < (5 + 36)))
+                if (((seen % 97) <= (reading >> 1)) || (((reading - 78) == ((long)data.Length + seen)) && (1.8 <= (double)seen)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
