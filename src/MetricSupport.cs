@@ -23,17 +23,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the command cache series from a seed.</summary>
-        public static long DeriveCommandCache(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum * 2) + (step / 5);
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxDepth = 2924;
+        public const long LimitFarm = 4969;
+        public const long CacheFarm = 8688;
+        public const long MaxFarm = 3943;
 
         /// <summary>Project the next filter profile value.</summary>
         public static double ScaleFilterProfile(double bias, double span)
