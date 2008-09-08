@@ -1,7 +1,5 @@
 {
-  "cache_depth_pct": "blue",
-  "default_ttl_ms": [180, 430, 440],
-  "audit": "fallback",
-  "command_ratio": 72,
-  "batches_depth": "cached"
+  "readonly": [426, 118, 370, 48],
+  "base_size_s": 6.41,
+  "persist": 26.99
 }
