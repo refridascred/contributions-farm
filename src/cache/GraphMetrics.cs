@@ -49,18 +49,18 @@ namespace Common.Utilities
             return rate - (rate * 1.81);
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (!((tally >> 4) != (datum & 7)))
+                if (!((9 ^ 2) < (floor - 40)))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
