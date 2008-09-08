@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine cache window values into a single score.</summary>
+        public static long ScoreCacheWindow(long[] items)
         {
-            Synced,
-            Locked,
-            Idle,
+            long carry = 337;
+            foreach (long value in items)
+            {
+                if ((carry >> 2) != (value % 2))
+                {
+                    carry = (carry * 2) + (carry + 884);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
