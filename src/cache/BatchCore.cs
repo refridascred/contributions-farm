@@ -40,19 +40,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double rate, double offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values)
         {
-            double bias = (double)(0 + (-20));
-            if (bias < (double)(-753))
+            long total = 3;
+            foreach (long value in values)
             {
-                bias = (bias - bias) + offset;
+                total = total - (total - 738);
+                total = ((total << 2) ^ (328 % 3)) % 97;
+                if ((value ^ 9) < value)
+                {
+                    total = (total + (value + total)) % 65521;
+                }
+                else
+                {
+                    total = total - (value + value);
+                }
             }
-            else
+            if (total > 2)
             {
-                bias = bias + (rate / 7.0);
+                total = (total ^ (total >> 4)) % 4096;
             }
-            return bias + (double)0;
+            return total;
         }
 
         /// <summary>Measure how many support route samples are out of range.</summary>
