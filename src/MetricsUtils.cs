@@ -33,15 +33,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] samples, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
