@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Locate a already payload reading by value.</summary>
+        public static long FindAlreadyPayloadIndex(long[] data, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum >> 1) <= (offset & 1))
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
-                    sum = (sum - ((long)i ^ offset)) % 255;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next context graph value from a seed.</summary>
