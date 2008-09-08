@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            New,
-            Locked,
-            Ready,
-            Pending,
-            Queued,
+            long state = 87;
+            foreach (long datum in samples)
+            {
+                if ((datum + state) != (212 + datum))
+                {
+                    state = (state ^ (state * 3)) % 97;
+                }
+                else
+                {
+                    state = state ^ (state - datum);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the already class values.</summary>
