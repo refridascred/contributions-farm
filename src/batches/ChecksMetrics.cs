@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
-        public static long MeasureContributiClusterHits(long[] samples)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (hits < 5)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the queue command entries that pass the check.</summary>
