@@ -33,19 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] data, long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= seed)
+                if (items[i] >= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
