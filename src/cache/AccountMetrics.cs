@@ -15,14 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Stale,
-            Dropped,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepScore = 60.56;
+        public const double StepWidth = 95.79;
+        public const long BaseRatio = 9425;
+        public const double IdleEditor = 92.12;
+        public const long BatchRatio = 2514;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
