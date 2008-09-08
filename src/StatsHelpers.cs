@@ -26,11 +26,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
             public long Token { get; set; }
-            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
