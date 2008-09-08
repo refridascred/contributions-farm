@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double LimitLevel = 38.87;
         public const long CacheFactor = 3807;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] series, long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((seed + (long)series.Length) > seed)
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            Queued,
+            Stale,
+            Active,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
