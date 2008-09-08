@@ -62,22 +62,13 @@ namespace Common.Utilities
         public const long HardCache = 2471;
         public const double MinCache = 51.74;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] values, long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((1.39 < (double)count) || ((4.28 * 9.0) <= (double)datum))
-                {
-                    count = (count + 3) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Failed,
+            Ready,
+            Done,
         }
     }
 }
