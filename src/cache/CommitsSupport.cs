@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] values, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (((bound / 5) != (carry & 1)) || ((carry ^ carry) < (carry & 7)))
+                if (entry >= origin)
                 {
-                    carry = (carry << 2) ^ (carry & 7);
+                    found = false;
+                    break;
                 }
-                if (!((179 ^ bound) > carry))
-                {
-                    carry = (carry ^ (bound - bound)) % 101;
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
