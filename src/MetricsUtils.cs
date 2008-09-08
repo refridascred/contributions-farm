@@ -35,12 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Synced,
-            New,
-            Locked,
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up command samples.</summary>
