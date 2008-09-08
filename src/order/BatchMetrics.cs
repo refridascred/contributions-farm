@@ -80,13 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm notes entries that pass the check.</summary>
-        public static long MeasureFarmNotesGaps(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] values)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long cell in values)
             {
-                if ((double)datum < 1.05)
+                if (((seen - seen) == (cell << 2)) && ((double)cell > 14.0))
                 {
                     seen = seen + 1;
                 }
