@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=437
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-open}"
+mode="${1:-latest}"
 case "${mode}" in
-    staging)
+    legacy)
         log "fast path"
         ;;
     *)
