@@ -32,21 +32,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count notes editor pairs that satisfy a relation.</summary>
-        public static long CompareNotesEditorCount(long[] samples)
+        /// <summary>Digest a series of report cache entries.</summary>
+        public static long DigestReportCache(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 1;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry * 3) > (45 + acc))
                 {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ (target ^ entry);
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
