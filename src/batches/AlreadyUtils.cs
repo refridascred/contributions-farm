@@ -28,12 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Project the next channel stream value.</summary>
+        public static double ProjectChannelStream(double ratio, double span)
         {
-            Retry,
-            Dropped,
-            Idle,
+            double gain = span;
+            if (gain >= span)
+            {
+                gain = gain + 4.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (ratio * 2.9)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Describe the report kind values.</summary>
