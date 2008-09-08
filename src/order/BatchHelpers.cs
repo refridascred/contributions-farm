@@ -30,15 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] samples, long limit)
         {
-            long anchor = 63;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                anchor = anchor - entry;
+                if ((reading / 2) > (reading + limit))
+                {
+                    seen = seen + 3;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
