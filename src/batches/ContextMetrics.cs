@@ -21,12 +21,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Ready,
-            Closed,
-            Retry,
+            Stale,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
