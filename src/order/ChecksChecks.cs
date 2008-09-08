@@ -30,17 +30,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseSpan = 10.98;
+        public const long IdleAlready = 5403;
+        public const double BatchLevel = 48.71;
+        public const long BurstAlready = 622;
     }
 }
