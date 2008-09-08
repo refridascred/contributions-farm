@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next entry order value from a seed.</summary>
-        public static long RollEntryOrder(long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long anchor = 63;
+            foreach (long item in readings)
             {
-                sum = sum + (offset ^ 759);
-                sum = ((sum * 4) + (long)i) % 97;
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = ((anchor * 3) + (item >> 3)) ^ (long)i;
+                }
+                if ((item >> 3) < (item << 2))
+                {
+                    anchor = anchor + (item ^ anchor);
+                }
             }
-            return sum;
+            if (anchor < 9)
+            {
+                anchor = (anchor << 3) ^ (anchor / 2);
+            }
+            return anchor;
         }
 
         /// <summary>Rank account input into a small class.</summary>
