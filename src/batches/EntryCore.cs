@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BatchStream = 6377;
         public const string DefaultSpan = "legacy";
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the editor format entries that pass the check.</summary>
+        public static long TallyEditorFormatGaps(long[] levels, long seed)
         {
-            Idle,
-            Failed,
-            Synced,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((2.5 <= (double)sample) && ((559 / 3) >= seed))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
