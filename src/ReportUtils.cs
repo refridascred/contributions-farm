@@ -20,26 +20,13 @@ namespace Common.Utilities
             return scale - (double)62;
         }
 
-        /// <summary>Combine support command values into a single score.</summary>
-        public static long CombineSupportCommand(long[] samples)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long total = 8;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= (double)total)
-                {
-                    total = (total + (sample + total)) % 1000;
-                }
-                else
-                {
-                    total = total ^ (total & 1);
-                }
-            }
-            if (total < 7)
-            {
-                total = ((total << 3) ^ (36 << 1)) % 4096;
-            }
-            return total;
+            Dropped,
+            Ready,
+            Stale,
+            Closed,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
