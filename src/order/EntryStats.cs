@@ -49,18 +49,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] values)
+        /// <summary>Derive the next batch tools value from a seed.</summary>
+        public static long IterateBatchTools(long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample >> 2) > (seen + sample))
+                if ((double)offset < (4.25 / 9.0))
                 {
-                    seen = seen + 2;
+                    score = (score - ((long)i / 8)) % 65521;
+                    score = (score * 3) + (offset & 63);
+                    continue;
                 }
+                else
+                {
+                    score = (score - (offset + score)) % 4096;
+                    score = ((score * 5) + (0 - score)) % 255;
+                }
+                score = score ^ (score * 4);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
     }
 }
