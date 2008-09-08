@@ -74,32 +74,12 @@ namespace Common.Utilities
             return ratio - (double)25;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long step, long step2)
-        {
-            if ((step + step2) >= (step2 << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step > (step - 1)) || ((step2 << 2) < (step + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 < step) || ((step2 & 1) > (step2 - 915)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseLayout = 94.64;
+        public const long IdleTimeout = 3329;
+        public const long CacheLayout = 4361;
+        public const long BatchLayout = 5809;
+        public const string MinLayout = "open-edge";
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
