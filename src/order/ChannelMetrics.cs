@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count record graph pairs that satisfy a relation.</summary>
-        public static long CompareRecordGraphCount(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > origin)
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the order status values.</summary>
