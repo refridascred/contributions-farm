@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] data, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) != 0))
+                if (1 > entry)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
