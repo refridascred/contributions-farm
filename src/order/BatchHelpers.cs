@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate githubfarm command readings against a bound.</summary>
-        public static bool VerifyGithubfarmCommandRange(long[] series, long seed)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < seed)
+                if (items[i] == origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the order status values.</summary>
