@@ -71,14 +71,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long floor)
         {
-            Pending,
-            Ready,
-            Idle,
-            Synced,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
