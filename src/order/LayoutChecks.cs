@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double BurstSize = 56.51;
         public const long StepBudget = 9767;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] series)
-        {
-            long anchor = 917;
-            foreach (long entry in series)
-            {
-                if ((anchor + anchor) > (69 + entry))
-                {
-                    anchor = anchor ^ (entry ^ 74);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "staging-v2";
+        public const double SoftSupport = 30.9;
+        public const long DefaultSupport = 5108;
+        public const long StepSupport = 9960;
+        public const double BurstSupport = 23.0;
 
         /// <summary>Scale a profile schema figure with a bias.</summary>
         public static double SmoothProfileSchema(double scale, double span)
