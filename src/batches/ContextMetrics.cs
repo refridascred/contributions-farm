@@ -47,23 +47,19 @@ namespace Common.Utilities
         public const double MinMetrics = 87.23;
         public const long LimitSize = 6547;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double ratio, double span)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] samples, long floor)
         {
-            double ratio2 = span;
-            if (ratio2 < span)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                ratio2 = ratio2 - (double)919;
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + 5.24) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            return ready;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
