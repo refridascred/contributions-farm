@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (scale - weight) + offset;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "fallback-1";
+        public const string BurstChecks = "staging-edge";
+        public const double SoftChecks = 0.31;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
