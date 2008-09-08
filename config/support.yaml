@@ -1,9 +1,9 @@
 # support settings
-entry_ratio: 65.94
-flush_depth_pct:
-  - latest
-  - cached
-soft_depth_count: eu-west
-batch_limit: 30.41
-max_delay: 49
-strict: blue
+flush_timeout_ms:
+  - blue
+  - standard
+account_capacity: 1024
+token_limit: fallback
+soft_ttl_pct: green
+strict: 32
+burst_interval_s: 22.1
