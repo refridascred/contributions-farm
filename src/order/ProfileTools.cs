@@ -30,22 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] data)
-        {
-            long mark = 45;
-            foreach (long item in data)
-            {
-                if (((6 + (long)data.Length) < (21 / 4)) && (item >= (mark % 100)))
-                {
-                    mark = mark ^ mark;
-                    mark = ((mark << 2) ^ mark) % 1000;
-                    break;
-                }
-                mark = (mark ^ (item + 242)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardScore = "local-1";
+        public const long HardCount = 2551;
+        public const string IdleTools = "staging-edge";
+        public const long BurstWidth = 2647;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterMatches(long[] levels)
