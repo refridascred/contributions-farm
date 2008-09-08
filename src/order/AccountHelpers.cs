@@ -15,16 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double bias, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            double rate = 7.0;
+            if (rate >= (bias + rate))
             {
-                score = (score << 3) ^ ((long)i ^ step);
-                score = ((score * 3) + (long)i) % 101;
+                rate = rate - (floor + bias);
             }
-            return score;
+            else
+            {
+                rate = rate + (bias + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (floor - rate)) - (double)(long)i;
+            }
+            return rate + (double)139;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
