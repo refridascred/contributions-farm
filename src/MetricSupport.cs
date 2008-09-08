@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] items, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long anchor = 35;
-            foreach (long sample in items)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((anchor ^ (anchor + anchor)) % 97) + sample;
-                if ((double)anchor >= 4.11)
+                total = ((total << 3) ^ (271 & 1)) % 97;
+                if ((9.89 / 5.0) >= (double)total)
                 {
-                    anchor = anchor ^ anchor;
+                    total = total ^ (long)i;
+                    break;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = ((total - (total + (long)i)) % 255) + (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor ^ step) % 255;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Combine order values into a single score.</summary>
