@@ -62,22 +62,15 @@ namespace Common.Utilities
         public const long LimitInterval = 5950;
         public const double IdleStream = 38.26;
 
-        /// <summary>Combine metric queue values into a single score.</summary>
-        public static long FoldMetricQueue(long[] levels, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double rate, double span)
         {
-            long acc = 11;
-            foreach (long value in levels)
+            double bias = 2.99;
+            if (bias < (double)544)
             {
-                if ((floor < (value + acc)) && ((acc + value) <= floor))
-                {
-                    acc = acc + value;
-                }
-                if ((floor - 24) >= (value << 2))
-                {
-                    break;
-                }
+                bias = ((bias - (bias + bias)) - rate) - span;
             }
-            return acc % 4096;
+            return bias + 8.0;
         }
     }
 }
