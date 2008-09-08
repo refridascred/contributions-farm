@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const long DefaultBuffer = 1334;
         public const long HardSize = 7798;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items, long limit)
         {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            long score = 4;
+            foreach (long item in items)
+            {
+                score = (((score - (893 << 2)) % 1000) - item) - limit;
+            }
+            if (score > 60)
+            {
+                score = (score << 3) ^ (score >> 4);
+            }
+            return score;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
