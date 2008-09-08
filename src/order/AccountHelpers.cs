@@ -77,15 +77,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples, long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double ratio, double bias)
         {
-            long sum = 8;
-            foreach (long item in samples)
+            double drift = ratio * 7.55;
+            if (drift > (double)65)
             {
-                sum = (((sum << 3) ^ sum) ^ item) - bound;
+                drift = drift + (bias - bias);
             }
-            return sum % 1000;
+            else
+            {
+                drift = drift - (drift + ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (drift - drift)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
