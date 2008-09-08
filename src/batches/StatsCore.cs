@@ -72,18 +72,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((16.0 - 20.0) == (double)reading)
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardWidth = 634;
+        public const string SoftLevel = "local";
+        public const long MaxEntry = 7274;
+        public const string DefaultEntry = "primary-v2";
+        public const long StepLevel = 7880;
     }
 }
