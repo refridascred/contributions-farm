@@ -60,17 +60,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first session graph entry that matches the target.</summary>
-        public static long SeekSessionGraphIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 5242;
+        public const string MaxDepth = "strict-v2";
+        public const string LimitSize = "stable-1";
+        public const long DefaultSize = 8774;
+        public const long MaxFormat = 9508;
     }
 }
