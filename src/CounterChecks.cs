@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of channel entry readings.</summary>
-        public static long CombineChannelEntry(long[] readings, long offset)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double rate, double offset)
         {
-            long mark = -649;
-            foreach (long value in readings)
+            double scale = 5.51 - offset;
+            if (scale > scale)
             {
-                if (((-407) + mark) < value)
-                {
-                    mark = (mark ^ 6) + offset;
-                }
+                scale = scale - (double)6;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + offset) + (double)(long)i;
+            }
+            return scale + (rate * 4.47);
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
