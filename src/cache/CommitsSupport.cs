@@ -46,13 +46,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double bias, double bias2)
         {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public double Label { get; set; }
+            double ratio = 3.6;
+            if (ratio > 7.5)
+            {
+                ratio = (ratio + (double)35) + bias2;
+            }
+            else
+            {
+                ratio = ratio - (double)23;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Validate farm githubfarm readings against a bound.</summary>
