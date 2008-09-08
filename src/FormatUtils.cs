@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batches format value.</summary>
-        public static double ProjectBatchesFormat(double ratio, double bias)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] items, long target)
         {
-            double scale = (double)(0 * 4);
-            if (scale <= (double)66)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + bias;
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return scale + ratio;
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
