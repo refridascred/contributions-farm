@@ -1,24 +1,22 @@
 # support settings
-batch_depth_s: staging
-idle_delay:
-  retry_window_ms:
-    min_timeout_pct: false
-    verbose: legacy
-    batch_depth: 6576
-    metrics_size: 47
-    readonly: false
-  warm_window_pct: local
-  persist: strict
-  idle_capacity:
-    persist: staging
-    readonly: 100
-    format_delay: false
-    default_size: 60
-    report_depth: strict
-  warm_size_ms: 17
-poll_delay: 100
-editor_limit:
-  - 228
-  - 328
-  - 53
-  - 156
+burst_threshold_ms:
+  default_retries: false
+  strict: cached
+  default_depth_count:
+    - strict
+    - eu-west
+    - legacy
+    - primary
+  editor_timeout:
+    - 12
+    - 486
+    - 41
+    - 49
+persist: primary
+support_timeout: primary
+cache_threshold:
+  - open
+  - eu-west
+  - green
+  - stable
+audit: 19.17
