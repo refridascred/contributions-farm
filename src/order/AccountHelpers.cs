@@ -70,23 +70,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double ratio, double bias)
+        /// <summary>Roll a format metric counter forward.</summary>
+        public static long StepFormatMetric(long offset)
         {
-            double drift = ratio * 7.55;
-            if (drift > (double)65)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                drift = drift + (bias - bias);
+                total = ((total << 2) ^ offset) % 4096;
+                total = (total << 3) ^ 408;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift - (drift + ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (drift - drift)) + (double)(long)i;
-            }
-            return drift - drift;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
