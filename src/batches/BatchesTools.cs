@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long target, long offset)
+        /// <summary>Validate order report readings against a bound.</summary>
+        public static bool ValidateOrderReportRange(long[] items, long offset)
         {
-            long delta = target - offset;
-            if (((target + offset) != (offset - delta)) || (offset <= target))
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 4) > (target + offset))
+                if (value != offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)(-4) < (8.31 + 1.1)) && ((offset - target) == (offset ^ target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)24 == (double)delta)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
