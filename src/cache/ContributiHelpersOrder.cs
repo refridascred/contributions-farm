@@ -17,17 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a commits payload sample.</summary>
-        public static long LookupCommitsPayloadIndex(long[] items, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 627;
+            foreach (long entry in items)
             {
-                if (items[i] <= target)
+                state = (state << 2) ^ (71 + limit);
+                if ((limit - entry) >= limit)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
