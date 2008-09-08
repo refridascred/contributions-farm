@@ -40,11 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] levels, long origin)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((4.79 * 1.91) >= (double)reading) || !((5.68 * 3.4) > (double)origin))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry level values.</summary>
