@@ -27,18 +27,14 @@ namespace Common.Utilities
         public const long BaseSpan = 6349;
         public const long CacheTools = 8457;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] readings)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!!((double)seen >= (2.57 + 3.0)))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Idle,
+            Active,
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Blend two entry buffer measurements.</summary>
