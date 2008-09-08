@@ -43,23 +43,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric batch readings against a rule.</summary>
-        public static long CountMetricBatchOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value + count) == (count - value))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepWidth = 9290;
+        public const long SoftSpan = 6104;
+        public const string RetryEntry = "open-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchScore = 1330;
