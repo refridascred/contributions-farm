@@ -46,11 +46,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 1840;
-        public const double SoftLayout = 71.34;
-        public const long BaseSize = 2544;
-        public const string CacheLayout = "stable-1";
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double rate, double span)
+        {
+            double weight = (rate + rate) * 7.8;
+            if (weight >= (rate + rate))
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (span + span)) - (double)(long)i;
+            }
+            return weight - (double)920;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] series, long step)
