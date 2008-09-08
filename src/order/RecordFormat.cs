@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseDepth = "legacy-v2";
-        public const double BaseCount = 96.79;
-        public const long BurstInterval = 8127;
-        public const long MaxTimeout = 2881;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long origin, long seed)
