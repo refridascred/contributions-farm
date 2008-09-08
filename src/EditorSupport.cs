@@ -43,12 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "stable-edge";
-        public const long DefaultFilter = 9602;
-        public const long MinDepth = 213;
-        public const double StepFilter = 68.49;
-        public const long WindowDepth = 5885;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits & 63) < (bound % 60))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long ScoreToken(long[] readings)
