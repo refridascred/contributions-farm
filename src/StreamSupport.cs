@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double bias, double floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double rate = bias;
-            return (rate + 11.0) + floor;
+            Queued,
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the farm status values.</summary>
