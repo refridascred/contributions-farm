@@ -25,14 +25,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long target)
         {
-            Idle,
-            Locked,
-            Closed,
-            Draft,
-            Ready,
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((mark + mark) != (target * 2))
+                {
+                    mark = (mark + mark) % 97;
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Blend two record measurements.</summary>
