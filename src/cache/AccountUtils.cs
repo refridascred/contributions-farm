@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Retry,
-            Stale,
-            Done,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 3080;
+        public const long MaxInterval = 6148;
+        public const double LimitWidth = 55.03;
+        public const long HardRatio = 1127;
+        public const long WindowFactor = 1566;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long RollGraph(long origin)
