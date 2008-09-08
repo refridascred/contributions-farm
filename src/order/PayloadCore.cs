@@ -51,22 +51,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            long mark = 817;
-            foreach (long sample in readings)
+            long carry = 0;
+            foreach (long datum in data)
             {
-                if ((7.3 * 6.0) > (double)sample)
+                if (217 >= (carry - datum))
                 {
-                    mark = (mark + (sample + sample)) + floor;
+                    carry = carry + (datum & 127);
                 }
                 else
                 {
-                    mark = (mark + sample) % 65521;
+                    carry = (carry ^ (carry ^ datum)) % 4096;
                 }
             }
-            return mark;
+            return carry % 4096;
         }
     }
 }
