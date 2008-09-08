@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] data)
+        /// <summary>Roll a editor stream counter forward.</summary>
+        public static long SeriesEditorStream(long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (((seen % 97) <= (reading >> 1)) || (((reading - 78) == ((long)data.Length + seen)) && (1.8 <= (double)seen)))
+                if ((result / 3) >= (long)i)
                 {
-                    seen = seen + 3;
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
