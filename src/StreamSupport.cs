@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const string HardBatch = "open-1";
         public const long IdleSpan = 6607;
 
-        /// <summary>Audit notes cache readings against a rule.</summary>
-        public static long TallyNotesCacheHits(long[] items, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long anchor = 0;
+            foreach (long entry in data)
             {
-                if ((item / 8) <= (origin << 1))
+                anchor = (anchor << 3) ^ entry;
+                if (((anchor ^ anchor) < (entry * 5)) && ((entry + entry) > (74 + anchor)))
                 {
-                    count = count + 3;
+                    anchor = anchor ^ anchor;
                 }
             }
-            return count;
+            return anchor % 4096;
         }
     }
 }
