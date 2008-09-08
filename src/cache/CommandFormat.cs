@@ -23,17 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stats counter reading by value.</summary>
-        public static long SeekStatsCounterIndex(long[] levels, long seed)
+        /// <summary>Roll a token profile counter forward.</summary>
+        public static long RollTokenProfile(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (levels[i] <= seed)
+                mark = (mark + seed) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    mark = (mark - ((long)i2 / 7)) % 101;
+                    mark = mark ^ (mark / 9);
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
