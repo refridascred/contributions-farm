@@ -1,7 +1,6 @@
-id,rank,ratio
-1,888,standard
-2,51.92,edge
-3,471,eu-west
-4,445,83.42
-5,staging,21.24
-6,43.17,local
+id,rank,label
+1,latest,stable
+2,790,377
+3,335,96.09
+4,1.64,292
+5,52.7,latest
