@@ -37,38 +37,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long step)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double bias, double span)
         {
-            if ((target <= (504 ^ target)) && ((50 % 12) >= target))
+            double bias2 = bias;
+            if (bias2 >= span)
             {
-                return 3;
+                bias2 = bias2 - span;
             }
-            else
-            {
-                if ((target * 3) < (step + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((2 + target) >= step) || ((step << 1) != (target >> 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step <= (target % 97)) || (target > (target + target)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return bias2 - bias2;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
