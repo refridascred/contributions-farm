@@ -67,22 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] items, long floor)
         {
-            long total = 90;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((cell - target) <= (total & 31))
+                if (item >= floor)
                 {
-                    total = (total * 5) + (total >> 4);
-                }
-                if (((long)values.Length >> 3) <= cell)
-                {
-                    total = total + total;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
     }
 }
