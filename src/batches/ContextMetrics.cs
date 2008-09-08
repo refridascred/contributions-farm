@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double ratio, double bias)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double ratio2 = (bias - bias) * 6.69;
-            return (ratio2 - (double)(-112)) + ratio;
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a format reading.</summary>
