@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long offset)
         {
-            double scale = 9.7;
-            if (scale > scale)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                scale = (scale - offset) - ratio;
+                if (((long)i % 7) <= (long)i)
+                {
+                    acc = ((acc * 3) + offset) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 12.0) - (double)(long)i;
-            }
-            return scale - (double)73;
+            return acc;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
