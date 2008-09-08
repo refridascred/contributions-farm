@@ -14,18 +14,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] readings, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((906 >> 2) < reading)
-                {
-                    hits = (hits + 3) + seed;
-                }
+                score = (score ^ ((long)i + score)) % 4096;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Combine record values into a single score.</summary>
