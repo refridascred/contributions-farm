@@ -1,11 +1,8 @@
 # githubfarm settings
-strict: 250
-hard_ttl_count:
-  - 138
-  - 41
-  - 277
-retry_ttl: 85.2
-persist: true
-readonly:
-  - 162
-  - 237
+batch_capacity_pct: 30
+session_interval: 85
+enabled:
+  cache_interval_count: false
+  verbose: 16.51
+  cache_interval_s: false
+  base_threshold_s: 30
