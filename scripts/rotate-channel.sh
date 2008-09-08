@@ -12,9 +12,8 @@ for i in $(seq 1 8); do
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=225
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in primary standard green local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
