@@ -39,24 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long bound, long bound2)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            if ((double)bound >= (double)bound2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((((-894) * 4) <= (bound - bound2)) || ((bound + bound2) == (129 >> 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Queued,
+            Retry,
+            Failed,
         }
     }
 }
