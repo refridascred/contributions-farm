@@ -27,12 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryWidth = 7396;
-        public const long WindowScore = 4043;
-        public const double HardGithubfarm = 4.46;
-        public const long BaseGithubfarm = 210;
-        public const long BatchRatio = 4760;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Stale,
+            New,
+            Retry,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long target, long bound)
