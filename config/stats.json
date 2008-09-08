@@ -1,5 +1,6 @@
 {
-  "checks_size": 99,
-  "retry_size_count": "standard",
-  "retry_window_s": "green"
+  "min_delay_s": true,
+  "hard_window_ms": 14.42,
+  "readonly": 8269,
+  "retry_depth": 9277
 }
