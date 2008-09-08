@@ -29,11 +29,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double weight, double bias)
+        /// <summary>Compare every pair of account order readings.</summary>
+        public static long MatchAccountOrderCount(long[] series)
         {
-            double bias2 = (weight * 4.93) + bias;
-            return bias2 - weight;
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
