@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long step, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] data)
         {
-            if ((step + offset) >= step)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset >= (step << 2))
+                if ((hits < (hits ^ hits)) || ((hits ^ (long)data.Length) <= hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset >> 3) > step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 1) - entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the queue phase values.</summary>
