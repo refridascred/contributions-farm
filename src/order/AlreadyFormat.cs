@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSpan = "primary-v2";
-        public const double RetrySchema = 80.52;
-        public const long CacheLevel = 3310;
-        public const long StepBudget = 5028;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 3576;
+        public const long CacheBudget = 1648;
+        public const double SoftPayload = 63.08;
+        public const long WindowBudget = 459;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long offset)
