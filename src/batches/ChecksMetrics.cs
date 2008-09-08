@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the queue command entries that pass the check.</summary>
-        public static long AuditQueueCommandGaps(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((2.6 / 4.0) <= (double)cell)
+                if (item <= limit)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Accumulate cluster window samples.</summary>
