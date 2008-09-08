@@ -1,5 +1,26 @@
 # githubfarm settings
-hard_ratio: edge
-flush_threshold_s: false
-burst_interval_ms: primary
-batch_capacity: edge
+retry_threshold: 500
+strict: 1024
+enabled: blue
+max_capacity_count:
+  hard_interval: standard
+  metric_capacity: 291
+  min_capacity_ms: false
+  default_retries: true
+  context_depth: 50.94
+  strict:
+    - blue
+    - green
+    - eu-west
+    - standard
+hard_ratio_ms: 75.15
+base_ratio_ms:
+  readonly: eu-west
+  verbose: 3058
+  hard_ttl_ms: 92.22
+  enabled: staging
+  window_interval:
+    - stable
+    - green
+    - stable
+  max_delay_count: 69.2
