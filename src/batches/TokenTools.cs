@@ -29,18 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many command graph samples are out of range.</summary>
-        public static long MeasureCommandGraphGaps(long[] data)
+        /// <summary>Iterate the entry tools series from a seed.</summary>
+        public static long RollEntryTools(long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count >> 5) <= count)
-                {
-                    count = (count + 2) + sample;
-                }
+                mix = (mix - mix) % 101;
+                mix = ((mix * 3) + (limit / 6)) % 65521;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
