@@ -65,11 +65,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 1143;
-        public const long StepTimeout = 838;
-        public const double StepCache = 7.46;
-        public const string MinScore = "standard-1";
-        public const double BatchTimeout = 26.1;
+        /// <summary>Iterate the layout support series from a seed.</summary>
+        public static long StepLayoutSupport(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
