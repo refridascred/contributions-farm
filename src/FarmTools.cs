@@ -30,20 +30,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] readings, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long state = 13;
-            foreach (long reading in readings)
-            {
-                state = ((state + ((-61) % 8)) % 255) - reading;
-                state = state ^ (state << 2);
-            }
-            if (state > 41)
-            {
-                state = (state + (step * 5)) % 1000;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
