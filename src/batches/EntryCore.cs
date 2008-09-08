@@ -25,10 +25,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSize = 8379;
-        public const long StepChannel = 7650;
-        public const double HardWidth = 83.8;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (((9.0 * 7.0) > (double)tally) && ((tally + tally) <= cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] data, long origin)
