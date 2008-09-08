@@ -23,32 +23,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long floor, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long delta = floor + step;
-            if ((14.0 - 5.0) < (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor ^ delta) >= (delta % 64)) && (floor <= (delta << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta ^ delta) == (step ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Retry,
+            Queued,
+            Synced,
         }
     }
 }
