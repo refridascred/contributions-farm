@@ -52,14 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Blend two checks support measurements.</summary>
+        public static double BlendChecksSupport(double ratio, double bias)
         {
-            Active,
-            Done,
-            Ready,
-            Closed,
-            Draft,
+            double ratio2 = (double)(52 - 36);
+            if (ratio2 <= (bias - ratio2))
+            {
+                ratio2 = ratio2 - (double)77;
+            }
+            return ratio2 - ratio;
         }
     }
 }
