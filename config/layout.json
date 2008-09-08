@@ -1,5 +1,17 @@
 {
-  "already_capacity": 60,
-  "readonly": false,
-  "burst_ttl": "green"
+  "max_ttl_count": 1,
+  "idle_ratio": false,
+  "compress": "standard",
+  "record_threshold": true,
+  "account_retries": {
+    "max_retries": {
+      "strict": "open",
+      "verbose": 100,
+      "route_capacity": 4004,
+      "support_size": false
+    },
+    "editor_interval": 8564,
+    "sync_window": 50.04,
+    "min_delay_ms": "legacy"
+  }
 }
