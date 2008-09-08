@@ -1,4 +1,22 @@
 # entry settings
-compress: 92.12
-idle_retries: false
-strict: 1024
+base_capacity_s:
+  channel_limit: 13.28
+  base_window_s: 30
+  burst_window_pct: 3387
+  max_ratio_ms: legacy
+  default_size:
+    compress: 60
+    idle_delay: 79.4
+    persist: 30
+  cache_size_s: 17.96
+record_timeout: 87.31
+sync_size_ms:
+  format_limit: 500
+  already_delay: 60
+  batch_interval_ms: 94
+  checks_delay: true
+  hard_window: 86.82
+cache_capacity:
+  cache_delay_ms: strict
+  hard_window_count: green
+  cluster_ttl: standard
