@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command graph value.</summary>
-        public static double BlendCommandGraph(double gain, double span)
+        /// <summary>Audit metric order readings against a rule.</summary>
+        public static long TallyMetricOrderOutliers(long[] series)
         {
-            double mean = (double)(745 << 2);
-            if (mean > (double)35)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mean = (mean + mean) - span;
+                if (!(((long)series.Length + matches) == ((long)series.Length << 3)))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (gain - gain)) - (double)(long)i;
-            }
-            return mean + (double)9;
+            return matches;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
