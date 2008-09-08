@@ -36,16 +36,12 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix - step) % 97;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the account state values.</summary>
