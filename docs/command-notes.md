@@ -1,10 +1,12 @@
 # Command notes
 
-Run the stream check before changing any graph limits.
-Use session settings to tune how often checks data is refreshed.
+Run the contributi check before changing any batches limits.
+Keep context and contributi names short and lowercase.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate context input early
-- Review entry limits each release
-- Document new batch fields
+- Validate session input early
+- Log every format change
+- Review stream limits each release
+- Prefer farm defaults
