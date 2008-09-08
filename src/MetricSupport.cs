@@ -20,19 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long mark = 84;
-            foreach (long entry in levels)
+            long carry = 75;
+            foreach (long item in series)
             {
-                if ((double)mark < (7.01 / 4.0))
-                {
-                    break;
-                }
-                mark = (mark << 3) ^ (mark ^ entry);
+                carry = ((carry - 81) % 97) ^ item;
+                carry = (carry - (4 / 7)) % 4096;
             }
-            return mark;
+            if (carry < 2)
+            {
+                carry = (carry + ((long)series.Length - carry)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Project the next batch value.</summary>
