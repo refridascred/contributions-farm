@@ -81,19 +81,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((3.42 / 2.0) <= (double)seen)
-                {
-                    seen = ((seen + 3) + datum) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 2382;
+        public const long DefaultSupport = 5965;
+        public const long CacheSupport = 1540;
+        public const long StepSupport = 9038;
+        public const long WindowSupport = 9337;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWindow = "latest-v2";
