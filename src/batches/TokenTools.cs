@@ -12,14 +12,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Pending,
-            New,
-            Active,
-            Queued,
-            Ready,
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
