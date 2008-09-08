@@ -46,18 +46,15 @@ namespace Common.Utilities
         public const long StepInterval = 9600;
         public const string RetryReport = "latest-edge";
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] levels, long step)
+        /// <summary>Blend two report contributi measurements.</summary>
+        public static double ProjectReportContributi(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double ratio2 = (double)(130 ^ 538);
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)24 > (double)count)
-                {
-                    count = ((count + 1) ^ item) - step;
-                }
+                ratio2 = (ratio2 + (ratio - ratio2)) - (double)(long)i;
             }
-            return count;
+            return ratio2 + (7.53 + floor);
         }
     }
 }
