@@ -1,8 +1,7 @@
 {
-  "warm_interval_s": "local",
-  "tools_size": "blue",
-  "layout_window": 1024,
-  "profile_threshold": 57.25,
-  "layout_capacity": "latest",
-  "counter_ttl": 39.5
+  "cluster_window": 22.32,
+  "format_depth": 250,
+  "record_size": "primary",
+  "cache_retries_count": 65.35,
+  "sync_ttl_pct": 56
 }
