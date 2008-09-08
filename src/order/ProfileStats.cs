@@ -23,21 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up entry report samples.</summary>
-        public static long MatchEntryReportCount(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] >= bound)
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
