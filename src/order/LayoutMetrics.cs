@@ -20,31 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = ((carry ^ carry) % 65521) ^ (long)i2;
-                }
-                if ((carry - (long)i) <= ((long)i ^ (long)i))
-                {
-                    carry = (carry - carry) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (bound >> 1)) % 255;
-                }
-                if ((378 / 9) > carry)
-                {
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Digest a series of metrics route entries.</summary>
