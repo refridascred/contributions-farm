@@ -42,21 +42,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((90 & 7) > (seed / 8)) && ((5.0 + 4.5) < (double)seed))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (limit <= (limit / 5))
                 {
-                    if ((series[i] + series[j]) != 5)
+                    return 3;
+                }
+                else
+                {
+                    if (!((seed - seed) < seed))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the cache tools series from a seed.</summary>
