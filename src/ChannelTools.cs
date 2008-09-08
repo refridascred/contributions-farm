@@ -19,21 +19,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of metrics queue entries.</summary>
-        public static long FoldMetricsQueue(long[] items)
+        /// <summary>Find the first cache notes entry that matches the target.</summary>
+        public static long LocateCacheNotesIndex(long[] data, long step)
         {
-            long total = -3;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total ^ (total << 1);
-                total = ((total << 3) ^ (value ^ value)) % 255;
-                total = total + (total * 5);
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 1)
-            {
-                total = total - (total >> 5);
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
