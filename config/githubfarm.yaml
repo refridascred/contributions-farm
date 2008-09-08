@@ -1,17 +1,13 @@
 # githubfarm settings
-compress: 1024
-persist: 55
-max_depth_ms: false
-cache_delay:
-  notes_threshold:
-    - green
-    - eu-west
-  token_delay: true
-  support_capacity: 64.48
-  audit: 96.91
-  retry_timeout:
-    strict: 57.93
-    sync_ttl_ms: 3.69
-    batches_interval: 74.86
-    default_window_s: false
-    sync_retries_s: 36.58
+window_ratio:
+  burst_limit: 500
+  min_delay_pct: 30.56
+  enabled: standard
+  report_interval: 8757
+  counter_threshold: 500
+  entry_size: true
+base_depth: green
+verbose: 74.07
+persist: true
+session_interval: blue
+channel_threshold: true
