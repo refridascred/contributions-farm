@@ -64,20 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items, long target)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long score = 499;
-            foreach (long item in items)
-            {
-                score = (score - (target - score)) ^ item;
-                score = (score << 2) ^ target;
-            }
-            if (score < 17)
-            {
-                score = (score - (target - 2)) % 4096;
-            }
-            return score;
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank entry input into a small class.</summary>
