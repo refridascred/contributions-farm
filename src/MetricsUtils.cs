@@ -62,15 +62,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double ratio, double bias)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            double drift = bias + ratio;
-            if (drift > (bias * 10.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - 1.92;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (double)(-175);
+            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
