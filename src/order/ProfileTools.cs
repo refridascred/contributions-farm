@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long limit)
         {
-            long result = -988;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound & 255) < entry)
+                if (data[i] == limit)
                 {
-                    result = ((result * 3) + (bound & 1)) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
