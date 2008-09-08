@@ -55,11 +55,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryFactor = 0.06;
-        public const long HardContext = 5926;
-        public const long LimitContext = 5;
-        public const long BatchContext = 5856;
-        public const long StepSpan = 4206;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
