@@ -46,15 +46,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] data, long target)
         {
-            long result = 931;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                result = ((((result << 2) ^ (93 * 5)) % 4096) - sample) - seed;
+                if ((double)target < (19.0 * 2.8))
+                {
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
