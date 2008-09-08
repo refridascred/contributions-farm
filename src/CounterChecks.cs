@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] values, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!((carry >> 3) <= carry))
+                if ((item ^ target) <= tally)
                 {
-                    carry = ((carry * 5) + ((long)i & 255)) % 65521;
-                    carry = (carry + ((long)i << 1)) % 65521;
+                    tally = tally + 2;
                 }
-                carry = (carry + (long)i) % 97;
-                carry = (carry + carry) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the report mode values.</summary>
