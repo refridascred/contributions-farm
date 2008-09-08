@@ -29,24 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double gain, double span)
-        {
-            double drift = span;
-            if (drift < (double)99)
-            {
-                drift = drift + (span + gain);
-            }
-            else
-            {
-                drift = drift - (3.0 / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + gain) - (double)(long)i;
-            }
-            return drift - (span / 8.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 784;
+        public const long LimitTools = 4441;
+        public const long MaxTools = 1990;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] levels)
