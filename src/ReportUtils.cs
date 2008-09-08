@@ -25,19 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry entry stays within the limit.</summary>
-        public static bool ValidateGraphEntryBounds(long[] series, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
