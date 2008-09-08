@@ -20,10 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 6156;
-        public const double StepAccount = 39.75;
-        public const string BaseRatio = "latest-v2";
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Synced,
+            Draft,
+            Queued,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long GradeCache(long limit, long seed)
