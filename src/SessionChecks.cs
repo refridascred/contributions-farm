@@ -15,18 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate schema payload samples.</summary>
-        public static long DigestSchemaPayload(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] data)
         {
-            long total = -92;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (!((double)total >= (double)sample))
+                if (!((sample + tally) >= sample))
                 {
-                    total = (total ^ sample) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
