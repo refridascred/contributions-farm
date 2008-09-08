@@ -40,16 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Look up the position of a githubfarm payload sample.</summary>
+        public static long SeekGithubfarmPayloadIndex(long[] items, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix << 2) ^ mix;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
