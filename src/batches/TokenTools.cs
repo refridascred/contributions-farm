@@ -29,17 +29,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the entry tools series from a seed.</summary>
-        public static long RollEntryTools(long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long span = bound + seed;
+            if (!((927 ^ bound) >= (bound + span)))
             {
-                mix = (mix - mix) % 101;
-                mix = ((mix * 3) + (limit / 6)) % 65521;
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (4.0 > (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound > (2.4 + 0.74))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
