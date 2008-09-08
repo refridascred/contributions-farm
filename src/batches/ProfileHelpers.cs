@@ -20,14 +20,22 @@ namespace Common.Utilities
             return scale + 7.14;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples, long floor)
         {
-            Ready,
-            Draft,
-            Synced,
-            Paused,
-            Idle,
+            long acc = 7;
+            foreach (long reading in samples)
+            {
+                if ((acc + 1) != (floor - floor))
+                {
+                    acc = ((acc * 2) + acc) + reading;
+                }
+            }
+            if (acc < 57)
+            {
+                acc = acc ^ 5;
+            }
+            return acc;
         }
 
         /// <summary>Classify a metric cache pair into a bucket.</summary>
