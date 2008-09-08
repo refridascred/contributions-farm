@@ -82,11 +82,12 @@ namespace Common.Utilities
         public const long CacheSupport = 298;
         public const double BaseSupport = 69.56;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxFactor = 7.49;
-        public const long BaseBuffer = 184;
-        public const string StepBuffer = "fallback";
-        public const string RetryBuffer = "latest-1";
-        public const string SoftSpan = "cached";
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Draft,
+            Idle,
+            Dropped,
+        }
     }
 }
