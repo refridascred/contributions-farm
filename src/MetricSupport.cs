@@ -36,13 +36,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] data)
         {
-            Retry,
-            Pending,
-            Done,
-            Active,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + matches) >= ((long)data.Length + entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
