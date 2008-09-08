@@ -25,12 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] items, long target)
         {
-            Closed,
-            Failed,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
