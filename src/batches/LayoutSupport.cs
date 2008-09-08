@@ -36,19 +36,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] levels, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Dropped,
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a graph summary.</summary>
