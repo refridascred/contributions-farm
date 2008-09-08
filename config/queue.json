@@ -1,12 +1,14 @@
 {
-  "command_retries": {
-    "hard_interval_count": 34,
-    "stats_capacity": 100,
-    "notes_ttl": [366, 111],
-    "batch_window": 88.72,
-    "cache_threshold_ms": 2,
-    "farm_ratio": "primary"
+  "batch_threshold_s": {
+    "verbose": 3076,
+    "dry_run": false,
+    "payload_capacity": 98.38,
+    "warm_depth": "strict",
+    "graph_ratio": 12.78,
+    "poll_retries_pct": "cached"
   },
-  "persist": ["staging", "cached", "stable", "cached"],
-  "burst_timeout_ms": [225, 148, 177]
+  "commits_limit": 69.21,
+  "dry_run": 250,
+  "flush_depth_ms": 500,
+  "burst_capacity_s": 9931
 }
