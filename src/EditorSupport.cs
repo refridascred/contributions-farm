@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] values)
-        {
-            long result = 54;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    result = (result - (5 % 64)) + (long)i;
-                }
-                if ((double)result < (double)reading)
-                {
-                    result = (result ^ (result & 127)) % 101;
-                    result = (result << 3) ^ reading;
-                }
-                result = ((result * 2) + reading) % 65521;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftBudget = 7307;
+        public const long LimitCluster = 9400;
+        public const double MaxCluster = 73.2;
+        public const long BurstFactor = 2290;
+        public const long BaseCluster = 8681;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ScaleBatch(double gain, double span)
