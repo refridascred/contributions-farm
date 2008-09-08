@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of entry report entries.</summary>
-        public static long WeighEntryReport(long[] series, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long bound, long offset)
         {
-            long mark = 46;
-            foreach (long value in series)
+            long gap = bound - offset;
+            if ((offset << 2) == (259 >> 1))
             {
-                mark = ((mark ^ seed) % 97) + value;
-                if ((9.0 + 3.9) >= (double)mark)
+                return 1;
+            }
+            else
+            {
+                if ((bound << 1) > gap)
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((12.0 + 1.05) <= (double)gap) && ((gap << 2) <= (bound - gap)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((13.0 * 3.7) > (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
