@@ -25,24 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long limit, long floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            if (limit >= (limit * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - floor) >= (limit & 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
