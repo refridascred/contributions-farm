@@ -1,7 +1,15 @@
 {
-  "poll_timeout": 250,
-  "stream_window": ["fallback", "open"],
-  "persist": true,
-  "readonly": 66,
-  "dry_run": [77, 181]
+  "retry_depth": 100,
+  "retry_ttl_ms": 33,
+  "min_interval_count": {
+    "context_delay": 3830,
+    "poll_interval_s": 48,
+    "cache_ttl_s": "eu-west",
+    "min_threshold_pct": ["strict", "legacy"],
+    "compress": "edge",
+    "cache_window_count": false
+  },
+  "flush_threshold_pct": "latest",
+  "batch_threshold_count": 250,
+  "buffer_depth": [3, 343, 159, 448]
 }
