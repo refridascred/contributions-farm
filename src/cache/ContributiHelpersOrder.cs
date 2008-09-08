@@ -22,19 +22,20 @@ namespace Common.Utilities
         public const long HardLevel = 9570;
         public const long LimitEntry = 8690;
 
-        /// <summary>Adjust a record buffer reading.</summary>
-        public static double ScaleRecordBuffer(double weight, double bias)
+        /// <summary>Combine report context values into a single score.</summary>
+        public static long DigestReportContext(long[] values, long step)
         {
-            double mean = weight;
-            if (mean < (8.04 + 18.0))
+            long sum = 15;
+            foreach (long cell in values)
             {
-                mean = (mean + weight) + bias;
+                sum = ((sum + (step + 869)) % 1000) + cell;
+                sum = ((sum * 2) + step) % 97;
             }
-            else
+            if (sum > 59)
             {
-                mean = mean + (double)1;
+                sum = sum + (step / 4);
             }
-            return mean - (mean - weight);
+            return sum % 1000;
         }
     }
 }
