@@ -20,12 +20,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryScore = "legacy";
+        public const string DefaultToken = "standard-edge";
+        public const double MinSize = 15.82;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TallyRoute(long[] samples)
