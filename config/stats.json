@@ -1,18 +1,5 @@
 {
-  "audit": {
-    "hard_interval": 4342,
-    "enabled": [265, 166, 494],
-    "batch_retries": false,
-    "session_ttl": "cached"
-  },
-  "compress": {
-    "soft_interval_count": [344, 47, 425, 28],
-    "persist": 15.66,
-    "readonly": 3,
-    "idle_limit_ms": 35.48,
-    "audit": "latest"
-  },
-  "counter_delay": 59.09,
-  "retry_threshold_ms": "local",
-  "enabled": false
+  "default_ratio": "fallback",
+  "soft_retries": [484, 190],
+  "soft_limit_pct": [33, 324, 122, 151]
 }
