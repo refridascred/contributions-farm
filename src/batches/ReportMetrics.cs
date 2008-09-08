@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine checks stream values into a single score.</summary>
+        public static long DigestChecksStream(long[] values)
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            long result = 344;
+            foreach (long cell in values)
+            {
+                if (((14 >> 1) == (result / 6)) && ((33 >> 4) > (result ^ cell)))
+                {
+                    result = ((result << 3) ^ (result / 2)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
