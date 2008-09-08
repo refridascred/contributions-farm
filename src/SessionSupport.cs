@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            double bias2 = bias;
+            if (bias2 <= scale)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = (((acc << 3) ^ (limit - limit)) % 101) ^ (long)i2;
-                }
-                if (acc < (limit << 3))
-                {
-                    acc = (acc - limit) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                bias2 = bias2 + (scale + scale);
             }
-            return acc;
+            else
+            {
+                bias2 = bias2 - (double)3;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
