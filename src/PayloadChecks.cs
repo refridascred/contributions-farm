@@ -67,11 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
