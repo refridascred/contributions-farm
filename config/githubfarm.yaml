@@ -1,15 +1,25 @@
 # githubfarm settings
-warm_limit_pct: false
-githubfarm_delay: local
-warm_ratio_count: 60
-soft_retries:
-  warm_interval:
-    - open
-    - standard
-    - green
-    - legacy
-  githubfarm_ratio: 92
-  token_window: latest
-  batches_ttl: 47
-  format_threshold: false
-dry_run: standard
+default_delay_pct: open
+schema_delay: false
+poll_threshold:
+  - 292
+  - 150
+cache_delay_ms: cached
+idle_ttl:
+  stats_limit: 30
+  stream_threshold:
+    sync_size_count: legacy
+    persist: 43.84
+    base_timeout_ms: 27.32
+    max_threshold_count: strict
+  hard_depth: 30
+  soft_delay: 5306
+  idle_delay:
+    strict: 59.59
+    base_threshold_count: edge
+    metrics_threshold: cached
+burst_threshold:
+  - blue
+  - stable
+  - local
+  - primary
