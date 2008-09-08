@@ -33,11 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
