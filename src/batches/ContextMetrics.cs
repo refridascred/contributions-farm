@@ -39,22 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((9.0 + 8.92) >= (double)item)
+                if (!!((double)seen >= (2.57 + 3.0)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
