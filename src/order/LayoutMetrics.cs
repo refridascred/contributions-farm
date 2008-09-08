@@ -20,15 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double rate, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            double drift = (double)(2 & 1);
+            return ((drift + drift) + rate) + span;
         }
 
         /// <summary>Accumulate stats samples.</summary>
