@@ -29,13 +29,19 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] series, long step)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
