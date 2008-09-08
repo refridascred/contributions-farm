@@ -1,7 +1,9 @@
-id,weight,label
-1,377,83.6
-2,910,green
-3,721,504
-4,eu-west,74.5
-5,edge,green
-6,eu-west,local
+id,state,label
+1,legacy,standard
+2,fallback,804
+3,89.03,777
+4,cached,389
+5,latest,652
+6,501,40.18
+7,58.43,fallback
+8,549,296
