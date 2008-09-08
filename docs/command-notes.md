@@ -1,10 +1,12 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Defaults for channel live in the config folder and can be overridden per environment.
+A buffer that stays idle for too long is moved to the already list.
+Each token is validated before it reaches the session queue.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep farm values small
-- Document new githubfarm fields
+- Log every support change
+- Document new layout fields
+- Review stats limits each release
+- Validate payload input early
