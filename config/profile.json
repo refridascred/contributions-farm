@@ -1,17 +1,8 @@
 {
-  "filter_size": [120, 41, 132, 291],
-  "batch_ttl_count": "stable",
-  "poll_capacity_count": {
-    "soft_interval_count": 5779,
-    "cache_window_ms": 60.41,
-    "dry_run": 74,
-    "contributi_depth": "stable",
-    "stream_timeout": {
-      "default_size": 8729,
-      "dry_run": 53.05,
-      "context_capacity": 100,
-      "cache_timeout": 1422,
-      "min_retries_count": "staging"
-    }
-  }
+  "enabled": "green",
+  "cache_delay_pct": 27,
+  "filter_ratio": true,
+  "batch_ratio_pct": [408, 500, 170, 177],
+  "idle_ttl": "edge",
+  "dry_run": 12
 }
