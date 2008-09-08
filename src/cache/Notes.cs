@@ -41,12 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] series, long floor)
         {
-            Ready,
-            Active,
-            Failed,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the layout phase values.</summary>
