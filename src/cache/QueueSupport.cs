@@ -36,22 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] readings, long floor)
+        /// <summary>Project the next entry metrics value.</summary>
+        public static double AdjustEntryMetrics(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((8 * 3) >= sample)
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double mean = 4.9;
+            return ((mean - (4.0 + 8.5)) + scale) + offset;
         }
     }
 }
