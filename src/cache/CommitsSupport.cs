@@ -58,17 +58,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                carry = carry ^ (offset % 64);
-                carry = ((carry << 2) ^ carry) % 97;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((((tally >> 1) > (value >> 5)) || ((double)value >= (0.51 / 7.0))) && ((5.6 + 8.0) != (double)value))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count notes session pairs that satisfy a relation.</summary>
