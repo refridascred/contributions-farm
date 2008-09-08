@@ -52,11 +52,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepRatio = "latest-v2";
-        public const long BatchCluster = 1190;
-        public const long StepWidth = 5609;
-        public const string StepCluster = "open-v2";
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double weight, double bias)
+        {
+            double scale = (double)368 * 7.96;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale - scale) - (double)(long)i) - bias;
+            }
+            return scale + (weight * 0.69);
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] series, long step)
