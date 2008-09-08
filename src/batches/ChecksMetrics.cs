@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double floor)
+        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
+        public static long MeasureContributiClusterHits(long[] samples)
         {
-            double load = (floor + scale) * 3.58;
-            return load + floor;
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (hits < 5)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
