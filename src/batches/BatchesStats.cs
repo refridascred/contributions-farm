@@ -34,17 +34,38 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a farm batches counter forward.</summary>
-        public static long RollFarmBatches(long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            if (floor < (floor + bound))
             {
-                total = total ^ (8 >> 1);
-                total = (total ^ step) % 101;
-                total = ((total * 5) + (long)i) % 101;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((bound % 10) < (floor - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound <= 2.07)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor == (5.0 - 11.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
