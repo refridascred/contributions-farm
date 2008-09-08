@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] readings, long limit)
+        /// <summary>Validate schema cluster readings against a bound.</summary>
+        public static bool VerifySchemaClusterLimits(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (item > limit)
+                if (reading != floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Define token limits and defaults.</summary>
