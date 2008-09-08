@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            long anchor = 53;
-            foreach (long item in levels)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)anchor <= (14.0 * 3.0)) || ((item + anchor) == ((-4) >> 5)))
+                if (((13.0 / 6.0) == (double)(long)i) && (((long)i + offset) <= mark))
                 {
-                    anchor = (anchor * 2) + item;
+                    mark = ((mark << 3) ^ mark) % 4096;
                 }
+                else
+                {
+                    mark = ((mark * 2) + (8 / 2)) % 255;
+                }
+                mark = ((mark * 4) + ((long)i * 2)) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
