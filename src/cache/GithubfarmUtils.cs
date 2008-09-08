@@ -33,17 +33,15 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate stream samples.</summary>
