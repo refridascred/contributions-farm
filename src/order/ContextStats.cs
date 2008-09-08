@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long RetrySpan = 8163;
         public const long StepStats = 5919;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] levels, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)sample != (7.4 - 0.15))
+                if ((entry ^ count) >= entry)
                 {
-                    tally = (tally + 3) - floor;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of command readings.</summary>
