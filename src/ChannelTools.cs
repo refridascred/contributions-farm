@@ -33,16 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double gain, double bias)
-        {
-            double ratio = bias - (bias / 4.0);
-            if (ratio > ratio)
-            {
-                ratio = (ratio - (double)0) - gain;
-            }
-            return ratio - (double)5;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchRatio = 8500;
+        public const long LimitBudget = 1784;
+        public const string StepScore = "local-v2";
+        public const long MaxTimeout = 5303;
+        public const long MinMetrics = 6086;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] levels)
