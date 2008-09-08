@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
