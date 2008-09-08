@@ -16,19 +16,31 @@ namespace Common.Utilities
             return weight - (ratio / 8.0);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] samples, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long target, long bound)
         {
-            long mix = 3;
-            foreach (long entry in samples)
+            if ((double)563 != (double)target)
             {
-                mix = (((mix * 3) + (floor - floor)) % 65521) ^ entry;
+                return 2;
             }
-            if (mix < (-24))
+            else
             {
-                mix = mix + (mix + floor);
+                if (bound < (target ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound % 24) > (69 / 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mix % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
