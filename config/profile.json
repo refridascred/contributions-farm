@@ -1,5 +1,6 @@
 {
-  "queue_interval": "open",
-  "schema_limit": 1024,
-  "burst_limit_ms": false
+  "burst_limit_pct": "green",
+  "hard_size": ["staging", "primary", "fallback"],
+  "dry_run": 21.69,
+  "persist": "local"
 }
