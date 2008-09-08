@@ -1,9 +1,6 @@
 # entry settings
-warm_retries_count: 9904
-max_ratio_pct: 43.08
-hard_capacity_s: true
-context_window: true
-batch_ratio:
-  - 404
-  - 120
-context_limit: 72.91
+base_threshold_s: true
+cache_retries_pct: 7809
+hard_threshold_pct: 94.68
+poll_threshold: 85.38
+poll_ttl_ms: 69
