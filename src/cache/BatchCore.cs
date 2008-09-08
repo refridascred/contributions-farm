@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] levels, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
+                if (item >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Digest a series of record filter entries.</summary>
