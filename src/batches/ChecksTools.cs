@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a payload cluster sample.</summary>
-        public static long LookupPayloadClusterIndex(long[] levels, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
+                if ((offset << 2) > offset)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
