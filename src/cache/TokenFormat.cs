@@ -41,21 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor filter samples.</summary>
-        public static long OverlapEditorFilterCount(long[] levels)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Active,
+            Synced,
         }
     }
 }
