@@ -41,13 +41,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long target, long origin)
         {
-            Stale,
-            Dropped,
-            Active,
-            Synced,
+            long lane = target + origin;
+            if ((double)origin != (0.06 / 3.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin >= (origin << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - lane) < lane)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((775 / 2) <= (lane % 60))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
