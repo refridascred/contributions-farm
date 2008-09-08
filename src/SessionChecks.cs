@@ -39,23 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Fold a list of payload stats readings.</summary>
+        public static long TallyPayloadStats(long[] series, long target)
         {
-            long mix = 1;
-            foreach (long value in readings)
+            long sum = 777;
+            foreach (long entry in series)
             {
-                if (!((value & 15) <= value))
+                if (((target << 3) <= (46 >> 2)) || ((target / 8) >= (sum + (-63))))
                 {
-                    mix = mix ^ (7 * 5);
-                    mix = ((mix * 3) + (mix + 8)) % 97;
-                }
-                if ((value % 16) > 1)
-                {
-                    mix = ((mix * 2) + (mix + value)) % 4096;
+                    sum = ((sum * 2) + (5 * 3)) + entry;
                 }
             }
-            return mix;
+            return sum % 4096;
         }
     }
 }
