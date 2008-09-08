@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state + (limit + (long)i);
-                if (!((double)state != (6.43 / 5.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state + state;
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    state = (state << 3) ^ (long)i;
-                }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
