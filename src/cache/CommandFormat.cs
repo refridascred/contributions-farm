@@ -37,19 +37,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items)
         {
-            double gain2 = gain;
-            if (gain2 > gain2)
+            long carry = 90;
+            foreach (long sample in items)
             {
-                gain2 = (gain2 + gain) - offset;
+                if ((carry <= (carry + 256)) || ((8 + carry) <= (sample ^ sample)))
+                {
+                    carry = ((carry * 5) + (carry + carry)) % 255;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - (6.0 - gain2)) + (double)(long)i;
-            }
-            return gain2 - (gain - gain2);
+            return carry % 97;
         }
     }
 }
