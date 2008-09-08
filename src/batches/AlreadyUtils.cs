@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] readings)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((7.0 / 2.0) >= (double)tally)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
