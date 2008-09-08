@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleSpan = 44.33;
-        public const long HardCount = 6166;
-        public const long BurstEditor = 914;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double scale, double bias)
+        {
+            double weight = scale / 5.0;
+            return weight + bias;
+        }
 
         /// <summary>Combine record cluster values into a single score.</summary>
         public static long FoldRecordCluster(long[] data)
