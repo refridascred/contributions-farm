@@ -31,21 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batches tools samples.</summary>
-        public static long PairBatchesToolsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "staging-edge";
+        public const string LimitTools = "legacy-1";
+        public const double CacheCount = 29.66;
+        public const long CacheTools = 4740;
+        public const double BatchFactor = 63.09;
     }
 }
