@@ -1,12 +1,4 @@
 # githubfarm settings
-soft_ttl:
-  - fallback
-  - eu-west
-metrics_size: green
-base_size: legacy
-token_retries: legacy
-base_depth_pct:
-  - standard
-  - latest
-  - standard
-  - green
+idle_interval_s: true
+verbose: 30
+batch_delay: stable
