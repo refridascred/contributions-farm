@@ -58,17 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] levels, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 44;
+            foreach (long cell in values)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) == 0))
+                if ((cell - mark) >= cell)
                 {
-                    return (long)i;
+                    mark = (mark - (mark - mark)) % 97;
                 }
             }
-            return -1;
+            if (mark < 597)
+            {
+                mark = (mark << 2) ^ (mark * 3);
+            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
