@@ -39,14 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 6302;
+        public const long HardRatio = 351;
+        public const long StepInterval = 9600;
+        public const string RetryReport = "latest-edge";
 
         /// <summary>Audit batches command readings against a rule.</summary>
         public static long TallyBatchesCommandOutliers(long[] samples)
