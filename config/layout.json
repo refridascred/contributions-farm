@@ -1,8 +1,5 @@
 {
-  "strict": "eu-west",
-  "schema_timeout": 54.26,
-  "poll_ratio_ms": "fallback",
-  "dry_run": "eu-west",
-  "sync_retries_s": ["green", "fallback"],
-  "cache_depth": 81.59
+  "soft_timeout": 31.68,
+  "idle_capacity_pct": 9,
+  "idle_retries": 38.23
 }
