@@ -1,8 +1,20 @@
 # githubfarm settings
-soft_window_ms: true
-idle_interval_pct: true
-verbose:
-  - 360
-  - 15
-  - 253
-cache_limit_count: 100
+soft_limit_ms: 1024
+notes_ratio:
+  default_limit: true
+  persist: 36
+  max_size:
+    - latest
+    - strict
+    - staging
+    - staging
+  warm_depth: stable
+  metrics_retries: 100
+default_delay_pct: cached
+poll_threshold: 38
+schema_timeout:
+  batch_limit_count: cached
+  route_interval: 12
+  cache_timeout: standard
+  max_limit: 7685
+  poll_size_pct: legacy
