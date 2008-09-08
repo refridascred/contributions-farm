@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many checks batch samples are out of range.</summary>
-        public static long MeasureChecksBatchGaps(long[] data)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long score = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (hits < datum)
-                {
-                    hits = hits + 3;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
