@@ -73,21 +73,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count notes session pairs that satisfy a relation.</summary>
-        public static long OverlapNotesSessionCount(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (4.0 < (double)floor)
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
