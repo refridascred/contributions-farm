@@ -35,11 +35,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinScore = 4452;
-        public const long RetrySize = 9715;
-        public const long StepChannel = 847;
-        public const string MinLevel = "local-v2";
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double rate, double offset)
+        {
+            double bias = (double)(0 + (-20));
+            if (bias < (double)(-753))
+            {
+                bias = (bias - bias) + offset;
+            }
+            else
+            {
+                bias = bias + (rate / 7.0);
+            }
+            return bias + (double)0;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
