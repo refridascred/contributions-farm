@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate account stream readings against a bound.</summary>
+        public static bool GuardAccountStreamBounds(long[] series, long floor)
         {
-            Failed,
-            Paused,
-            Pending,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
