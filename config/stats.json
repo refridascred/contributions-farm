@@ -1,13 +1,8 @@
 {
-  "compress": "staging",
-  "flush_threshold": 250,
-  "soft_limit": true,
-  "metrics_window": {
-    "verbose": "blue",
-    "poll_retries_count": [422, 335],
-    "order_timeout": "edge",
-    "min_interval_ms": 2593,
-    "idle_depth_ms": 22.29,
-    "batch_ttl_count": true
-  }
+  "max_ttl_s": 19.52,
+  "poll_depth": 60,
+  "notes_retries": 33.7,
+  "sync_retries": 17.0,
+  "persist": true,
+  "audit": [82, 126, 189]
 }
