@@ -1,7 +1,7 @@
-id,active,owner,score,state
-1,primary,11.05,edge,39.3
-2,standard,stable,173,69
-3,221,green,193,49
-4,local,132,940,strict
-5,439,primary,fallback,707
-6,646,783,78.1,3.84
+id,ratio,token,count
+1,green,299,326
+2,317,520,279
+3,95.52,264,fallback
+4,38.72,47.3,blue
+5,eu-west,58.03,178
+6,34,fallback,138
