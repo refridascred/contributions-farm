@@ -1,8 +1,6 @@
 {
-  "farm_interval": 12.34,
-  "audit": "fallback",
-  "strict": false,
-  "idle_window": false,
-  "poll_size_ms": [37, 373, 256, 320],
-  "idle_threshold": "edge"
+  "warm_window_s": 95,
+  "filter_timeout": 500,
+  "warm_threshold_count": 250,
+  "audit": 8802
 }
