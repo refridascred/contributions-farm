@@ -18,23 +18,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches command value against two limits.</summary>
-        public static long RankBatchesCommand(long bound, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long floor, long origin)
         {
-            long span = bound + step;
-            if (bound <= (95 + bound))
+            long edge = floor + origin;
+            if ((floor % 5) <= (-7))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((step % 10) <= span)
+                if (origin > (origin * 4))
                 {
                     return 7;
                 }
                 else
                 {
-                    return 1;
+                    if ((floor <= (origin * 3)) || ((24 ^ edge) < floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)floor >= 5.0) && ((7 + origin) < (edge - origin)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
