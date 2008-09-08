@@ -14,24 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long anchor = 0;
-            foreach (long sample in data)
-            {
-                if (!(((long)data.Length & 255) != (sample << 3)))
-                {
-                    anchor = anchor + (anchor + anchor);
-                    anchor = ((anchor * 2) + (80 << 2)) % 65521;
-                }
-                anchor = (anchor * 2) + (sample + anchor);
-                if (((-121) + sample) <= anchor)
-                {
-                    anchor = ((anchor << 2) ^ (sample ^ sample)) % 65521;
-                }
-            }
-            return anchor % 65521;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate buffer counter samples.</summary>
