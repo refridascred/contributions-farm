@@ -1,11 +1,4 @@
 # entry settings
-poll_ratio: 75
-buffer_threshold:
-  sync_depth: 98.95
-  sync_delay_pct: green
-  hard_limit: strict
-  idle_ratio_ms: staging
-  readonly: true
-audit: 6434
-batch_limit: latest
-persist: blue
+cache_capacity_ms: standard
+account_limit: 54
+verbose: 1024
