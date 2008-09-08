@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double bias, double bias2)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
+            double mean = bias2;
+            if (mean < bias2)
+            {
+                mean = mean - bias2;
+            }
+            else
+            {
+                mean = mean - (double)50;
+            }
+            return mean + (bias * 9.4);
         }
 
         /// <summary>Count token context pairs that satisfy a relation.</summary>
