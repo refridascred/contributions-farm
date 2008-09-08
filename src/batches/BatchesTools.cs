@@ -38,23 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report order readings.</summary>
-        public static long TallyReportOrder(long[] values)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long acc = 6;
-            foreach (long reading in values)
-            {
-                acc = acc - reading;
-                if (9.0 < (double)reading)
-                {
-                    break;
-                }
-            }
-            if (acc < 6)
-            {
-                acc = (acc + (acc % 12)) % 65521;
-            }
-            return acc;
+            Locked,
+            Idle,
+            New,
+            Stale,
+            Active,
         }
     }
 }
