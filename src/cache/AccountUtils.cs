@@ -23,18 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] values, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((target * 3) != ((long)values.Length - value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
