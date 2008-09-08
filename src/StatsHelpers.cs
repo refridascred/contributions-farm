@@ -18,19 +18,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((tally + tally) > (cell - cell)) || ((double)(-6) <= (double)tally))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 941;
+        public const long MaxReport = 526;
+        public const long IdleWidth = 4742;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiOutliers(long[] values)
