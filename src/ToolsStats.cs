@@ -45,22 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] data)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = 323;
+            foreach (long reading in data)
             {
-                if ((double)matches < 3.0)
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark ^ (-357)) ^ reading;
             }
-            return matches;
+            if (mark < 19)
+            {
+                mark = mark - mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Adjust a payload reading.</summary>
