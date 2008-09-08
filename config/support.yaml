@@ -1,10 +1,10 @@
 # support settings
-audit: staging
-cache_interval: stable
-farm_ttl: 2270
-cache_size_pct: 8539
-readonly: stable
-persist:
-  - open
-  - latest
-  - legacy
+tools_threshold: 6424
+notes_window:
+  githubfarm_depth: 7774
+  counter_threshold: eu-west
+  format_delay: 97.77
+soft_interval: fallback
+context_interval: 61
+flush_timeout: 73
+profile_retries: 1419
