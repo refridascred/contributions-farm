@@ -55,17 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
+                scale = ((scale + (scale - scale)) + (double)(long)i) + weight;
             }
-            return -1;
+            return scale + (double)2;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
