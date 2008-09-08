@@ -27,32 +27,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long limit, long seed)
-        {
-            if (((90 & 7) > (seed / 8)) && ((5.0 + 4.5) < (double)seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (limit / 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((seed - seed) < seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstWidth = 6058;
+        public const long HardCommits = 748;
+        public const double BaseCommits = 72.5;
+        public const long BatchCommits = 8505;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BaseSize = 88.13;
