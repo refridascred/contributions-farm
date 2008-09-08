@@ -51,12 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] series, long bound)
         {
-            Closed,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)bound >= 7.8)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
