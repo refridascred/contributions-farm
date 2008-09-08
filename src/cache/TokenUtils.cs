@@ -14,23 +14,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the metric session entries that pass the check.</summary>
-        public static long TallyMetricSessionHits(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + origin) >= origin)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 4138;
+        public const string MinLayout = "latest-1";
+        public const double MaxLayout = 26.61;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] levels, long step)
