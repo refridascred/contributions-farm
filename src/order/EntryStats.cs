@@ -63,10 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 9056;
-        public const string LimitProfile = "stable-v2";
-        public const long StepProfile = 5391;
-        public const long LimitCount = 5771;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >> 2) > (seen + sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
