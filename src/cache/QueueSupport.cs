@@ -22,18 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            long mix = 366;
-            foreach (long entry in items)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((entry ^ entry) < entry))
-                {
-                    mix = mix - (75 + mix);
-                }
+                anchor = anchor - ((long)i & 15);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Project the next entry metrics value.</summary>
