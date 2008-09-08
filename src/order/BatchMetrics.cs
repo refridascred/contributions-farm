@@ -77,18 +77,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long step, long step2)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if ((step + step2) >= (step2 << 2))
             {
-                if ((sample >> 1) > (tally + tally))
+                return 1;
+            }
+            else
+            {
+                if ((step > (step - 1)) || ((step2 << 2) < (step + step)))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 < step) || ((step2 & 1) > (step2 - 915)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the support class values.</summary>
