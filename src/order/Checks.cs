@@ -78,15 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Synced,
+            Queued,
+            Pending,
         }
     }
 }
