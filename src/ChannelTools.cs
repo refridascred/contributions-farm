@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a batches stream reading by value.</summary>
-        public static long LocateBatchesStreamIndex(long[] series, long step)
+        /// <summary>Classify a checks tools pair into a bucket.</summary>
+        public static long ClassifyChecksTools(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = step ^ offset;
+            if ((2.64 - 2.6) <= (double)delta)
             {
-                if ((series[i] <= step) && ((series[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((3.4 - 2.6) == (double)step) || ((111 ^ offset) <= delta))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((delta + offset) > (step / 8)) && (delta >= (step ^ offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
