@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first route batches entry that matches the target.</summary>
-        public static long LookupRouteBatchesIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 7668;
+        public const string HardMetrics = "alpha-1";
+        public const long BurstDepth = 3720;
+        public const long DefaultMetrics = 2325;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] items)
