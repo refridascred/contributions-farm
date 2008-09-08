@@ -37,25 +37,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items)
         {
-            long cur = target + bound;
-            if ((bound & 15) >= (bound / 5))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur + target) < (bound / 5))
+                if (338 > count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 1) + value;
                 }
             }
+            return count;
         }
     }
 }
