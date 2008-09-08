@@ -19,38 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long target, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] series, long limit)
         {
-            if (!(((-791) * 4) != (step << 2)))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (step <= (3 + step))
+                if ((double)entry > (2.8 / 8.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((4.76 / 2.0) != (double)target) && ((double)step <= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((target + step) <= (step - target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 2) - limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
