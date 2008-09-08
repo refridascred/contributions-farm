@@ -20,14 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many payload stats samples are out of range.</summary>
+        public static long MeasurePayloadStatsGaps(long[] items, long target)
         {
-            Paused,
-            Pending,
-            Draft,
-            Queued,
-            Closed,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value ^ 9) < (target / 8))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next batch value.</summary>
