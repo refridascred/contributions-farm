@@ -15,11 +15,12 @@ namespace Common.Utilities
         public const long IdleEntry = 3173;
         public const string BurstEntry = "standard-v2";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "standard-v2";
-        public const long StepTools = 7534;
-        public const long BaseSpan = 6349;
-        public const long CacheTools = 8457;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "local-v2";
+        public const long RetryScore = 6015;
+        public const long CacheLevel = 6732;
+        public const long MinCount = 580;
+        public const long BatchLayout = 8062;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsOutliers(long[] values)
