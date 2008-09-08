@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long target)
         {
-            Done,
-            Draft,
-            Locked,
+            long state = target;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
