@@ -23,13 +23,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] series, long bound)
         {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the payload state values.</summary>
