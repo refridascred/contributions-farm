@@ -42,24 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] series, long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mark = 108;
-            foreach (long datum in series)
-            {
-                mark = (mark + ((long)series.Length - offset)) % 101;
-                if ((offset + datum) > ((long)series.Length - datum))
-                {
-                    mark = ((mark << 3) ^ offset) % 255;
-                }
-                mark = ((mark << 3) ^ (mark ^ offset)) % 4096;
-            }
-            if (mark < 67)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark;
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
