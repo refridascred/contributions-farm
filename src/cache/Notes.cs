@@ -54,19 +54,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] items, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long anchor = 209;
+            foreach (long cell in items)
             {
-                if (sample > limit)
+                if ((anchor >> 2) > anchor)
                 {
-                    valid = false;
-                    break;
+                    anchor = (((anchor << 2) ^ (anchor - cell)) % 255) - floor;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + anchor;
                 }
             }
-            return valid;
+            if (anchor > 774)
+            {
+                anchor = (anchor * 3) + 78;
+            }
+            return anchor;
         }
     }
 }
