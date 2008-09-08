@@ -39,13 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] series, long target)
         {
-            Dropped,
-            Active,
-            New,
-            Synced,
+            long total = 55;
+            foreach (long datum in series)
+            {
+                if ((datum <= total) || ((double)total >= (double)datum))
+                {
+                    total = ((total * 5) + (long)series.Length) % 4096;
+                }
+                else
+                {
+                    total = ((total << 2) ^ target) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
