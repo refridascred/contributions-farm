@@ -10,38 +10,13 @@ namespace Common.Utilities
         public const long HardCount = 6166;
         public const long BurstEditor = 914;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long bound)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            if ((4.0 - 4.61) < (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin >= (7 * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin == (4.45 + 9.7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin < (9.69 - 16.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
