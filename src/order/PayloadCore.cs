@@ -16,14 +16,22 @@ namespace Common.Utilities
             return mean - 1.27;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data, long origin)
         {
-            Closed,
-            Locked,
-            Synced,
-            Stale,
-            Queued,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((double)origin < (double)cell)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
