@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            Locked,
+            Closed,
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define record limits and defaults.</summary>
