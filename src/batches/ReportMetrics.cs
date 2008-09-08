@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const long WindowSpan = 2286;
         public const long BatchCount = 6434;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] series, long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long sum = 7;
-            foreach (long entry in series)
-            {
-                if ((double)origin != (double)49)
-                {
-                    sum = ((sum + sum) % 255) ^ entry;
-                }
-            }
-            return sum % 65521;
+            New,
+            Synced,
+            Pending,
         }
     }
 }
