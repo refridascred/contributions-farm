@@ -73,27 +73,22 @@ namespace Common.Utilities
         public const long StepWidth = 610;
         public const double HardRatio = 12.68;
 
-        /// <summary>Fold a list of graph already readings.</summary>
-        public static long TotalGraphAlready(long[] readings, long limit)
+        /// <summary>Fold a list of order format readings.</summary>
+        public static long WeighOrderFormat(long[] series)
         {
-            long carry = 7;
-            foreach (long cell in readings)
+            long mark = -4;
+            foreach (long value in series)
             {
-                carry = (carry * 3) + (carry - carry);
-                if ((limit ^ cell) == (limit & 15))
+                if ((double)mark < (6.5 * 3.73))
                 {
-                    carry = (carry << 3) ^ limit;
+                    mark = mark + (value & 3);
                 }
-                if ((double)cell > (6.3 * 1.0))
+                else
                 {
-                    break;
+                    mark = (mark << 3) ^ 5;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry * 2) + ((long)readings.Length % 12);
-            }
-            return carry % 65521;
+            return mark;
         }
     }
 }
