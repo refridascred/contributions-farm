@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] levels, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((13.0 / 6.0) == (double)(long)i) && (((long)i + offset) <= mark))
+                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
                 {
-                    mark = ((mark << 3) ^ mark) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = ((mark * 2) + (8 / 2)) % 255;
-                }
-                mark = ((mark * 4) + ((long)i * 2)) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of record filter entries.</summary>
