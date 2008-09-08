@@ -58,11 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] values)
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
+            long anchor = 266;
+            foreach (long entry in values)
+            {
+                anchor = anchor ^ (entry >> 5);
+            }
+            return anchor;
         }
     }
 }
