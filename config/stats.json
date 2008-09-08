@@ -1,6 +1,14 @@
 {
-  "flush_capacity": 3707,
-  "burst_ratio_count": true,
-  "readonly": 1548,
-  "poll_timeout": 16
+  "burst_timeout_ms": {
+    "verbose": false,
+    "strict": 4980,
+    "layout_threshold": true
+  },
+  "warm_limit_s": {
+    "idle_size_s": "open",
+    "hard_ratio_count": 60,
+    "idle_ttl_ms": 90
+  },
+  "persist": 60,
+  "burst_threshold": false
 }
