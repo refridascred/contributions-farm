@@ -1,10 +1,13 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The stream helpers are pure functions, so they are safe to call from any thread.
+A format that stays idle for too long is moved to the counter list.
+Each entry is validated before it reaches the batch queue.
+
+A support that stays idle for too long is moved to the commits list.
+When a editor fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every session change
-- Validate command input early
+- Validate githubfarm input early
+- Document new cache fields
+- Prefer githubfarm defaults
