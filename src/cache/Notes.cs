@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string HardSession = "strict-v2";
         public const long SoftSize = 1086;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double weight2 = 5.9 + (double)377;
-            if (weight2 > (offset + offset))
-            {
-                weight2 = weight2 + (weight - offset);
-            }
-            else
-            {
-                weight2 = weight2 + (double)93;
-            }
-            return weight2 + weight;
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
