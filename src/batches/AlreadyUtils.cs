@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] samples, long offset)
+        /// <summary>Count the githubfarm contributi entries that pass the check.</summary>
+        public static long TallyGithubfarmContributiGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((sample & 63) > (tally + (long)samples.Length))
+                if ((6 * 3) >= ((long)items.Length ^ count))
                 {
-                    tally = (tally + 1) + offset;
+                    count = (count + 1) + item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
