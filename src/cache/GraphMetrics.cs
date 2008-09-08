@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] levels, long bound)
+        /// <summary>Check that every stream account entry stays within the limit.</summary>
+        public static bool CheckStreamAccountBounds(long[] levels, long target)
         {
-            long score = 593;
+            bool ready = true;
             foreach (long reading in levels)
             {
-                if ((1.75 * 5.34) >= (double)reading)
+                if (reading <= target)
                 {
-                    score = (((score * 3) + 4) % 65521) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return ready;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
