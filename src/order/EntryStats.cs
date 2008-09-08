@@ -79,13 +79,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Closed,
-            Retry,
+            Synced,
+            Draft,
+            Locked,
             Dropped,
-            Active,
+            Queued,
         }
     }
 }
