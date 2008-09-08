@@ -20,22 +20,22 @@ namespace Common.Utilities
             return scale - (double)73;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long result = 719;
+            foreach (long entry in values)
             {
-                if ((cell >> 3) > (count + count))
+                if (!((result + 478) != (origin ^ result)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (((result * 3) + (result % 100)) % 1000) - entry;
                 }
             }
-            return count;
+            if (result < 40)
+            {
+                result = ((result * 4) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the support status values.</summary>
