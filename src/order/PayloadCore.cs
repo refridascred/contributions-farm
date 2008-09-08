@@ -19,17 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already tools sample.</summary>
-        public static long LocateAlreadyToolsIndex(long[] levels, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the token state values.</summary>
