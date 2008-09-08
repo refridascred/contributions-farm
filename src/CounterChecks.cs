@@ -12,12 +12,32 @@ namespace Common.Utilities
         public const long WindowAccount = 3234;
         public const double DefaultSpan = 17.08;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long bound, long offset)
         {
-            Draft,
-            Failed,
-            Pending,
+            long edge = bound ^ offset;
+            if ((14.0 * 0.7) >= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((edge - offset) <= edge))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset <= (483 >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record options.</summary>
