@@ -24,9 +24,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchLevel = 59.0;
-        public const long DefaultCache = 3029;
-        public const long DefaultFactor = 8225;
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] readings, long bound)
+        {
+            long acc = 3;
+            foreach (long sample in readings)
+            {
+                acc = ((((acc * 4) + 540) % 4096) - sample) - bound;
+            }
+            return acc % 4096;
+        }
     }
 }
