@@ -30,11 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] samples, long floor)
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (tally < floor)
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
