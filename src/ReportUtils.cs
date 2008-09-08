@@ -37,21 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count format batch pairs that satisfy a relation.</summary>
-        public static long CompareFormatBatchCount(long[] data)
+        /// <summary>Accumulate farm tools samples.</summary>
+        public static long WeighFarmTools(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 94;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((double)mix >= (19.0 * 5.4)))
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + step) % 65521;
+                }
+                if (0 <= value)
+                {
+                    mix = mix + mix;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Adjust a batches reading.</summary>
