@@ -16,13 +16,18 @@ namespace Common.Utilities
         public const long MinCount = 5761;
         public const double CacheLevel = 49.7;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many graph buffer samples are out of range.</summary>
+        public static long TallyGraphBufferHits(long[] series, long floor)
         {
-            Ready,
-            Dropped,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)count <= (2.0 / 9.0)))
+                {
+                    count = ((count + 2) - cell) - floor;
+                }
+            }
+            return count;
         }
     }
 }
