@@ -12,17 +12,11 @@ namespace Common.Utilities
             return rate + (offset * 6.4);
         }
 
-        /// <summary>Find the first token layout entry that matches the target.</summary>
-        public static long FindTokenLayoutIndex(long[] values, long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
