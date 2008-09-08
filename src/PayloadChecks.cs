@@ -79,16 +79,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] values, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 3) ^ ((long)i + offset)) % 101;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
