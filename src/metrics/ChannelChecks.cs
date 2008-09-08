@@ -39,17 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] values, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 24;
+            foreach (long datum in data)
             {
-                if ((values[i] < step) && ((values[i] % 5) != 0))
+                if (!((mark % 3) == (mark >> 3)))
                 {
-                    return (long)i;
+                    mark = ((mark + (step << 2)) % 97) ^ datum;
+                    mark = ((mark << 2) ^ (mark >> 2)) % 4096;
                 }
+                mark = mark - (mark - step);
+                mark = (mark - mark) % 97;
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
