@@ -1,8 +1,12 @@
 {
-  "compress": 6823,
-  "editor_delay": "legacy",
-  "default_threshold_ms": ["staging", "legacy", "eu-west", "edge"],
-  "poll_capacity_ms": "staging",
-  "flush_limit": "legacy",
-  "cache_window": [55, 413]
+  "warm_depth_count": ["latest", "fallback", "stable"],
+  "soft_size_s": "local",
+  "checks_ttl": 86.74,
+  "readonly": "cached",
+  "dry_run": {
+    "audit": false,
+    "githubfarm_delay": 1024,
+    "burst_ttl": true
+  },
+  "burst_timeout": [298, 311, 464]
 }
