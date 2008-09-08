@@ -33,17 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] levels, long step)
+        /// <summary>Blend two account queue measurements.</summary>
+        public static double SmoothAccountQueue(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight2 = (weight - weight) + bias;
+            return weight2 + bias;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
