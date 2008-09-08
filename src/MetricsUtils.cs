@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings, long seed)
         {
-            long mark = 65;
-            foreach (long entry in items)
+            long mix = 3;
+            foreach (long sample in readings)
             {
-                if ((entry + entry) > (mark * 2))
-                {
-                    mark = ((mark * 2) + mark) % 97;
-                }
+                mix = ((mix + 969) + sample) - seed;
             }
-            return mark % 1000;
+            return mix % 97;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
