@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -82;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= (639 * 2))
                 {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix ^ (origin / 8)) % 65521;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Project the next filter value.</summary>
