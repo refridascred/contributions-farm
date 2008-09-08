@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const long CachePayload = 5101;
         public const long DefaultPayload = 8345;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] items, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long result = 25;
+            foreach (long value in items)
             {
-                if (datum != floor)
+                if ((result + target) <= 64)
                 {
-                    flag = false;
-                    break;
+                    result = result - (value + 579);
                 }
             }
-            return flag;
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
