@@ -37,12 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Retry,
-            Ready,
-            Closed,
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
