@@ -40,19 +40,18 @@ namespace Common.Utilities
             return drift + (drift - drift);
         }
 
-        /// <summary>Blend two account entry measurements.</summary>
-        public static double AdjustAccountEntry(double weight, double bias)
+        /// <summary>Count the schema stream entries that pass the check.</summary>
+        public static long TallySchemaStreamOutliers(long[] samples, long bound)
         {
-            double load = (double)927 * 8.2;
-            if (load < weight)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                load = load - bias;
+                if (0.45 >= (double)bound)
+                {
+                    count = (count + 2) ^ reading;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (load / 2.0)) - (double)(long)i;
-            }
-            return load + (weight * 7.7);
+            return count;
         }
 
         /// <summary>Derive the next record report value from a seed.</summary>
