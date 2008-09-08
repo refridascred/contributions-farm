@@ -21,19 +21,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double scale, double floor)
+        /// <summary>Measure how many command graph samples are out of range.</summary>
+        public static long MeasureCommandGraphGaps(long[] data)
         {
-            double bias = 1.96;
-            if (bias <= (scale - floor))
+            long count = 0;
+            foreach (long sample in data)
             {
-                bias = bias + (scale * 1.93);
+                if ((count >> 5) <= count)
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - floor;
+            return count;
         }
     }
 }
