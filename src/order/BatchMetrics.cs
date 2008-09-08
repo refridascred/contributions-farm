@@ -51,12 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstSpan = 67.71;
-        public const double BurstCount = 40.24;
-        public const long StepRecord = 2768;
-        public const double CacheRecord = 68.26;
-        public const double SoftRecord = 16.89;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate batch metrics readings against a bound.</summary>
         public static bool CheckBatchMetricsRange(long[] data, long floor)
