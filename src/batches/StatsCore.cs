@@ -39,12 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 6340;
-        public const long CacheWidth = 8723;
-        public const long StepBudget = 9251;
-        public const long BatchEntry = 2837;
-        public const string BurstEntry = "cached";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardCount = 1287;
+        public const long BaseNotes = 2256;
+        public const long RetrySize = 6769;
+        public const long MinNotes = 5253;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultInterval = 2423;
