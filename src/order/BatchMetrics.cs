@@ -38,18 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitSpan = 4231;
+        public const long MinWidth = 4202;
+        public const long IdleContext = 7175;
+        public const long SoftDepth = 512;
+        public const long BatchContext = 7609;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
