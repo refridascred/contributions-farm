@@ -31,18 +31,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a counter metric reading by value.</summary>
-        public static long LookupCounterMetricIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitDepth = 4782;
+        public const double SoftMetrics = 72.04;
+        public const long LimitCount = 4737;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueOutliers(long[] data)
