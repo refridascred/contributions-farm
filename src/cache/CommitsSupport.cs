@@ -20,21 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Grade a contributi filter value against two limits.</summary>
+        public static long RankContributiFilter(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)bound == (6.5 + 7.5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((6.0 + 1.2) > (double)bound) && ((bound * 5) != (bound / 6)))
                 {
-                    if ((items[i] ^ items[j]) != 0)
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= (bound % 60))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit > 12.0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a payload support reading by value.</summary>
