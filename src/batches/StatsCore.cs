@@ -29,12 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
