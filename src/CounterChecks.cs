@@ -51,21 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of layout order readings.</summary>
-        public static long CompareLayoutOrderCount(long[] values)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)bound <= 2.0)
                 {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score ^ (960 / 5);
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
