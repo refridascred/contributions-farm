@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] values, long floor)
         {
-            long mark = 556;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((floor << 2) >= (24 - mark))
+                if (((2.77 + 6.0) == (double)entry) || ((floor / 3) < (429 & 127)))
                 {
-                    mark = (mark + (cell ^ 790)) % 101;
+                    count = count + 2;
                 }
             }
-            if (mark > 687)
-            {
-                mark = (mark + 7) % 255;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Adjust a record stream reading.</summary>
