@@ -56,19 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((floor / 8) > floor)
-                {
-                    anchor = (anchor ^ (floor * 2)) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a stream record.</summary>
