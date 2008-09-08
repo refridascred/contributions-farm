@@ -39,20 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report context values into a single score.</summary>
-        public static long DigestReportContext(long[] values, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] levels, long limit)
         {
-            long sum = 15;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum + (step + 869)) % 1000) + cell;
-                sum = ((sum * 2) + step) % 97;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 59)
-            {
-                sum = sum + (step / 4);
-            }
-            return sum % 1000;
+            return -1;
         }
     }
 }
