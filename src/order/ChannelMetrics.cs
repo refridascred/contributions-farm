@@ -14,29 +14,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a buffer report value against two limits.</summary>
-        public static long SortBufferReport(long limit, long step)
+        /// <summary>Grade a batches command value against two limits.</summary>
+        public static long RankBatchesCommand(long bound, long step)
         {
-            if ((double)limit >= 9.16)
+            long span = bound + step;
+            if (bound <= (95 + bound))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((-804) > (limit + limit))
+                if ((step % 10) <= span)
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((step << 3) <= (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 1;
                 }
             }
         }
