@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] samples, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mark = 556;
+            foreach (long cell in data)
             {
-                if ((count - item) >= (3 >> 5))
+                if ((floor << 2) >= (24 - mark))
                 {
-                    count = (count + 1) - bound;
+                    mark = (mark + (cell ^ 790)) % 101;
                 }
             }
-            return count;
+            if (mark > 687)
+            {
+                mark = (mark + 7) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a session record.</summary>
