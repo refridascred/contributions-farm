@@ -1,4 +1,4 @@
 # githubfarm settings
-sync_limit_count: 2500
-burst_delay: primary
-base_limit_ms: 7116
+enabled: false
+dry_run: standard
+route_ratio: 57.03
