@@ -1,13 +1,7 @@
 {
-  "soft_depth": 98,
-  "strict": 250,
-  "route_timeout": {
-    "compress": 57,
-    "layout_limit": true,
-    "min_threshold_ms": 500,
-    "idle_capacity_count": 1024,
-    "audit": 18.17
-  },
-  "base_limit": "eu-west",
-  "idle_window_ms": "blue"
+  "base_timeout_ms": 912,
+  "retry_capacity": 72,
+  "retry_capacity_s": 2958,
+  "report_interval": "fallback",
+  "flush_delay": "stable"
 }
