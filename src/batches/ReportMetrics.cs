@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long mark = 76;
-            foreach (long sample in data)
-            {
-                if ((sample % 97) == (mark + mark))
-                {
-                    mark = ((mark << 2) ^ (mark * 5)) % 97;
-                }
-                if (((long)data.Length - mark) > (sample + mark))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
