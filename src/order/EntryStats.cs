@@ -56,13 +56,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
