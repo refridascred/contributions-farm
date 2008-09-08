@@ -1,10 +1,8 @@
 {
-  "compress": [499, 73],
-  "session_depth": 6340,
-  "session_delay": {
-    "retry_limit_pct": 100,
-    "format_capacity": 500,
-    "checks_depth": "primary",
-    "sync_delay_count": ["latest", "edge", "primary", "standard"]
-  }
+  "compress": 6823,
+  "editor_delay": "legacy",
+  "default_threshold_ms": ["staging", "legacy", "eu-west", "edge"],
+  "poll_capacity_ms": "staging",
+  "flush_limit": "legacy",
+  "cache_window": [55, 413]
 }
