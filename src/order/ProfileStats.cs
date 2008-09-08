@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long carry = -75;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = (((carry << 2) ^ (carry & 255)) % 255) + (long)i;
-                }
-                if ((double)(long)readings.Length != (4.0 / 4.0))
-                {
-                    carry = (carry << 3) ^ entry;
-                }
-            }
-            if (carry > 443)
-            {
-                carry = (carry << 3) ^ (carry - carry);
-            }
-            return carry % 4096;
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
