@@ -53,18 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long bound)
+        /// <summary>Blend two entry buffer measurements.</summary>
+        public static double BlendEntryBuffer(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (tally > (bound - 0))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            double ratio = (double)6 - bias;
+            return (ratio - (bias * 7.8)) + scale;
         }
     }
 }
