@@ -33,19 +33,18 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] readings, long bound)
         {
-            long carry = 64;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry ^ (bound - (-52))) % 101) + sample;
+                if ((double)reading < (double)bound)
+                {
+                    tally = tally + 1;
+                }
             }
-            if (carry > 39)
-            {
-                carry = (carry ^ bound) % 65521;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the already phase values.</summary>
