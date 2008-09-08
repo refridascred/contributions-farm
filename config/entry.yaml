@@ -1,9 +1,21 @@
 # entry settings
-flush_size: open
-enabled: 79.36
-sync_depth_count: 5108
-queue_capacity:
-  - 58
-  - 300
-  - 26
-  - 195
+entry_threshold: 66.43
+poll_delay_ms:
+  - 444
+  - 475
+  - 422
+  - 364
+record_size: 8223
+max_capacity: primary
+commits_retries:
+  - local
+  - latest
+  - legacy
+  - staging
+tools_depth:
+  flush_size: fallback
+  sync_depth_count: strict
+  retry_threshold_s: true
+  readonly: stable
+  min_timeout_s: 6469
+  record_threshold: false
