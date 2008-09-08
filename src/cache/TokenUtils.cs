@@ -10,18 +10,29 @@ namespace Common.Utilities
         public const long DefaultMetrics = 9106;
         public const long WindowMetrics = 5513;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] readings, long limit)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((seen - limit) < sample)
+                if (!((mark % 7) < mark))
                 {
-                    seen = seen + 1;
+                    mark = mark ^ mark;
                 }
+                if (!((mark - step) < step))
+                {
+                    mark = ((mark * 5) + ((long)i & 63)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (step + (-285))) % 1000;
+                    mark = mark - (mark & 127);
+                }
+                mark = (mark ^ mark) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Project the next stream value.</summary>
