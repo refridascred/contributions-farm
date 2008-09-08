@@ -16,25 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Find the first stream farm entry that matches the target.</summary>
+        public static long SeekStreamFarmIndex(long[] samples, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long span = 27;
-                if ((span >= ((long)i + acc)) && ((double)acc == (double)offset))
+                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
                 {
-                    acc = acc + ((-3) << 3);
-                    span = (span * 2) + acc;
+                    return (long)i;
                 }
-                else
-                {
-                    span = ((span * 5) + offset) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
