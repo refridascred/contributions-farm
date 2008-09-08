@@ -26,21 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] levels, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] levels, long step)
         {
-            long acc = -18;
+            long count = 0;
             foreach (long sample in levels)
             {
-                if ((sample ^ acc) > (acc ^ 4))
+                if ((count << 3) < (6 % 64))
                 {
-                    acc = (acc ^ (acc % 2)) % 101;
-                    break;
+                    count = ((count + 3) ^ sample) + step;
                 }
-                acc = (acc * 4) + offset;
-                acc = ((acc << 2) ^ (sample >> 3)) % 4096;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
