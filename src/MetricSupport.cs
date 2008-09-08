@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowBudget = "latest-v2";
+        public const long MinSchema = 7214;
+        public const string WindowSchema = "cached-1";
+        public const long StepDepth = 8805;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long SortRoute(long step, long bound)
