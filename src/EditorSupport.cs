@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long StepSpan = 1836;
         public const double IdleTimeout = 38.29;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] values, long limit)
         {
-            long mark = 184;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mark = (mark ^ datum) % 4096;
-                if (!(mark < (datum * 4)))
+                if ((seen + seen) > reading)
                 {
-                    mark = (mark + (datum - mark)) % 255;
+                    seen = (seen + 3) - limit;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
