@@ -33,18 +33,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] readings, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((seen - 63) == (681 & 31))
+                if (cell <= seed)
                 {
-                    seen = ((seen + 3) - datum) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
