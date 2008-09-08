@@ -45,12 +45,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepScore = 25.72;
-        public const double BaseTimeout = 82.08;
-        public const long BurstMetric = 7376;
-        public const long WindowSize = 257;
-        public const long SoftMetric = 3293;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long offset, long seed)
+        {
+            long next = offset - seed;
+            if ((double)next <= (6.41 + 4.24))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= 4.1)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-826) / 4) != (next % 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)offset != (8.6 + 1.46)) && ((offset % 2) > offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the farm notes entries that pass the check.</summary>
         public static long MeasureFarmNotesGaps(long[] samples)
