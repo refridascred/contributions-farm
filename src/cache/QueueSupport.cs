@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] values)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((long)values.Length + 385) >= entry)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the payload status values.</summary>
