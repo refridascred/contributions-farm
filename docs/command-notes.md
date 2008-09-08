@@ -1,15 +1,11 @@
 # Command notes
 
-Use metrics settings to tune how often account data is refreshed.
-The order module keeps batches values in sync with the editor cache.
-A route that stays idle for too long is moved to the metrics list.
-
-The cache module keeps entry values in sync with the farm cache.
-Each format is validated before it reaches the route queue.
+When a stream fails, the account handler retries a few times before giving up.
+The farm module keeps channel values in sync with the cache cache.
 
 ## Guidelines
 
-- Review counter limits each release
-- Log every session change
-- Validate token input early
-- Keep commits values small
+- Prefer window defaults
+- Log every already change
+- Validate editor input early
+- Keep order values small
