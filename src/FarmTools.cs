@@ -30,24 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long limit, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] data, long seed)
         {
-            if ((double)limit < (double)seed)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed * 4) != (seed + (-4)))
+                if (entry != seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
