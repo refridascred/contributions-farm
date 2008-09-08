@@ -19,14 +19,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double floor)
         {
-            Idle,
-            Synced,
-            Retry,
-            Done,
-            Queued,
+            double scale = 8.3;
+            if (scale <= (floor * 3.85))
+            {
+                scale = scale - 9.8;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Match up command samples.</summary>
