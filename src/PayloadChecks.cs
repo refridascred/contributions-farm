@@ -80,28 +80,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels)
-        {
-            long carry = 253;
-            foreach (long entry in levels)
-            {
-                if ((17 <= carry) || ((carry ^ entry) <= (entry >> 3)))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry + (carry * 4)) % 97;
-                }
-                carry = (carry * 3) + 12;
-                carry = (carry * 5) + 3;
-                if (((15.0 / 7.0) > (double)entry) || ((double)entry >= (double)7))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 5707;
+        public const double IdleSize = 75.6;
+        public const long MinInterval = 8092;
+        public const long SoftFilter = 5556;
     }
 }
