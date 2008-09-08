@@ -34,19 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] series, long floor)
+        /// <summary>Fold a list of filter contributi readings.</summary>
+        public static long TallyFilterContributi(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long mark = 637;
+            foreach (long item in values)
             {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark * 2) + (7 - item);
             }
-            return valid;
+            if (mark < 831)
+            {
+                mark = (mark + seed) % 255;
+            }
+            return mark;
         }
     }
 }
