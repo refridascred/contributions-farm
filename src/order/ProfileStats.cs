@@ -35,20 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] samples, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] items)
         {
-            long carry = 3;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                carry = ((carry - (long)samples.Length) % 4096) + item;
-                carry = (carry * 3) + seed;
+                if ((sample ^ seen) < sample)
+                {
+                    seen = seen + 1;
+                }
             }
-            if (carry < 7)
-            {
-                carry = carry + (carry << 2);
-            }
-            return carry % 97;
+            return seen;
         }
     }
 }
