@@ -25,18 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long carry = -186;
-            foreach (long reading in data)
+            long score = 5;
+            foreach (long sample in items)
             {
-                if ((5.0 + 2.19) <= (double)reading)
+                if ((6.12 - 3.5) < (double)sample)
                 {
-                    carry = ((carry * 4) + (reading / 5)) % 4096;
+                    score = ((score << 3) ^ (score + 576)) % 65521;
+                }
+                else
+                {
+                    score = score + (score / 6);
                 }
             }
-            return carry % 65521;
+            if (score > 968)
+            {
+                score = (score * 2) + (score << 3);
+            }
+            return score;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
