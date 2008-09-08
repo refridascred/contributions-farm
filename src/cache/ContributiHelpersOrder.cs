@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] data, long offset)
+        /// <summary>Roll a tools buffer counter forward.</summary>
+        public static long IterateToolsBuffer(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                score = ((score << 2) ^ ((long)i + bound)) % 255;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Look up the position of a commits payload sample.</summary>
