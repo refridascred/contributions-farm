@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long origin)
         {
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a commits notes counter forward.</summary>
