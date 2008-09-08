@@ -1,9 +1,8 @@
-id,label,ratio,weight
-1,598,eu-west,primary
-2,597,130,750
-3,legacy,327,stable
-4,763,49.66,50.37
-5,455,154,88.74
-6,primary,193,89.95
-7,616,57.22,82.81
-8,cached,90.75,59.28
+id,active
+1,765
+2,59.03
+3,6.78
+4,eu-west
+5,eu-west
+6,687
+7,64.76
