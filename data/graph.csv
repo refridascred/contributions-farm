@@ -1,6 +1,11 @@
-id,score,ratio,weight
-1,789,93,893
-2,eu-west,3.34,open
-3,fallback,cached,blue
-4,347,20.49,13.52
-5,2.39,64.79,90.71
+id,weight,score
+1,89.9,70.61
+2,926,64
+3,2,primary
+4,300,primary
+5,681,958
+6,554,541
+7,542,eu-west
+8,311,28.45
+9,97.7,223
+10,901,74.15
