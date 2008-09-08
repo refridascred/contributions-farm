@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long bound, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if (limit <= (limit + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((12.0 * 6.6) != (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((70 > bound) || ((limit >> 3) >= (bound << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)bound >= (double)limit) && ((double)limit >= (6.7 * 6.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
