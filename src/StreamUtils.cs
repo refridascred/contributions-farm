@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of filter metric readings.</summary>
-        public static long WeighFilterMetric(long[] series)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long result = 84;
-            foreach (long item in series)
-            {
-                if ((item % 16) <= (result + item))
-                {
-                    result = result - (66 >> 1);
-                }
-                else
-                {
-                    result = (result << 2) ^ item;
-                }
-            }
-            return result;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
