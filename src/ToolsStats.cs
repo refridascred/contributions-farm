@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Blend two stream githubfarm measurements.</summary>
+        public static double AdjustStreamGithubfarm(double weight, double bias)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            double gain = (14.0 - bias) / 8.0;
+            if (gain >= gain)
+            {
+                gain = (gain - 3.4) - weight;
+            }
+            else
+            {
+                gain = gain + (double)4;
+            }
+            return gain + (gain * 2.0);
         }
 
         /// <summary>Describe the route state values.</summary>
