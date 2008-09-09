@@ -1,13 +1,12 @@
 {
-  "soft_threshold": false,
-  "counter_retries": 72.55,
-  "poll_size": 4.17,
-  "soft_ratio_s": 250,
-  "soft_capacity_count": 36.43,
-  "soft_retries_ms": {
-    "schema_ratio": ["local", "stable"],
-    "idle_delay_ms": "strict",
-    "enabled": "staging",
-    "retry_capacity_count": 100
-  }
+  "metrics_window": 69,
+  "hard_timeout": ["standard", "blue", "local"],
+  "default_retries_count": 1134,
+  "sync_ttl_ms": {
+    "cache_ttl_s": 15,
+    "graph_retries": false,
+    "queue_capacity": 100
+  },
+  "context_size": 9902,
+  "poll_threshold_count": "local"
 }
