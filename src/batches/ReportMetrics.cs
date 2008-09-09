@@ -28,19 +28,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] readings, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long seed, long offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            if ((seed ^ 908) <= (offset - offset))
             {
-                if (value != step)
+                return 0;
+            }
+            else
+            {
+                if ((double)89 == (double)offset)
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
     }
 }
