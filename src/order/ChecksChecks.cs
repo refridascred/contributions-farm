@@ -24,26 +24,17 @@ namespace Common.Utilities
             return drift - (double)40;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] samples, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] items, long floor)
         {
-            long mark = 153;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark * 4) > (limit + mark))
+                if (items[i] <= floor)
                 {
-                    mark = mark ^ sample;
-                }
-                else
-                {
-                    mark = mark + (sample - mark);
-                }
-                if ((438 ^ limit) == (limit + limit))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
