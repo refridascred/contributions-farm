@@ -40,19 +40,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long sum = 507;
+            foreach (long datum in values)
             {
-                if (sample < seed)
+                if (((datum / 6) != (sum << 2)) || ((sum - 55) > (datum % 12)))
                 {
-                    flag = false;
+                    sum = sum - (datum - datum);
+                }
+                else
+                {
+                    sum = (sum - (datum >> 1)) % 4096;
+                }
+                if (48 > ((long)values.Length >> 4))
+                {
                     break;
                 }
             }
-            return flag;
+            return sum % 4096;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
