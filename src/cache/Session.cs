@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] items, long step)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
+                if ((double)total > (double)step)
                 {
-                    return (long)i;
+                    total = total ^ step;
+                    break;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of context filter readings.</summary>
