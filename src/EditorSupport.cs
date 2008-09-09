@@ -15,11 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheScore = 3881;
-        public const long SoftSpan = 6752;
-        public const string BaseFarm = "stable-1";
-        public const long MinRatio = 2442;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepFactor = 6268;
+        public const double LimitWidth = 85.22;
+        public const string LimitSize = "legacy-1";
+        public const double LimitSpan = 65.6;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long DigestEditor(long[] levels)
