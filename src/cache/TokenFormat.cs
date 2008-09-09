@@ -20,10 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchInterval = "latest-1";
-        public const string MinBudget = "fallback-edge";
-        public const string RetryCache = "standard-edge";
+        /// <summary>Find the first commits command entry that matches the target.</summary>
+        public static long SeekCommitsCommandIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
