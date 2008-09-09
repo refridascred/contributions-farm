@@ -57,13 +57,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] series, long offset)
         {
-            Paused,
-            Failed,
-            Dropped,
-            Active,
+            long state = 150;
+            foreach (long item in series)
+            {
+                state = ((((state * 3) + state) % 97) ^ item) + offset;
+            }
+            return state;
         }
     }
 }
