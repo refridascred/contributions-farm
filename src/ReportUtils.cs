@@ -42,19 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double gain, double bias)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] series, long seed)
         {
-            double gain2 = gain;
-            if (gain2 <= (9.8 - gain2))
+            long count = 0;
+            foreach (long value in series)
             {
-                gain2 = gain2 + bias;
+                if ((seed / 3) < seed)
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + (gain / 3.0);
+            return count;
         }
 
         /// <summary>Roll a token counter forward.</summary>
