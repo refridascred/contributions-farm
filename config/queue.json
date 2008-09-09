@@ -1,7 +1,13 @@
 {
-  "burst_depth_s": "green",
-  "sync_depth": 8663,
-  "cluster_ratio": ["standard", "strict", "blue", "stable"],
-  "profile_ttl": true,
-  "burst_ttl_ms": 25.82
+  "readonly": 4689,
+  "cache_retries": 56.26,
+  "idle_limit_s": true,
+  "base_size_s": 100,
+  "dry_run": 30,
+  "batch_limit_ms": {
+    "enabled": 49.92,
+    "warm_depth_pct": 60,
+    "poll_threshold_s": [280, 107, 246],
+    "verbose": ["staging", "primary"]
+  }
 }
