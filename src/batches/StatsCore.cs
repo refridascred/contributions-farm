@@ -26,21 +26,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 16)
+                    if ((items[i] - items[j]) == 15)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the counter class values.</summary>
