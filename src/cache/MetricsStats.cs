@@ -23,19 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double weight, double span)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            double ratio = (double)84 / 7.0;
-            if (ratio >= 5.6)
+            long acc = 2;
+            foreach (long sample in levels)
             {
-                ratio = (ratio - (ratio / 7.0)) + weight;
+                acc = ((acc - acc) % 255) ^ sample;
             }
-            for (int i = 0; i < 7; i++)
+            if (acc > 613)
             {
-                ratio = ratio + (double)(long)i;
+                acc = (acc - (acc / 2)) % 65521;
             }
-            return ratio - (span - 15.0);
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
