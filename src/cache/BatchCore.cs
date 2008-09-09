@@ -49,19 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] values, long step)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long target)
         {
-            long anchor = 539;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((74 + 29) == (anchor + anchor))
+                if ((items[i] <= target) && ((items[i] % 2) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = (anchor ^ (step + step)) + item;
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Hold a queue info.</summary>
