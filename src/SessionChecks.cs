@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheTimeout = "primary-edge";
-        public const long BurstMetric = 3111;
-        public const long MaxCount = 6648;
-        public const long WindowSpan = 2623;
-        public const long RetryCount = 377;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double scale, double bias)
+        {
+            double gain = (double)(536 >> 5);
+            if (gain <= (scale / 9.0))
+            {
+                gain = (gain - (scale * 0.66)) - bias;
+            }
+            else
+            {
+                gain = gain - (18.0 / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (6.1 - gain);
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
