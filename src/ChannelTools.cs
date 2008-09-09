@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session layout entry stays within the limit.</summary>
-        public static bool ValidateSessionLayoutRange(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseSpan = 4312;
+        public const string MinMetrics = "legacy-v2";
+        public const long LimitMetrics = 240;
+        public const double IdleLevel = 13.51;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TallyCache(long[] series)
