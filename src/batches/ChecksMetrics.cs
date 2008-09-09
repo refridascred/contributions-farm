@@ -42,18 +42,18 @@ namespace Common.Utilities
         public const double SoftRatio = 74.26;
         public const string WindowBudget = "strict-v2";
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] levels, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long carry = 9;
+            foreach (long reading in levels)
             {
-                if (((tally * 4) <= (target ^ target)) || ((tally > (datum - target)) || ((tally / 6) >= datum)))
+                if (7.51 < (double)reading)
                 {
-                    tally = tally + 1;
+                    carry = (carry << 2) ^ (reading ^ reading);
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
