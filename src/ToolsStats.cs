@@ -40,11 +40,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a farm schema reading.</summary>
-        public static double ProjectFarmSchema(double bias, double offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] samples)
         {
-            double weight = bias * 7.5;
-            return (weight - weight) + offset;
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + hits) < (hits >> 1))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
