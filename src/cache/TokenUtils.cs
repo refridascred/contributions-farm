@@ -12,15 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double gain, double offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] data, long seed)
         {
-            double weight = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                weight = ((weight - weight) - (double)(long)i) - gain;
+                if (290 <= (reading + 44))
+                {
+                    hits = (hits + 1) + seed;
+                }
             }
-            return weight - (double)715;
+            return hits;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
