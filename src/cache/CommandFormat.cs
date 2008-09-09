@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] values, long floor)
+        /// <summary>Match up counter commits samples.</summary>
+        public static long OverlapCounterCommitsCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the schema status values.</summary>
