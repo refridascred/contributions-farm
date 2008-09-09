@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double weight, double floor)
         {
-            long carry = 7;
-            foreach (long sample in readings)
+            double drift = weight;
+            if (drift <= (floor + 2.4))
             {
-                carry = ((carry - (45 / 4)) % 255) + sample;
+                drift = drift + weight;
             }
-            return carry;
+            else
+            {
+                drift = drift - (weight * 1.8);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (double)40;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
