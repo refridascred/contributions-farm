@@ -69,13 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Pending,
-            Failed,
-            Idle,
-            Retry,
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
