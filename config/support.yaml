@@ -1,11 +1,31 @@
 # support settings
-batch_interval_ms: false
-base_retries: false
-strict: 250
-flush_size_pct:
-  readonly: 18.51
-  retry_delay_s: primary
-  audit: 65.09
-  idle_timeout_count: 4963
-  burst_delay_pct: 14
-cache_depth_count: 7626
+batch_interval_count:
+  soft_delay_count: false
+  tools_window:
+    record_capacity:
+      - 223
+      - 178
+      - 315
+      - 331
+    idle_interval_s: false
+    cache_retries: fallback
+    idle_interval: 100
+  session_interval: stable
+  strict:
+    - 225
+    - 439
+batch_delay: 3961
+channel_delay:
+  cache_threshold:
+    persist: local
+    poll_ratio: latest
+    buffer_ratio: legacy
+    verbose: 60
+  retry_ratio_pct: 1377
+  batch_ratio:
+    - 173
+    - 365
+    - 79
+  dry_run: 380
+  checks_delay: true
+  stream_delay: 8385
