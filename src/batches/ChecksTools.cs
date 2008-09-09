@@ -15,13 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryTimeout = 898;
+        public const long HardQueue = 6042;
+        public const long IdleCount = 1109;
+        public const long MinLevel = 7808;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
