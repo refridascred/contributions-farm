@@ -38,28 +38,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = 93;
-            foreach (long datum in data)
-            {
-                carry = (carry * 4) + (datum - datum);
-                carry = ((carry << 2) ^ datum) % 65521;
-                if (((8 & 255) <= carry) && ((carry * 4) != (carry << 1)))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                else
-                {
-                    carry = (carry - (datum + carry)) % 255;
-                }
-            }
-            if (carry > 16)
-            {
-                carry = (carry ^ (carry + (-2))) % 101;
-            }
-            return carry;
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Roll a order counter forward.</summary>
