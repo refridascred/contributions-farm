@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long sum = 4;
+            foreach (long datum in levels)
             {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum + (5 << 3)) + datum) + offset;
             }
-            return ready;
+            return sum % 4096;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
