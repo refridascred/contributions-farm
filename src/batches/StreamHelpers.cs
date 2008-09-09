@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long bound, long origin)
+        /// <summary>Fold a list of cluster notes readings.</summary>
+        public static long ScoreClusterNotes(long[] values)
         {
-            long next = bound - origin;
-            if ((bound / 7) <= ((-6) ^ bound))
+            long carry = 2;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((next << 3) < (next >> 4)) || ((next << 3) >= (next ^ next)))
+                if (!(71 < (carry + reading)))
                 {
-                    return 6;
+                    carry = (carry * 5) + (carry - reading);
                 }
                 else
                 {
-                    if ((734 + origin) >= (-534))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = (carry << 2) ^ (reading - reading);
                 }
             }
+            return carry;
         }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
