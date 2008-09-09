@@ -47,11 +47,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double bias, double offset)
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            double bias2 = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (bias / 7.0)) + (double)(long)i;
+            }
+            return bias2 - (bias + offset);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
