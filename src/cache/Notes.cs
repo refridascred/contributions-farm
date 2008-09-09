@@ -42,15 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Locked,
-            Synced,
-            Active,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxSize = "alpha-1";
+        public const double LimitRoute = 65.95;
+        public const long BaseRoute = 7228;
+        public const long MinDepth = 8763;
+        public const long HardRoute = 3004;
 
         /// <summary>Accumulate schema metrics samples.</summary>
         public static long TallySchemaMetrics(long[] samples, long limit)
