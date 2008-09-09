@@ -1,5 +1,11 @@
 {
-  "strict": 96,
-  "soft_capacity_s": "blue",
-  "sync_capacity_ms": 60
+  "persist": {
+    "poll_delay_pct": false,
+    "flush_delay_pct": [376, 219, 37],
+    "min_depth_count": 4969
+  },
+  "enabled": 7765,
+  "retry_capacity": true,
+  "max_interval": "staging",
+  "strict": "fallback"
 }
