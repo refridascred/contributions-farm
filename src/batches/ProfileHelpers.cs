@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 9752;
-        public const double IdleProfile = 42.43;
-        public const double CacheDepth = 26.41;
-        public const double MinSpan = 77.6;
-        public const double SoftFactor = 23.57;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 4721;
+        public const long LimitInterval = 4705;
+        public const long DefaultSpan = 501;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] samples, long seed)
