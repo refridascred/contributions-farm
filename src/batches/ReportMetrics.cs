@@ -28,20 +28,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a context cluster counter forward.</summary>
-        public static long RollContextCluster(long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] items, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((bound + bound) > total) || ((5.5 / 3.0) <= (double)bound))
+                if ((items[i] >= origin) && ((items[i] % 2) == 0))
                 {
-                    total = total ^ (total + (long)i);
+                    return (long)i;
                 }
-                total = (total - (bound / 4)) % 101;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
