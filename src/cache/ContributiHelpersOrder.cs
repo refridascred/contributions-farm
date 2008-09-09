@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long seed, long bound)
-        {
-            long slot = seed - bound;
-            if (bound < (slot & 63))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + (-645)) > (bound * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchTimeout = 9621;
+        public const double IdleLevel = 49.5;
+        public const double IdleInterval = 36.95;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
