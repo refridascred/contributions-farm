@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series, long step)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            long total = 3;
+            foreach (long reading in series)
+            {
+                if (((-767) + reading) > (reading - reading))
+                {
+                    total = (total ^ reading) + step;
+                }
+                total = (total ^ (reading - total)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate stream samples.</summary>
