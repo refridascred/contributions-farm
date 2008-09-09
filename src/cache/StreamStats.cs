@@ -48,22 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values, long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long carry = 215;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (7.3 > (double)limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry << 3) ^ (carry * 3);
-                }
-                if ((datum * 2) < (17 + limit))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
