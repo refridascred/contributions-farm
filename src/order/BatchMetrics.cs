@@ -47,15 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate report batch samples.</summary>
-        public static long DigestReportBatch(long[] samples, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] series, long limit)
         {
-            long state = 2;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                state = ((((state << 3) ^ state) % 1000) ^ entry) + floor;
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
