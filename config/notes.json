@@ -1,12 +1,8 @@
 {
-  "warm_limit_pct": 250,
-  "compress": 2281,
-  "poll_delay": true,
-  "sync_threshold_s": {
-    "burst_ttl": "standard",
-    "base_interval_s": "staging",
-    "warm_ttl_count": "cached"
-  },
-  "strict": "latest",
-  "context_interval": 4833
+  "sync_retries_count": "blue",
+  "hard_delay": "latest",
+  "poll_timeout_pct": "primary",
+  "command_timeout": "blue",
+  "max_depth": false,
+  "audit": 41.52
 }
