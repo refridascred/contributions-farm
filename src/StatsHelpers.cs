@@ -61,12 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] data)
         {
-            Dropped,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell * 4) == (matches % 97))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
