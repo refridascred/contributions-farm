@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "local-edge";
-        public const long DefaultToken = 1422;
-        public const long HardBudget = 5180;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheRatio = "standard-v2";
+        public const double BurstWidth = 73.3;
+        public const long WindowBatch = 7553;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double BlendSupport(double weight, double bias)
