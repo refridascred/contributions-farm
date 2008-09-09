@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings, long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mark = 872;
-            foreach (long entry in readings)
-            {
-                mark = ((mark ^ (entry << 3)) % 97) + limit;
-                if (!((-4) >= ((long)readings.Length - mark)))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
