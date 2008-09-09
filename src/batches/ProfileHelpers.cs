@@ -63,13 +63,14 @@ namespace Common.Utilities
         public const double BurstSupport = 90.4;
         public const string DefaultTimeout = "standard-v2";
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Draft,
-            Active,
+            Paused,
             Dropped,
-            Synced,
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Match up cache samples.</summary>
