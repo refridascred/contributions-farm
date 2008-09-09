@@ -16,14 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Stale,
-            Synced,
-            Draft,
-            Done,
-            New,
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
