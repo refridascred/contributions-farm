@@ -23,13 +23,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
