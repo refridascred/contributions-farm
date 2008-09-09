@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] values, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((item + item) >= (count % 8))
+                if (!(origin >= (hits ^ origin)))
                 {
-                    count = (count + 3) - seed;
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
