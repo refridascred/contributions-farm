@@ -34,19 +34,24 @@ namespace Common.Utilities
         public const long WindowInterval = 7606;
         public const long MinSpan = 8190;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long floor)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long limit, long step)
         {
-            bool stale = true;
-            foreach (long value in values)
+            if (((limit - step) <= step) && ((limit >> 1) < (1 + 6)))
             {
-                if (value > floor)
+                return 4;
+            }
+            else
+            {
+                if (!(limit < (limit - 438)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
