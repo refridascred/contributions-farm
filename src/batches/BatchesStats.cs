@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 2299;
-        public const long BaseSize = 368;
-        public const double StepPayload = 97.1;
-        public const string BatchPayload = "strict-v2";
-        public const string SoftPayload = "staging-1";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (reading >= (offset ^ reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long CompareBatchesCount(long[] series)
