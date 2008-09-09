@@ -1,8 +1,6 @@
 {
-  "session_retries": true,
-  "cluster_delay": "primary",
-  "cluster_ttl": "blue",
-  "metrics_ratio": "legacy",
-  "warm_depth_ms": "edge",
-  "strict": 25
+  "sync_depth_s": 4346,
+  "hard_timeout": 13.74,
+  "enabled": true,
+  "flush_size": "strict"
 }
