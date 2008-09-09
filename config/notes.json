@@ -1,21 +1,5 @@
 {
-  "tools_retries": {
-    "strict": {
-      "compress": "edge",
-      "window_timeout": false,
-      "sync_interval": false,
-      "editor_ratio": "standard"
-    },
-    "default_threshold": 3724,
-    "sync_limit_pct": "staging",
-    "flush_ratio": {
-      "cache_window": [312, 384, 45, 495],
-      "session_threshold": "standard",
-      "persist": 80.02
-    },
-    "token_window": "staging",
-    "stream_ttl": 69.84
-  },
-  "soft_depth_pct": 5.21,
-  "verbose": 79.87
+  "idle_window_s": 64.14,
+  "notes_ttl": ["blue", "open", "green", "staging"],
+  "batches_limit": 56
 }
