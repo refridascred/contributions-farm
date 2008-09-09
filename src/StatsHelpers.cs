@@ -28,19 +28,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] values, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
