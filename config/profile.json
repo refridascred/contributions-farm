@@ -1,12 +1,7 @@
 {
-  "batches_retries": "legacy",
-  "sync_capacity": "primary",
-  "contributi_capacity": {
-    "idle_limit": "staging",
-    "persist": 2732,
-    "format_delay": "local",
-    "burst_timeout_count": ["primary", "fallback"],
-    "idle_limit_s": 97.46
-  },
-  "githubfarm_ttl": 500
+  "record_retries": 54.82,
+  "sync_capacity": 500,
+  "flush_capacity_s": 1238,
+  "audit": 3.18,
+  "retry_window_s": 500
 }
