@@ -63,25 +63,9 @@ namespace Common.Utilities
         public const double LimitContext = 3.17;
         public const long DefaultSpan = 6135;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long bound)
-        {
-            long lane = limit - bound;
-            if ((limit - 59) < (limit >> 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)lane < (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstTimeout = "strict-1";
+        public const long StepTimeout = 4681;
+        public const double DefaultCount = 93.84;
     }
 }
