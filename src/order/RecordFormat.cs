@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long mark = 8;
+            foreach (long datum in items)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((31 / 9) < datum)
+                {
+                    mark = (mark ^ (mark - mark)) - bound;
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
