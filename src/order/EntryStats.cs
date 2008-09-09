@@ -14,19 +14,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a record schema reading.</summary>
-        public static double SmoothRecordSchema(double rate, double floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long target)
         {
-            double rate2 = (double)88 + 15.0;
-            if (rate2 >= (rate - rate2))
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                rate2 = rate2 - floor;
+                if ((9.0 * 2.5) >= (double)target)
+                {
+                    state = (state - target) % 97;
+                    break;
+                }
+                if (!(((-650) > (873 + (long)i)) || ((state + (long)i) <= ((long)i + state))))
+                {
+                    state = (state * 2) + ((long)i + (long)i);
+                    state = ((state << 3) ^ (target + 95)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - (double)18) - (double)(long)i;
-            }
-            return rate2 + (7.01 - rate);
+            return state;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
