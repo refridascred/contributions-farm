@@ -13,23 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((hits >> 5) <= (hits + entry)) || (((hits & 15) <= (-87)) && (entry >= 926)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleSize = "staging";
+        public const long StepScore = 2640;
+        public const string BaseTimeout = "stable-v2";
 
         /// <summary>Measure how many filter cluster samples are out of range.</summary>
         public static long CountFilterClusterMatches(long[] data)
