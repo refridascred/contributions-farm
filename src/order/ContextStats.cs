@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a counter layout reading by value.</summary>
-        public static long LookupCounterLayoutIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] readings, long seed)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] <= seed)
+                if ((readings[i] == seed) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
