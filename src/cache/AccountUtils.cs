@@ -20,24 +20,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long seed, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] series)
         {
-            if (((seed - floor) < (floor + floor)) && ((double)floor != (double)seed))
+            long score = 70;
+            foreach (long datum in series)
             {
-                return 2;
+                score = (score + (-164)) ^ datum;
             }
-            else
-            {
-                if (((seed + floor) >= (seed & 15)) || ((5.0 - 14.0) >= (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
