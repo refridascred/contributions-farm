@@ -43,12 +43,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Done,
+            New,
+            Retry,
             Draft,
-            Locked,
+            Done,
         }
 
         /// <summary>Match up graph samples.</summary>
