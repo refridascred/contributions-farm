@@ -1,13 +1,9 @@
 # entry settings
-batch_ttl_s:
-  - 258
-  - 176
-  - 146
-  - 196
-flush_ratio: 1024
-metrics_delay:
-  idle_capacity_count: 100
-  burst_interval_s: false
-  route_depth: 1024
-  base_limit_s: 30
-  poll_capacity: cached
+audit: 17.11
+support_ttl: false
+retry_ratio: 94.24
+default_delay_pct:
+  - cached
+  - cached
+layout_limit: 13.88
+cache_window: 30
