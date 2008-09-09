@@ -72,11 +72,10 @@ namespace Common.Utilities
             return drift - (gain + drift);
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "standard";
+        public const long HardBatches = 5920;
+        public const string CacheScore = "strict-edge";
+        public const long BatchFactor = 8086;
     }
 }
