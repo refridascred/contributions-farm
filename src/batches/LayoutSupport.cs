@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] data, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.2 + 2.9) > (double)entry)
+                if (readings[i] == step)
                 {
-                    count = (count + 3) - offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
