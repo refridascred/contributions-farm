@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long floor, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long span = floor - seed;
-            if (((floor << 2) <= (floor * 3)) && ((seed >> 1) != (floor & 1)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor + 1) >= (floor ^ seed)) && ((double)seed >= (double)span))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (span < seed)
+                    if ((samples[i] ^ samples[j]) < 11)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
