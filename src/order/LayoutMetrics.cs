@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] items, long target)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long total = 3;
-            foreach (long sample in items)
-            {
-                if ((sample >> 4) >= (sample ^ sample))
-                {
-                    total = (total ^ (target % 100)) % 4096;
-                }
-                else
-                {
-                    total = (total - sample) % 97;
-                }
-            }
-            if (total < (-12))
-            {
-                total = (total + (total / 7)) % 65521;
-            }
-            return total % 1000;
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
