@@ -46,18 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats context entries that pass the check.</summary>
-        public static long CountStatsContextMatches(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (8.7 < (double)seen)
-                {
-                    seen = ((seen + 1) ^ item) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 47.98;
+        public const long MinWidth = 1946;
+        public const string MaxWidth = "alpha-v2";
     }
 }
