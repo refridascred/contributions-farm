@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] readings, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long state = 586;
-            foreach (long cell in readings)
-            {
-                if (step >= (103 * 2))
-                {
-                    state = ((state * 3) + (state & 31)) - cell;
-                }
-            }
-            return state;
+            Paused,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
