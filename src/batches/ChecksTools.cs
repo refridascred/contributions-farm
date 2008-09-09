@@ -34,18 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] readings, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = 9;
+            foreach (long item in samples)
             {
-                if ((2.86 * 7.0) >= (double)floor)
+                if ((bound + bound) == (mark + 2))
                 {
-                    tally = (tally + 2) - sample;
+                    mark = (mark << 3) ^ (bound + item);
                 }
             }
-            return tally;
+            if (mark < 86)
+            {
+                mark = ((mark * 5) + (bound << 1)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the cluster status values.</summary>
