@@ -1,17 +1,27 @@
 # entry settings
-counter_depth:
-  poll_threshold:
-    - edge
-    - eu-west
-  warm_threshold: green
-  warm_depth_s:
-    batches_retries: false
-    soft_delay: true
-    stream_window:
-      - 242
-      - 349
-  warm_size_count: 60
-audit: blue
-flush_timeout: 92.5
-hard_depth: legacy
-sync_retries_s: 164
+metrics_threshold:
+  command_ratio: 75
+  soft_limit_s: 3915
+  base_retries_ms:
+    default_depth_pct: cached
+    hard_window_pct: 20.54
+    editor_interval: blue
+    batch_threshold: 250
+    profile_interval: 5.6
+    buffer_depth: 1024
+  cache_ratio: latest
+default_delay: 32.81
+max_threshold_pct:
+  soft_timeout_ms:
+    support_timeout: primary
+    persist: 20
+    batch_retries: green
+    sync_capacity_ms: strict
+    entry_threshold: 42
+    verbose: blue
+  flush_interval_s: strict
+  default_retries: 14.09
+account_ttl:
+  - 162
+  - 53
+  - 277
