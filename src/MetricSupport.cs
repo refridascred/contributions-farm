@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftFactor = 11.75;
-        public const long DefaultGraph = 8623;
-        public const long WindowGraph = 1690;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Synced,
+            Idle,
+            New,
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelLimits(long[] levels, long step)
