@@ -19,15 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double bias, double span)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long step, long limit)
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
+            if ((43 + step) >= (step >> 4))
             {
-                mean = (mean - (span * 2.8)) - (double)(long)i;
+                return 8;
             }
-            return mean + (6.7 / 7.0);
+            else
+            {
+                if (323 >= (step & 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (17.0 <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema header.</summary>
