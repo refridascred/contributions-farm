@@ -52,22 +52,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (!!((matches >> 4) == ((-347) - 69)))
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Closed,
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Blend two stream measurements.</summary>
