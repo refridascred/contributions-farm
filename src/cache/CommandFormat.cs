@@ -19,18 +19,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long sum = 66;
-            foreach (long reading in data)
-            {
-                if (reading > (sum >> 3))
-                {
-                    sum = ((sum << 2) ^ (sum * 4)) % 97;
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
