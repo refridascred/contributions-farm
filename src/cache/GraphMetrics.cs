@@ -52,11 +52,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseCount = 8076;
-        public const long LimitChecks = 8576;
-        public const string WindowTimeout = "alpha-v2";
-        public const double StepChecks = 91.67;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public double Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxTimeout = "stable-1";
