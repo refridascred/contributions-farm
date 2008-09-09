@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
