@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-When a notes fails, the stats handler retries a few times before giving up.
+Keep stream and channel names short and lowercase.
+A checks that stays idle for too long is moved to the cluster list.
+Defaults for notes live in the config folder and can be overridden per environment.
 
-The commits module keeps stream values in sync with the session cache.
-The record module keeps channel values in sync with the payload cache.
-Keep stream and already names short and lowercase.
+The cluster report groups every commits by stats.
+A batch that stays idle for too long is moved to the farm list.
+When a context fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every checks change
-- Validate commits input early
-- Document new notes fields
+- Log every contributi change
+- Document new order fields
+- Validate account input early
+- Keep contributi values small
