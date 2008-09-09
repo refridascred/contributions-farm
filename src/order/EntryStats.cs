@@ -29,26 +29,13 @@ namespace Common.Utilities
             return rate2 + (7.01 - rate);
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] values, long offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = 8;
-            foreach (long value in values)
-            {
-                if (!((acc & 63) >= (value - value)))
-                {
-                    acc = acc - ((long)values.Length << 3);
-                }
-                else
-                {
-                    acc = acc - (acc / 9);
-                }
-            }
-            if (acc > 76)
-            {
-                acc = (acc ^ (offset + acc)) % 101;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
