@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] values, long limit)
+        /// <summary>Accumulate batches already samples.</summary>
+        public static long ScoreBatchesAlready(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 22;
+            foreach (long datum in series)
             {
-                if (values[i] == limit)
+                if ((datum + acc) > acc)
                 {
-                    return (long)i;
+                    continue;
                 }
+                acc = (acc ^ (datum - datum)) % 1000;
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
