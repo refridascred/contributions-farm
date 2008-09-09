@@ -48,22 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((limit << 2) > limit)
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftFactor = "standard-edge";
+        public const string MaxOrder = "cached";
+        public const long RetryOrder = 4004;
+        public const long StepFactor = 4356;
+        public const long LimitOrder = 5757;
     }
 }
