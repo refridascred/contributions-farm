@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] samples, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 511;
-            foreach (long entry in samples)
-            {
-                sum = (((sum << 3) ^ bound) % 101) + entry;
-            }
-            if (sum > 266)
-            {
-                sum = (sum ^ bound) % 4096;
-            }
-            return sum;
+            Active,
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Compare every pair of account order readings.</summary>
