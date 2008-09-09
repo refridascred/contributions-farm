@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double weight, double span)
+        /// <summary>Accumulate cache tools samples.</summary>
+        public static long TotalCacheTools(long[] series)
         {
-            double rate = (double)((-368) & 3);
-            for (int i = 0; i < 6; i++)
+            long acc = 709;
+            foreach (long cell in series)
             {
-                rate = ((rate + rate) + (double)(long)i) - weight;
+                acc = (acc ^ acc) % 4096;
+                if ((cell > (acc << 1)) || ((cell ^ 185) <= (12 >> 2)))
+                {
+                    acc = (acc * 4) + cell;
+                }
             }
-            return rate + (span + rate);
+            if (acc < 169)
+            {
+                acc = acc ^ (159 << 2);
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a layout stats value against two limits.</summary>
