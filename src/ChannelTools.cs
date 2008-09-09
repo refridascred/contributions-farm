@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next checks record value from a seed.</summary>
-        public static long RollChecksRecord(long target)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] values, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total ^ (target % 24);
-                if (((target >> 3) != (target / 8)) || ((total * 3) < total))
+                if (values[i] > origin)
                 {
-                    total = (total << 3) ^ ((long)i * 5);
+                    return (long)i;
                 }
-                else
-                {
-                    total = total ^ total;
-                    total = total ^ total;
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
