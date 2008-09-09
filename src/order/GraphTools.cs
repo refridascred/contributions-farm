@@ -35,39 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long origin, long origin2)
-        {
-            if (origin2 >= (origin2 ^ origin2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin2 > (883 << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin2 >= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((13.0 - 5.92) >= (double)origin2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardScore = 3993;
+        public const string LimitAlready = "primary-v2";
+        public const long RetryAlready = 7708;
+        public const string LimitLevel = "staging-1";
 
         /// <summary>Accumulate schema samples.</summary>
         public static long ScoreSchema(long[] series)
