@@ -40,39 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record githubfarm input into a small class.</summary>
-        public static long BucketRecordGithubfarm(long bound, long bound2)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long slot = bound ^ bound2;
-            if (bound2 >= (bound + bound2))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 % 12) < bound2)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot / 7) > (51 ^ bound2))
+                    if ((items[i] - items[j]) > 17)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (slot <= (bound >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
