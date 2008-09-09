@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] items, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
