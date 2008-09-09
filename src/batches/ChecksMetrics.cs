@@ -38,20 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel route entry stays within the limit.</summary>
-        public static bool CheckChannelRouteLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstInterval = 4766;
+        public const string MinTools = "alpha";
+        public const double DefaultTimeout = 76.29;
+        public const long BatchRatio = 2056;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double ratio, double bias)
