@@ -26,22 +26,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long bound)
         {
-            long acc = 5;
-            foreach (long value in values)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((long)values.Length / 6) < (target - target)) || ((target & 31) <= (target + 24)))
+                acc = ((acc * 3) + (long)i) % 101;
+                if ((14.0 <= (double)bound) && (0.11 <= (double)bound))
                 {
-                    acc = ((acc * 3) + (target + target)) ^ value;
+                    acc = acc - (long)i;
+                    acc = (acc ^ (bound + (long)i)) % 4096;
                 }
-                else
-                {
-                    acc = (acc ^ ((long)values.Length & 255)) % 1000;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc % 65521;
+            return acc;
         }
 
         /// <summary>Describe the route status values.</summary>
