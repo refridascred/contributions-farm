@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double WindowToken = 9.78;
         public const string DefaultToken = "staging";
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftTimeout = 9572;
+        public const long RetryBuffer = 9441;
+        public const string BurstRatio = "cached-edge";
+        public const long WindowScore = 1774;
+        public const long BatchBuffer = 8690;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BatchNotes = "local-edge";
