@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long limit)
+        /// <summary>Find the first window commits entry that matches the target.</summary>
+        public static long LocateWindowCommitsIndex(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] <= limit)
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
