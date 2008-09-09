@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] series, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the stream kind values.</summary>
