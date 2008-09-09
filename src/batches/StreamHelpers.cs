@@ -32,18 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the route graph entries that pass the check.</summary>
-        public static long MeasureRouteGraphMatches(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (hits >= (entry >> 3))
+                if (((tally & 31) > (value + tally)) && (((value / 7) > tally) || ((double)value < (0.45 + 2.85))))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
