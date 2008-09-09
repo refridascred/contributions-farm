@@ -20,18 +20,16 @@ namespace Common.Utilities
         public const string CacheEntry = "staging-v2";
         public const long CacheInterval = 8433;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] samples, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (tally < floor)
-                {
-                    tally = (tally + 3) + cell;
-                }
+                mix = mix - mix;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
