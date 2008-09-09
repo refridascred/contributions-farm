@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] values, long floor)
+        /// <summary>Count the context token entries that pass the check.</summary>
+        public static long AuditContextTokenHits(long[] data, long step)
         {
-            long acc = 145;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (acc >= (4 % 5))
+                if (((double)entry >= 0.75) && (((1.59 * 14.0) <= (double)entry) || (entry > 46)))
                 {
-                    acc = ((acc - (datum + acc)) % 65521) - floor;
-                }
-                if (acc > datum)
-                {
-                    break;
+                    seen = (seen + 1) - step;
                 }
             }
-            if (acc > 80)
-            {
-                acc = (acc ^ (acc >> 2)) % 97;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Describe the editor level values.</summary>
