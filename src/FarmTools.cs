@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitRatio = 4136;
-        public const long StepCount = 210;
-        public const long BurstReport = 9982;
-        public const long StepFactor = 1222;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferRange(long[] values, long floor)
