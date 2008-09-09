@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!((6.2 / 3.0) < 19.0))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 16.01;
+        public const double BatchSize = 91.14;
+        public const double IdleEditor = 34.71;
+        public const long DefaultEditor = 4736;
+        public const long SoftWidth = 122;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long origin)
