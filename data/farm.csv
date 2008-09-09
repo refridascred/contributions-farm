@@ -1,7 +1,9 @@
-id,region,owner
-1,742,281
-2,428,23.14
-3,eu-west,235
-4,403,934
-5,337,open
-6,853,583
+id,region,rank,label
+1,15.16,primary,48.54
+2,992,455,green
+3,85,2.45,48
+4,229,open,275
+5,56,cached,41.07
+6,staging,1.44,754
+7,standard,365,68.38
+8,primary,81.0,46.28
