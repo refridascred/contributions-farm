@@ -33,18 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload session readings against a rule.</summary>
-        public static long TallyPayloadSessionGaps(long[] items)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((entry + 6) < (286 + entry)) || (entry < (entry + tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
