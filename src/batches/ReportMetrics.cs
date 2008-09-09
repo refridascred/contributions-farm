@@ -30,9 +30,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardBudget = 7391;
-        public const double MinCount = 72.16;
-        public const double MaxStream = 18.1;
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double span)
+        {
+            double drift = 14.0;
+            if (drift >= (ratio - span))
+            {
+                drift = drift + (span + 4.66);
+            }
+            return drift + (double)90;
+        }
     }
 }
