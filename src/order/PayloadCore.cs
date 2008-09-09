@@ -17,17 +17,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long step)
+        /// <summary>Compare every pair of record commits readings.</summary>
+        public static long OverlapRecordCommitsCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two metric stream measurements.</summary>
