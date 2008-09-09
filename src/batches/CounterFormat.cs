@@ -33,11 +33,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long delta = floor ^ limit;
+            if ((floor - limit) < (limit * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor % 5) > delta))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)floor >= 20.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
