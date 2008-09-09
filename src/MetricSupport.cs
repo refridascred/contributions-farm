@@ -20,25 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long step, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] data, long offset)
         {
-            long gap = step - seed;
-            if (((double)gap > (double)seed) && (7 > (step + gap)))
+            long mix = 846;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed > (4.6 * 2.0))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 4;
+                    mix = (mix - (offset >> 1)) + (long)i;
                 }
-                else
+                if ((double)reading <= (8.18 + 6.37))
                 {
-                    return 1;
+                    mix = ((mix << 2) ^ (offset / 4)) % 101;
                 }
             }
+            if (mix > 3)
+            {
+                mix = (mix ^ (offset + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
