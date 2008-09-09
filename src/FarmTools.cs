@@ -13,16 +13,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Compare every pair of contributi format readings.</summary>
+        public static long CompareContributiFormatCount(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 3) ^ ((long)i + (long)i)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
