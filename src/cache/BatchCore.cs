@@ -24,10 +24,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultScore = 79.86;
-        public const long IdleNotes = 1086;
-        public const long MinWidth = 1926;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Pending,
+            Dropped,
+            Synced,
+            New,
+            Closed,
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutHits(long[] series, long seed)
