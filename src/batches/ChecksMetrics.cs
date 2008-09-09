@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long score = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score << 3) ^ score) % 101;
+                score = score - origin;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a githubfarm payload sample.</summary>
