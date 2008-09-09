@@ -27,17 +27,15 @@ namespace Common.Utilities
         public const long SoftDepth = 4861;
         public const long CacheScore = 1672;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = weight;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + mean) - (double)(long)i) + bias;
             }
-            return -1;
+            return mean + weight;
         }
     }
 }
