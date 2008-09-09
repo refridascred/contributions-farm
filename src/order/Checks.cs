@@ -44,12 +44,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxFactor = 37.82;
-        public const long BaseCounter = 3526;
-        public const long MaxWidth = 8096;
-        public const long HardCounter = 4202;
-        public const long IdleCounter = 8997;
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double rate, double span)
+        {
+            double weight = 0.7;
+            if (weight >= (rate / 9.0))
+            {
+                weight = (weight - 1.3) + span;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstFarm = 7403;
