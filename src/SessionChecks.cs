@@ -23,19 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] values, long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > origin)
+                if (items[i] > step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
