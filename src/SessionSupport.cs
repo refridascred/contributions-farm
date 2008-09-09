@@ -47,21 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 90;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total << 3) ^ (total + 897)) % 97;
+                total = (total ^ (total % 10)) % 101;
+                total = (total ^ item) % 1000;
             }
-            return hits;
+            return total;
         }
     }
 }
