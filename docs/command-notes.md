@@ -1,10 +1,10 @@
 # Command notes
 
-When a window fails, the window handler retries a few times before giving up.
-The layout module keeps batches values in sync with the context cache.
+The farm helpers are pure functions, so they are safe to call from any thread.
+The already module keeps payload values in sync with the support cache.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Keep metric values small
-- Log every stream change
+- Review queue limits each release
+- Validate format input early
+- Log every farm change
