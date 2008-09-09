@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
+            long carry = 7;
+            foreach (long sample in readings)
+            {
+                carry = ((carry - (45 / 4)) % 255) + sample;
+            }
+            return carry;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
