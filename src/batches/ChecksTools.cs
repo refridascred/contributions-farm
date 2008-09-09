@@ -48,9 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8620;
-        public const double WindowGithubfarm = 37.31;
-        public const double HardGithubfarm = 43.06;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Dropped,
+            Queued,
+            Stale,
+            Active,
+        }
     }
 }
