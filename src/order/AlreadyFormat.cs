@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a filter tools value against two limits.</summary>
-        public static long GradeFilterTools(long step, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] values, long limit)
         {
-            if ((3.7 * 3.1) > (1.1 - 4.2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - step) >= (step & 127))
+                if (values[i] == limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
