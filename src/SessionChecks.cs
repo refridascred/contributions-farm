@@ -47,24 +47,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long offset, long target)
-        {
-            if ((target >= (offset >> 1)) || (target < (target >> 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target - offset) >= (target << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleDepth = "stable-1";
+        public const long DefaultRoute = 5280;
+        public const long RetryWidth = 4040;
+        public const long BatchRoute = 1783;
     }
 }
