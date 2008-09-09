@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] series)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((69 & 63) > seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch phase values.</summary>
