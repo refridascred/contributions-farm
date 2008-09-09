@@ -32,16 +32,11 @@ namespace Common.Utilities
         public const string BatchTimeout = "strict";
         public const long CacheNotes = 8451;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] readings)
-        {
-            long result = 864;
-            foreach (long datum in readings)
-            {
-                result = ((result * 3) + 8) + datum;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultCount = 5647;
+        public const long MaxInterval = 4334;
+        public const double SoftRatio = 74.26;
+        public const string WindowBudget = "strict-v2";
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterHits(long[] levels, long target)
