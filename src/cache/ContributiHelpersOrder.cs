@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const double IdleLevel = 49.5;
         public const double IdleInterval = 36.95;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepRatio = 75.34;
+        public const long CacheLevel = 7059;
+        public const string IdlePayload = "primary-1";
+        public const string BurstPayload = "local-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MinLayout = 8122;
