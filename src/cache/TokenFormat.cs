@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardBudget = "staging-edge";
-        public const long IdleRatio = 8102;
-        public const long MaxCount = 8825;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Ready,
+            Retry,
+            Paused,
+            Done,
+        }
 
         /// <summary>Find the first cache already entry that matches the target.</summary>
         public static long LookupCacheAlreadyIndex(long[] readings, long bound)
