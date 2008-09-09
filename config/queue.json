@@ -1,7 +1,21 @@
 {
-  "farm_limit": 60,
-  "audit": 9320,
-  "batches_size": "open",
-  "readonly": [201, 160, 26],
-  "persist": false
+  "report_delay": 100,
+  "profile_window": {
+    "dry_run": 30,
+    "audit": 9.27,
+    "session_ratio": ["latest", "legacy", "open"],
+    "retry_limit_s": 38.12,
+    "sync_size_s": true,
+    "farm_delay": true
+  },
+  "flush_size": {
+    "session_delay": 3587,
+    "token_interval": true,
+    "min_retries_pct": 789,
+    "format_depth": false,
+    "commits_capacity": 8635
+  },
+  "strict": 8266,
+  "burst_capacity_s": 3906,
+  "account_retries": 7475
 }
