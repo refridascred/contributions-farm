@@ -24,11 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
