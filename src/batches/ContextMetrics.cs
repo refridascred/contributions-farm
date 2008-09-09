@@ -46,22 +46,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit context buffer readings against a rule.</summary>
-        public static long MeasureContextBufferOutliers(long[] items)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count * 5) >= (count - count))
+                if (data[i] > seed)
                 {
-                    count = (count + 1) - datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
