@@ -1,14 +1,15 @@
 {
-  "verbose": true,
-  "hard_ratio_s": {
-    "base_window_ms": {
-      "persist": "standard",
-      "cache_limit_count": 2378,
-      "min_delay_s": ["open", "strict"],
-      "record_retries": 250
-    },
-    "account_depth": 21.99,
-    "batch_retries_ms": 8471
+  "warm_interval_count": true,
+  "audit": {
+    "enabled": false,
+    "warm_depth_ms": "legacy",
+    "soft_size_ms": [36, 69, 417],
+    "soft_interval_s": "primary"
   },
-  "min_limit_ms": false
+  "enabled": 37.69,
+  "soft_capacity_pct": {
+    "retry_timeout_pct": 250,
+    "batch_window_pct": [200, 316],
+    "verbose": false
+  }
 }
