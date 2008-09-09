@@ -24,19 +24,16 @@ namespace Common.Utilities
         public const long StepSchema = 3258;
         public const long RetrySchema = 1581;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            long mark = 323;
-            foreach (long reading in data)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                mark = (mark ^ (-357)) ^ reading;
+                result = result ^ ((long)i / 5);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (mark < 19)
-            {
-                mark = mark - mark;
-            }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Adjust a payload reading.</summary>
