@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long total = 7;
-            foreach (long datum in series)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                total = (total + (datum + total)) % 255;
-                if ((double)total > (5.7 * 7.0))
-                {
-                    total = ((total * 5) + (total << 1)) % 4096;
-                    total = ((total * 4) + datum) % 1000;
-                }
-                if (datum > total)
-                {
-                    total = (total ^ (datum % 12)) % 1000;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (total > 617)
-            {
-                total = (total + (total ^ total)) % 4096;
-            }
-            return total % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the layout status values.</summary>
