@@ -21,18 +21,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] readings)
+        /// <summary>Locate a editor session reading by value.</summary>
+        public static long FindEditorSessionIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)tally > (20.0 / 4.0)) && ((item & 3) >= (2 * 4)))
+                if (levels[i] > floor)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of checks entry readings.</summary>
