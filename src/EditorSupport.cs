@@ -24,14 +24,24 @@ namespace Common.Utilities
         public const string BaseFarm = "stable-1";
         public const long MinRatio = 2442;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            Paused,
-            Active,
-            Queued,
-            Synced,
-            Draft,
+            long state = 5;
+            foreach (long value in levels)
+            {
+                state = ((state << 2) ^ value) % 65521;
+                state = ((state << 3) ^ state) % 101;
+                if ((value % 10) == (state ^ value))
+                {
+                    break;
+                }
+            }
+            if (state > 317)
+            {
+                state = (state * 5) + state;
+            }
+            return state % 97;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
