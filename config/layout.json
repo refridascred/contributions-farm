@@ -1,16 +1,14 @@
 {
-  "persist": {
-    "notes_depth": {
-      "token_limit": "stable",
-      "strict": "open",
-      "retry_interval_pct": true,
-      "max_ttl_count": 28.19
-    },
-    "sync_depth_s": 2069,
-    "metrics_capacity": 100,
-    "enabled": 57,
-    "batch_capacity": ["legacy", "strict", "blue"]
+  "sync_delay_count": {
+    "min_delay_ms": true,
+    "cache_ttl_pct": 75.76,
+    "channel_capacity": [294, 392],
+    "sync_delay_count": [153, 379, 480],
+    "metrics_limit": 30
   },
-  "context_ttl": 500,
-  "tools_threshold": false
+  "cache_depth_count": ["primary", "latest", "cached", "legacy"],
+  "metric_threshold": ["legacy", "strict", "local"],
+  "sync_threshold": 56,
+  "readonly": 40.91,
+  "queue_ratio": "blue"
 }
