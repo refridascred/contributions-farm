@@ -33,19 +33,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] samples, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double ratio = (double)(217 >> 4);
+            if (ratio <= rate)
             {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - 6.26;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio - (span / 2.0);
         }
     }
 }
