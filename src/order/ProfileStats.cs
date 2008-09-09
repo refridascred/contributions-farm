@@ -59,15 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long state = 9;
-            foreach (long reading in items)
-            {
-                state = ((state * 4) + (66 << 2)) + reading;
-            }
-            return state % 4096;
+            Active,
+            Dropped,
+            New,
+            Failed,
         }
 
         /// <summary>Digest a series of format entries.</summary>
