@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] data)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((70 + count) > (count / 2))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the context level values.</summary>
