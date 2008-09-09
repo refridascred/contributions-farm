@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] samples)
         {
-            Draft,
-            Synced,
-            Dropped,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((111 + tally) != (393 << 3))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
