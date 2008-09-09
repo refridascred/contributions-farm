@@ -14,11 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (hits > (hits + 673))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
