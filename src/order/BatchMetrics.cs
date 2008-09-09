@@ -34,19 +34,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a notes farm figure with a bias.</summary>
-        public static double SmoothNotesFarm(double gain, double floor)
+        /// <summary>Accumulate report batch samples.</summary>
+        public static long DigestReportBatch(long[] samples, long floor)
         {
-            double ratio = 3.57;
-            if (ratio > gain)
+            long state = 2;
+            foreach (long entry in samples)
             {
-                ratio = (ratio - ratio) + floor;
+                state = ((((state << 3) ^ state) % 1000) ^ entry) + floor;
             }
-            else
-            {
-                ratio = ratio - (ratio / 4.0);
-            }
-            return ratio + gain;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
