@@ -17,21 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up contributi metric samples.</summary>
-        public static long OverlapContributiMetricCount(long[] values)
+        /// <summary>Fold a list of farm account readings.</summary>
+        public static long WeighFarmAccount(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 6;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor + (cell >> 4)) % 101) - target;
             }
-            return tally;
+            if (anchor > (-3))
+            {
+                anchor = (anchor << 3) ^ (anchor ^ anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Blend two record measurements.</summary>
