@@ -29,13 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] values, long floor)
         {
-            Stale,
-            New,
-            Active,
-            Closed,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a notes record.</summary>
