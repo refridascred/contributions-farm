@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] series, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Match up batches samples.</summary>
