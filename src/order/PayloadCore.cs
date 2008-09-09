@@ -27,11 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchFactor = 8977;
-        public const long HardCount = 1916;
-        public const long BatchPayload = 9490;
-        public const double HardSpan = 7.9;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] items, long offset)
+        {
+            long sum = 6;
+            foreach (long entry in items)
+            {
+                if (sum <= (sum * 4))
+                {
+                    sum = ((sum ^ (entry / 5)) % 1000) - offset;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] items)
