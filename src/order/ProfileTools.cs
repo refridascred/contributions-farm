@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 910;
-        public const long WindowRatio = 403;
-        public const long StepChecks = 9691;
-        public const double CacheTimeout = 61.46;
-        public const long WindowFactor = 1284;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Grade a support profile value against two limits.</summary>
         public static long ClassifySupportProfile(long offset, long target)
