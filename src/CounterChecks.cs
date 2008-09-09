@@ -81,21 +81,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count entry cache pairs that satisfy a relation.</summary>
-        public static long PairEntryCacheCount(long[] readings)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] == floor)
                 {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
