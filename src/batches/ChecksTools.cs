@@ -34,22 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples, long bound)
+        /// <summary>Adjust a support entry reading.</summary>
+        public static double AdjustSupportEntry(double weight, double bias)
         {
-            long mark = 9;
-            foreach (long item in samples)
+            double mean = weight;
+            if (mean > bias)
             {
-                if ((bound + bound) == (mark + 2))
-                {
-                    mark = (mark << 3) ^ (bound + item);
-                }
+                mean = mean - (double)87;
             }
-            if (mark < 86)
-            {
-                mark = ((mark * 5) + (bound << 1)) % 255;
-            }
-            return mark;
+            return mean + mean;
         }
 
         /// <summary>Describe the cluster status values.</summary>
