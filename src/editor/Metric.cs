@@ -24,31 +24,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long seed, long limit)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            if (!((47 + limit) <= seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 6) != (limit - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - seed) < (limit + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Dropped,
+            Locked,
         }
     }
 }
