@@ -95,13 +95,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits << 2) < (hits ^ datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
