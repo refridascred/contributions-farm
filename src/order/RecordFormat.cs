@@ -52,38 +52,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank record session input into a small class.</summary>
-        public static long BucketRecordSession(long step, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long target)
         {
-            if (step >= (step & 31))
+            long acc = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
+                acc = acc + (2 - 210);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (69 < (step + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + 97) > (818 - 35))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step < (13.0 * 3.9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
