@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstSize = "stable-1";
-        public const long BaseLayout = 3019;
-        public const double CacheFactor = 53.39;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "legacy";
+        public const double SoftToken = 73.26;
+        public const double RetryCount = 31.73;
+        public const long StepToken = 241;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
