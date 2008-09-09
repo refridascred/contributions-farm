@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double span)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            double mean = span;
+            if (mean < (double)757)
+            {
+                mean = (mean - (double)0) - weight;
+            }
+            return mean + (double)0;
         }
 
         /// <summary>Define context limits and defaults.</summary>
