@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a tools cache counter forward.</summary>
-        public static long StepToolsCache(long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] values, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                carry = (carry + ((long)i >> 5)) % 101;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
