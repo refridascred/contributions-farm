@@ -35,19 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile schema readings against a bound.</summary>
-        public static bool ValidateProfileSchemaRange(long[] data, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry > seed)
+                anchor = ((anchor << 3) ^ (origin / 9)) % 4096;
+                if ((((long)i & 3) >= (anchor & 3)) || ((895 + 5) > anchor))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor - (origin * 2)) % 4096;
+                    anchor = ((anchor * 4) + (anchor * 4)) % 101;
                 }
+                anchor = (anchor ^ origin) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
     }
 }
