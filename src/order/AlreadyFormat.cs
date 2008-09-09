@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long floor, long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            if (!((offset - floor) <= floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) != (offset / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset != (9.0 + 5.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
