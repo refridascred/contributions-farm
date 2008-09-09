@@ -61,17 +61,12 @@ namespace Common.Utilities
             return bias2 - (scale / 7.0);
         }
 
-        /// <summary>Find the first entry batches entry that matches the target.</summary>
-        public static long LocateEntryBatchesIndex(long[] samples, long seed)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Idle,
         }
     }
 }
