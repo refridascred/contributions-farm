@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryFactor = 94.93;
+        public const string DefaultInterval = "local-v2";
+        public const long StepCluster = 8425;
+        public const string BaseCluster = "latest";
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
