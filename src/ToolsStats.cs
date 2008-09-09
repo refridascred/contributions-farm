@@ -31,13 +31,11 @@ namespace Common.Utilities
             return gain + (gain * 2.0);
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Active,
-            Pending,
-            Idle,
-            Failed,
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
