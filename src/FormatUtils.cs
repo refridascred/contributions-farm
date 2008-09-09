@@ -59,18 +59,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] items)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (!(seed <= (floor ^ seed)))
             {
-                if (!!((5.26 * 13.0) == (double)matches))
+                return 1;
+            }
+            else
+            {
+                if (!((96 + (-89)) == (floor * 2)))
                 {
-                    matches = (matches + 2) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if ((261 & 1) >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
