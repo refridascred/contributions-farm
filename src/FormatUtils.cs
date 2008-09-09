@@ -65,20 +65,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] data, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] items)
         {
-            long state = 190;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                state = ((state << 2) ^ (293 << 2)) % 4096;
-                state = state - (state & 15);
-                if ((reading + state) == (floor >> 1))
+                if (!!((5.26 * 13.0) == (double)matches))
                 {
-                    break;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
