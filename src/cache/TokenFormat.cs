@@ -20,23 +20,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] readings)
-        {
-            long acc = 835;
-            foreach (long value in readings)
-            {
-                if (!((2 & 31) < (acc * 5)))
-                {
-                    acc = acc ^ (acc - 3);
-                }
-                if (6.67 <= (double)value)
-                {
-                    acc = ((acc * 2) + acc) % 1000;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchInterval = "latest-1";
+        public const string MinBudget = "fallback-edge";
+        public const string RetryCache = "standard-edge";
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
