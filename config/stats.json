@@ -1,5 +1,5 @@
 {
-  "flush_capacity_count": "edge",
-  "batch_limit_s": "legacy",
-  "contributi_depth": ["fallback", "standard", "open"]
+  "readonly": "local",
+  "metrics_threshold": 71.23,
+  "window_delay": true
 }
