@@ -16,14 +16,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Dropped,
-            Active,
-            Locked,
-            Stale,
-            Idle,
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up payload samples.</summary>
