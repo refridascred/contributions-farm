@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] items, long bound)
+        /// <summary>Find the first cache already entry that matches the target.</summary>
+        public static long LookupCacheAlreadyIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] > bound)
+                if (readings[i] == bound)
                 {
                     return (long)i;
                 }
