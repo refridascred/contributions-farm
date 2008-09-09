@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a entry queue figure with a bias.</summary>
-        public static double ProjectEntryQueue(double bias, double floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            double gain = (double)(1 ^ 299);
-            if (gain >= gain)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                gain = ((gain + (double)145) - bias) + floor;
+                acc = ((acc << 3) ^ (origin + origin)) % 1000;
+                acc = ((acc << 3) ^ (origin - (long)i)) % 255;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return gain - gain;
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
