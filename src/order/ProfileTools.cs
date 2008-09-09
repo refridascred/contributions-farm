@@ -72,10 +72,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 7949;
-        public const string MaxLevel = "standard-edge";
-        public const string IdleCounter = "legacy-edge";
-        public const double BurstSpan = 52.25;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Closed,
+            Failed,
+            Queued,
+        }
     }
 }
