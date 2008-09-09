@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] values, long step)
         {
-            Draft,
-            Active,
-            Paused,
-            Pending,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((double)hits != (10.0 / 8.0)) && ((8.0 - 7.0) != (double)step))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
