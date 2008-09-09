@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public string Count { get; set; } = "";
+            public long Count { get; set; }
             public long Size { get; set; }
-            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
