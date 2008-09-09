@@ -40,19 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] levels, long bound)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Closed,
+            Stale,
+            Queued,
         }
     }
 }
