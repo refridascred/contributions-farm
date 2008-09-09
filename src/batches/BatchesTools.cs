@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] values)
+        /// <summary>Count queue notes pairs that satisfy a relation.</summary>
+        public static long PairQueueNotesCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + 17) != ((long)values.Length << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate batch metric readings against a bound.</summary>
