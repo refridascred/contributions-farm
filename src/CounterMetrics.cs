@@ -38,21 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
-        public static long PairMetricClusterCount(long[] levels)
+        /// <summary>Compare every pair of context editor readings.</summary>
+        public static long OverlapContextEditorCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 2)
+                    if ((samples[i] ^ samples[j]) == 6)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
