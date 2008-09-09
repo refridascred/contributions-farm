@@ -20,12 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long origin)
         {
-            Done,
-            Draft,
-            Pending,
+            long result = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result << 3) ^ (origin + 955)) % 65521;
+                if ((double)(long)i != (1.5 + 2.34))
+                {
+                    result = ((result * 4) + (1 % 60)) % 97;
+                    result = (result << 3) ^ (result - origin);
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
