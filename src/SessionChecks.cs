@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double bias, double floor)
         {
-            Ready,
-            Stale,
-            Failed,
-            Locked,
+            double drift = (double)481 / 5.0;
+            if (drift <= (bias - drift))
+            {
+                drift = drift - (drift + drift);
+            }
+            return drift + floor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
