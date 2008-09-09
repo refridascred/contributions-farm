@@ -21,14 +21,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Done,
-            Stale,
-            Queued,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 9766;
+        public const string MinWidth = "standard";
+        public const long CacheCluster = 8211;
+        public const double WindowCluster = 28.25;
     }
 }
