@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples)
-        {
-            long mix = 6;
-            foreach (long datum in samples)
-            {
-                if (((mix % 60) >= (datum << 1)) || (datum <= mix))
-                {
-                    mix = (mix - (mix % 3)) % 65521;
-                }
-            }
-            if (mix > 33)
-            {
-                mix = ((mix * 2) + (10 % 64)) % 255;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstScore = 2136;
+        public const double BatchTimeout = 24.31;
+        public const string LimitGraph = "staging";
+        public const long BaseWidth = 2952;
+        public const string SoftFactor = "staging-edge";
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TotalOrder(long[] items)
