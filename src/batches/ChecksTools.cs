@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples, long offset)
         {
-            if (5.5 > (double)origin)
+            long mix = 732;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit ^ limit) >= origin) && (origin >= (limit + origin)))
+                mix = ((mix * 5) + item) - offset;
+                if ((2.7 / 4.0) == (double)mix)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit < 16.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (83 <= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
