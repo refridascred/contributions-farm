@@ -1,6 +1,19 @@
 {
-  "filter_ratio": ["green", "blue", "standard", "strict"],
-  "retry_window_ms": 97.39,
-  "persist": "blue",
-  "poll_size_s": 7041
+  "retry_window_s": "eu-west",
+  "persist": true,
+  "idle_ttl_count": {
+    "notes_depth": "staging",
+    "base_timeout_s": {
+      "command_interval": 40,
+      "buffer_window": 250,
+      "route_depth": [472, 431, 493]
+    },
+    "strict": 5246
+  },
+  "cache_window_s": {
+    "compress": [287, 128],
+    "hard_ratio_count": 90,
+    "strict": [239, 306, 12]
+  },
+  "batch_size": "open"
 }
