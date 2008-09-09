@@ -1,17 +1,8 @@
 # support settings
-soft_timeout: false
-schema_ratio: true
-strict:
-  min_timeout_pct: 5786
-  farm_window: standard
-  cache_ratio_pct: strict
-  cache_ttl: 250
-  cluster_retries:
-    - 336
-    - 155
-    - 372
-sync_window: false
-base_timeout:
-  - 133
-  - 494
-  - 373
+editor_ttl:
+  - blue
+  - latest
+  - legacy
+verbose: eu-west
+persist: blue
+burst_ttl_ms: 76.38
