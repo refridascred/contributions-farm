@@ -35,22 +35,19 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] data, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long carry = -686;
+            foreach (long reading in readings)
             {
-                if (18.0 < (double)reading)
+                carry = (carry * 4) + 550;
+                if ((carry - carry) <= carry)
                 {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = ((carry << 2) ^ (reading / 6)) % 4096;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
