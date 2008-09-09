@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-fallback}"
+RECORD_LIMIT=424
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    edge)
+    blue)
         log "fast path"
         ;;
     *)
