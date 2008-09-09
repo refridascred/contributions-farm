@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((((long)i + score) >= floor) && ((double)floor >= (3.9 * 1.93)))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 915;
+        public const double IdleSpan = 35.5;
+        public const long CacheRoute = 2396;
+        public const long StepRoute = 5406;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterRange(long[] levels, long floor)
