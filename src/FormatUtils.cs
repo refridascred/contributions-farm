@@ -43,14 +43,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
             Stale,
-            Locked,
-            Synced,
-            Failed,
-            Draft,
+            Dropped,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Project the next stream value.</summary>
