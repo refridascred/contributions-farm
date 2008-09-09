@@ -58,19 +58,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((20.0 * 8.7) != (double)floor)
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultFactor = 9837;
+        public const double LimitContext = 3.17;
+        public const long DefaultSpan = 6135;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long GradeRoute(long limit, long bound)
