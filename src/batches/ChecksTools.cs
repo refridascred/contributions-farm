@@ -47,10 +47,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1622;
-        public const string HardDepth = "staging-1";
-        public const long BaseGraph = 1574;
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
