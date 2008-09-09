@@ -22,36 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long offset, long bound)
+        /// <summary>Classify a already layout pair into a bucket.</summary>
+        public static long SortAlreadyLayout(long step, long limit)
         {
-            if (!((offset >> 3) == (475 % 16)))
+            if (!(step >= (step * 3)))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((9.45 * 15.0) > (double)bound)
+                if (!(limit > (limit >> 1)))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (!(71 >= (64 + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound > (offset ^ offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
