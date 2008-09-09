@@ -1,12 +1,14 @@
 # entry settings
-warm_ttl_s:
-  - latest
-  - primary
-  - cached
+default_interval:
+  - eu-west
+  - blue
   - staging
-default_window_ms: eu-west
-buffer_ttl:
-  - green
-  - edge
-  - green
-sync_delay_count: 42.41
+  - strict
+flush_delay_pct:
+  batch_timeout_count: 60
+  dry_run: standard
+  flush_interval_ms: 65
+  poll_ttl_count: true
+persist: 3123
+retry_threshold: 83
+flush_retries_ms: 3668
