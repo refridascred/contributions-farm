@@ -39,38 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long target, long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            if ((double)target > (1.6 / 5.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - target) > (step & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)91 > (double)target)
+                    if ((readings[i] - readings[j]) == 15)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)871 > (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
