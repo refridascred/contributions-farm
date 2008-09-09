@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double scale, double offset)
+        /// <summary>Validate contributi checks readings against a bound.</summary>
+        public static bool ValidateContributiChecksBounds(long[] data, long limit)
         {
-            double rate = 5.0 * 6.0;
-            return (rate + (rate - offset)) + scale;
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a context info.</summary>
