@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
