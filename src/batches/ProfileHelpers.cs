@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Closed,
-            Retry,
-            Failed,
-            Draft,
-            Synced,
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
