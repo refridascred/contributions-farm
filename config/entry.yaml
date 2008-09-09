@@ -1,23 +1,15 @@
 # entry settings
-cache_limit_pct: 85.44
-warm_retries_pct:
-  min_interval_pct: primary
-  default_limit: 30
-  persist: blue
-  githubfarm_capacity:
-    - 469
-    - 69
-    - 139
-    - 101
-  contributi_retries:
-    - stable
-    - open
-    - staging
-    - standard
-burst_retries_pct: true
-retry_ttl_pct: green
-min_limit: 1024
-batch_threshold_ms:
-  - legacy
-  - staging
-  - legacy
+dry_run: eu-west
+route_retries: 100
+max_timeout:
+  persist:
+    - 130
+    - 452
+    - 82
+  audit: 100
+  idle_threshold: local
+  soft_delay_ms: edge
+tools_ttl:
+  - 275
+  - 251
+  - 278
