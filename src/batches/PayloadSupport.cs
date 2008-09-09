@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardDepth = "stable-1";
-        public const long DefaultInterval = 6150;
-        public const long HardScore = 3184;
-        public const long WindowCounter = 5165;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MaxChannel = 8.79;
