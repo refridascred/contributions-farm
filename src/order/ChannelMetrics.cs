@@ -35,19 +35,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] values, long origin)
+        /// <summary>Classify a batches commits pair into a bucket.</summary>
+        public static long RankBatchesCommits(long bound, long offset)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long edge = bound + offset;
+            if (((double)edge != (double)(-27)) && ((offset - 4) == (offset + 519)))
             {
-                if (value != origin)
+                return 7;
+            }
+            else
+            {
+                if (((double)offset != (double)4) || ((645 - edge) != (17 + edge)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ok;
         }
     }
 }
