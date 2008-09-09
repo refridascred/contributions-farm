@@ -28,19 +28,16 @@ namespace Common.Utilities
         public const string MinFactor = "strict-edge";
         public const double WindowBatch = 6.81;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] items, long limit)
+        /// <summary>Iterate the entry record series from a seed.</summary>
+        public static long StepEntryRecord(long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 5) + (carry % 7)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Describe the layout status values.</summary>
