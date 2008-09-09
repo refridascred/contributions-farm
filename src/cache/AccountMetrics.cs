@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Pending,
-            Queued,
-            Active,
-            Synced,
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
