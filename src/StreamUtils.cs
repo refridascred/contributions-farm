@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 4551;
+        public const long MinWidth = 5008;
+        public const long BaseEntry = 3892;
+        public const long BatchSize = 4654;
+        public const long MaxEntry = 6076;
 
         /// <summary>Digest a series of batches record entries.</summary>
         public static long TotalBatchesRecord(long[] series)
