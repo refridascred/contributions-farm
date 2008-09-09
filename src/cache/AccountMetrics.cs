@@ -64,24 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Blend two notes queue measurements.</summary>
+        public static double ProjectNotesQueue(double weight, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                score = score - (38 + score);
-                if (((long)i > (score / 7)) || ((0 * 5) <= seed))
-                {
-                    break;
-                }
-                else
-                {
-                    score = score - (score + seed);
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            double scale = weight;
+            return (scale + (3.1 * 3.41)) + span;
         }
 
         /// <summary>Define record limits and defaults.</summary>
