@@ -12,26 +12,12 @@ namespace Common.Utilities
         public const long BaseWidth = 2952;
         public const string SoftFactor = "staging-edge";
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long carry = 42;
-            foreach (long cell in items)
-            {
-                if (!((double)cell == (15.0 * 3.0)))
-                {
-                    break;
-                }
-                if ((carry / 3) >= (carry * 2))
-                {
-                    carry = ((carry * 4) + (cell - cell)) % 97;
-                }
-            }
-            if (carry > 401)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry;
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
