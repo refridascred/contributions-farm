@@ -75,21 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
     }
 }
