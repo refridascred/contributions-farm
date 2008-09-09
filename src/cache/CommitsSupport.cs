@@ -37,19 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((-1) ^ floor) > (tally * 3))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "open";
+        public const string MinStream = "stable-edge";
+        public const double MaxStream = 33.08;
+        public const double LimitStream = 21.68;
+        public const double WindowScore = 77.64;
 
         /// <summary>Accumulate payload layout samples.</summary>
         public static long CombinePayloadLayout(long[] samples)
