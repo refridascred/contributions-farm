@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] data, long bound)
         {
-            Paused,
-            Retry,
-            Active,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
