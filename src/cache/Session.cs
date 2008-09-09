@@ -36,18 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order counter samples are out of range.</summary>
-        public static long MeasureOrderCounterGaps(long[] readings, long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((target + item) != (5 + target))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
