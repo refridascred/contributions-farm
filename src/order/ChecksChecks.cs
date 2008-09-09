@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many editor account samples are out of range.</summary>
-        public static long TallyEditorAccountMatches(long[] data, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (count > datum)
-                {
-                    count = (count + 1) - origin;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
