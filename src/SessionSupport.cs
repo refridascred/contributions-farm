@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long step, long bound)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long next = step - bound;
-            if (step < (step / 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step > (step ^ next)) && ((double)bound != (6.7 * 7.1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
