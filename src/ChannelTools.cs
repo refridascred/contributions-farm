@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first githubfarm buffer entry that matches the target.</summary>
-        public static long SeekGithubfarmBufferIndex(long[] series, long target)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long AuditSchemaPayloadGaps(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (series[i] <= target)
+                if (origin < (matches + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of support readings.</summary>
