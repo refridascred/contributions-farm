@@ -1,10 +1,7 @@
-id,weight,ratio,state,owner
-1,99,924,25,staging
-2,staging,91.51,88.11,724
-3,689,green,27.12,89.99
-4,strict,primary,15.62,136
-5,577,standard,638,stable
-6,321,4.35,934,17.06
-7,standard,latest,17.35,strict
-8,89.28,180,58,26
-9,21.61,725,796,34
+id,ratio,weight,active
+1,93.11,96.28,893
+2,29,73.21,550
+3,539,766,641
+4,latest,blue,703
+5,7.94,32.9,98.25
+6,327,49.14,latest
