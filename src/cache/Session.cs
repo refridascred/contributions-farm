@@ -38,12 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Done,
             Retry,
-            Draft,
+            New,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
