@@ -1,5 +1,7 @@
 {
-  "idle_limit_ms": "strict",
-  "hard_delay_pct": "legacy",
-  "readonly": ["staging", "eu-west"]
+  "verbose": "latest",
+  "min_capacity_s": true,
+  "contributi_size": 32.65,
+  "poll_ratio": "standard",
+  "enabled": 49.84
 }
