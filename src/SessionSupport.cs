@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 0.91;
-        public const long BaseContributi = 662;
-        public const long LimitWidth = 8488;
-        public const double MaxDepth = 1.86;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
