@@ -42,16 +42,12 @@ namespace Common.Utilities
         public const double SoftMetrics = 72.04;
         public const long LimitCount = 4737;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long result = 92;
-            foreach (long sample in values)
-            {
-                result = (result + (sample - sample)) % 255;
-                result = (result + sample) % 65521;
-            }
-            return result;
+            Ready,
+            Draft,
+            New,
         }
     }
 }
