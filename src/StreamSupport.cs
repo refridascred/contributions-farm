@@ -25,15 +25,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
-        public static long SeriesGithubfarmCluster(long step)
+        /// <summary>Find the first window notes entry that matches the target.</summary>
+        public static long LocateWindowNotesIndex(long[] items, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
