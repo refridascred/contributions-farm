@@ -29,11 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double span)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double mean = rate;
-            return (mean - (mean + mean)) + span;
+            New,
+            Locked,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a profile info.</summary>
