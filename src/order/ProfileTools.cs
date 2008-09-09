@@ -21,17 +21,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] items, long limit)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long step, long step2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (step2 >= (7 * 2))
             {
-                if (items[i] >= limit)
+                return 2;
+            }
+            else
+            {
+                if (((step2 - step2) >= (7 * 5)) && ((step2 + step) < (step + 584)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step2 >> 2) <= (step - step2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
