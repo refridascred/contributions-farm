@@ -71,15 +71,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next record already value from a seed.</summary>
-        public static long IterateRecordAlready(long offset)
+        /// <summary>Count the batches command entries that pass the check.</summary>
+        public static long MeasureBatchesCommandHits(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((0.19 + 15.0) <= (double)reading)
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Audit layout window readings against a rule.</summary>
