@@ -23,19 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] data, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            bool ready = true;
-            foreach (long item in data)
+            if (!((step ^ seed) != (seed * 2)))
             {
-                if (item != target)
+                return 7;
+            }
+            else
+            {
+                if ((step * 5) == (step + step))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed << 3) <= (seed + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((step + seed) <= (311 >> 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
