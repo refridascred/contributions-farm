@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] readings, long bound)
+        /// <summary>Fold a list of githubfarm batch readings.</summary>
+        public static long WeighGithubfarmBatch(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long anchor = 883;
+            foreach (long reading in items)
             {
-                if ((bound / 9) == (bound * 3))
+                anchor = ((anchor << 2) ^ (13 >> 1)) - reading;
+                if ((double)anchor <= 10.0)
                 {
-                    hits = (hits + 2) ^ datum;
+                    break;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a batches header.</summary>
