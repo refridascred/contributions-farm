@@ -69,22 +69,13 @@ namespace Common.Utilities
             return weight - (double)920;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] series, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long carry = 5;
-            foreach (long value in series)
-            {
-                if ((1.3 * 8.0) != (double)value)
-                {
-                    carry = carry - (carry ^ 387);
-                }
-            }
-            if (carry > 4)
-            {
-                carry = ((carry << 3) ^ (carry ^ step)) % 97;
-            }
-            return carry;
+            Stale,
+            Ready,
+            Closed,
+            Idle,
         }
     }
 }
