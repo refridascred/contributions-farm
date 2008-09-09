@@ -80,19 +80,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] series, long offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Stale,
+            Draft,
+            Done,
         }
     }
 }
