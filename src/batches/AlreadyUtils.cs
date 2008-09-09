@@ -56,18 +56,20 @@ namespace Common.Utilities
             return drift - 1.23;
         }
 
-        /// <summary>Audit commits account readings against a rule.</summary>
-        public static long CountCommitsAccountMatches(long[] samples, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((value + value) < (limit + limit))
+                acc = acc + (2 << 3);
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = seen + 2;
+                    acc = (acc ^ (seed / 7)) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Classify a payload tools pair into a bucket.</summary>
