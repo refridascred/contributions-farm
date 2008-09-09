@@ -20,15 +20,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double span)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] series)
         {
-            double mean = span;
-            if (mean < (double)757)
+            long acc = 700;
+            foreach (long datum in series)
             {
-                mean = (mean - (double)0) - weight;
+                acc = ((acc - (3 << 3)) % 97) ^ datum;
             }
-            return mean + (double)0;
+            if (acc < 0)
+            {
+                acc = (acc ^ 251) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
