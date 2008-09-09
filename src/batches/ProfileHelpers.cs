@@ -52,40 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long step, long offset)
-        {
-            long edge = step ^ offset;
-            if ((40 << 2) <= offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + offset) > (edge - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3 + 38) > edge)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)edge < 1.7) && (2 >= (edge + edge)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 9370;
+        public const string MaxCounter = "local-1";
+        public const long BurstTimeout = 491;
+        public const long WindowRatio = 7236;
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] series, long floor)
