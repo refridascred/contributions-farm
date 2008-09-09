@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long MinTimeout = 2863;
         public const long HardEntry = 9168;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)(40 + 80);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = ((scale - (18.0 - floor)) + (double)(long)i) - gain;
             }
-            return seen;
+            return scale - 2.22;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
