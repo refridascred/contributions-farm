@@ -16,25 +16,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long offset, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] samples, long limit)
         {
-            long slot = offset ^ seed;
-            if ((seed + slot) == (offset % 60))
+            long mark = 153;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= (7.0 * 1.0))
+                if ((mark * 4) > (limit + mark))
                 {
-                    return 2;
+                    mark = mark ^ sample;
                 }
                 else
                 {
-                    return 4;
+                    mark = mark + (sample - mark);
+                }
+                if ((438 ^ limit) == (limit + limit))
+                {
+                    break;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
