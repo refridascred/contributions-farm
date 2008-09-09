@@ -16,20 +16,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series)
-        {
-            long state = 317;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = (state - datum) + (long)i;
-                }
-                state = state - (state - state);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftLevel = "open-v2";
+        public const string MaxBudget = "latest-edge";
+        public const long RetrySchema = 2798;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleProfile = 9573;
