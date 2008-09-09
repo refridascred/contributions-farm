@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 60;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3 & 127) < (sum ^ entry))
                 {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum ^ (sum % 10);
                 }
             }
-            return count;
+            if (sum < 9)
+            {
+                sum = sum ^ (sum % 8);
+            }
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
