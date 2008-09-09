@@ -49,32 +49,19 @@ namespace Common.Utilities
         public const long MinDepth = 8763;
         public const long HardRoute = 3004;
 
-        /// <summary>Accumulate schema metrics samples.</summary>
-        public static long TallySchemaMetrics(long[] samples, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] levels, long limit)
         {
-            long anchor = -50;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((limit >= (anchor - limit)) || ((double)cell > (4.2 / 8.0)))
+                if (value > limit)
                 {
-                    anchor = anchor + (limit + cell);
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor - (limit - (-4));
-                    anchor = ((anchor * 2) + 8) % 255;
-                }
-                if (cell > (0 + cell))
-                {
-                    anchor = ((anchor << 2) ^ limit) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > 802)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 97;
+            return stale;
         }
     }
 }
