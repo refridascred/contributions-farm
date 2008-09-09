@@ -1,11 +1,8 @@
 # entry settings
-metric_threshold: 6.93
-flush_limit:
-  cluster_threshold: 63.11
-  batch_depth_s: 100
-  flush_retries_count: 5
-  persist: 45
-support_window: 23.71
-warm_capacity_s:
-  - 472
-  - 224
+min_capacity_ms: primary
+command_ratio:
+  - 402
+  - 239
+  - 376
+compress: staging
+payload_size: 52.56
