@@ -40,26 +40,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long target, long step)
         {
-            long sum = 507;
-            foreach (long datum in values)
+            long next = target ^ step;
+            if (!((799 / 3) != (target ^ 39)))
             {
-                if (((datum / 6) != (sum << 2)) || ((sum - 55) > (datum % 12)))
+                return 8;
+            }
+            else
+            {
+                if ((step > (step + next)) || ((target - 539) <= (next << 2)))
                 {
-                    sum = sum - (datum - datum);
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum - (datum >> 1)) % 4096;
-                }
-                if (48 > ((long)values.Length >> 4))
-                {
-                    break;
+                    if ((step > (step << 2)) && ((target + target) > step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
