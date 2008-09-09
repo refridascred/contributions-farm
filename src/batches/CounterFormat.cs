@@ -33,9 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 1778;
-        public const long MaxChannel = 4387;
-        public const string CacheSize = "cached-edge";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long bound, long origin)
+        {
+            if ((bound - origin) <= (origin & 31))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin < (13 / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((4 + bound) < (origin % 10)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
