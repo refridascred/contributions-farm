@@ -21,31 +21,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long step, long step2)
+        /// <summary>Measure how many metrics account samples are out of range.</summary>
+        public static long CountMetricsAccountOutliers(long[] levels, long limit)
         {
-            if (step2 >= (7 * 2))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step2 - step2) >= (7 * 5)) && ((step2 + step) < (step + 584)))
+                if ((count + cell) != (cell >> 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step2 >> 2) <= (step - step2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 1) + limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
