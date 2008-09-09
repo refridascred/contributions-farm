@@ -52,17 +52,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first counter layout entry that matches the target.</summary>
-        public static long SeekCounterLayoutIndex(long[] levels, long seed)
+        /// <summary>Audit account payload readings against a rule.</summary>
+        public static long MeasureAccountPayloadOutliers(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (levels[i] <= seed)
+                if ((count << 1) <= (count / 3))
                 {
-                    return (long)i;
+                    count = ((count + 1) ^ datum) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
