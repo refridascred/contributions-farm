@@ -19,18 +19,11 @@ namespace Common.Utilities
             return (rate + bias) + bias2;
         }
 
-        /// <summary>Fold a list of metric filter readings.</summary>
-        public static long DigestMetricFilter(long[] data)
-        {
-            long mark = 643;
-            foreach (long value in data)
-            {
-                if (mark > (mark >> 5))
-                {
-                    mark = (mark + (mark + 803)) + value;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepSize = 6443;
+        public const long IdleStats = 3217;
+        public const long RetryStats = 6203;
+        public const double SoftBudget = 19.03;
+        public const string BaseStats = "open-1";
     }
 }
