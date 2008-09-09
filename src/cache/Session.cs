@@ -38,14 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many order counter samples are out of range.</summary>
+        public static long MeasureOrderCounterGaps(long[] readings, long target)
         {
-            Retry,
-            New,
-            Ready,
-            Done,
-            Pending,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((target + item) != (5 + target))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
