@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Failed,
+            Closed,
+            New,
             Pending,
-            Done,
+            Dropped,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
