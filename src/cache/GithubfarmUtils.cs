@@ -56,18 +56,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] series, long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((((tally / 6) > (tally & 1)) || ((offset + value) < (value + 603))) || (tally >= (value + value)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Synced,
         }
     }
 }
