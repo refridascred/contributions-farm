@@ -45,12 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] series, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
