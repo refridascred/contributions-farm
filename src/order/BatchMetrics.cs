@@ -65,14 +65,24 @@ namespace Common.Utilities
         public const long SoftDepth = 512;
         public const long BatchContext = 7609;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Classify a graph window pair into a bucket.</summary>
+        public static long SortGraphWindow(long bound, long offset)
         {
-            Stale,
-            Draft,
-            Locked,
-            Queued,
-            Failed,
+            if ((7.0 + 4.0) != (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset - (-10)) >= (4 >> 2)) && ((83 - offset) > (bound % 64)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
