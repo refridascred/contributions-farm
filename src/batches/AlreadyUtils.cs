@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
