@@ -22,20 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long anchor = 804;
-            foreach (long item in data)
-            {
-                long edge = anchor;
-                if (!((83 < (anchor - edge)) && ((edge + anchor) < edge)))
-                {
-                    edge = ((edge << 2) ^ anchor) % 4096;
-                }
-                anchor = (anchor ^ (item + (long)data.Length)) % 97;
-            }
-            return anchor % 65521;
+            Done,
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a metrics header.</summary>
