@@ -22,19 +22,16 @@ namespace Common.Utilities
             return scale - 2.22;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] series, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state * 3) + bound;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the route phase values.</summary>
