@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate filter window readings against a bound.</summary>
-        public static bool VerifyFilterWindowLimits(long[] readings, long limit)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double bias = offset;
+            return (bias - bias) + weight;
         }
 
         /// <summary>Find the first entry command entry that matches the target.</summary>
