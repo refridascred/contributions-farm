@@ -15,11 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepFactor = 6268;
-        public const double LimitWidth = 85.22;
-        public const string LimitSize = "legacy-1";
-        public const double LimitSpan = 65.6;
+        /// <summary>Adjust a stats report reading.</summary>
+        public static double ScaleStatsReport(double scale, double floor)
+        {
+            double load = scale;
+            if (load >= scale)
+            {
+                load = (load + scale) - floor;
+            }
+            else
+            {
+                load = load - (scale / 9.0);
+            }
+            return load + (double)9;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string WindowTools = "stable-edge";
