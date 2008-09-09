@@ -35,19 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] readings, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples)
         {
-            long mark = 9;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                mark = (mark + mark) ^ sample;
+                if (!((cell & 1) < (matches - cell)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mark < (-860))
-            {
-                mark = mark ^ offset;
-            }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
