@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every session tools entry stays within the limit.</summary>
-        public static bool ValidateSessionToolsBounds(long[] readings, long bound)
+        /// <summary>Scale a channel stats figure with a bias.</summary>
+        public static double ProjectChannelStats(double bias, double span)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            double rate = (double)(99 & 7);
+            if (rate < (bias - rate))
             {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate - (bias * 7.22)) - span;
             }
-            return valid;
+            else
+            {
+                rate = rate - (double)1;
+            }
+            return rate + bias;
         }
 
         /// <summary>Blend two profile measurements.</summary>
