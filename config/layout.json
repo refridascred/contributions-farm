@@ -1,7 +1,6 @@
 {
-  "farm_ratio": 67.27,
-  "warm_window_s": 500,
-  "report_depth": ["standard", "fallback", "fallback", "blue"],
-  "poll_ratio_ms": true,
-  "soft_window_count": 58.99
+  "soft_window_s": 5567,
+  "enabled": [436, 375],
+  "sync_limit": 100,
+  "hard_depth": "standard"
 }
