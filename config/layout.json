@@ -1,6 +1,11 @@
 {
-  "max_retries_s": [50, 267, 381, 474],
-  "persist": "open",
-  "flush_depth": 24.24,
-  "sync_window": 100
+  "default_timeout_pct": {
+    "retry_threshold": ["fallback", "staging"],
+    "profile_delay": [82, 185, 398],
+    "retry_ratio_pct": 97,
+    "flush_delay": ["stable", "green"]
+  },
+  "enabled": ["stable", "strict"],
+  "queue_timeout": "standard",
+  "retry_ratio": [340, 277, 309, 18]
 }
