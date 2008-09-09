@@ -45,19 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] data, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double ratio = (double)61 / 2.0;
+            if (ratio < bias2)
             {
-                if (sample != target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio + (6.69 - bias);
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (bias / 4.0)) + (double)(long)i;
+            }
+            return ratio - (bias2 / 7.0);
         }
 
         /// <summary>Hold a profile info.</summary>
