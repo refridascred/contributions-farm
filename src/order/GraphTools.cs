@@ -18,12 +18,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryBudget = 2706;
-        public const long CacheSpan = 9553;
-        public const long StepFactor = 1977;
-        public const long DefaultChannel = 1859;
-        public const string BurstInterval = "cached-v2";
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two token context measurements.</summary>
         public static double ScaleTokenContext(double gain, double bias)
