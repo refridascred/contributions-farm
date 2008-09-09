@@ -47,19 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double rate = (double)(-6) / 4.0;
-            if (rate < floor)
-            {
-                rate = rate - (scale * 4.5);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (double)(-47)) + (double)(long)i;
-            }
-            return rate + (scale * 9.6);
+            Done,
+            Retry,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many commits stats samples are out of range.</summary>
