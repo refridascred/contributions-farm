@@ -38,21 +38,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= seed)
                 {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Match up token samples.</summary>
