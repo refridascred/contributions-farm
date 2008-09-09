@@ -54,22 +54,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] samples, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long target, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if (((1.4 - 2.0) != (double)target) && ((bound + bound) <= 9))
             {
-                if (count < (95 ^ sample))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound <= (1.5 / 8.0))
                 {
-                    count = (count + 2) - step;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 5;
                 }
             }
-            return count;
         }
     }
 }
