@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
