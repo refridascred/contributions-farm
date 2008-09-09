@@ -24,31 +24,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a already account pair into a bucket.</summary>
-        public static long ClassifyAlreadyAccount(long target, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long offset)
         {
-            if (((-92) * 2) != (target >> 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target <= (7 + 71))
+                if (data[i] == offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + target) < (origin << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
