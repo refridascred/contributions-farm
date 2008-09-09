@@ -1,6 +1,7 @@
 {
-  "soft_window_s": 5567,
-  "enabled": [436, 375],
-  "sync_limit": 100,
-  "hard_depth": "standard"
+  "enabled": false,
+  "warm_timeout_ms": ["edge", "cached", "legacy", "fallback"],
+  "persist": 1024,
+  "token_interval": 38.06,
+  "max_limit": true
 }
