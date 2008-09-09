@@ -1,5 +1,16 @@
 {
-  "enabled": true,
-  "min_depth": 3.84,
-  "min_interval": "staging"
+  "hard_threshold_count": false,
+  "commits_delay": {
+    "batch_interval_pct": true,
+    "flush_window_s": 100,
+    "max_ratio_count": {
+      "warm_ratio_ms": 60,
+      "default_ttl_pct": "cached",
+      "compress": "stable",
+      "filter_depth": 3135,
+      "poll_limit_count": 3439
+    }
+  },
+  "persist": [36, 353, 488],
+  "max_size_s": 25.37
 }
