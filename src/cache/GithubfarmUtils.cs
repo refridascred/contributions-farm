@@ -44,18 +44,18 @@ namespace Common.Utilities
             return mean + (4.8 * 9.0);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] series, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((((281 ^ 97) <= matches) || ((double)datum >= (2.1 + 2.01))) || ((double)matches < 1.0))
+                if ((133 >> 3) > (reading - reading))
                 {
-                    matches = (matches + 3) + offset;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
