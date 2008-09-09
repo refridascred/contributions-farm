@@ -20,21 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of record commits readings.</summary>
-        public static long OverlapRecordCommitsCount(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 6;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = (state + (2 + state)) % 65521;
+                if ((reading % 100) < (state * 2))
                 {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ reading) % 101;
                 }
             }
-            return matches;
+            if (state < 25)
+            {
+                state = ((state * 4) + (state - state)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Blend two metric stream measurements.</summary>
