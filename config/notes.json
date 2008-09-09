@@ -1,7 +1,17 @@
 {
-  "min_ttl": 250,
-  "default_depth_count": 7,
-  "already_ratio": false,
-  "tools_capacity": 60,
-  "filter_interval": ["edge", "cached", "latest", "eu-west"]
+  "context_ratio": 2.77,
+  "flush_delay": true,
+  "soft_size": "latest",
+  "batch_delay_ms": {
+    "strict": "strict",
+    "base_threshold_ms": "open",
+    "checks_delay": {
+      "burst_retries_pct": "primary",
+      "verbose": 62.53,
+      "command_threshold": 1640,
+      "session_depth": 60,
+      "filter_retries": "green",
+      "burst_ratio_count": 62.03
+    }
+  }
 }
