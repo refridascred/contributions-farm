@@ -22,33 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long seed, long limit)
-        {
-            long delta = seed + limit;
-            if (((seed - limit) <= seed) && ((7.0 + 9.6) <= (double)seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((171 << 2) <= delta) || ((delta - 50) <= 88))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + limit) > seed) && ((limit + seed) >= (limit / 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSpan = 1090;
+        public const string CacheSchema = "legacy-v2";
+        public const long LimitSize = 4267;
+        public const long BatchSchema = 5801;
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] values)
