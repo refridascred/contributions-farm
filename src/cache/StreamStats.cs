@@ -31,21 +31,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = weight + span;
+            if (weight2 > 6.7)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight2 = weight2 - (span / 6.0);
             }
-            return tally;
+            else
+            {
+                weight2 = weight2 + (double)70;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 + span) + (double)(long)i;
+            }
+            return weight2 - 2.75;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
