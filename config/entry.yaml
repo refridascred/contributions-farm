@@ -1,4 +1,17 @@
 # entry settings
-enabled: 6908
-soft_retries_count: false
-poll_size: false
+counter_depth:
+  poll_threshold:
+    - edge
+    - eu-west
+  warm_threshold: green
+  warm_depth_s:
+    batches_retries: false
+    soft_delay: true
+    stream_window:
+      - 242
+      - 349
+  warm_size_count: 60
+audit: blue
+flush_timeout: 92.5
+hard_depth: legacy
+sync_retries_s: 164
