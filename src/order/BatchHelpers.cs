@@ -14,16 +14,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values, long bound)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long score = 765;
-            foreach (long cell in values)
-            {
-                score = (score - (score / 6)) + bound;
-                score = ((score * 4) + (cell >> 1)) % 4096;
-            }
-            return score;
+            Dropped,
+            Ready,
+            Retry,
+            Locked,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
