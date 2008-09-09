@@ -61,13 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Dropped,
-            Active,
-            Retry,
-            Queued,
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
