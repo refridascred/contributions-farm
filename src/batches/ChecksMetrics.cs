@@ -38,23 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = 95;
-            foreach (long value in series)
-            {
-                if ((anchor << 3) == (value << 2))
-                {
-                    anchor = (anchor * 3) + (value - anchor);
-                    anchor = (anchor ^ value) % 65521;
-                }
-                if ((anchor + value) < (anchor >> 1))
-                {
-                    anchor = ((anchor * 2) + (anchor + anchor)) % 255;
-                }
-            }
-            return anchor;
+            Closed,
+            Queued,
+            Locked,
+            Pending,
+            Retry,
         }
 
         /// <summary>Blend two notes measurements.</summary>
