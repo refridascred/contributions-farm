@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] readings, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long state = 96;
+            foreach (long entry in data)
             {
-                if ((tally < (8 % 24)) || ((limit >= (entry >> 4)) || ((limit - 5) >= (limit * 3))))
-                {
-                    tally = tally + 2;
-                }
+                state = (((state * 3) + ((long)data.Length * 3)) + entry) + origin;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
