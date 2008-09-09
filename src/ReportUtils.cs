@@ -33,19 +33,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double rate, double span)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double weight = (rate + rate) * 7.8;
-            if (weight >= (rate + rate))
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (span + span)) - (double)(long)i;
-            }
-            return weight - (double)920;
+            New,
+            Synced,
+            Retry,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
