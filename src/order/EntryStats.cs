@@ -52,14 +52,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Dropped,
             Queued,
-            Stale,
-            Ready,
-            Retry,
+            Failed,
+            New,
         }
     }
 }
