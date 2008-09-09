@@ -47,13 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Retry,
-            Dropped,
-            Closed,
-            Locked,
+            Draft,
+            Idle,
+            Paused,
         }
     }
 }
