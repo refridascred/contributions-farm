@@ -26,20 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mark = 135;
-            foreach (long entry in series)
-            {
-                if ((6.9 + 0.5) < (double)entry)
-                {
-                    mark = ((mark * 3) + entry) % 101;
-                    mark = ((mark * 3) + entry) % 255;
-                }
-                mark = (mark * 4) + entry;
-            }
-            return mark;
+            Locked,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
