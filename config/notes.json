@@ -1,15 +1,5 @@
 {
-  "order_ratio": {
-    "cache_threshold_pct": 2577,
-    "compress": "cached",
-    "poll_threshold_pct": "blue",
-    "poll_size": 9845,
-    "readonly": "legacy",
-    "min_depth": 31.71
-  },
-  "filter_delay": 90.39,
-  "warm_delay": false,
-  "base_depth": 5.87,
-  "metric_delay": "staging",
-  "compress": 79
+  "readonly": "strict",
+  "sync_ratio_ms": true,
+  "batch_retries": 2.9
 }
