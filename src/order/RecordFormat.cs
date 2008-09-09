@@ -34,11 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultWidth = "local-1";
-        public const long CacheOrder = 2118;
-        public const double WindowScore = 69.1;
-        public const long DefaultOrder = 3987;
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
