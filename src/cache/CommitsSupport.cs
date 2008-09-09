@@ -80,23 +80,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double rate, double offset)
+        /// <summary>Audit layout window readings against a rule.</summary>
+        public static long CountLayoutWindowHits(long[] readings, long offset)
         {
-            double load = offset;
-            if (load <= (offset + rate))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                load = load + (load - offset);
+                if ((entry * 2) <= (4 ^ seen))
+                {
+                    seen = (seen + 2) - offset;
+                }
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + 5.91) + (double)(long)i;
-            }
-            return load - load;
+            return seen;
         }
     }
 }
