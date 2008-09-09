@@ -50,15 +50,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] series, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if ((series[i] >= step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Project the next graph value.</summary>
