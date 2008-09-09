@@ -17,39 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long target, long target2)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long cur = target + target2;
-            if (((-878) - target2) >= (target2 ^ 56))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target2 > (target2 + 197))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (cur > (target % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((cur * 4) < (target % 16))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
