@@ -47,18 +47,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (target > (seen * 5))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxInterval = "alpha-edge";
+        public const long HardRoute = 1108;
+        public const long MinLevel = 8966;
     }
 }
