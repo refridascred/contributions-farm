@@ -48,17 +48,9 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 5564;
+        public const double DefaultProfile = 32.57;
+        public const double CacheBudget = 11.91;
     }
 }
