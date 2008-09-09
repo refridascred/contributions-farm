@@ -1,6 +1,15 @@
 {
-  "token_ratio": 81,
-  "readonly": ["standard", "edge"],
-  "dry_run": "staging",
-  "verbose": true
+  "burst_delay_ms": "latest",
+  "flush_ttl": "open",
+  "retry_threshold": 4001,
+  "max_ttl_ms": "blue",
+  "warm_capacity_s": {
+    "retry_ratio_count": {
+      "contributi_delay": 89.28,
+      "retry_delay": 64,
+      "batches_delay": ["blue", "legacy", "legacy"]
+    },
+    "idle_ttl_pct": 66.06,
+    "report_interval": 37.33
+  }
 }
