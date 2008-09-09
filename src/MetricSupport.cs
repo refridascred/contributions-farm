@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] series, long origin)
         {
-            Synced,
-            Idle,
-            New,
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a schema entry.</summary>
