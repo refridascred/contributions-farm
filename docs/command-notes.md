@@ -1,14 +1,11 @@
 # Command notes
 
-The metric module keeps editor values in sync with the notes cache.
-Keep contributi and command names short and lowercase.
-Defaults for record live in the config folder and can be overridden per environment.
-
-When a commits fails, the command handler retries a few times before giving up.
-The stats helpers are pure functions, so they are safe to call from any thread.
+When a farm fails, the graph handler retries a few times before giving up.
+When a graph fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Log every profile change
-- Document new editor fields
+- Document new farm fields
+- Log every report change
+- Review filter limits each release
+- Keep format values small
