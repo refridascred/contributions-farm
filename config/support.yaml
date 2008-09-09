@@ -1,5 +1,7 @@
 # support settings
-buffer_timeout: true
-hard_limit_pct: primary
-max_limit_pct: 30.76
-compress: false
+tools_ttl: 6
+idle_retries_pct: 500
+burst_interval: latest
+max_size_ms: staging
+retry_ratio_ms: 35.1
+session_ttl: 82.62
