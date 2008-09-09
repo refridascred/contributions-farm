@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
