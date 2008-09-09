@@ -37,18 +37,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long delta = limit + floor;
+            if ((9 + floor) <= (limit << 3))
             {
-                if (((6.6 * 3.21) > (double)entry) || ((entry + entry) == (entry + tally)))
+                return 4;
+            }
+            else
+            {
+                if (delta >= (limit / 7))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((8 - delta) <= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
