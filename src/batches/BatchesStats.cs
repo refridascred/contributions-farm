@@ -68,11 +68,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
