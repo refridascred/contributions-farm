@@ -70,13 +70,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long offset, long step)
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
+            if ((double)offset <= (3.3 / 3.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.0 / 9.0) == (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
