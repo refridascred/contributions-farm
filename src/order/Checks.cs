@@ -16,11 +16,33 @@ namespace Common.Utilities
             return rate + (span + rate);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitInterval = 5649;
-        public const long RetryReport = 5204;
-        public const long MinDepth = 3764;
-        public const double MaxReport = 65.31;
+        /// <summary>Grade a layout stats value against two limits.</summary>
+        public static long SortLayoutStats(long floor, long floor2)
+        {
+            long edge = floor ^ floor2;
+            if ((247 + floor2) > edge)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor2 + floor2) <= floor2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor2 * 5) < edge)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double MaxFactor = 37.82;
