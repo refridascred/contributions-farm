@@ -46,24 +46,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long limit, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if (((limit << 1) != (limit >> 1)) && ((limit - bound) > (434 << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (limit ^ 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            New,
+            Locked,
+            Draft,
+            Ready,
         }
     }
 }
