@@ -34,12 +34,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Scale a notes farm figure with a bias.</summary>
+        public static double SmoothNotesFarm(double gain, double floor)
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            double ratio = 3.57;
+            if (ratio > gain)
+            {
+                ratio = (ratio - ratio) + floor;
+            }
+            else
+            {
+                ratio = ratio - (ratio / 4.0);
+            }
+            return ratio + gain;
         }
 
         /// <summary>Define context limits and defaults.</summary>
