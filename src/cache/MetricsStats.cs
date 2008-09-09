@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of entry buffer readings.</summary>
-        public static long WeighEntryBuffer(long[] samples)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long total = 74;
-            foreach (long datum in samples)
-            {
-                if (total >= (datum ^ datum))
-                {
-                    total = ((total << 2) ^ (852 + datum)) % 101;
-                }
-            }
-            if (total > 7)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            public double Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
