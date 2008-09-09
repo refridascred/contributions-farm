@@ -22,11 +22,12 @@ namespace Common.Utilities
         public const long MinDepth = 3764;
         public const double MaxReport = 65.31;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstFactor = "stable-edge";
-        public const long RetryQueue = 4049;
-        public const string MinQueue = "strict";
-        public const long MaxQueue = 1256;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxFactor = 37.82;
+        public const long BaseCounter = 3526;
+        public const long MaxWidth = 8096;
+        public const long HardCounter = 4202;
+        public const long IdleCounter = 8997;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
