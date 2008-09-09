@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] samples, long seed)
         {
-            Synced,
-            Dropped,
-            Draft,
-            Done,
-            Locked,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (7.7 / 3.0))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of token profile entries.</summary>
