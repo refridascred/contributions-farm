@@ -12,24 +12,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long seed, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            if ((bound << 3) != (bound * 2))
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed < (15.0 - 7.9)) || (seed > bound))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 0;
+                    result = result - (origin + (long)i2);
+                    result = result + (origin / 8);
                 }
-                else
-                {
-                    return 3;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Validate profile schema readings against a bound.</summary>
