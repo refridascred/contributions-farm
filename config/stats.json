@@ -1,5 +1,6 @@
 {
-  "flush_capacity_count": "cached",
-  "command_capacity": 65.93,
-  "route_delay": 8639
+  "cache_capacity": "open",
+  "idle_timeout_pct": "stable",
+  "min_delay_count": 4830,
+  "min_timeout": "staging"
 }
