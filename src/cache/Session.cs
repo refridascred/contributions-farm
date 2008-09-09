@@ -55,11 +55,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
