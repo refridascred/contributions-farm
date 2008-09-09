@@ -19,14 +19,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long seed, long limit)
         {
-            Pending,
-            Dropped,
-            Synced,
-            New,
-            Closed,
+            long delta = seed + limit;
+            if (((seed - limit) <= seed) && ((7.0 + 9.6) <= (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((171 << 2) <= delta) || ((delta - 50) <= 88))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed + limit) > seed) && ((limit + seed) >= (limit / 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch options.</summary>
