@@ -81,26 +81,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] items, long offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            long acc = 9;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)981 >= (double)acc)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc - (acc * 4);
-                }
-                if ((offset + offset) == (entry >> 5))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 16)
-            {
-                acc = (acc ^ (offset * 4)) % 1000;
-            }
-            return acc % 97;
+            return tally;
         }
     }
 }
