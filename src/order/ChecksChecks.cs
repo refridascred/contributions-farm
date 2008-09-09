@@ -40,13 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] levels, long bound)
         {
-            Retry,
-            Failed,
-            New,
-            Stale,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
