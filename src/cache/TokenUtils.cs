@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Iterate the route githubfarm series from a seed.</summary>
+        public static long SeriesRouteGithubfarm(long origin)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
