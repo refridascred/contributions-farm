@@ -27,27 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi context readings.</summary>
-        public static long TotalContributiContext(long[] series, long limit)
-        {
-            long acc = 84;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((((acc << 2) ^ 892) % 97) - (long)i) + cell;
-                }
-                if ((acc << 3) == (0 << 3))
-                {
-                    acc = acc - (602 + (long)series.Length);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (limit ^ 365);
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 3692;
+        public const string BatchTimeout = "strict";
+        public const long CacheNotes = 8451;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long DigestSchema(long[] readings)
