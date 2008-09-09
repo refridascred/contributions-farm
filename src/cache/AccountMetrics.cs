@@ -44,11 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two notes queue measurements.</summary>
-        public static double ProjectNotesQueue(double weight, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] data)
         {
-            double scale = weight;
-            return (scale + (3.1 * 3.41)) + span;
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((1.04 * 6.6) > (double)cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
