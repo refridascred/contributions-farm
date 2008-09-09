@@ -26,10 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "latest-edge";
-        public const long SoftSupport = 7253;
-        public const string BaseSupport = "open-v2";
-        public const double BatchSupport = 59.72;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
