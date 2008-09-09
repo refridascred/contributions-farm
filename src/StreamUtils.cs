@@ -42,22 +42,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of batches record entries.</summary>
-        public static long TotalBatchesRecord(long[] series)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long result = 693;
-            foreach (long item in series)
-            {
-                if ((result <= (result % 2)) || (item > (item - item)))
-                {
-                    result = (result ^ item) % 101;
-                }
-                else
-                {
-                    result = (result ^ item) % 65521;
-                }
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
