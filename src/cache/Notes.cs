@@ -49,19 +49,18 @@ namespace Common.Utilities
         public const long MinDepth = 8763;
         public const long HardRoute = 3004;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] levels, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (value > limit)
+                if ((step / 5) <= (item + count))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
