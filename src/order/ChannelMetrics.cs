@@ -35,15 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double weight, double bias)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] data, long floor)
         {
-            double mean = weight;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                mean = ((mean + mean) - (double)(long)i) + bias;
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + weight;
+            return ok;
         }
     }
 }
