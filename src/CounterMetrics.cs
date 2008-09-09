@@ -37,18 +37,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] series)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) >= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
