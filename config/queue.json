@@ -1,26 +1,8 @@
 {
-  "compress": {
-    "cache_interval": false,
-    "burst_capacity_ms": false,
-    "base_timeout_s": true,
-    "warm_ratio": 1024,
-    "base_ratio_count": 5607,
-    "burst_depth_s": 500
-  },
-  "persist": {
-    "audit": {
-      "profile_threshold": 22.02,
-      "audit": 500,
-      "idle_retries_s": 61.88,
-      "readonly": [130, 267, 282]
-    },
-    "readonly": 4.66,
-    "report_limit": 1024,
-    "counter_limit": [182, 177, 363, 434],
-    "entry_ttl": 2796,
-    "sync_ratio_pct": "latest"
-  },
-  "warm_delay_ms": 60.8,
-  "cache_interval_count": false,
-  "dry_run": 82.7
+  "cache_timeout": "edge",
+  "filter_limit": 51,
+  "persist": "blue",
+  "poll_size": [252, 73],
+  "hard_ratio_count": 60,
+  "report_retries": true
 }
