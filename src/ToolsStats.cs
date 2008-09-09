@@ -16,13 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            Ready,
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a schema options.</summary>
