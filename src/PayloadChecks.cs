@@ -72,24 +72,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long seed2)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long bound)
         {
-            if ((double)39 > (double)seed2)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed2) > seed)
+                if (value < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the editor status values.</summary>
