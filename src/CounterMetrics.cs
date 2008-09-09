@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Active,
-            Retry,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstWidth = 6921;
+        public const string MinEntry = "local";
+        public const long CacheEntry = 6739;
+        public const double RetryLevel = 79.26;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRoute = 8433;
