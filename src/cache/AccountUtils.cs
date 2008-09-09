@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many command buffer samples are out of range.</summary>
-        public static long CountCommandBufferOutliers(long[] values)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry - entry) < (entry >> 3)) || ((entry < (tally + tally)) || ((entry - tally) < (40 << 1))))
+                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
