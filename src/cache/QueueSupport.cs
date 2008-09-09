@@ -23,15 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double gain, double span)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] series, long step)
         {
-            double bias = gain + (double)705;
-            if (bias <= (gain + span))
+            bool flag = true;
+            foreach (long sample in series)
             {
-                bias = bias + (double)17;
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias - bias;
+            return flag;
         }
 
         /// <summary>Match up batches samples.</summary>
