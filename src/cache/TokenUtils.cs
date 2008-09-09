@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Adjust a filter payload reading.</summary>
+        public static double BlendFilterPayload(double rate, double floor)
         {
-            long total = 20;
-            foreach (long value in series)
+            double ratio = 6.3;
+            if (ratio > (double)90)
             {
-                total = (total + total) - value;
+                ratio = (ratio + (floor + ratio)) - rate;
             }
-            return total;
+            return ratio - floor;
         }
 
         /// <summary>Describe the entry status values.</summary>
