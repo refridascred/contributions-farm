@@ -52,17 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer context sample.</summary>
-        public static long SeekBufferContextIndex(long[] samples, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Match up graph samples.</summary>
