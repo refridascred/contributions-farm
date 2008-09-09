@@ -21,15 +21,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double scale, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] readings)
         {
-            double rate = (scale / 8.0) / 8.0;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                rate = ((rate + (rate * 1.85)) + (double)(long)i) + offset;
+                if (((double)tally > (20.0 / 4.0)) && ((item & 3) >= (2 * 4)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return rate + (5.5 / 4.0);
+            return tally;
         }
 
         /// <summary>Fold a list of checks entry readings.</summary>
