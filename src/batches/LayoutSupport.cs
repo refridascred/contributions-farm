@@ -61,15 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a commits counter figure with a bias.</summary>
-        public static double AdjustCommitsCounter(double gain, double offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double rate = (double)46 / 4.0;
-            if (rate >= gain)
-            {
-                rate = rate - (double)(-853);
-            }
-            return rate - (offset * 15.0);
+            Dropped,
+            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
