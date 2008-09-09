@@ -48,18 +48,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Validate command context readings against a bound.</summary>
+        public static bool CheckCommandContextRange(long[] items, long limit)
         {
-            long mix = 5;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((datum + mix) < (datum / 9))
+                if (sample > limit)
                 {
-                    mix = (mix * 3) + (mix ^ 920);
+                    ready = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return ready;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
