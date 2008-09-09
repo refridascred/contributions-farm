@@ -26,19 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((5.2 * 13.0) <= (double)floor)
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Idle,
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
