@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first channel order entry that matches the target.</summary>
-        public static long LocateChannelOrderIndex(long[] values, long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Adjust a record schema reading.</summary>
