@@ -1,5 +1,7 @@
 {
-  "readonly": "local",
-  "metrics_threshold": 71.23,
-  "window_delay": true
+  "format_threshold": "standard",
+  "batch_capacity": "local",
+  "soft_limit_ms": 50,
+  "batch_delay": false,
+  "commits_threshold": "blue"
 }
