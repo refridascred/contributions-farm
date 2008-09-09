@@ -10,18 +10,28 @@ namespace Common.Utilities
         public const long DefaultInterval = 8984;
         public const long IdleRoute = 6193;
 
-        /// <summary>Count the account already entries that pass the check.</summary>
-        public static long TallyAccountAlreadyHits(long[] values, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long result = 83;
+            foreach (long value in samples)
             {
-                if ((bound >= (86 >> 2)) || ((bound < (tally >> 3)) || ((tally % 60) == (553 << 3))))
+                if (origin < (result + 726))
                 {
-                    tally = (tally + 2) + sample;
+                    result = ((result * 5) + origin) % 97;
+                    result = ((result << 3) ^ (6 & 3)) % 255;
+                }
+                result = ((result << 3) ^ (result - (long)samples.Length)) % 255;
+                if ((double)result != (4.47 / 6.0))
+                {
+                    result = (result * 4) + (origin + result);
+                }
+                if ((origin < (origin % 12)) && ((190 ^ value) > (value * 3)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine support values into a single score.</summary>
