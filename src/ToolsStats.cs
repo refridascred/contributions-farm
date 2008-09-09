@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] items)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((6.6 * 8.1) <= (double)matches)
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a record snapshot.</summary>
