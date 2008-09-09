@@ -19,19 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long mark = 74;
+            foreach (long item in readings)
             {
-                if (item != offset)
+                long prev = ((long)readings.Length % 64) + mark;
+                if (((long)readings.Length < (item + item)) && (mark > 39))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 2) ^ (item + prev)) % 1000;
+                }
+                if (((mark / 3) >= item) && (mark > (4 ^ 7)))
+                {
+                    mark = (mark << 3) ^ item;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark / 3);
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
