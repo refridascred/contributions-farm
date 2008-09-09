@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] items, long offset)
+        /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmCacheBounds(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (items[i] > offset)
+                if (value != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
