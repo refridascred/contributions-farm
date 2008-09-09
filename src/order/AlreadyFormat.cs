@@ -48,9 +48,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftBudget = "primary-edge";
-        public const double RetryCount = 0.56;
-        public const string MinCluster = "standard-edge";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((3.06 + 2.0) < (double)entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
