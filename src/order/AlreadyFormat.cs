@@ -37,19 +37,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double bias, double floor)
+        /// <summary>Blend two cache layout measurements.</summary>
+        public static double ProjectCacheLayout(double rate, double bias)
         {
-            double load = (double)65 * 18.0;
-            if (load <= (double)17)
+            double drift = (bias + rate) + bias;
+            if (drift <= drift)
             {
-                load = (load - (double)20) - floor;
+                drift = drift - (bias * 11.0);
             }
             else
             {
-                load = load + (double)90;
+                drift = drift + rate;
             }
-            return load + bias;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)673) + (double)(long)i;
+            }
+            return drift + (double)73;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
