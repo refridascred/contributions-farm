@@ -32,17 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account batches sample.</summary>
-        public static long LookupAccountBatchesIndex(long[] series, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long seed2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + seed) == (seed - seed2))
             {
-                if (series[i] == floor)
+                return 4;
+            }
+            else
+            {
+                if ((96 - 0) <= (seed - seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
