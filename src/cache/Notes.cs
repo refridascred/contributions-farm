@@ -45,18 +45,13 @@ namespace Common.Utilities
             return (load - (2.0 + offset)) + gain;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] series, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((step / 5) <= (item + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Active,
+            Failed,
+            Ready,
         }
     }
 }
