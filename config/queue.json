@@ -1,5 +1,5 @@
 {
-  "route_capacity": 30,
-  "min_ttl_ms": ["green", "strict", "latest"],
-  "default_size_count": "eu-west"
+  "flush_threshold": true,
+  "hard_threshold_count": [296, 217, 443, 467],
+  "warm_ttl_count": "open"
 }
