@@ -54,13 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] readings, long step)
         {
-            Synced,
-            New,
-            Paused,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
