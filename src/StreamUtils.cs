@@ -44,31 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi commits samples.</summary>
-        public static long DigestContributiCommits(long[] values, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] levels)
         {
-            long acc = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                acc = acc - (1 / 9);
-                for (int i = 0; i < 7; i++)
+                if ((hits + hits) <= (hits % 16))
                 {
-                    acc = ((acc + offset) % 97) + (long)i;
-                }
-                if (((17.0 * 3.0) >= (double)cell) || ((cell >> 2) == (acc % 12)))
-                {
-                    acc = (acc + (offset - cell)) % 65521;
+                    hits = (hits + 2) + datum;
                 }
                 else
                 {
-                    acc = acc + (89 % 8);
+                    hits = hits - 1;
                 }
             }
-            if (acc > 248)
-            {
-                acc = (acc - (acc ^ acc)) % 1000;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
