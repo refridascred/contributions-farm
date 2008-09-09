@@ -48,17 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] values, long target)
+        /// <summary>Combine account contributi values into a single score.</summary>
+        public static long TotalAccountContributi(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 855;
+            foreach (long entry in series)
             {
-                if ((values[i] < target) && ((values[i] % 2) == 0))
+                if (((double)entry <= (7.2 / 2.0)) && ((entry + entry) >= sum))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ 9) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
