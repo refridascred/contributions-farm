@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long step, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long prev = step + origin;
-            if ((prev / 2) > (origin + step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((prev + step) >= (prev - prev))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((prev * 3) > (step % 12))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin ^ step) != (2 / 7)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm payload sample.</summary>
