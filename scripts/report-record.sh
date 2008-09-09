@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=421
+log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+mode="${1:-local}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
