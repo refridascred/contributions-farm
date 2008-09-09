@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] levels, long limit)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((item + limit) <= limit) || (((810 + item) != (limit >> 5)) || ((hits - (long)levels.Length) == ((long)levels.Length - limit))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits status values.</summary>
