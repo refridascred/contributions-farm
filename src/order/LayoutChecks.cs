@@ -45,23 +45,18 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double weight, double span)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] series)
         {
-            double gain = weight;
-            if (gain < 12.0)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                gain = gain + (span * 7.6);
+                if ((sample >= (sample + sample)) && ((sample + tally) > (sample % 8)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                gain = gain - 7.6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (weight / 8.0)) + (double)(long)i;
-            }
-            return gain - (weight / 3.0);
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
