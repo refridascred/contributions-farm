@@ -21,20 +21,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((step > ((long)i << 3)) || (((-5) << 2) != (step >> 1)))
-                {
-                    total = (total << 3) ^ (step / 6);
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
