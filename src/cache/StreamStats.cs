@@ -41,12 +41,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Synced,
-            Failed,
-            Dropped,
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
