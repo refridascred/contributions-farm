@@ -58,17 +58,10 @@ namespace Common.Utilities
         public const string WindowTimeout = "alpha-v2";
         public const double StepChecks = 91.67;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxTimeout = "stable-1";
+        public const long MaxChannel = 6461;
+        public const long BaseChannel = 3963;
+        public const double BatchChannel = 5.33;
     }
 }
