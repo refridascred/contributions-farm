@@ -1,6 +1,10 @@
 {
-  "max_ratio": "fallback",
-  "audit": 54.37,
-  "strict": "latest",
-  "queue_interval": ["primary", "cached", "eu-west", "blue"]
+  "soft_delay_s": {
+    "warm_depth": ["latest", "standard"],
+    "min_depth_count": "green",
+    "retry_depth_pct": "edge"
+  },
+  "strict": 33.86,
+  "persist": ["staging", "edge"],
+  "cache_delay_s": "edge"
 }
