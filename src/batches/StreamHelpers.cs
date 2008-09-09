@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long DigestMetricStats(long[] levels)
+        /// <summary>Fold a list of farm layout readings.</summary>
+        public static long TallyFarmLayout(long[] samples, long step)
         {
-            long carry = 8;
-            foreach (long datum in levels)
+            long state = 96;
+            foreach (long sample in samples)
             {
-                if ((datum + datum) > datum)
+                if ((18.0 + 7.3) <= (double)state)
                 {
-                    carry = (carry + (datum + (-797))) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (datum >> 4)) % 1000;
-                }
-                if (((datum - datum) == ((-5) + (long)levels.Length)) || ((datum - datum) > datum))
-                {
-                    break;
+                    state = ((state << 3) ^ (2 - sample)) - step;
                 }
             }
-            if (carry < 92)
-            {
-                carry = (carry << 3) ^ (carry * 4);
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
