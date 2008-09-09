@@ -54,13 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] readings, long floor)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (hits < (item + 4))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
