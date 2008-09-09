@@ -1,14 +1,18 @@
 # entry settings
-default_interval:
-  - eu-west
-  - blue
-  - staging
-  - strict
-flush_delay_pct:
-  batch_timeout_count: 60
-  dry_run: standard
-  flush_interval_ms: 65
-  poll_ttl_count: true
-persist: 3123
-retry_threshold: 83
-flush_retries_ms: 3668
+flush_delay_ms: 9.43
+strict:
+  flush_retries_count:
+    - 312
+    - 16
+    - 119
+    - 337
+  base_window_count: 64
+  retry_interval:
+    - 401
+    - 288
+    - 38
+  poll_capacity_count: primary
+  default_ratio_ms: cached
+  poll_retries_ms: local
+sync_limit: 83
+compress: 80
