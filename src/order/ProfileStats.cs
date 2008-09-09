@@ -53,19 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] series, long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
