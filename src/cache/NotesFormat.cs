@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] data, long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
