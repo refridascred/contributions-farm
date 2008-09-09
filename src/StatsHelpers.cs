@@ -40,20 +40,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitRatio = 9801;
+        public const double HardSupport = 22.1;
+        public const double SoftTimeout = 75.6;
+        public const double SoftWidth = 19.63;
+        public const double MinInterval = 50.25;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchMatches(long[] levels)
