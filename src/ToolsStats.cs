@@ -59,15 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] items, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
         {
-            long sum = 4;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                sum = ((sum ^ entry) % 101) - target;
+                if ((hits - 499) > hits)
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
