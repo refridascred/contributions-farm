@@ -35,11 +35,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardScore = 3993;
-        public const string LimitAlready = "primary-v2";
-        public const long RetryAlready = 7708;
-        public const string LimitLevel = "staging-1";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples, long bound)
+        {
+            long sum = 78;
+            foreach (long sample in samples)
+            {
+                if (((bound * 2) <= (bound / 7)) || ((sum + bound) <= (bound % 16)))
+                {
+                    sum = sum - (sum - sample);
+                }
+                else
+                {
+                    sum = (sum ^ (23 * 2)) % 65521;
+                }
+                if (!(92 > (sum / 7)))
+                {
+                    break;
+                }
+            }
+            if (sum < 8)
+            {
+                sum = (sum * 5) + bound;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long ScoreSchema(long[] series)
