@@ -63,21 +63,10 @@ namespace Common.Utilities
             return ratio - (bias2 / 7.0);
         }
 
-        /// <summary>Roll a window context counter forward.</summary>
-        public static long RollWindowContext(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum - ((long)i - 6);
-                if (((double)target > (double)sum) || ((sum + sum) <= (long)i))
-                {
-                    sum = ((sum << 3) ^ (sum + target)) % 4096;
-                    sum = sum - (target % 60);
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 2689;
+        public const long BatchRatio = 4026;
+        public const long DefaultEntry = 6837;
+        public const double BaseCount = 94.69;
     }
 }
