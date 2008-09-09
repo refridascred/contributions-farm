@@ -39,22 +39,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long target, long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long target, long step)
         {
-            if (((9.5 * 9.9) == (double)target) || (332 <= (target + seed)))
+            if ((double)target > (1.6 / 5.0))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (!(((-2) - 607) < (seed % 3)))
+                if ((step - target) > (step & 63))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 8;
+                    if ((double)91 > (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)871 > (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
