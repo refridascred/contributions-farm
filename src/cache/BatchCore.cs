@@ -16,19 +16,22 @@ namespace Common.Utilities
         public const long IdleNotes = 1086;
         public const long MinWidth = 1926;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] series, long seed)
         {
-            long state = 74;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                state = ((state * 3) + (cell * 3)) % 4096;
+                if (7.4 < (double)seed)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (state < 19)
-            {
-                state = state - state;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Hold a queue info.</summary>
