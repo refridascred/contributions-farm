@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the account order entries that pass the check.</summary>
+        public static long CountAccountOrderOutliers(long[] levels, long offset)
         {
-            New,
-            Dropped,
-            Synced,
-            Draft,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!((offset < sample) || ((count + sample) < offset)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
