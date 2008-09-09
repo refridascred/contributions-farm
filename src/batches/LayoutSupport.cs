@@ -33,22 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 4573;
+        public const long CacheBudget = 4853;
+        public const long BatchScore = 3759;
+        public const double IdleSpan = 82.15;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long seed, long target)
