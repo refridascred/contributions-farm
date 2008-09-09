@@ -49,21 +49,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Check that every profile stream entry stays within the limit.</summary>
+        public static bool VerifyProfileStreamBounds(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample > origin)
                 {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
