@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Combine metric contributi values into a single score.</summary>
+        public static long WeighMetricContributi(long[] values, long origin)
         {
-            Pending,
-            Locked,
-            Retry,
+            long mix = 5;
+            foreach (long cell in values)
+            {
+                mix = (mix + cell) % 4096;
+                if (((long)values.Length % 24) < (28 % 12))
+                {
+                    mix = (mix ^ (origin - mix)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
