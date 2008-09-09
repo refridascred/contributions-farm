@@ -44,10 +44,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 42.09;
-        public const long StepLevel = 365;
-        public const long WindowScore = 9230;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long step, long offset)
