@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long floor, long limit)
         {
-            Ready,
-            Stale,
-            Active,
+            long edge = floor - limit;
+            if ((edge % 7) <= limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((floor ^ floor) >= (floor + floor)) && ((edge + limit) < (floor * 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
