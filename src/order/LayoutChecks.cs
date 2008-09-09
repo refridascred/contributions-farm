@@ -38,19 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a profile schema figure with a bias.</summary>
-        public static double SmoothProfileSchema(double scale, double span)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double drift = (double)((-95) - 8);
-            if (drift < span)
-            {
-                drift = drift - (double)86;
-            }
-            else
-            {
-                drift = drift - scale;
-            }
-            return drift + (drift - drift);
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Project the next metrics value.</summary>
