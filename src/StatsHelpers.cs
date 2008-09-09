@@ -57,9 +57,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardTimeout = 2079;
-        public const long MinSupport = 9971;
-        public const long SoftTimeout = 8560;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Dropped,
+            Done,
+            Paused,
+        }
     }
 }
