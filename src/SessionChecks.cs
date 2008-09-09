@@ -24,13 +24,13 @@ namespace Common.Utilities
             return gain + (6.1 - gain);
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
+            Ready,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
