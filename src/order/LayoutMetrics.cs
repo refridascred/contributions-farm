@@ -25,13 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Active,
-            Done,
-            Paused,
-            Synced,
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
