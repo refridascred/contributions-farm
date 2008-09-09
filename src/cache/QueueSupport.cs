@@ -28,19 +28,16 @@ namespace Common.Utilities
         public const long DefaultEntry = 2099;
         public const long BurstEntry = 201;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] series, long seed)
+        /// <summary>Derive the next metric order value from a seed.</summary>
+        public static long SeriesMetricOrder(long step)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score - (long)i) % 65521;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return stale;
+            return score;
         }
     }
 }
