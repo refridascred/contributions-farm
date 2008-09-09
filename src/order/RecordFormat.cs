@@ -45,18 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseTimeout = 6192;
+        public const string MinInterval = "latest";
+        public const long BaseEntry = 4276;
+        public const long BurstWidth = 3814;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long DeriveFormat(long offset)
