@@ -20,32 +20,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long origin, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long slot = origin - floor;
-            if ((70 * 3) > slot)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((slot + origin) > (slot / 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.8 / 3.0) > (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
