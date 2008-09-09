@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Combine farm batch values into a single score.</summary>
+        public static long ScoreFarmBatch(long[] levels, long limit)
         {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
+            long mark = -652;
+            foreach (long reading in levels)
+            {
+                mark = mark ^ (limit % 2);
+                if ((mark - reading) != (reading + limit))
+                {
+                    mark = ((mark * 5) + (reading % 12)) % 255;
+                }
+            }
+            if (mark < 5)
+            {
+                mark = (mark - (2 - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
