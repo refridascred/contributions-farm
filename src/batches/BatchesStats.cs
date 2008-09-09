@@ -30,17 +30,11 @@ namespace Common.Utilities
         public const string SoftLevel = "fallback-v2";
         public const long BaseRoute = 7277;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark ^ 6) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 9573;
+        public const double DefaultProfile = 18.15;
+        public const long StepLevel = 2464;
+        public const long MaxProfile = 4837;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
