@@ -1,7 +1,6 @@
-id,region
-1,49.62
-2,blue
-3,10
-4,287
-5,51.18
-6,green
+id,owner,rank,ratio,score
+1,87.77,263,927,362
+2,94.74,70.4,stable,primary
+3,127,663,strict,55
+4,902,cached,532,stable
+5,29.6,58.36,35.49,green
