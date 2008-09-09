@@ -23,12 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 4180;
-        public const long MinFormat = 763;
-        public const long BaseFormat = 380;
-        public const long IdleFormat = 5481;
-        public const long BurstFormat = 3767;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstSize = 67.7;
+        public const long DefaultEntry = 2099;
+        public const long BurstEntry = 201;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] series, long offset)
