@@ -1,18 +1,5 @@
 {
-  "support_threshold": {
-    "burst_limit_ms": 73,
-    "schema_threshold": "blue",
-    "retry_retries": "open",
-    "strict": true,
-    "sync_delay": {
-      "already_retries": "strict",
-      "idle_capacity": [218, 471],
-      "metric_threshold": "open",
-      "queue_timeout": 55.12,
-      "cluster_limit": "fallback"
-    }
-  },
-  "soft_capacity": 98,
-  "max_limit": [344, 141],
-  "sync_depth_pct": 34.11
+  "stream_ratio": ["fallback", "blue", "legacy"],
+  "cache_threshold_s": "latest",
+  "persist": 4147
 }
