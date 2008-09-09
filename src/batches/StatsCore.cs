@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long sum = 80;
-            foreach (long datum in values)
-            {
-                if ((sum >> 4) > 2)
-                {
-                    sum = sum ^ (datum - 1);
-                }
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
