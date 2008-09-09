@@ -37,19 +37,11 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double bias, double bias2)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double ratio = 3.6;
-            if (ratio > 7.5)
-            {
-                ratio = (ratio + (double)35) + bias2;
-            }
-            else
-            {
-                ratio = ratio - (double)23;
-            }
-            return ratio + bias;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
