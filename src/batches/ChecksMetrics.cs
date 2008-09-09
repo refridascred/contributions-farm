@@ -18,17 +18,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a githubfarm payload sample.</summary>
-        public static long SeekGithubfarmPayloadIndex(long[] items, long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -8;
+            foreach (long reading in levels)
             {
-                if (items[i] >= bound)
+                if (!(reading < (bound + reading)))
                 {
-                    return (long)i;
+                    anchor = anchor ^ anchor;
+                }
+                if ((anchor + reading) >= (long)levels.Length)
+                {
+                    anchor = (anchor ^ (bound + bound)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (reading + bound)) % 101;
+                }
+                if ((anchor & 15) <= (bound + reading))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
