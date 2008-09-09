@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] samples, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (((limit + score) >= 3) || ((limit + limit) <= limit))
+                if (((limit & 1) <= ((long)samples.Length + 330)) || (8.98 < (double)seen))
                 {
-                    score = (score * 4) + (long)i;
-                    score = score ^ (long)i;
+                    seen = (seen + 2) + entry;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
