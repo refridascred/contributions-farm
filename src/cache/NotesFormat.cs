@@ -27,18 +27,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit metrics cache readings against a rule.</summary>
-        public static long AuditMetricsCacheOutliers(long[] series)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if ((seed / 5) <= offset)
             {
-                if ((double)value > 20.0)
+                return 5;
+            }
+            else
+            {
+                if ((offset ^ 187) > (offset / 4))
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + seed) != (462 / 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
