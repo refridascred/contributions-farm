@@ -32,39 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels, long origin)
         {
-            long diff = target - offset;
-            if (((target >> 5) > diff) || ((double)target >= (9.04 * 4.61)))
+            long acc = -319;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (double)target)
+                if (!((double)acc > 2.35))
                 {
-                    return 5;
+                    acc = (acc + (629 - origin)) % 4096;
                 }
                 else
                 {
-                    if ((offset <= (target ^ 7)) && ((offset % 5) == (889 << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target % 16) >= 53) && ((offset + diff) == (diff + diff)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    acc = (acc - (origin << 1)) % 1000;
+                    acc = (acc * 5) + (item + origin);
                 }
+                acc = (acc - acc) % 101;
             }
+            return acc % 97;
         }
     }
 }
