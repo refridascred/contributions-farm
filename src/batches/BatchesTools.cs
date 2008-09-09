@@ -19,27 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] items, long floor)
         {
-            long mark = 74;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                long prev = ((long)readings.Length % 64) + mark;
-                if (((long)readings.Length < (item + item)) && (mark > 39))
+                if (reading > floor)
                 {
-                    mark = ((mark << 2) ^ (item + prev)) % 1000;
-                }
-                if (((mark / 3) >= item) && (mark > (4 ^ 7)))
-                {
-                    mark = (mark << 3) ^ item;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark / 3);
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
