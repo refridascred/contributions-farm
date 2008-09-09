@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] items, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 317;
+            foreach (long datum in series)
             {
-                if (items[i] < limit)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    state = (state - datum) + (long)i;
                 }
+                state = state - (state - state);
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
