@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the route githubfarm series from a seed.</summary>
-        public static long SeriesRouteGithubfarm(long origin)
+        /// <summary>Count the counter window entries that pass the check.</summary>
+        public static long MeasureCounterWindowGaps(long[] data, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((origin / 8) <= entry)
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
