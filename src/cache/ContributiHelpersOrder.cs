@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long floor, long limit)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if (!((8.7 / 6.0) == (double)floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor >= (floor & 127))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - floor) >= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
