@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            long sum = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((reading - limit) == (reading << 2))
+                if ((552 + value) <= value)
                 {
-                    sum = (sum + (reading + limit)) % 97;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
