@@ -54,19 +54,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double rate, double offset)
-        {
-            double ratio = rate;
-            if (ratio < rate)
-            {
-                ratio = (ratio + ratio) - offset;
-            }
-            else
-            {
-                ratio = ratio + (double)3;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftBudget = "primary-edge";
+        public const double RetryCount = 0.56;
+        public const string MinCluster = "standard-edge";
     }
 }
