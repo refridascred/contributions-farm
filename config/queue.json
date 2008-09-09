@@ -1,5 +1,8 @@
 {
-  "flush_threshold": true,
-  "hard_threshold_count": [296, 217, 443, 467],
-  "warm_ttl_count": "open"
+  "compress": "standard",
+  "contributi_window": ["local", "stable"],
+  "cache_window": ["standard", "standard", "local"],
+  "min_delay": "legacy",
+  "dry_run": "open",
+  "token_timeout": true
 }
