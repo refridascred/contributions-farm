@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long origin)
         {
-            Idle,
-            Paused,
-            Active,
-            Done,
+            long mix = 371;
+            foreach (long reading in readings)
+            {
+                mix = mix + origin;
+                if (!((double)mix >= (3.8 / 2.0)))
+                {
+                    mix = (mix << 2) ^ reading;
+                }
+                else
+                {
+                    mix = mix - (origin << 3);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
