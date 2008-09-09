@@ -29,14 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long offset)
         {
-            New,
-            Locked,
-            Done,
-            Ready,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile info.</summary>
