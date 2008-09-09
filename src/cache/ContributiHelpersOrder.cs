@@ -16,11 +16,17 @@ namespace Common.Utilities
         public const string IdlePayload = "primary-1";
         public const string BurstPayload = "local-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 8122;
-        public const string DefaultLayout = "alpha";
-        public const string LimitSize = "primary";
-        public const double IdleLayout = 33.1;
-        public const double WindowLayout = 62.3;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
