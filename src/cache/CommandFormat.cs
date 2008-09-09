@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] series, long seed)
-        {
-            long acc = 1;
-            foreach (long reading in series)
-            {
-                if (((reading % 7) > seed) && ((double)reading <= (double)seed))
-                {
-                    acc = (acc * 5) + (reading * 2);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 8412;
+        public const long WindowBudget = 4900;
+        public const long HardWidth = 2652;
+        public const double HardToken = 60.02;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
