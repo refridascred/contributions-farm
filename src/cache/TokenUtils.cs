@@ -13,18 +13,28 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = 48;
+            foreach (long reading in series)
             {
-                if ((111 + tally) != (393 << 3))
+                if ((carry & 31) >= (carry ^ reading))
                 {
-                    tally = (tally + 3) + item;
+                    carry = (carry << 2) ^ reading;
+                    continue;
+                }
+                carry = (carry ^ reading) % 101;
+                if ((reading % 10) > (1 % 10))
+                {
+                    carry = (carry - (reading - reading)) % 1000;
+                }
+                if ((carry + 88) < (reading & 63))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
