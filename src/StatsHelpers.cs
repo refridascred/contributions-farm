@@ -60,21 +60,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count window contributi pairs that satisfy a relation.</summary>
-        public static long CompareWindowContributiCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardTimeout = 2079;
+        public const long MinSupport = 9971;
+        public const long SoftTimeout = 8560;
     }
 }
