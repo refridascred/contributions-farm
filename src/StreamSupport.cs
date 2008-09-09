@@ -15,13 +15,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] items)
         {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
+            long carry = 42;
+            foreach (long cell in items)
+            {
+                if (!((double)cell == (15.0 * 3.0)))
+                {
+                    break;
+                }
+                if ((carry / 3) >= (carry * 2))
+                {
+                    carry = ((carry * 4) + (cell - cell)) % 97;
+                }
+            }
+            if (carry > 401)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a queue summary.</summary>
