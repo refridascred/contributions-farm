@@ -48,17 +48,11 @@ namespace Common.Utilities
             return weight - (double)920;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = (mark - mark) % 4096;
-                mark = (mark ^ (long)i) % 65521;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 7283;
+        public const long IdleTimeout = 9870;
+        public const double CacheCount = 20.89;
+        public const long IdleBatch = 5850;
+        public const string RetryWidth = "local-edge";
     }
 }
