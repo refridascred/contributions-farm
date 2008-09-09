@@ -32,10 +32,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 9276;
-        public const long BurstCounter = 680;
-        public const string MaxCounter = "primary-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxWidth = "staging-edge";
+        public const double LimitStats = 79.06;
+        public const long BatchStats = 9551;
+        public const string BaseScore = "stable-v2";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double HardScore = 40.07;
