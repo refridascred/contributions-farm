@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] data, long floor)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((18.0 + 3.2) == (double)entry) && ((232 ^ count) > (floor + floor)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Validate batch metric readings against a bound.</summary>
