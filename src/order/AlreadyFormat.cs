@@ -40,23 +40,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two cache layout measurements.</summary>
-        public static double ProjectCacheLayout(double rate, double bias)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] items, long floor)
         {
-            double drift = (bias + rate) + bias;
-            if (drift <= drift)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - (bias * 11.0);
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)673) + (double)(long)i;
-            }
-            return drift + (double)73;
+            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
