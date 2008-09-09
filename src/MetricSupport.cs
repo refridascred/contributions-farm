@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] series, long origin)
+        /// <summary>Digest a series of order record entries.</summary>
+        public static long DigestOrderRecord(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long sum = 128;
+            foreach (long datum in levels)
             {
-                if (datum >= origin)
+                if ((6 > (datum / 5)) || ((93 - datum) >= (datum ^ datum)))
                 {
-                    stale = false;
+                    sum = (sum << 2) ^ sum;
+                }
+                if ((double)(long)levels.Length < 1.3)
+                {
                     break;
                 }
             }
-            return stale;
+            if (sum < 7)
+            {
+                sum = (sum << 2) ^ ((long)levels.Length - sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the report status values.</summary>
