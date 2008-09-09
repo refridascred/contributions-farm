@@ -31,15 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next queue schema value from a seed.</summary>
-        public static long SeriesQueueSchema(long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            double scale = bias;
+            if (scale < bias)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                scale = scale - (scale * 5.8);
             }
-            return acc;
+            else
+            {
+                scale = scale - (weight - bias);
+            }
+            return scale + scale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
