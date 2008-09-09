@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] values, long bound)
         {
-            long state = 28;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((datum ^ state) != (434 + seed)))
+                if (values[i] == bound)
                 {
-                    state = state ^ (24 - state);
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
