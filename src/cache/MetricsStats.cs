@@ -26,17 +26,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)seed > (double)906)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (((seed ^ target) == (seed * 3)) || ((double)seed < (17.0 + 7.9)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((9.75 - 4.36) >= (double)target) && ((double)seed >= (double)646))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
