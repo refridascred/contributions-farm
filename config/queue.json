@@ -1,20 +1,8 @@
 {
-  "sync_interval": "cached",
-  "poll_interval_s": "stable",
-  "cache_window": "strict",
-  "enabled": {
-    "sync_capacity": 38,
-    "flush_threshold_s": [239, 52, 316],
-    "metrics_depth": {
-      "retry_delay": ["local", "strict"],
-      "compress": 80.64,
-      "default_depth_ms": [376, 85],
-      "retry_capacity_s": "strict",
-      "cache_retries": true
-    },
-    "hard_ttl_ms": [466, 226, 34],
-    "stats_window": "standard",
-    "buffer_depth": 68
-  },
-  "payload_retries": "staging"
+  "burst_ratio_ms": "strict",
+  "enabled": "primary",
+  "default_depth_pct": 7457,
+  "retry_depth": 60,
+  "burst_retries": "standard",
+  "buffer_depth": "eu-west"
 }
