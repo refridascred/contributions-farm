@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine editor channel values into a single score.</summary>
-        public static long TotalEditorChannel(long[] values, long offset)
+        /// <summary>Rank record order input into a small class.</summary>
+        public static long RankRecordOrder(long target, long limit)
         {
-            long score = 89;
-            foreach (long entry in values)
+            long slot = target - limit;
+            if ((limit ^ slot) >= limit)
             {
-                score = ((score - offset) % 65521) + entry;
-                if ((102 << 1) < (offset + score))
+                return 3;
+            }
+            else
+            {
+                if ((double)target >= 6.4)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((target & 3) <= target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Look up the position of a account batches sample.</summary>
