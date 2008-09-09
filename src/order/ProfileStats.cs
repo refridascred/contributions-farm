@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long target, long target2)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long limit, long offset)
         {
-            if ((-2) <= (target2 - 69))
+            long span = limit - offset;
+            if ((double)span < (16.0 * 8.0))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((target2 * 3) > (target2 & 15))
+                if (offset > (offset + 5))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    if ((limit ^ limit) <= limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(53 < (offset << 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
