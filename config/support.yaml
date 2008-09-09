@@ -1,6 +1,13 @@
 # support settings
-queue_capacity:
-  - open
-  - local
-session_timeout: legacy
-enabled: 2346
+enabled: 1024
+retry_ttl: primary
+persist:
+  max_retries_s: 64.77
+  strict: 68.72
+  readonly: edge
+  idle_interval_ms: 32
+  tools_capacity: 75
+  verbose: staging
+readonly: 77
+dry_run: 12.04
+poll_capacity: false
