@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] levels, long floor)
         {
-            long carry = 1;
+            bool stale = true;
             foreach (long sample in levels)
             {
-                if (!((double)sample > 0.2))
+                if (sample > floor)
                 {
-                    continue;
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
-                if ((carry - carry) == (sample >> 5))
-                {
-                    carry = ((carry << 3) ^ (carry + (long)levels.Length)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 6)
-            {
-                carry = (carry - ((-957) >> 3)) % 255;
-            }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Hold a command stats.</summary>
