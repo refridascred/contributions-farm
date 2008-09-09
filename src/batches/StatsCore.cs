@@ -52,14 +52,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long floor, long target)
         {
-            New,
-            Closed,
-            Ready,
-            Paused,
-            Failed,
+            if ((-84) <= (floor / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.0 * 19.0) >= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two stream measurements.</summary>
