@@ -1,9 +1,32 @@
 # entry settings
-audit: 17.11
-support_ttl: false
-retry_ratio: 94.24
-default_delay_pct:
-  - cached
-  - cached
-layout_limit: 13.88
-cache_window: 30
+readonly:
+  persist:
+    retry_ttl_ms:
+      - staging
+      - standard
+      - legacy
+      - eu-west
+    format_capacity: 1024
+    idle_threshold_ms: 34
+    sync_capacity_pct: 100
+    counter_delay:
+      - 475
+      - 336
+    flush_limit_count: strict
+  strict:
+    max_size_s: 37.66
+    default_interval_count: 30
+    max_retries_count: 8738
+    command_window:
+      - 55
+      - 84
+      - 226
+      - 430
+    already_timeout: 30
+  checks_depth: true
+  max_timeout_s: 83.37
+  warm_depth_s: edge
+  hard_ttl: 26.16
+strict: 100
+idle_delay_count: 93.68
+hard_ttl_count: 100
