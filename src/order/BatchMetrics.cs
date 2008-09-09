@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchBudget = 7458;
-        public const long IdleFactor = 5386;
-        public const long BaseScore = 4367;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long step, long seed)
+        {
+            if ((step + seed) <= 0)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((9.92 - 2.9) >= (double)step) && (step >= (step - step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((140 ^ seed) != (step - seed)) && ((double)seed > 17.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
