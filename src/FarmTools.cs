@@ -13,12 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] values)
         {
-            Ready,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((hits >> 5) <= (hits + entry)) || (((hits & 15) <= (-87)) && (entry >= 926)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many filter cluster samples are out of range.</summary>
