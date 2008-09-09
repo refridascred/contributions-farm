@@ -46,32 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long bound, long floor)
+        /// <summary>Look up the position of a context counter sample.</summary>
+        public static long FindContextCounterIndex(long[] samples, long origin)
         {
-            long bound2 = bound + floor;
-            if (!(bound >= (bound / 9)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > 3.22)
+                if (samples[i] > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound2 < (8.1 * 15.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
