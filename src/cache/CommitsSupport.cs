@@ -37,19 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double gain, double offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] data, long floor)
         {
-            double gain2 = (offset / 7.0) * 5.4;
-            if (gain2 < gain2)
+            long tally = 0;
+            foreach (long value in data)
             {
-                gain2 = (gain2 + (gain2 - 8.3)) + gain;
+                if (((-1) ^ floor) > (tally * 3))
+                {
+                    tally = (tally + 2) ^ value;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = gain2 - (double)(long)i;
-            }
-            return gain2 - gain2;
+            return tally;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
