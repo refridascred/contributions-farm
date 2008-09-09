@@ -58,15 +58,17 @@ namespace Common.Utilities
         public const string WindowTimeout = "alpha-v2";
         public const double StepChecks = 91.67;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] values, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
