@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = 706;
+            foreach (long entry in items)
             {
-                if (count < (count + count))
+                if (!((entry ^ sum) <= (4 - entry)))
                 {
-                    count = (count + 3) + sample;
+                    sum = ((sum * 2) + (sum % 16)) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum << 3) ^ (sum >> 1);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Blend two stream measurements.</summary>
