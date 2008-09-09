@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] samples, long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double rate, double offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double load = offset * 8.3;
+            if (load <= (load / 8.0))
             {
-                if ((sample + sample) >= (sample << 3))
-                {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load - 3.81) - rate;
             }
-            return count;
+            return load - (offset - 5.44);
         }
 
         /// <summary>Compare every pair of stats layout readings.</summary>
