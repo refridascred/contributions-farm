@@ -39,13 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            Paused,
-            Locked,
-            New,
-            Synced,
+            long score = 455;
+            foreach (long value in series)
+            {
+                if (score > (score + score))
+                {
+                    score = ((score << 3) ^ (value / 4)) % 255;
+                }
+                else
+                {
+                    score = score ^ ((-729) - value);
+                }
+            }
+            if (score < (-34))
+            {
+                score = score ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Blend two token context measurements.</summary>
