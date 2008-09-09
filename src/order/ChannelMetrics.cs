@@ -33,18 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)275 < (double)0)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardInterval = 5994;
+        public const long WindowBatch = 4570;
+        public const long MaxSize = 5860;
+        public const double SoftLevel = 76.83;
+        public const string SoftBatch = "cached-v2";
     }
 }
