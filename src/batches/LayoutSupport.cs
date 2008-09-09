@@ -61,15 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double scale, double offset)
+        /// <summary>Scale a commits counter figure with a bias.</summary>
+        public static double AdjustCommitsCounter(double gain, double offset)
         {
-            double drift = 8.9 * 1.0;
-            for (int i = 0; i < 6; i++)
+            double rate = (double)46 / 4.0;
+            if (rate >= gain)
             {
-                drift = (((drift - drift) + (double)(long)i) - scale) - offset;
+                rate = rate - (double)(-853);
             }
-            return drift - (drift * 8.7);
+            return rate - (offset * 15.0);
         }
 
         /// <summary>Describe the batch class values.</summary>
