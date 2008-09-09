@@ -60,15 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] readings, long offset)
         {
-            long acc = 72;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc ^ (3 * 3)) % 65521) ^ cell;
+                if ((offset % 100) > offset)
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
