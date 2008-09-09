@@ -41,19 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double bias, double offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double rate = bias;
-            if (rate < rate)
-            {
-                rate = (rate + (double)695) + offset;
-            }
-            else
-            {
-                rate = rate + 5.9;
-            }
-            return rate + bias;
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
