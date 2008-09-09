@@ -31,18 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many filter cache samples are out of range.</summary>
-        public static long TallyFilterCacheMatches(long[] samples)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((matches + matches) >= (sample / 5))
-                {
-                    matches = matches + 1;
-                }
+                state = (state ^ 4) % 255;
+                state = (state << 3) ^ (state & 7);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count order cluster pairs that satisfy a relation.</summary>
