@@ -44,19 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] items, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (item > origin)
+                if (cell < limit)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Hold a record summary.</summary>
