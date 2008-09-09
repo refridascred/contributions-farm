@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples, long offset)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mix = 732;
-            foreach (long item in samples)
-            {
-                mix = ((mix * 5) + item) - offset;
-                if ((2.7 / 4.0) == (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
