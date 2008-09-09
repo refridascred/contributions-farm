@@ -39,13 +39,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
