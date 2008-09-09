@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultLevel = 9033;
+        public const double WindowToken = 9.78;
+        public const string DefaultToken = "staging";
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
