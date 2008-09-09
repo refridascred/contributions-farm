@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every counter record entry stays within the limit.</summary>
-        public static bool VerifyCounterRecordRange(long[] items, long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
