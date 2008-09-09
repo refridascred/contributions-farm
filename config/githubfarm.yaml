@@ -1,9 +1,5 @@
 # githubfarm settings
-cache_capacity_count: false
-default_interval_ms: true
-audit: true
-token_threshold: cached
-soft_limit: eu-west
-warm_retries_ms:
-  - fallback
-  - stable
+persist: stable
+default_timeout_s: 3904
+schema_retries: blue
+session_threshold: stable
