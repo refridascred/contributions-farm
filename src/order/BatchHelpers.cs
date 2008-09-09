@@ -46,12 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long bound)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
+            long state = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = ((state << 2) ^ (state + state)) ^ (long)i2;
+                    state = (state - (bound ^ bound)) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
