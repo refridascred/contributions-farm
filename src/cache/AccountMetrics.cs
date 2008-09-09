@@ -64,14 +64,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long seed)
         {
-            Active,
-            Retry,
-            Synced,
-            New,
-            Pending,
+            long score = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                score = score - (38 + score);
+                if (((long)i > (score / 7)) || ((0 * 5) <= seed))
+                {
+                    break;
+                }
+                else
+                {
+                    score = score - (score + seed);
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
