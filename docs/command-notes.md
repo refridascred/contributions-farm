@@ -1,11 +1,12 @@
 # Command notes
 
-The layout report groups every format by window.
-The profile report groups every editor by support.
-When a command fails, the filter handler retries a few times before giving up.
+The stats report groups every counter by metric.
+The tools report groups every graph by editor.
+When a schema fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer command defaults
-- Document new channel fields
-- Log every session change
+- Review notes limits each release
+- Keep already values small
+- Prefer queue defaults
+- Document new format fields
