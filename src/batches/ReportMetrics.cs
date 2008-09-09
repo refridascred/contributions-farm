@@ -30,15 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double span)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            double drift = 14.0;
-            if (drift >= (ratio - span))
-            {
-                drift = drift + (span + 4.66);
-            }
-            return drift + (double)90;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
