@@ -1,26 +1,6 @@
 {
-  "cache_interval_pct": {
-    "session_retries": "eu-west",
-    "flush_threshold_pct": {
-      "record_threshold": true,
-      "warm_size": "latest",
-      "warm_depth_ms": 20.39,
-      "soft_window_count": [252, 187, 448, 50]
-    },
-    "dry_run": [287, 430, 157, 314]
-  },
-  "idle_size_ms": "latest",
-  "batch_depth": 412,
-  "strict": 100,
-  "token_threshold": {
-    "flush_threshold_count": {
-      "strict": "primary",
-      "persist": "local",
-      "batch_limit_pct": "primary",
-      "flush_ratio_s": "open"
-    },
-    "flush_size_count": "standard",
-    "cache_retries_s": 100
-  },
-  "contributi_capacity": false
+  "compress": 71.02,
+  "sync_threshold_count": "primary",
+  "warm_window_pct": ["cached", "standard", "strict", "fallback"],
+  "cache_interval": false
 }
