@@ -40,11 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next record value.</summary>
