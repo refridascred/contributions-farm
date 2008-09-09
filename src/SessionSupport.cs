@@ -37,17 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] samples)
         {
-            long total = 90;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                total = ((total << 3) ^ (total + 897)) % 97;
-                total = (total ^ (total % 10)) % 101;
-                total = (total ^ item) % 1000;
+                if (((tally & 15) > (reading >> 2)) || (reading >= ((long)samples.Length + tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
