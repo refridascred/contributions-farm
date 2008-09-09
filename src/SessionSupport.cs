@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] values, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen + seed) > (seen - entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            Failed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
