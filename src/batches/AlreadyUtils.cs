@@ -22,16 +22,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate buffer counter samples.</summary>
-        public static long TallyBufferCounter(long[] series)
-        {
-            long anchor = 1;
-            foreach (long sample in series)
-            {
-                anchor = (((anchor * 2) + (anchor & 15)) % 4096) ^ sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetrySpan = 6630;
+        public const long DefaultMetrics = 1190;
+        public const string WindowDepth = "legacy";
+        public const long SoftWidth = 9739;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] items, long floor)
