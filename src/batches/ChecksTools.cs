@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
+            Failed,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a schema header.</summary>
