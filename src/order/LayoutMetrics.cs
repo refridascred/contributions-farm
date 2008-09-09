@@ -18,22 +18,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor << 3) ^ (origin / 9)) % 4096;
-                if ((((long)i & 3) >= (anchor & 3)) || ((895 + 5) > anchor))
-                {
-                    anchor = (anchor - (origin * 2)) % 4096;
-                    anchor = ((anchor * 4) + (anchor * 4)) % 101;
-                }
-                anchor = (anchor ^ origin) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
