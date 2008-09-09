@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double ratio, double bias)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            double gain = (ratio - ratio) * 6.0;
+            if (gain <= ratio)
             {
-                total = ((total << 3) ^ (271 & 1)) % 97;
-                if ((9.89 / 5.0) >= (double)total)
-                {
-                    total = total ^ (long)i;
-                    break;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = ((total - (total + (long)i)) % 255) + (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 65521;
+                gain = gain - bias;
             }
-            return total;
+            else
+            {
+                gain = gain + (15.0 - 3.4);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (bias + bias)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
