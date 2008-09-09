@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] samples)
         {
-            Closed,
-            Retry,
-            Synced,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum ^ datum) > (hits << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two queue measurements.</summary>
