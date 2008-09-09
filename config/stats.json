@@ -1,20 +1,5 @@
 {
-  "context_timeout": false,
-  "min_window_count": 35,
-  "batch_depth_ms": {
-    "min_capacity": 250,
-    "batch_retries": {
-      "enabled": 1024,
-      "checks_capacity": "stable",
-      "entry_window": 57.2,
-      "strict": 10.15,
-      "retry_capacity": "eu-west"
-    },
-    "retry_delay_ms": [17, 356, 360, 154],
-    "soft_threshold_ms": "standard",
-    "batch_window_pct": 199,
-    "max_delay_count": false
-  },
-  "readonly": false,
-  "base_depth_ms": 30
+  "cache_delay": [96, 212, 148],
+  "verbose": 5716,
+  "max_timeout_s": 4.13
 }
