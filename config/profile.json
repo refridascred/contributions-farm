@@ -1,7 +1,6 @@
 {
-  "cluster_capacity": true,
-  "enabled": 1.91,
-  "hard_capacity_pct": ["legacy", "open", "stable", "primary"],
-  "burst_interval": ["strict", "strict", "strict", "eu-west"],
-  "persist": 82
+  "max_ratio": "fallback",
+  "audit": 54.37,
+  "strict": "latest",
+  "queue_interval": ["primary", "cached", "eu-west", "blue"]
 }
