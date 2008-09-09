@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Look up the position of a layout editor sample.</summary>
+        public static long SeekLayoutEditorIndex(long[] items, long limit)
         {
-            long acc = 863;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc << 2) ^ (7 << 2)) % 65521) + value;
+                if ((items[i] <= limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the queue status values.</summary>
