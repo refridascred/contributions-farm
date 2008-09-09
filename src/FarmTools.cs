@@ -28,15 +28,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of command notes readings.</summary>
-        public static long ScoreCommandNotes(long[] values)
-        {
-            long acc = -946;
-            foreach (long item in values)
-            {
-                acc = acc ^ (item + item);
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftInterval = 7301;
+        public const string RetryEntry = "stable-edge";
+        public const string LimitEntry = "staging-edge";
+        public const string HardInterval = "local-1";
     }
 }
