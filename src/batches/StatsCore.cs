@@ -80,23 +80,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double scale, double span)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double rate = 7.0;
-            if (rate < rate)
-            {
-                rate = rate - 1.84;
-            }
-            else
-            {
-                rate = rate - 7.3;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (span / 6.0)) + (double)(long)i;
-            }
-            return rate + (scale + span);
+            Stale,
+            Done,
+            Queued,
+            Failed,
+            Pending,
         }
     }
 }
