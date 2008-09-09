@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] data, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] levels, long limit)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long datum in levels)
             {
-                if (290 <= (reading + 44))
+                if ((limit & 15) >= (hits & 63))
                 {
-                    hits = (hits + 1) + seed;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
