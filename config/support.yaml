@@ -1,7 +1,9 @@
 # support settings
-tools_ttl: 6
-idle_retries_pct: 500
-burst_interval: latest
-max_size_ms: staging
-retry_ratio_ms: 35.1
-session_ttl: 82.62
+enabled: 100
+compress: true
+hard_threshold_pct: eu-west
+record_delay:
+  - eu-west
+  - strict
+  - legacy
+  - eu-west
