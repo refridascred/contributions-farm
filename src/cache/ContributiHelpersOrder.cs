@@ -18,19 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph report readings against a bound.</summary>
-        public static bool GuardGraphReportRange(long[] samples, long seed)
+        /// <summary>Fold a list of already notes readings.</summary>
+        public static long FoldAlreadyNotes(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long carry = 8;
+            foreach (long reading in readings)
             {
-                if (datum <= seed)
+                if (((double)carry >= (0.6 / 5.0)) && ((3.62 * 4.5) <= (double)step))
                 {
-                    ok = false;
+                    carry = carry + reading;
+                }
+                else
+                {
+                    carry = (carry - (step ^ reading)) % 101;
+                }
+                if ((step + carry) >= 465)
+                {
                     break;
                 }
             }
-            return ok;
+            if (carry > 89)
+            {
+                carry = (carry - (step << 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
