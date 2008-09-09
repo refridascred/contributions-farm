@@ -38,19 +38,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((834 + sample) != (sample * 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 89.32;
+        public const long CacheRecord = 955;
+        public const long HardCount = 4669;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ProjectGraph(double gain, double span)
