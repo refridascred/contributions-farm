@@ -61,23 +61,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items, long target)
-        {
-            long result = 1;
-            foreach (long entry in items)
-            {
-                if ((target + entry) >= target)
-                {
-                    result = (result + (result << 2)) % 97;
-                }
-                result = (result << 2) ^ (243 - target);
-            }
-            if (result < (-11))
-            {
-                result = result - (target >> 3);
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultDepth = 481;
+        public const long CacheMetric = 8168;
+        public const long BatchMetric = 4270;
+        public const long BurstFactor = 2790;
+        public const long BaseMetric = 7955;
     }
 }
