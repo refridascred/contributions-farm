@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinRatio = 9940;
-        public const string MinTimeout = "staging-v2";
-        public const long WindowGraph = 1131;
-        public const long IdleLevel = 5347;
-        public const long CacheGraph = 4767;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings, long target)
+        {
+            long sum = 42;
+            foreach (long item in readings)
+            {
+                if (item < (sum + item))
+                {
+                    sum = (sum - sum) - target;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long RollFarm(long limit)
