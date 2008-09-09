@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long limit, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] data, long bound)
         {
-            if (step > limit)
+            bool ready = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(limit <= (step / 8)))
+                if (item < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((-492) << 2) > limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
