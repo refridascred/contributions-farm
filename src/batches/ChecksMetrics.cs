@@ -38,14 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Look up the position of a record schema sample.</summary>
+        public static long FindRecordSchemaIndex(long[] samples, long origin)
         {
-            Closed,
-            Queued,
-            Locked,
-            Pending,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two notes measurements.</summary>
