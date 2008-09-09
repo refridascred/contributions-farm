@@ -1,26 +1,7 @@
 {
-  "flush_limit_count": 1024,
-  "filter_threshold": {
-    "cache_capacity_s": 14,
-    "default_timeout_s": false,
-    "cache_depth": "legacy",
-    "retry_threshold_count": 1024
-  },
-  "audit": {
-    "soft_interval_count": 100,
-    "warm_window": 60,
-    "max_ttl_pct": false,
-    "readonly": true,
-    "hard_depth_pct": "legacy"
-  },
-  "idle_size_s": {
-    "batch_interval_s": 51,
-    "warm_retries_pct": "eu-west",
-    "entry_capacity": 39.4,
-    "route_retries": true,
-    "cache_ttl_ms": [445, 97, 158],
-    "warm_interval_s": [155, 92, 439, 440]
-  },
-  "profile_timeout": "blue",
-  "enabled": ["blue", "latest", "local"]
+  "retry_retries": "stable",
+  "max_retries_count": "fallback",
+  "idle_depth": true,
+  "retry_window_s": "fallback",
+  "sync_limit_count": 60
 }
