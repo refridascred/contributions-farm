@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next commits account value.</summary>
-        public static double BlendCommitsAccount(double bias, double span)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double gain = 11.0 * 4.0;
-            if (gain >= gain)
-            {
-                gain = (gain - 2.8) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (bias * 9.7)) - (double)(long)i;
-            }
-            return gain - (gain * 7.0);
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
