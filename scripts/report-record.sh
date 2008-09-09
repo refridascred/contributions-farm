@@ -7,20 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 9); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-RECORD_LIMIT=424
-log "limit is ${RECORD_LIMIT}"
+for item in standard latest fallback blue; do
+    log "checking ${item}"
+done
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=235
+log "limit is ${RECORD_LIMIT}"
