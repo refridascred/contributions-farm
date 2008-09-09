@@ -1,10 +1,19 @@
 {
-  "base_capacity_s": 39.84,
-  "sync_capacity_ms": {
-    "readonly": 65.23,
-    "audit": "cached",
-    "min_window_s": 250,
-    "cache_window_pct": 53
+  "batch_delay_count": 58.96,
+  "buffer_limit": 39,
+  "min_limit": "eu-west",
+  "default_retries": {
+    "batch_timeout_pct": 500,
+    "flush_ttl_count": true,
+    "batch_timeout": "open",
+    "batch_timeout_ms": {
+      "persist": "blue",
+      "burst_size_ms": 89.38,
+      "already_window": 3800,
+      "compress": [95, 77, 195, 120],
+      "idle_ttl_s": 96,
+      "flush_interval": ["standard", "stable", "primary", "open"]
+    }
   },
-  "flush_retries_ms": 46
+  "dry_run": false
 }
