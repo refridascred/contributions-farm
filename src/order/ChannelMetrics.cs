@@ -19,18 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Derive the next command stats value from a seed.</summary>
+        public static long IterateCommandStats(long step)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total * 2) + (seed - seed)) % 1000;
-                total = ((total * 5) + ((long)i & 7)) % 97;
-                total = (total + ((-954) * 2)) % 65521;
-                total = ((total * 5) + (long)i) % 65521;
+                long matches = (long)i;
+                if ((acc <= (matches + (long)i)) || (matches < acc))
+                {
+                    acc = (acc + (acc << 1)) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
