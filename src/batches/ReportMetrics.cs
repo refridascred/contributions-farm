@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine farm payload values into a single score.</summary>
-        public static long WeighFarmPayload(long[] readings, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long seed)
         {
-            long result = -1;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ (target - result)) + cell;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 8)
-            {
-                result = result ^ (target + 98);
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Hold a context info.</summary>
