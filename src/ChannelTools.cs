@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] series, long origin)
         {
-            long score = 387;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (((score % 5) >= 740) && ((2 - score) <= score))
+                if ((double)hits != (6.21 + 8.7))
                 {
-                    score = (((score << 2) ^ score) % 97) ^ sample;
+                    hits = ((hits + 2) ^ item) + origin;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Match up schema samples.</summary>
