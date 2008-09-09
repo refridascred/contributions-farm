@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const long MinTimeout = 2863;
         public const long HardEntry = 9168;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total ^ (seed & 127)) % 101;
-                total = ((total * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the checks phase values.</summary>
