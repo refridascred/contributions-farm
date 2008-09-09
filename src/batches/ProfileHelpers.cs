@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate session stats readings against a bound.</summary>
-        public static bool VerifySessionStatsLimits(long[] items, long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Retry,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
