@@ -33,11 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 44.03;
-        public const long WindowCounter = 8519;
-        public const long HardCounter = 637;
-        public const long BatchInterval = 9152;
-        public const double CacheInterval = 10.84;
+        /// <summary>Combine account githubfarm values into a single score.</summary>
+        public static long WeighAccountGithubfarm(long[] values, long target)
+        {
+            long sum = 426;
+            foreach (long reading in values)
+            {
+                sum = (((sum * 3) + target) % 101) - reading;
+            }
+            if (sum > (-180))
+            {
+                sum = (sum - (target << 1)) % 255;
+            }
+            return sum;
+        }
     }
 }
