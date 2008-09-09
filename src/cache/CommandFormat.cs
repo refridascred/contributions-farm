@@ -42,15 +42,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next command stream value from a seed.</summary>
-        public static long SeriesCommandStream(long limit)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
