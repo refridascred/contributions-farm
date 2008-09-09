@@ -11,37 +11,22 @@ namespace Common.Utilities
         public const long MaxAccount = 3445;
         public const long LimitRatio = 2558;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long seed, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long target)
         {
-            long slot = seed ^ step;
-            if ((seed % 10) <= (8 << 3))
+            if ((target + limit) == (target - limit))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((seed << 1) < (step - (-246)))
+                if (((limit >> 1) >= target) && ((1.89 + 8.3) <= (double)target))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)slot != (9.8 * 17.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step >> 5) != (slot >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
