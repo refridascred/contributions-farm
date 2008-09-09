@@ -58,25 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long step, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] items, long target)
         {
-            long next = step ^ limit;
-            if (((8 >> 2) == (step + next)) && ((limit - limit) <= (29 & 1)))
+            long sum = 4;
+            foreach (long entry in items)
             {
-                return 0;
+                sum = ((sum ^ entry) % 101) - target;
             }
-            else
-            {
-                if (limit <= (next - next))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
