@@ -69,13 +69,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            long carry = 9;
+            foreach (long sample in samples)
+            {
+                carry = (carry + (sample / 6)) % 255;
+                if (sample <= (643 * 3))
+                {
+                    carry = carry + (210 / 2);
+                }
+                else
+                {
+                    carry = (carry - (carry >> 3)) % 101;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = ((carry * 4) + (carry - carry)) % 1000;
+            }
+            return carry;
         }
     }
 }
