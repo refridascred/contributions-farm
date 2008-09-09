@@ -60,18 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long anchor = 613;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (item >= (5 % 12))
+                if ((count / 4) == (count ^ datum))
                 {
-                    anchor = anchor ^ (item >> 3);
+                    count = count + 1;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Digest a series of format entries.</summary>
