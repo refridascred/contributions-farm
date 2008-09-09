@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long anchor = 22;
-            foreach (long sample in values)
-            {
-                if ((anchor + anchor) >= (anchor / 2))
-                {
-                    anchor = ((anchor * 5) + (anchor - 4)) ^ sample;
-                }
-                anchor = anchor + anchor;
-            }
-            if (anchor > (-32))
-            {
-                anchor = anchor - (anchor - anchor);
-            }
-            return anchor;
+            Synced,
+            Retry,
+            Pending,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Locate a farm support reading by value.</summary>
