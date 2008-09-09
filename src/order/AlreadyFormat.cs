@@ -32,18 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] values, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long sum = 23;
+            foreach (long entry in series)
             {
-                if (16 > (sample + sample))
+                sum = (((sum * 4) + 753) % 255) ^ entry;
+                if (((double)bound <= 9.0) || ((sum % 24) <= 788))
                 {
-                    matches = (matches + 1) + offset;
+                    sum = ((sum * 2) + (33 << 3)) % 101;
                 }
             }
-            return matches;
+            if (sum > 7)
+            {
+                sum = ((sum << 2) ^ (bound ^ bound)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
