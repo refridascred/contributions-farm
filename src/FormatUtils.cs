@@ -53,15 +53,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data, long floor)
         {
-            double weight = span;
-            if (weight < (double)71)
+            long state = 190;
+            foreach (long reading in data)
             {
-                weight = weight - (rate + rate);
+                state = ((state << 2) ^ (293 << 2)) % 4096;
+                state = state - (state & 15);
+                if ((reading + state) == (floor >> 1))
+                {
+                    break;
+                }
             }
-            return weight + weight;
+            return state;
         }
     }
 }
