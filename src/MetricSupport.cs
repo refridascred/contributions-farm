@@ -20,13 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long step, long seed)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            long gap = step - seed;
+            if (((double)gap > (double)seed) && (7 > (step + gap)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed > (4.6 * 2.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
