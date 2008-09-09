@@ -18,11 +18,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 7774;
-        public const double MaxCount = 68.34;
-        public const long DefaultScore = 7252;
-        public const long HardReport = 6033;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Owner { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] data)
