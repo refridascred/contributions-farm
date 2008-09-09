@@ -28,19 +28,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double scale, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] samples, long seed)
         {
-            double rate = 18.0;
-            if (rate >= (span + rate))
+            long mark = 78;
+            foreach (long datum in samples)
             {
-                rate = rate - (double)268;
+                if ((9.16 / 2.0) == (double)datum)
+                {
+                    mark = (mark ^ (mark - mark)) % 101;
+                }
+                else
+                {
+                    mark = (mark - seed) % 1000;
+                }
             }
-            else
+            if (mark < 318)
             {
-                rate = rate - 15.0;
+                mark = ((mark << 2) ^ (mark ^ mark)) % 101;
             }
-            return rate - scale;
+            return mark;
         }
 
         /// <summary>Project the next record value.</summary>
