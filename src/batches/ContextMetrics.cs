@@ -41,24 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long bound, long floor)
+        /// <summary>Roll a metrics editor counter forward.</summary>
+        public static long DeriveMetricsEditor(long seed)
         {
-            if ((4.0 - 1.4) > (double)floor)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)floor <= (1.93 + 1.8)) && ((floor + bound) > floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
