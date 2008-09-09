@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of queue buffer readings.</summary>
-        public static long OverlapQueueBufferCount(long[] values)
+        /// <summary>Count the profile entry entries that pass the check.</summary>
+        public static long AuditProfileEntryMatches(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2.8 - 17.0) != (double)seed)
                 {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
