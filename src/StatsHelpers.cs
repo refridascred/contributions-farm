@@ -50,22 +50,9 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] samples)
-        {
-            long total = 877;
-            foreach (long entry in samples)
-            {
-                if ((18.0 + 1.74) <= (double)entry)
-                {
-                    total = total ^ (7 + 37);
-                }
-            }
-            if (total > 4)
-            {
-                total = (total - (total / 4)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "local-v2";
+        public const long LimitCount = 6271;
+        public const double BurstScore = 19.17;
     }
 }
