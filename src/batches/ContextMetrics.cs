@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((item - origin) < (2 - item)) || ((564 % 7) >= item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every entry layout entry stays within the limit.</summary>
