@@ -64,19 +64,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] samples, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
