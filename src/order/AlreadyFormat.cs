@@ -61,18 +61,13 @@ namespace Common.Utilities
             return drift + (double)73;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] items)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((3.06 + 2.0) < (double)entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
