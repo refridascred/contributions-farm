@@ -29,26 +29,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            long anchor = 2;
-            foreach (long reading in data)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)reading < (2.32 - 18.0))
-                {
-                    anchor = (anchor * 3) + (reading - limit);
-                }
-                else
-                {
-                    anchor = anchor + (reading + limit);
-                }
+                mark = (mark + offset) % 97;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            if (anchor < (-379))
-            {
-                anchor = ((anchor << 2) ^ (anchor - limit)) % 97;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Blend two notes queue measurements.</summary>
