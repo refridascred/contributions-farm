@@ -37,13 +37,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            New,
             Retry,
-            Draft,
-            Done,
+            Stale,
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the layout kind values.</summary>
