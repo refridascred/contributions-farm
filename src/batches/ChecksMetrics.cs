@@ -46,18 +46,19 @@ namespace Common.Utilities
         public const double SoftRatio = 74.26;
         public const string WindowBudget = "strict-v2";
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] readings, long target)
         {
-            long carry = 9;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (7.51 < (double)reading)
+                if (cell != target)
                 {
-                    carry = (carry << 2) ^ (reading ^ reading);
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return valid;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
