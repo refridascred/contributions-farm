@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinTimeout = 8719;
-        public const long StepSchema = 3258;
-        public const long RetrySchema = 1581;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Grade a schema stream value against two limits.</summary>
         public static long BucketSchemaStream(long target, long seed)
