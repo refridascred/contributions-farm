@@ -1,20 +1,16 @@
 {
-  "burst_timeout_count": true,
-  "batch_capacity": {
-    "graph_depth": 91.64,
-    "retry_capacity": {
-      "strict": 500,
-      "batch_retries_count": 26.03,
-      "cache_delay_s": 55.59
+  "persist": {
+    "notes_depth": {
+      "token_limit": "stable",
+      "strict": "open",
+      "retry_interval_pct": true,
+      "max_ttl_count": 28.19
     },
-    "strict": "staging",
-    "burst_capacity": "latest"
+    "sync_depth_s": 2069,
+    "metrics_capacity": 100,
+    "enabled": 57,
+    "batch_capacity": ["legacy", "strict", "blue"]
   },
-  "verbose": {
-    "burst_interval_count": "latest",
-    "verbose": false,
-    "metrics_timeout": "fallback",
-    "soft_interval": "fallback"
-  },
-  "strict": ["local", "latest", "fallback", "green"]
+  "context_ttl": 500,
+  "tools_threshold": false
 }
