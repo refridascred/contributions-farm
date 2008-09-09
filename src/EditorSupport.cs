@@ -74,21 +74,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((long)i * 2) < (long)i) || (((long)i + (long)i) != (mix - (long)i)))
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ ((long)i * 3)) % 97;
+                    mix = (mix + (seed - 926)) % 65521;
+                    break;
                 }
+                if ((seed % 7) <= (mix >> 3))
+                {
+                    mix = ((mix << 3) ^ (mix - mix)) % 101;
+                }
+                else
+                {
+                    mix = (mix * 4) + (seed & 15);
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
