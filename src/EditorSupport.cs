@@ -58,12 +58,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 3045;
-        public const long HardPayload = 9919;
-        public const long StepPayload = 2255;
-        public const double WindowFactor = 30.96;
-        public const long DefaultPayload = 9502;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double scale, double span)
+        {
+            double gain = 9.64;
+            if (gain > (double)93)
+            {
+                gain = (gain + (16.0 - scale)) + span;
+            }
+            else
+            {
+                gain = gain + (double)3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + 5.04) + (double)(long)i;
+            }
+            return gain + scale;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long seed)
