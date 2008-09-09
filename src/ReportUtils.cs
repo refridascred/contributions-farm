@@ -55,25 +55,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor * 2) + origin;
-                if ((-5) <= anchor)
-                {
-                    anchor = ((anchor << 2) ^ origin) % 65521;
-                    anchor = (anchor * 4) + origin;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = ((anchor + (origin << 3)) % 255) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
