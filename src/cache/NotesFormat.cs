@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultLevel = 9033;
-        public const double WindowToken = 9.78;
-        public const string DefaultToken = "staging";
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels, long bound)
+        {
+            long result = 612;
+            foreach (long value in levels)
+            {
+                result = ((result * 5) + ((long)levels.Length + value)) - bound;
+            }
+            if (result < 3)
+            {
+                result = (result - 26) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
