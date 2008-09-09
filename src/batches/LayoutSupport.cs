@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] values, long target)
+        /// <summary>Compare every pair of farm schema readings.</summary>
+        public static long MatchFarmSchemaCount(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
