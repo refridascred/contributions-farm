@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double bias = (double)(461 >> 4);
-            return (bias - (gain + gain)) + floor;
+            Failed,
+            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a stream info.</summary>
