@@ -51,9 +51,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultTimeout = 24.2;
-        public const string DefaultQueue = "cached-1";
-        public const long MinQueue = 6898;
+        /// <summary>Count window contributi pairs that satisfy a relation.</summary>
+        public static long CompareWindowContributiCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
