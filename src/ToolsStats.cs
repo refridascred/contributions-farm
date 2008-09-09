@@ -58,21 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum + ((long)i ^ 762)) % 255;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum + (sum - bound)) % 101) ^ (long)i2;
-                    sum = ((sum * 5) + sum) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
