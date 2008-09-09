@@ -46,14 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] levels, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            long state = 0;
+            foreach (long reading in levels)
             {
-                state = state + (bound * 2);
-                state = ((state * 3) + (long)i) % 4093;
+                state = ((state << 3) ^ ((-3) + 65)) % 65521;
+                if (!((limit ^ reading) >= (reading + limit)))
+                {
+                    state = (state ^ (limit >> 1)) % 97;
+                }
+                if (state < (32 / 9))
+                {
+                    state = (state - (reading / 7)) % 4096;
+                }
             }
             return state;
         }
