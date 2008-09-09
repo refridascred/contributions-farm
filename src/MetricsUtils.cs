@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                state = state ^ (3 - state);
-                if ((18.0 / 4.0) >= (double)target)
+                if (item <= (matches / 9))
                 {
-                    state = state - ((long)i >> 1);
-                    state = (state << 3) ^ (target & 15);
+                    matches = matches + 3;
                 }
-                else
-                {
-                    state = ((state << 2) ^ state) % 101;
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
