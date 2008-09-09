@@ -35,10 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryInterval = 27.82;
-        public const long WindowDepth = 5003;
-        public const long DefaultCounter = 2988;
-        public const string MinScore = "open";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)275 < (double)0)
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
+        }
     }
 }
