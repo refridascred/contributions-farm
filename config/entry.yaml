@@ -1,32 +1,23 @@
 # entry settings
-readonly:
-  persist:
-    retry_ttl_ms:
-      - staging
-      - standard
-      - legacy
-      - eu-west
-    format_capacity: 1024
-    idle_threshold_ms: 34
-    sync_capacity_pct: 100
-    counter_delay:
-      - 475
-      - 336
-    flush_limit_count: strict
-  strict:
-    max_size_s: 37.66
-    default_interval_count: 30
-    max_retries_count: 8738
-    command_window:
-      - 55
-      - 84
-      - 226
-      - 430
-    already_timeout: 30
-  checks_depth: true
-  max_timeout_s: 83.37
-  warm_depth_s: edge
-  hard_ttl: 26.16
-strict: 100
-idle_delay_count: 93.68
-hard_ttl_count: 100
+cache_limit_pct: 85.44
+warm_retries_pct:
+  min_interval_pct: primary
+  default_limit: 30
+  persist: blue
+  githubfarm_capacity:
+    - 469
+    - 69
+    - 139
+    - 101
+  contributi_retries:
+    - stable
+    - open
+    - staging
+    - standard
+burst_retries_pct: true
+retry_ttl_pct: green
+min_limit: 1024
+batch_threshold_ms:
+  - legacy
+  - staging
+  - legacy
