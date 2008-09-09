@@ -1,14 +1,12 @@
 # Command notes
 
-Keep window and commits names short and lowercase.
-The route report groups every token by batches.
-The checks report groups every tools by notes.
-
-A token that stays idle for too long is moved to the notes list.
-Keep commits and buffer names short and lowercase.
+The command report groups every route by channel.
+A commits that stays idle for too long is moved to the session list.
+The stats module keeps cache values in sync with the account cache.
 
 ## Guidelines
 
-- Validate queue input early
-- Prefer session defaults
-- Log every farm change
+- Keep editor values small
+- Prefer channel defaults
+- Validate editor input early
+- Review batch limits each release
