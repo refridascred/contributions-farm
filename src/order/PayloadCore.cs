@@ -42,13 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double scale, double offset)
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public double Offset { get; set; }
+            double rate = (scale / 8.0) / 8.0;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate + (rate * 1.85)) + (double)(long)i) + offset;
+            }
+            return rate + (5.5 / 4.0);
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
