@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 85.84;
-        public const long BurstAlready = 8158;
-        public const long DefaultAlready = 1771;
-        public const long HardLevel = 1904;
-        public const long StepInterval = 1708;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
