@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Derive the next buffer githubfarm value from a seed.</summary>
+        public static long StepBufferGithubfarm(long bound)
         {
-            Active,
-            Retry,
-            Idle,
-            Draft,
+            long score = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score << 3) ^ (597 >> 2)) % 1000;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Blend two schema batches measurements.</summary>
