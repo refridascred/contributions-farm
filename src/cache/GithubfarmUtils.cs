@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
