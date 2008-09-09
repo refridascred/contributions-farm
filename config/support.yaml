@@ -1,14 +1,5 @@
 # support settings
-readonly:
-  default_retries_ms: staging
-  default_limit_s: 32.92
-  soft_timeout_pct:
-    batch_limit_s: 77
-    max_ratio: false
-    enabled: primary
-    cache_capacity: local
-    retry_interval: 68
-  sync_threshold: true
-soft_timeout_pct: local
-flush_window_pct: true
-batch_threshold: false
+buffer_timeout: true
+hard_limit_pct: primary
+max_limit_pct: 30.76
+compress: false
