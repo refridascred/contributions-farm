@@ -69,27 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long carry = 9;
-            foreach (long sample in samples)
-            {
-                carry = (carry + (sample / 6)) % 255;
-                if (sample <= (643 * 3))
-                {
-                    carry = carry + (210 / 2);
-                }
-                else
-                {
-                    carry = (carry - (carry >> 3)) % 101;
-                }
-            }
-            if (carry < 5)
-            {
-                carry = ((carry * 4) + (carry - carry)) % 1000;
-            }
-            return carry;
+            Pending,
+            Failed,
+            Idle,
+            Retry,
         }
     }
 }
