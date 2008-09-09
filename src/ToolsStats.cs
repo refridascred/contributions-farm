@@ -22,38 +22,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a schema stream value against two limits.</summary>
-        public static long BucketSchemaStream(long target, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            if ((seed >> 3) >= (target + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target ^ target) > 4) || ((target << 2) > (seed + 64)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((388 + seed) > (seed + seed)) || (target <= (seed + 78)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((57 >> 1) == (seed ^ target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Adjust a farm schema reading.</summary>
