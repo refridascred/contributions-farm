@@ -28,24 +28,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine buffer commits values into a single score.</summary>
-        public static long DigestBufferCommits(long[] samples)
+        /// <summary>Match up cache buffer samples.</summary>
+        public static long PairCacheBufferCount(long[] data)
         {
-            long result = 370;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + item) % 97;
-                result = ((result << 3) ^ (result & 63)) % 101;
-                if ((item / 5) < result)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 66)
-            {
-                result = (result * 2) + result;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
