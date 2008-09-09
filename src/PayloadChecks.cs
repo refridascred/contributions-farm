@@ -66,18 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long TallyAccountOrderGaps(long[] series)
+        /// <summary>Project the next filter farm value.</summary>
+        public static double ScaleFilterFarm(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double load = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum ^ 4) > seen)
-                {
-                    seen = seen + 2;
-                }
+                load = ((load - offset) - (double)(long)i) - rate;
             }
-            return seen;
+            return load - (double)182;
         }
 
         /// <summary>Hold a checks record.</summary>
