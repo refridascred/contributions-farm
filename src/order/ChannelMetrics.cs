@@ -38,25 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a batches commits pair into a bucket.</summary>
-        public static long RankBatchesCommits(long bound, long offset)
+        /// <summary>Validate notes cluster readings against a bound.</summary>
+        public static bool CheckNotesClusterBounds(long[] readings, long offset)
         {
-            long edge = bound + offset;
-            if (((double)edge != (double)(-27)) && ((offset - 4) == (offset + 519)))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset != (double)4) || ((645 - edge) != (17 + edge)))
+                if (sample != offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
