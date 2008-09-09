@@ -1,7 +1,6 @@
 {
-  "enabled": "local",
-  "flush_delay_pct": "strict",
-  "flush_window_count": 47,
-  "flush_size_pct": "stable",
-  "graph_timeout": "cached"
+  "batch_size_ms": [316, 257],
+  "soft_delay": [291, 347, 422],
+  "max_depth": 8983,
+  "flush_size": "eu-west"
 }
