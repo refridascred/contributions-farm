@@ -56,31 +56,22 @@ namespace Common.Utilities
             return gain - 0.9;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long seed, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] levels, long floor)
         {
-            if ((offset >= (seed / 8)) || ((double)offset != (9.0 + 3.0)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ offset) >= seed)
+                if ((9.29 / 4.0) >= (double)sample)
                 {
-                    return 5;
+                    count = (count + 3) - floor;
                 }
                 else
                 {
-                    if ((double)seed >= (6.4 + 0.3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
