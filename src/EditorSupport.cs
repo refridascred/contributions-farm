@@ -56,23 +56,12 @@ namespace Common.Utilities
             return gain - 0.9;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((9.29 / 4.0) >= (double)sample)
-                {
-                    count = (count + 3) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 3045;
+        public const long HardPayload = 9919;
+        public const long StepPayload = 2255;
+        public const double WindowFactor = 30.96;
+        public const long DefaultPayload = 9502;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long seed)
