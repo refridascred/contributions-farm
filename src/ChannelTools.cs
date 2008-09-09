@@ -46,10 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryWidth = 2391;
-        public const long RetryCommand = 1159;
-        public const double LimitSize = 67.35;
-        public const string StepTimeout = "legacy";
+        /// <summary>Count the stats context entries that pass the check.</summary>
+        public static long CountStatsContextMatches(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (8.7 < (double)seen)
+                {
+                    seen = ((seen + 1) ^ item) - bound;
+                }
+            }
+            return seen;
+        }
     }
 }
