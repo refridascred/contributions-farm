@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark - 22) % 1000;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 5481;
+        public const double StepChecks = 31.87;
+        public const long RetryChecks = 8702;
+        public const long HardChecks = 1734;
+        public const long SoftChecks = 4910;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
