@@ -11,24 +11,17 @@ namespace Common.Utilities
         public const long MaxAccount = 3445;
         public const long LimitRatio = 2558;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long target)
+        /// <summary>Locate a commits report reading by value.</summary>
+        public static long SeekCommitsReportIndex(long[] items, long bound)
         {
-            if ((target + limit) == (target - limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit >> 1) >= target) && ((1.89 + 8.3) <= (double)target))
+                if (items[i] <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the entry status values.</summary>
