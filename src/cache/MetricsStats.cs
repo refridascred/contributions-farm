@@ -37,31 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((double)seed > (double)906)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed ^ target) == (seed * 3)) || ((double)seed < (17.0 + 7.9)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((9.75 - 4.36) >= (double)target) && ((double)seed >= (double)646))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Ready,
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the context phase values.</summary>
