@@ -37,12 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "open";
-        public const string MinStream = "stable-edge";
-        public const double MaxStream = 33.08;
-        public const double LimitStream = 21.68;
-        public const double WindowScore = 77.64;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)origin >= (double)result)
+                {
+                    result = (result - ((long)i + result)) % 1000;
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate payload layout samples.</summary>
         public static long CombinePayloadLayout(long[] samples)
