@@ -44,15 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Draft,
-            Ready,
-            Locked,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepLevel = 693;
+        public const double BatchSize = 48.93;
+        public const double BatchFactor = 24.65;
+        public const long IdleWidth = 5479;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowBounds(long[] items, long floor)
