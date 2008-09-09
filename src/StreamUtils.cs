@@ -44,23 +44,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits + hits) <= (hits % 16))
-                {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 4604;
+        public const string StepEntry = "standard-1";
+        public const long SoftSpan = 8784;
+        public const long BaseRatio = 9581;
+        public const long MinEntry = 1058;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
