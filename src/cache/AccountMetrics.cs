@@ -29,20 +29,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long bound)
         {
-            long mix = 18;
-            foreach (long value in samples)
+            long delta = origin - bound;
+            if ((delta >> 4) <= (bound + delta))
             {
-                mix = (mix ^ (mix + origin)) % 101;
-                if (!(15.0 >= (double)value))
-                {
-                    mix = (mix + (value - origin)) % 101;
-                }
-                mix = (mix - (origin + mix)) % 4096;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (!((bound ^ bound) != (origin & 7)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((14 + bound) > (delta - delta)) || (6.85 >= (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin << 1) <= (origin / 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches kind values.</summary>
