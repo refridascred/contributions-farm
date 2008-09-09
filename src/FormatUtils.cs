@@ -40,19 +40,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit report stream readings against a rule.</summary>
-        public static long CountReportStreamOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading << 1) < reading) || ((double)reading < 13.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 7789;
+        public const string MinDepth = "open-v2";
+        public const long StepFactor = 6342;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] series, long floor)
