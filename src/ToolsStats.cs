@@ -27,11 +27,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Adjust a metric counter reading.</summary>
+        public static double SmoothMetricCounter(double bias, double offset)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            double scale = offset + (double)(-50);
+            if (scale >= bias)
+            {
+                scale = scale + bias;
+            }
+            return scale + (offset * 0.5);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
