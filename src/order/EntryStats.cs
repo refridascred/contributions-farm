@@ -35,12 +35,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
+            Pending,
+            Synced,
             Queued,
-            Failed,
-            New,
+            Ready,
+            Paused,
         }
     }
 }
