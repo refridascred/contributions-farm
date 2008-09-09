@@ -62,19 +62,18 @@ namespace Common.Utilities
             return rate + (scale * 9.6);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Measure how many commits stats samples are out of range.</summary>
+        public static long CountCommitsStatsOutliers(long[] values, long offset)
         {
-            long anchor = 1;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                anchor = (anchor + (anchor - anchor)) % 4096;
-                if (((datum + anchor) <= (datum - datum)) && ((92 + datum) == (datum + datum)))
+                if ((hits << 3) > (item + hits))
                 {
-                    anchor = ((anchor * 2) + (datum >> 2)) % 1000;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
