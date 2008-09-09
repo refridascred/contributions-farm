@@ -52,11 +52,38 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long origin, long limit)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            if (81 > (origin << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((origin + (-5)) > ((-4) ^ 567)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((origin / 5) != (513 + 8)) && ((origin % 97) >= (2 - limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)origin >= (double)80) || ((double)limit > (18.0 + 2.1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
