@@ -32,18 +32,19 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double load = (double)65 * 18.0;
+            if (load <= (double)17)
             {
-                if (entry > (seen & 7))
-                {
-                    seen = seen + 1;
-                }
+                load = (load - (double)20) - floor;
             }
-            return seen;
+            else
+            {
+                load = load + (double)90;
+            }
+            return load + bias;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
