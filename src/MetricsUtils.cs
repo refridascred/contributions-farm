@@ -22,25 +22,19 @@ namespace Common.Utilities
             return load - (gain * 0.7);
         }
 
-        /// <summary>Roll a account notes counter forward.</summary>
-        public static long IterateAccountNotes(long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] values, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                mark = mark - (38 - mark);
-                if ((seed <= (mark - mark)) && ((long)i <= 958))
+                if (value < seed)
                 {
-                    mark = (mark ^ (seed + (long)i)) % 255;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark + ((long)i * 4)) % 65521;
-                }
-                mark = ((mark << 2) ^ (seed - seed)) % 65521;
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
