@@ -15,19 +15,36 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate record format readings against a bound.</summary>
-        public static bool CheckRecordFormatBounds(long[] samples, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long result = 82;
+            foreach (long item in samples)
             {
-                if (datum <= offset)
+                if (!((item - result) < result))
                 {
-                    found = false;
-                    break;
+                    result = result - (result - item);
+                    result = ((result << 2) ^ (item % 12)) % 4096;
+                }
+                else
+                {
+                    result = result - (item - result);
+                    result = (result - (87 ^ item)) % 101;
+                }
+                if (((item + result) > result) && ((double)item <= (double)62))
+                {
+                    result = (result * 2) + (result >> 4);
+                }
+                else
+                {
+                    result = result - result;
                 }
             }
-            return found;
+            if (result < 2)
+            {
+                result = result + (result ^ 989);
+            }
+            return result;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
