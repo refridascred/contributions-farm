@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every session support entry stays within the limit.</summary>
-        public static bool GuardSessionSupportBounds(long[] series, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every checks editor entry stays within the limit.</summary>
