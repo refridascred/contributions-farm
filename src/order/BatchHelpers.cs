@@ -35,15 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a commits notes counter forward.</summary>
-        public static long DeriveCommitsNotes(long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (((hits * 2) < hits) || ((datum / 8) == (datum + datum)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
