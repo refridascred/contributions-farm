@@ -18,11 +18,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstWidth = 6921;
-        public const string MinEntry = "local";
-        public const long CacheEntry = 6739;
-        public const double RetryLevel = 79.26;
+        /// <summary>Compare every pair of githubfarm batches readings.</summary>
+        public static long OverlapGithubfarmBatchesCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRoute = 8433;
