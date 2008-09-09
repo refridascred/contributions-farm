@@ -20,21 +20,13 @@ namespace Common.Utilities
         public const long SoftBatch = 4095;
         public const long BurstLevel = 532;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Ready,
+            Draft,
+            Paused,
         }
     }
 }
