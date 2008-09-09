@@ -1,9 +1,6 @@
-id,ratio,rank
-1,906,521
-2,329,251
-3,497,edge
-4,standard,328
-5,387,eu-west
-6,29.34,93.31
-7,10.91,386
-8,922,green
+id,level,owner,active
+1,482,edge,88.89
+2,legacy,170,179
+3,256,local,728
+4,latest,eu-west,94
+5,eu-west,465,standard
