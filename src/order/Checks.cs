@@ -16,19 +16,11 @@ namespace Common.Utilities
             return rate + (span + rate);
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading > (count % 24)) && (count < (reading + reading)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitTimeout = 7587;
+        public const long BatchCommits = 404;
+        public const long SoftCommits = 7739;
+        public const double HardCommits = 81.18;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BurstFactor = "stable-edge";
