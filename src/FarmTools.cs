@@ -51,21 +51,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheDepth = "latest-v2";
+        public const string LimitScore = "strict-edge";
+        public const long BurstAlready = 183;
     }
 }
