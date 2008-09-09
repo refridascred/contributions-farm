@@ -37,10 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitDepth = 4782;
-        public const double SoftMetrics = 72.04;
-        public const long LimitCount = 4737;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseFactor = 5677;
+        public const long BaseSpan = 9289;
+        public const double BaseInterval = 20.3;
+        public const string WindowSession = "alpha-1";
+        public const double MaxSession = 14.35;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
