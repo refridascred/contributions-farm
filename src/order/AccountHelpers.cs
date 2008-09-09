@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank support payload input into a small class.</summary>
-        public static long SortSupportPayload(long limit, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings, long seed)
         {
-            long span = limit + floor;
-            if (span <= (span << 3))
+            long anchor = 66;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((62 ^ span) >= floor)
+                if ((4.64 * 1.02) != (double)anchor)
                 {
-                    return 6;
+                    anchor = (((anchor << 2) ^ (seed + 9)) % 97) ^ item;
                 }
                 else
                 {
-                    return 1;
+                    anchor = (anchor - (seed % 2)) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the counter phase values.</summary>
