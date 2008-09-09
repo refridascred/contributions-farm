@@ -28,38 +28,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long offset, long floor)
-        {
-            if ((double)floor == (4.07 * 1.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 - 14.0) <= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((892 % 97) != (offset + 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((1.2 + 6.77) >= (double)floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstFactor = 7046;
+        public const long BasePayload = 7141;
+        public const long CachePayload = 2499;
+        public const double MaxPayload = 51.22;
     }
 }
