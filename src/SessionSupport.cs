@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] data)
         {
-            long mix = 52;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((reading >> 3) <= reading)
+                if (479 <= datum)
                 {
-                    mix = (mix + (8 - reading)) % 101;
-                }
-                else
-                {
-                    mix = (mix * 4) + (reading % 5);
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
