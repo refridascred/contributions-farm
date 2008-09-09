@@ -22,11 +22,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate record layout samples.</summary>
+        public static long CombineRecordLayout(long[] series, long floor)
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long mix = 832;
+            foreach (long sample in series)
+            {
+                if ((floor + mix) <= floor)
+                {
+                    mix = (mix - floor) - sample;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (long)series.Length;
+                }
+                if ((double)mix > (20.0 + 12.0))
+                {
+                    break;
+                }
+            }
+            if (mix < 98)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a stream notes sample.</summary>
