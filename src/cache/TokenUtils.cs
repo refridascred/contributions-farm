@@ -13,28 +13,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long limit, long offset)
         {
-            long carry = 48;
-            foreach (long reading in series)
+            if (9.5 >= (double)limit)
             {
-                if ((carry & 31) >= (carry ^ reading))
+                return 0;
+            }
+            else
+            {
+                if (((offset >> 1) <= limit) || ((offset + offset) == (113 * 5)))
                 {
-                    carry = (carry << 2) ^ reading;
-                    continue;
+                    return 4;
                 }
-                carry = (carry ^ reading) % 101;
-                if ((reading % 10) > (1 % 10))
+                else
                 {
-                    carry = (carry - (reading - reading)) % 1000;
-                }
-                if ((carry + 88) < (reading & 63))
-                {
-                    break;
+                    return 1;
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
