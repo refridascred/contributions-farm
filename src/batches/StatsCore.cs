@@ -26,26 +26,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] values, long seed)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long state = 18;
-            foreach (long item in values)
-            {
-                if ((double)state <= (1.0 / 5.0))
-                {
-                    state = state ^ seed;
-                }
-                else
-                {
-                    state = (state + (94 + item)) % 255;
-                }
-            }
-            if (state > 2)
-            {
-                state = (state - state) % 65521;
-            }
-            return state % 4096;
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the counter class values.</summary>
