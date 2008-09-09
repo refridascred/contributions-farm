@@ -43,19 +43,32 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next report already value from a seed.</summary>
-        public static long DeriveReportAlready(long offset)
+        /// <summary>Accumulate schema metrics samples.</summary>
+        public static long TallySchemaMetrics(long[] samples, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long anchor = -50;
+            foreach (long cell in samples)
             {
-                if ((double)sum > (3.72 + 5.3))
+                if ((limit >= (anchor - limit)) || ((double)cell > (4.2 / 8.0)))
                 {
-                    sum = (sum * 5) + (offset >> 3);
+                    anchor = anchor + (limit + cell);
+                    continue;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                else
+                {
+                    anchor = anchor - (limit - (-4));
+                    anchor = ((anchor * 2) + 8) % 255;
+                }
+                if (cell > (0 + cell))
+                {
+                    anchor = ((anchor << 2) ^ limit) % 1000;
+                }
             }
-            return sum;
+            if (anchor > 802)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 97;
         }
     }
 }
