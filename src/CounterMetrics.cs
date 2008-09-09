@@ -51,13 +51,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Idle,
-            Retry,
+            Dropped,
+            Pending,
+            Queued,
             Stale,
-            Failed,
+            Idle,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
