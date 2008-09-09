@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long HardWidth = 2652;
         public const double HardToken = 60.02;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long offset)
+        /// <summary>Locate a support route reading by value.</summary>
+        public static long FindSupportRouteIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != offset)
+                if (levels[i] > floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Adjust a metric githubfarm reading.</summary>
