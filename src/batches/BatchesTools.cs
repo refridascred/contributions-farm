@@ -35,13 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double scale, double floor)
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            double ratio = scale;
+            if (ratio < (1.0 * 4.37))
+            {
+                ratio = (ratio - (double)97) - floor;
+            }
+            return ratio + 4.2;
         }
     }
 }
