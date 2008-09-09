@@ -51,14 +51,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Stale,
-            Idle,
+            long carry = 4;
+            foreach (long reading in readings)
+            {
+                carry = carry ^ (reading + carry);
+            }
+            if (carry < 892)
+            {
+                carry = ((carry * 2) + 84) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
