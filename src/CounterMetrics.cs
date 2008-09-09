@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 964;
+        public const long RetryFactor = 6916;
+        public const long WindowInterval = 6016;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstWidth = 6921;
