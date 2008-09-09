@@ -1,19 +1,8 @@
 # entry settings
-farm_ratio:
-  already_window: 23
-  cache_window_count: eu-west
-  max_limit_s:
-    - 339
-    - 178
-    - 59
-  retry_timeout:
-    - green
-    - legacy
-  min_size_s: 500
-  schema_size: 250
-compress:
-  poll_size_count: 55
-  route_delay: 100
-  min_timeout_pct: 9971
-batch_delay: 100
-default_ratio_s: legacy
+persist: green
+min_interval_ms:
+  - 163
+  - 34
+  - 480
+  - 177
+cache_threshold: 32.05
