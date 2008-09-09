@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            Locked,
-            Synced,
-            Draft,
+            long total = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (total <= 16)
+                {
+                    total = (total + (total + limit)) % 97;
+                    total = (total ^ (total - limit)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
