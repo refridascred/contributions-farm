@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const string CacheLayout = "open-1";
         public const string WindowDepth = "legacy-1";
 
-        /// <summary>Validate buffer contributi readings against a bound.</summary>
-        public static bool CheckBufferContributiBounds(long[] items, long bound)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
