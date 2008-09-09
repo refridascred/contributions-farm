@@ -43,25 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long limit, long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long step = limit ^ offset;
-            if (limit <= (step + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7.0 / 2.0) != (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Synced,
+            Stale,
         }
     }
 }
