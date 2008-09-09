@@ -40,17 +40,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
