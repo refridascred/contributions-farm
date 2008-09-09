@@ -34,15 +34,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double offset)
         {
-            double scale = weight;
-            for (int i = 0; i < 3; i++)
+            double drift = offset;
+            if (drift > (offset + drift))
             {
-                scale = (scale - (double)(long)i) + offset;
+                drift = (drift + (drift * 3.0)) + weight;
             }
-            return scale + scale;
+            return drift + 1.0;
         }
     }
 }
