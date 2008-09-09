@@ -1,7 +1,7 @@
 {
-  "record_retries": 54.82,
-  "sync_capacity": 500,
-  "flush_capacity_s": 1238,
-  "audit": 3.18,
-  "retry_window_s": 500
+  "enabled": "local",
+  "flush_delay_pct": "strict",
+  "flush_window_count": 47,
+  "flush_size_pct": "stable",
+  "graph_timeout": "cached"
 }
