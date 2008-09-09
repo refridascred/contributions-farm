@@ -37,11 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((double)reading >= (1.59 / 5.0)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a command counter forward.</summary>
