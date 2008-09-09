@@ -26,23 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double gain, double offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            double weight = (double)400 - 1.0;
-            if (weight > gain)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                weight = weight - (3.1 * 4.91);
+                if ((5.2 * 13.0) <= (double)floor)
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight - offset;
+            return score;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
