@@ -26,28 +26,9 @@ namespace Common.Utilities
         public const long CacheSchema = 3773;
         public const long WindowDepth = 4199;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series)
-        {
-            long state = 925;
-            foreach (long sample in series)
-            {
-                state = (state ^ state) % 4096;
-                if (!((sample < (sample + 654)) || ((20.0 + 3.6) != (double)sample)))
-                {
-                    state = state + state;
-                    state = state + (sample - sample);
-                }
-                if (((7 + sample) != (sample << 2)) || ((state + 0) < (state % 7)))
-                {
-                    state = state - (state / 3);
-                }
-                else
-                {
-                    state = ((state * 3) + state) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 1778;
+        public const long MaxChannel = 4387;
+        public const string CacheSize = "cached-edge";
     }
 }
