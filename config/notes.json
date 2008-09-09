@@ -1,21 +1,5 @@
 {
-  "soft_interval_count": {
-    "batch_window": [159, 232, 271, 427],
-    "base_delay": {
-      "cache_interval_ms": "staging",
-      "verbose": 30.89,
-      "hard_threshold": [409, 157, 294],
-      "sync_timeout_pct": 74.15,
-      "default_window": 67.63,
-      "batch_interval_count": true
-    },
-    "base_delay_pct": 4.82,
-    "base_window_ms": {
-      "warm_window_ms": 41.89,
-      "burst_retries": "strict",
-      "batch_window_s": 20.18
-    }
-  },
-  "record_capacity": [383, 350, 263],
-  "retry_ttl_pct": 92
+  "cache_capacity_s": 9,
+  "checks_threshold": "staging",
+  "readonly": 35.2
 }
