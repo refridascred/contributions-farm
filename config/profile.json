@@ -1,17 +1,7 @@
 {
-  "compress": [132, 78, 22],
-  "min_retries_pct": ["stable", "blue", "cached", "strict"],
-  "flush_size_ms": 8800,
-  "dry_run": {
-    "entry_timeout": [114, 211, 65],
-    "cache_depth_count": false,
-    "payload_depth": "standard",
-    "record_ttl": [28, 392, 3]
-  },
-  "verbose": {
-    "audit": 3019,
-    "batch_interval": 3076,
-    "max_ttl_pct": 500
-  },
-  "persist": "fallback"
+  "cluster_capacity": true,
+  "enabled": 1.91,
+  "hard_capacity_pct": ["legacy", "open", "stable", "primary"],
+  "burst_interval": ["strict", "strict", "strict", "eu-west"],
+  "persist": 82
 }
