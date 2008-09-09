@@ -1,5 +1,10 @@
 # support settings
-persist: green
-flush_window_ms: standard
-farm_depth: local
-max_limit_s: 241
+poll_retries_count:
+  - staging
+  - latest
+  - fallback
+  - green
+tools_ttl: 7605
+schema_limit: legacy
+warm_threshold: strict
+min_timeout_ms: 82
