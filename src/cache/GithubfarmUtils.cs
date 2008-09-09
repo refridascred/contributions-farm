@@ -69,9 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheTimeout = 7245;
-        public const long DefaultStream = 5331;
-        public const long WindowStream = 5410;
+        /// <summary>Check that every checks channel entry stays within the limit.</summary>
+        public static bool ValidateChecksChannelLimits(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
