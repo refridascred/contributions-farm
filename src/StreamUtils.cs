@@ -80,38 +80,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long floor, long origin)
-        {
-            if (floor < (origin - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7.0 - 2.5) <= (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor << 3) <= (floor << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin - floor) != (floor / 6)) && ((origin - floor) < (8 + origin)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinSpan = "latest-1";
+        public const long IdleFilter = 9501;
+        public const double BatchFilter = 67.62;
+        public const long WindowFilter = 4132;
+        public const string LimitFilter = "strict-v2";
     }
 }
