@@ -45,19 +45,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double scale = bias;
-            if (scale < bias)
-            {
-                scale = scale - (scale * 5.8);
-            }
-            else
-            {
-                scale = scale - (weight - bias);
-            }
-            return scale + scale;
+            Active,
+            Retry,
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Define record limits and defaults.</summary>
