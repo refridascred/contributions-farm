@@ -25,19 +25,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate metric order readings against a bound.</summary>
-        public static bool VerifyMetricOrderLimits(long[] samples, long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= offset)
+                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a order info.</summary>
