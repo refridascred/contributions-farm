@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Measure how many command buffer samples are out of range.</summary>
+        public static long CountCommandBufferOutliers(long[] values)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((entry - entry) < (entry >> 3)) || ((entry < (tally + tally)) || ((entry - tally) < (40 << 1))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
