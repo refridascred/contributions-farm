@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 59.73;
-        public const string CacheSpan = "alpha-1";
-        public const double WindowCount = 77.24;
-        public const string SoftLevel = "fallback-v2";
-        public const long BaseRoute = 7277;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleProfile = 9573;
