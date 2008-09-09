@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchSize = 2263;
+        public const long MaxLevel = 5442;
+        public const double BaseRatio = 30.76;
+        public const string HardInterval = "stable-1";
+        public const long BaseBatches = 9266;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] data)
