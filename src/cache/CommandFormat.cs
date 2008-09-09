@@ -40,11 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftFactor = "standard-edge";
-        public const string MaxOrder = "cached";
-        public const long RetryOrder = 4004;
-        public const long StepFactor = 4356;
-        public const long LimitOrder = 5757;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
