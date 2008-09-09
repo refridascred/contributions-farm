@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] values, long floor)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a window entry.</summary>
