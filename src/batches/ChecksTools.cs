@@ -46,39 +46,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long delta = origin ^ seed;
-            if (((1 + seed) < delta) || ((double)delta <= 12.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed / 8) < (origin - delta)) || ((double)origin != (2.0 - 6.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((delta << 3) >= seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)delta > (double)814)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Label { get; set; }
         }
     }
 }
