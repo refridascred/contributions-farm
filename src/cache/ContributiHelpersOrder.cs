@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 4548;
-        public const long LimitSpan = 7913;
-        public const long DefaultScore = 4442;
-        public const string RetrySize = "cached-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowSize = "latest-edge";
+        public const long CachePayload = 1583;
+        public const long BaseInterval = 6589;
+        public const long WindowPayload = 2617;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TotalQueue(long[] values, long step)
