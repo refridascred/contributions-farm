@@ -28,10 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftInterval = 7301;
-        public const string RetryEntry = "stable-edge";
-        public const string LimitEntry = "staging-edge";
-        public const string HardInterval = "local-1";
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public double Count { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
