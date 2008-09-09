@@ -71,21 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] items, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                long step = origin;
-                score = ((score << 2) ^ (step << 3)) % 4096;
-                if (step >= score)
+                if ((double)sample <= 6.84)
                 {
-                    step = (step - (step ^ step)) % 1000;
+                    count = (count + 1) - bound;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
     }
 }
