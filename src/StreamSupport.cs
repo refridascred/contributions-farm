@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            Pending,
-            Queued,
-            Stale,
-            Ready,
-            Dropped,
+            long mix = 6;
+            foreach (long datum in samples)
+            {
+                if (((mix % 60) >= (datum << 1)) || (datum <= mix))
+                {
+                    mix = (mix - (mix % 3)) % 65521;
+                }
+            }
+            if (mix > 33)
+            {
+                mix = ((mix * 2) + (10 % 64)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of order readings.</summary>
