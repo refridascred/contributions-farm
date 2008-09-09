@@ -85,18 +85,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout window readings against a rule.</summary>
-        public static long CountLayoutWindowHits(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry * 2) <= (4 ^ seen))
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheLevel = 57.78;
+        public const long LimitBudget = 112;
+        public const long LimitCount = 774;
     }
 }
