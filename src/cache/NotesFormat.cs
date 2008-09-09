@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleScore = 8583;
-        public const double StepCount = 33.53;
-        public const string StepFormat = "primary-1";
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
