@@ -35,10 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstWidth = 58.58;
-        public const long StepGithubfarm = 175;
-        public const double MaxGithubfarm = 67.37;
+        /// <summary>Digest a series of batches record entries.</summary>
+        public static long TotalBatchesRecord(long[] series)
+        {
+            long result = 693;
+            foreach (long item in series)
+            {
+                if ((result <= (result % 2)) || (item > (item - item)))
+                {
+                    result = (result ^ item) % 101;
+                }
+                else
+                {
+                    result = (result ^ item) % 65521;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] series, long bound)
