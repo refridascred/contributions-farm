@@ -70,17 +70,21 @@ namespace Common.Utilities
         public const long SoftDepth = 512;
         public const long BatchContext = 7609;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
