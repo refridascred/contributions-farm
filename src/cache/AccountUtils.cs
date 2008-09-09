@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] readings, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long total = 8;
+            foreach (long entry in data)
             {
-                if (entry != offset)
+                if ((bound << 3) < (entry + bound))
                 {
-                    found = false;
-                    break;
+                    total = total - total;
                 }
             }
-            return found;
+            if (total < (-9))
+            {
+                total = ((total << 3) ^ (bound - bound)) % 65521;
+            }
+            return total;
         }
     }
 }
