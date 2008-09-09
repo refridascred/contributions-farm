@@ -31,15 +31,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a route entry counter forward.</summary>
-        public static long DeriveRouteEntry(long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                sum = (sum - (sum + target)) % 97;
+                sum = sum ^ ((long)i % 5);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
