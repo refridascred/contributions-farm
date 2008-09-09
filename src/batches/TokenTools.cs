@@ -15,13 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] series, long origin)
         {
-            Idle,
-            Failed,
-            Locked,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
