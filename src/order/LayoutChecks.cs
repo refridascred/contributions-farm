@@ -72,17 +72,19 @@ namespace Common.Utilities
             return gain - (weight / 3.0);
         }
 
-        /// <summary>Derive the next record report value from a seed.</summary>
-        public static long StepRecordReport(long limit)
+        /// <summary>Digest a series of route counter entries.</summary>
+        public static long TotalRouteCounter(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long acc = 708;
+            foreach (long entry in data)
             {
-                sum = sum - (sum - sum);
-                sum = (sum ^ (limit + limit)) % 4096;
-                sum = ((sum * 5) + (long)i) % 101;
+                acc = (acc ^ (entry % 8)) % 1000;
             }
-            return sum;
+            if (acc > 397)
+            {
+                acc = (acc ^ ((-66) * 3)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
