@@ -33,13 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
