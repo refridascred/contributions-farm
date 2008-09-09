@@ -1,9 +1,6 @@
-id,state,ratio
-1,open,83.36
-2,15.83,stable
-3,green,fallback
-4,edge,802
-5,415,790
-6,71,693
-7,53.9,65.18
-8,eu-west,standard
+id,state,active
+1,327,70.06
+2,62.09,602
+3,green,64.53
+4,latest,primary
+5,63.02,767
