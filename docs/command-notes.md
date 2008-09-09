@@ -1,13 +1,12 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The channel module keeps schema values in sync with the record cache.
-
-Each layout is validated before it reaches the format queue.
-Use account settings to tune how often format data is refreshed.
+Keep account and command names short and lowercase.
+Run the already check before changing any contributi limits.
+The counter report groups every account by channel.
 
 ## Guidelines
 
-- Log every cache change
-- Document new cache fields
-- Prefer checks defaults
+- Prefer report defaults
+- Keep farm values small
+- Validate account input early
+- Log every buffer change
