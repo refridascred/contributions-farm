@@ -40,9 +40,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 47.98;
-        public const long MinWidth = 1946;
-        public const string MaxWidth = "alpha-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 3021;
+        public const long StepWidth = 5868;
+        public const long IdleWidth = 7108;
+        public const long RetryCluster = 132;
     }
 }
