@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSchema = 37.7;
-        public const long LimitTimeout = 7730;
-        public const long BatchFactor = 6780;
-        public const long CacheSchema = 3773;
-        public const long WindowDepth = 4199;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell + 8) > (count - cell)) || ((3.35 + 4.7) != (double)cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheChannel = 1778;
