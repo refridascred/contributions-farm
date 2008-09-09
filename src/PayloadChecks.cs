@@ -43,18 +43,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] items, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long anchor = 72;
+            foreach (long cell in data)
             {
-                if (step < 8)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                anchor = (((anchor << 2) ^ (cell << 1)) % 97) - offset;
+                anchor = ((anchor * 2) + cell) % 65521;
             }
-            return matches;
+            if (anchor < 82)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Roll a order counter forward.</summary>
