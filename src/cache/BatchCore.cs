@@ -17,11 +17,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSpan = 1090;
-        public const string CacheSchema = "legacy-v2";
-        public const long LimitSize = 4267;
-        public const long BatchSchema = 5801;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] data, long offset)
+        {
+            long carry = 927;
+            foreach (long reading in data)
+            {
+                if (((reading ^ 4) >= carry) && ((double)offset <= (double)reading))
+                {
+                    carry = (carry + (offset - offset)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (reading - reading)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
