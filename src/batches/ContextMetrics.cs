@@ -28,17 +28,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] series, long limit)
+        /// <summary>Check that every entry layout entry stays within the limit.</summary>
+        public static bool ValidateEntryLayoutBounds(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (series[i] >= limit)
+                if (reading <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Roll a metrics editor counter forward.</summary>
