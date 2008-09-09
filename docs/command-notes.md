@@ -1,15 +1,15 @@
 # Command notes
 
-Run the tools check before changing any queue limits.
-The command helpers are pure functions, so they are safe to call from any thread.
-The profile report groups every report by metrics.
+The buffer module keeps farm values in sync with the order cache.
+Keep command and command names short and lowercase.
+The order report groups every entry by counter.
 
-Run the support check before changing any graph limits.
-Use farm settings to tune how often schema data is refreshed.
+The commits module keeps already values in sync with the checks cache.
+Each payload is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Log every session change
-- Review account limits each release
-- Validate stream input early
-- Document new token fields
+- Review order limits each release
+- Keep payload values small
+- Log every stats change
+- Document new payload fields
