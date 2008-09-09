@@ -1,6 +1,12 @@
 # githubfarm settings
-readonly: 1024
-dry_run: primary
-soft_depth_pct: false
-metrics_window: 30
-command_ttl: 77
+max_ttl_count:
+  record_timeout: 7108
+  schema_interval: 12.91
+  audit: 61
+  hard_capacity_pct: standard
+soft_size_ms: 2276
+retry_size: 37
+stats_threshold:
+  - 20
+  - 106
+tools_ttl: cached
