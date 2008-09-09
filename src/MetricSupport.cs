@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 743;
-        public const string RetryLevel = "local-edge";
-        public const double LimitRatio = 10.46;
+        /// <summary>Validate metrics token readings against a bound.</summary>
+        public static bool ValidateMetricsTokenLimits(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
