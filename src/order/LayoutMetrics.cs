@@ -19,16 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next queue schema value from a seed.</summary>
-        public static long StepQueueSchema(long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score ^ ((long)i + (long)i);
-                score = ((score * 4) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a contributi options.</summary>
