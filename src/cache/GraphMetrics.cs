@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double rate, double offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            double drift = (offset * 5.8) + (rate + offset);
-            if (drift > 12.0)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (rate * 3.6);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (drift / 7.0)) - (double)(long)i;
-            }
-            return drift + (8.0 + rate);
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
