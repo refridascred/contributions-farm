@@ -37,20 +37,10 @@ namespace Common.Utilities
             return load - (gain * 0.7);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "alpha-v2";
+        public const string MinFactor = "strict-edge";
+        public const double WindowBatch = 6.81;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool ValidateSchemaRange(long[] data, long step)
