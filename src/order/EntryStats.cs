@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 5481;
-        public const double StepChecks = 31.87;
-        public const long RetryChecks = 8702;
-        public const long HardChecks = 1734;
-        public const long SoftChecks = 4910;
+        /// <summary>Validate filter window readings against a bound.</summary>
+        public static bool VerifyFilterWindowLimits(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first entry command entry that matches the target.</summary>
         public static long SeekEntryCommandIndex(long[] data, long bound)
