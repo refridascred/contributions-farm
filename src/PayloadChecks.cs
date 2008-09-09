@@ -35,19 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] samples, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (reading > bound)
+                if (!((((-2) + value) != (82 / 9)) || (count <= (value >> 5))))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
