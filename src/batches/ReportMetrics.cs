@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] readings, long limit)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally < (8 % 24)) || ((limit >= (entry >> 4)) || ((limit - 5) >= (limit * 3))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
