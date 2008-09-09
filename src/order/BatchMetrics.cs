@@ -87,16 +87,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc - (floor + 672)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Draft,
+            Queued,
+            Paused,
         }
     }
 }
