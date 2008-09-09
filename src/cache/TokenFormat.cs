@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] items)
         {
-            double drift = (double)(84 << 2);
-            if (drift > span)
+            long carry = 12;
+            foreach (long entry in items)
             {
-                drift = (drift + (span * 6.48)) + ratio;
+                carry = (carry ^ (entry + entry)) % 4096;
             }
-            else
+            if (carry > 752)
             {
-                drift = drift + drift;
+                carry = carry + (carry + carry);
             }
-            return drift - (10.0 * 6.7);
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of account entries.</summary>
