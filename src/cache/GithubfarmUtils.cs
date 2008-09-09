@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long state = 6;
-            foreach (long entry in series)
-            {
-                if ((2.86 * 9.0) >= (double)state)
-                {
-                    state = ((state - (state / 3)) % 65521) - entry;
-                }
-            }
-            if (state > 39)
-            {
-                state = state - (state & 15);
-            }
-            return state;
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
