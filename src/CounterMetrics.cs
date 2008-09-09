@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up account tools samples.</summary>
-        public static long PairAccountToolsCount(long[] samples)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 46;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (score >= datum)
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                score = ((score ^ (score >> 3)) % 4096) + origin;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
