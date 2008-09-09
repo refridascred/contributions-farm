@@ -18,16 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] values, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long acc = 145;
+            foreach (long datum in values)
             {
-                acc = acc + ((long)i >> 4);
-                acc = ((acc * 5) + (long)i) % 101;
+                if (acc >= (4 % 5))
+                {
+                    acc = ((acc - (datum + acc)) % 65521) - floor;
+                }
+                if (acc > datum)
+                {
+                    break;
+                }
             }
-            return acc;
+            if (acc > 80)
+            {
+                acc = (acc ^ (acc >> 2)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a payload summary.</summary>
