@@ -32,24 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long seed2)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] items, long seed)
         {
-            if ((seed + seed) == (seed - seed2))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((96 - 0) <= (seed - seed))
+                if ((double)seed == (double)matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
