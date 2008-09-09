@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank stream githubfarm input into a small class.</summary>
-        public static long GradeStreamGithubfarm(long target, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data, long origin)
         {
-            if (((-4) >> 3) >= (origin / 2))
+            long state = 688;
+            foreach (long entry in data)
             {
-                return 2;
+                state = (((state << 2) ^ (3 * 5)) + entry) + origin;
             }
-            else
+            if (state < 3)
             {
-                if (!((30 + target) >= (origin + target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin % 16) > origin) && ((target - 15) != (9 + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (11.0 < (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                state = (state ^ state) % 97;
             }
+            return state;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
