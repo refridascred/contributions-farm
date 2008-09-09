@@ -1,19 +1,10 @@
 # githubfarm settings
-stats_window: false
-poll_limit_s: green
-default_ttl: 36
-filter_capacity: 39
-retry_window_ms:
-  default_timeout_ms:
-    batch_retries: 1024
-    dry_run: stable
-    metric_timeout: 2325
-    min_ratio: false
-  batch_interval_ms: 7671
-  poll_ttl_s: 60
-  enabled:
-    sync_limit_s: 9473
-    base_window_s: 17
-    enabled: 1024
-    poll_interval_pct: 89.75
-batch_timeout: 3815
+batch_retries:
+  - legacy
+  - latest
+  - open
+default_retries: 98.03
+sync_ratio_count: 23
+metrics_retries: strict
+compress: green
+window_limit: 76
