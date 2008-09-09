@@ -33,19 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] samples, long offset)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
