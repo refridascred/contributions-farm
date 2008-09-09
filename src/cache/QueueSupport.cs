@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] values)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((reading + hits) > hits) || ((hits ^ hits) < (reading + 0)))
-                {
-                    hits = hits + 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
