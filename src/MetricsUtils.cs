@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 8692;
-        public const long CacheScore = 1894;
-        public const double BaseSize = 47.18;
-        public const long HardFactor = 6269;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Idle,
+            Retry,
+            Locked,
+            Active,
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double SmoothCache(double gain, double floor)
