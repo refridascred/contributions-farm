@@ -44,10 +44,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 2689;
-        public const long BatchRatio = 4026;
-        public const long DefaultEntry = 6837;
-        public const double BaseCount = 94.69;
+        /// <summary>Rank token contributi input into a small class.</summary>
+        public static long BucketTokenContributi(long bound, long floor)
+        {
+            if ((double)bound < (4.6 * 12.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((15.0 - 8.7) == (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 2) <= (bound - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + 41) > 581)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
