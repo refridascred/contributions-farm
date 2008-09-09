@@ -65,13 +65,9 @@ namespace Common.Utilities
             return weight - (double)920;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Stale,
-            Ready,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 5131;
+        public const long DefaultQueue = 4877;
+        public const long CacheScore = 1292;
     }
 }
