@@ -19,20 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] series, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (total <= 16)
+                if (reading <= floor)
                 {
-                    total = (total + (total + limit)) % 97;
-                    total = (total ^ (total - limit)) % 65521;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Accumulate filter notes samples.</summary>
