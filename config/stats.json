@@ -1,7 +1,7 @@
 {
-  "notes_ratio": 3533,
-  "hard_capacity": 30,
-  "persist": "edge",
-  "already_limit": [300, 249, 497, 464],
-  "entry_ratio": 60
+  "report_delay": "latest",
+  "poll_threshold_pct": [34, 8, 500],
+  "burst_size_ms": "stable",
+  "enabled": 55.12,
+  "audit": 1356
 }
