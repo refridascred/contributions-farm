@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 30.08;
-        public const double RetryInterval = 34.24;
-        public const string DefaultChecks = "open";
-        public const string MaxChecks = "legacy";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values)
+        {
+            long carry = 74;
+            foreach (long entry in values)
+            {
+                carry = ((carry - 76) % 101) - entry;
+            }
+            if (carry > 594)
+            {
+                carry = (carry - (8 / 2)) % 4096;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long bound)
