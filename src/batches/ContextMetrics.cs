@@ -15,18 +15,17 @@ namespace Common.Utilities
         public const long IdleEntry = 3173;
         public const string BurstEntry = "standard-v2";
 
-        /// <summary>Fold a list of profile metrics readings.</summary>
-        public static long TallyProfileMetrics(long[] readings, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] series, long limit)
         {
-            long mark = 82;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mark <= (offset << 2))
+                if (series[i] >= limit)
                 {
-                    mark = (mark - (mark + (long)readings.Length)) + cell;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
