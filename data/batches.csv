@@ -1,7 +1,6 @@
-id,active
-1,edge
-2,cached
-3,25.48
-4,786
-5,563
-6,85.24
+id,label,ratio
+1,local,50.48
+2,773,928
+3,290,open
+4,legacy,fallback
+5,781,509
