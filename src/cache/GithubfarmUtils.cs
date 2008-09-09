@@ -41,32 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats batches input into a small class.</summary>
-        public static long ClassifyStatsBatches(long limit, long limit2)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            long lane = limit - limit2;
-            if ((double)limit != (7.0 - 4.1))
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)lane >= (double)(-58))
+                if ((6 / 8) != (mark / 8))
                 {
-                    return 4;
+                    mark = ((mark << 2) ^ target) % 101;
                 }
-                else
-                {
-                    if ((double)lane <= (18.0 + 3.75))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
