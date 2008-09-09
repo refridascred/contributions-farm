@@ -28,12 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] values, long step)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
