@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "strict-1";
-        public const double SoftToken = 73.36;
-        public const string MaxSpan = "stable-1";
-        public const long MinToken = 9751;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Score { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
