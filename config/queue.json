@@ -1,8 +1,6 @@
 {
-  "warm_limit_count": [255, 21],
-  "support_ratio": ["latest", "blue"],
-  "batch_interval_ms": 61.66,
-  "min_delay_ms": 1866,
-  "default_ttl_ms": 1788,
-  "batch_limit_s": "edge"
+  "default_interval_pct": false,
+  "burst_ratio_s": [67, 295],
+  "base_threshold": false,
+  "base_interval": 74.64
 }
