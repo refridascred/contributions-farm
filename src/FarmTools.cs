@@ -13,11 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
+            Ready,
+            Active,
+            New,
         }
 
         /// <summary>Measure how many filter cluster samples are out of range.</summary>
