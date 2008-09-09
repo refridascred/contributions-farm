@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] readings, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((seed >> 4) <= (count % 100))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
