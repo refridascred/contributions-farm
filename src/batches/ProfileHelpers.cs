@@ -28,19 +28,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] readings, long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long next = step + floor;
+            if (!((next & 3) == (floor & 63)))
             {
-                if (reading != offset)
+                return 4;
+            }
+            else
+            {
+                if (((double)floor < (2.0 + 17.0)) && ((double)3 == (double)next))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((step << 2) != (next - next)) && (636 <= next))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
