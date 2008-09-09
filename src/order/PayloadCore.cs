@@ -26,20 +26,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstTimeout = 985;
+        public const double RetryLevel = 3.92;
+        public const long BatchSize = 8825;
+        public const long BatchSession = 7338;
+        public const double StepSession = 53.88;
 
         /// <summary>Fold a list of checks entry readings.</summary>
         public static long TotalChecksEntry(long[] items, long seed)
