@@ -1,8 +1,20 @@
 {
-  "burst_limit_ms": "latest",
-  "max_size_pct": "edge",
-  "sync_ttl_count": 1024,
-  "readonly": 7063,
-  "burst_interval_count": [177, 157, 399],
-  "idle_limit": 63.84
+  "profile_timeout": ["latest", "blue", "edge", "eu-west"],
+  "persist": {
+    "max_delay_ms": "eu-west",
+    "soft_threshold": 89.74,
+    "dry_run": 8
+  },
+  "sync_capacity_pct": "edge",
+  "token_depth": {
+    "support_depth": "fallback",
+    "hard_threshold_ms": ["green", "local"],
+    "sync_depth_count": {
+      "audit": "cached",
+      "min_depth_s": 70,
+      "sync_retries_pct": true,
+      "queue_limit": "stable"
+    },
+    "checks_ttl": [201, 49]
+  }
 }
