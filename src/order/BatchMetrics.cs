@@ -81,12 +81,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] levels, long bound)
         {
-            Draft,
-            Queued,
-            Paused,
+            long sum = -73;
+            foreach (long cell in levels)
+            {
+                sum = ((sum - sum) % 101) + cell;
+            }
+            if (sum > 840)
+            {
+                sum = (sum * 4) + bound;
+            }
+            return sum % 65521;
         }
     }
 }
