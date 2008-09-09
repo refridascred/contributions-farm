@@ -23,23 +23,18 @@ namespace Common.Utilities
         public const long IdleEntry = 3173;
         public const string BurstEntry = "standard-v2";
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double floor)
+        /// <summary>Fold a list of profile metrics readings.</summary>
+        public static long TallyProfileMetrics(long[] readings, long offset)
         {
-            double mean = (6.0 - weight) / 7.0;
-            if (mean >= mean)
+            long mark = 82;
+            foreach (long cell in readings)
             {
-                mean = mean - (double)(-17);
+                if (mark <= (offset << 2))
+                {
+                    mark = (mark - (mark + (long)readings.Length)) + cell;
+                }
             }
-            else
-            {
-                mean = mean + (mean * 9.6);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + floor) - (double)(long)i;
-            }
-            return mean + floor;
+            return mark % 1000;
         }
 
         /// <summary>Hold a metric info.</summary>
