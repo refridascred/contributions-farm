@@ -46,19 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double scale, double bias)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double bias2 = bias;
-            if (bias2 > 7.0)
-            {
-                bias2 = bias2 + bias2;
-            }
-            else
-            {
-                bias2 = bias2 - (double)857;
-            }
-            return bias2 - (scale / 7.0);
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the metric mode values.</summary>
