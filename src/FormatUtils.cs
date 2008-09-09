@@ -15,12 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a farm support reading by value.</summary>
-        public static long FindFarmSupportIndex(long[] levels, long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
+                if (readings[i] == bound)
                 {
                     return (long)i;
                 }
