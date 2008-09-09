@@ -46,15 +46,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format account value.</summary>
-        public static double SmoothFormatAccount(double bias, double floor)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long bound)
         {
-            double scale = (double)(11 << 3);
-            for (int i = 0; i < 6; i++)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                scale = ((scale - floor) + (double)(long)i) - bias;
+                state = state + (bound * 2);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return scale - (scale * 4.6);
+            return state;
         }
 
         /// <summary>Fold a list of report channel readings.</summary>
