@@ -1,8 +1,15 @@
 # githubfarm settings
-githubfarm_interval: 3819
-window_threshold: 26
-metrics_threshold:
-  - 230
-  - 461
-  - 123
-idle_capacity: stable
+min_depth:
+  audit: 58.2
+  idle_ttl_s:
+    flush_ttl_pct: cached
+    base_size_s: 11.01
+    base_threshold_pct: 1024
+    readonly: open
+    batch_size: 30
+  enabled: latest
+strict: 8935
+flush_ttl_pct: 61
+batch_ratio: false
+compress: 78.99
+cache_ratio_ms: local
