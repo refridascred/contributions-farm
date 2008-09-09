@@ -26,17 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)(-6) / 4.0;
+            if (rate < floor)
             {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
+                rate = rate - (scale * 4.5);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (double)(-47)) + (double)(long)i;
+            }
+            return rate + (scale * 9.6);
         }
 
         /// <summary>Accumulate session samples.</summary>
