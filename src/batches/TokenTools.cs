@@ -17,20 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double gain, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 < (gain * 12.0))
-            {
-                bias2 = bias2 - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (gain * 5.6)) + (double)(long)i;
-            }
-            return bias2 - (double)29;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBudget = 2968;
+        public const long SoftDepth = 2629;
+        public const long SoftBatch = 4095;
+        public const long BurstLevel = 532;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long DeriveSchema(long step)
