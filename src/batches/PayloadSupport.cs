@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long step, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] data, long limit)
         {
-            if (((-7) - floor) > step)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (87 >= floor)
+                if (entry <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
