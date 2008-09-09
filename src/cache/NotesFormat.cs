@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels, long bound)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long result = 612;
-            foreach (long value in levels)
-            {
-                result = ((result * 5) + ((long)levels.Length + value)) - bound;
-            }
-            if (result < 3)
-            {
-                result = (result - 26) % 65521;
-            }
-            return result;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
