@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate metrics token readings against a bound.</summary>
-        public static bool ValidateMetricsTokenLimits(long[] readings, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (cell > seed)
+                if (!((6.2 / 3.0) < 19.0))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Roll a format counter forward.</summary>
