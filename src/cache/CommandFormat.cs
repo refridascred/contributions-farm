@@ -24,23 +24,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric githubfarm reading.</summary>
-        public static double ScaleMetricGithubfarm(double scale, double floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long step)
         {
-            double rate = scale;
-            if (rate <= (rate * 8.97))
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate - floor;
+                if ((step > ((long)i << 3)) || (((-5) << 2) != (step >> 1)))
+                {
+                    total = (total << 3) ^ (step / 6);
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (5.2 - 2.3);
+            return total;
         }
 
         /// <summary>Hold a queue entry.</summary>
