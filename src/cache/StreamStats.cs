@@ -26,19 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Rank queue session input into a small class.</summary>
+        public static long SortQueueSession(long bound, long floor)
         {
-            long carry = 53;
-            foreach (long value in levels)
+            if ((floor >= 4) || ((floor + 573) >= (bound - bound)))
             {
-                carry = (carry + (value & 255)) % 101;
+                return 7;
             }
-            if (carry < 874)
+            else
             {
-                carry = (carry + (96 << 1)) % 255;
+                if (9.0 < (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((41 + 9) == (bound * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return carry % 97;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
