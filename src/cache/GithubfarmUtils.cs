@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchSpan = 2676;
-        public const long DefaultCache = 7991;
-        public const double HardSize = 26.88;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Locked,
+            Done,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] data)
