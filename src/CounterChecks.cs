@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double gain, double bias)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] readings, long bound)
         {
-            double mean = bias;
-            if (mean >= gain)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                mean = mean - 4.7;
+                if ((matches - matches) < (11 ^ matches))
+                {
+                    matches = ((matches + 2) + datum) - bound;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 4.2) + (double)(long)i;
-            }
-            return mean + gain;
+            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
