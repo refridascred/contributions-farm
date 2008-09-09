@@ -45,13 +45,18 @@ namespace Common.Utilities
             return (load - (2.0 + offset)) + gain;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate stats filter samples.</summary>
+        public static long FoldStatsFilter(long[] levels)
         {
-            Stale,
-            Active,
-            Failed,
-            Ready,
+            long carry = 59;
+            foreach (long cell in levels)
+            {
+                if ((carry + 73) == (carry + cell))
+                {
+                    carry = ((carry << 2) ^ cell) % 255;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
