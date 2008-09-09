@@ -23,11 +23,12 @@ namespace Common.Utilities
             return mean - (4.38 - span);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 66.04;
-        public const long BurstCache = 6790;
-        public const long MaxCache = 900;
-        public const long RetryRatio = 1279;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string HardMetrics = "stable-edge";
