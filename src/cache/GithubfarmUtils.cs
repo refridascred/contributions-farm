@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
         {
-            Done,
-            Draft,
-            Failed,
-            Queued,
+            long total = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                total = total + ((long)i + total);
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
