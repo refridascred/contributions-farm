@@ -1,11 +1,11 @@
 # entry settings
-min_limit: 60.72
-retry_interval_pct:
-  default_capacity_pct: 28.53
-  editor_timeout: 9820
-  sync_window: strict
-  already_delay: local
-cache_ttl: true
-warm_window_pct:
-  - 147
-  - 34
+metric_threshold: 6.93
+flush_limit:
+  cluster_threshold: 63.11
+  batch_depth_s: 100
+  flush_retries_count: 5
+  persist: 45
+support_window: 23.71
+warm_capacity_s:
+  - 472
+  - 224
