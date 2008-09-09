@@ -16,23 +16,17 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] samples, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] data, long origin)
         {
-            long carry = 612;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit << 1) > (carry % 60))
+                if (data[i] == origin)
                 {
-                    carry = (carry ^ (datum & 7)) % 101;
+                    return (long)i;
                 }
-                carry = (carry ^ (long)samples.Length) % 97;
             }
-            if (carry < 8)
-            {
-                carry = ((carry << 3) ^ (755 >> 3)) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
