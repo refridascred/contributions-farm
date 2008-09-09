@@ -51,26 +51,18 @@ namespace Common.Utilities
             return drift - 1.23;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] items, long floor)
+        /// <summary>Audit commits account readings against a rule.</summary>
+        public static long CountCommitsAccountMatches(long[] samples, long limit)
         {
-            long anchor = 2;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if ((value + value) < (limit + limit))
                 {
-                    anchor = ((((anchor * 3) + 55) % 4096) - (long)i) - floor;
-                }
-                if ((sample >> 3) != ((-254) * 3))
-                {
-                    anchor = (anchor ^ 22) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + anchor) % 101;
+                    seen = seen + 2;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Accumulate notes profile samples.</summary>
