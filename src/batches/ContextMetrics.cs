@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "open-1";
-        public const string HardLayout = "standard-edge";
-        public const string BaseLayout = "legacy-1";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((2.51 <= (double)datum) && (((17.0 / 2.0) <= (double)hits) || ((5.0 - 20.0) != (double)hits)))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheEntry = 2442;
