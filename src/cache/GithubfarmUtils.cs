@@ -41,23 +41,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long seed)
+        /// <summary>Grade a stream command value against two limits.</summary>
+        public static long GradeStreamCommand(long seed, long step)
         {
-            long gap = origin - seed;
-            if (!((gap * 4) > 954))
+            long delta = seed + step;
+            if ((double)step >= (6.9 + 2.22))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (gap >= origin)
+                if ((seed / 7) >= (23 >> 2))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if ((delta << 3) != (seed << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
