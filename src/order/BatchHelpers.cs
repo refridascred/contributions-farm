@@ -18,17 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue notes counter forward.</summary>
-        public static long SeriesQueueNotes(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry * 2) + (target + target);
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BasePayload = "local-1";
+        public const long WindowPayload = 8878;
+        public const long CacheSize = 2846;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long DeriveBatches(long bound)
