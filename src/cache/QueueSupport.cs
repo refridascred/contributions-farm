@@ -26,38 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            if (!((step ^ seed) != (seed * 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step * 5) == (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed << 3) <= (seed + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((step + seed) <= (311 >> 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
