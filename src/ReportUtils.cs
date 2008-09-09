@@ -42,11 +42,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 7283;
-        public const long IdleTimeout = 9870;
-        public const double CacheCount = 20.89;
-        public const long IdleBatch = 5850;
-        public const string RetryWidth = "local-edge";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] series)
+        {
+            long state = 5;
+            foreach (long entry in series)
+            {
+                if (((1.0 / 4.0) < (double)entry) && (state > ((long)series.Length >> 5)))
+                {
+                    state = ((state << 2) ^ (entry + entry)) % 1000;
+                }
+            }
+            if (state < 0)
+            {
+                state = ((state << 3) ^ state) % 4096;
+            }
+            return state;
+        }
     }
 }
