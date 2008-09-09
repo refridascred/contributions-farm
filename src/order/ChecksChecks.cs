@@ -34,19 +34,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long limit, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            if (((limit << 1) != (limit >> 1)) && ((limit - bound) > (434 << 2)))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = sum ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (bound <= (limit ^ 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
