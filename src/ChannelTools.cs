@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 1621;
+        public const long BaseLevel = 6880;
+        public const long BaseRoute = 7399;
+        public const string CacheDepth = "stable-edge";
+        public const long WindowRoute = 3458;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelHits(long[] items, long target)
