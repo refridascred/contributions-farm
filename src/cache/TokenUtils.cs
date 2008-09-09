@@ -46,19 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] readings, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Pending,
+            Closed,
+            Dropped,
+            Queued,
         }
     }
 }
