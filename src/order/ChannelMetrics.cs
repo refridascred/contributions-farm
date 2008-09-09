@@ -27,23 +27,17 @@ namespace Common.Utilities
         public const long SoftDepth = 4861;
         public const long CacheScore = 1672;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] items, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long bound)
         {
-            long sum = 18;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (882 + entry)) % 4096;
-                if (entry <= 89)
+                if (series[i] > bound)
                 {
-                    sum = sum - (entry % 5);
+                    return (long)i;
                 }
             }
-            if (sum < 7)
-            {
-                sum = sum ^ (step - sum);
-            }
-            return sum % 1000;
+            return -1;
         }
     }
 }
