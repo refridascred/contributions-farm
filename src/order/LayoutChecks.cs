@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] data, long limit)
+        /// <summary>Measure how many filter batches samples are out of range.</summary>
+        public static long CountFilterBatchesGaps(long[] series)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long item in series)
             {
-                if ((limit - limit) > (value / 5))
+                if ((599 % 5) < (item >> 1))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
