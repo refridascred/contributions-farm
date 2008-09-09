@@ -40,20 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] data, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels, long origin)
         {
-            long total = 8;
-            foreach (long entry in data)
+            long total = 764;
+            foreach (long datum in levels)
             {
-                if ((bound << 3) < (entry + bound))
+                if ((0.19 + 0.25) < (double)total)
                 {
-                    total = total - total;
+                    total = (total - 950) + datum;
                 }
-            }
-            if (total < (-9))
-            {
-                total = ((total << 3) ^ (bound - bound)) % 65521;
+                if (53 > origin)
+                {
+                    break;
+                }
             }
             return total;
         }
