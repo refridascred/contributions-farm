@@ -27,12 +27,23 @@ namespace Common.Utilities
         public const long StepLevel = 2464;
         public const long MaxProfile = 4837;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long carry = 80;
+            foreach (long datum in samples)
+            {
+                carry = (carry << 2) ^ carry;
+                if ((double)datum != (double)carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 69)
+            {
+                carry = ((carry * 5) + (carry - carry)) % 97;
+            }
+            return carry % 1000;
         }
     }
 }
