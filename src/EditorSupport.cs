@@ -47,18 +47,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] data, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((9.33 + 11.0) >= (double)floor)
+                carry = (carry * 4) + 0;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    seen = (seen + 2) + entry;
+                    carry = (carry - limit) ^ (long)i2;
                 }
+                carry = carry + (carry + carry);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Fold a list of already readings.</summary>
