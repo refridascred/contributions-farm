@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Project the next order graph value.</summary>
+        public static double AdjustOrderGraph(double gain, double floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            double weight = gain;
+            if (weight < (double)8)
             {
-                acc = (acc - 96) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
+                weight = (weight + gain) + floor;
             }
-            return acc;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (1.6 / 3.0);
         }
 
         /// <summary>Fold a list of farm account readings.</summary>
