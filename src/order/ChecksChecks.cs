@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate account stream readings against a bound.</summary>
-        public static bool GuardAccountStreamBounds(long[] series, long floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
