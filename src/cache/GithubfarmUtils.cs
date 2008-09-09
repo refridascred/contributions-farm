@@ -41,19 +41,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] samples, long offset)
+        /// <summary>Rank stats batches input into a small class.</summary>
+        public static long ClassifyStatsBatches(long limit, long limit2)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long lane = limit - limit2;
+            if ((double)limit != (7.0 - 4.1))
             {
-                if (entry < offset)
+                return 8;
+            }
+            else
+            {
+                if ((double)lane >= (double)(-58))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)lane <= (18.0 + 3.75))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
