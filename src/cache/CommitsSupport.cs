@@ -51,38 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long origin, long limit)
+        /// <summary>Accumulate payload layout samples.</summary>
+        public static long CombinePayloadLayout(long[] samples)
         {
-            if (81 > (origin << 3))
+            long carry = -747;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin + (-5)) > ((-4) ^ 567)))
+                if ((double)carry <= (16.0 + 13.0))
                 {
-                    return 6;
+                    carry = (carry ^ (carry & 15)) % 4096;
                 }
-                else
+                if (((carry + datum) <= (carry ^ datum)) || ((double)datum > (double)carry))
                 {
-                    if (((origin / 5) != (513 + 8)) && ((origin % 97) >= (2 - limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)origin >= (double)80) || ((double)limit > (18.0 + 2.1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
