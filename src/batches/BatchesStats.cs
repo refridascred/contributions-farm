@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const string BatchPayload = "strict-v2";
         public const string SoftPayload = "staging-1";
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)(51 + 37);
+            if (bias2 > bias2)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 + bias;
             }
-            return count;
+            return bias2 - (8.56 + scale);
         }
 
         /// <summary>Describe the metric mode values.</summary>
