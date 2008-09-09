@@ -45,21 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < offset)
                 {
-                    if ((items[i] ^ items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
