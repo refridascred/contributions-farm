@@ -36,23 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] readings)
-        {
-            long mark = 87;
-            foreach (long entry in readings)
-            {
-                if (!(((long)readings.Length & 31) != (mark - (long)readings.Length)))
-                {
-                    mark = ((mark - (mark % 10)) % 101) ^ entry;
-                }
-            }
-            if (mark < 570)
-            {
-                mark = ((mark * 2) + (mark << 1)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstWidth = 58.58;
+        public const long StepGithubfarm = 175;
+        public const double MaxGithubfarm = 67.37;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] series, long bound)
