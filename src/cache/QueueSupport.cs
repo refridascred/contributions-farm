@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long seed, long step)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            long prev = seed ^ step;
+            if ((prev % 60) != (3 >> 3))
             {
-                state = ((state * 5) + (long)i) % 101;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (step <= (step + 82))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Rank already input into a small class.</summary>
