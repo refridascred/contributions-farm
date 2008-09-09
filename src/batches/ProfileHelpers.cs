@@ -52,11 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 9370;
-        public const string MaxCounter = "local-1";
-        public const long BurstTimeout = 491;
-        public const long WindowRatio = 7236;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSize = 7132;
+        public const long BaseWidth = 4802;
+        public const double BurstSupport = 90.4;
+        public const string DefaultTimeout = "standard-v2";
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] series, long floor)
