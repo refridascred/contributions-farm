@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                total = total + ((long)i + total);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchSpan = 2676;
+        public const long DefaultCache = 7991;
+        public const double HardSize = 26.88;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] data)
