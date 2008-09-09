@@ -15,31 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long seed, long seed2)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if (seed >= (seed2 - 69))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed2 < (2.15 / 3.0)) || ((seed - seed) < seed2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((432 - seed) == (seed << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Blend two editor measurements.</summary>
