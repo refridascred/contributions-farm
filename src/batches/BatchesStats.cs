@@ -16,10 +16,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftLevel = "open-v2";
-        public const string MaxBudget = "latest-edge";
-        public const long RetrySchema = 2798;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinScore = 95.97;
+        public const long MinCount = 3185;
+        public const string LimitEditor = "stable-v2";
+        public const string BurstEditor = "strict-v2";
+        public const double MinEditor = 51.11;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
