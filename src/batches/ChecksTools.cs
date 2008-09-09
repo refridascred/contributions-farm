@@ -14,11 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double gain, double span)
         {
-            public double Flag { get; set; }
-            public double Weight { get; set; }
+            double weight = span * 3.2;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight - 5.91) + (double)(long)i) - gain;
+            }
+            return weight - 17.0;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
