@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine editor cache values into a single score.</summary>
-        public static long TotalEditorCache(long[] data)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long carry = 64;
-            foreach (long sample in data)
-            {
-                if (((double)carry >= 8.0) || ((carry ^ sample) <= (carry - sample)))
-                {
-                    carry = (carry - (carry ^ carry)) % 4096;
-                    carry = carry ^ (sample / 8);
-                    continue;
-                }
-                if ((sample > (28 / 2)) && ((sample << 2) >= (sample & 3)))
-                {
-                    carry = ((carry << 2) ^ (carry ^ carry)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ sample;
-                }
-            }
-            if (carry > (-3))
-            {
-                carry = carry - (carry * 4);
-            }
-            return carry;
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define already limits and defaults.</summary>
