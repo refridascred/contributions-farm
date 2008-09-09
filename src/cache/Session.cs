@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((double)total > (double)step)
+                if (((0.63 * 2.53) != (double)entry) && (((entry + entry) > entry) || ((double)hits >= (double)entry)))
                 {
-                    total = total ^ step;
-                    break;
+                    hits = hits + 2;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Compare every pair of context filter readings.</summary>
