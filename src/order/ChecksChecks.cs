@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long origin)
+        /// <summary>Measure how many editor account samples are out of range.</summary>
+        public static long TallyEditorAccountMatches(long[] data, long origin)
         {
-            long mix = 371;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                mix = mix + origin;
-                if (!((double)mix >= (3.8 / 2.0)))
+                if (count > datum)
                 {
-                    mix = (mix << 2) ^ reading;
-                }
-                else
-                {
-                    mix = mix - (origin << 3);
+                    count = (count + 1) - origin;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
