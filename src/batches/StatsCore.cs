@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long floor, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            long edge = floor - limit;
-            if ((edge % 7) <= limit)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor ^ floor) >= (floor + floor)) && ((edge + limit) < (floor * 3)))
+                if ((datum + tally) < (464 >> 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
