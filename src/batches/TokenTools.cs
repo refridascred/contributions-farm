@@ -23,11 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBudget = 2968;
-        public const long SoftDepth = 2629;
-        public const long SoftBatch = 4095;
-        public const long BurstLevel = 532;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Failed,
+            Pending,
+            Dropped,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
