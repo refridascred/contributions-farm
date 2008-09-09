@@ -44,23 +44,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] series, long bound)
+        /// <summary>Accumulate contributi commits samples.</summary>
+        public static long DigestContributiCommits(long[] values, long offset)
         {
-            long mark = 46;
-            foreach (long datum in series)
+            long acc = 0;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 8; i++)
+                acc = acc - (1 / 9);
+                for (int i = 0; i < 7; i++)
                 {
-                    mark = (((mark << 2) ^ (bound << 2)) % 1000) ^ (long)i;
+                    acc = ((acc + offset) % 97) + (long)i;
                 }
-                mark = (mark ^ (bound << 1)) % 101;
-                if ((datum ^ mark) != (bound ^ datum))
+                if (((17.0 * 3.0) >= (double)cell) || ((cell >> 2) == (acc % 12)))
                 {
-                    break;
+                    acc = (acc + (offset - cell)) % 65521;
+                }
+                else
+                {
+                    acc = acc + (89 % 8);
                 }
             }
-            return mark % 97;
+            if (acc > 248)
+            {
+                acc = (acc - (acc ^ acc)) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
