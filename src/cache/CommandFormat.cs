@@ -14,21 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up counter commits samples.</summary>
-        public static long OverlapCounterCommitsCount(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 66;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading > (sum >> 3))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 2) ^ (sum * 4)) % 97;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
