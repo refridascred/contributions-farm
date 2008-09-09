@@ -67,10 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxTimeout = 3125;
-        public const long CacheQueue = 7042;
-        public const string WindowDepth = "latest-v2";
-        public const string WindowQueue = "standard";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] series)
+        {
+            long acc = 72;
+            foreach (long cell in series)
+            {
+                acc = ((acc ^ (3 * 3)) % 65521) ^ cell;
+            }
+            return acc;
+        }
     }
 }
