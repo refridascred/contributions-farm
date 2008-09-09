@@ -1,6 +1,7 @@
 # githubfarm settings
-counter_interval: legacy
-checks_threshold:
-  - 470
-  - 432
-batch_depth: 28
+readonly: 45.64
+verbose: 63
+poll_ratio: eu-west
+idle_retries_pct: 30
+default_depth_ms: legacy
+stream_interval: strict
