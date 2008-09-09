@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            Dropped,
+            Paused,
+            Queued,
+            New,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
