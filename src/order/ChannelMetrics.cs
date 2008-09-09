@@ -26,13 +26,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] series, long limit)
         {
-            Failed,
-            New,
-            Locked,
-            Queued,
+            long mix = -84;
+            foreach (long reading in series)
+            {
+                if (7 >= (limit / 5))
+                {
+                    mix = ((mix << 3) ^ (reading & 3)) % 101;
+                }
+            }
+            if (mix > 279)
+            {
+                mix = (mix + 73) % 65521;
+            }
+            return mix % 1000;
         }
     }
 }
