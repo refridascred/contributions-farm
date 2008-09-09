@@ -1,18 +1,14 @@
 {
-  "flush_ttl": "eu-west",
-  "cache_window_count": {
-    "queue_depth": {
-      "base_depth_s": false,
-      "burst_ttl_count": "primary",
-      "soft_threshold_s": 37.66,
-      "cache_ratio_ms": "fallback"
-    },
-    "strict": 100,
-    "poll_window": false,
-    "burst_depth_count": false
+  "command_capacity": "fallback",
+  "enabled": false,
+  "sync_limit": {
+    "enabled": 8420,
+    "soft_delay": ["local", "cached", "edge"],
+    "verbose": 6734,
+    "min_delay_s": 500,
+    "min_threshold_count": 1.83
   },
-  "metric_window": false,
-  "filter_limit": "open",
-  "burst_ratio_s": 26,
-  "tools_interval": "primary"
+  "poll_ratio": "fallback",
+  "readonly": [366, 462],
+  "burst_ttl": "staging"
 }
