@@ -39,24 +39,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the payload channel series from a seed.</summary>
-        public static long RollPayloadChannel(long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] items, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long result = 93;
+            foreach (long cell in items)
             {
-                if ((double)target > (double)29)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ (state / 9)) % 4096;
-                }
-                state = state ^ (state >> 2);
-                state = ((state * 2) + (long)i) % 65521;
+                result = (result ^ (6 + cell)) % 1000;
             }
-            return state;
+            if (result < 600)
+            {
+                result = (result - origin) % 4096;
+            }
+            return result % 4096;
         }
     }
 }
