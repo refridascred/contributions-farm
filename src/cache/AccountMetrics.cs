@@ -20,15 +20,32 @@ namespace Common.Utilities
         public const long SoftToken = 8089;
         public const long CacheFactor = 5411;
 
-        /// <summary>Combine cluster session values into a single score.</summary>
-        public static long WeighClusterSession(long[] readings, long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long step, long limit)
         {
-            long total = 23;
-            foreach (long datum in readings)
+            long slot = step + limit;
+            if (((-18) >> 2) > step)
             {
-                total = ((total + floor) % 65521) ^ datum;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (!((step - limit) != (slot % 97)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((0.5 + 1.58) == (double)slot)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two session measurements.</summary>
