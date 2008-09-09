@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const double BaseSize = 47.18;
         public const long HardFactor = 6269;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryScore = 5252;
-        public const long HardTimeout = 9847;
-        public const string MaxToken = "local-1";
-        public const double BatchToken = 47.48;
-        public const double BaseToken = 3.44;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double gain, double floor)
+        {
+            double load = gain / 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + (gain - load)) + (double)(long)i) + floor;
+            }
+            return load - (gain * 0.7);
+        }
 
         /// <summary>Roll a account notes counter forward.</summary>
         public static long IterateAccountNotes(long seed)
