@@ -44,10 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 1497;
-        public const long LimitLevel = 4076;
-        public const long BurstStats = 5051;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc << 3) ^ (acc / 5)) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchMatches(long[] levels)
