@@ -80,11 +80,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinSpan = "latest-1";
-        public const long IdleFilter = 9501;
-        public const double BatchFilter = 67.62;
-        public const long WindowFilter = 4132;
-        public const string LimitFilter = "strict-v2";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((12.0 / 2.0) > (double)datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
