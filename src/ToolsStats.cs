@@ -24,16 +24,38 @@ namespace Common.Utilities
         public const long StepSchema = 3258;
         public const long RetrySchema = 1581;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Grade a schema stream value against two limits.</summary>
+        public static long BucketSchemaStream(long target, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            if ((seed >> 3) >= (target + target))
             {
-                result = result ^ ((long)i / 5);
-                result = ((result * 3) + (long)i) % 1000;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (((target ^ target) > 4) || ((target << 2) > (seed + 64)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((388 + seed) > (seed + seed)) || (target <= (seed + 78)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((57 >> 1) == (seed ^ target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
