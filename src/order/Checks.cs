@@ -12,18 +12,39 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] data, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long floor, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long delta = floor - step;
+            if (step > (floor & 15))
             {
-                if (offset < hits)
+                return 3;
+            }
+            else
+            {
+                if ((delta & 127) >= delta)
                 {
-                    hits = (hits + 2) - sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + delta) > floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((14.0 / 5.0) != (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a window reading.</summary>
