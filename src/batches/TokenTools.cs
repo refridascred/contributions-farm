@@ -29,32 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long seed)
+        /// <summary>Audit editor profile readings against a rule.</summary>
+        public static long AuditEditorProfileOutliers(long[] samples)
         {
-            long span = bound + seed;
-            if (!((927 ^ bound) >= (bound + span)))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (4.0 > (double)bound)
+                if ((hits >> 5) == (item % 7))
                 {
-                    return 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((double)bound > (2.4 + 0.74))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
