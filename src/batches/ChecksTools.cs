@@ -21,18 +21,27 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] levels, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] items)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long score = 233;
+            foreach (long cell in items)
             {
-                if ((count - entry) > (entry % 100))
+                if (((score + score) == (score ^ score)) && ((double)cell != (9.2 * 1.0)))
                 {
-                    count = (count + 3) + step;
+                    score = score - cell;
+                }
+                score = score - score;
+                if (score >= (score >> 4))
+                {
+                    score = score + cell;
+                }
+                if ((cell + cell) < (cell & 31))
+                {
+                    break;
                 }
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
