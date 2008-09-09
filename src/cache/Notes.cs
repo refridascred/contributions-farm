@@ -32,12 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxSize = "alpha-1";
-        public const double LimitRoute = 65.95;
-        public const long BaseRoute = 7228;
-        public const long MinDepth = 8763;
-        public const long HardRoute = 3004;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 3) + (carry + bound)) % 255;
+                if (((-43) / 6) <= (carry - bound))
+                {
+                    carry = ((carry * 2) + carry) % 255;
+                    carry = carry - (carry + bound);
+                }
+                else
+                {
+                    carry = (carry ^ 71) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsOutliers(long[] series, long step)
