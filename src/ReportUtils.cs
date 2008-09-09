@@ -46,13 +46,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Roll a counter schema counter forward.</summary>
+        public static long StepCounterSchema(long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            long score = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (floor >= (score - floor))
+                {
+                    score = (score << 2) ^ (floor % 8);
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
