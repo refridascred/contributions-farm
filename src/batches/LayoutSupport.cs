@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] readings, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] == step)
+                if ((count / 5) < ((-12) - count))
                 {
-                    return (long)i;
+                    count = ((count + 3) ^ sample) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
