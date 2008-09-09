@@ -14,17 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first cache already entry that matches the target.</summary>
-        public static long LookupCacheAlreadyIndex(long[] readings, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 835;
+            foreach (long value in readings)
             {
-                if (readings[i] == bound)
+                if (!((2 & 31) < (acc * 5)))
                 {
-                    return (long)i;
+                    acc = acc ^ (acc - 3);
+                }
+                if (6.67 <= (double)value)
+                {
+                    acc = ((acc * 2) + acc) % 1000;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
