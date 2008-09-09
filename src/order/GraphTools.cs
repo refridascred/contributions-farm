@@ -26,20 +26,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate tools notes readings against a bound.</summary>
-        public static bool VerifyToolsNotesLimits(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryBudget = 2706;
+        public const long CacheSpan = 9553;
+        public const long StepFactor = 1977;
+        public const long DefaultChannel = 1859;
+        public const string BurstInterval = "cached-v2";
 
         /// <summary>Audit checks support readings against a rule.</summary>
         public static long MeasureChecksSupportHits(long[] readings, long bound)
