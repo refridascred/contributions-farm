@@ -47,15 +47,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double bias, double offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 4; i++)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                bias2 = (bias2 + (bias / 7.0)) + (double)(long)i;
+                long delta = (acc - 643) * 4;
+                if ((delta * 4) < (delta + delta))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return bias2 - (bias + offset);
+            return acc;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
