@@ -23,18 +23,23 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Audit farm metrics readings against a rule.</summary>
-        public static long TallyFarmMetricsHits(long[] values, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = -6;
+            foreach (long entry in samples)
             {
-                if ((346 + limit) < (619 / 4))
+                if ((9 + entry) > (anchor ^ anchor))
                 {
-                    count = (count + 3) + entry;
+                    anchor = (anchor * 2) + (anchor + 0);
                 }
+                anchor = ((anchor * 2) + (entry + entry)) % 97;
             }
-            return count;
+            if (anchor > 47)
+            {
+                anchor = (anchor + (anchor - anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the contributi state values.</summary>
