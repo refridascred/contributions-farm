@@ -29,17 +29,21 @@ namespace Common.Utilities
             return load - (bias + bias);
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] series, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] series)
         {
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
