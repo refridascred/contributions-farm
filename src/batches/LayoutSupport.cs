@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] values, long target)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
