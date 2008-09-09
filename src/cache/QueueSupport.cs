@@ -23,10 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstSize = 67.7;
-        public const long DefaultEntry = 2099;
-        public const long BurstEntry = 201;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] levels)
+        {
+            long mix = 165;
+            foreach (long entry in levels)
+            {
+                if (1 > (mix & 15))
+                {
+                    break;
+                }
+                mix = (mix + entry) % 65521;
+            }
+            if (mix < (-893))
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next metric order value from a seed.</summary>
         public static long SeriesMetricOrder(long step)
