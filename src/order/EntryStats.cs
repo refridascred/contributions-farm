@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long HardChecks = 1734;
         public const long SoftChecks = 4910;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            Closed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Check that every session order entry stays within the limit.</summary>
