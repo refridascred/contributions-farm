@@ -33,24 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long floor, long step)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            if ((floor / 5) > (step - floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((38 + floor) != (step - 484)) && ((floor + step) < (step + 7)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
