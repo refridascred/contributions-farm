@@ -20,14 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Closed,
-            New,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 8609;
+        public const string LimitDepth = "fallback-v2";
+        public const long RetryBudget = 4422;
+        public const long MinStream = 8808;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long seed, long offset)
