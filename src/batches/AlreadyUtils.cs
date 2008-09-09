@@ -33,20 +33,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] items, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            long anchor = 2;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int i = 0; i < 2; i++)
                 {
-                    long cur = (step * 4) >> 2;
-                    score = ((score - (cur + score)) % 97) ^ (long)i2;
+                    anchor = ((((anchor * 3) + 55) % 4096) - (long)i) - floor;
                 }
-                score = ((score * 5) + (long)i) % 101;
+                if ((sample >> 3) != ((-254) * 3))
+                {
+                    anchor = (anchor ^ 22) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + anchor) % 101;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Accumulate notes profile samples.</summary>
