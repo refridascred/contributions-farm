@@ -84,19 +84,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] items, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long value in items)
+            if (((double)8 == (double)floor2) || ((floor2 + floor) > floor))
             {
-                if (value >= floor)
+                return 5;
+            }
+            else
+            {
+                if (floor >= (floor2 & 63))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((16.0 / 2.0) != (double)floor) && ((floor + floor2) == (floor - floor2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
