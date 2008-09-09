@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the account order entries that pass the check.</summary>
-        public static long CountAccountOrderOutliers(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (!((offset < sample) || ((count + sample) < offset)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 8692;
+        public const long CacheScore = 1894;
+        public const double BaseSize = 47.18;
+        public const long HardFactor = 6269;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryScore = 5252;
