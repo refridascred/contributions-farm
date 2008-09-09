@@ -40,26 +40,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine batch graph values into a single score.</summary>
-        public static long DigestBatchGraph(long[] levels)
+        /// <summary>Derive the next filter order value from a seed.</summary>
+        public static long DeriveFilterOrder(long step)
         {
-            long mix = 8;
-            foreach (long item in levels)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((mix * 5) != (mix - 96)) && ((item - 70) <= mix))
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                else
-                {
-                    mix = (mix ^ ((long)levels.Length * 5)) % 65521;
-                }
-                if (12 >= (mix - mix))
-                {
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 4096;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
