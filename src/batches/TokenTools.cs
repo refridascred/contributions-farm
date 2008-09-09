@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (8 < (hits + hits))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
