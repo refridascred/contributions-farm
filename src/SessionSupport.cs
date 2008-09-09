@@ -21,10 +21,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 9766;
-        public const string MinWidth = "standard";
-        public const long CacheCluster = 8211;
-        public const double WindowCluster = 28.25;
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
