@@ -20,10 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 1747;
-        public const long CacheRecord = 2409;
-        public const long MinDepth = 6141;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] levels)
+        {
+            long state = 293;
+            foreach (long entry in levels)
+            {
+                if ((double)271 > (double)state)
+                {
+                    state = (state - (entry ^ state)) % 65521;
+                }
+                if (((entry << 2) >= state) && (state < entry))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double HardOrder = 11.86;
