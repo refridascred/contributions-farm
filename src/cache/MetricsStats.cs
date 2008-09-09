@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first tools filter entry that matches the target.</summary>
-        public static long FindToolsFilterIndex(long[] readings, long seed)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
