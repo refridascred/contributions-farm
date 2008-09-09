@@ -21,11 +21,14 @@ namespace Common.Utilities
         public const string MaxBudget = "latest-edge";
         public const long RetrySchema = 2798;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 9573;
-        public const double DefaultProfile = 18.15;
-        public const long StepLevel = 2464;
-        public const long MaxProfile = 4837;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Stale,
+            New,
+            Active,
+            Closed,
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] samples)
