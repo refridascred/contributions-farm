@@ -47,19 +47,25 @@ namespace Common.Utilities
             return (weight - weight) + offset;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] levels, long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long step, long limit)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long next = step ^ limit;
+            if (((8 >> 2) == (step + next)) && ((limit - limit) <= (29 & 1)))
             {
-                if (value > offset)
+                return 0;
+            }
+            else
+            {
+                if (limit <= (next - next))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Project the next already value.</summary>
