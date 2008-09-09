@@ -47,13 +47,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] data, long target)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (target > (seen * 5))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
