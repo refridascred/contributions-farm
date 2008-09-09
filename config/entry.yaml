@@ -1,6 +1,32 @@
 # entry settings
-batches_threshold: true
-cache_retries_pct: 1635
-cache_size: true
-hard_ratio: open
-account_interval: 3196
+filter_depth:
+  record_timeout:
+    report_timeout: edge
+    layout_delay: staging
+    readonly: 79.23
+    cache_timeout_ms: 2263
+    poll_ratio_s: 47
+  idle_retries_pct: eu-west
+  base_delay:
+    poll_limit_ms:
+      - 331
+      - 261
+    flush_ttl_count: 45.12
+    base_interval: open
+    readonly: false
+  account_threshold: stable
+sync_depth_pct: 47.03
+githubfarm_delay: false
+persist:
+  poll_size: edge
+  warm_retries_pct: edge
+  layout_window:
+    flush_ttl_count: 98
+    command_interval: true
+    warm_delay_count: latest
+    warm_size_count: edge
+  entry_window:
+    - 103
+    - 397
+  poll_threshold: 65.59
+soft_size: 30
