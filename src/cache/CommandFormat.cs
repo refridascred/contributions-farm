@@ -31,14 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Count the batch record entries that pass the check.</summary>
+        public static long TallyBatchRecordGaps(long[] samples, long bound)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Closed,
-            Idle,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches * 4) > bound)
+                {
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
