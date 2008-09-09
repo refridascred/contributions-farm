@@ -44,11 +44,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Validate metrics payload readings against a bound.</summary>
+        public static bool GuardMetricsPayloadRange(long[] items, long target)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
