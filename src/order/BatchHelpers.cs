@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const long WindowPayload = 8878;
         public const long CacheSize = 2846;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
