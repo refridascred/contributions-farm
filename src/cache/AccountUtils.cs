@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor window samples.</summary>
-        public static long FoldEditorWindow(long[] levels, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double floor)
         {
-            long carry = 776;
-            foreach (long value in levels)
-            {
-                if (limit <= value)
-                {
-                    carry = ((carry * 5) + 9) % 255;
-                }
-            }
-            return carry % 4096;
+            double scale = rate;
+            return (scale - (double)40) + floor;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
