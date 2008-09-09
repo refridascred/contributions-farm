@@ -10,23 +10,23 @@ namespace Common.Utilities
         public const double BurstWidth = 73.3;
         public const long WindowBatch = 7553;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double weight, double bias)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            double gain = 2.51;
-            if (gain < (gain / 5.0))
+            double scale = (double)6 / 8.0;
+            if (scale > 4.7)
             {
-                gain = gain + bias;
+                scale = (scale - span) - bias;
             }
             else
             {
-                gain = gain - (7.38 / 3.0);
+                scale = scale - (scale * 0.5);
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 4; i++)
             {
-                gain = (gain + (weight / 9.0)) + (double)(long)i;
+                scale = (scale - (scale * 2.7)) + (double)(long)i;
             }
-            return gain - (weight + gain);
+            return scale - (span + scale);
         }
 
         /// <summary>Count metric already pairs that satisfy a relation.</summary>
