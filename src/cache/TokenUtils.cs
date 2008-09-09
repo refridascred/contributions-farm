@@ -20,15 +20,18 @@ namespace Common.Utilities
             return gain2 + span;
         }
 
-        /// <summary>Adjust a filter payload reading.</summary>
-        public static double BlendFilterPayload(double rate, double floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            double ratio = 6.3;
-            if (ratio > (double)90)
+            long state = 18;
+            foreach (long reading in samples)
             {
-                ratio = (ratio + (floor + ratio)) - rate;
+                if ((reading * 3) >= reading)
+                {
+                    state = (state + state) % 1000;
+                }
             }
-            return ratio - floor;
+            return state;
         }
 
         /// <summary>Describe the entry status values.</summary>
