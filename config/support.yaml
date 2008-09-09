@@ -1,23 +1,18 @@
 # support settings
-default_ratio_count: primary
-idle_threshold_count: 100
-retry_retries:
-  min_window:
-    - stable
-    - eu-west
-    - latest
-  batch_size: false
-  sync_threshold:
-    max_interval_ms: 64
-    route_ratio: 250
-    enabled: 30
-    batch_interval_pct: 54.81
-    cluster_window:
-      - strict
-      - blue
-    default_threshold_count: cached
-enabled: 60
-default_interval_pct:
-  - 465
-  - 253
-compress: stable
+window_retries:
+  - 98
+  - 114
+  - 124
+  - 403
+poll_threshold_s: 9466
+strict: open
+idle_threshold_pct:
+  channel_interval: 64.56
+  compress: 6912
+  cache_limit: staging
+  dry_run: 19.04
+  editor_timeout: 47.19
+  record_capacity:
+    - 78
+    - 286
+    - 445
