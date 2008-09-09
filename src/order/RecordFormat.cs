@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long CacheRecord = 2409;
         public const long MinDepth = 6141;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseTimeout = 6192;
-        public const string MinInterval = "latest";
-        public const long BaseEntry = 4276;
-        public const long BurstWidth = 3814;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 11.86;
+        public const string IdleBudget = "standard-edge";
+        public const long MaxOrder = 5377;
+        public const double BatchSpan = 83.01;
+        public const long CacheSpan = 1174;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long DeriveFormat(long offset)
