@@ -12,19 +12,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long acc = 2;
-            foreach (long sample in levels)
-            {
-                acc = ((acc - acc) % 255) ^ sample;
-            }
-            if (acc > 613)
-            {
-                acc = (acc - (acc / 2)) % 65521;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
