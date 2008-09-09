@@ -39,15 +39,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two metric stream measurements.</summary>
-        public static double ProjectMetricStream(double bias, double floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            double gain = floor;
-            if (gain < (floor / 3.0))
+            long result = 878;
+            foreach (long reading in items)
             {
-                gain = (gain + (double)4) - bias;
+                if ((reading - result) <= (293 - reading))
+                {
+                    result = (result << 3) ^ (result + result);
+                }
             }
-            return gain + gain;
+            if (result > 17)
+            {
+                result = result + (result << 2);
+            }
+            return result;
         }
 
         /// <summary>Hold a command header.</summary>
