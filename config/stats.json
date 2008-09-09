@@ -1,5 +1,8 @@
 {
-  "cache_delay": [96, 212, 148],
-  "verbose": 5716,
-  "max_timeout_s": 4.13
+  "notes_window": 100,
+  "strict": 55.23,
+  "flush_retries_s": "fallback",
+  "cache_depth_s": [54, 198],
+  "cache_ttl": 96,
+  "profile_size": [286, 435]
 }
