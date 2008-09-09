@@ -1,5 +1,24 @@
 {
-  "entry_ttl": ["legacy", "cached"],
-  "strict": 100,
-  "contributi_ttl": 6.55
+  "sync_retries_s": 250,
+  "readonly": [229, 76, 54, 13],
+  "audit": {
+    "batch_timeout_ms": ["standard", "cached"],
+    "max_delay_ms": {
+      "sync_limit": "eu-west",
+      "filter_threshold": 5,
+      "min_threshold_count": 2312,
+      "default_capacity_s": "fallback",
+      "context_size": 68.96,
+      "default_depth": [243, 141]
+    },
+    "retry_timeout_s": 52.11,
+    "schema_timeout": {
+      "batch_interval": "eu-west",
+      "cache_ratio": "staging",
+      "persist": "eu-west",
+      "soft_interval": 68.17,
+      "enabled": "standard"
+    }
+  },
+  "cache_interval": false
 }
