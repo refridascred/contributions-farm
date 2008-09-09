@@ -64,11 +64,24 @@ namespace Common.Utilities
         public const double BatchFactor = 24.65;
         public const long IdleWidth = 5479;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double ratio, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long floor)
         {
-            double rate = ratio;
-            return rate + (rate - span);
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((46 <= (floor + carry)) || ((double)carry > (7.6 * 9.5)))
+                {
+                    carry = ((carry * 5) + carry) % 255;
+                    carry = (carry + (floor + carry)) % 97;
+                }
+                else
+                {
+                    carry = (carry - (floor + floor)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
