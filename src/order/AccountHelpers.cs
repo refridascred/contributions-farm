@@ -32,13 +32,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            New,
-            Locked,
-            Done,
-            Retry,
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc << 2) ^ (acc << 3)) % 255;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
