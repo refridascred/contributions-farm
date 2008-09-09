@@ -72,15 +72,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long bound, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long span = bound ^ offset;
+            if ((span << 2) != (bound % 2))
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((span + span) <= span)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((span % 7) >= (span & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (856 >= (span << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
