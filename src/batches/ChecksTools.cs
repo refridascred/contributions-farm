@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            Failed,
-            Synced,
-            Stale,
-            Done,
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next cluster value.</summary>
