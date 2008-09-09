@@ -1,6 +1,4 @@
 # githubfarm settings
-soft_depth_ms: 95.1
-flush_ttl_ms: fallback
-notes_timeout: 85.63
-githubfarm_limit: 26
-sync_depth: standard
+min_capacity_count: 75.01
+warm_timeout: 500
+sync_retries_ms: latest
