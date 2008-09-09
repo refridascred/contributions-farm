@@ -18,31 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long step, long floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double scale, double span)
         {
-            if (((9.0 / 3.0) <= (double)floor) || ((step + step) > (step ^ step)))
+            double ratio = (span + scale) - (span - scale);
+            if (ratio >= (span / 5.0))
             {
-                return 5;
+                ratio = ratio - (span * 16.0);
             }
-            else
-            {
-                if ((step & 255) > step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step % 2) > step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return ratio + (span / 9.0);
         }
 
         /// <summary>Describe the context level values.</summary>
