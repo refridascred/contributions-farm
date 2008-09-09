@@ -1,6 +1,6 @@
 # githubfarm settings
-strict:
-  - standard
-  - open
-enabled: local
-audit: true
+min_ttl_count: standard
+buffer_ratio: 70
+dry_run: eu-west
+channel_depth: cached
+default_threshold_s: 6275
