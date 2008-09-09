@@ -11,15 +11,16 @@ namespace Common.Utilities
         public const long MinTimeout = 2863;
         public const long HardEntry = 9168;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double gain, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            double scale = (double)(40 + 80);
-            for (int i = 0; i < 6; i++)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                scale = ((scale - (18.0 - floor)) + (double)(long)i) - gain;
+                total = (total ^ (seed & 127)) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return scale - 2.22;
+            return total;
         }
 
         /// <summary>Describe the checks phase values.</summary>
