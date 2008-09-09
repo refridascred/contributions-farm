@@ -47,22 +47,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1622;
+        public const string HardDepth = "staging-1";
+        public const long BaseGraph = 1574;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
