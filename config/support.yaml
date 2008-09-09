@@ -1,8 +1,11 @@
 # support settings
-editor_ttl:
-  - blue
-  - latest
-  - legacy
-verbose: eu-west
-persist: blue
-burst_ttl_ms: 76.38
+batch_interval_ms: false
+base_retries: false
+strict: 250
+flush_size_pct:
+  readonly: 18.51
+  retry_delay_s: primary
+  audit: 65.09
+  idle_timeout_count: 4963
+  burst_delay_pct: 14
+cache_depth_count: 7626
