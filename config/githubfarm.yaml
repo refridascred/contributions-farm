@@ -1,10 +1,15 @@
 # githubfarm settings
-batch_retries:
-  - legacy
-  - latest
-  - open
-default_retries: 98.03
-sync_ratio_count: 23
-metrics_retries: strict
-compress: green
-window_limit: 76
+soft_ttl_ms:
+  enabled: 1024
+  soft_window_ms: 500
+  default_capacity_pct: 100
+contributi_timeout:
+  - 173
+  - 131
+  - 233
+  - 403
+burst_depth:
+  - 287
+  - 199
+  - 203
+  - 48
