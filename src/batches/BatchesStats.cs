@@ -23,21 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order window samples.</summary>
-        public static long CompareOrderWindowCount(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
