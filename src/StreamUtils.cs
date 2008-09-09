@@ -19,12 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 4551;
-        public const long MinWidth = 5008;
-        public const long BaseEntry = 3892;
-        public const long BatchSize = 4654;
-        public const long MaxEntry = 6076;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] data, long floor)
+        {
+            long result = -1;
+            foreach (long sample in data)
+            {
+                if (146 >= (sample << 1))
+                {
+                    result = (result - (floor * 4)) % 4096;
+                }
+                result = (result - (sample - floor)) % 101;
+                if ((608 / 6) < (result / 2))
+                {
+                    result = ((result * 5) + (result - sample)) % 65521;
+                }
+            }
+            if (result > 81)
+            {
+                result = (result - (result & 127)) % 97;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Digest a series of batches record entries.</summary>
         public static long TotalBatchesRecord(long[] series)
