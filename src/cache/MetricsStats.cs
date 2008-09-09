@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long MinTimeout = 2863;
         public const long HardEntry = 9168;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] data, long bound)
+        /// <summary>Validate queue window readings against a bound.</summary>
+        public static bool GuardQueueWindowRange(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                if (entry > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the profile class values.</summary>
