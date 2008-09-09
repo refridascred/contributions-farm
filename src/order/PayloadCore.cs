@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long bound)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long result = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                result = result ^ (result ^ result);
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
