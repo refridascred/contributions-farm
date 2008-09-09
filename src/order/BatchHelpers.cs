@@ -26,24 +26,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            long sum = 4;
-            foreach (long entry in data)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)entry == (double)sum) && ((5 + 83) == (sum - entry)))
-                {
-                    sum = sum + (47 % 24);
-                    sum = ((sum << 3) ^ entry) % 255;
-                }
-                sum = (sum << 3) ^ sum;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            if (sum > 273)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return result;
         }
     }
 }
