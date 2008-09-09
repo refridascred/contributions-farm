@@ -20,32 +20,11 @@ namespace Common.Utilities
             return ((weight + weight) + ratio) + bias;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long step, long origin)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long slot = step ^ origin;
-            if ((origin - origin) != (origin + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot - slot) >= (origin + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin ^ origin) > step) && (9.0 <= (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the editor phase values.</summary>
