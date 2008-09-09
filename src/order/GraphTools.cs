@@ -20,13 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] levels, long floor)
         {
-            Retry,
-            Queued,
-            Failed,
-            Ready,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate tools notes readings against a bound.</summary>
