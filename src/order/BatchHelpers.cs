@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long WindowPayload = 8878;
         public const long CacheSize = 2846;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
