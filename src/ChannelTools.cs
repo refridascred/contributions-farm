@@ -52,12 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series)
         {
-            Dropped,
-            Synced,
-            Locked,
+            long mix = 1;
+            foreach (long value in series)
+            {
+                if (mix <= (value - 618))
+                {
+                    mix = mix + (979 ^ mix);
+                }
+                else
+                {
+                    mix = mix ^ (mix + value);
+                }
+            }
+            return mix;
         }
     }
 }
