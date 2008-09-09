@@ -1,6 +1,5 @@
 {
-  "batches_size": "staging",
-  "strict": 100,
-  "verbose": 26,
-  "default_threshold_pct": false
+  "base_retries": "green",
+  "farm_size": true,
+  "sync_depth_s": "cached"
 }
