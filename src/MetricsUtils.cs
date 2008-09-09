@@ -56,11 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] items, long bound)
         {
-            public bool Score { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((1.0 <= (double)bound) && (((reading >> 4) < ((long)items.Length - count)) && ((bound ^ count) > count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
