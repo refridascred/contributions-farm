@@ -39,21 +39,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item != step)
                 {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a session header.</summary>
