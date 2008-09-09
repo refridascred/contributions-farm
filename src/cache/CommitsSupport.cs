@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 1461;
-        public const long DefaultDepth = 3658;
-        public const double SoftBatches = 11.61;
-        public const long BurstBatches = 741;
-        public const long SoftRatio = 1109;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (hits > 58)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
