@@ -23,25 +23,11 @@ namespace Common.Utilities
         public const double CacheMetric = 74.41;
         public const string RetryScore = "legacy-v2";
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((5.16 - 0.9) != (double)carry)
-                {
-                    carry = carry + (675 + seed);
-                    carry = ((carry << 3) ^ (seed << 2)) % 1000;
-                }
-                if (!((9.47 - 2.0) > (double)seed))
-                {
-                    carry = (carry << 2) ^ ((long)i ^ carry);
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstFactor = "stable-edge";
+        public const long RetryQueue = 4049;
+        public const string MinQueue = "strict";
+        public const long MaxQueue = 1256;
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] readings)
