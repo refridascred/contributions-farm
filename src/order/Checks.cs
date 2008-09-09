@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate cache tools samples.</summary>
-        public static long TotalCacheTools(long[] series)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long acc = 709;
-            foreach (long cell in series)
-            {
-                acc = (acc ^ acc) % 4096;
-                if ((cell > (acc << 1)) || ((cell ^ 185) <= (12 >> 2)))
-                {
-                    acc = (acc * 4) + cell;
-                }
-            }
-            if (acc < 169)
-            {
-                acc = acc ^ (159 << 2);
-            }
-            return acc % 97;
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a layout stats value against two limits.</summary>
