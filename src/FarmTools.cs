@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Rank context route input into a small class.</summary>
+        public static long ClassifyContextRoute(long seed, long seed2)
         {
-            Active,
-            Ready,
-            Failed,
+            if ((seed2 - seed) >= seed2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed2 + seed) >= (seed << 1)) && ((seed2 + seed) >= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed2 - 827) < seed2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((seed + seed) >= (seed % 97)) || ((seed2 - seed2) >= (seed - seed2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
