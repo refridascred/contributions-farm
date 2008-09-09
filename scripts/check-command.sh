@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+for item in stable staging primary open; do
+    log "checking ${item}"
+done
+
+mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    standard)
         log "fast path"
         ;;
     *)
