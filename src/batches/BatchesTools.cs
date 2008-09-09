@@ -35,19 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch metric readings against a bound.</summary>
-        public static bool GuardBatchMetricRange(long[] items, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < limit)
+                if (levels[i] < step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
