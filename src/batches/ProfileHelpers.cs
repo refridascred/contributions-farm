@@ -52,19 +52,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double scale, double bias)
+        /// <summary>Find the first counter layout entry that matches the target.</summary>
+        public static long SeekCounterLayoutIndex(long[] levels, long seed)
         {
-            double drift = bias;
-            if (drift < (2.12 * 8.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - (double)10) - scale;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (double)390;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
