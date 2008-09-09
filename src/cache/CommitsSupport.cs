@@ -19,17 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile token sample.</summary>
-        public static long LookupProfileTokenIndex(long[] values, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 39;
+            foreach (long reading in readings)
             {
-                if (values[i] <= bound)
+                if ((7 - reading) <= (-534))
                 {
-                    return (long)i;
+                    mix = (mix ^ (bound - 852)) % 4096;
+                }
+                if ((6.0 + 4.84) != (double)reading)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
