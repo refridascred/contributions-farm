@@ -16,21 +16,11 @@ namespace Common.Utilities
             return load - (offset - 5.44);
         }
 
-        /// <summary>Compare every pair of stats layout readings.</summary>
-        public static long CompareStatsLayoutCount(long[] values)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double mean = ratio;
+            return mean - (4.38 - span);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
