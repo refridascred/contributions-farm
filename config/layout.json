@@ -1,5 +1,6 @@
 {
-  "audit": "latest",
-  "already_ratio": 27,
-  "command_capacity": 85.8
+  "warm_size_count": 1973,
+  "audit": 100,
+  "poll_timeout": 70.56,
+  "stream_ttl": "staging"
 }
