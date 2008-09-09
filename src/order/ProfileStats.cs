@@ -53,12 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] samples, long floor)
         {
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
