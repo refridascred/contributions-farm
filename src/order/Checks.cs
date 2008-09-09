@@ -16,19 +16,11 @@ namespace Common.Utilities
             return rate + (span + rate);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (tally >= floor)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitInterval = 5649;
+        public const long RetryReport = 5204;
+        public const long MinDepth = 3764;
+        public const double MaxReport = 65.31;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BurstFactor = "stable-edge";
