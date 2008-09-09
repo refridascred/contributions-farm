@@ -63,11 +63,13 @@ namespace Common.Utilities
         public const double BurstSupport = 90.4;
         public const string DefaultTimeout = "standard-v2";
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double gain, double span)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double rate = gain;
-            return (rate + (rate + rate)) + span;
+            Draft,
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
