@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] values)
         {
-            Idle,
-            Locked,
-            Closed,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + 17) != ((long)values.Length << 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate batch metric readings against a bound.</summary>
