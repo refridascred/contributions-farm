@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a stats cache value against two limits.</summary>
-        public static long SortStatsCache(long seed, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] series, long target)
         {
-            if (((7.0 - 13.0) > (double)target) || (target >= (target & 1)))
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed * 4) >= (-624)) && (target > ((-28) * 3)))
+                if (reading < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - 761) > (seed % 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Blend two queue measurements.</summary>
