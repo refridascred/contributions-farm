@@ -35,14 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxSpan = 30.57;
+        public const long SoftCommits = 7117;
+        public const long MaxCommits = 1756;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
