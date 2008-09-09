@@ -13,19 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] levels, long step)
+        /// <summary>Look up the position of a account batches sample.</summary>
+        public static long LookupAccountBatchesIndex(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != step)
+                if (series[i] == floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
