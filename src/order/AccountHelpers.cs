@@ -33,18 +33,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] samples)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((tally * 3) < (tally * 4)) && ((value + (-810)) <= (tally & 15)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
