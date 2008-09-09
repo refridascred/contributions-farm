@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long limit, long offset)
-        {
-            long span = limit - offset;
-            if ((double)span < (16.0 * 8.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset > (offset + 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit ^ limit) <= limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(53 < (offset << 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleDepth = 2354;
+        public const string StepSpan = "cached-edge";
+        public const string BaseRecord = "stable-v2";
 
         /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
         public static bool VerifyGithubfarmCacheBounds(long[] items, long step)
