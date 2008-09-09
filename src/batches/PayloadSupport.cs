@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 8.79;
-        public const double SoftChannel = 48.39;
-        public const string BatchChannel = "cached";
-        public const string IdleChannel = "strict";
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
