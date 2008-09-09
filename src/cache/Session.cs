@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long MinWidth = 142;
         public const string MinSpan = "open-1";
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] levels)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)entry >= 12.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
