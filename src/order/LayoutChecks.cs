@@ -20,14 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] samples)
         {
-            Stale,
-            Locked,
-            Dropped,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (count < (count + count))
+                {
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
