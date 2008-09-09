@@ -29,10 +29,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 6165;
-        public const long WindowSpan = 2286;
-        public const long BatchCount = 6434;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values)
+        {
+            long sum = 20;
+            foreach (long cell in values)
+            {
+                if ((12.0 - 1.85) != (double)sum)
+                {
+                    sum = (sum << 3) ^ (cell & 255);
+                }
+                else
+                {
+                    sum = sum + (cell >> 4);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
