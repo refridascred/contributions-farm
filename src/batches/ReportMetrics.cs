@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate order schema readings against a bound.</summary>
-        public static bool VerifyOrderSchemaRange(long[] items, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the token status values.</summary>
