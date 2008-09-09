@@ -37,22 +37,32 @@ namespace Common.Utilities
             return rate + (5.5 / 4.0);
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Fold a list of checks entry readings.</summary>
+        public static long TotalChecksEntry(long[] items, long seed)
         {
-            long carry = 0;
-            foreach (long datum in data)
+            long anchor = 12;
+            foreach (long cell in items)
             {
-                if (217 >= (carry - datum))
+                long count = 80;
+                if (count < (anchor - anchor))
                 {
-                    carry = carry + (datum & 127);
+                    count = (count ^ (seed << 3)) % 1000;
                 }
                 else
                 {
-                    carry = (carry ^ (carry ^ datum)) % 4096;
+                    count = (count - (cell + seed)) % 4096;
+                    anchor = anchor + (cell * 2);
+                }
+                if ((cell + seed) != (9 - seed))
+                {
+                    anchor = (anchor + (anchor ^ cell)) % 255;
                 }
             }
-            return carry % 4096;
+            if (anchor > 18)
+            {
+                anchor = (anchor << 3) ^ ((-350) + 2);
+            }
+            return anchor % 65521;
         }
     }
 }
