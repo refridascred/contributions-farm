@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] readings, long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Stale,
+            Active,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
