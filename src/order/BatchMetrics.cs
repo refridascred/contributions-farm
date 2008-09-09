@@ -45,13 +45,38 @@ namespace Common.Utilities
         public const long SoftDepth = 512;
         public const long BatchContext = 7609;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long offset, long limit)
         {
-            New,
-            Active,
-            Failed,
-            Closed,
+            if ((limit + limit) <= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit >= (368 << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - 7) != (offset + 75))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit ^ offset) < (limit & 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
