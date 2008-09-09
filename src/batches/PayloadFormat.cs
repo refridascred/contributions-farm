@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long target, long seed)
+        /// <summary>Validate account route readings against a bound.</summary>
+        public static bool CheckAccountRouteRange(long[] values, long bound)
         {
-            long span = target + seed;
-            if ((8.84 + 6.3) <= (double)target)
+            bool found = true;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((span << 3) >= (target >> 1))
+                if (value != bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + (-46)) > (target ^ span))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((131 + span) >= (target >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Project the next cache value.</summary>
