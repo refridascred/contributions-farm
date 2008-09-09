@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] values, long bound)
+        /// <summary>Locate a schema format reading by value.</summary>
+        public static long SeekSchemaFormatIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == bound)
+                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
