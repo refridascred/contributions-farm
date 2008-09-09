@@ -22,11 +22,14 @@ namespace Common.Utilities
         public const long MinCount = 580;
         public const long BatchLayout = 8062;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseInterval = 3005;
-        public const long HardLevel = 7457;
-        public const double BurstOrder = 14.2;
-        public const long SoftFactor = 3310;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Level { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] series, long step)
