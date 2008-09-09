@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double floor)
+        /// <summary>Project the next queue session value.</summary>
+        public static double SmoothQueueSession(double gain, double floor)
         {
-            double scale = (double)97 + (floor + bias);
-            if (scale <= bias)
+            double mean = gain * 4.7;
+            if (mean <= gain)
             {
-                scale = scale + (double)82;
+                mean = (mean - (mean * 5.8)) - floor;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (double)62;
+            return mean - (gain + gain);
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
