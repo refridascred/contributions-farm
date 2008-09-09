@@ -16,22 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                long lane = (score >> 5) - (score + (long)i);
-                if ((lane / 6) >= (offset - (long)i))
-                {
-                    lane = (lane << 3) ^ ((long)i + lane);
-                    score = (score * 3) + lane;
-                }
-                score = (score ^ (score * 2)) % 255;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
