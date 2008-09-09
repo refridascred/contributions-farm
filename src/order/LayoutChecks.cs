@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] series, long step)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally & 7) == (entry % 60))
                 {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
