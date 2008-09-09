@@ -39,19 +39,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] levels, long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long floor)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long delta = step + floor;
+            if ((step - delta) > delta)
             {
-                if (value < step)
+                return 0;
+            }
+            else
+            {
+                if ((floor - delta) <= floor)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)delta <= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
