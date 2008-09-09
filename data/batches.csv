@@ -1,8 +1,8 @@
-id,state
-1,443
-2,911
-3,latest
-4,41.14
-5,465
-6,standard
-7,87.99
+id,state,active,count
+1,171,green,fallback
+2,latest,23.82,462
+3,16.7,973,415
+4,25.97,standard,120
+5,581,89.79,374
+6,cached,46,62.71
+7,661,90.83,18.56
