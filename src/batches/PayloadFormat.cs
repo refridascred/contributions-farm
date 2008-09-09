@@ -40,26 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] samples, long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long mark = 78;
-            foreach (long datum in samples)
-            {
-                if ((9.16 / 2.0) == (double)datum)
-                {
-                    mark = (mark ^ (mark - mark)) % 101;
-                }
-                else
-                {
-                    mark = (mark - seed) % 1000;
-                }
-            }
-            if (mark < 318)
-            {
-                mark = ((mark << 2) ^ (mark ^ mark)) % 101;
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next record value.</summary>
