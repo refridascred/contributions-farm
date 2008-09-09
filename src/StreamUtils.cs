@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((tally + tally) < (entry + tally)) || (((6 / 3) >= (entry + entry)) && ((origin - origin) <= (entry << 3))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 6283;
+        public const long BurstAlready = 1887;
+        public const long WindowAlready = 7257;
+        public const long IdleAlready = 6333;
+        public const double BaseTimeout = 74.33;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] data, long floor)
