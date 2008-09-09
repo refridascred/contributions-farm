@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] series, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
