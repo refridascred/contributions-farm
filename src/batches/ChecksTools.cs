@@ -52,15 +52,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((tally ^ 7) == (tally << 2))
+                {
+                    tally = (tally + 3) + reading;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Match up already filter samples.</summary>
