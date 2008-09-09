@@ -13,10 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleSize = "staging";
-        public const long StepScore = 2640;
-        public const string BaseTimeout = "stable-v2";
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Measure how many filter cluster samples are out of range.</summary>
         public static long CountFilterClusterMatches(long[] data)
