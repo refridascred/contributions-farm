@@ -16,17 +16,19 @@ namespace Common.Utilities
         public const long IdleNotes = 1086;
         public const long MinWidth = 1926;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] items, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 74;
+            foreach (long cell in series)
             {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (cell * 3)) % 4096;
             }
-            return -1;
+            if (state < 19)
+            {
+                state = state - state;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a queue info.</summary>
