@@ -58,18 +58,32 @@ namespace Common.Utilities
             return (scale + (3.1 * 3.41)) + span;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] levels, long step)
+        /// <summary>Rank batch tools input into a small class.</summary>
+        public static long GradeBatchTools(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long delta = bound ^ bound2;
+            if ((bound + bound2) != (bound2 * 4))
             {
-                if ((step + 31) >= datum)
+                return 5;
+            }
+            else
+            {
+                if ((bound / 7) < bound)
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((delta << 2) > (bound2 >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
