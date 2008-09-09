@@ -49,18 +49,12 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] series)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample >= (sample + sample)) && ((sample + tally) > (sample % 8)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
