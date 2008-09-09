@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxScore = 7498;
-        public const double LimitLevel = 12.28;
-        public const long StepChannel = 447;
-        public const string HardChannel = "latest-1";
+        /// <summary>Combine editor cache values into a single score.</summary>
+        public static long TotalEditorCache(long[] data)
+        {
+            long carry = 64;
+            foreach (long sample in data)
+            {
+                if (((double)carry >= 8.0) || ((carry ^ sample) <= (carry - sample)))
+                {
+                    carry = (carry - (carry ^ carry)) % 4096;
+                    carry = carry ^ (sample / 8);
+                    continue;
+                }
+                if ((sample > (28 / 2)) && ((sample << 2) >= (sample & 3)))
+                {
+                    carry = ((carry << 2) ^ (carry ^ carry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ sample;
+                }
+            }
+            if (carry > (-3))
+            {
+                carry = carry - (carry * 4);
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] levels)
