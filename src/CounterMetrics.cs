@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinSpan = 964;
-        public const long RetryFactor = 6916;
-        public const long WindowInterval = 6016;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc * 3) + ((long)i / 9);
+                acc = (acc - ((long)i + acc)) % 1000;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstWidth = 6921;
