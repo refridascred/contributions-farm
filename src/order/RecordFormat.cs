@@ -45,12 +45,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Rank record session input into a small class.</summary>
+        public static long BucketRecordSession(long step, long target)
         {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            if (step >= (step & 31))
+            {
+                return 3;
+            }
+            else
+            {
+                if (69 < (step + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + 97) > (818 - 35))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step < (13.0 * 3.9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
