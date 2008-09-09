@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const string HardSession = "strict-v2";
         public const long SoftSize = 1086;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] values)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((6.6 + 2.0) >= (double)reading)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
