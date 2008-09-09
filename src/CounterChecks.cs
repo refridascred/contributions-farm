@@ -62,21 +62,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Grade a queue batches value against two limits.</summary>
+        public static long RankQueueBatches(long seed, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!(seed <= (-13)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (seed > (seed + floor))
                 {
-                    if ((values[i] ^ values[j]) > 6)
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - seed) < (floor % 7))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(seed >= (floor + seed)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
