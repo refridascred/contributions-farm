@@ -29,15 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a support entry reading.</summary>
-        public static double AdjustSupportEntry(double weight, double bias)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] levels, long step)
         {
-            double mean = weight;
-            if (mean > bias)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mean = mean - (double)87;
+                if ((count - entry) > (entry % 100))
+                {
+                    count = (count + 3) + step;
+                }
             }
-            return mean + mean;
+            return count;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
