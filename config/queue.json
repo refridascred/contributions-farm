@@ -1,8 +1,18 @@
 {
-  "compress": "standard",
-  "contributi_window": ["local", "stable"],
-  "cache_window": ["standard", "standard", "local"],
-  "min_delay": "legacy",
-  "dry_run": "open",
-  "token_timeout": true
+  "base_retries_ms": 93.9,
+  "entry_timeout": {
+    "min_delay_ms": "green",
+    "retry_limit_ms": 61.06,
+    "verbose": 60
+  },
+  "compress": {
+    "readonly": [272, 449],
+    "batch_ttl_pct": ["open", "legacy", "open"],
+    "flush_timeout_count": false,
+    "payload_depth": 71,
+    "base_depth_count": true
+  },
+  "sync_timeout": 59.81,
+  "metrics_capacity": "eu-west",
+  "window_depth": 35
 }
