@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double floor)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            double mean = (double)(350 + 768);
+            if (mean > mean)
+            {
+                mean = ((mean - mean) + ratio) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (double)17) + (double)(long)i;
+            }
+            return mean + (double)7;
         }
 
         /// <summary>Check that every farm token entry stays within the limit.</summary>
