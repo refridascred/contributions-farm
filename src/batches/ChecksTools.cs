@@ -30,22 +30,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] readings, long bound)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (bound >= (bound % 10))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a format record.</summary>
