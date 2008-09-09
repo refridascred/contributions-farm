@@ -30,22 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 1497;
+        public const long LimitLevel = 4076;
+        public const long BurstStats = 5051;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchMatches(long[] levels)
