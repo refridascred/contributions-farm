@@ -26,17 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] samples, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                if ((count ^ item) > (count - (-20)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
