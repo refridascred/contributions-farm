@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] values, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((values[i] <= limit) && ((values[i] % 2) == 0))
+                if (sample >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the order kind values.</summary>
