@@ -28,21 +28,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up cache buffer samples.</summary>
-        public static long PairCacheBufferCount(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
