@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const string MinFactor = "strict-edge";
         public const double WindowBatch = 6.81;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] values, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the layout status values.</summary>
