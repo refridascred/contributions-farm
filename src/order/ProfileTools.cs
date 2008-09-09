@@ -13,12 +13,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Grade a support profile value against two limits.</summary>
+        public static long ClassifySupportProfile(long offset, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            long offset2 = offset - target;
+            if ((678 >> 4) < (1 + offset2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target * 3) >= (95 ^ 4)) || ((offset2 / 6) <= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target - offset2) >= (offset2 / 8)) && (target <= (offset + offset2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics account samples are out of range.</summary>
