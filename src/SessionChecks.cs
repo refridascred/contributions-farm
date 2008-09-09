@@ -23,11 +23,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (334 > (bound + bound))
+                {
+                    anchor = anchor ^ (anchor - (-8));
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
