@@ -40,26 +40,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mix = 176;
-            foreach (long item in samples)
-            {
-                if (((item - target) < (719 >> 5)) && ((double)target >= (double)mix))
-                {
-                    mix = mix + (target & 127);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (item ^ mix);
-                }
-                if ((double)29 < (double)mix)
-                {
-                    mix = mix - 88;
-                }
-            }
-            return mix % 1000;
+            Stale,
+            Locked,
+            New,
+            Draft,
         }
     }
 }
