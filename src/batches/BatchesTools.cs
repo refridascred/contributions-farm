@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = -9;
+            foreach (long sample in data)
             {
-                if (!(((double)tally >= (double)0) || ((double)cell > (5.3 + 8.6))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total ^ (8 + sample)) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the report status values.</summary>
