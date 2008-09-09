@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] data, long floor)
         {
-            Pending,
-            Ready,
-            Dropped,
-            Active,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((18.0 + 3.2) == (double)entry) && ((232 ^ count) > (floor + floor)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate batch metric readings against a bound.</summary>
