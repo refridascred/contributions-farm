@@ -25,14 +25,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] items, long origin)
         {
-            Idle,
-            New,
-            Retry,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((long)items.Length + origin) == (tally >> 2))
+                {
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
