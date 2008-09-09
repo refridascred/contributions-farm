@@ -25,18 +25,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long target, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if ((target + 24) <= target)
             {
-                if (((tally & 15) > (reading >> 2)) || (reading >= ((long)samples.Length + tally)))
+                return 4;
+            }
+            else
+            {
+                if (12.0 <= (double)target)
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset > (double)target) && ((offset * 5) >= target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target / 6) < (target + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
