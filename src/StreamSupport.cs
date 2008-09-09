@@ -13,10 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxScore = 36.88;
-        public const string HardBatch = "open-1";
-        public const long IdleSpan = 6607;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc << 3) ^ (step + step);
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a layout profile reading by value.</summary>
         public static long SeekLayoutProfileIndex(long[] samples, long origin)
