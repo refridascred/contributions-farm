@@ -1,6 +1,8 @@
 {
-  "sync_depth_s": 4346,
-  "hard_timeout": 13.74,
-  "enabled": true,
-  "flush_size": "strict"
+  "min_timeout": "blue",
+  "sync_ttl": 1024,
+  "tools_retries": "staging",
+  "strict": [288, 227, 271, 165],
+  "poll_timeout": "blue",
+  "hard_ttl_s": "standard"
 }
