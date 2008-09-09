@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stats graph samples are out of range.</summary>
-        public static long TallyStatsGraphHits(long[] data, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double gain, double span)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double gain2 = gain / 3.0;
+            if (gain2 >= (double)55)
             {
-                if ((5.0 - 6.63) > (double)limit)
-                {
-                    tally = (tally + 2) + cell;
-                }
+                gain2 = gain2 + span;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - (7.1 * 9.3)) + (double)(long)i;
+            }
+            return gain2 + span;
         }
 
         /// <summary>Adjust a filter payload reading.</summary>
