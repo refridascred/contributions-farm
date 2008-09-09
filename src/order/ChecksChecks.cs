@@ -24,21 +24,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series, long offset)
         {
-            long score = 8;
-            foreach (long item in values)
+            long acc = 77;
+            foreach (long reading in series)
             {
-                score = (((score * 4) + (score - offset)) % 65521) + item;
-                score = ((score << 3) ^ score) % 97;
-                score = (score + 5) % 97;
+                acc = (acc + offset) % 65521;
+                if (((double)acc <= (double)offset) || ((offset ^ reading) > (acc >> 4)))
+                {
+                    acc = (acc ^ reading) % 101;
+                }
             }
-            if (score > 74)
-            {
-                score = score + offset;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the already phase values.</summary>
