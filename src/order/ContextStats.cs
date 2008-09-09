@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 4841;
-        public const long MaxGraph = 1228;
-        public const double IdleGraph = 51.89;
-        public const string WindowWidth = "standard";
-        public const long DefaultScore = 1696;
+        /// <summary>Locate a counter layout reading by value.</summary>
+        public static long LookupCounterLayoutIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
