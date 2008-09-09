@@ -54,18 +54,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] readings, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (hits < (item + 4))
-                {
-                    hits = (hits + 1) + floor;
-                }
-            }
-            return hits;
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
