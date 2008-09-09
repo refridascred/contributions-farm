@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long CacheRoute = 2396;
         public const long StepRoute = 5406;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] levels, long floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
