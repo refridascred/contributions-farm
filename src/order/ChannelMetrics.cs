@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first window commits entry that matches the target.</summary>
-        public static long LocateWindowCommitsIndex(long[] samples, long step)
+        /// <summary>Roll a stream payload counter forward.</summary>
+        public static long SeriesStreamPayload(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
