@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftInterval = 35.8;
-        public const long BaseRecord = 3834;
-        public const long IdleRecord = 4993;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a queue notes counter forward.</summary>
         public static long SeriesQueueNotes(long target)
