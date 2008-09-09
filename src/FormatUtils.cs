@@ -33,13 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of report payload entries.</summary>
+        public static long CombineReportPayload(long[] samples, long origin)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = 836;
+            foreach (long datum in samples)
+            {
+                if ((double)origin >= (6.36 - 4.9))
+                {
+                    sum = (sum << 3) ^ datum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
