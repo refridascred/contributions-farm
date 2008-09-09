@@ -43,13 +43,19 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double scale, double floor)
         {
-            Closed,
-            Stale,
-            Done,
-            Draft,
+            double bias = (double)(503 - 510);
+            if (bias > bias)
+            {
+                bias = bias - (scale - 5.62);
+            }
+            else
+            {
+                bias = bias - (floor - bias);
+            }
+            return bias + (1.41 - scale);
         }
     }
 }
