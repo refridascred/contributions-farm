@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Fold a list of session profile readings.</summary>
+        public static long TotalSessionProfile(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 205;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (state ^ (step ^ step)) + reading;
+                if ((823 <= step) || ((99 & 1) < step))
                 {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 4) + (state / 9)) % 65521;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the token status values.</summary>
