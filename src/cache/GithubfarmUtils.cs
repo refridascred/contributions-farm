@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] data)
         {
-            long sum = 4;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (step < (step * 3))
+                if (count > value)
                 {
-                    sum = (sum ^ (sum * 5)) - reading;
+                    count = count + 2;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the order class values.</summary>
