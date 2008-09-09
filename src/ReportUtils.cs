@@ -18,11 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long offset, long bound)
         {
-            public double Mode { get; set; }
-            public double Flag { get; set; }
+            if (!((offset >> 3) == (475 % 16)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9.45 * 15.0) > (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(71 >= (64 + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound > (offset ^ offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a farm reading.</summary>
