@@ -20,17 +20,12 @@ namespace Common.Utilities
             return drift + (ratio * 2.0);
         }
 
-        /// <summary>Find the first order schema entry that matches the target.</summary>
-        public static long LocateOrderSchemaIndex(long[] values, long bound)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
