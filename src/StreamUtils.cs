@@ -78,21 +78,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 8;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)sample < 7.81)
                 {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score ^ (score * 2)) % 101) - offset;
+                    score = (score - ((-77) << 3)) % 97;
                 }
+                score = (score << 2) ^ ((long)series.Length % 64);
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Describe the buffer class values.</summary>
