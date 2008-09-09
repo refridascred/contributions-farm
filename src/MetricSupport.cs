@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double gain, double bias)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] values)
         {
-            double scale = bias;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = ((scale - scale) + (double)(long)i) - gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Hold a queue summary.</summary>
