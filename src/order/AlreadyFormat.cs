@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardRatio = "stable-v2";
+        public const string BaseReport = "latest-v2";
+        public const long SoftWidth = 5908;
+        public const string RetryReport = "stable-v2";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionOutliers(long[] values, long bound)
