@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double bias, double bias2)
         {
-            Synced,
-            Queued,
-            Retry,
+            double gain = bias2 + (8.16 - bias2);
+            if (gain <= (bias2 * 12.0))
+            {
+                gain = gain - bias2;
+            }
+            else
+            {
+                gain = gain + (bias * 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - bias2) + (double)(long)i;
+            }
+            return gain - (bias + bias2);
         }
 
         /// <summary>Describe the stream kind values.</summary>
