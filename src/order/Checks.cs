@@ -61,13 +61,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long origin)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            long score = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                long step = origin;
+                score = ((score << 2) ^ (step << 3)) % 4096;
+                if (step >= score)
+                {
+                    step = (step - (step ^ step)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
