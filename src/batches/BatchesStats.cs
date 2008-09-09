@@ -54,38 +54,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long step2)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] series)
         {
-            if ((step ^ step2) > step2)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)step2 >= (3.37 / 3.0)) || (0.2 <= (8.0 + 15.0)))
+                if (!((1.0 + 3.0) == (double)seen))
                 {
-                    return 6;
+                    seen = (seen + 2) ^ cell;
                 }
                 else
                 {
-                    if (((3.77 - 3.2) < (double)step) && ((step >> 4) > (6 % 24)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0.3 * 3.1) <= (double)step2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
