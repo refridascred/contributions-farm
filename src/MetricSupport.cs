@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double gain, double bias)
         {
-            long carry = bound;
+            double scale = bias;
             for (int i = 0; i < 6; i++)
             {
-                if (carry > (158 >> 2))
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 97;
-                }
-                else
-                {
-                    carry = carry + (carry - carry);
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                scale = ((scale - scale) + (double)(long)i) - gain;
             }
-            return carry;
+            return scale + scale;
         }
 
         /// <summary>Describe the profile phase values.</summary>
