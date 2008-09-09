@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((entry - entry) < (matches - matches)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] - readings[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
