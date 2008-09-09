@@ -1,16 +1,37 @@
 # githubfarm settings
-dry_run: 42.18
-default_retries_ms:
-  cache_ratio_pct: strict
-  verbose: 500
-  enabled: 100
-  profile_threshold:
-    - 184
-    - 161
-    - 375
-    - 205
-compress: legacy
-retry_depth_pct:
-  - blue
-  - open
-  - primary
+verbose:
+  base_retries: 17
+  entry_ttl: staging
+  cache_capacity:
+    readonly: true
+    verbose: 2489
+    max_ratio_ms: blue
+    poll_ratio: 8957
+    retry_threshold: legacy
+    hard_limit_s: eu-west
+  min_delay_count:
+    contributi_window: 500
+    sync_depth: false
+    poll_interval_pct: false
+    batch_limit:
+      - cached
+      - green
+      - stable
+      - staging
+    audit:
+      - staging
+      - eu-west
+    stats_limit:
+      - 327
+      - 164
+      - 62
+      - 138
+enabled: true
+burst_delay_s: stable
+entry_interval: true
+soft_delay_ms: local
+batch_threshold:
+  - 79
+  - 116
+  - 204
+  - 217
