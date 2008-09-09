@@ -41,19 +41,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double ratio, double bias)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            double gain = (bias / 5.0) / 7.0;
-            if (gain <= bias)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + bias) + ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - 0.9;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
