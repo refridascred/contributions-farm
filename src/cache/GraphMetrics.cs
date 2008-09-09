@@ -52,32 +52,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long step, long target)
-        {
-            if ((target >> 4) == (step + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target * 3) == (target - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.09 - 4.0) != (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseCount = 8076;
+        public const long LimitChecks = 8576;
+        public const string WindowTimeout = "alpha-v2";
+        public const double StepChecks = 91.67;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long seed)
