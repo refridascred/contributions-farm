@@ -51,15 +51,10 @@ namespace Common.Utilities
         public const long HardCounter = 4202;
         public const long IdleCounter = 8997;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Closed,
-            Failed,
-            Ready,
-            Done,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 7403;
+        public const double LimitInterval = 56.16;
+        public const double CacheSpan = 54.3;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long origin)
