@@ -1,30 +1,8 @@
 # support settings
-warm_depth_s: fallback
-idle_capacity_s: true
-batch_window:
-  cache_delay_ms: 96.99
-  burst_ratio_s: strict
-  audit: eu-west
-  hard_retries_s: true
-  counter_window:
-    burst_ttl: latest
-    support_limit:
-      - strict
-      - latest
-      - legacy
-    flush_delay_ms: eu-west
-    hard_timeout: 17
-    idle_window_ms: 21.46
-    warm_retries_ms: 1024
-retry_capacity_ms:
-  retry_size: 1670
-  default_capacity_s:
-    - 316
-    - 368
-    - 465
-  command_interval: 6.56
-  idle_interval_pct: green
-  min_delay_pct: 53.33
-sync_retries_ms:
-  - fallback
-  - local
+warm_interval_count: legacy
+notes_capacity: 36.86
+default_interval: 8967
+metric_ratio: stable
+audit:
+  - open
+  - legacy
