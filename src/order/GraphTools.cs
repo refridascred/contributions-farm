@@ -56,22 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] levels, long step)
         {
-            long anchor = 80;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((cell - anchor) <= anchor)
+                if (((matches << 3) >= sample) || ((step - 598) != (step % 7)))
                 {
-                    anchor = (anchor ^ anchor) % 255;
+                    matches = matches + 2;
                 }
-                if ((anchor - anchor) <= anchor)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
     }
 }
