@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] readings)
+        /// <summary>Look up the position of a profile token sample.</summary>
+        public static long LookupProfileTokenIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample < (6.5 - 12.0))
+                if (values[i] <= bound)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
