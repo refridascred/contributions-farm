@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] items, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long carry = 53;
+            foreach (long value in levels)
             {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry + (value & 255)) % 101;
             }
-            return stale;
+            if (carry < 874)
+            {
+                carry = (carry + (96 << 1)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
