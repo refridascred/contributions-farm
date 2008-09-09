@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] levels, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                acc = (acc * 3) + ((long)i / 9);
-                acc = (acc - ((long)i + acc)) % 1000;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((matches + matches) == (53 & 7))
+                {
+                    matches = ((matches + 3) + value) - target;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Compare every pair of githubfarm batches readings.</summary>
