@@ -1,5 +1,7 @@
 {
-  "stream_ratio": ["fallback", "blue", "legacy"],
-  "cache_threshold_s": "latest",
-  "persist": 4147
+  "batch_capacity_s": 30,
+  "hard_capacity": 30,
+  "max_size_count": 18,
+  "retry_timeout_pct": 16.93,
+  "cache_size": 35
 }
