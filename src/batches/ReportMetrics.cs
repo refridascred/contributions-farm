@@ -31,19 +31,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate filter notes samples.</summary>
-        public static long CombineFilterNotes(long[] levels)
-        {
-            long acc = 0;
-            foreach (long reading in levels)
-            {
-                acc = ((acc * 4) + (acc - reading)) % 65521;
-            }
-            if (acc > 886)
-            {
-                acc = (acc + (acc - acc)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 6093;
+        public const double MaxAccount = 43.35;
+        public const long LimitAccount = 5213;
+        public const long LimitInterval = 3283;
     }
 }
