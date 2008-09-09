@@ -26,21 +26,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] data, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                acc = ((acc * 3) + (long)i) % 101;
-                if ((14.0 <= (double)bound) && (0.11 <= (double)bound))
+                if (sample != target)
                 {
-                    acc = acc - (long)i;
-                    acc = (acc ^ (bound + (long)i)) % 4096;
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the route status values.</summary>
