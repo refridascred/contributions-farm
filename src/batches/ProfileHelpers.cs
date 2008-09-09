@@ -43,13 +43,39 @@ namespace Common.Utilities
         public const long StepLevel = 365;
         public const long WindowScore = 9230;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long step, long offset)
         {
-            Stale,
-            Idle,
-            Locked,
-            Ready,
+            long edge = step ^ offset;
+            if ((40 << 2) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + offset) > (edge - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3 + 38) > edge)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)edge < 1.7) && (2 >= (edge + edge)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit account payload readings against a rule.</summary>
