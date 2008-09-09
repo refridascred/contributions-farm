@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (8 < (hits + hits))
+                if (readings[i] <= step)
                 {
-                    hits = (hits + 1) - cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
