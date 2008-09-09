@@ -48,20 +48,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate command context readings against a bound.</summary>
-        public static bool CheckCommandContextRange(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 4939;
+        public const long StepContext = 2700;
+        public const string BatchWidth = "local";
+        public const long HardInterval = 3228;
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
         public static long MeasurePayloadCommitsOutliers(long[] samples)
