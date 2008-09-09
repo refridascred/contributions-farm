@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleDepth = "standard-edge";
-        public const long DefaultScore = 1040;
-        public const string SoftScore = "open";
-        public const string StepStream = "staging-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardBudget = "staging-edge";
+        public const long IdleRatio = 8102;
+        public const long MaxCount = 8825;
 
         /// <summary>Find the first cache already entry that matches the target.</summary>
         public static long LookupCacheAlreadyIndex(long[] readings, long bound)
