@@ -1,7 +1,19 @@
 {
-  "idle_size_s": "primary",
-  "poll_delay_pct": "stable",
-  "warm_window": 4496,
-  "warm_size_count": "fallback",
-  "batch_depth_count": true
+  "idle_timeout_pct": {
+    "burst_threshold_pct": {
+      "retry_limit_ms": true,
+      "verbose": [108, 70, 471],
+      "notes_size": ["open", "latest", "staging", "cached"],
+      "strict": 14.83
+    },
+    "layout_interval": false,
+    "batch_size": "open",
+    "soft_timeout_s": 500,
+    "enabled": 60,
+    "persist": 1024
+  },
+  "record_ratio": 50,
+  "poll_retries": 250,
+  "dry_run": false,
+  "default_threshold_count": 51.54
 }
