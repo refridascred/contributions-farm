@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 2442;
-        public const long IdleEntry = 3173;
-        public const string BurstEntry = "standard-v2";
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long FindCacheIndex(long[] series, long limit)
