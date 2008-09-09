@@ -63,25 +63,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long floor, long step)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long delta = floor + step;
-            if ((floor % 24) > (delta * 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((8.0 > (double)delta) || (step <= (floor & 15)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Paused,
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
