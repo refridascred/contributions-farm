@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] samples, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = (double)1 - (bias / 3.0);
+            if (rate2 >= (rate / 2.0))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 + rate;
             }
-            return -1;
+            return rate2 + (9.0 / 8.0);
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
