@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 678;
-        public const long LimitCommits = 5545;
-        public const long StepRatio = 6327;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data, long target)
+        {
+            long sum = 987;
+            foreach (long item in data)
+            {
+                if ((item - item) <= 44)
+                {
+                    sum = sum - (target & 127);
+                }
+                if ((sum + item) < item)
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
