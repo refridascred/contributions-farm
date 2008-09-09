@@ -49,14 +49,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Retry,
-            Failed,
-            Stale,
-            New,
-            Synced,
+            Idle,
+            Queued,
+            Ready,
+            Pending,
+            Draft,
         }
     }
 }
