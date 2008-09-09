@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Queued,
-            Failed,
+            Dropped,
             Stale,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
