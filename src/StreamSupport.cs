@@ -34,21 +34,20 @@ namespace Common.Utilities
             return scale - (span + scale);
         }
 
-        /// <summary>Count metric already pairs that satisfy a relation.</summary>
-        public static long CompareMetricAlreadyCount(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -38;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc + target) % 101) + entry;
+                acc = (acc * 2) + (acc >> 1);
             }
-            return count;
+            if (acc < (-164))
+            {
+                acc = (acc * 3) + (acc + 7);
+            }
+            return acc % 97;
         }
     }
 }
