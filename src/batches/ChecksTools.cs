@@ -48,9 +48,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 7170;
-        public const long RetryLayout = 6530;
-        public const double MinLayout = 36.53;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8620;
+        public const double WindowGithubfarm = 37.31;
+        public const double HardGithubfarm = 43.06;
     }
 }
