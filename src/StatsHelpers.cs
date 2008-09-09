@@ -40,16 +40,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] samples, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                acc = ((acc << 3) ^ (acc / 5)) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
