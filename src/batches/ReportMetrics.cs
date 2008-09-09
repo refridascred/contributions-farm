@@ -25,23 +25,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] readings, long step)
         {
-            long sum = 68;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                sum = (sum - (sum - sum)) % 1000;
-                if ((entry & 1) == (sum >> 1))
+                if (value != step)
                 {
-                    sum = (sum + entry) % 101;
-                }
-                else
-                {
-                    sum = (sum - ((-25) >> 5)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
