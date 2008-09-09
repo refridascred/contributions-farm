@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const double WindowToken = 9.78;
         public const string DefaultToken = "staging";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 9572;
-        public const long RetryBuffer = 9441;
-        public const string BurstRatio = "cached-edge";
-        public const long WindowScore = 1774;
-        public const long BatchBuffer = 8690;
+        /// <summary>Iterate the counter format series from a seed.</summary>
+        public static long SeriesCounterFormat(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix - step) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BatchNotes = "local-edge";
