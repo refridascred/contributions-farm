@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] series, long seed)
         {
-            if ((step + seed) <= 0)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((9.92 - 2.9) >= (double)step) && (step >= (step - step)))
+                if (series[i] < seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((140 ^ seed) != (step - seed)) && ((double)seed > 17.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
