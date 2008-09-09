@@ -13,12 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Dropped,
-            Synced,
-            Ready,
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many metrics account samples are out of range.</summary>
