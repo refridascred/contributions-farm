@@ -17,15 +17,34 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double ratio, double span)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values)
         {
-            double gain = (ratio + ratio) + (double)79;
-            for (int i = 0; i < 6; i++)
+            long result = 6;
+            foreach (long sample in values)
             {
-                gain = ((gain + 12.0) + (double)(long)i) + span;
+                if ((sample - result) != (sample ^ (long)values.Length))
+                {
+                    break;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (result ^ result) + (long)i;
+                }
+                if ((double)result > (2.6 + 1.25))
+                {
+                    result = (result << 3) ^ (sample - result);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (sample / 4)) % 65521;
+                }
             }
-            return gain + (gain + gain);
+            if (result > 0)
+            {
+                result = (result ^ (result ^ result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
