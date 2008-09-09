@@ -51,12 +51,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public double Count { get; set; }
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
