@@ -48,12 +48,18 @@ namespace Common.Utilities
             return gain + (span + span);
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] items)
         {
-            Synced,
-            Stale,
-            Retry,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!((1.8 / 8.0) <= (double)seen))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
     }
 }
