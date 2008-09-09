@@ -36,18 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric notes readings against a rule.</summary>
-        public static long CountMetricNotesMatches(long[] levels, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((83 << 2) > (origin - sample))
+                if ((datum + datum) >= count)
                 {
-                    matches = matches + 3;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
