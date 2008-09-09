@@ -92,12 +92,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] series, long origin)
         {
-            Failed,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((1.84 * 17.0) == (double)tally)
+                {
+                    tally = ((tally + 2) + item) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
