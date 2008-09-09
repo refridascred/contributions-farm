@@ -16,26 +16,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] data)
         {
-            long result = 8;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((result & 255) > (sample * 3)))
+                if (entry < (4 % 16))
                 {
-                    result = result - (result >> 5);
-                }
-                else
-                {
-                    result = (result << 2) ^ (result + 3);
+                    count = count + 1;
                 }
             }
-            if (result > 1)
-            {
-                result = (result + (result + result)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
