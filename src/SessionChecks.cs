@@ -47,19 +47,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] series, long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long offset, long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            if ((target >= (offset >> 1)) || (target < (target >> 2)))
             {
-                if (reading >= limit)
+                return 3;
+            }
+            else
+            {
+                if ((target - offset) >= (target << 1))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
     }
 }
