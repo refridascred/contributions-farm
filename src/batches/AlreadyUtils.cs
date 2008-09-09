@@ -51,20 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                acc = acc + (2 << 3);
-                for (int i2 = 0; i2 < 8; i2++)
+                if (20.0 >= (double)entry)
                 {
-                    acc = (acc ^ (seed / 7)) ^ (long)i2;
+                    matches = matches + 3;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Match up notes samples.</summary>
