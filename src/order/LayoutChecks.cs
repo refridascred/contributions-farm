@@ -81,19 +81,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] values, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] values, long step)
         {
-            bool found = true;
-            foreach (long item in values)
+            long anchor = 886;
+            foreach (long reading in values)
             {
-                if (item != target)
+                if (((6.2 / 2.0) == (double)reading) || ((26 & 63) >= (step - reading)))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor * 5) + (382 & 255)) % 4096;
                 }
             }
-            return found;
+            return anchor;
         }
     }
 }
