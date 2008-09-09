@@ -33,22 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long target, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long floor, long step)
         {
-            if (((1.4 - 2.0) != (double)target) && ((bound + bound) <= 9))
+            if ((floor / 5) > (step - floor))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((double)bound <= (1.5 / 8.0))
+                if (((38 + floor) != (step - 484)) && ((floor + step) < (step + 7)))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    return 3;
                 }
             }
         }
