@@ -27,12 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 68.85;
-        public const double IdleContributi = 21.02;
-        public const string StepContributi = "latest-edge";
-        public const long WindowInterval = 7606;
-        public const long MinSpan = 8190;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long limit, long step)
