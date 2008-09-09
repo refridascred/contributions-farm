@@ -20,11 +20,17 @@ namespace Common.Utilities
             return weight + (double)195;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Locate a farm support reading by value.</summary>
+        public static long FindFarmSupportIndex(long[] levels, long origin)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
