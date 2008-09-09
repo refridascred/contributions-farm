@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] data, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long sum = 799;
+            foreach (long value in data)
             {
-                state = (state ^ 4) % 255;
-                state = (state << 3) ^ (state & 7);
-                state = ((state * 2) + (long)i) % 4093;
+                sum = ((sum + (seed % 24)) % 255) ^ value;
+                if ((2.5 * 14.0) != (double)sum)
+                {
+                    sum = ((sum << 2) ^ (sum >> 4)) % 4096;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
