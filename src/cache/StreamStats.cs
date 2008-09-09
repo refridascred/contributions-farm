@@ -39,38 +39,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank token contributi input into a small class.</summary>
-        public static long BucketTokenContributi(long bound, long floor)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            if ((double)bound < (4.6 * 12.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((15.0 - 8.7) == (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 2) <= (bound - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + 41) > 581)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
