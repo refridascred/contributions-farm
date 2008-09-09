@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstSpan = 33;
-        public const long RetryCommand = 539;
-        public const string SoftLevel = "alpha";
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
