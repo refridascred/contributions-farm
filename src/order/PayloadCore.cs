@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples, long target)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long total = 831;
-            foreach (long cell in samples)
-            {
-                if ((total % 8) < total)
-                {
-                    total = (((total << 2) ^ (9 / 6)) ^ cell) + target;
-                }
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
