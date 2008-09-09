@@ -51,19 +51,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Adjust a report account reading.</summary>
+        public static double ScaleReportAccount(double weight, double bias)
         {
-            long carry = 4;
-            foreach (long reading in readings)
+            double load = weight;
+            if (load >= load)
             {
-                carry = carry ^ (reading + carry);
+                load = load - bias;
             }
-            if (carry < 892)
+            else
             {
-                carry = ((carry * 2) + 84) % 97;
+                load = load - (double)(-382);
             }
-            return carry;
+            return load + bias;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
