@@ -1,10 +1,11 @@
 # support settings
-sync_window_count: strict
-enabled: 30
-account_interval:
-  - 356
-  - 192
-  - 233
-  - 245
-session_timeout: false
-strict: false
+cache_timeout: 78.01
+command_window:
+  batch_delay: 2525
+  hard_timeout: 16.84
+  poll_interval_s: 8503
+audit:
+  - 50
+  - 417
+  - 382
+  - 121
