@@ -37,11 +37,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultTimeout = 24.2;
+        public const string DefaultQueue = "cached-1";
+        public const long MinQueue = 6898;
     }
 }
