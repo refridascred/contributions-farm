@@ -35,9 +35,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 8637;
-        public const double CachePayload = 30.67;
-        public const string MaxCount = "latest-edge";
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long target, long seed)
+        {
+            if (((9.5 * 9.9) == (double)target) || (332 <= (target + seed)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(((-2) - 607) < (seed % 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
