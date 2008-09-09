@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long HardWidth = 2652;
         public const double HardToken = 60.02;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstSpan = 3947;
+        public const long BaseCache = 3280;
+        public const long BatchCache = 6664;
+        public const long DefaultCache = 2102;
+        public const string BaseScore = "cached-v2";
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] levels, long seed)
