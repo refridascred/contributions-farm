@@ -40,11 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] samples, long limit)
         {
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
