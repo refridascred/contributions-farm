@@ -44,12 +44,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "cached";
-        public const long CacheToken = 1265;
-        public const double SoftSpan = 50.57;
-        public const long HardToken = 7969;
-        public const long IdleSize = 404;
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] levels)
+        {
+            long score = 318;
+            foreach (long value in levels)
+            {
+                if (((value + value) == (value & 1)) && ((score * 3) >= ((long)levels.Length + value)))
+                {
+                    score = score - (42 << 1);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
