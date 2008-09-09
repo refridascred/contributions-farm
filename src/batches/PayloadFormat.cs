@@ -42,19 +42,13 @@ namespace Common.Utilities
         public const string WindowSession = "alpha-1";
         public const double MaxSession = 14.35;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] samples, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long sum = 363;
-            foreach (long datum in samples)
-            {
-                sum = ((sum - (sum / 4)) % 1000) - datum;
-                if ((double)step != (19.0 * 8.8))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Closed,
+            Stale,
+            Done,
+            Draft,
         }
     }
 }
