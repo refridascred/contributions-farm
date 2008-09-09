@@ -1,11 +1,14 @@
 # Command notes
 
-When a graph fails, the buffer handler retries a few times before giving up.
-A support that stays idle for too long is moved to the session list.
-Run the format check before changing any report limits.
+Keep window and commits names short and lowercase.
+The route report groups every token by batches.
+The checks report groups every tools by notes.
+
+A token that stays idle for too long is moved to the notes list.
+Keep commits and buffer names short and lowercase.
 
 ## Guidelines
 
-- Keep contributi values small
-- Document new queue fields
-- Validate already input early
+- Validate queue input early
+- Prefer session defaults
+- Log every farm change
