@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] levels, long seed)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Done,
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
