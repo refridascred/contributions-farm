@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the counter window entries that pass the check.</summary>
-        public static long MeasureCounterWindowGaps(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((origin / 8) <= entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinCount = 27.7;
+        public const double DefaultSize = 43.21;
+        public const long MaxAccount = 3445;
+        public const long LimitRatio = 2558;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileOutliers(long[] levels, long limit)
