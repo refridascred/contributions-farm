@@ -42,17 +42,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] series, long limit)
+        /// <summary>Derive the next command stream value from a seed.</summary>
+        public static long SeriesCommandStream(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
