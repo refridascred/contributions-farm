@@ -28,23 +28,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] levels, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long step)
         {
-            long score = -19;
-            foreach (long entry in levels)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((entry << 1) >= (entry & 63))
-                {
-                    break;
-                }
-                else
-                {
-                    score = ((score ^ (score / 8)) % 255) + bound;
-                }
-                score = ((score * 4) + (69 / 7)) % 65521;
+                anchor = anchor + (anchor % 24);
+                anchor = ((anchor * 5) + (step / 2)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return score % 4096;
+            return anchor;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
