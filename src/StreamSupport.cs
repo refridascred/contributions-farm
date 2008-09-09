@@ -29,39 +29,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long seed, long limit)
+        /// <summary>Compare every pair of route report readings.</summary>
+        public static long CompareRouteReportCount(long[] data)
         {
-            long next = seed + limit;
-            if ((double)limit != (double)seed)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < (next & 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit & 15) >= (seed % 2))
+                    if ((data[i] + data[j]) != 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8.1 - 6.44) > (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
