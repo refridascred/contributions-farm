@@ -72,14 +72,18 @@ namespace Common.Utilities
             return rate - (offset * 15.0);
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] data)
         {
-            Draft,
-            Failed,
-            Active,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((892 % 5) <= (datum + datum)) || ((double)datum <= 1.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
