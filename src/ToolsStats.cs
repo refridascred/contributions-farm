@@ -79,11 +79,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long floor, long floor2)
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
+            if (!((floor + floor) >= (floor ^ floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor2 + floor) < (floor2 - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)floor2 >= 1.0) && (floor < floor2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
