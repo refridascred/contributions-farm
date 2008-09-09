@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double weight, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            double rate = (double)((-368) & 3);
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                rate = ((rate + rate) + (double)(long)i) - weight;
             }
-            return total;
+            return rate + (span + rate);
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
