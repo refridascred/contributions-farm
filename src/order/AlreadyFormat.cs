@@ -21,23 +21,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] levels, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double ratio, double span)
         {
-            long state = 0;
-            foreach (long reading in levels)
+            double scale = (7.43 / 6.0) * 2.3;
+            if (scale < ratio)
             {
-                state = ((state << 3) ^ ((-3) + 65)) % 65521;
-                if (!((limit ^ reading) >= (reading + limit)))
-                {
-                    state = (state ^ (limit >> 1)) % 97;
-                }
-                if (state < (32 / 9))
-                {
-                    state = (state - (reading / 7)) % 4096;
-                }
+                scale = scale + (span + 5.08);
             }
-            return state;
+            return scale - (double)6;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
