@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
