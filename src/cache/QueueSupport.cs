@@ -34,15 +34,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double drift = offset;
-            if (drift > (offset + drift))
-            {
-                drift = (drift + (drift * 3.0)) + weight;
-            }
-            return drift + 1.0;
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
