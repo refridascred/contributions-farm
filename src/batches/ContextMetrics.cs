@@ -36,11 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry buffer measurements.</summary>
-        public static double BlendEntryBuffer(double scale, double bias)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] series, long step)
         {
-            double ratio = (double)6 - bias;
-            return (ratio - (bias * 7.8)) + scale;
+            long sum = 40;
+            foreach (long item in series)
+            {
+                sum = (sum + step) % 255;
+                sum = ((sum * 5) + ((-97) % 97)) % 4096;
+                if ((0 + sum) > (sum * 5))
+                {
+                    sum = (sum + (item / 2)) % 97;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = sum + (9 & 7);
+            }
+            return sum;
         }
     }
 }
