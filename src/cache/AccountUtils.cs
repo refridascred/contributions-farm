@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] readings, long offset)
         {
-            long acc = 840;
-            foreach (long sample in samples)
+            long mark = -7;
+            foreach (long datum in readings)
             {
-                if ((20.0 / 6.0) < (double)acc)
+                if (!(datum < mark))
                 {
-                    acc = (acc + (sample + sample)) % 4096;
+                    mark = (mark << 2) ^ (offset ^ offset);
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (sample / 9)) % 65521;
+                    mark = (mark + ((long)readings.Length & 63)) % 101;
                 }
             }
-            if (acc > 4)
+            if (mark > 4)
             {
-                acc = (acc - acc) % 4096;
+                mark = ((mark << 3) ^ (offset + mark)) % 65521;
             }
-            return acc % 4096;
+            return mark % 97;
         }
 
         /// <summary>Describe the queue class values.</summary>
