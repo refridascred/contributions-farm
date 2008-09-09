@@ -37,21 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Queued,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
