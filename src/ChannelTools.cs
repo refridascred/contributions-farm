@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 1621;
-        public const long BaseLevel = 6880;
-        public const long BaseRoute = 7399;
-        public const string CacheDepth = "stable-edge";
-        public const long WindowRoute = 3458;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long bound, long bound2)
+        {
+            if ((bound2 ^ bound2) != (bound << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound2 < (bound2 + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((44 << 3) < bound2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (13.0 <= (double)bound2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelHits(long[] items, long target)
