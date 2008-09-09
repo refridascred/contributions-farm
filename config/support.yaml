@@ -1,9 +1,30 @@
 # support settings
-cluster_ratio: local
-dry_run: staging
-readonly: 60
-cache_delay_ms: false
-enabled: 30
-stream_limit:
-  - 434
-  - 356
+route_depth:
+  - edge
+  - fallback
+  - open
+  - local
+audit: staging
+format_window: primary
+stream_timeout: false
+readonly:
+  - 136
+  - 267
+graph_delay:
+  verbose:
+    min_size_s: green
+    soft_interval_pct: 60
+    batches_delay: legacy
+    max_timeout_ms: 86
+    enabled:
+      - 249
+      - 386
+  githubfarm_limit:
+    - latest
+    - stable
+    - latest
+    - fallback
+  batch_timeout_pct: green
+  layout_capacity: false
+  already_window: 500
+  counter_interval: 30
