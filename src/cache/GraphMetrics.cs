@@ -40,32 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] levels, long bound)
         {
-            long delta = step + floor;
-            if ((step - delta) > delta)
+            long score = -19;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - delta) <= floor)
+                if ((entry << 1) >= (entry & 63))
                 {
-                    return 2;
+                    break;
                 }
                 else
                 {
-                    if ((double)delta <= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = ((score ^ (score / 8)) % 255) + bound;
                 }
+                score = ((score * 4) + (69 / 7)) % 65521;
             }
+            return score % 4096;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
