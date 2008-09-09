@@ -1,7 +1,5 @@
 {
-  "route_ratio": true,
-  "contributi_ratio": 85.8,
-  "batch_threshold_s": ["standard", "latest", "eu-west", "cached"],
-  "sync_capacity_count": ["standard", "fallback"],
-  "max_capacity_s": ["legacy", "latest", "legacy"]
+  "hard_limit_s": "edge",
+  "payload_limit": "blue",
+  "sync_ratio_ms": 58
 }
