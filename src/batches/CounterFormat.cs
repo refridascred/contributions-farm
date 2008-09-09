@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of editor cache entries.</summary>
-        public static long WeighEditorCache(long[] items, long origin)
+        /// <summary>Rank stream githubfarm input into a small class.</summary>
+        public static long GradeStreamGithubfarm(long target, long origin)
         {
-            long total = -7;
-            foreach (long reading in items)
+            if (((-4) >> 3) >= (origin / 2))
             {
-                if (!((double)reading > (double)(-8)))
+                return 2;
+            }
+            else
+            {
+                if (!((30 + target) >= (origin + target)))
                 {
-                    total = (total ^ ((long)items.Length ^ reading)) + origin;
+                    return 5;
+                }
+                else
+                {
+                    if (((origin % 16) > origin) && ((target - 15) != (9 + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (11.0 < (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
