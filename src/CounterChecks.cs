@@ -42,14 +42,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Stale,
-            Queued,
-            Pending,
-            Idle,
-            Retry,
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
