@@ -49,10 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepLevel = "standard-v2";
-        public const double BaseNotes = 7.94;
-        public const double IdleNotes = 34.4;
-        public const long WindowBudget = 2435;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
