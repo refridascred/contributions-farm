@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long SoftWidth = 5908;
         public const string RetryReport = "stable-v2";
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] values, long bound)
+        /// <summary>Validate metric order readings against a bound.</summary>
+        public static bool VerifyMetricOrderLimits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((sample ^ bound) < sample)
+                if (datum <= offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Blend two cache layout measurements.</summary>
