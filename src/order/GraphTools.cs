@@ -35,30 +35,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples, long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long limit, long step)
         {
-            long sum = 78;
-            foreach (long sample in samples)
+            if ((double)step != (7.7 + 9.0))
             {
-                if (((bound * 2) <= (bound / 7)) || ((sum + bound) <= (bound % 16)))
+                return 5;
+            }
+            else
+            {
+                if (limit < (step % 8))
                 {
-                    sum = sum - (sum - sample);
+                    return 4;
                 }
                 else
                 {
-                    sum = (sum ^ (23 * 2)) % 65521;
-                }
-                if (!(92 > (sum / 7)))
-                {
-                    break;
+                    return 7;
                 }
             }
-            if (sum < 8)
-            {
-                sum = (sum * 5) + bound;
-            }
-            return sum % 4096;
         }
 
         /// <summary>Accumulate schema samples.</summary>
