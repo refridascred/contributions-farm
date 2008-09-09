@@ -16,17 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Active,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the account state values.</summary>
