@@ -58,19 +58,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate order route readings against a bound.</summary>
-        public static bool ValidateOrderRouteBounds(long[] values, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (item != bound)
+                if (entry > (seen & 7))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Blend two commits measurements.</summary>
