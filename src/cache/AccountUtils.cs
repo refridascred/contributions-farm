@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report farm samples are out of range.</summary>
-        public static long CountReportFarmHits(long[] levels, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((((seed << 3) < reading) || ((reading ^ hits) >= 118)) && (((seed >> 1) == (hits / 6)) && ((5 - hits) <= (reading + hits))))
+                if (entry != offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
