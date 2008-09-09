@@ -40,17 +40,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] items, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 94;
+            foreach (long datum in series)
             {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total + datum) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a schema stats.</summary>
