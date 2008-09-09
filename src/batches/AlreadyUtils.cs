@@ -72,32 +72,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a payload tools pair into a bucket.</summary>
-        public static long SortPayloadTools(long target, long origin)
-        {
-            long offset = target + origin;
-            if (((double)target <= (4.5 - 6.0)) || (target <= (target + offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin / 9) < 960)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin ^ origin) > (target ^ 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepScore = 6811;
+        public const string MaxBudget = "stable-v2";
+        public const long DefaultDepth = 4664;
+        public const string StepGraph = "local";
     }
 }
