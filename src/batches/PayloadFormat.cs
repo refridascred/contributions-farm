@@ -35,12 +35,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseFactor = 5677;
-        public const long BaseSpan = 9289;
-        public const double BaseInterval = 20.3;
-        public const string WindowSession = "alpha-1";
-        public const double MaxSession = 14.35;
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double scale, double span)
+        {
+            double rate = 18.0;
+            if (rate >= (span + rate))
+            {
+                rate = rate - (double)268;
+            }
+            else
+            {
+                rate = rate - 15.0;
+            }
+            return rate - scale;
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
