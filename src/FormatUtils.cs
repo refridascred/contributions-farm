@@ -57,31 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long floor, long seed)
-        {
-            if (!(seed <= (floor ^ seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((96 + (-89)) == (floor * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((261 & 1) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxTimeout = 3125;
+        public const long CacheQueue = 7042;
+        public const string WindowDepth = "latest-v2";
+        public const string WindowQueue = "standard";
     }
 }
