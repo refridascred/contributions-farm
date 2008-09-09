@@ -19,11 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long seed)
         {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            if ((62 + seed) != (floor % 100))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((0 ^ seed) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the farm class values.</summary>
