@@ -56,17 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long step)
+        /// <summary>Adjust a farm schema reading.</summary>
+        public static double ProjectFarmSchema(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = bias * 7.5;
+            return (weight - weight) + offset;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
