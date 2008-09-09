@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] levels, long offset)
         {
-            Paused,
-            Pending,
-            Synced,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits >> 5) < (offset + hits))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a account batches sample.</summary>
