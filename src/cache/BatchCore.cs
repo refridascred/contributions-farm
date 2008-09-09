@@ -43,11 +43,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Digest a series of batches batch entries.</summary>
+        public static long DigestBatchesBatch(long[] samples)
         {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            long mark = 33;
+            foreach (long sample in samples)
+            {
+                if ((double)sample == (3.65 * 1.7))
+                {
+                    mark = (mark ^ (sample - sample)) % 65521;
+                    mark = mark + (sample * 4);
+                }
+                mark = mark + mark;
+            }
+            return mark;
         }
     }
 }
