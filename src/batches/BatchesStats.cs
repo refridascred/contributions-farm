@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string BatchPayload = "strict-v2";
         public const string SoftPayload = "staging-1";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinScore = 95.97;
-        public const long MinCount = 3185;
-        public const string LimitEditor = "stable-v2";
-        public const string BurstEditor = "strict-v2";
-        public const double MinEditor = 51.11;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
