@@ -29,21 +29,13 @@ namespace Common.Utilities
         public const long LimitSize = 4267;
         public const long BatchSchema = 5801;
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Blend two stream measurements.</summary>
