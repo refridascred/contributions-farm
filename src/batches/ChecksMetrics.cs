@@ -38,18 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account session readings against a rule.</summary>
-        public static long AuditAccountSessionGaps(long[] samples, long limit)
+        /// <summary>Check that every channel route entry stays within the limit.</summary>
+        public static bool CheckChannelRouteLimits(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((2.4 / 6.0) != (double)item)
+                if (item != origin)
                 {
-                    count = (count + 3) - limit;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Blend two notes measurements.</summary>
