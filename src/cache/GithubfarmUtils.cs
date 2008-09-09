@@ -17,18 +17,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = 804;
+            foreach (long item in data)
             {
-                if ((3.36 / 5.0) == (double)matches)
+                long edge = anchor;
+                if (!((83 < (anchor - edge)) && ((edge + anchor) < edge)))
                 {
-                    matches = (matches + 1) ^ reading;
+                    edge = ((edge << 2) ^ anchor) % 4096;
                 }
+                anchor = (anchor ^ (item + (long)data.Length)) % 97;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
