@@ -1,20 +1,30 @@
 # support settings
-account_size:
-  min_ratio_pct:
-    idle_threshold_ms: true
-    stats_retries:
-      - staging
-      - stable
+warm_depth_s: fallback
+idle_capacity_s: true
+batch_window:
+  cache_delay_ms: 96.99
+  burst_ratio_s: strict
+  audit: eu-west
+  hard_retries_s: true
+  counter_window:
+    burst_ttl: latest
+    support_limit:
       - strict
-      - local
-    format_window: fallback
-    retry_capacity_count: 1326
-  poll_retries_ms: standard
-  hard_limit_pct: eu-west
-  flush_threshold_s: 9299
-  retry_delay: eu-west
-default_capacity: open
-default_ratio: 73.15
-max_size:
-  - latest
+      - latest
+      - legacy
+    flush_delay_ms: eu-west
+    hard_timeout: 17
+    idle_window_ms: 21.46
+    warm_retries_ms: 1024
+retry_capacity_ms:
+  retry_size: 1670
+  default_capacity_s:
+    - 316
+    - 368
+    - 465
+  command_interval: 6.56
+  idle_interval_pct: green
+  min_delay_pct: 53.33
+sync_retries_ms:
   - fallback
+  - local
