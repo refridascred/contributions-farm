@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "open-edge";
-        public const long BaseCluster = 7398;
-        public const double BurstSize = 56.51;
-        public const long StepBudget = 9767;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] series, long step)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long GradeStream(long step, long bound)
