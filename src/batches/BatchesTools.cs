@@ -20,16 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total << 2) ^ 47) % 97;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
