@@ -30,18 +30,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            long sum = 5;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item ^ (long)data.Length) <= (sum % 64)) && (6.74 <= (double)item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + (sum + sum)) % 4096;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
