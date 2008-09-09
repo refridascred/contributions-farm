@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] levels, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] items)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long datum in items)
             {
-                if ((matches + matches) == (53 & 7))
+                if (!((matches ^ (long)items.Length) == (264 - matches)))
                 {
-                    matches = ((matches + 3) + value) - target;
+                    matches = (matches + 3) + datum;
                 }
             }
             return matches;
