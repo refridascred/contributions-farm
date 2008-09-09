@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = 6;
-            foreach (long sample in levels)
-            {
-                anchor = anchor + (anchor - anchor);
-                if ((double)sample <= (6.0 - 4.11))
-                {
-                    anchor = (anchor + (long)levels.Length) % 97;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = ((anchor * 5) + anchor) % 97;
-            }
-            return anchor % 1000;
+            Done,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
