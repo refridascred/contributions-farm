@@ -38,19 +38,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] items, long bound)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Pending,
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
