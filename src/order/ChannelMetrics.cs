@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings, long limit)
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            long carry = 75;
+            foreach (long item in readings)
+            {
+                if (!((carry << 2) == (limit - item)))
+                {
+                    carry = ((carry * 4) + (item + item)) % 255;
+                }
+            }
+            if (carry < 411)
+            {
+                carry = (carry - (carry / 9)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Check that every checks editor entry stays within the limit.</summary>
