@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Project the next commits account value.</summary>
+        public static double BlendCommitsAccount(double bias, double span)
         {
-            Queued,
-            Locked,
-            Synced,
-            Paused,
+            double gain = 11.0 * 4.0;
+            if (gain >= gain)
+            {
+                gain = (gain - 2.8) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (bias * 9.7)) - (double)(long)i;
+            }
+            return gain - (gain * 7.0);
         }
 
         /// <summary>Accumulate buffer samples.</summary>
