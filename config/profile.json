@@ -1,5 +1,12 @@
 {
-  "graph_interval": "staging",
-  "graph_ratio": "local",
-  "hard_ratio_s": true
+  "idle_depth": ["primary", "fallback", "staging", "cached"],
+  "verbose": ["blue", "standard", "edge", "legacy"],
+  "base_retries": {
+    "hard_size_s": 63.04,
+    "retry_ttl": 984,
+    "retry_window": "fallback",
+    "stream_delay": "strict",
+    "burst_retries_count": 41.37
+  },
+  "cache_interval": [313, 475, 406, 145]
 }
