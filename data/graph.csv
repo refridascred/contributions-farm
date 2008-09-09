@@ -1,10 +1,6 @@
-id,rank,owner,count
-1,847,308,761
-2,65.3,88.23,28
-3,808,latest,719
-4,387,primary,68.65
-5,84.37,cached,eu-west
-6,293,528,fallback
-7,961,open,756
-8,770,173,261
-9,341,22.85,eu-west
+id,count,token
+1,50.28,441
+2,eu-west,cached
+3,986,stable
+4,504,113
+5,965,868
