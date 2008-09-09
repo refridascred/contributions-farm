@@ -36,13 +36,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] samples, long seed)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
