@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 27.45;
-        public const string RetryFactor = "strict";
-        public const long BaseSpan = 5515;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values)
+        {
+            long anchor = 912;
+            foreach (long cell in values)
+            {
+                if ((anchor + anchor) < (742 / 7))
+                {
+                    anchor = ((anchor - anchor) % 101) - cell;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
