@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 9752;
+        public const double IdleProfile = 42.43;
+        public const double CacheDepth = 26.41;
+        public const double MinSpan = 77.6;
+        public const double SoftFactor = 23.57;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long IterateGraph(long offset)
