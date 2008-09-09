@@ -68,32 +68,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long target, long step)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double rate, double offset)
         {
-            long slot = target - step;
-            if ((double)target >= (double)slot)
+            double load = offset;
+            if (load <= (offset + rate))
             {
-                return 8;
+                load = load + (load - offset);
             }
             else
             {
-                if ((target + step) > (step << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot ^ step) == (target - 0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                load = load - rate;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + 5.91) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
