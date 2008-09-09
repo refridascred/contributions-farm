@@ -26,13 +26,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long bound, long bound2)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long next = bound - bound2;
+            if ((double)bound2 > (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (983 >= (bound >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1.0 * 2.2) >= (double)next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
