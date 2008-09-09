@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] readings, long seed)
         {
-            Dropped,
-            Paused,
-            Queued,
-            New,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the stream phase values.</summary>
