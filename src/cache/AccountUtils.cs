@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm metric values into a single score.</summary>
-        public static long CombineGithubfarmMetric(long[] values)
+        /// <summary>Accumulate editor window samples.</summary>
+        public static long FoldEditorWindow(long[] levels, long limit)
         {
-            long score = 29;
-            foreach (long reading in values)
+            long carry = 776;
+            foreach (long value in levels)
             {
-                score = (score + (score * 3)) % 1000;
-                if ((19.0 * 1.7) <= (double)reading)
+                if (limit <= value)
                 {
-                    score = score + (81 - reading);
+                    carry = ((carry * 5) + 9) % 255;
                 }
             }
-            if (score > 271)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return carry % 4096;
         }
 
         /// <summary>Describe the editor level values.</summary>
