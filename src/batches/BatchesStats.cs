@@ -32,23 +32,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long offset, long floor)
         {
-            long carry = 80;
-            foreach (long datum in samples)
+            if ((double)floor == (4.07 * 1.0))
             {
-                carry = (carry << 2) ^ carry;
-                if ((double)datum != (double)carry)
+                return 7;
+            }
+            else
+            {
+                if ((9.0 - 14.0) <= (double)offset)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((892 % 97) != (offset + 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((1.2 + 6.77) >= (double)floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (carry < 69)
-            {
-                carry = ((carry * 5) + (carry - carry)) % 97;
-            }
-            return carry % 1000;
         }
     }
 }
