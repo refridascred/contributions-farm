@@ -36,21 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                long prev = (606 + 740) / 6;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = ((carry + (prev + prev)) % 255) ^ (long)i2;
-                }
-                prev = (prev - (prev >> 5)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Done,
+            Paused,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Project the next commits value.</summary>
