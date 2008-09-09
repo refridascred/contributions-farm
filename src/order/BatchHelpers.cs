@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Dropped,
+            Paused,
             Ready,
-            Retry,
-            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
