@@ -35,11 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardLevel = 8162;
-        public const string MaxScore = "staging-edge";
-        public const long SoftScore = 4904;
-        public const long CacheStats = 815;
-        public const double DefaultStats = 50.27;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
