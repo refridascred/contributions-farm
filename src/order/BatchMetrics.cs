@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values)
         {
-            Done,
-            Closed,
-            Synced,
-            Dropped,
-            Queued,
+            long sum = 6;
+            foreach (long datum in values)
+            {
+                sum = (sum * 3) + (datum - datum);
+                sum = (sum - (4 - 5)) % 97;
+            }
+            if (sum > 191)
+            {
+                sum = sum + (sum << 2);
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a order info.</summary>
