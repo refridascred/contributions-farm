@@ -1,8 +1,9 @@
-id,region,token,weight
-1,345,733,standard
-2,cached,659,staging
-3,354,326,eu-west
-4,staging,894,329
-5,527,legacy,44
-6,826,411,cached
-7,edge,654,latest
+id,region,state,rank,token
+1,382,eu-west,open,178
+2,343,75.33,legacy,317
+3,782,eu-west,eu-west,40.45
+4,latest,standard,fallback,eu-west
+5,465,850,fallback,fallback
+6,582,eu-west,36,940
+7,456,767,160,blue
+8,603,504,49.78,605
