@@ -34,10 +34,12 @@ namespace Common.Utilities
         public const long WindowSpan = 2286;
         public const long BatchCount = 6434;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "primary-v2";
-        public const string WindowEditor = "staging-v2";
-        public const string SoftEditor = "staging";
-        public const string CacheEditor = "stable-v2";
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Draft,
+            Active,
+            Stale,
+        }
     }
 }
