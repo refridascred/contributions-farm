@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long seed)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = 5.0 * 6.0;
+            return (rate + (rate - offset)) + scale;
         }
 
         /// <summary>Hold a context info.</summary>
