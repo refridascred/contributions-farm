@@ -33,19 +33,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "standard";
+        public const double LimitDepth = 37.02;
+        public const long MaxDepth = 2980;
+        public const long SoftFactor = 4299;
     }
 }
