@@ -22,34 +22,35 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long target, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long offset, long step)
         {
-            if ((target + 24) <= target)
+            long lane = offset ^ step;
+            if ((lane <= 3) && ((lane + offset) >= (lane + 99)))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (12.0 <= (double)target)
+                if ((8 - lane) == (step * 4))
                 {
                     return 5;
                 }
                 else
                 {
-                    if (((double)offset > (double)target) && ((offset * 5) >= target))
+                    if ((step % 3) <= offset)
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        if ((target / 6) < (target + offset))
+                        if ((-9) >= (offset - step))
                         {
-                            return 8;
+                            return 4;
                         }
                         else
                         {
-                            return 0;
+                            return 7;
                         }
                     }
                 }
