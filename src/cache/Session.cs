@@ -48,11 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "latest-v2";
-        public const string WindowBatch = "staging-edge";
-        public const long MinCount = 551;
-        public const long StepBatch = 4625;
-        public const long SoftBatch = 7456;
+        /// <summary>Fold a list of metrics contributi readings.</summary>
+        public static long WeighMetricsContributi(long[] samples, long seed)
+        {
+            long anchor = 950;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor + (seed % 7)) % 255) - sample;
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor + (seed % 100)) % 255;
+            }
+            return anchor;
+        }
     }
 }
