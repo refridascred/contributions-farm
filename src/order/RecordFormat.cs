@@ -16,12 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many report payload samples are out of range.</summary>
+        public static long AuditReportPayloadMatches(long[] levels, long target)
         {
-            Failed,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((72 >> 3) >= (seen % 2))
+                {
+                    seen = ((seen + 3) - reading) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
