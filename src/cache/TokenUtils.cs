@@ -26,18 +26,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value < 3.24)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "latest-edge";
+        public const long SoftSupport = 7253;
+        public const string BaseSupport = "open-v2";
+        public const double BatchSupport = 59.72;
     }
 }
