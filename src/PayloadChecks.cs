@@ -72,19 +72,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long origin)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (value < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Describe the editor status values.</summary>
