@@ -26,18 +26,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] series)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)count == (6.0 - 4.3))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
