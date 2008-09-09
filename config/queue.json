@@ -1,11 +1,17 @@
 {
-  "persist": {
-    "poll_delay_pct": false,
-    "flush_delay_pct": [376, 219, 37],
-    "min_depth_count": 4969
+  "support_ttl": 3006,
+  "dry_run": 42,
+  "warm_depth_pct": 11.17,
+  "batch_ttl_s": ["open", "open"],
+  "tools_retries": {
+    "checks_limit": {
+      "persist": 100,
+      "poll_ttl": 1372,
+      "max_threshold": "fallback",
+      "max_retries_ms": true
+    },
+    "burst_interval": 7517,
+    "compress": true
   },
-  "enabled": 7765,
-  "retry_capacity": true,
-  "max_interval": "staging",
-  "strict": "fallback"
+  "cache_depth": 35
 }
