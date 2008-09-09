@@ -1,8 +1,11 @@
 {
-  "readonly": 30,
-  "schema_limit": true,
-  "max_limit_s": "primary",
-  "compress": 500,
-  "hard_ratio": "fallback",
-  "idle_threshold_ms": "stable"
+  "default_retries_count": 41.23,
+  "flush_size_ms": "staging",
+  "dry_run": true,
+  "retry_depth_ms": {
+    "default_threshold": "standard",
+    "warm_limit_s": 500,
+    "persist": "legacy"
+  },
+  "persist": 42
 }
