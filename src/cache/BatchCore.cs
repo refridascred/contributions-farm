@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long bound)
         {
-            long sum = 60;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3 & 127) < (sum ^ entry))
+                if (samples[i] >= bound)
                 {
-                    sum = sum ^ (sum % 10);
+                    return (long)i;
                 }
             }
-            if (sum < 9)
-            {
-                sum = sum ^ (sum % 8);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
