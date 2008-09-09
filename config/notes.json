@@ -1,16 +1,6 @@
 {
-  "hard_threshold_count": false,
-  "commits_delay": {
-    "batch_interval_pct": true,
-    "flush_window_s": 100,
-    "max_ratio_count": {
-      "warm_ratio_ms": 60,
-      "default_ttl_pct": "cached",
-      "compress": "stable",
-      "filter_depth": 3135,
-      "poll_limit_count": 3439
-    }
-  },
-  "persist": [36, 353, 488],
-  "max_size_s": 25.37
+  "warm_size": "legacy",
+  "min_timeout_s": 30,
+  "sync_ttl_ms": 46.87,
+  "soft_depth_ms": ["cached", "fallback"]
 }
