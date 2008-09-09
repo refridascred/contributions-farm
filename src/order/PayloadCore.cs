@@ -25,12 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstTimeout = 985;
-        public const double RetryLevel = 3.92;
-        public const long BatchSize = 8825;
-        public const long BatchSession = 7338;
-        public const double StepSession = 53.88;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] items, long limit)
