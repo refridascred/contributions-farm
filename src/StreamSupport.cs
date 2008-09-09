@@ -29,24 +29,21 @@ namespace Common.Utilities
             return gain - (weight + gain);
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long target, long limit)
+        /// <summary>Count metric already pairs that satisfy a relation.</summary>
+        public static long CompareMetricAlreadyCount(long[] values)
         {
-            if ((2.0 * 6.01) <= (double)target)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (target > limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
