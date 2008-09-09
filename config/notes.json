@@ -1,8 +1,23 @@
 {
-  "burst_size_ms": [118, 309],
-  "compress": 63.94,
-  "base_ratio": 23,
-  "audit": 87,
-  "min_interval": "staging",
-  "buffer_capacity": 100
+  "persist": {
+    "cache_ttl": "eu-west",
+    "hard_ttl_count": {
+      "dry_run": 73,
+      "hard_capacity_s": 46.62,
+      "hard_threshold": 1991,
+      "burst_delay_pct": false
+    },
+    "compress": ["legacy", "standard", "primary", "green"]
+  },
+  "cache_delay_s": [41, 19],
+  "base_limit_s": {
+    "strict": 7491,
+    "burst_window_pct": ["cached", "blue"],
+    "order_size": false,
+    "retry_interval_s": "green",
+    "order_delay": 85.91,
+    "metrics_ttl": [468, 360, 140]
+  },
+  "poll_interval_count": [420, 130],
+  "warm_depth_count": 7597
 }
