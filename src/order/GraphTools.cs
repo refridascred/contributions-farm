@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "strict-1";
+        public const double SoftToken = 73.36;
+        public const string MaxSpan = "stable-1";
+        public const long MinToken = 9751;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
