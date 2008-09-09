@@ -16,11 +16,19 @@ namespace Common.Utilities
             return rate + (span + rate);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitTimeout = 7587;
-        public const long BatchCommits = 404;
-        public const long SoftCommits = 7739;
-        public const double HardCommits = 81.18;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (tally >= floor)
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BurstFactor = "stable-edge";
