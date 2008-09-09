@@ -14,15 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            New,
+            Stale,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
