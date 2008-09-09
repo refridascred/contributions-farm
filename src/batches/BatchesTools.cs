@@ -25,11 +25,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 1517;
-        public const string StepSize = "latest";
-        public const string HardCount = "cached";
-        public const long DefaultDepth = 3670;
-        public const long MinNotes = 5469;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Idle,
+            New,
+            Retry,
+            Pending,
+            Synced,
+        }
     }
 }
