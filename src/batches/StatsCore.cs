@@ -71,12 +71,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] items, long floor)
         {
-            Stale,
-            Draft,
-            Queued,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
