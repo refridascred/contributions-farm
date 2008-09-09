@@ -17,15 +17,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double gain, double span)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long target, long target2)
         {
-            double weight = span * 3.2;
-            for (int i = 0; i < 7; i++)
+            long cur = target + target2;
+            if (((-878) - target2) >= (target2 ^ 56))
             {
-                weight = ((weight - 5.91) + (double)(long)i) - gain;
+                return 7;
             }
-            return weight - 17.0;
+            else
+            {
+                if (target2 > (target2 + 197))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (cur > (target % 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((cur * 4) < (target % 16))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
