@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftWidth = 3899;
-        public const long SoftFormat = 4767;
-        public const long IdleLevel = 9531;
-        public const long SoftTimeout = 329;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Dropped,
+            Done,
+            New,
+            Ready,
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
