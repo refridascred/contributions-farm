@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] series)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((69 & 63) > seen)
+                if ((((long)i + score) >= floor) && ((double)floor >= (3.9 * 1.93)))
                 {
-                    seen = (seen + 1) + value;
+                    break;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the batch phase values.</summary>
