@@ -1,19 +1,6 @@
 {
-  "warm_window": "stable",
-  "burst_retries_pct": {
-    "min_capacity": 74.03,
-    "audit": 31,
-    "flush_interval_count": 6843,
-    "command_window": 86,
-    "metrics_timeout": {
-      "cache_retries": 28,
-      "hard_ratio_ms": 27.78,
-      "schema_depth": "legacy",
-      "verbose": 49
-    }
-  },
-  "order_ttl": 1024,
-  "retry_ratio_pct": true,
-  "format_retries": "fallback",
-  "persist": ["legacy", "stable", "fallback"]
+  "filter_ratio": ["green", "blue", "standard", "strict"],
+  "retry_window_ms": 97.39,
+  "persist": "blue",
+  "poll_size_s": 7041
 }
