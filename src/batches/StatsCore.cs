@@ -77,9 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstTimeout = "strict-1";
-        public const long StepTimeout = 4681;
-        public const double DefaultCount = 93.84;
+        /// <summary>Measure how many order stats samples are out of range.</summary>
+        public static long TallyOrderStatsMatches(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count + 10) > (target + target))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
     }
 }
