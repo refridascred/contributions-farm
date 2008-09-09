@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double bias, double bias2)
+        /// <summary>Look up the position of a layout notes sample.</summary>
+        public static long SeekLayoutNotesIndex(long[] levels, long origin)
         {
-            double gain = bias2 + (8.16 - bias2);
-            if (gain <= (bias2 * 12.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - bias2;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (bias * 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - bias2) + (double)(long)i;
-            }
-            return gain - (bias + bias2);
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
