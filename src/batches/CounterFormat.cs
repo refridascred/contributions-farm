@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long limit, long limit2)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] readings, long target)
         {
-            long cur = limit + limit2;
-            if (!(limit > (limit << 1)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit2 << 1) < (49 + limit2))
+                if (readings[i] < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit << 3) <= limit2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit2 - 681) <= cur)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
