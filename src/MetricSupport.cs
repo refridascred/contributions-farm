@@ -13,38 +13,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long step, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long origin)
         {
-            if ((step + origin) >= (origin - origin))
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin / 3) >= origin)
+                if (!((mark + origin) >= (mark & 3)))
                 {
-                    return 6;
+                    long diff = mark + origin;
+                    mark = ((mark * 4) + (diff >> 3)) % 255;
                 }
                 else
                 {
-                    if ((step >> 1) < (step + 0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin * 2) <= (origin + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mark = ((mark << 2) ^ ((-79) - origin)) % 101;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
