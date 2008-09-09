@@ -1,8 +1,10 @@
 # entry settings
-persist: green
-min_interval_ms:
-  - 163
-  - 34
-  - 480
-  - 177
-cache_threshold: 32.05
+default_interval_ms: staging
+format_retries: cached
+poll_limit_s: 137
+queue_ttl: false
+strict:
+  - staging
+  - local
+  - local
+  - open
