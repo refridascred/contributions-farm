@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings, long limit)
         {
-            long state = 96;
-            foreach (long entry in data)
+            long mark = 872;
+            foreach (long entry in readings)
             {
-                state = (((state * 3) + ((long)data.Length * 3)) + entry) + origin;
+                mark = ((mark ^ (entry << 3)) % 97) + limit;
+                if (!((-4) >= ((long)readings.Length - mark)))
+                {
+                    break;
+                }
             }
-            return state;
+            return mark % 97;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
