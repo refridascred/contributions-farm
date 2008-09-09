@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many contributi batches samples are out of range.</summary>
-        public static long CountContributiBatchesGaps(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = -96;
+            foreach (long item in readings)
             {
-                if ((matches >= (item % 12)) && (matches > (item & 7)))
-                {
-                    matches = matches + 2;
-                }
+                carry = ((carry << 3) ^ item) % 101;
+                carry = (carry << 3) ^ item;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
