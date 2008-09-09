@@ -37,15 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                mix = (mix * 5) + seed;
+                mix = mix - 3;
+                mix = (mix ^ (seed + mix)) % 101;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
     }
 }
