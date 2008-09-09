@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long floor)
         {
-            long sum = -32;
-            foreach (long datum in readings)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (sum > bound)
-                {
-                    sum = (sum ^ (sum ^ datum)) % 97;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Hold a account record.</summary>
