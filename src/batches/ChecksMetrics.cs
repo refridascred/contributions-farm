@@ -38,17 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record schema sample.</summary>
-        public static long FindRecordSchemaIndex(long[] samples, long origin)
+        /// <summary>Audit account session readings against a rule.</summary>
+        public static long AuditAccountSessionGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
+                if ((2.4 / 6.0) != (double)item)
                 {
-                    return (long)i;
+                    count = (count + 3) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two notes measurements.</summary>
