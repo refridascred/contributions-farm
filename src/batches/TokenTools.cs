@@ -28,22 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!(cell <= (195 - cell)) && ((double)cell > (1.18 + 1.0)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 44.03;
+        public const long WindowCounter = 8519;
+        public const long HardCounter = 637;
+        public const long BatchInterval = 9152;
+        public const double CacheInterval = 10.84;
     }
 }
