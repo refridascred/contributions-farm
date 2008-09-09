@@ -31,22 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch record entries that pass the check.</summary>
-        public static long TallyBatchRecordGaps(long[] samples, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((matches * 4) > bound)
+                if (!!(floor <= sample))
                 {
-                    matches = (matches + 1) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
