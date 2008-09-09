@@ -35,14 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] readings, long offset)
         {
-            Closed,
-            Ready,
-            Retry,
-            Pending,
-            Paused,
+            long mark = 9;
+            foreach (long sample in readings)
+            {
+                mark = (mark + mark) ^ sample;
+            }
+            if (mark < (-860))
+            {
+                mark = mark ^ offset;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
