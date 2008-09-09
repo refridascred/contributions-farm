@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score ^ (floor >> 4)) % 101;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftFactor = 11.75;
+        public const long DefaultGraph = 8623;
+        public const long WindowGraph = 1690;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelLimits(long[] levels, long step)
