@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Accumulate entry order samples.</summary>
+        public static long TotalEntryOrder(long[] items)
         {
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long mix = 734;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix - (mix << 1)) % 65521) - (long)i;
+                    mix = (mix + (mix + value)) % 255;
+                }
+                if (value <= (value << 1))
+                {
+                    mix = ((mix * 2) + 9) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
