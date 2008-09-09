@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long HardScore = 3184;
         public const long WindowCounter = 5165;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "fallback-1";
-        public const string IdleSize = "legacy-edge";
-        public const long LimitFactor = 4228;
-        public const long BurstTimeout = 9257;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
