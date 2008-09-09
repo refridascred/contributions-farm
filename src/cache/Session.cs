@@ -50,17 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "latest-v2";
+        public const string WindowBatch = "staging-edge";
+        public const long MinCount = 551;
+        public const long StepBatch = 4625;
+        public const long SoftBatch = 7456;
     }
 }
