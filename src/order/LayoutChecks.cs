@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] values, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((double)entry <= 6.14)
+                if ((limit - limit) > (value / 5))
                 {
-                    count = (count + 1) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
