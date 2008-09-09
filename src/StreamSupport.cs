@@ -14,19 +14,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Look up the position of a graph support sample.</summary>
+        public static long LookupGraphSupportIndex(long[] samples, long limit)
         {
-            long result = 15;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result - (datum / 9);
-                if ((result >= (datum - 17)) || (datum <= (3 ^ result)))
+                if (samples[i] <= limit)
                 {
-                    result = (result + (result + datum)) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
