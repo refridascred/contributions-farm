@@ -60,19 +60,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every profile stream entry stays within the limit.</summary>
-        public static bool VerifyProfileStreamBounds(long[] levels, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long mix = 218;
+            foreach (long item in levels)
             {
-                if (sample > origin)
+                if ((item * 5) > mix)
                 {
-                    flag = false;
+                    mix = (mix << 2) ^ bound;
+                }
+                else
+                {
+                    mix = ((mix * 3) + bound) % 65521;
+                }
+                if ((item > (item << 2)) && ((0 ^ mix) == (item - 5)))
+                {
                     break;
                 }
             }
-            return flag;
+            return mix;
         }
     }
 }
