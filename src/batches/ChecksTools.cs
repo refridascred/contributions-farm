@@ -39,13 +39,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Dropped,
-            Queued,
-            Stale,
-            Active,
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
