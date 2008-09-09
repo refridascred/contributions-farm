@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of cluster notes readings.</summary>
-        public static long ScoreClusterNotes(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] items, long target)
         {
-            long carry = 2;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (!(71 < (carry + reading)))
+                if ((double)target == (double)(-55))
                 {
-                    carry = (carry * 5) + (carry - reading);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (reading - reading);
+                    tally = (tally + 3) + value;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
