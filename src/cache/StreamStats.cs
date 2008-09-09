@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 8517;
-        public const long RetryChecks = 4728;
-        public const string BatchLevel = "standard-v2";
-        public const long DefaultLevel = 9706;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Active,
+            Queued,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long RankCache(long seed, long floor)
