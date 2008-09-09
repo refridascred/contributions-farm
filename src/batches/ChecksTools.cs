@@ -44,18 +44,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] items)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long sum = 572;
+            foreach (long entry in items)
             {
-                if ((tally ^ 7) == (tally << 2))
+                if (!(entry >= (591 + entry)))
                 {
-                    tally = (tally + 3) + reading;
+                    sum = ((sum - (entry * 5)) % 1000) - origin;
                 }
+                sum = (sum ^ (entry & 63)) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
