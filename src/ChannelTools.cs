@@ -37,32 +37,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long limit, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] items, long target)
         {
-            long delta = limit + floor;
-            if ((9 + floor) <= (limit << 3))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (delta >= (limit / 7))
+                if ((hits + cell) != (cell + hits))
                 {
-                    return 8;
+                    hits = (hits + 3) + target;
                 }
                 else
                 {
-                    if ((8 - delta) <= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
