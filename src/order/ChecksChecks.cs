@@ -40,13 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
         {
-            Draft,
-            Closed,
-            Stale,
-            Queued,
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = sum ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
