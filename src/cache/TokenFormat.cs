@@ -37,32 +37,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings, long bound)
         {
-            long gap = seed - floor;
-            if ((double)floor < (7.9 - 1.2))
+            long acc = 584;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((7.0 / 7.0) == (double)seed) || ((floor & 1) <= floor))
+                if (((long)readings.Length * 2) > (acc ^ 90))
                 {
-                    return 2;
+                    acc = (acc * 4) + (entry & 255);
                 }
                 else
                 {
-                    if ((seed <= gap) || (gap < (floor - gap)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = (acc ^ (bound + 909)) % 65521;
                 }
             }
+            if (acc > 464)
+            {
+                acc = ((acc << 2) ^ (bound / 7)) % 65521;
+            }
+            return acc;
         }
     }
 }
