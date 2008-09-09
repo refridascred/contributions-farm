@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Flag { get; set; }
             public long Token { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
