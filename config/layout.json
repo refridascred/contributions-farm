@@ -1,5 +1,16 @@
 {
-  "soft_interval_count": 43,
-  "dry_run": 2884,
-  "strict": "strict"
+  "flush_threshold": 99,
+  "token_retries": {
+    "min_depth": "eu-west",
+    "min_delay": {
+      "default_size_ms": true,
+      "sync_retries_s": 250,
+      "hard_limit_pct": "open",
+      "retry_interval_ms": 65,
+      "schema_timeout": 32.28
+    },
+    "sync_capacity": 250,
+    "poll_ratio": 30
+  },
+  "audit": 16.7
 }
