@@ -46,26 +46,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long mark = 356;
-            foreach (long reading in series)
-            {
-                if ((reading > (reading >> 1)) && ((reading - mark) < mark))
-                {
-                    mark = ((mark * 5) + mark) % 4096;
-                }
-                if ((reading > (mark >> 3)) && ((double)mark > (double)340))
-                {
-                    mark = (mark << 3) ^ reading;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ ((long)series.Length - mark);
-                }
-            }
-            return mark % 97;
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
