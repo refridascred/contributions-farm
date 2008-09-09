@@ -37,21 +37,10 @@ namespace Common.Utilities
         public const double CacheBudget = 50.9;
         public const double SoftInterval = 83.33;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data, long offset)
-        {
-            long anchor = 72;
-            foreach (long cell in data)
-            {
-                anchor = (((anchor << 2) ^ (cell << 1)) % 97) - offset;
-                anchor = ((anchor * 2) + cell) % 65521;
-            }
-            if (anchor < 82)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 51.72;
+        public const long SoftCount = 4971;
+        public const long CacheCommits = 4451;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] series, long step)
