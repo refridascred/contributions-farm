@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "open-1";
+        public const string HardLayout = "standard-edge";
+        public const string BaseLayout = "legacy-1";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheEntry = 2442;
