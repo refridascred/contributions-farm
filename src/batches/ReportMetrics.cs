@@ -28,17 +28,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardBudget = 7391;
+        public const double MinCount = 72.16;
+        public const double MaxStream = 18.1;
     }
 }
