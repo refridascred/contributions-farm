@@ -1,8 +1,6 @@
 {
-  "warm_retries_ms": "local",
-  "schema_interval": ["cached", "cached"],
-  "hard_ttl": ["primary", "fallback"],
-  "cache_timeout_s": 67.09,
-  "audit": 4930,
-  "persist": "open"
+  "strict": "staging",
+  "profile_delay": ["local", "stable", "fallback"],
+  "default_ratio": "fallback",
+  "cache_interval_ms": 4.81
 }
