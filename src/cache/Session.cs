@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] series, long offset)
+        /// <summary>Digest a series of window payload entries.</summary>
+        public static long TotalWindowPayload(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long total = 240;
+            foreach (long reading in series)
             {
-                if (cell <= offset)
+                if (!((reading / 8) < (975 - total)))
                 {
-                    ready = false;
-                    break;
+                    total = (total + (reading + 79)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 3) + (total + offset)) % 255;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Match up cluster samples.</summary>
