@@ -32,24 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long acc = -319;
-            foreach (long item in levels)
-            {
-                if (!((double)acc > 2.35))
-                {
-                    acc = (acc + (629 - origin)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (origin << 1)) % 1000;
-                    acc = (acc * 5) + (item + origin);
-                }
-                acc = (acc - acc) % 101;
-            }
-            return acc % 97;
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
