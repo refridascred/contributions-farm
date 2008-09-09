@@ -1,7 +1,14 @@
 {
-  "format_threshold": "standard",
-  "batch_capacity": "local",
-  "soft_limit_ms": 50,
-  "batch_delay": false,
-  "commits_threshold": "blue"
+  "compress": {
+    "warm_delay_s": [126, 182, 81],
+    "max_retries_ms": 38,
+    "strict": 332,
+    "max_window": 80.86,
+    "metric_ttl": 44.59
+  },
+  "checks_retries": [16, 185, 386, 333],
+  "account_timeout": 92,
+  "burst_capacity": ["green", "blue", "stable", "eu-west"],
+  "notes_depth": true,
+  "default_retries": 93.1
 }
