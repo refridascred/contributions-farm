@@ -36,11 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long target)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
