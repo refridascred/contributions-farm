@@ -1,13 +1,16 @@
 # githubfarm settings
-cluster_retries: latest
-stream_depth: 28
-audit:
-  cache_size: open
-  burst_interval_ms: blue
-  context_delay: 4017
-  compress: 82.58
-  default_retries: 66.17
-  verbose:
-    - 20
-    - 215
-    - 99
+dry_run: 42.18
+default_retries_ms:
+  cache_ratio_pct: strict
+  verbose: 500
+  enabled: 100
+  profile_threshold:
+    - 184
+    - 161
+    - 375
+    - 205
+compress: legacy
+retry_depth_pct:
+  - blue
+  - open
+  - primary
