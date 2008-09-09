@@ -42,11 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            Locked,
+            Synced,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Accumulate schema metrics samples.</summary>
