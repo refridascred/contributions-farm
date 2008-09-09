@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Measure how many stats graph samples are out of range.</summary>
+        public static long TallyStatsGraphHits(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5.0 - 6.63) > (double)limit)
                 {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate cache samples.</summary>
