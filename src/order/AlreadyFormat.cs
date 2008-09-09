@@ -32,23 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series, long bound)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long sum = 23;
-            foreach (long entry in series)
-            {
-                sum = (((sum * 4) + 753) % 255) ^ entry;
-                if (((double)bound <= 9.0) || ((sum % 24) <= 788))
-                {
-                    sum = ((sum * 2) + (33 << 3)) % 101;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = ((sum << 2) ^ (bound ^ bound)) % 101;
-            }
-            return sum % 4096;
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
