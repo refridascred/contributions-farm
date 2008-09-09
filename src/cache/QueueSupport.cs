@@ -34,22 +34,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] readings)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double scale = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((reading - 177) <= (tally * 3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = (scale - (double)(long)i) + offset;
             }
-            return tally;
+            return scale + scale;
         }
     }
 }
