@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheSize = "primary-1";
+        public const long BurstFactor = 8721;
+        public const string BurstSpan = "standard-1";
+        public const long IdleCounter = 7175;
+        public const string BatchCount = "cached-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const double StepScore = 62.7;
