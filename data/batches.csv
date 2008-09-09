@@ -1,8 +1,6 @@
-id,state,label
-1,39.4,898
-2,19.12,legacy
-3,92.97,53.48
-4,977,75.62
-5,58.24,842
-6,33,green
-7,cached,staging
+id,owner,score
+1,213,green
+2,182,primary
+3,22.52,60.71
+4,green,77.81
+5,strict,81.33
