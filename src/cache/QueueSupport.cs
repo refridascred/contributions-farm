@@ -34,21 +34,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 7890;
+        public const string StepSize = "latest-v2";
+        public const long WindowSize = 3156;
+        public const double HardWidth = 15.55;
+        public const long DefaultSpan = 97;
     }
 }
