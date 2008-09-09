@@ -16,10 +16,15 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleRatio = 9149;
-        public const string BatchChannel = "cached-1";
-        public const long DefaultScore = 7169;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Ready,
+            Draft,
+            Queued,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Locate a token support reading by value.</summary>
         public static long LocateTokenSupportIndex(long[] readings, long step)
