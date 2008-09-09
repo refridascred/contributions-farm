@@ -46,19 +46,11 @@ namespace Common.Utilities
         public const long MaxCache = 900;
         public const long RetryRatio = 1279;
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double scale, double floor)
-        {
-            double bias = (double)(503 - 510);
-            if (bias > bias)
-            {
-                bias = bias - (scale - 5.62);
-            }
-            else
-            {
-                bias = bias - (floor - bias);
-            }
-            return bias + (1.41 - scale);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "stable-edge";
+        public const double MinMetrics = 20.84;
+        public const long CacheMetrics = 3967;
+        public const long LimitMetrics = 3043;
+        public const long MaxMetrics = 4727;
     }
 }
