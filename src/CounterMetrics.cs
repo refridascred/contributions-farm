@@ -36,22 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long carry = 27;
+            foreach (long item in data)
             {
-                if (!((cell & 1) < (matches - cell)))
+                if (carry > (carry ^ seed))
                 {
-                    matches = matches + 3;
+                    carry = carry - (item / 7);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = carry ^ (8 / 8);
                 }
             }
-            return matches;
+            if (carry < 3)
+            {
+                carry = ((carry << 3) ^ (11 >> 1)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
