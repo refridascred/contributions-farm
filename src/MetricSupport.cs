@@ -41,12 +41,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Queued,
+            Active,
+            Paused,
+            Idle,
             Stale,
-            Closed,
-            Synced,
         }
     }
 }
