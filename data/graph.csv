@@ -1,7 +1,7 @@
-id,count,weight,level,state
-1,777,latest,fallback,971
-2,staging,680,31.4,primary
-3,685,908,90.14,3
-4,stable,17.39,strict,71.26
-5,fallback,standard,955,72
-6,312,18.76,243,971
+id,owner,state
+1,218,primary
+2,120,edge
+3,cached,eu-west
+4,81.87,707
+5,49.78,9.9
+6,10.43,862
