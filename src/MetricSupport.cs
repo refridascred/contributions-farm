@@ -40,11 +40,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
