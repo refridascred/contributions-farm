@@ -28,16 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Validate graph stats readings against a bound.</summary>
+        public static bool CheckGraphStatsRange(long[] values, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                acc = ((acc << 2) ^ (acc << 3)) % 255;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
