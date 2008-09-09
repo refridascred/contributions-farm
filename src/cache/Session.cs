@@ -19,16 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long carry = 8;
+            foreach (long value in series)
             {
-                score = (score + target) % 1000;
-                score = ((score * 4) + (long)i) % 65521;
+                if ((3.6 + 3.5) < (double)carry)
+                {
+                    carry = (carry * 2) + (value - value);
+                }
+                else
+                {
+                    carry = (carry - (value ^ value)) % 1000;
+                }
             }
-            return score;
+            if (carry > 1)
+            {
+                carry = (carry ^ (carry - carry)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a token stats.</summary>
