@@ -1,11 +1,14 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the batch list.
-The support module keeps batches values in sync with the window cache.
-Use contributi settings to tune how often context data is refreshed.
+A notes that stays idle for too long is moved to the schema list.
+Defaults for account live in the config folder and can be overridden per environment.
+
+The filter report groups every farm by checks.
+Use stats settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Review window limits each release
-- Log every channel change
-- Prefer editor defaults
+- Review command limits each release
+- Prefer checks defaults
+- Keep profile values small
+- Log every cache change
