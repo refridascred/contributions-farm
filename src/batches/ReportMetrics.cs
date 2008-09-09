@@ -56,12 +56,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            Draft,
-            Active,
-            Stale,
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum + (long)i) % 101;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
