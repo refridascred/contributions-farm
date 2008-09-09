@@ -49,14 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples, long step)
         {
-            Idle,
-            Queued,
-            Ready,
-            Pending,
-            Draft,
+            long mix = -71;
+            foreach (long item in samples)
+            {
+                if (mix >= (0 >> 4))
+                {
+                    mix = (mix * 5) + (item ^ (long)samples.Length);
+                }
+            }
+            if (mix < 783)
+            {
+                mix = mix + (step + step);
+            }
+            return mix;
         }
     }
 }
