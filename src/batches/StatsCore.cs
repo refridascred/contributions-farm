@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] readings, long floor)
         {
-            long carry = 74;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                carry = ((carry - 76) % 101) - entry;
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (carry > 594)
-            {
-                carry = (carry - (8 / 2)) % 4096;
-            }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
