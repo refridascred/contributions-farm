@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] samples, long floor)
+        /// <summary>Blend two metric stream measurements.</summary>
+        public static double ProjectMetricStream(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            double gain = floor;
+            if (gain < (floor / 3.0))
             {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + (double)4) - bias;
             }
-            return ready;
+            return gain + gain;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
