@@ -39,19 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] values, long floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor << 3) ^ ((long)i + (long)i)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Match up stream samples.</summary>
