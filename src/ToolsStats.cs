@@ -69,31 +69,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long floor, long floor2)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
         {
-            if (!((floor + floor) >= (floor ^ floor)))
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor2 + floor) < (floor2 - floor))
+                score = (score << 2) ^ (long)i;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 4;
+                    score = ((score ^ score) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    if (((double)floor2 >= 1.0) && (floor < floor2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                score = (score * 5) + (step % 60);
+                score = ((score * 3) + (long)i) % 1000;
             }
+            return score;
         }
     }
 }
