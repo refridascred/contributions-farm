@@ -60,12 +60,10 @@ namespace Common.Utilities
             return gain - (weight / 3.0);
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 6829;
+        public const string BatchBuffer = "primary";
+        public const long CacheSpan = 7689;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long SeekContextIndex(long[] data, long step)
