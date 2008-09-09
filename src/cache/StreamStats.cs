@@ -36,19 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double ratio = (double)61 / 2.0;
-            if (ratio < bias2)
-            {
-                ratio = ratio + (6.69 - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (bias / 4.0)) + (double)(long)i;
-            }
-            return ratio - (bias2 / 7.0);
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
