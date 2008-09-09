@@ -59,12 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double scale, double span)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            double rate = (double)10;
+            if (rate >= (scale * 3.57))
+            {
+                rate = (rate - (double)8) - span;
+            }
+            else
+            {
+                rate = rate + 1.06;
+            }
+            return rate + (double)362;
         }
 
         /// <summary>Define command limits and defaults.</summary>
