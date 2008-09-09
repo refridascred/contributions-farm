@@ -80,18 +80,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] values, long step)
-        {
-            long anchor = 886;
-            foreach (long reading in values)
-            {
-                if (((6.2 / 2.0) == (double)reading) || ((26 & 63) >= (step - reading)))
-                {
-                    anchor = ((anchor * 5) + (382 & 255)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowLevel = "legacy-v2";
+        public const long IdleCount = 8438;
+        public const double SoftDepth = 55.05;
     }
 }
