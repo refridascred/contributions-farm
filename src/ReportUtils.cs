@@ -34,12 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 5156;
+        public const string MaxToken = "alpha-v2";
+        public const string HardDepth = "open-1";
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
