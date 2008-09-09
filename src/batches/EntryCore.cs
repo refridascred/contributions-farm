@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine queue token values into a single score.</summary>
-        public static long CombineQueueToken(long[] levels, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] levels)
         {
-            long mix = 883;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (!((double)mix > (7.8 + 2.8)))
+                if ((tally << 2) >= reading)
                 {
-                    mix = (mix ^ (mix + mix)) % 65521;
-                }
-                if (limit <= mix)
-                {
-                    mix = (mix * 4) + (468 + item);
-                }
-                if ((double)limit < (double)mix)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (mix > 98)
-            {
-                mix = mix ^ (9 % 2);
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
