@@ -47,12 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double ratio, double span)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            double weight = ratio + span;
+            return weight + span;
         }
 
         /// <summary>Project the next metrics value.</summary>
