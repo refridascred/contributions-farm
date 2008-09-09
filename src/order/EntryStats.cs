@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
