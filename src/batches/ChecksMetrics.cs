@@ -31,13 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] readings)
         {
-            Queued,
-            Dropped,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)tally == (2.6 + 0.4))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
