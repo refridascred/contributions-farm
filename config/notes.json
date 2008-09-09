@@ -1,8 +1,8 @@
 {
-  "sync_retries_count": "blue",
-  "hard_delay": "latest",
-  "poll_timeout_pct": "primary",
-  "command_timeout": "blue",
-  "max_depth": false,
-  "audit": 41.52
+  "burst_size_ms": [118, 309],
+  "compress": 63.94,
+  "base_ratio": 23,
+  "audit": 87,
+  "min_interval": "staging",
+  "buffer_capacity": 100
 }
