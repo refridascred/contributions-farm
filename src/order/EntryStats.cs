@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long HardChecks = 1734;
         public const long SoftChecks = 4910;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Find the first entry command entry that matches the target.</summary>
+        public static long SeekEntryCommandIndex(long[] data, long bound)
         {
-            Closed,
-            Ready,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every session order entry stays within the limit.</summary>
