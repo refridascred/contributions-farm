@@ -31,17 +31,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a layout metrics reading by value.</summary>
-        public static long SeekLayoutMetricsIndex(long[] levels, long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
