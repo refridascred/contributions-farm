@@ -28,12 +28,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultDepth = 8285;
-        public const long SoftStats = 215;
-        public const long MaxStats = 8431;
-        public const long StepStats = 7640;
-        public const long CacheStats = 2275;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long bound, long floor)
+        {
+            if ((4.0 - 1.4) > (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)floor <= (1.93 + 1.8)) && ((floor + bound) > floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long FindGraphIndex(long[] values, long step)
