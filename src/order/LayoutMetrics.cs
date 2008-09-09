@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((bound / 9) == (bound * 3))
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a schema context reading by value.</summary>
