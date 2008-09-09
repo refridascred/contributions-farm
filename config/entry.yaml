@@ -1,10 +1,4 @@
 # entry settings
-default_interval_ms: staging
-format_retries: cached
-poll_limit_s: 137
-queue_ttl: false
-strict:
-  - staging
-  - local
-  - local
-  - open
+audit: strict
+warm_interval_s: false
+warm_capacity: 5.12
