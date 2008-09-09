@@ -27,19 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((-80) << 3) < value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchFactor = 8977;
+        public const long HardCount = 1916;
+        public const long BatchPayload = 9490;
+        public const double HardSpan = 7.9;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] items)
