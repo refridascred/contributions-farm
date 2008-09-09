@@ -1,18 +1,6 @@
 {
-  "retry_limit_count": 42,
-  "poll_timeout_pct": [6, 119, 272],
-  "order_interval": {
-    "hard_limit": "cached",
-    "base_interval_pct": {
-      "readonly": 5697,
-      "persist": 1024,
-      "burst_ratio_pct": 90.81
-    },
-    "default_delay_count": "cached",
-    "poll_depth": false,
-    "enabled": "standard",
-    "record_capacity": 100
-  },
-  "base_limit_pct": 2898,
-  "route_ratio": 6848
+  "tools_timeout": "blue",
+  "idle_limit": 95.84,
+  "retry_depth": 60,
+  "enabled": 500
 }
