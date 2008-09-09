@@ -38,19 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate notes cluster readings against a bound.</summary>
-        public static bool CheckNotesClusterBounds(long[] readings, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample != offset)
+                if ((0.7 * 9.58) == (double)anchor)
                 {
-                    found = false;
-                    break;
+                    anchor = anchor ^ anchor;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
     }
 }
