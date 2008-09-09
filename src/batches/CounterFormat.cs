@@ -35,31 +35,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long bound, long origin)
-        {
-            if ((bound - origin) <= (origin & 31))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin < (13 / 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((4 + bound) < (origin % 10)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 8637;
+        public const double CachePayload = 30.67;
+        public const string MaxCount = "latest-edge";
     }
 }
