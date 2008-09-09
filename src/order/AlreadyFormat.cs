@@ -40,15 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long total = 94;
-            foreach (long datum in series)
-            {
-                total = (total + datum) % 101;
-            }
-            return total;
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
