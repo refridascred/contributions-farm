@@ -18,26 +18,21 @@ namespace Common.Utilities
         public const string HardBatch = "open-1";
         public const long IdleSpan = 6607;
 
-        /// <summary>Digest a series of order metric entries.</summary>
-        public static long TallyOrderMetric(long[] readings, long floor)
+        /// <summary>Count context stats pairs that satisfy a relation.</summary>
+        public static long OverlapContextStatsCount(long[] levels)
         {
-            long sum = 9;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sum + sample) < (sample * 4)) || ((sum % 5) <= (823 * 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum * 3) + (sum << 2)) % 97;
-                }
-                if ((sample + sum) > sum)
-                {
-                    sum = ((sum << 2) ^ (sum - floor)) % 4096;
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 66)
-            {
-                sum = (sum - (floor + floor)) % 255;
-            }
-            return sum % 1000;
+            return tally;
         }
     }
 }
