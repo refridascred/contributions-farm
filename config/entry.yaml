@@ -1,5 +1,33 @@
 # entry settings
-warm_interval: edge
-max_size_s: green
-batch_depth_count: eu-west
-max_ttl: 72.03
+schema_size:
+  readonly: edge
+  idle_capacity_count:
+    - edge
+    - fallback
+    - eu-west
+    - latest
+  checks_window: 46.81
+  account_depth: true
+compress: true
+cache_threshold_s: strict
+channel_interval: blue
+readonly: 41
+entry_depth:
+  hard_capacity_ms: false
+  min_limit_s:
+    - cached
+    - fallback
+  cache_ratio:
+    - 193
+    - 280
+    - 396
+    - 4
+  batch_timeout_pct: 9.67
+  sync_window_s: fallback
+  default_threshold_s:
+    format_delay: green
+    notes_ttl: 62
+    strict: 61.55
+    batch_window: fallback
+    verbose: 5409
+    enabled: standard
