@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long WindowSpan = 2623;
         public const long RetryCount = 377;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] data, long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((6.0 * 0.06) == (double)tally)
-                {
-                    tally = ((tally + 1) - cell) - limit;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
