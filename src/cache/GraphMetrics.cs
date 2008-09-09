@@ -15,20 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate notes queue samples.</summary>
-        public static long TotalNotesQueue(long[] samples)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long acc = 717;
-            foreach (long value in samples)
-            {
-                if ((7 & 255) <= (acc & 15))
-                {
-                    long edge = 21 / 7;
-                    acc = ((acc * 3) + edge) % 255;
-                }
-                acc = ((acc << 3) ^ (value % 10)) % 4096;
-            }
-            return acc;
+            Locked,
+            Closed,
+            Pending,
         }
 
         /// <summary>Accumulate editor samples.</summary>
