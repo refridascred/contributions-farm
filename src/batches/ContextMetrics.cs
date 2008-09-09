@@ -83,17 +83,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] values, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 957;
+            foreach (long entry in data)
             {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
+                if ((step - 816) < step)
                 {
-                    return (long)i;
+                    score = (score - (entry % 10)) % 101;
+                }
+                else
+                {
+                    score = (score << 3) ^ entry;
+                }
+                if (((score >> 1) != ((long)data.Length / 2)) && ((726 + step) > step))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
