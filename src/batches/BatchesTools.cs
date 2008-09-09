@@ -35,17 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardLevel = 8162;
+        public const string MaxScore = "staging-edge";
+        public const long SoftScore = 4904;
+        public const long CacheStats = 815;
+        public const double DefaultStats = 50.27;
     }
 }
