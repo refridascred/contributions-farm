@@ -14,15 +14,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long score = 70;
-            foreach (long datum in series)
-            {
-                score = (score + (-164)) ^ datum;
-            }
-            return score;
+            Draft,
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
