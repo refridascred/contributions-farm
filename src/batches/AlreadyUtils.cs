@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count the route stats entries that pass the check.</summary>
+        public static long MeasureRouteStatsGaps(long[] items, long origin)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (9.92 > (double)sample)
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
