@@ -26,31 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue session input into a small class.</summary>
-        public static long SortQueueSession(long bound, long floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double gain, double offset)
         {
-            if ((floor >= 4) || ((floor + 573) >= (bound - bound)))
+            double weight = (double)400 - 1.0;
+            if (weight > gain)
             {
-                return 7;
+                weight = weight - (3.1 * 4.91);
             }
             else
             {
-                if (9.0 < (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((41 + 9) == (bound * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                weight = weight - weight;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
