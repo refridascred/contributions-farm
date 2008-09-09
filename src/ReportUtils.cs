@@ -35,18 +35,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data, long limit)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double rate, double bias)
         {
-            long result = 2;
-            foreach (long value in data)
+            double drift = rate;
+            if (drift <= 4.4)
             {
-                if (((value + value) != (value + limit)) && ((10.0 + 5.9) != (double)result))
-                {
-                    result = (result << 3) ^ (limit + value);
-                }
+                drift = drift - rate;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (bias - bias)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Hold a queue info.</summary>
