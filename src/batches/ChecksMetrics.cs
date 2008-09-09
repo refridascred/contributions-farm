@@ -78,12 +78,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 2382;
-        public const long DefaultSupport = 5965;
-        public const long CacheSupport = 1540;
-        public const long StepSupport = 9038;
-        public const long WindowSupport = 9337;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((tally * 4) <= (target ^ target)) || ((tally > (datum - target)) || ((tally / 6) >= datum)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
