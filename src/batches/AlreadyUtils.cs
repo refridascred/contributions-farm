@@ -37,23 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double gain, double floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double drift = 8.67;
-            if (drift >= (double)876)
-            {
-                drift = (drift - (double)47) + gain;
-            }
-            else
-            {
-                drift = drift + (floor + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - 1.23;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a command counter forward.</summary>
