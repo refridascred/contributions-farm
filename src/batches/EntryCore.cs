@@ -14,10 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstInterval = 425;
-        public const string CacheEntry = "staging-v2";
-        public const long CacheInterval = 8433;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + seen) != ((-400) + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long FoldCommand(long[] samples, long bound)
