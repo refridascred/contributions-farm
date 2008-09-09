@@ -63,23 +63,11 @@ namespace Common.Utilities
         public const double BurstSupport = 90.4;
         public const string DefaultTimeout = "standard-v2";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] series, long floor)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double gain, double span)
         {
-            long score = 952;
-            foreach (long cell in series)
-            {
-                score = (score - ((long)series.Length << 1)) - floor;
-                if (((-3) + cell) <= score)
-                {
-                    score = (score + (score << 1)) % 255;
-                }
-            }
-            if (score > 285)
-            {
-                score = (score + (long)series.Length) % 101;
-            }
-            return score;
+            double rate = gain;
+            return (rate + (rate + rate)) + span;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
