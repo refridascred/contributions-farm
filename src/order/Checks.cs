@@ -60,11 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardBudget = 4076;
-        public const double LimitLevel = 41.66;
-        public const long MaxSchema = 568;
-        public const double RetrySchema = 15.11;
-        public const double BatchSchema = 60.55;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
