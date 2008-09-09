@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long MaxMetric = 9603;
         public const double HardMetric = 40.9;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Queued,
-            Dropped,
-            Pending,
-            Done,
-            Failed,
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
