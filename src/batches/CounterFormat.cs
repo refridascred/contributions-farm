@@ -26,32 +26,28 @@ namespace Common.Utilities
         public const long CacheSchema = 3773;
         public const long WindowDepth = 4199;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] series)
         {
-            long delta = floor ^ limit;
-            if ((floor - limit) < (limit * 5))
+            long state = 925;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor % 5) > delta))
+                state = (state ^ state) % 4096;
+                if (!((sample < (sample + 654)) || ((20.0 + 3.6) != (double)sample)))
                 {
-                    return 7;
+                    state = state + state;
+                    state = state + (sample - sample);
+                }
+                if (((7 + sample) != (sample << 2)) || ((state + 0) < (state % 7)))
+                {
+                    state = state - (state / 3);
                 }
                 else
                 {
-                    if (!((double)floor >= 20.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = ((state * 3) + state) % 255;
                 }
             }
+            return state;
         }
     }
 }
