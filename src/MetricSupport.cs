@@ -13,19 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= step)
+                if ((values[i] <= origin) && ((values[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
