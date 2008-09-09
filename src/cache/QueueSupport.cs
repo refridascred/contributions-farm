@@ -37,22 +37,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] levels)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long step, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if (((step - step) != (origin + step)) && (origin > (origin - step)))
             {
-                if ((5.0 * 3.8) <= (double)count)
+                return 7;
+            }
+            else
+            {
+                if ((step - step) <= 18)
                 {
-                    count = (count + 1) + entry;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)origin == (double)681)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
