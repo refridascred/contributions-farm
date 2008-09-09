@@ -1,15 +1,16 @@
 # githubfarm settings
-soft_ttl_ms:
-  enabled: 1024
-  soft_window_ms: 500
-  default_capacity_pct: 100
-contributi_timeout:
-  - 173
-  - 131
-  - 233
-  - 403
-burst_depth:
-  - 287
-  - 199
-  - 203
-  - 48
+max_limit_ms:
+  max_size_count: 0.88
+  enabled: true
+  warm_size_pct:
+    - primary
+    - primary
+    - strict
+    - standard
+compress: false
+warm_depth_count: false
+audit: 944
+default_capacity_count: 92
+channel_retries:
+  - primary
+  - legacy
