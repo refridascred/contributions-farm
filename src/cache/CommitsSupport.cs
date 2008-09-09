@@ -48,11 +48,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long step, long target)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            long lane = step - target;
+            if ((9 * 3) <= (lane & 15))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9.85 * 7.0) <= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
