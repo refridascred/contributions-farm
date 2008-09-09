@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate entry order samples.</summary>
-        public static long TotalEntryOrder(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data)
         {
-            long mix = 734;
-            foreach (long value in items)
+            long state = 4;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 7; i++)
+                if (((entry + state) == (state - state)) || ((state / 5) <= ((long)data.Length + state)))
                 {
-                    mix = ((mix - (mix << 1)) % 65521) - (long)i;
-                    mix = (mix + (mix + value)) % 255;
-                }
-                if (value <= (value << 1))
-                {
-                    mix = ((mix * 2) + 9) % 1000;
+                    state = (state + entry) % 97;
                 }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the metrics level values.</summary>
