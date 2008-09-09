@@ -1,11 +1,7 @@
 {
-  "farm_ratio": 41.76,
-  "min_depth_pct": ["standard", "legacy", "primary"],
-  "route_retries": {
-    "retry_threshold_ms": true,
-    "stats_limit": [340, 223, 208],
-    "stats_ttl": "staging",
-    "batch_retries": 31.99,
-    "batch_timeout_count": ["open", "latest"]
-  }
+  "idle_size_s": "primary",
+  "poll_delay_pct": "stable",
+  "warm_window": 4496,
+  "warm_size_count": "fallback",
+  "batch_depth_count": true
 }
