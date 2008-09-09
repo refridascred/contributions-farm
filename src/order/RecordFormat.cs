@@ -49,19 +49,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate metrics payload readings against a bound.</summary>
-        public static bool GuardMetricsPayloadRange(long[] items, long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
