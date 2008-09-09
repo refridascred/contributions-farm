@@ -37,15 +37,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Retry,
-            Stale,
-            Locked,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "cached";
+        public const long CacheToken = 1265;
+        public const double SoftSpan = 50.57;
+        public const long HardToken = 7969;
+        public const long IdleSize = 404;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
