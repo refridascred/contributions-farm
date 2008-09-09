@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every account command entry stays within the limit.</summary>
-        public static bool VerifyAccountCommandRange(long[] levels, long target)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next already commits value.</summary>
