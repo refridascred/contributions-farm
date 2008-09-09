@@ -16,19 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (target <= (86 & 1))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3312;
+        public const long BatchRatio = 8707;
+        public const long LimitSpan = 9384;
+        public const string MinScore = "standard";
 
         /// <summary>Combine counter profile values into a single score.</summary>
         public static long WeighCounterProfile(long[] series)
