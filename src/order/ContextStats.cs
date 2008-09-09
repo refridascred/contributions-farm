@@ -40,13 +40,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
