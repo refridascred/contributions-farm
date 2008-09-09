@@ -58,13 +58,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double gain, double offset)
         {
-            Failed,
-            Closed,
-            Idle,
-            Synced,
+            double ratio = (gain / 3.0) * 7.5;
+            if (ratio > gain)
+            {
+                ratio = ratio - (offset / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
