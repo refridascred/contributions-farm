@@ -31,11 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long target, long limit)
         {
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            if ((2.0 * 6.01) <= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (target > limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
