@@ -38,10 +38,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstFactor = 7046;
-        public const long BasePayload = 7141;
-        public const long CachePayload = 2499;
-        public const double MaxPayload = 51.22;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public bool Size { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
