@@ -71,22 +71,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] levels, long bound)
+        /// <summary>Derive the next record already value from a seed.</summary>
+        public static long IterateRecordAlready(long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)bound < (5.7 * 9.8))
-                {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Audit layout window readings against a rule.</summary>
