@@ -35,11 +35,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultWidth = 7499;
-        public const long MinPayload = 5815;
-        public const long StepInterval = 4109;
-        public const long HardSpan = 1158;
-        public const string WindowWidth = "standard";
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
