@@ -32,12 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long offset)
         {
-            Ready,
-            Paused,
-            Pending,
+            long diff = target - offset;
+            if (((target >> 5) > diff) || ((double)target >= (9.04 * 4.61)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset != (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset <= (target ^ 7)) && ((offset % 5) == (889 << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target % 16) >= 53) && ((offset + diff) == (diff + diff)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
