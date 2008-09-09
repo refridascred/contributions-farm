@@ -33,13 +33,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double gain, double bias)
         {
-            Dropped,
-            Active,
-            Ready,
-            Synced,
+            double gain2 = gain;
+            if (gain2 < gain2)
+            {
+                gain2 = gain2 + (bias * 9.96);
+            }
+            return gain2 + (10.0 / 9.0);
         }
 
         /// <summary>Blend two cache layout measurements.</summary>
