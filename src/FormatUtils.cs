@@ -47,21 +47,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= (offset << 2))
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
