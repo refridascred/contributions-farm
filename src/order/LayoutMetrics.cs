@@ -31,15 +31,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] values, long offset)
+        /// <summary>Validate profile schema readings against a bound.</summary>
+        public static bool ValidateProfileSchemaRange(long[] data, long seed)
         {
-            long mark = 954;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long entry in data)
             {
-                mark = (((mark + ((long)values.Length % 16)) % 101) + sample) + offset;
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
     }
 }
