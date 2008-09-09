@@ -46,21 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = weight;
+            if (drift <= (offset - drift))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + (weight / 2.0);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (7.9 / 6.0)) + (double)(long)i;
+            }
+            return drift + (double)6;
         }
     }
 }
