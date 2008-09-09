@@ -26,20 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long step)
         {
-            long carry = 75;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                carry = ((carry - 81) % 97) ^ item;
-                carry = (carry - (4 / 7)) % 4096;
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry < 2)
-            {
-                carry = (carry + ((long)series.Length - carry)) % 255;
-            }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
