@@ -1,7 +1,7 @@
 {
-  "cluster_window": 22.32,
-  "format_depth": 250,
-  "record_size": "primary",
-  "cache_retries_count": 65.35,
-  "sync_ttl_pct": 56
+  "farm_ratio": 67.27,
+  "warm_window_s": 500,
+  "report_depth": ["standard", "fallback", "fallback", "blue"],
+  "poll_ratio_ms": true,
+  "soft_window_count": 58.99
 }
