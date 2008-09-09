@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
