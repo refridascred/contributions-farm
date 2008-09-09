@@ -1,9 +1,10 @@
 # support settings
-enabled: 100
-compress: true
-hard_threshold_pct: eu-west
-record_delay:
-  - eu-west
-  - strict
-  - legacy
-  - eu-west
+poll_capacity_s: 7.08
+idle_timeout_count: 100
+flush_ratio_s: edge
+audit: edge
+dry_run:
+  - 463
+  - 194
+  - 307
+  - 88
