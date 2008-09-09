@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank metric tools input into a small class.</summary>
-        public static long BucketMetricTools(long floor, long limit)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long bound = floor ^ limit;
-            if ((18.0 * 3.3) > (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit <= bound) && ((bound + limit) > (limit & 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound ^ floor) == (limit ^ limit)) || ((limit - (-47)) > 121))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Synced,
+            Locked,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
