@@ -1,5 +1,13 @@
 {
-  "default_ttl_pct": 4375,
-  "audit": "cached",
-  "min_capacity_pct": ["latest", "latest"]
+  "retry_ratio_count": "legacy",
+  "strict": "open",
+  "warm_timeout_count": false,
+  "session_delay": {
+    "idle_window_count": 6003,
+    "already_window": false,
+    "hard_size_s": [199, 418, 291],
+    "default_delay_count": "staging",
+    "support_window": 3105,
+    "poll_ratio_count": true
+  }
 }
