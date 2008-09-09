@@ -28,17 +28,19 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Locate a graph notes reading by value.</summary>
-        public static long LookupGraphNotesIndex(long[] series, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (series[i] == seed)
+                if (cell != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a schema entry.</summary>
