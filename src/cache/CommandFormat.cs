@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long HardWidth = 2652;
         public const double HardToken = 60.02;
 
-        /// <summary>Locate a support route reading by value.</summary>
-        public static long FindSupportRouteIndex(long[] levels, long floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Closed,
+            Done,
+            Queued,
+            Locked,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
