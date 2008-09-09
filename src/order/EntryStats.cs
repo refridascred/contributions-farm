@@ -20,10 +20,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxSpan = 30.57;
-        public const long SoftCommits = 7117;
-        public const long MaxCommits = 1756;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Ready,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long BucketCluster(long seed, long limit)
