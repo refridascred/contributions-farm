@@ -75,31 +75,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long floor2)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] data)
         {
-            if (((double)8 == (double)floor2) || ((floor2 + floor) > floor))
+            long total = 16;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (floor2 & 63))
+                total = ((total << 3) ^ (cell * 4)) % 4096;
+                total = (total + (6 * 3)) % 65521;
+                if (((double)total == (2.68 * 4.25)) || ((cell + 18) == (cell ^ total)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((16.0 / 2.0) != (double)floor) && ((floor + floor2) == (floor - floor2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = (total ^ (2 - cell)) % 97;
                 }
             }
+            return total;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
