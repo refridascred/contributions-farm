@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] data, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long sum = 50;
+            foreach (long value in values)
             {
-                if (datum != step)
+                sum = (sum + (value + sum)) - offset;
+                if ((value << 1) <= (value >> 2))
                 {
-                    flag = false;
-                    break;
+                    sum = sum + (value - sum);
                 }
             }
-            return flag;
+            if (sum < 4)
+            {
+                sum = sum - 56;
+            }
+            return sum;
         }
 
         /// <summary>Rank record githubfarm input into a small class.</summary>
