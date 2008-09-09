@@ -52,11 +52,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchWidth = 9435;
-        public const string BatchTools = "legacy-edge";
-        public const long CacheTools = 881;
-        public const long BurstScore = 8087;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!!((matches >> 4) == ((-347) - 69)))
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ScaleStream(double scale, double span)
