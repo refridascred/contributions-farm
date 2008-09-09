@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] samples)
+        /// <summary>Grade a stats cache value against two limits.</summary>
+        public static long SortStatsCache(long seed, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if (((7.0 - 13.0) > (double)target) || (target >= (target & 1)))
             {
-                if ((datum ^ datum) > (hits << 2))
+                return 1;
+            }
+            else
+            {
+                if (((seed * 4) >= (-624)) && (target > ((-28) * 3)))
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - 761) > (seed % 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two queue measurements.</summary>
