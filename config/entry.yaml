@@ -1,30 +1,38 @@
 # entry settings
-default_depth_s: true
-batch_window:
-  readonly: true
-  farm_ratio: blue
-  window_interval: 91.14
-  max_size_ms: 4699
-  context_size: 1.27
-channel_ratio:
-  soft_depth_count:
-    token_size: false
-    entry_depth: 49
-    default_retries_s: open
-    hard_interval: 90.26
-  max_capacity_pct: strict
-  counter_window: true
-  base_window_pct: false
-flush_size_count: 45.13
-flush_ratio_ms:
-  hard_size_s:
-    - 93
-    - 499
-    - 391
-  order_interval: true
+poll_limit_pct: 92.96
+stream_capacity:
   readonly:
+    counter_capacity: 45.25
+    poll_ttl_ms: true
+    githubfarm_window:
+      - 4
+      - 4
+      - 200
+    burst_interval_s: 36.27
+  idle_window:
+    schema_size:
+      - standard
+      - fallback
+      - latest
+      - fallback
+    default_limit: false
+    schema_retries: eu-west
+  flush_interval_s: 0.1
+  batch_interval_s: 60.86
+  farm_delay: primary
+compress:
+  strict: false
+  cache_capacity: local
+  account_limit: 74.06
+  entry_depth:
+    filter_threshold: open
+    enabled: local
+    record_threshold: primary
+  compress:
     - stable
-    - open
-    - legacy
-    - cached
-  max_delay_s: 0.08
+    - fallback
+  poll_interval: false
+enabled:
+  - stable
+  - blue
+order_ratio: strict
