@@ -48,22 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account contributi values into a single score.</summary>
-        public static long TotalAccountContributi(long[] series)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long sum = 855;
-            foreach (long entry in series)
-            {
-                if (((double)entry <= (7.2 / 2.0)) && ((entry + entry) >= sum))
-                {
-                    sum = ((sum << 2) ^ 9) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
-                }
-            }
-            return sum % 65521;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
