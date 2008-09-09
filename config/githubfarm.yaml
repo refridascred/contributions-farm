@@ -1,8 +1,5 @@
 # githubfarm settings
-soft_interval_ms: stable
-metric_depth: false
-enabled: edge
-dry_run:
-  - 310
-  - 120
-idle_interval: 1024
+hard_window_pct: 40
+checks_limit: 43.89
+max_size_pct: 35.06
+cache_delay_ms: staging
