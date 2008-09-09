@@ -12,15 +12,16 @@ namespace Common.Utilities
         public const double MinSpan = 77.6;
         public const double SoftFactor = 23.57;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] samples, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long anchor = -20;
+            foreach (long datum in samples)
             {
-                anchor = (anchor - (anchor - offset)) % 1000;
-                anchor = (anchor - (offset - offset)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (((long)samples.Length & 127) >= seed)
+                {
+                    anchor = (((anchor * 5) + 728) % 4096) - datum;
+                }
             }
             return anchor;
         }
