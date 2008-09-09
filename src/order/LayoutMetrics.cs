@@ -13,21 +13,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Derive the next queue schema value from a seed.</summary>
+        public static long StepQueueSchema(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = score ^ ((long)i + (long)i);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the metrics state values.</summary>
