@@ -1,6 +1,10 @@
-id,rank,score,count
-1,edge,edge,513
-2,78.17,cached,edge
-3,513,12,latest
-4,latest,blue,37.86
-5,947,983,821
+id,region,score,token
+1,723,576,eu-west
+2,stable,27.04,cached
+3,141,369,cached
+4,strict,green,207
+5,64.58,standard,primary
+6,82.46,11.88,8.97
+7,235,529,1.1
+8,staging,local,primary
+9,33.68,primary,32.27
