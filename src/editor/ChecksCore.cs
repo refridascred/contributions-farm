@@ -12,15 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the metrics stats series from a seed.</summary>
-        public static long IterateMetricsStats(long limit)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
