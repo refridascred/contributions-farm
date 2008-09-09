@@ -1,6 +1,8 @@
 {
-  "checks_timeout": [72, 391, 73],
-  "soft_window_count": "standard",
-  "warm_ratio_s": "fallback",
-  "max_delay": 30.27
+  "strict": "cached",
+  "retry_ratio": "latest",
+  "soft_retries": 30,
+  "route_interval": false,
+  "min_ttl_count": [193, 449, 410],
+  "default_ratio_count": 100
 }
