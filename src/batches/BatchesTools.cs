@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] series)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen + seen) > (3 / 3))
+                if ((values[i] <= limit) && ((values[i] % 2) == 0))
                 {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the order kind values.</summary>
