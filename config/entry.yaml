@@ -1,8 +1,43 @@
 # entry settings
-batch_limit: 87
-cache_capacity: 29.73
-tools_retries: local
-account_interval:
-  - strict
+flush_limit_s:
+  channel_ratio:
+    base_capacity_count:
+      - green
+      - stable
+      - open
+    warm_interval_count:
+      - latest
+      - edge
+      - open
+    audit: open
+  burst_size_ms: true
+  sync_retries: 58.41
+  stats_timeout:
+    - green
+    - fallback
+sync_retries_pct:
+  warm_delay_ms: true
+  stats_depth: false
+  burst_ratio_s: blue
+  already_interval:
+    enabled: local
+    channel_retries: false
+    idle_ratio_ms: 76
+  notes_delay: true
+compress:
+  - latest
   - green
-sync_timeout_pct: true
+default_retries_s: cached
+hard_ratio:
+  sync_timeout_pct: eu-west
+  burst_depth: 57
+  retry_timeout_s:
+    - edge
+    - legacy
+    - strict
+batch_delay_count:
+  max_delay_s: staging
+  schema_ratio: 86
+  burst_window: 21
+  cache_timeout_count: local
+  warm_depth_pct: true
