@@ -28,16 +28,17 @@ namespace Common.Utilities
         public const string MinFactor = "strict-edge";
         public const double WindowBatch = 6.81;
 
-        /// <summary>Iterate the entry record series from a seed.</summary>
-        public static long StepEntryRecord(long offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] levels, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 5) + (carry % 7)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
