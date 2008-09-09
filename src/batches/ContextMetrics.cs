@@ -46,17 +46,27 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] data, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 3;
+            foreach (long value in items)
             {
-                if (data[i] > seed)
+                result = (result << 2) ^ (value ^ value);
+                if (!((value - result) != (value + result)))
                 {
-                    return (long)i;
+                    result = (result + (value << 1)) % 4096;
+                }
+                else
+                {
+                    result = (result + (result << 2)) % 65521;
                 }
             }
-            return -1;
+            if (result < 770)
+            {
+                result = ((result * 3) + 92) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
