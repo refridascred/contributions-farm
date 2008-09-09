@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Validate order schema readings against a bound.</summary>
+        public static bool VerifyOrderSchemaRange(long[] items, long origin)
         {
-            Pending,
-            Failed,
-            Paused,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
