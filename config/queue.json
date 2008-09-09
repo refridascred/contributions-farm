@@ -1,14 +1,7 @@
 {
-  "audit": "primary",
-  "enabled": {
-    "default_size": "strict",
-    "soft_ttl": 60,
-    "batches_limit": [1, 46, 41, 469],
-    "warm_threshold_s": {
-      "min_interval": false,
-      "max_timeout_ms": "primary",
-      "retry_ttl_count": "edge"
-    }
-  },
-  "cache_size": 2670
+  "flush_delay": "latest",
+  "burst_depth_ms": 100,
+  "metrics_depth": 1024,
+  "flush_depth": "blue",
+  "max_timeout_count": 73.55
 }
