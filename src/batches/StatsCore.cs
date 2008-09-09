@@ -43,22 +43,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchWidth = 9435;
+        public const string BatchTools = "legacy-edge";
+        public const long CacheTools = 881;
+        public const long BurstScore = 8087;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ScaleStream(double scale, double span)
