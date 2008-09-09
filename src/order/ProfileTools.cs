@@ -44,18 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics account samples are out of range.</summary>
-        public static long CountMetricsAccountOutliers(long[] levels, long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count + cell) != (cell >> 4))
+                if (readings[i] > origin)
                 {
-                    count = (count + 1) + limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
