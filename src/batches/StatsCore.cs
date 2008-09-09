@@ -55,14 +55,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
             Active,
-            Queued,
-            New,
+            Failed,
             Done,
-            Locked,
+            Synced,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
