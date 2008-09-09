@@ -71,23 +71,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data, long bound)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long mix = 551;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)bound >= (9.7 / 5.0)) && ((double)entry >= (8.9 + 4.51)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix << 3) ^ entry) % 4096;
-                    mix = (mix ^ 5) % 255;
-                }
-                if ((5.93 / 3.0) <= (double)bound)
-                {
-                    mix = (mix << 3) ^ (entry + entry);
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return tally;
         }
     }
 }
