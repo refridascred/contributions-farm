@@ -38,11 +38,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double bias, double bias2)
-        {
-            double mean = bias;
-            return (mean + (double)87) + bias2;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 5880;
+        public const long BatchMetrics = 6717;
+        public const long HardScore = 8305;
+        public const double DefaultMetrics = 59.08;
     }
 }
