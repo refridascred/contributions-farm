@@ -1,5 +1,13 @@
 # githubfarm settings
-poll_ratio: 29.98
-warm_threshold: standard
-flush_ttl_ms: eu-west
-base_retries: false
+cluster_retries: latest
+stream_depth: 28
+audit:
+  cache_size: open
+  burst_interval_ms: blue
+  context_delay: 4017
+  compress: 82.58
+  default_retries: 66.17
+  verbose:
+    - 20
+    - 215
+    - 99
