@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 52.9;
+        public const long IdleFactor = 7960;
+        public const long CacheBuffer = 1141;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MaxChannel = 8.79;
