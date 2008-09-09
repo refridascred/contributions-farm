@@ -63,22 +63,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] levels, long seed)
         {
-            long mix = -71;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mix >= (0 >> 4))
+                if (levels[i] > seed)
                 {
-                    mix = (mix * 5) + (item ^ (long)samples.Length);
+                    return (long)i;
                 }
             }
-            if (mix < 783)
-            {
-                mix = mix + (step + step);
-            }
-            return mix;
+            return -1;
         }
     }
 }
