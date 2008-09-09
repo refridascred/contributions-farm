@@ -38,19 +38,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate profile schema readings against a bound.</summary>
-        public static bool ValidateProfileSchemaBounds(long[] items, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double mean = bias;
+            return (mean + (double)87) + bias2;
         }
     }
 }
