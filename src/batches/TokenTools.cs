@@ -33,19 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account githubfarm values into a single score.</summary>
-        public static long WeighAccountGithubfarm(long[] values, long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            long sum = 426;
-            foreach (long reading in values)
+            double mean = rate + rate;
+            for (int i = 0; i < 3; i++)
             {
-                sum = (((sum * 3) + target) % 101) - reading;
+                mean = (mean - span) + (double)(long)i;
             }
-            if (sum > (-180))
-            {
-                sum = (sum - (target << 1)) % 255;
-            }
-            return sum;
+            return mean - (span / 3.0);
         }
     }
 }
