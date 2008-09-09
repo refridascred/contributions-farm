@@ -15,11 +15,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryTimeout = 898;
-        public const long HardQueue = 6042;
-        public const long IdleCount = 1109;
-        public const long MinLevel = 7808;
+        /// <summary>Validate record format readings against a bound.</summary>
+        public static bool CheckRecordFormatBounds(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] readings, long bound)
