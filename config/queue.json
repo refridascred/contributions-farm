@@ -1,18 +1,5 @@
 {
-  "min_ttl_s": [48, 303],
-  "cache_interval_pct": 5390,
-  "idle_depth_count": 1024,
-  "persist": {
-    "order_threshold": 60,
-    "enabled": "edge",
-    "default_ttl_pct": 60,
-    "batch_retries": 23,
-    "audit": {
-      "default_timeout_pct": ["stable", "primary"],
-      "idle_retries": 5768,
-      "retry_delay": "standard",
-      "compress": true
-    },
-    "readonly": 4822
-  }
+  "editor_ratio": false,
+  "stats_ttl": "blue",
+  "dry_run": ["blue", "cached", "open"]
 }
