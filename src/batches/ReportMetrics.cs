@@ -29,22 +29,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long offset, long seed)
         {
-            long sum = 20;
-            foreach (long cell in values)
+            if ((offset << 2) < (seed - 916))
             {
-                if ((12.0 - 1.85) != (double)sum)
+                return 8;
+            }
+            else
+            {
+                if (((148 ^ offset) > seed) || ((offset / 6) > (seed >> 3)))
                 {
-                    sum = (sum << 3) ^ (cell & 255);
+                    return 3;
                 }
                 else
                 {
-                    sum = sum + (cell >> 4);
+                    if ((double)seed >= (2.0 - 10.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Describe the profile class values.</summary>
