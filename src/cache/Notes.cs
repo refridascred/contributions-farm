@@ -29,10 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 784;
-        public const long LimitTools = 4441;
-        public const long MaxTools = 1990;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double span)
+        {
+            double mean = rate;
+            return (mean - (mean + mean)) + span;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double SmoothAccount(double weight, double floor)
