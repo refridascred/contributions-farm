@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Measure how many contributi batches samples are out of range.</summary>
+        public static long CountContributiBatchesGaps(long[] values)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Draft,
-            Done,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches >= (item % 12)) && (matches > (item & 7)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a context options.</summary>
