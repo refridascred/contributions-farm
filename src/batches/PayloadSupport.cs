@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long HardScore = 3184;
         public const long WindowCounter = 5165;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 8.79;
+        public const double SoftChannel = 48.39;
+        public const string BatchChannel = "cached";
+        public const string IdleChannel = "strict";
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
