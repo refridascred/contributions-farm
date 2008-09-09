@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in cached strict open edge; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=117
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-blue}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
