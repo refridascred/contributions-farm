@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardRatio = "stable-v2";
-        public const string BaseReport = "latest-v2";
-        public const long SoftWidth = 5908;
-        public const string RetryReport = "stable-v2";
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Validate metric order readings against a bound.</summary>
         public static bool VerifyMetricOrderLimits(long[] samples, long offset)
