@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] series, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= (offset ^ reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
