@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] values)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)tally != (7.43 + 8.77))
-                {
-                    tally = (tally + 2) - reading;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
