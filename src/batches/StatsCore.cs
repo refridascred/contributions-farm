@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
