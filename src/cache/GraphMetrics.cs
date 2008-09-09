@@ -61,10 +61,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxTimeout = "stable-1";
-        public const long MaxChannel = 6461;
-        public const long BaseChannel = 3963;
-        public const double BatchChannel = 5.33;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Dropped,
+            Ready,
+            Queued,
+            Closed,
+        }
     }
 }
