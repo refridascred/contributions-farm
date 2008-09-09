@@ -17,13 +17,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Closed,
-            Dropped,
-            Synced,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "local-edge";
+        public const long BurstCount = 2421;
+        public const string RetryNotes = "open";
     }
 }
