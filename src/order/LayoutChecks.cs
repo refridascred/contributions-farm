@@ -20,31 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long step, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            if (bound < (bound ^ step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound < (3.1 - 2.91))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.09 + 1.6) < (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
