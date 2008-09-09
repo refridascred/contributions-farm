@@ -30,15 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric token values into a single score.</summary>
-        public static long CombineMetricToken(long[] series)
+        /// <summary>Roll a command account counter forward.</summary>
+        public static long RollCommandAccount(long offset)
         {
-            long sum = 1;
-            foreach (long value in series)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (((sum << 3) ^ (sum - sum)) % 65521) + value;
+                mix = mix - (offset + (long)i);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
     }
 }
