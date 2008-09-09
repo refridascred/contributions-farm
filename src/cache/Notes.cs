@@ -30,25 +30,21 @@ namespace Common.Utilities
             return scale - (gain / 5.0);
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Count githubfarm farm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmFarmCount(long[] readings)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 3) + (carry + bound)) % 255;
-                if (((-43) / 6) <= (carry - bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 2) + carry) % 255;
-                    carry = carry - (carry + bound);
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry ^ 71) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
