@@ -15,11 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowCount = "primary";
-        public const long HardGithubfarm = 2840;
-        public const long BaseGithubfarm = 6027;
-        public const long DefaultBudget = 5358;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = (mark - mark) % 65521;
+                mark = ((mark << 2) ^ mark) % 97;
+                mark = (mark + (target - target)) % 255;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string WindowTools = "stable-edge";
