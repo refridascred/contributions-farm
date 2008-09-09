@@ -32,12 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] items, long origin)
         {
-            Failed,
-            Ready,
-            Queued,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a record summary.</summary>
