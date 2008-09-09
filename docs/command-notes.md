@@ -1,12 +1,14 @@
 # Command notes
 
-A account that stays idle for too long is moved to the layout list.
-Keep format and context names short and lowercase.
-Defaults for stats live in the config folder and can be overridden per environment.
+The account report groups every metric by commits.
+A cache that stays idle for too long is moved to the stats list.
+
+Keep cache and checks names short and lowercase.
+Run the channel check before changing any schema limits.
+Run the githubfarm check before changing any farm limits.
 
 ## Guidelines
 
-- Document new payload fields
-- Keep stats values small
-- Prefer counter defaults
-- Log every tools change
+- Document new checks fields
+- Validate cluster input early
+- Review context limits each release
