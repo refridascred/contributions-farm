@@ -10,14 +10,20 @@ namespace Common.Utilities
         public const long BaseStream = 6605;
         public const long LimitWidth = 5291;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Roll a stream tools counter forward.</summary>
+        public static long IterateStreamTools(long offset)
         {
-            Pending,
-            Queued,
-            Retry,
-            Locked,
-            Stale,
+            long total = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total - (offset + offset)) % 101) ^ (long)i2;
+                    total = (total + (941 << 2)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
