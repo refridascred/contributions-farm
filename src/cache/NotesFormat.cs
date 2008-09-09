@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleScore = 8583;
+        public const double StepCount = 33.53;
+        public const string StepFormat = "primary-1";
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
