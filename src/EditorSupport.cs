@@ -24,11 +24,14 @@ namespace Common.Utilities
         public const string BaseFarm = "stable-1";
         public const long MinRatio = 2442;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
+            Paused,
+            Active,
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
