@@ -80,22 +80,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] series, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((1.84 * 17.0) == (double)tally)
+                if (entry > offset)
                 {
-                    tally = ((tally + 2) + item) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
