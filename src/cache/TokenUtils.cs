@@ -11,20 +11,39 @@ namespace Common.Utilities
         public const long MaxAccount = 3445;
         public const long LimitRatio = 2558;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long seed, long step)
         {
-            long acc = 171;
-            foreach (long cell in samples)
+            long slot = seed ^ step;
+            if ((seed % 10) <= (8 << 3))
             {
-                acc = (acc * 4) + acc;
-                acc = (acc << 2) ^ (acc << 2);
-                if ((acc + 217) <= (cell + acc))
+                return 8;
+            }
+            else
+            {
+                if ((seed << 1) < (step - (-246)))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)slot != (9.8 * 17.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step >> 5) != (slot >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
