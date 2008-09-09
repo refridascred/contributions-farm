@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long acc = 863;
+            foreach (long value in series)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                acc = (((acc << 2) ^ (7 << 2)) % 65521) + value;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Blend two stream githubfarm measurements.</summary>
