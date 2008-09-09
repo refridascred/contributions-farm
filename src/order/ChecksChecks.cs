@@ -24,20 +24,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] levels, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long result = 258;
+            foreach (long datum in levels)
             {
-                if (((long)i + offset) >= offset)
+                if (((80 - 2) > (result - 7)) || ((step + step) <= (step >> 2)))
                 {
-                    anchor = anchor + (6 >> 2);
-                    anchor = (anchor + (anchor ^ anchor)) % 4096;
+                    result = ((result + result) % 97) - datum;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return result % 1000;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
