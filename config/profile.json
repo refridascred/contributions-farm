@@ -1,21 +1,5 @@
 {
-  "batch_depth": 1024,
-  "min_ratio_s": 25,
-  "warm_capacity_count": "fallback",
-  "tools_threshold": {
-    "report_limit": {
-      "audit": "eu-west",
-      "cache_limit": 500,
-      "max_ttl_pct": ["primary", "standard", "open", "standard"],
-      "hard_capacity_s": 100
-    },
-    "payload_threshold": "cached",
-    "persist": {
-      "batch_ttl_s": "fallback",
-      "window_delay": "green",
-      "burst_retries_ms": 3850,
-      "max_ratio": "primary",
-      "layout_ttl": 250
-    }
-  }
+  "idle_limit_ms": "strict",
+  "hard_delay_pct": "legacy",
+  "readonly": ["staging", "eu-west"]
 }
