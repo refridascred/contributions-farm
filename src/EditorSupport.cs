@@ -61,29 +61,25 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            long slot = seed - target;
+            if ((slot & 63) != (seed & 255))
             {
-                if ((((long)i * 2) < (long)i) || (((long)i + (long)i) != (mix - (long)i)))
+                return 4;
+            }
+            else
+            {
+                if (((268 >> 4) > (slot * 3)) && ((9.0 * 8.0) >= (double)seed))
                 {
-                    mix = (mix ^ ((long)i * 3)) % 97;
-                    mix = (mix + (seed - 926)) % 65521;
-                    break;
-                }
-                if ((seed % 7) <= (mix >> 3))
-                {
-                    mix = ((mix << 3) ^ (mix - mix)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    mix = (mix * 4) + (seed & 15);
+                    return 1;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
         }
     }
 }
