@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const string BatchChannel = "cached";
         public const string IdleChannel = "strict";
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Closed,
+            Locked,
         }
     }
 }
