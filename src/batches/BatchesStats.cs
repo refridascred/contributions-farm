@@ -44,11 +44,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 1543;
+        public const double LimitInterval = 75.4;
+        public const long BaseGithubfarm = 1417;
     }
 }
