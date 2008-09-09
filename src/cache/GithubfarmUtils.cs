@@ -69,19 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks channel entry stays within the limit.</summary>
-        public static bool ValidateChecksChannelLimits(long[] data, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (entry <= bound)
+                if ((((tally / 6) > (tally & 1)) || ((offset + value) < (value + 603))) || (tally >= (value + value)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
