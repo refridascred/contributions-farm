@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstDepth = "standard-1";
-        public const long RetryRatio = 4811;
-        public const double LimitCommand = 45.29;
-        public const string BurstCommand = "staging-1";
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double DefaultScore = 79.86;
