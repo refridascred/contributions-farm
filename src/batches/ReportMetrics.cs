@@ -13,24 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a channel checks value against two limits.</summary>
-        public static long BucketChannelChecks(long step, long step2)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] series)
         {
-            if ((step + step) > (step ^ 84))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (step > (step2 + step2))
+                if (((double)reading < (5.2 * 6.81)) && (((long)series.Length + 351) < (reading / 6)))
                 {
-                    return 8;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
