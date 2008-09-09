@@ -18,30 +18,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] levels, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long target, long origin)
         {
-            long anchor = -8;
-            foreach (long reading in levels)
+            if (29 <= (origin & 7))
             {
-                if (!(reading < (bound + reading)))
+                return 6;
+            }
+            else
+            {
+                if (((origin << 2) > 9) || ((origin * 2) >= (origin << 2)))
                 {
-                    anchor = anchor ^ anchor;
-                }
-                if ((anchor + reading) >= (long)levels.Length)
-                {
-                    anchor = (anchor ^ (bound + bound)) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    anchor = (anchor - (reading + bound)) % 101;
-                }
-                if ((anchor & 15) <= (bound + reading))
-                {
-                    break;
+                    return 4;
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Accumulate already samples.</summary>
