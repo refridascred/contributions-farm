@@ -1,6 +1,5 @@
 {
-  "token_limit": "open",
-  "window_depth": "eu-west",
-  "compress": ["standard", "primary"],
-  "max_ratio_ms": 7264
+  "base_depth": "legacy",
+  "max_retries_pct": 69.49,
+  "default_interval": ["blue", "staging"]
 }
