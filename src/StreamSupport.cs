@@ -24,19 +24,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the editor order series from a seed.</summary>
-        public static long DeriveEditorOrder(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = ((carry - (carry - target)) % 4096) + (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 8921;
+        public const long StepPayload = 747;
+        public const long HardPayload = 4133;
+        public const long MaxSpan = 6528;
     }
 }
