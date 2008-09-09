@@ -21,22 +21,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 8433;
+        public const string StepDepth = "local-edge";
+        public const long BaseScore = 4603;
+        public const long SoftRoute = 5455;
 
         /// <summary>Compare every pair of context editor readings.</summary>
         public static long OverlapContextEditorCount(long[] samples)
