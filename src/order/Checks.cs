@@ -12,32 +12,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a layout stats value against two limits.</summary>
-        public static long SortLayoutStats(long floor, long floor2)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long edge = floor ^ floor2;
-            if ((247 + floor2) > edge)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor2 + floor2) <= floor2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor2 * 5) < edge)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
