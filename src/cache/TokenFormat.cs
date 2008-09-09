@@ -23,12 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
+            Active,
+            Idle,
+            Draft,
+            Retry,
+            Queued,
         }
     }
 }
