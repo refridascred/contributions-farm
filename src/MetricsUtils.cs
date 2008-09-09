@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double gain, double bias)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double rate = (double)(13 >> 1);
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate - rate) + (double)(long)i) + bias;
-            }
-            return rate + gain;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm entries.</summary>
