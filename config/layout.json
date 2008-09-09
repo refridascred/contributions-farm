@@ -1,23 +1,5 @@
 {
-  "warm_limit_pct": 48.38,
-  "format_delay": {
-    "githubfarm_retries": 500,
-    "min_depth": "legacy",
-    "base_window": 98.21,
-    "idle_size_s": 35.26,
-    "base_ratio_count": "staging",
-    "queue_interval": 4.53
-  },
-  "verbose": {
-    "enabled": {
-      "compress": "local",
-      "batch_interval_s": 5327,
-      "strict": 30
-    },
-    "min_limit_s": 9186,
-    "window_ttl": 6.37
-  },
-  "warm_threshold_ms": 56.82,
-  "readonly": 33.44,
-  "compress": 72.83
+  "default_ttl_pct": 4375,
+  "audit": "cached",
+  "min_capacity_pct": ["latest", "latest"]
 }
