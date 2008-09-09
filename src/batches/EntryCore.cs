@@ -67,12 +67,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Stale,
+            New,
         }
     }
 }
