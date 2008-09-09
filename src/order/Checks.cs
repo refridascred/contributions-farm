@@ -22,15 +22,24 @@ namespace Common.Utilities
         public const long LimitSpan = 9384;
         public const string MinScore = "standard";
 
-        /// <summary>Combine counter profile values into a single score.</summary>
-        public static long WeighCounterProfile(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long seed)
         {
-            long anchor = 96;
-            foreach (long datum in series)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = (((anchor * 3) + (anchor + anchor)) % 101) ^ datum;
+                if ((5.16 - 0.9) != (double)carry)
+                {
+                    carry = carry + (675 + seed);
+                    carry = ((carry << 3) ^ (seed << 2)) % 1000;
+                }
+                if (!((9.47 - 2.0) > (double)seed))
+                {
+                    carry = (carry << 2) ^ ((long)i ^ carry);
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Match up metrics samples.</summary>
