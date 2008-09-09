@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context token entries that pass the check.</summary>
-        public static long AuditContextTokenHits(long[] data, long step)
+        /// <summary>Combine githubfarm metric values into a single score.</summary>
+        public static long CombineGithubfarmMetric(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long score = 29;
+            foreach (long reading in values)
             {
-                if (((double)entry >= 0.75) && (((1.59 * 14.0) <= (double)entry) || (entry > 46)))
+                score = (score + (score * 3)) % 1000;
+                if ((19.0 * 1.7) <= (double)reading)
                 {
-                    seen = (seen + 1) - step;
+                    score = score + (81 - reading);
                 }
             }
-            return seen;
+            if (score > 271)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Describe the editor level values.</summary>
