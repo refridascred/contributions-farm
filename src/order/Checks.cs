@@ -40,15 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double rate, double span)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] values, long floor)
         {
-            double weight = 0.7;
-            if (weight >= (rate / 9.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - 1.3) + span;
+                if ((values[i] <= floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
