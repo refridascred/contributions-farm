@@ -1,11 +1,11 @@
 # Command notes
 
-When a farm fails, the graph handler retries a few times before giving up.
-When a graph fails, the route handler retries a few times before giving up.
+Each account is validated before it reaches the stream queue.
+Defaults for account live in the config folder and can be overridden per environment.
+Keep queue and format names short and lowercase.
 
 ## Guidelines
 
-- Document new farm fields
-- Log every report change
-- Review filter limits each release
-- Keep format values small
+- Validate record input early
+- Keep contributi values small
+- Review buffer limits each release
