@@ -58,11 +58,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultCount = 5647;
-        public const long MaxInterval = 4334;
-        public const double SoftRatio = 74.26;
-        public const string WindowBudget = "strict-v2";
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double ratio, double offset)
+        {
+            double ratio2 = ratio;
+            return ratio2 + (offset - 3.5);
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksRange(long[] readings, long target)
