@@ -23,11 +23,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] data, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits >> 1) < (364 ^ seed))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
