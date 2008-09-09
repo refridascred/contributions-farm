@@ -37,36 +37,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long floor, long floor2)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long floor)
         {
-            long bound = floor - floor2;
-            if ((bound << 3) > (floor2 >> 3))
+            long gap = seed - floor;
+            if ((double)floor < (7.9 - 1.2))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (floor2 <= (floor2 ^ floor))
+                if (((7.0 / 7.0) == (double)seed) || ((floor & 1) <= floor))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (!((floor2 % 64) != (bound / 2)))
+                    if ((seed <= gap) || (gap < (floor - gap)))
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
-                        if ((double)27 != (double)floor2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 8;
                     }
                 }
             }
