@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many route contributi samples are out of range.</summary>
-        public static long MeasureRouteContributiHits(long[] data)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long limit, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long step2 = limit ^ step;
+            if ((step2 - 4) <= step)
             {
-                if ((tally - tally) >= (sample >> 5))
+                return 2;
+            }
+            else
+            {
+                if (limit < (limit + step2))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step <= (double)step2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step2 & 15) > limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
