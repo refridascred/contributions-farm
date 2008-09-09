@@ -72,24 +72,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] data, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((46 <= (floor + carry)) || ((double)carry > (7.6 * 9.5)))
+                if (((item - (long)data.Length) <= (count + 16)) && ((floor + floor) >= (item ^ count)))
                 {
-                    carry = ((carry * 5) + carry) % 255;
-                    carry = (carry + (floor + carry)) % 97;
+                    count = count + 3;
                 }
-                else
-                {
-                    carry = (carry - (floor + floor)) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return count;
         }
     }
 }
