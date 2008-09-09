@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result << 3) ^ (result ^ result);
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 8517;
+        public const long RetryChecks = 4728;
+        public const string BatchLevel = "standard-v2";
+        public const long DefaultLevel = 9706;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long RankCache(long seed, long floor)
