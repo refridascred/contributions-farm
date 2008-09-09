@@ -1,5 +1,6 @@
 {
-  "max_retries": "cached",
-  "hard_interval_s": "local",
-  "base_timeout_count": 24.3
+  "max_retries_s": [50, 267, 381, 474],
+  "persist": "open",
+  "flush_depth": 24.24,
+  "sync_window": 100
 }
