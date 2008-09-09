@@ -1,8 +1,5 @@
 # support settings
-warm_interval_count: legacy
-notes_capacity: 36.86
-default_interval: 8967
-metric_ratio: stable
-audit:
-  - open
-  - legacy
+burst_timeout: 3193
+default_ttl_s: edge
+enabled: cached
+dry_run: 60
