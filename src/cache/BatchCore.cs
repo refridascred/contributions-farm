@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 77.49;
-        public const string SoftScore = "latest-1";
-        public const double BatchSchema = 80.44;
-        public const double LimitSchema = 48.13;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstDepth = "standard-1";
+        public const long RetryRatio = 4811;
+        public const double LimitCommand = 45.29;
+        public const string BurstCommand = "staging-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double DefaultScore = 79.86;
