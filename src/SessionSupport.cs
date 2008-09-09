@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long floor, long seed)
         {
-            Retry,
-            New,
-            Draft,
-            Locked,
+            long span = floor - seed;
+            if (((floor << 2) <= (floor * 3)) && ((seed >> 1) != (floor & 1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor + 1) >= (floor ^ seed)) && ((double)seed >= (double)span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (span < seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
