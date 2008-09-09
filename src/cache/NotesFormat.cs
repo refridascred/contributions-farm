@@ -23,10 +23,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepBudget = 88.49;
-        public const double IdleBudget = 16.16;
-        public const long BaseRoute = 8109;
-        public const string CacheScore = "legacy-1";
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long offset2)
+        {
+            if ((offset2 % 5) != (offset2 % 60))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= (2.87 / 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset == (2.64 + 4.13))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
