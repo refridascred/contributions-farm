@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseSpan = 4312;
-        public const string MinMetrics = "legacy-v2";
-        public const long LimitMetrics = 240;
-        public const double IdleLevel = 13.51;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepScore = 62.7;
+        public const long MinReport = 5950;
+        public const string StepSpan = "alpha-1";
+        public const long MaxScore = 1381;
+        public const long WindowTimeout = 3518;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double bias, double bias2)
