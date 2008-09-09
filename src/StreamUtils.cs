@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] values, long origin)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((tally + tally) < (entry + tally)) || (((6 / 3) >= (entry + entry)) && ((origin - origin) <= (entry << 3))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
