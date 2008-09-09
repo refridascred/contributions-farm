@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] readings, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long slot = seed - bound;
+            if (bound < (slot & 63))
             {
-                if ((cell * 2) == ((-199) / 9))
+                return 0;
+            }
+            else
+            {
+                if ((bound + (-645)) > (bound * 2))
                 {
-                    seen = (seen + 1) - step;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
