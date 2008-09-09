@@ -16,13 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Closed,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseRatio = 66.73;
+        public const double MinEditor = 44.67;
+        public const long HardEditor = 3360;
+        public const long CacheTimeout = 7619;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
