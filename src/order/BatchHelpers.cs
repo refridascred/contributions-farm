@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepTimeout = 9049;
-        public const long MinContributi = 3419;
-        public const long MinSize = 9449;
-        public const long MaxScore = 1596;
-        public const long BaseContributi = 7967;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Closed,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double BlendQueue(double bias, double bias2)
