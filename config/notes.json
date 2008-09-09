@@ -1,5 +1,6 @@
 {
-  "poll_interval_count": 100,
-  "layout_delay": "stable",
-  "idle_capacity_ms": 80.93
+  "soft_ratio": "legacy",
+  "cache_threshold": 65.13,
+  "queue_delay": "open",
+  "channel_retries": "latest"
 }
