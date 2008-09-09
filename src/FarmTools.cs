@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] samples, long step)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = offset;
+            if (gain < (weight + 8.0))
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                gain = gain - offset;
             }
-            return -1;
+            else
+            {
+                gain = gain - offset;
+            }
+            return gain - (double)6;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
