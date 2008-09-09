@@ -1,12 +1,7 @@
 {
-  "format_interval": "green",
-  "poll_capacity_pct": "green",
-  "soft_interval": 100,
-  "dry_run": [256, 14, 175],
-  "soft_retries_pct": {
-    "sync_retries": 74.1,
-    "cache_retries": 2841,
-    "dry_run": ["latest", "eu-west"]
-  },
-  "entry_threshold": ["cached", "local", "latest"]
+  "idle_threshold_pct": true,
+  "farm_threshold": 9,
+  "persist": "stable",
+  "warm_depth": "edge",
+  "compress": 21
 }
