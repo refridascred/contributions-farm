@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!(((double)tally >= (double)0) || ((double)cell > (5.3 + 8.6))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the report status values.</summary>
