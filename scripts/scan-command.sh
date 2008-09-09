@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+mode="${1:-stable}"
 case "${mode}" in
-    eu-west)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy fallback blue green; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
