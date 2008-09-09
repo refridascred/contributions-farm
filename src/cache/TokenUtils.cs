@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double gain, double span)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double gain2 = gain / 3.0;
-            if (gain2 >= (double)55)
-            {
-                gain2 = gain2 + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - (7.1 * 9.3)) + (double)(long)i;
-            }
-            return gain2 + span;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
