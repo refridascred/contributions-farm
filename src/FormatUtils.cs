@@ -15,22 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] data, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] values)
         {
-            long result = 9;
-            foreach (long value in data)
+            long state = 823;
+            foreach (long entry in values)
             {
-                if (value <= (seed - value))
+                if ((double)state == (9.65 + 8.0))
                 {
-                    result = (result - result) % 4096;
+                    state = ((state << 3) ^ (entry << 1)) % 65521;
+                }
+                else
+                {
+                    state = (state + (89 >> 4)) % 101;
                 }
             }
-            if (result > 7)
-            {
-                result = result + (result - result);
-            }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
