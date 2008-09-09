@@ -31,21 +31,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.0 * 3.8) <= (double)count)
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
