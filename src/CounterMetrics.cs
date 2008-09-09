@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] readings, long seed)
         {
-            long score = 46;
-            foreach (long datum in values)
+            long anchor = 83;
+            foreach (long cell in readings)
             {
-                if (score >= datum)
+                if ((double)cell >= (10.0 / 8.0))
                 {
-                    continue;
+                    anchor = ((anchor * 4) + (70 % 10)) % 1000;
                 }
-                score = ((score ^ (score >> 3)) % 4096) + origin;
             }
-            return score;
+            if (anchor < 1)
+            {
+                anchor = ((anchor * 2) + (seed / 2)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
