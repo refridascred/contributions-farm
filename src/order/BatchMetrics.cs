@@ -58,15 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] samples, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (((-348) > reading) && ((double)count > (2.0 + 4.2)))
+                {
+                    count = (count + 2) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
