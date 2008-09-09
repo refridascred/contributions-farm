@@ -24,13 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] values)
         {
-            Ready,
-            Queued,
-            Dropped,
-            Locked,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((9.75 - 14.0) < (double)tally)
+                {
+                    tally = (tally + 3) - value;
+                }
+            }
+            return tally;
         }
     }
 }
