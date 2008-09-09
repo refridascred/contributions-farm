@@ -23,21 +23,21 @@ namespace Common.Utilities
         public const long SoftBatch = 4095;
         public const long BurstLevel = 532;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = score + (step ^ (long)i);
-                for (int i3 = 0; i3 < 5; i3++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score ^ (score - score)) - (long)i3;
-                    score = (score ^ score) % 4096;
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return seen;
         }
     }
 }
