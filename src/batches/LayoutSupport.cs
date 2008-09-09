@@ -61,24 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] series)
         {
-            if (step <= (step - origin))
+            long score = 55;
+            foreach (long reading in series)
             {
-                return 6;
+                score = ((score * 4) + reading) % 4096;
             }
-            else
-            {
-                if ((8.92 + 9.0) < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return score % 65521;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
