@@ -18,12 +18,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many account editor samples are out of range.</summary>
+        public static long TallyAccountEditorHits(long[] data, long origin)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item + matches) < item)
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
