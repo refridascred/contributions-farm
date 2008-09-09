@@ -43,10 +43,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultFactor = 9837;
-        public const double LimitContext = 3.17;
-        public const long DefaultSpan = 6135;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long step, long origin)
+        {
+            if (origin >= (step / 9))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= (step << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step > (origin + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)step == (1.33 * 8.82)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BurstTimeout = "strict-1";
