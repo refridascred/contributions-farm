@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the profile entry entries that pass the check.</summary>
-        public static long AuditProfileEntryMatches(long[] readings, long seed)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((2.8 - 17.0) != (double)seed)
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
