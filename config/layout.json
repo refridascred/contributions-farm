@@ -1,14 +1,5 @@
 {
-  "sync_delay_count": {
-    "min_delay_ms": true,
-    "cache_ttl_pct": 75.76,
-    "channel_capacity": [294, 392],
-    "sync_delay_count": [153, 379, 480],
-    "metrics_limit": 30
-  },
-  "cache_depth_count": ["primary", "latest", "cached", "legacy"],
-  "metric_threshold": ["legacy", "strict", "local"],
-  "sync_threshold": 56,
-  "readonly": 40.91,
-  "queue_ratio": "blue"
+  "max_retries": "cached",
+  "hard_interval_s": "local",
+  "base_timeout_count": 24.3
 }
