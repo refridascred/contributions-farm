@@ -1,15 +1,10 @@
 {
-  "warm_interval_count": true,
-  "audit": {
-    "enabled": false,
-    "warm_depth_ms": "legacy",
-    "soft_size_ms": [36, 69, 417],
-    "soft_interval_s": "primary"
+  "base_capacity_s": 39.84,
+  "sync_capacity_ms": {
+    "readonly": 65.23,
+    "audit": "cached",
+    "min_window_s": 250,
+    "cache_window_pct": 53
   },
-  "enabled": 37.69,
-  "soft_capacity_pct": {
-    "retry_timeout_pct": 250,
-    "batch_window_pct": [200, 316],
-    "verbose": false
-  }
+  "flush_retries_ms": 46
 }
