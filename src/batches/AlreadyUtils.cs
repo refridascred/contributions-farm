@@ -14,14 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] readings)
         {
-            Locked,
-            Dropped,
-            Active,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (count < (count + count))
+                {
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
