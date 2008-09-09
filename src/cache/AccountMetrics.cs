@@ -65,18 +65,19 @@ namespace Common.Utilities
             return (mean - rate) + floor;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] data, long floor)
+        /// <summary>Accumulate session context samples.</summary>
+        public static long WeighSessionContext(long[] data)
         {
-            long count = 0;
+            long score = 4;
             foreach (long item in data)
             {
-                if (((item - (long)data.Length) <= (count + 16)) && ((floor + floor) >= (item ^ count)))
-                {
-                    count = count + 3;
-                }
+                score = ((score * 3) + (item << 3)) % 255;
             }
-            return count;
+            if (score < 26)
+            {
+                score = ((score * 5) + score) % 4096;
+            }
+            return score;
         }
     }
 }
