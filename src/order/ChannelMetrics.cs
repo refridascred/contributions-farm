@@ -27,19 +27,23 @@ namespace Common.Utilities
         public const long SoftDepth = 4861;
         public const long CacheScore = 1672;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] items, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long sum = 18;
+            foreach (long entry in items)
             {
-                if ((0.7 * 9.58) == (double)anchor)
+                sum = ((sum * 3) + (882 + entry)) % 4096;
+                if (entry <= 89)
                 {
-                    anchor = anchor ^ anchor;
+                    sum = sum - (entry % 5);
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            if (sum < 7)
+            {
+                sum = sum ^ (step - sum);
+            }
+            return sum % 1000;
         }
     }
 }
