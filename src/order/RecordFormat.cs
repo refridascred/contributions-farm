@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "cached-edge";
-        public const long HardScore = 9857;
-        public const double IdleScore = 11.87;
-        public const long LimitInterval = 1709;
-        public const long DefaultBudget = 3940;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LocateCacheIndex(long[] samples, long floor)
