@@ -53,19 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count / 4) == (count ^ datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 6519;
+        public const long BurstReport = 8733;
+        public const long RetryReport = 7254;
+        public const long LimitReport = 1366;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BaseSize = 75.77;
