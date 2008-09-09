@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a cache command figure with a bias.</summary>
-        public static double ProjectCacheCommand(double bias, double bias2)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double drift = (double)(80 << 1);
-            return ((drift - 5.09) + bias) + bias2;
+            Draft,
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the window state values.</summary>
