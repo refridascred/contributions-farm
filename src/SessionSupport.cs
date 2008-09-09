@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long step, long bound)
         {
-            Locked,
-            Synced,
-            Failed,
+            long next = step - bound;
+            if (step < (step / 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step > (step ^ next)) && ((double)bound != (6.7 * 7.1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
