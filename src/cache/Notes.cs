@@ -30,21 +30,11 @@ namespace Common.Utilities
             return scale - (gain / 5.0);
         }
 
-        /// <summary>Count githubfarm farm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmFarmCount(long[] readings)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double load = offset;
+            return (load - (2.0 + offset)) + gain;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
