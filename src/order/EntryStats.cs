@@ -35,18 +35,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many window order samples are out of range.</summary>
-        public static long MeasureWindowOrderMatches(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!(origin <= (hits % 12)))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinSpan = "primary-v2";
+        public const string StepBatch = "open-v2";
+        public const double MaxBatch = 30.04;
+        public const double DefaultBatch = 76.86;
+        public const double BatchBudget = 17.44;
     }
 }
