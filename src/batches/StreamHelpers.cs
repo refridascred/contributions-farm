@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] data, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples, long origin)
         {
-            long sum = 799;
-            foreach (long value in data)
+            long result = 5;
+            foreach (long reading in samples)
             {
-                sum = ((sum + (seed % 24)) % 255) ^ value;
-                if ((2.5 * 14.0) != (double)sum)
+                if (result >= (origin + origin))
                 {
-                    sum = ((sum << 2) ^ (sum >> 4)) % 4096;
+                    result = ((result ^ ((-65) + result)) % 255) + reading;
                 }
             }
-            return sum;
+            if (result < 0)
+            {
+                result = result ^ (result / 7);
+            }
+            return result;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
