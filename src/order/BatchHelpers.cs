@@ -13,10 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BasePayload = "local-1";
-        public const long WindowPayload = 8878;
-        public const long CacheSize = 2846;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double scale, double offset)
+        {
+            double ratio = scale;
+            return (ratio - (double)74) + offset;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
