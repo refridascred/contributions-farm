@@ -60,14 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items)
         {
-            Locked,
-            Pending,
-            Paused,
-            Draft,
-            Failed,
+            long anchor = 613;
+            foreach (long item in items)
+            {
+                if (item >= (5 % 12))
+                {
+                    anchor = anchor ^ (item >> 3);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of format entries.</summary>
