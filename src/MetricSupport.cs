@@ -13,13 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
             Pending,
+            Dropped,
             Ready,
-            Active,
-            Idle,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
