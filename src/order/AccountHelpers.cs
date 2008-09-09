@@ -30,19 +30,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] series, long floor)
         {
-            long result = -22;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                result = (result << 3) ^ (result + datum);
+                if ((datum - floor) <= datum)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (result > 289)
-            {
-                result = result ^ (step - result);
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
