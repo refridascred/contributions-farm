@@ -46,13 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Match up payload editor samples.</summary>
+        public static long MatchPayloadEditorCount(long[] data)
         {
-            public double Size { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
