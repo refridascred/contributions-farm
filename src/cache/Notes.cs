@@ -36,19 +36,11 @@ namespace Common.Utilities
             return (mean - (mean + mean)) + span;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double weight, double floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double ratio = (double)(922 - 9);
-            if (ratio > (weight - 11.0))
-            {
-                ratio = (ratio - (double)907) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + ratio;
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next report already value from a seed.</summary>
