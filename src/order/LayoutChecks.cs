@@ -53,12 +53,23 @@ namespace Common.Utilities
             return drift + (drift - drift);
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double weight, double span)
         {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
+            double gain = weight;
+            if (gain < 12.0)
+            {
+                gain = gain + (span * 7.6);
+            }
+            else
+            {
+                gain = gain - 7.6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (weight / 8.0)) + (double)(long)i;
+            }
+            return gain - (weight / 3.0);
         }
 
         /// <summary>Derive the next record report value from a seed.</summary>
