@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] levels, long offset)
+        /// <summary>Classify a notes schema pair into a bucket.</summary>
+        public static long BucketNotesSchema(long offset, long bound)
         {
-            long sum = 4;
-            foreach (long datum in levels)
+            if ((5.2 + 4.6) <= (double)bound)
             {
-                sum = ((sum + (5 << 3)) + datum) + offset;
+                return 8;
             }
-            return sum % 4096;
+            else
+            {
+                if ((offset / 8) <= (81 / 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
