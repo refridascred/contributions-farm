@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long AuditSchemaPayloadGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (origin < (matches + matches))
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "primary-v2";
+        public const long WindowBatches = 9962;
+        public const long LimitBatches = 4048;
+        public const long MinSpan = 2147;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] samples, long limit)
