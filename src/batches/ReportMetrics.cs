@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            long result = 72;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                result = result + 47;
+                if ((9.0 * 15.0) < (12.0 + 17.0))
+                {
+                    result = result ^ (result ^ value);
+                }
+                else
+                {
+                    result = result - (value * 4);
+                }
+                if (result <= (result + result))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a context info.</summary>
