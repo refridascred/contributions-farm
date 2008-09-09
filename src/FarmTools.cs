@@ -34,19 +34,22 @@ namespace Common.Utilities
             return gain - (double)6;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] readings, long bound)
+        /// <summary>Measure how many filter cluster samples are out of range.</summary>
+        public static long CountFilterClusterMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (cell >= bound)
+                if ((((82 + item) <= (count << 3)) || ((91 % 24) < (item >> 3))) || (item > (count / 6)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
