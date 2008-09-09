@@ -47,17 +47,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context counter sample.</summary>
-        public static long FindContextCounterIndex(long[] samples, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] > origin)
+                if ((((long)i & 1) > (offset ^ 2)) && ((double)result != (double)(long)i))
                 {
-                    return (long)i;
+                    result = (result << 3) ^ result;
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Blend two tools measurements.</summary>
