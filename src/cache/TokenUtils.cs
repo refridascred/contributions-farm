@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long MaxAccount = 3445;
         public const long LimitRatio = 2558;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] levels, long limit)
+        /// <summary>Check that every report farm entry stays within the limit.</summary>
+        public static bool VerifyReportFarmRange(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((limit & 15) >= (hits & 63))
+                if (item >= seed)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Locate a route reading by value.</summary>
