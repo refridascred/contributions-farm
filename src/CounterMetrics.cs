@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Rank metric tools input into a small class.</summary>
+        public static long BucketMetricTools(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long bound = floor ^ limit;
+            if ((18.0 * 3.3) > (double)limit)
             {
-                if (!((matches ^ (long)items.Length) == (264 - matches)))
+                return 1;
+            }
+            else
+            {
+                if ((limit <= bound) && ((bound + limit) > (limit & 7)))
                 {
-                    matches = (matches + 3) + datum;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound ^ floor) == (limit ^ limit)) || ((limit - (-47)) > 121))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
