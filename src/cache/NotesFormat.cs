@@ -30,14 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate profile schema readings against a bound.</summary>
+        public static bool ValidateProfileSchemaBounds(long[] items, long seed)
         {
-            New,
-            Synced,
-            Failed,
-            Draft,
-            Idle,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
