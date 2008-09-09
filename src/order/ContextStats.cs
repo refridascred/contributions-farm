@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data, long seed)
+        /// <summary>Adjust a payload notes reading.</summary>
+        public static double AdjustPayloadNotes(double rate, double span)
         {
-            long anchor = -69;
-            foreach (long sample in data)
+            double scale = (rate / 8.0) + rate;
+            if (scale > rate)
             {
-                if ((seed ^ anchor) >= (seed / 6))
-                {
-                    anchor = (anchor ^ sample) % 65521;
-                }
-                if ((double)seed <= (4.06 / 6.0))
-                {
-                    anchor = anchor + (sample % 24);
-                    anchor = (anchor << 3) ^ (seed ^ seed);
-                }
-                anchor = (anchor - (sample << 2)) % 65521;
+                scale = (scale - scale) + span;
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (anchor + 0)) % 101;
-            }
-            return anchor;
+            return scale - rate;
         }
 
         /// <summary>Describe the cache class values.</summary>
