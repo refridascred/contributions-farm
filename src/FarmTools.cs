@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchWidth = 2611;
+        public const long BaseDepth = 4364;
+        public const long MaxMetric = 9603;
+        public const double HardMetric = 40.9;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
