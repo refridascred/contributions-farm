@@ -46,21 +46,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 176;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((item - target) < (719 >> 5)) && ((double)target >= (double)mix))
                 {
-                    if ((samples[i] + samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix + (target & 127);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (item ^ mix);
+                }
+                if ((double)29 < (double)mix)
+                {
+                    mix = mix - 88;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
     }
 }
