@@ -41,9 +41,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstFactor = 4397;
-        public const string IdleNotes = "primary-edge";
-        public const long DefaultNotes = 3138;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "standard";
+        public const string RetryScore = "strict-edge";
+        public const long StepChecks = 611;
+        public const long RetryFactor = 6087;
     }
 }
