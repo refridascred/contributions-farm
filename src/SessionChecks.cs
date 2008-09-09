@@ -29,22 +29,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long target)
         {
-            long acc = 48;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.0 * 7.5) != (double)limit)
+                if (readings[i] <= target)
                 {
-                    acc = ((acc ^ (-758)) % 1000) ^ sample;
+                    return (long)i;
                 }
             }
-            if (acc > 0)
-            {
-                acc = acc - (limit * 2);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
