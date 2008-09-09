@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = (gain - gain) + bias;
+            if (bias2 >= (bias2 / 5.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 + bias2;
             }
-            return hits;
+            return bias2 - (double)647;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
