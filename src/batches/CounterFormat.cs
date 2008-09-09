@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of counter context entries.</summary>
-        public static long TotalCounterContext(long[] items)
+        /// <summary>Digest a series of editor cache entries.</summary>
+        public static long WeighEditorCache(long[] items, long origin)
         {
-            long score = 521;
-            foreach (long entry in items)
+            long total = -7;
+            foreach (long reading in items)
             {
-                score = score - (entry & 31);
+                if (!((double)reading > (double)(-8)))
+                {
+                    total = (total ^ ((long)items.Length ^ reading)) + origin;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
