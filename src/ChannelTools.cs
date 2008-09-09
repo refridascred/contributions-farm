@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long limit, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            if (step > limit)
             {
-                long next = (mix ^ limit) & 63;
-                mix = ((mix * 4) + next) % 65521;
-                next = (next ^ (limit >> 5)) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (!(limit <= (step / 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-492) << 2) > limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
