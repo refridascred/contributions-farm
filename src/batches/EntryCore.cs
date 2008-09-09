@@ -58,18 +58,25 @@ namespace Common.Utilities
             return bias2 - (bias + offset);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] levels)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long floor, long step)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long delta = floor + step;
+            if ((floor % 24) > (delta * 4))
             {
-                if ((55 << 3) <= (item % 10))
+                return 1;
+            }
+            else
+            {
+                if ((8.0 > (double)delta) || (step <= (floor & 15)))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
