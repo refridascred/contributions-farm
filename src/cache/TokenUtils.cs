@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long MaxAccount = 3445;
         public const long LimitRatio = 2558;
 
-        /// <summary>Locate a commits report reading by value.</summary>
-        public static long SeekCommitsReportIndex(long[] items, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 20;
+            foreach (long value in series)
             {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
+                total = (total + total) - value;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the entry status values.</summary>
