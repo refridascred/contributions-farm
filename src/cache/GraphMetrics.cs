@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double rate, double bias)
+        /// <summary>Compare every pair of queue buffer readings.</summary>
+        public static long OverlapQueueBufferCount(long[] values)
         {
-            double rate2 = (double)1 - (bias / 3.0);
-            if (rate2 >= (rate / 2.0))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = rate2 + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate2 + (9.0 / 8.0);
+            return count;
         }
 
         /// <summary>Adjust a notes reading.</summary>
