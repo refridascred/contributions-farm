@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph support sample.</summary>
-        public static long LookupGraphSupportIndex(long[] samples, long limit)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = 2.51;
+            if (gain < (gain / 5.0))
             {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
+                gain = gain + bias;
             }
-            return -1;
+            else
+            {
+                gain = gain - (7.38 / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (weight / 9.0)) + (double)(long)i;
+            }
+            return gain - (weight + gain);
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
