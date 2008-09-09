@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long anchor = 912;
-            foreach (long cell in values)
-            {
-                if ((anchor + anchor) < (742 / 7))
-                {
-                    anchor = ((anchor - anchor) % 101) - cell;
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a entry info.</summary>
