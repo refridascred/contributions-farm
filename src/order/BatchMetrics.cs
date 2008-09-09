@@ -40,14 +40,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Ready,
-            Draft,
-            Queued,
-            Pending,
-            Closed,
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Locate a token support reading by value.</summary>
