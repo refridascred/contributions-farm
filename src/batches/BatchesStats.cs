@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinRoute = 59.73;
+        public const string CacheSpan = "alpha-1";
+        public const double WindowCount = 77.24;
+        public const string SoftLevel = "fallback-v2";
+        public const long BaseRoute = 7277;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
