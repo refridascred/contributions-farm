@@ -24,19 +24,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            long acc = 77;
-            foreach (long reading in series)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc + offset) % 65521;
-                if (((double)acc <= (double)offset) || ((offset ^ reading) > (acc >> 4)))
+                if (((long)i + offset) >= offset)
                 {
-                    acc = (acc ^ reading) % 101;
+                    anchor = anchor + (6 >> 2);
+                    anchor = (anchor + (anchor ^ anchor)) % 4096;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the already phase values.</summary>
