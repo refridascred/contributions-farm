@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] series)
+        /// <summary>Scale a cache command figure with a bias.</summary>
+        public static double ProjectCacheCommand(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (item >= 547)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double drift = (double)(80 << 1);
+            return ((drift - 5.09) + bias) + bias2;
         }
 
         /// <summary>Describe the window state values.</summary>
