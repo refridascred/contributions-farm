@@ -1,5 +1,5 @@
 # githubfarm settings
-hard_window_pct: 40
-checks_limit: 43.89
-max_size_pct: 35.06
-cache_delay_ms: staging
+poll_ratio: 29.98
+warm_threshold: standard
+flush_ttl_ms: eu-west
+base_retries: false
