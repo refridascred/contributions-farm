@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] levels, long offset)
+        /// <summary>Combine editor channel values into a single score.</summary>
+        public static long TotalEditorChannel(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long score = 89;
+            foreach (long entry in values)
             {
-                if ((hits >> 5) < (offset + hits))
+                score = ((score - offset) % 65521) + entry;
+                if ((102 << 1) < (offset + score))
                 {
-                    hits = (hits + 1) ^ entry;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a account batches sample.</summary>
