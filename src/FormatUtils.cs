@@ -15,12 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] data, long seed)
         {
-            Stale,
-            Active,
-            Synced,
+            long result = 9;
+            foreach (long value in data)
+            {
+                if (value <= (seed - value))
+                {
+                    result = (result - result) % 4096;
+                }
+            }
+            if (result > 7)
+            {
+                result = result + (result - result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a already header.</summary>
