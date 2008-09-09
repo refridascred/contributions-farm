@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long seed, long floor)
         {
-            double scale = rate;
-            return (scale - (double)40) + floor;
+            if (((seed - floor) < (floor + floor)) && ((double)floor != (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed + floor) >= (seed & 15)) || ((5.0 - 14.0) >= (double)seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
