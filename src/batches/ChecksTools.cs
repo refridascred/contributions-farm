@@ -40,13 +40,23 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((mix * 4) == ((long)i << 3))
+                {
+                    mix = (mix + ((long)i + mix)) % 97;
+                }
+                if ((double)mix < (double)(long)i)
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
