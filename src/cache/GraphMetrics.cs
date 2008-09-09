@@ -74,13 +74,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Dropped,
-            Ready,
-            Queued,
+            Failed,
             Closed,
+            Idle,
+            Synced,
         }
     }
 }
