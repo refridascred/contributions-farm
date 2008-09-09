@@ -36,39 +36,26 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long offset, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples, long target)
         {
-            long lane = offset ^ step;
-            if ((lane <= 3) && ((lane + offset) >= (lane + 99)))
+            long carry = 251;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8 - lane) == (step * 4))
+                if (!((carry ^ carry) <= target))
                 {
-                    return 5;
+                    carry = ((carry << 3) ^ (target << 2)) % 101;
                 }
-                else
+                if (((1.0 / 8.0) < (double)cell) && ((double)carry != (3.0 + 17.0)))
                 {
-                    if ((step % 3) <= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((-9) >= (offset - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            if (carry > (-101))
+            {
+                carry = carry ^ (target / 6);
+            }
+            return carry;
         }
     }
 }
