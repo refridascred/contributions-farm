@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const string MinFactor = "strict-edge";
         public const double WindowBatch = 6.81;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] items, long limit)
         {
-            Pending,
-            Stale,
-            Closed,
-            Draft,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the layout status values.</summary>
