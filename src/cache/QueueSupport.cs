@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const long DefaultEntry = 2099;
         public const long BurstEntry = 201;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (series[i] > offset)
+                if (value != seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
