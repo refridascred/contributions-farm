@@ -16,11 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3312;
-        public const long BatchRatio = 8707;
-        public const long LimitSpan = 9384;
-        public const string MinScore = "standard";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchFactor = 2635;
+        public const long BaseMetric = 7506;
+        public const double CacheSpan = 16.55;
+        public const double CacheMetric = 74.41;
+        public const string RetryScore = "legacy-v2";
 
         /// <summary>Roll a support counter forward.</summary>
         public static long StepSupport(long seed)
