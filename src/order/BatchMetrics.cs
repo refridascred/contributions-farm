@@ -49,18 +49,14 @@ namespace Common.Utilities
         public const long SoftDepth = 512;
         public const long BatchContext = 7609;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] items, long limit)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches % 3) >= (5 / 5))
-                {
-                    matches = ((matches + 2) ^ item) + limit;
-                }
-            }
-            return matches;
+            Stale,
+            Draft,
+            Locked,
+            Queued,
+            Failed,
         }
 
         /// <summary>Accumulate stream samples.</summary>
