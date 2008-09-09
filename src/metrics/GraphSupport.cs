@@ -16,21 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up order channel samples.</summary>
-        public static long CompareOrderChannelCount(long[] readings)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
