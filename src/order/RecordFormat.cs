@@ -51,16 +51,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = acc + (2 - 210);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public double Count { get; set; }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
