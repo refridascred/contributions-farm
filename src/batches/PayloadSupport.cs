@@ -25,19 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (entry < (4 % 16))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseCount = 8691;
+        public const long WindowChannel = 9109;
+        public const string DefaultChannel = "standard-v2";
 
         /// <summary>Combine report entry values into a single score.</summary>
         public static long WeighReportEntry(long[] samples, long step)
