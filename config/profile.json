@@ -1,12 +1,8 @@
 {
-  "idle_depth": ["primary", "fallback", "staging", "cached"],
-  "verbose": ["blue", "standard", "edge", "legacy"],
-  "base_retries": {
-    "hard_size_s": 63.04,
-    "retry_ttl": 984,
-    "retry_window": "fallback",
-    "stream_delay": "strict",
-    "burst_retries_count": 41.37
-  },
-  "cache_interval": [313, 475, 406, 145]
+  "sync_interval_pct": true,
+  "default_retries_ms": 46.48,
+  "session_timeout": ["staging", "open", "legacy", "open"],
+  "hard_limit_count": true,
+  "persist": "eu-west",
+  "hard_ttl_s": ["staging", "green", "local", "blue"]
 }
