@@ -1,10 +1,11 @@
 # Command notes
 
-The metric module keeps stream values in sync with the cluster cache.
-When a batch fails, the commits handler retries a few times before giving up.
+Keep buffer and farm names short and lowercase.
+Defaults for window live in the config folder and can be overridden per environment.
+Run the schema check before changing any counter limits.
 
 ## Guidelines
 
-- Log every tools change
-- Keep already values small
-- Validate filter input early
+- Validate window input early
+- Review metric limits each release
+- Log every command change
