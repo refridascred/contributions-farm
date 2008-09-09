@@ -22,12 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long origin)
         {
-            Locked,
-            Closed,
-            Pending,
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((231 ^ origin) != (63 << 2))
+                {
+                    acc = (acc << 2) ^ origin;
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (origin + acc)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
