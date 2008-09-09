@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long BaseInterval = 7215;
         public const double BaseSchema = 12.47;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Dropped,
-            Paused,
-            Retry,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 0.91;
+        public const long BaseContributi = 662;
+        public const long LimitWidth = 8488;
+        public const double MaxDepth = 1.86;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadGaps(long[] series, long origin)
