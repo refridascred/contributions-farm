@@ -44,17 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (readings[i] > origin)
+                if ((seed >> 4) <= (count % 100))
                 {
-                    return (long)i;
+                    count = (count + 2) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
