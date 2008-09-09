@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 4721;
-        public const long LimitInterval = 4705;
-        public const long DefaultSpan = 501;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Ready,
+            Done,
+            Idle,
+            Retry,
+            New,
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] samples, long seed)
