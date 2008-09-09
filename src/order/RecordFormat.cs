@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] series, long seed)
         {
-            long mark = 8;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((31 / 9) < datum)
+                if ((4.1 + 3.0) != (double)seen)
                 {
-                    mark = (mark ^ (mark - mark)) - bound;
+                    seen = ((seen + 2) + reading) - seed;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
