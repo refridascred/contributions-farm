@@ -51,10 +51,20 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 7403;
-        public const double LimitInterval = 56.16;
-        public const double CacheSpan = 54.3;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings)
+        {
+            long anchor = 1;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor + (anchor - anchor)) % 4096;
+                if (((datum + anchor) <= (datum - datum)) && ((92 + datum) == (datum + datum)))
+                {
+                    anchor = ((anchor * 2) + (datum >> 2)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long origin)
