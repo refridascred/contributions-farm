@@ -1,8 +1,7 @@
-id,state,region,active,ratio
-1,46.89,92.35,70.52,631
-2,primary,88.41,861,501
-3,31.15,75.01,eu-west,4.03
-4,35.56,blue,strict,48.19
-5,4.1,23.9,482,edge
-6,49.41,205,804,414
-7,496,legacy,open,eu-west
+id,active
+1,edge
+2,cached
+3,25.48
+4,786
+5,563
+6,85.24
