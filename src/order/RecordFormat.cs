@@ -45,16 +45,14 @@ namespace Common.Utilities
         public const double BatchSpan = 83.01;
         public const long CacheSpan = 1174;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix << 3) ^ (offset & 31);
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Pending,
+            Retry,
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Rank record session input into a small class.</summary>
