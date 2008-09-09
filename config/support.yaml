@@ -1,13 +1,19 @@
 # support settings
-enabled: 1024
-retry_ttl: primary
-persist:
-  max_retries_s: 64.77
-  strict: 68.72
-  readonly: edge
-  idle_interval_ms: 32
-  tools_capacity: 75
-  verbose: staging
-readonly: 77
-dry_run: 12.04
-poll_capacity: false
+dry_run:
+  - open
+  - strict
+  - open
+compress: 74
+idle_depth:
+  audit: 60
+  sync_retries_ms:
+    max_ttl_count:
+      - stable
+      - blue
+    buffer_window: 26
+    compress: 40
+  burst_capacity_count: 54.15
+  burst_depth: open
+max_ttl_pct: 4214
+max_depth_s: blue
+persist: staging
