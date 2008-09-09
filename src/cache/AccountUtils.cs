@@ -24,12 +24,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long step, long floor)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            if (((step + step) <= step) || ((8 * 2) > (step & 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((1.43 / 8.0) != (double)step) || ((double)step > (3.0 - 4.3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
