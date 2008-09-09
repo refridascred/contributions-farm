@@ -40,13 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long state = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
