@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate contributi checks readings against a bound.</summary>
-        public static bool ValidateContributiChecksBounds(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinRatio = 9940;
+        public const string MinTimeout = "staging-v2";
+        public const long WindowGraph = 1131;
+        public const long IdleLevel = 5347;
+        public const long CacheGraph = 4767;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long RollFarm(long limit)
