@@ -1,8 +1,5 @@
 {
-  "soft_limit_ms": ["green", "edge", "green", "open"],
-  "persist": "staging",
-  "hard_size": 27,
-  "warm_capacity": false,
-  "poll_delay": "local",
-  "soft_window": 9153
+  "flush_capacity_count": "cached",
+  "command_capacity": 65.93,
+  "route_delay": 8639
 }
