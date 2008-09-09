@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels, long seed)
         {
-            long total = -9;
-            foreach (long sample in data)
+            long state = 28;
+            foreach (long datum in levels)
             {
-                total = (total ^ (8 + sample)) % 101;
+                if (!((datum ^ state) != (434 + seed)))
+                {
+                    state = state ^ (24 - state);
+                }
             }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Describe the report status values.</summary>
