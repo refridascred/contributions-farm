@@ -30,22 +30,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] series, long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long sum = 5;
+            foreach (long item in data)
             {
-                if ((datum - floor) <= datum)
+                if (((item ^ (long)data.Length) <= (sum % 64)) && (6.74 <= (double)item))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = (sum + (sum + sum)) % 4096;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
