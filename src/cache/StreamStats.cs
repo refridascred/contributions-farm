@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of already buffer readings.</summary>
-        public static long FoldAlreadyBuffer(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long origin, long bound)
         {
-            long anchor = 10;
-            foreach (long item in readings)
+            long offset = origin - bound;
+            if (origin < (97 & 127))
             {
-                anchor = anchor - (item >> 3);
+                return 3;
             }
-            return anchor % 1000;
+            else
+            {
+                if (offset < ((-284) / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
