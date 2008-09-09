@@ -1,13 +1,14 @@
 {
-  "readonly": 4689,
-  "cache_retries": 56.26,
-  "idle_limit_s": true,
-  "base_size_s": 100,
-  "dry_run": 30,
-  "batch_limit_ms": {
-    "enabled": 49.92,
-    "warm_depth_pct": 60,
-    "poll_threshold_s": [280, 107, 246],
-    "verbose": ["staging", "primary"]
+  "commits_limit": "eu-west",
+  "base_size": false,
+  "idle_timeout_count": {
+    "layout_limit": 70,
+    "audit": {
+      "window_ratio": 3341,
+      "min_threshold_s": 8258,
+      "burst_depth_s": false
+    },
+    "max_limit_count": "open",
+    "order_window": [461, 406, 49, 385]
   }
 }
