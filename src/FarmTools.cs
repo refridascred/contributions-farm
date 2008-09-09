@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitRatio = 4136;
+        public const long StepCount = 210;
+        public const long BurstReport = 9982;
+        public const long StepFactor = 1222;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
