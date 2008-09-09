@@ -1,8 +1,19 @@
 {
-  "sync_interval_pct": true,
-  "default_retries_ms": 46.48,
-  "session_timeout": ["staging", "open", "legacy", "open"],
-  "hard_limit_count": true,
-  "persist": "eu-west",
-  "hard_ttl_s": ["staging", "green", "local", "blue"]
+  "layout_window": "edge",
+  "enabled": {
+    "flush_capacity": 8.97,
+    "sync_limit": "local",
+    "readonly": {
+      "batch_threshold_count": 21,
+      "enabled": ["blue", "standard", "fallback"],
+      "retry_delay_s": "legacy",
+      "readonly": true,
+      "min_window_ms": 4227
+    },
+    "min_ratio_ms": false,
+    "warm_ttl": 1650
+  },
+  "sync_size": [167, 325],
+  "stream_window": 83,
+  "burst_limit_pct": 85.91
 }
