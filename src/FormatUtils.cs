@@ -70,18 +70,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] readings, long offset)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset % 100) > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + entry;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
