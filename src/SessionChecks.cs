@@ -33,39 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long limit, long bound)
+        /// <summary>Count the payload commits entries that pass the check.</summary>
+        public static long MeasurePayloadCommitsOutliers(long[] samples)
         {
-            long lane = limit + bound;
-            if ((limit & 127) >= (bound - lane))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit > (6.0 * 2.1))
+                if ((seen * 3) <= (seen - seen))
                 {
-                    return 7;
+                    seen = (seen + 1) + item;
                 }
                 else
                 {
-                    if ((double)bound == (11.0 * 9.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit < (lane >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
