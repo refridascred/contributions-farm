@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mix = mix ^ (seed << 2);
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((tally % 100) >= (sample >> 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Digest a series of window entries.</summary>
