@@ -1,6 +1,7 @@
 {
-  "strict": "staging",
-  "profile_delay": ["local", "stable", "fallback"],
-  "default_ratio": "fallback",
-  "cache_interval_ms": 4.81
+  "min_ttl": 250,
+  "default_depth_count": 7,
+  "already_ratio": false,
+  "tools_capacity": 60,
+  "filter_interval": ["edge", "cached", "latest", "eu-west"]
 }
