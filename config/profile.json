@@ -1,7 +1,8 @@
 {
-  "verbose": "latest",
-  "min_capacity_s": true,
-  "contributi_size": 32.65,
-  "poll_ratio": "standard",
-  "enabled": 49.84
+  "readonly": 30,
+  "schema_limit": true,
+  "max_limit_s": "primary",
+  "compress": 500,
+  "hard_ratio": "fallback",
+  "idle_threshold_ms": "stable"
 }
