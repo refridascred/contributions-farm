@@ -1,12 +1,10 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Keep schema and stats names short and lowercase.
-Defaults for graph live in the config folder and can be overridden per environment.
+Each contributi is validated before it reaches the profile queue.
+Use farm settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Review counter limits each release
-- Prefer order defaults
-- Keep channel values small
-- Log every batch change
+- Keep buffer values small
+- Prefer graph defaults
+- Document new counter fields
