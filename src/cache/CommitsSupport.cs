@@ -37,20 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long sum = -32;
+            foreach (long datum in readings)
             {
-                if ((double)origin >= (double)result)
+                if (sum > bound)
                 {
-                    result = (result - ((long)i + result)) % 1000;
-                    break;
+                    sum = (sum ^ (sum ^ datum)) % 97;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Accumulate payload layout samples.</summary>
