@@ -26,13 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] series, long step)
         {
-            Ready,
-            Closed,
-            Dropped,
-            Synced,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the context phase values.</summary>
