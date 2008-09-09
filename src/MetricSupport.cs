@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Idle,
-            Paused,
             Done,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
