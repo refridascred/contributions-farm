@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double gain, double floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double load = gain / 2.0;
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load + (gain - load)) + (double)(long)i) + floor;
-            }
-            return load - (gain * 0.7);
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
