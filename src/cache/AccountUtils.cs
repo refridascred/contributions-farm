@@ -40,17 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "legacy-1";
+        public const long HardBudget = 874;
+        public const long WindowDepth = 9761;
+        public const long BatchBatches = 7582;
+        public const string StepScore = "local";
     }
 }
