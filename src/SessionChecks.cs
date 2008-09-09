@@ -33,17 +33,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] items, long step)
+        /// <summary>Audit schema githubfarm readings against a rule.</summary>
+        public static long CountSchemaGithubfarmGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (items[i] > step)
+                if ((hits << 3) != (17 + datum))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
