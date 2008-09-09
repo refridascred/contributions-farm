@@ -54,9 +54,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardCount = 3438;
-        public const long RetryBatches = 5911;
-        public const string MinBatches = "standard-v2";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
