@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                state = state ^ (3 - state);
+                if ((18.0 / 4.0) >= (double)target)
+                {
+                    state = state - ((long)i >> 1);
+                    state = (state << 3) ^ (target & 15);
+                }
+                else
+                {
+                    state = ((state << 2) ^ state) % 101;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
