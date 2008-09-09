@@ -32,18 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] items, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long anchor = 326;
+            foreach (long value in samples)
             {
-                if ((double)seed == (double)matches)
+                anchor = ((anchor ^ (anchor & 7)) % 4096) + value;
+                if ((anchor - floor) < floor)
                 {
-                    matches = (matches + 2) ^ cell;
+                    anchor = (anchor - (1 / 5)) % 101;
+                }
+                if (680 <= (anchor << 1))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (anchor < (-21))
+            {
+                anchor = ((anchor * 4) + (anchor + 3)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
