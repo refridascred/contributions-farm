@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank context route input into a small class.</summary>
-        public static long ClassifyContextRoute(long seed, long seed2)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            if ((seed2 - seed) >= seed2)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed2 + seed) >= (seed << 1)) && ((seed2 + seed) >= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed2 - 827) < seed2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed + seed) >= (seed % 97)) || ((seed2 - seed2) >= (seed - seed2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
