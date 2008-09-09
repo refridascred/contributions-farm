@@ -15,23 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double scale = (double)6 / 8.0;
-            if (scale > 4.7)
-            {
-                scale = (scale - span) - bias;
-            }
-            else
-            {
-                scale = scale - (scale * 0.5);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale * 2.7)) + (double)(long)i;
-            }
-            return scale - (span + scale);
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
