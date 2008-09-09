@@ -30,18 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command entry readings against a rule.</summary>
-        public static long AuditCommandEntryGaps(long[] values)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)tally <= (0.61 / 8.0))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Paused,
+            Synced,
         }
     }
 }
