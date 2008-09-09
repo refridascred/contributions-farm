@@ -33,11 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 4573;
-        public const long CacheBudget = 4853;
-        public const long BatchScore = 3759;
-        public const double IdleSpan = 82.15;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitBudget = 7728;
+        public const string WindowAlready = "open-v2";
+        public const long CacheBudget = 8420;
+        public const long WindowInterval = 7732;
+        public const long BurstBudget = 9765;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long seed, long target)
