@@ -30,12 +30,16 @@ namespace Common.Utilities
         public const string SoftLevel = "fallback-v2";
         public const long BaseRoute = 7277;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long step)
         {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark ^ 6) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a graph summary.</summary>
