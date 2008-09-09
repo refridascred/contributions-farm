@@ -12,22 +12,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long seed, long bound)
         {
-            long mix = 429;
-            foreach (long value in data)
+            if ((bound << 3) != (bound * 2))
             {
-                if ((double)mix < (double)floor)
+                return 6;
+            }
+            else
+            {
+                if (((double)seed < (15.0 - 7.9)) || (seed > bound))
                 {
-                    mix = (mix - mix) % 101;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix ^ value) % 255;
+                    return 3;
                 }
             }
-            return mix;
         }
 
         /// <summary>Validate profile schema readings against a bound.</summary>
