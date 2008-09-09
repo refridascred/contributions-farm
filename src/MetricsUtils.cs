@@ -28,13 +28,13 @@ namespace Common.Utilities
         public const string MinFactor = "strict-edge";
         public const double WindowBatch = 6.81;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] values, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] values, long origin)
         {
             bool stale = true;
-            foreach (long datum in values)
+            foreach (long entry in values)
             {
-                if (datum < seed)
+                if (entry >= origin)
                 {
                     stale = false;
                     break;
