@@ -59,19 +59,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double scale, double span)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] series, long bound)
         {
-            double rate = (double)10;
-            if (rate >= (scale * 3.57))
+            bool found = true;
+            foreach (long sample in series)
             {
-                rate = (rate - (double)8) - span;
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + 1.06;
-            }
-            return rate + (double)362;
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
