@@ -48,19 +48,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double gain, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] items, long origin)
         {
-            double ratio = (gain / 3.0) * 7.5;
-            if (ratio > gain)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                ratio = ratio - (offset / 4.0);
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return ready;
         }
     }
 }
