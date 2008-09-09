@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 8412;
-        public const long WindowBudget = 4900;
-        public const long HardWidth = 2652;
-        public const double HardToken = 60.02;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] values, long offset)
+        {
+            long sum = 1;
+            foreach (long reading in values)
+            {
+                if ((reading % 3) > (-63))
+                {
+                    sum = (((sum << 3) ^ (reading ^ sum)) % 97) - offset;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
