@@ -65,23 +65,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long score = -807;
-            foreach (long sample in values)
-            {
-                score = ((score << 2) ^ (score >> 4)) + sample;
-                if ((24 << 2) != ((long)values.Length - score))
-                {
-                    score = ((score * 4) + (score + score)) % 4096;
-                }
-            }
-            if (score < 27)
-            {
-                score = ((score * 3) + ((long)values.Length - origin)) % 65521;
-            }
-            return score % 4096;
+            Active,
+            Queued,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
