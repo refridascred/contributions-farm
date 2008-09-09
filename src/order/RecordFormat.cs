@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Classify a schema command pair into a bucket.</summary>
+        public static long GradeSchemaCommand(long offset, long step)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
+            if ((offset + offset) <= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset & 1) != (step << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.79 * 15.0) > (3.0 - 3.2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
