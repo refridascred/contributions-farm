@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] samples, long limit)
+        /// <summary>Digest a series of stream queue entries.</summary>
+        public static long TotalStreamQueue(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 7;
+            foreach (long cell in levels)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result - floor) + cell;
             }
-            return -1;
+            if (result > 681)
+            {
+                result = result + (floor + result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
