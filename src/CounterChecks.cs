@@ -92,21 +92,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel editor readings.</summary>
-        public static long OverlapChannelEditorCount(long[] series)
+        /// <summary>Audit metric account readings against a rule.</summary>
+        public static long MeasureMetricAccountMatches(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((reading ^ limit) > 14) || ((reading >> 1) < 5))
                 {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
