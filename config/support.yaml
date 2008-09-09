@@ -1,18 +1,10 @@
 # support settings
-batches_interval: 45.59
-idle_timeout:
-  min_ratio_count:
-    - edge
-    - staging
-    - staging
-  warm_depth_pct: eu-west
-  poll_window_count: fallback
-  sync_interval_count: 23.45
-poll_limit_ms: true
-enabled: 79.09
-min_limit: 51.62
-readonly:
-  - stable
-  - primary
-  - fallback
-  - standard
+sync_window_count: strict
+enabled: 30
+account_interval:
+  - 356
+  - 192
+  - 233
+  - 245
+session_timeout: false
+strict: false
