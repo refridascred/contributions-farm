@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stats already entries that pass the check.</summary>
-        public static long AuditStatsAlreadyHits(long[] values)
+        /// <summary>Digest a series of counter context entries.</summary>
+        public static long TotalCounterContext(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = 521;
+            foreach (long entry in items)
             {
-                if (matches <= (306 ^ matches))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
+                score = score - (entry & 31);
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
