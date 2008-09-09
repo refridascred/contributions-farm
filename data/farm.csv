@@ -1,6 +1,8 @@
-id,state,active
-1,327,70.06
-2,62.09,602
-3,green,64.53
-4,latest,primary
-5,63.02,767
+id,region,token,weight
+1,345,733,standard
+2,cached,659,staging
+3,354,326,eu-west
+4,staging,894,329
+5,527,legacy,44
+6,826,411,cached
+7,edge,654,latest
