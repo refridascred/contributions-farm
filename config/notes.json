@@ -1,5 +1,6 @@
 {
-  "readonly": "strict",
-  "sync_ratio_ms": true,
-  "batch_retries": 2.9
+  "dry_run": 9079,
+  "graph_interval": "eu-west",
+  "githubfarm_interval": 9780,
+  "warm_limit": false
 }
