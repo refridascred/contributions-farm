@@ -42,22 +42,16 @@ namespace Common.Utilities
         public const double SoftMetrics = 72.04;
         public const long LimitCount = 4737;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] data)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long result = 92;
+            foreach (long sample in values)
             {
-                if ((double)cell >= (8.0 - 6.8))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (result + (sample - sample)) % 255;
+                result = (result + sample) % 65521;
             }
-            return seen;
+            return result;
         }
     }
 }
