@@ -32,11 +32,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetrySpan = 6630;
-        public const long DefaultMetrics = 1190;
-        public const string WindowDepth = "legacy";
-        public const long SoftWidth = 9739;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double gain, double floor)
+        {
+            double drift = 8.67;
+            if (drift >= (double)876)
+            {
+                drift = (drift - (double)47) + gain;
+            }
+            else
+            {
+                drift = drift + (floor + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - 1.23;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] items, long floor)
