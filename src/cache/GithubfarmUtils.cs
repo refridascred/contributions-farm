@@ -24,18 +24,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((3.36 / 5.0) == (double)matches)
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
             return matches;
