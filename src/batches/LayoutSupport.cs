@@ -50,17 +50,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first account cluster entry that matches the target.</summary>
-        public static long LookupAccountClusterIndex(long[] data, long step)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = 8.9 * 1.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] < step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (((drift - drift) + (double)(long)i) - scale) - offset;
             }
-            return -1;
+            return drift - (drift * 8.7);
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
