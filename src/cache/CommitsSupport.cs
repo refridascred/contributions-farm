@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample < (6.5 - 12.0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a record reading.</summary>
