@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long acc = 2;
+            foreach (long sample in levels)
             {
-                result = result ^ (result ^ result);
-                result = ((result * 3) + (long)i) % 4093;
+                acc = ((acc << 3) ^ step) + sample;
             }
-            return result;
+            if (acc > 509)
+            {
+                acc = ((acc << 3) ^ (step - 73)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of record commits readings.</summary>
