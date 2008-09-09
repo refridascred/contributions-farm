@@ -55,19 +55,11 @@ namespace Common.Utilities
             return ratio2 + (offset - 3.5);
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] readings, long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a batch stats.</summary>
