@@ -26,19 +26,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] levels, long seed)
+        /// <summary>Adjust a metric githubfarm reading.</summary>
+        public static double ScaleMetricGithubfarm(double scale, double floor)
         {
-            long result = 81;
-            foreach (long sample in levels)
+            double rate = scale;
+            if (rate <= (rate * 8.97))
             {
-                result = ((result * 3) + (sample >> 3)) % 65521;
+                rate = rate - floor;
             }
-            if (result > 8)
+            else
             {
-                result = ((result * 4) + seed) % 97;
+                rate = rate + floor;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (5.2 - 2.3);
         }
 
         /// <summary>Hold a queue entry.</summary>
