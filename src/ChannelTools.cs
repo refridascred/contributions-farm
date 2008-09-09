@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((state / 6) < bound)
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state * 5) + (38 ^ bound)) % 65521;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
