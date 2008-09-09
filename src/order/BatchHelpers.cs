@@ -23,29 +23,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            long sum = 4;
+            foreach (long entry in data)
             {
-                state = state - state;
-                if (state <= offset)
+                if (((double)entry == (double)sum) && ((5 + 83) == (sum - entry)))
                 {
-                    state = (state << 3) ^ state;
+                    sum = sum + (47 % 24);
+                    sum = ((sum << 3) ^ entry) % 255;
                 }
-                if ((double)(-45) > (double)offset)
-                {
-                    state = state ^ (state + 1);
-                }
-                else
-                {
-                    state = (state - (offset + 5)) % 1000;
-                    state = (state << 2) ^ 330;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                sum = (sum << 3) ^ sum;
             }
-            return state;
+            if (sum > 273)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
     }
 }
