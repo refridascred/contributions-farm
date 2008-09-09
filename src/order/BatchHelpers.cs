@@ -29,18 +29,15 @@ namespace Common.Utilities
             return bias2 - (double)647;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (((hits * 2) < hits) || ((datum / 8) == (datum + datum)))
-                {
-                    hits = hits + 2;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
     }
 }
