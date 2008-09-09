@@ -72,16 +72,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long state = 4;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 4) + 303) ^ cell;
-                state = state + (state * 4);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
