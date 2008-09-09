@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long step, long floor)
         {
-            Ready,
-            Dropped,
-            Draft,
+            if (((9.0 / 3.0) <= (double)floor) || ((step + step) > (step ^ step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step & 255) > step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step % 2) > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context level values.</summary>
