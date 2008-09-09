@@ -30,32 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long bound, long bound2)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long step)
         {
-            long next = bound - bound2;
-            if ((double)bound2 > (double)bound)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (983 >= (bound >> 1))
+                if (values[i] > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.0 * 2.2) >= (double)next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
