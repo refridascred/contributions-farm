@@ -15,20 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a stats report reading.</summary>
-        public static double ScaleStatsReport(double scale, double floor)
-        {
-            double load = scale;
-            if (load >= scale)
-            {
-                load = (load + scale) - floor;
-            }
-            else
-            {
-                load = load - (scale / 9.0);
-            }
-            return load + (double)9;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowCount = "primary";
+        public const long HardGithubfarm = 2840;
+        public const long BaseGithubfarm = 6027;
+        public const long DefaultBudget = 5358;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string WindowTools = "stable-edge";
