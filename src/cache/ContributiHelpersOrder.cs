@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchTimeout = 9621;
-        public const double IdleLevel = 49.5;
-        public const double IdleInterval = 36.95;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double StepRatio = 75.34;
