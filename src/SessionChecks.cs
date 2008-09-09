@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double scale, double bias)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double gain = (double)(536 >> 5);
-            if (gain <= (scale / 9.0))
-            {
-                gain = (gain - (scale * 0.66)) - bias;
-            }
-            else
-            {
-                gain = gain - (18.0 / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (6.1 - gain);
+            Locked,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the cluster state values.</summary>
