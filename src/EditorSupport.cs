@@ -21,22 +21,11 @@ namespace Common.Utilities
         public const string LimitSize = "legacy-1";
         public const double LimitSpan = 65.6;
 
-        /// <summary>Match up command context samples.</summary>
-        public static long PairCommandContextCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "stable-edge";
+        public const long RetryTools = 1380;
+        public const long MaxTools = 5447;
+        public const long IdleCount = 6369;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
