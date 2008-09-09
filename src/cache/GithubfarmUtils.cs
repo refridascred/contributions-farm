@@ -30,11 +30,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
