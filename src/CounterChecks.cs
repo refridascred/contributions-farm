@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Roll a tools cache counter forward.</summary>
+        public static long StepToolsCache(long bound)
         {
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry + ((long)i >> 5)) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
