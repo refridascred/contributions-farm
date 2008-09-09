@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] items, long limit)
         {
-            double gain = offset;
-            if (gain < (weight + 8.0))
+            bool found = true;
+            foreach (long reading in items)
             {
-                gain = gain - offset;
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            return gain - (double)6;
+            return found;
         }
 
         /// <summary>Measure how many filter cluster samples are out of range.</summary>
