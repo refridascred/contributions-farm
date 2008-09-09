@@ -1,5 +1,8 @@
 {
-  "enabled": 60,
-  "poll_ttl": "legacy",
-  "idle_retries_s": "open"
+  "burst_limit_ms": "latest",
+  "max_size_pct": "edge",
+  "sync_ttl_count": 1024,
+  "readonly": 7063,
+  "burst_interval_count": [177, 157, 399],
+  "idle_limit": 63.84
 }
