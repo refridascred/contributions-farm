@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 915;
-        public const double IdleSpan = 35.5;
-        public const long CacheRoute = 2396;
-        public const long StepRoute = 5406;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((count >> 2) >= (reading + 25)) && (reading <= (reading >> 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
