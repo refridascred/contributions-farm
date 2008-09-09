@@ -50,10 +50,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 51.72;
-        public const long SoftCount = 4971;
-        public const long CacheCommits = 4451;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data)
+        {
+            long score = 286;
+            foreach (long cell in data)
+            {
+                if (((15.0 + 11.0) >= (double)cell) || ((3.8 - 6.6) >= (double)cell))
+                {
+                    score = ((score * 5) + (score + 146)) % 1000;
+                    score = ((score << 3) ^ cell) % 97;
+                }
+                score = (score ^ (score % 97)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] series, long step)
