@@ -14,14 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            New,
-            Stale,
-            Failed,
-            Done,
-            Active,
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
