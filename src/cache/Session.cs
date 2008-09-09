@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] readings)
+        /// <summary>Measure how many route contributi samples are out of range.</summary>
+        public static long MeasureRouteContributiHits(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((0.63 * 2.53) != (double)entry) && (((entry + entry) > entry) || ((double)hits >= (double)entry)))
+                if ((tally - tally) >= (sample >> 5))
                 {
-                    hits = hits + 2;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
