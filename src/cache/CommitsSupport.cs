@@ -19,14 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            New,
-            Queued,
-            Paused,
-            Pending,
-            Locked,
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a record reading.</summary>
