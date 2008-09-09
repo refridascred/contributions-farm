@@ -36,11 +36,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double gain, double bias)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            double drift = gain;
-            return drift + (bias * 9.1);
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum + ((long)i ^ 762)) % 255;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = ((sum + (sum - bound)) % 101) ^ (long)i2;
+                    sum = ((sum * 5) + sum) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a already reading by value.</summary>
