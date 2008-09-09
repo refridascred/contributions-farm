@@ -38,19 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account checks entry stays within the limit.</summary>
-        public static bool GuardAccountChecksLimits(long[] samples, long floor)
+        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
+        public static long PairMetricClusterCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
