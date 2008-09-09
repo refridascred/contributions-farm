@@ -44,20 +44,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinSpan = 9516;
+        public const long BatchScore = 8737;
+        public const string WindowScore = "latest-v2";
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] samples)
