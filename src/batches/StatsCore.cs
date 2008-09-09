@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheBudget = 2077;
-        public const long StepScore = 5181;
-        public const string BatchStream = "alpha-v2";
-        public const double StepInterval = 97.61;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 30.08;
+        public const double RetryInterval = 34.24;
+        public const string DefaultChecks = "open";
+        public const string MaxChecks = "legacy";
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long bound)
