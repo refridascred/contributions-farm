@@ -25,12 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            long result = 8;
+            foreach (long sample in data)
+            {
+                if (!((result & 255) > (sample * 3)))
+                {
+                    result = result - (result >> 5);
+                }
+                else
+                {
+                    result = (result << 2) ^ (result + 3);
+                }
+            }
+            if (result > 1)
+            {
+                result = (result + (result + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
