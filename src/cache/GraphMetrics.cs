@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate counter report readings against a bound.</summary>
+        public static bool CheckCounterReportRange(long[] series, long offset)
         {
-            Done,
-            Active,
-            Pending,
-            Idle,
-            Synced,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the filter kind values.</summary>
