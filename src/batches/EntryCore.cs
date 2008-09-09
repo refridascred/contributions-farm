@@ -54,19 +54,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(((long)i / 8) == (step / 5)))
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
