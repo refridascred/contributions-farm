@@ -53,11 +53,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double ratio, double offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double bias)
         {
-            double ratio2 = ratio;
-            return ratio2 + (offset - 3.5);
+            double load = bias;
+            if (load < ratio)
+            {
+                load = load + (ratio * 9.56);
+            }
+            return load - bias;
         }
 
         /// <summary>Hold a layout options.</summary>
