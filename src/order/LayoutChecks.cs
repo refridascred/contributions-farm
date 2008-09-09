@@ -37,19 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            long score = 32;
-            foreach (long cell in values)
+            double load = span * 1.9;
+            if (load >= load)
             {
-                score = ((score * 3) + (339 + score)) - cell;
+                load = load - ratio;
             }
-            if (score > 728)
-            {
-                score = (score << 3) ^ (score >> 4);
-            }
-            return score % 97;
+            return load + span;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
