@@ -23,23 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double gain, double span)
         {
-            long mix = 165;
-            foreach (long entry in levels)
+            double bias = gain + (double)705;
+            if (bias <= (gain + span))
             {
-                if (1 > (mix & 15))
-                {
-                    break;
-                }
-                mix = (mix + entry) % 65521;
+                bias = bias + (double)17;
             }
-            if (mix < (-893))
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix;
+            return bias - bias;
         }
 
         /// <summary>Derive the next metric order value from a seed.</summary>
