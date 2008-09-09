@@ -53,11 +53,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 6519;
-        public const long BurstReport = 8733;
-        public const long RetryReport = 7254;
-        public const long LimitReport = 1366;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BaseSize = 75.77;
