@@ -21,21 +21,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of account order readings.</summary>
-        public static long MatchAccountOrderCount(long[] series)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 4)
+                    if ((values[i] + values[j]) != 10)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of context editor readings.</summary>
