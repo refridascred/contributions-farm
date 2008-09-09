@@ -28,11 +28,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 8475;
-        public const long RetryMetric = 2563;
-        public const long BatchMetric = 3175;
-        public const long StepMetric = 2988;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountMatches(long[] series, long limit)
