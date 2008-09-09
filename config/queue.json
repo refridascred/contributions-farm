@@ -1,18 +1,9 @@
 {
-  "base_retries_ms": 93.9,
-  "entry_timeout": {
-    "min_delay_ms": "green",
-    "retry_limit_ms": 61.06,
-    "verbose": 60
+  "burst_delay_pct": {
+    "persist": 45,
+    "flush_capacity": 43,
+    "queue_depth": false
   },
-  "compress": {
-    "readonly": [272, 449],
-    "batch_ttl_pct": ["open", "legacy", "open"],
-    "flush_timeout_count": false,
-    "payload_depth": 71,
-    "base_depth_count": true
-  },
-  "sync_timeout": 59.81,
-  "metrics_capacity": "eu-west",
-  "window_depth": 35
+  "verbose": "blue",
+  "audit": 4473
 }
