@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long mark = 8;
-            foreach (long sample in samples)
-            {
-                if ((double)sample == (13.0 * 8.0))
-                {
-                    mark = (mark ^ 1) % 255;
-                }
-                if ((sample - mark) <= (mark + sample))
-                {
-                    mark = (mark - (mark ^ 962)) % 4096;
-                }
-            }
-            if (mark > 510)
-            {
-                mark = (mark * 4) + (mark + mark);
-            }
-            return mark % 97;
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Roll a entry counter forward.</summary>
