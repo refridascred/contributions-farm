@@ -21,21 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up context counter samples.</summary>
-        public static long PairContextCounterCount(long[] series)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 2) + (seed - seed)) % 1000;
+                total = ((total * 5) + ((long)i & 7)) % 97;
+                total = (total + ((-954) * 2)) % 65521;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Adjust a tools reading.</summary>
