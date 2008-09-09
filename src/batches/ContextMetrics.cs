@@ -36,18 +36,15 @@ namespace Common.Utilities
         public const long StepStats = 7640;
         public const long CacheStats = 2275;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] data, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double drift = (double)((-612) * 3);
+            for (int i = 0; i < 4; i++)
             {
-                if ((((long)data.Length + floor) < floor) || (((matches & 63) > (matches + matches)) && ((double)datum != (1.42 * 8.0))))
-                {
-                    matches = matches + 2;
-                }
+                drift = (drift + (span - ratio)) + (double)(long)i;
             }
-            return matches;
+            return drift + (double)990;
         }
     }
 }
