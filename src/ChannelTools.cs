@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((tally - item) > (item ^ 23))
+                if (datum < limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
