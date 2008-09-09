@@ -1,19 +1,5 @@
 {
-  "hard_ratio_count": {
-    "poll_depth_ms": 96,
-    "base_ttl_count": {
-      "default_retries": "fallback",
-      "cluster_depth": 3983,
-      "min_interval_ms": 500,
-      "dry_run": [211, 238, 153, 82],
-      "default_interval_s": "legacy",
-      "retry_window_s": 30
-    },
-    "editor_ttl": [43, 312],
-    "already_capacity": 41.82,
-    "default_size": "standard"
-  },
-  "channel_interval": 89.17,
-  "hard_capacity": 5217,
-  "persist": false
+  "warm_interval": false,
+  "soft_limit_count": "green",
+  "default_ttl_count": 81.15
 }
