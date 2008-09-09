@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a layout notes sample.</summary>
-        public static long SeekLayoutNotesIndex(long[] levels, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 831;
+            foreach (long cell in samples)
             {
-                if (levels[i] >= origin)
+                if ((total % 8) < total)
                 {
-                    return (long)i;
+                    total = (((total << 2) ^ (9 / 6)) ^ cell) + target;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the stream kind values.</summary>
