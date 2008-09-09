@@ -21,23 +21,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] data, long step)
         {
-            long anchor = -6;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((9 + entry) > (anchor ^ anchor))
+                if (18.0 < (double)reading)
                 {
-                    anchor = (anchor * 2) + (anchor + 0);
+                    hits = (hits + 3) + step;
                 }
-                anchor = ((anchor * 2) + (entry + entry)) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (anchor > 47)
-            {
-                anchor = (anchor + (anchor - anchor)) % 4096;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
