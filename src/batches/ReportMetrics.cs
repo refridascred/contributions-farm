@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Combine farm payload values into a single score.</summary>
+        public static long WeighFarmPayload(long[] readings, long target)
         {
-            long result = 72;
-            foreach (long value in items)
+            long result = -1;
+            foreach (long cell in readings)
             {
-                result = result + 47;
-                if ((9.0 * 15.0) < (12.0 + 17.0))
-                {
-                    result = result ^ (result ^ value);
-                }
-                else
-                {
-                    result = result - (value * 4);
-                }
-                if (result <= (result + result))
-                {
-                    break;
-                }
+                result = (result ^ (target - result)) + cell;
             }
-            return result;
+            if (result < 8)
+            {
+                result = result ^ (target + 98);
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a context info.</summary>
