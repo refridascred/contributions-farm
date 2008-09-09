@@ -95,18 +95,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits << 2) < (hits ^ datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Retry,
         }
     }
 }
