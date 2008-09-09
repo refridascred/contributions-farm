@@ -26,21 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 80;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sum >> 4) > 2)
                 {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum ^ (datum - 1);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Fold a list of command readings.</summary>
