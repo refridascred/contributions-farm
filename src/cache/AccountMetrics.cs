@@ -15,18 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of token profile entries.</summary>
-        public static long ScoreTokenProfile(long[] samples)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mark = -9;
-            foreach (long value in samples)
-            {
-                if ((mark & 31) < ((long)samples.Length & 3))
-                {
-                    mark = (((mark << 3) ^ ((long)samples.Length - mark)) % 4096) - value;
-                }
-            }
-            return mark;
+            Pending,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
