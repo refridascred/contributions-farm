@@ -1,9 +1,5 @@
 {
-  "burst_delay_pct": {
-    "persist": 45,
-    "flush_capacity": 43,
-    "queue_depth": false
-  },
-  "verbose": "blue",
-  "audit": 4473
+  "soft_capacity_pct": 76.51,
+  "buffer_depth": 38.57,
+  "min_interval_pct": 100
 }
