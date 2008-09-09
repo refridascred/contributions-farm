@@ -29,14 +29,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public double Level { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultDepth = 8285;
+        public const long SoftStats = 215;
+        public const long MaxStats = 8431;
+        public const long StepStats = 7640;
+        public const long CacheStats = 2275;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileOutliers(long[] data, long floor)
