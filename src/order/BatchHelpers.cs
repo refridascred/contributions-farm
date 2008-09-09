@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a notes batch counter forward.</summary>
-        public static long SeriesNotesBatch(long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((4.95 / 4.0) <= (double)(long)i) || (((long)i * 2) > (limit - 362)))
-                {
-                    score = (score - limit) % 255;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
