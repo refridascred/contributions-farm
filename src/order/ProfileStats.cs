@@ -60,12 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Active,
-            Dropped,
-            New,
+            Locked,
+            Pending,
+            Paused,
+            Draft,
             Failed,
         }
 
