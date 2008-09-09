@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels, long step)
+        /// <summary>Accumulate support githubfarm samples.</summary>
+        public static long FoldSupportGithubfarm(long[] items)
         {
-            long acc = 2;
-            foreach (long sample in levels)
+            long anchor = 647;
+            foreach (long entry in items)
             {
-                acc = ((acc << 3) ^ step) + sample;
+                if ((entry * 2) < (entry + entry))
+                {
+                    anchor = anchor ^ entry;
+                }
+                if (((entry & 7) == (entry >> 1)) && (51 <= (anchor - anchor)))
+                {
+                    break;
+                }
             }
-            if (acc > 509)
+            if (anchor > 0)
             {
-                acc = ((acc << 3) ^ (step - 73)) % 4096;
+                anchor = anchor - (anchor << 1);
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Digest a series of format entries.</summary>
