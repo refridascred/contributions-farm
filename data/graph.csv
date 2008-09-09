@@ -1,7 +1,9 @@
-id,active,owner
-1,837,983
-2,910,83.35
-3,staging,638
-4,68.41,507
-5,edge,strict
-6,strict,stable
+id,ratio,rank
+1,906,521
+2,329,251
+3,497,edge
+4,standard,328
+5,387,eu-west
+6,29.34,93.31
+7,10.91,386
+8,922,green
