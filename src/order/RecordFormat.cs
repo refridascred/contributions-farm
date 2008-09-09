@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a already metrics reading.</summary>
-        public static double AdjustAlreadyMetrics(double gain, double floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double bias = (floor / 4.0) - floor;
-            if (bias >= floor)
-            {
-                bias = (bias - bias) + gain;
-            }
-            else
-            {
-                bias = bias - 3.73;
-            }
-            return bias - (2.11 / 2.0);
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
