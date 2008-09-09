@@ -1,8 +1,7 @@
 {
-  "cache_timeout": "edge",
-  "filter_limit": 51,
-  "persist": "blue",
-  "poll_size": [252, 73],
-  "hard_ratio_count": 60,
-  "report_retries": true
+  "account_ttl": 1024,
+  "poll_limit": 250,
+  "batch_ratio_ms": [429, 175, 355],
+  "audit": 70,
+  "route_threshold": ["stable", "local", "cached"]
 }
