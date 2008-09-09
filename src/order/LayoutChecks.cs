@@ -72,19 +72,11 @@ namespace Common.Utilities
             return gain - (weight / 3.0);
         }
 
-        /// <summary>Digest a series of route counter entries.</summary>
-        public static long TotalRouteCounter(long[] data)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long acc = 708;
-            foreach (long entry in data)
-            {
-                acc = (acc ^ (entry % 8)) % 1000;
-            }
-            if (acc > 397)
-            {
-                acc = (acc ^ ((-66) * 3)) % 65521;
-            }
-            return acc % 97;
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
