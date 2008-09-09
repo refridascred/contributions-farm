@@ -21,19 +21,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardCount = "latest-edge";
+        public const double CacheFactor = 92.42;
+        public const double IdleRatio = 8.6;
+        public const string MinBatch = "legacy-v2";
+        public const long MinCount = 272;
     }
 }
