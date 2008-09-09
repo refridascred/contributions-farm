@@ -40,22 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long carry = 243;
-            foreach (long sample in items)
-            {
-                if (((double)6 >= (double)carry) && ((sample << 3) <= (carry + sample)))
-                {
-                    carry = (carry ^ sample) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ ((-447) % 100)) % 101;
-                }
-            }
-            return carry % 65521;
+            Synced,
+            Failed,
+            Dropped,
         }
     }
 }
