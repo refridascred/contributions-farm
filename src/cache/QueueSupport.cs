@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((552 + value) <= value)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Rank already input into a small class.</summary>
