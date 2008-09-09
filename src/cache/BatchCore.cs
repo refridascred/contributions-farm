@@ -35,13 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] data, long target)
         {
-            Active,
-            Paused,
-            Closed,
-            Pending,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two stream measurements.</summary>
