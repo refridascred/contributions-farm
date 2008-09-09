@@ -21,19 +21,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mix = 908;
-            foreach (long value in values)
-            {
-                mix = (mix * 4) + value;
-            }
-            if (mix > 5)
-            {
-                mix = ((mix * 2) + (mix >> 1)) % 255;
-            }
-            return mix % 1000;
+            Closed,
+            Dropped,
+            Synced,
+            Active,
         }
     }
 }
