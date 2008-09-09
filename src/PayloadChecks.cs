@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
