@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next buffer githubfarm value from a seed.</summary>
-        public static long StepBufferGithubfarm(long bound)
+        /// <summary>Combine filter already values into a single score.</summary>
+        public static long ScoreFilterAlready(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long total = 26;
+            foreach (long item in data)
             {
-                score = ((score << 3) ^ (597 >> 2)) % 1000;
-                score = ((score * 3) + (long)i) % 97;
+                total = (total ^ (2 * 5)) + item;
+                total = total ^ (78 ^ 3);
             }
-            return score;
+            return total % 4096;
         }
 
         /// <summary>Blend two schema batches measurements.</summary>
