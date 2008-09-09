@@ -36,11 +36,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardInterval = 5994;
-        public const long WindowBatch = 4570;
-        public const long MaxSize = 5860;
-        public const double SoftLevel = 76.83;
-        public const string SoftBatch = "cached-v2";
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long seed)
+        {
+            long prev = step - seed;
+            if ((seed + 936) == (seed * 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if (prev >= (step << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed / 8) < (35 * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed - 11) >= 9) || ((136 % 97) >= seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
