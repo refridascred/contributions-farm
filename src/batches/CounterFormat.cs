@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] samples)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long lane = limit + seed;
+            if ((seed / 6) > (-76))
             {
-                if ((item + (-422)) > hits)
+                return 4;
+            }
+            else
+            {
+                if (((lane >> 2) <= (lane << 2)) || ((limit + limit) <= 25))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
