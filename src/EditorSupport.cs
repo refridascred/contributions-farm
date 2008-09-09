@@ -41,17 +41,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double ratio, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            double gain = (bias / 5.0) / 7.0;
+            if (gain <= bias)
             {
-                sum = (sum - (sum + target)) % 97;
-                sum = sum ^ ((long)i % 5);
-                sum = ((sum * 3) + (long)i) % 1000;
+                gain = (gain + bias) + ratio;
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - 0.9;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
