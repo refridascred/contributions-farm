@@ -53,24 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long limit, long step)
+        /// <summary>Look up the position of a buffer context sample.</summary>
+        public static long SeekBufferContextIndex(long[] samples, long limit)
         {
-            if (((limit - step) <= step) && ((limit >> 1) < (1 + 6)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(limit < (limit - 438)))
+                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
