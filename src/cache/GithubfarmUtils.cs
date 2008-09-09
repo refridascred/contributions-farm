@@ -35,18 +35,9 @@ namespace Common.Utilities
         public const string MaxAccount = "strict-edge";
         public const long MinInterval = 4442;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((133 >> 3) > (reading - reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheTimeout = 7245;
+        public const long DefaultStream = 5331;
+        public const long WindowStream = 5410;
     }
 }
