@@ -21,18 +21,21 @@ namespace Common.Utilities
         public const string LimitSize = "legacy-1";
         public const double LimitSpan = 65.6;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long step)
+        /// <summary>Match up command context samples.</summary>
+        public static long PairCommandContextCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step + (-12)) != (matches & 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) + sample;
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
