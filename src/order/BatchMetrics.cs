@@ -16,13 +16,13 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            New,
+            Active,
+            Retry,
+            Ready,
         }
 
         /// <summary>Locate a token support reading by value.</summary>
