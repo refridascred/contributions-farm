@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBatches = "primary-v2";
-        public const long WindowBatches = 9962;
-        public const long LimitBatches = 4048;
-        public const long MinSpan = 2147;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double bias, double bias2)
+        {
+            double gain = bias2;
+            if (gain <= (double)58)
+            {
+                gain = gain - (double)870;
+            }
+            return gain - bias;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] samples, long limit)
