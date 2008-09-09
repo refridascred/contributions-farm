@@ -20,12 +20,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every session order entry stays within the limit.</summary>
+        public static bool CheckSessionOrderLimits(long[] data, long bound)
         {
-            Ready,
-            Closed,
-            Locked,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine batch graph values into a single score.</summary>
