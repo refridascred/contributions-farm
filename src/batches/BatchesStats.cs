@@ -23,34 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Match up order window samples.</summary>
+        public static long CompareOrderWindowCount(long[] readings)
         {
-            long result = 6;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample - result) != (sample ^ (long)values.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (result ^ result) + (long)i;
-                }
-                if ((double)result > (2.6 + 1.25))
-                {
-                    result = (result << 3) ^ (sample - result);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (sample / 4)) % 65521;
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 0)
-            {
-                result = (result ^ (result ^ result)) % 4096;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
