@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] series, long limit)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((limit >> 2) >= (850 + (-236)))
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
