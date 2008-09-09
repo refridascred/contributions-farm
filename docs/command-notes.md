@@ -1,12 +1,11 @@
 # Command notes
 
-The command report groups every route by channel.
-A commits that stays idle for too long is moved to the session list.
-The stats module keeps cache values in sync with the account cache.
+The batch module keeps schema values in sync with the support cache.
+Each githubfarm is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Keep editor values small
-- Prefer channel defaults
-- Validate editor input early
-- Review batch limits each release
+- Document new entry fields
+- Review payload limits each release
+- Validate queue input early
+- Keep cluster values small
