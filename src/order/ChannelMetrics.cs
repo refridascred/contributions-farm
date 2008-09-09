@@ -21,11 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinSpan = 43.39;
-        public const double IdleGithubfarm = 52.66;
-        public const long SoftDepth = 4861;
-        public const long CacheScore = 1672;
+        /// <summary>Match up context counter samples.</summary>
+        public static long PairContextCounterCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double AdjustTools(double weight, double bias)
