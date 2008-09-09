@@ -71,21 +71,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 9;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)981 >= (double)acc)
                 {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc - (acc * 4);
+                }
+                if ((offset + offset) == (entry >> 5))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc < 16)
+            {
+                acc = (acc ^ (offset * 4)) % 1000;
+            }
+            return acc % 97;
         }
     }
 }
