@@ -67,12 +67,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long offset, long limit)
         {
-            Pending,
-            Stale,
-            New,
+            long gap = offset - limit;
+            if (gap > (offset << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset >= (limit * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
