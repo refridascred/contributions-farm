@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count batches notes pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesNotesCount(long[] series)
         {
-            Pending,
-            Queued,
-            Locked,
-            Done,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
