@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Combine queue token values into a single score.</summary>
+        public static long CombineQueueToken(long[] levels, long limit)
         {
-            Dropped,
-            Locked,
-            New,
-            Synced,
+            long mix = 883;
+            foreach (long item in levels)
+            {
+                if (!((double)mix > (7.8 + 2.8)))
+                {
+                    mix = (mix ^ (mix + mix)) % 65521;
+                }
+                if (limit <= mix)
+                {
+                    mix = (mix * 4) + (468 + item);
+                }
+                if ((double)limit < (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 98)
+            {
+                mix = mix ^ (9 % 2);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
