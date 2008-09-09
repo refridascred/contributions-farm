@@ -17,12 +17,17 @@ namespace Common.Utilities
         public const string BatchChannel = "cached";
         public const string IdleChannel = "strict";
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] readings, long step)
         {
-            Failed,
-            Queued,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
