@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Describe the channel level values.</summary>
