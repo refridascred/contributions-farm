@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a route buffer sample.</summary>
-        public static long LocateRouteBufferIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "legacy-edge";
+        public const long BatchSchema = 1759;
+        public const double CacheDepth = 40.72;
+        public const double IdleSchema = 74.35;
 
         /// <summary>Compare every pair of stats layout readings.</summary>
         public static long CompareStatsLayoutCount(long[] values)
