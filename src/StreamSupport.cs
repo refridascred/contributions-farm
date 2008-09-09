@@ -18,21 +18,17 @@ namespace Common.Utilities
         public const string HardBatch = "open-1";
         public const long IdleSpan = 6607;
 
-        /// <summary>Count context stats pairs that satisfy a relation.</summary>
-        public static long OverlapContextStatsCount(long[] levels)
+        /// <summary>Locate a layout profile reading by value.</summary>
+        public static long SeekLayoutProfileIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] == origin)
                 {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
