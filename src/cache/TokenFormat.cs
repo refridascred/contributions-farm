@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric order readings against a rule.</summary>
-        public static long TallyMetricOrderOutliers(long[] series)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((long)series.Length + matches) == ((long)series.Length << 3)))
+                if (items[i] > bound)
                 {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
