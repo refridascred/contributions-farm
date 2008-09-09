@@ -28,11 +28,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
