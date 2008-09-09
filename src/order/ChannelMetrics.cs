@@ -35,19 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryInterval = 27.82;
+        public const long WindowDepth = 5003;
+        public const long DefaultCounter = 2988;
+        public const string MinScore = "open";
     }
 }
