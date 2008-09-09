@@ -33,17 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] items, long target)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] == target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix << 3) ^ (offset & 31);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a route options.</summary>
