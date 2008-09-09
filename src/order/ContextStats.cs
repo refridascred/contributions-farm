@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] samples)
+        /// <summary>Fold a list of command stream readings.</summary>
+        public static long CombineCommandStream(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long sum = 205;
+            foreach (long sample in series)
             {
-                if (reading > seen)
-                {
-                    seen = seen + 2;
-                }
+                sum = (sum << 2) ^ (sample - sample);
             }
-            return seen;
+            if (sum < 0)
+            {
+                sum = ((sum * 3) + (sum / 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
