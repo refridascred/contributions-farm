@@ -2,11 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
-    label TEXT,
-    token TEXT,
-    created_at TIMESTAMP
+    active INTEGER NOT NULL DEFAULT 1,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_rank ON layout_items (rank);
 
-INSERT INTO layout_items (rank, label, token) VALUES (93, 'legacy', 'open');
+INSERT INTO layout_items (rank, active, state) VALUES (55, 23, 'blue');
+INSERT INTO layout_items (rank, active, state) VALUES (60, 14, 'green');
