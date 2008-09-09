@@ -31,11 +31,20 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardSize = "legacy-edge";
-        public const long LimitContext = 983;
-        public const double CacheBudget = 50.9;
-        public const double SoftInterval = 83.33;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double WindowCommits = 51.72;
