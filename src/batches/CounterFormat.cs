@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series, long step)
         {
-            long lane = limit + seed;
-            if ((seed / 6) > (-76))
+            long result = 977;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((lane >> 2) <= (lane << 2)) || ((limit + limit) <= 25))
+                result = (result - sample) % 101;
+                if ((result << 1) == (step * 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    result = (result << 2) ^ (sample - step);
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
