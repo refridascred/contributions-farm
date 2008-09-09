@@ -58,38 +58,11 @@ namespace Common.Utilities
         public const double SoftSize = 88.86;
         public const double WindowMetric = 58.6;
 
-        /// <summary>Grade a queue batches value against two limits.</summary>
-        public static long RankQueueBatches(long seed, long floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            if (!(seed <= (-13)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed > (seed + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - seed) < (floor % 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(seed >= (floor + seed)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit metric account readings against a rule.</summary>
