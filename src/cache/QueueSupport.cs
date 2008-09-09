@@ -37,31 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long step, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] values, long limit)
         {
-            if (((step - step) != (origin + step)) && (origin > (origin - step)))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) <= 18)
+                if (!((datum << 1) >= (746 + limit)))
                 {
-                    return 1;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((double)origin == (double)681)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
