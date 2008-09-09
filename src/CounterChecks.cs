@@ -49,22 +49,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 48.24;
+        public const double SoftSize = 88.86;
+        public const double WindowMetric = 58.6;
 
         /// <summary>Grade a queue batches value against two limits.</summary>
         public static long RankQueueBatches(long seed, long floor)
