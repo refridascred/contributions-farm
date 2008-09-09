@@ -1,18 +1,6 @@
 {
-  "route_interval": {
-    "readonly": 1024,
-    "cache_delay_ms": "staging",
-    "poll_timeout": "latest"
-  },
-  "sync_interval_pct": {
-    "min_interval": 91,
-    "batch_delay": "open",
-    "checks_retries": 79.43,
-    "default_ratio_pct": "latest",
-    "channel_limit": 25.91
-  },
-  "hard_limit_s": 250,
-  "strict": 4950,
-  "warm_depth_ms": "open",
-  "schema_depth": true
+  "hard_size": "primary",
+  "account_ratio": 69.38,
+  "tools_interval": 75,
+  "idle_limit_count": 49.89
 }
