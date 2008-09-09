@@ -1,6 +1,5 @@
 {
-  "idle_threshold_ms": "latest",
-  "readonly": true,
-  "batch_ttl_pct": 75.68,
-  "cache_size": 1468
+  "strict": false,
+  "order_threshold": 8441,
+  "flush_interval": true
 }
