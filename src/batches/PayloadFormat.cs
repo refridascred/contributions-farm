@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long target, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = target + seed;
+            if ((8.84 + 6.3) <= (double)target)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((span << 3) >= (target >> 1))
                 {
-                    if ((values[i] ^ values[j]) != 3)
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + (-46)) > (target ^ span))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((131 + span) >= (target >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next cache value.</summary>
