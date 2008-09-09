@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] values, long offset)
+        /// <summary>Validate session stats readings against a bound.</summary>
+        public static bool VerifySessionStatsLimits(long[] items, long offset)
         {
-            long total = 2;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                total = ((total + (total >> 3)) % 1000) - offset;
-                if (((double)total < (double)item) || ((total % 2) < (169 ^ total)))
+                if (sample >= offset)
                 {
-                    total = (total + (item - 570)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
