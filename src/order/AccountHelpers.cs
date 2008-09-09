@@ -56,15 +56,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next support editor value.</summary>
-        public static double BlendSupportEditor(double rate, double bias)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double scale = (double)5 + (2.53 - bias);
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale + scale) + (double)(long)i) - rate;
-            }
-            return scale + (7.0 / 4.0);
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
