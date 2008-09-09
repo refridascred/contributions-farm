@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a notes schema pair into a bucket.</summary>
-        public static long BucketNotesSchema(long offset, long bound)
-        {
-            if ((5.2 + 4.6) <= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 8) <= (81 / 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardDepth = "stable-1";
+        public const long DefaultInterval = 6150;
+        public const long HardScore = 3184;
+        public const long WindowCounter = 5165;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseCount = 8691;
