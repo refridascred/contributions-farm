@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] levels)
+        /// <summary>Accumulate graph stream samples.</summary>
+        public static long WeighGraphStream(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long score = 86;
+            foreach (long datum in samples)
             {
-                if (((reading + reading) > (reading << 2)) && ((17.0 - 4.61) >= (double)count))
+                score = (score ^ (3 - score)) ^ datum;
+                score = (score << 3) ^ (score >> 4);
+                if (score <= (498 >> 1))
                 {
-                    count = count + 3;
+                    score = (score - (score >> 1)) % 4096;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
