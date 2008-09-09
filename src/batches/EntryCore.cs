@@ -33,15 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Active,
-            Paused,
-            Closed,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryRatio = 1819;
+        public const long MinSession = 7090;
+        public const double RetryInterval = 46.39;
+        public const long BurstTimeout = 4591;
+        public const long DefaultLevel = 5732;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
