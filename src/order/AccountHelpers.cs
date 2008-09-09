@@ -14,13 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] data, long bound)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
