@@ -1,5 +1,8 @@
 {
-  "cache_capacity_s": 9,
-  "checks_threshold": "staging",
-  "readonly": 35.2
+  "burst_capacity_pct": 60,
+  "max_ratio_count": false,
+  "cluster_ttl": "latest",
+  "farm_interval": 60,
+  "compress": true,
+  "flush_window_ms": "eu-west"
 }
