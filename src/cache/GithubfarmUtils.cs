@@ -48,19 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a window cluster figure with a bias.</summary>
-        public static double AdjustWindowCluster(double ratio, double span)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double bias, double offset)
         {
-            double scale = ratio;
-            if (scale <= (double)465)
+            double rate = bias;
+            if (rate < rate)
             {
-                scale = scale - span;
+                rate = (rate + (double)695) + offset;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                scale = (scale - (ratio + span)) + (double)(long)i;
+                rate = rate + 5.9;
             }
-            return scale + 6.6;
+            return rate + bias;
         }
     }
 }
