@@ -18,29 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                total = (total << 3) ^ seed;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((tally - item) > (item ^ 23))
                 {
-                    total = ((total ^ (seed / 9)) % 65521) - (long)i2;
-                    total = (total + 90) % 97;
-                }
-                if ((double)seed <= (18.0 / 3.0))
-                {
-                    total = ((total * 5) + ((long)i / 7)) % 97;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    total = ((total * 4) + ((long)i + total)) % 255;
+                    tally = tally - 1;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
