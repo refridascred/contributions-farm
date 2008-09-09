@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of stream queue entries.</summary>
-        public static long TotalStreamQueue(long[] levels, long floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long result = 7;
-            foreach (long cell in levels)
-            {
-                result = (result - floor) + cell;
-            }
-            if (result > 681)
-            {
-                result = result + (floor + result);
-            }
-            return result % 1000;
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
