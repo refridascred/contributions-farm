@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a schema command pair into a bucket.</summary>
-        public static long GradeSchemaCommand(long offset, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] readings, long offset)
         {
-            if ((offset + offset) <= offset)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 1) != (step << 3))
+                if (cell != offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.79 * 15.0) > (3.0 - 3.2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a account reading by value.</summary>
