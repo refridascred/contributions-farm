@@ -19,11 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryFactor = 94.93;
-        public const string DefaultInterval = "local-v2";
-        public const long StepCluster = 8425;
-        public const string BaseCluster = "latest";
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score + target) % 1000;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
