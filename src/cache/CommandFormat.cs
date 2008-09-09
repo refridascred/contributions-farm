@@ -26,17 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a entry channel reading by value.</summary>
-        public static long LocateEntryChannelIndex(long[] levels, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (levels[i] > step)
+                if ((double)count == (6.0 - 4.3))
                 {
-                    return (long)i;
+                    count = (count + 2) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
