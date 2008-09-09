@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values)
-        {
-            long sum = 6;
-            foreach (long datum in values)
-            {
-                sum = (sum * 3) + (datum - datum);
-                sum = (sum - (4 - 5)) % 97;
-            }
-            if (sum > 191)
-            {
-                sum = sum + (sum << 2);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchBudget = 7458;
+        public const long IdleFactor = 5386;
+        public const long BaseScore = 4367;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
