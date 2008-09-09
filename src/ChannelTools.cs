@@ -19,12 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepScore = 62.7;
-        public const long MinReport = 5950;
-        public const string StepSpan = "alpha-1";
-        public const long MaxScore = 1381;
-        public const long WindowTimeout = 3518;
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double bias, double bias2)
