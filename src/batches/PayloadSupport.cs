@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long HardScore = 3184;
         public const long WindowCounter = 5165;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum * 3) + step;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "fallback-1";
+        public const string IdleSize = "legacy-edge";
+        public const long LimitFactor = 4228;
+        public const long BurstTimeout = 9257;
 
         /// <summary>Combine report entry values into a single score.</summary>
         public static long WeighReportEntry(long[] samples, long step)
