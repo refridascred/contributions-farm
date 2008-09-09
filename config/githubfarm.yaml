@@ -1,15 +1,6 @@
 # githubfarm settings
-min_depth:
-  audit: 58.2
-  idle_ttl_s:
-    flush_ttl_pct: cached
-    base_size_s: 11.01
-    base_threshold_pct: 1024
-    readonly: open
-    batch_size: 30
-  enabled: latest
-strict: 8935
-flush_ttl_pct: 61
-batch_ratio: false
-compress: 78.99
-cache_ratio_ms: local
+cache_interval_s: 7381
+idle_ratio_pct: true
+metrics_timeout: 1024
+poll_ratio: 30
+poll_ttl: 44.47
