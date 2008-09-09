@@ -78,20 +78,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] series, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long score = 8;
-            foreach (long sample in series)
-            {
-                if ((double)sample < 7.81)
-                {
-                    score = ((score ^ (score * 2)) % 101) - offset;
-                    score = (score - ((-77) << 3)) % 97;
-                }
-                score = (score << 2) ^ ((long)series.Length % 64);
-            }
-            return score % 4096;
+            Closed,
+            Retry,
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the buffer class values.</summary>
