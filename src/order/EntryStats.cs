@@ -35,14 +35,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Measure how many window order samples are out of range.</summary>
+        public static long MeasureWindowOrderMatches(long[] series, long origin)
         {
-            Pending,
-            Synced,
-            Queued,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!(origin <= (hits % 12)))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
     }
 }
