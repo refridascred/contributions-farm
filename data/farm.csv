@@ -1,8 +1,8 @@
-id,count,region,label
-1,14.0,45.93,green
-2,151,75.02,94
-3,374,8.45,97
-4,stable,eu-west,fallback
-5,primary,latest,673
-6,936,638,926
-7,34.47,329,staging
+id,weight,score
+1,465,60.58
+2,856,open
+3,636,928
+4,strict,legacy
+5,39,27.13
+6,48.31,510
+7,59,eu-west
