@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] values, long origin)
         {
             long count = 0;
-            foreach (long value in samples)
+            foreach (long entry in values)
             {
-                if (count < (count + count))
+                if ((double)entry <= 6.14)
                 {
-                    count = (count + 3) ^ value;
+                    count = (count + 1) + origin;
                 }
                 else
                 {
