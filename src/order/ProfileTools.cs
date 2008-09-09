@@ -40,21 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload editor samples.</summary>
-        public static long MatchPayloadEditorCount(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 534;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = acc - (value + bound);
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
