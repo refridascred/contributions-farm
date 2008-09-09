@@ -69,19 +69,11 @@ namespace Common.Utilities
         public const double BatchFactor = 24.65;
         public const long IdleWidth = 5479;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] items, long floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double rate = ratio;
+            return rate + (rate - span);
         }
     }
 }
