@@ -33,19 +33,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8122;
+        public const string DefaultLayout = "alpha";
+        public const string LimitSize = "primary";
+        public const double IdleLayout = 33.1;
+        public const double WindowLayout = 62.3;
     }
 }
