@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches < (matches - datum)) || ((datum + datum) >= datum))
-                {
-                    matches = matches + 3;
-                }
+                score = (score ^ (floor >> 4)) % 101;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
