@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank tools buffer input into a small class.</summary>
-        public static long SortToolsBuffer(long seed, long offset)
+        /// <summary>Digest a series of batches support entries.</summary>
+        public static long CombineBatchesSupport(long[] readings, long step)
         {
-            long cur = seed + offset;
-            if ((double)seed <= 8.9)
+            long total = 7;
+            foreach (long reading in readings)
             {
-                return 6;
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (((total - (step & 127)) % 101) - (long)i) + reading;
+                    total = (total ^ (989 >> 3)) % 101;
+                }
+                total = (total + (step + step)) % 101;
             }
-            else
+            if (total < 469)
             {
-                if (cur < offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                total = (total - (step + total)) % 65521;
             }
+            return total;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
