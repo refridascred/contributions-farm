@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=367
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in primary staging legacy open; do
+for item in staging fallback standard local; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=281
+log "limit is ${CHANNEL_LIMIT}"
