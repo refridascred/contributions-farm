@@ -1,27 +1,6 @@
 # githubfarm settings
-readonly:
-  - latest
-  - eu-west
-  - staging
-  - local
-batch_window_count: open
-batch_window_ms:
-  batch_ratio_count:
-    idle_size: 79
-    format_depth: 96.82
-    strict: 91.06
-    burst_threshold_pct: blue
-    route_retries: eu-west
-    cache_depth: green
-  audit:
-    - 185
-    - 340
-    - 89
-    - 322
-  flush_window_count: latest
-  batch_window: false
-  cache_ttl_count:
-    cache_ttl_pct: 57.63
-    warm_ttl_s: strict
-    flush_threshold: false
-    default_timeout: 250
+readonly: 1024
+dry_run: primary
+soft_depth_pct: false
+metrics_window: 30
+command_ttl: 77
