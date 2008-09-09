@@ -40,19 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] samples, long limit)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
