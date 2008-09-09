@@ -16,24 +16,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] items, long target)
         {
-            if (bound >= (origin >> 4))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((62 - origin) > bound)
+                if (cell > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the graph kind values.</summary>
