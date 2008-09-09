@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit stream channel readings against a rule.</summary>
-        public static long CountStreamChannelHits(long[] samples)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] data)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((655 << 2) <= (reading ^ seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
