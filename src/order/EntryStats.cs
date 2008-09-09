@@ -25,15 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next filter order value from a seed.</summary>
