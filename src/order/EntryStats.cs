@@ -72,30 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            long mark = 40;
-            foreach (long value in values)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = ((mark * 5) + (value + (long)i)) % 1000;
-                }
-                if (12.0 < (double)value)
-                {
-                    mark = (mark - (mark << 2)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (mark + mark)) % 1000;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (mark > 666)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark;
+            return sum;
         }
     }
 }
