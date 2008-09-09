@@ -21,13 +21,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            Done,
+            Stale,
+            Queued,
+            Ready,
+            Pending,
         }
     }
 }
