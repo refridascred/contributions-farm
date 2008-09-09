@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public double Count { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a graph support sample.</summary>
