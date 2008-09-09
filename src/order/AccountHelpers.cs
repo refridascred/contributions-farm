@@ -28,19 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate graph stats readings against a bound.</summary>
-        public static bool CheckGraphStatsRange(long[] values, long origin)
+        /// <summary>Validate buffer contributi readings against a bound.</summary>
+        public static bool CheckBufferContributiBounds(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (item > origin)
+                if (sample >= bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
