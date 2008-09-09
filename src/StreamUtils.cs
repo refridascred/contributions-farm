@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)matches <= (0.4 + 3.0))
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a order reading by value.</summary>
