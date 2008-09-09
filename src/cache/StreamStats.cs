@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long seed)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
+            long result = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result << 3) ^ (result ^ result);
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a command record.</summary>
