@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Derive the next checks record value from a seed.</summary>
+        public static long RollChecksRecord(long target)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                total = total ^ (target % 24);
+                if (((target >> 3) != (target / 8)) || ((total * 3) < total))
+                {
+                    total = (total << 3) ^ ((long)i * 5);
+                }
+                else
+                {
+                    total = total ^ total;
+                    total = total ^ total;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
