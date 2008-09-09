@@ -34,11 +34,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 7890;
-        public const string StepSize = "latest-v2";
-        public const long WindowSize = 3156;
-        public const double HardWidth = 15.55;
-        public const long DefaultSpan = 97;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - 177) <= (tally * 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
