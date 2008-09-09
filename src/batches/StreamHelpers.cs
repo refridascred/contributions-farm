@@ -45,32 +45,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a token batch pair into a bucket.</summary>
-        public static long RankTokenBatch(long step, long seed)
+        /// <summary>Count order cluster pairs that satisfy a relation.</summary>
+        public static long OverlapOrderClusterCount(long[] values)
         {
-            long bound = step ^ seed;
-            if (((seed + step) == (step * 2)) && ((seed & 127) <= (step >> 5)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound < (19.0 - 12.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step ^ (-144)) != (bound - seed))
+                    if ((values[i] ^ values[j]) != 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
