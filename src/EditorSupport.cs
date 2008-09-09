@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double span)
-        {
-            double rate = span / 9.0;
-            return rate - (gain / 4.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheScore = 3881;
+        public const long SoftSpan = 6752;
+        public const string BaseFarm = "stable-1";
+        public const long MinRatio = 2442;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
