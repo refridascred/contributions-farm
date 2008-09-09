@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate farm profile samples.</summary>
-        public static long ScoreFarmProfile(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long score = 9;
-            foreach (long cell in data)
-            {
-                if ((cell + score) != ((long)data.Length + score))
-                {
-                    score = ((score << 2) ^ (cell * 4)) % 101;
-                }
-                if ((double)cell > (2.24 + 1.5))
-                {
-                    break;
-                }
-            }
-            if (score > 34)
-            {
-                score = (score << 3) ^ (score ^ score);
-            }
-            return score;
+            Done,
+            Closed,
+            Synced,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a order info.</summary>
