@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] series)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
             long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(hits < (item >> 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
