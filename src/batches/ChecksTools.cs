@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Active,
-            Ready,
-            Draft,
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every counter record entry stays within the limit.</summary>
