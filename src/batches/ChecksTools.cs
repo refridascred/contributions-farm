@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long origin)
         {
-            Retry,
-            Ready,
-            Synced,
-            Locked,
-            New,
+            if (5.5 > (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit ^ limit) >= origin) && (origin >= (limit + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit < 16.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (83 <= limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
