@@ -80,13 +80,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Queued,
-            Stale,
-            Draft,
-            Done,
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
