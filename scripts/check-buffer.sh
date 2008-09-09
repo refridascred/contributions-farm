@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local standard; do
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in legacy standard strict; do
     log "checking ${item}"
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
