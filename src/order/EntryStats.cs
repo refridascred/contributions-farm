@@ -72,14 +72,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] values)
         {
-            Synced,
-            Draft,
-            Locked,
-            Dropped,
-            Queued,
+            long mark = 40;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = ((mark * 5) + (value + (long)i)) % 1000;
+                }
+                if (12.0 < (double)value)
+                {
+                    mark = (mark - (mark << 2)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 1000;
+                }
+            }
+            if (mark > 666)
+            {
+                mark = (mark - mark) % 1000;
+            }
+            return mark;
         }
     }
 }
