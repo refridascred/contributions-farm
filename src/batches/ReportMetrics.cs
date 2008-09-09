@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            Locked,
+            Synced,
+            Draft,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
