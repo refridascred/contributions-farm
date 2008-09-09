@@ -1,5 +1,5 @@
 {
-  "strict": false,
-  "order_threshold": 8441,
-  "flush_interval": true
+  "report_retries": false,
+  "hard_limit_count": 4489,
+  "hard_ttl": ["primary", "edge", "cached", "staging"]
 }
