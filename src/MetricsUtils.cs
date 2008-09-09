@@ -21,11 +21,25 @@ namespace Common.Utilities
         public const double BatchToken = 47.48;
         public const double BaseToken = 3.44;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Roll a account notes counter forward.</summary>
+        public static long IterateAccountNotes(long seed)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = mark - (38 - mark);
+                if ((seed <= (mark - mark)) && ((long)i <= 958))
+                {
+                    mark = (mark ^ (seed + (long)i)) % 255;
+                }
+                else
+                {
+                    mark = (mark + ((long)i * 4)) % 65521;
+                }
+                mark = ((mark << 2) ^ (seed - seed)) % 65521;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Match up command samples.</summary>
