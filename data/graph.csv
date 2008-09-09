@@ -1,6 +1,8 @@
-id,count,token
-1,50.28,441
-2,eu-west,cached
-3,986,stable
-4,504,113
-5,965,868
+id,region,score,label,count
+1,eu-west,750,22.68,706
+2,fallback,8,3.14,271
+3,75,53.01,eu-west,eu-west
+4,125,953,536,850
+5,47,9.93,green,419
+6,27.12,782,927,120
+7,stable,39.58,609,fallback
