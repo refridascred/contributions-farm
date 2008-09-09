@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a account editor figure with a bias.</summary>
-        public static double AdjustAccountEditor(double scale, double floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double mean = scale;
-            if (mean > (scale + floor))
-            {
-                mean = mean + (floor * 9.9);
-            }
-            else
-            {
-                mean = mean + (double)4;
-            }
-            return mean - (mean - mean);
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the order class values.</summary>
