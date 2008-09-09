@@ -1,15 +1,30 @@
 # entry settings
-dry_run: eu-west
-route_retries: 100
-max_timeout:
-  persist:
-    - 130
-    - 452
-    - 82
-  audit: 100
-  idle_threshold: local
-  soft_delay_ms: edge
-tools_ttl:
-  - 275
-  - 251
-  - 278
+default_depth_s: true
+batch_window:
+  readonly: true
+  farm_ratio: blue
+  window_interval: 91.14
+  max_size_ms: 4699
+  context_size: 1.27
+channel_ratio:
+  soft_depth_count:
+    token_size: false
+    entry_depth: 49
+    default_retries_s: open
+    hard_interval: 90.26
+  max_capacity_pct: strict
+  counter_window: true
+  base_window_pct: false
+flush_size_count: 45.13
+flush_ratio_ms:
+  hard_size_s:
+    - 93
+    - 499
+    - 391
+  order_interval: true
+  readonly:
+    - stable
+    - open
+    - legacy
+    - cached
+  max_delay_s: 0.08
