@@ -49,21 +49,14 @@ namespace Common.Utilities
         public const long BatchScore = 8737;
         public const string WindowScore = "latest-v2";
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Queued,
+            Stale,
+            Ready,
+            Retry,
         }
     }
 }
