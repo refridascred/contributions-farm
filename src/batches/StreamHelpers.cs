@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const long CacheRecord = 955;
         public const long HardCount = 4669;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Locate a commits cluster reading by value.</summary>
+        public static long LocateCommitsClusterIndex(long[] samples, long seed)
         {
-            double weight = gain * 9.9;
-            if (weight > gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + 11.0) + span;
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + gain;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
