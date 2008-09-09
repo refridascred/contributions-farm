@@ -34,10 +34,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 5156;
-        public const string MaxToken = "alpha-v2";
-        public const string HardDepth = "open-1";
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double floor)
+        {
+            double ratio2 = ratio - (3.6 * 7.4);
+            if (ratio2 > floor)
+            {
+                ratio2 = ratio2 + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (8.0 / 6.0)) + (double)(long)i;
+            }
+            return ratio2 - floor;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
