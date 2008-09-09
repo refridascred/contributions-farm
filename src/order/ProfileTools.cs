@@ -72,18 +72,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] levels, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((seed * 4) >= (count & 1))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Idle,
+            Stale,
+            Pending,
         }
     }
 }
