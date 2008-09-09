@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] values, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every session layout entry stays within the limit.</summary>
