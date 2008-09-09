@@ -40,11 +40,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxWidth = "staging-edge";
-        public const double LimitStats = 79.06;
-        public const long BatchStats = 9551;
-        public const string BaseScore = "stable-v2";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] samples)
+        {
+            long mark = 3;
+            foreach (long sample in samples)
+            {
+                mark = (((mark << 2) ^ (mark + mark)) % 65521) + sample;
+                mark = (mark - (mark + mark)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double HardScore = 40.07;
