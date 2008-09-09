@@ -76,18 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] items)
+        /// <summary>Count the session already entries that pass the check.</summary>
+        public static long CountSessionAlreadyOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)matches > 9.53)
+                if ((sample & 255) > hits)
                 {
-                    matches = (matches + 1) ^ datum;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
