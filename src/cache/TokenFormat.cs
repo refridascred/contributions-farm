@@ -37,26 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings, long bound)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long acc = 584;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length * 2) > (acc ^ 90))
-                {
-                    acc = (acc * 4) + (entry & 255);
-                }
-                else
-                {
-                    acc = (acc ^ (bound + 909)) % 65521;
-                }
-            }
-            if (acc > 464)
-            {
-                acc = ((acc << 2) ^ (bound / 7)) % 65521;
-            }
-            return acc;
+            Draft,
+            Locked,
+            Closed,
+            Ready,
+            Paused,
         }
     }
 }
