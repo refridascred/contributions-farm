@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next queue session value.</summary>
-        public static double SmoothQueueSession(double gain, double floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] values, long seed)
         {
-            double mean = gain * 4.7;
-            if (mean <= gain)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean - (mean * 5.8)) - floor;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (gain + gain);
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
