@@ -39,26 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long score = 455;
-            foreach (long value in series)
-            {
-                if (score > (score + score))
-                {
-                    score = ((score << 3) ^ (value / 4)) % 255;
-                }
-                else
-                {
-                    score = score ^ ((-729) - value);
-                }
-            }
-            if (score < (-34))
-            {
-                score = score ^ (score - score);
-            }
-            return score;
+            Idle,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Blend two token context measurements.</summary>
