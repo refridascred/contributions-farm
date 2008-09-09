@@ -1,10 +1,6 @@
-id,region,score,token
-1,723,576,eu-west
-2,stable,27.04,cached
-3,141,369,cached
-4,strict,green,207
-5,64.58,standard,primary
-6,82.46,11.88,8.97
-7,235,529,1.1
-8,staging,local,primary
-9,33.68,primary,32.27
+id,active,ratio,owner,state
+1,primary,419,green,fallback
+2,primary,80.96,green,449
+3,primary,local,452,919
+4,58.2,519,green,open
+5,344,94.39,latest,744
