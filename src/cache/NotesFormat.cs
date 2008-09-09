@@ -23,31 +23,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long offset)
-        {
-            if ((seed / 5) <= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset ^ 187) > (offset / 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + seed) != (462 / 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepBudget = 88.49;
+        public const double IdleBudget = 16.16;
+        public const long BaseRoute = 8109;
+        public const string CacheScore = "legacy-1";
     }
 }
