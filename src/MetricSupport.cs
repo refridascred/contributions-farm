@@ -13,17 +13,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] values, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long step, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((step + origin) >= (origin - origin))
             {
-                if ((values[i] <= origin) && ((values[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((origin / 3) >= origin)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((step >> 1) < (step + 0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin * 2) <= (origin + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
