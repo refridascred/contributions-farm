@@ -59,28 +59,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] readings, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items)
         {
-            long score = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (!((double)27 < (double)sample))
+                if (((count + cell) >= cell) || ((764 - count) >= (cell + count)))
                 {
-                    score = score ^ 537;
+                    count = count + 1;
                 }
                 else
                 {
-                    score = ((score * 5) + ((-63) - (long)readings.Length)) % 65521;
-                    score = (score ^ seed) % 97;
-                }
-                score = score ^ score;
-                if ((sample + (-713)) < sample)
-                {
-                    score = score + (score - score);
+                    count = count - 1;
                 }
             }
-            return score % 65521;
+            return count;
         }
     }
 }
