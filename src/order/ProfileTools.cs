@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data)
         {
-            Draft,
-            Retry,
-            Synced,
+            long score = 36;
+            foreach (long cell in data)
+            {
+                score = (score ^ (44 * 5)) - cell;
+            }
+            return score;
         }
 
         /// <summary>Grade a support profile value against two limits.</summary>
