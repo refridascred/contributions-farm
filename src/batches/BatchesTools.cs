@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 8609;
-        public const string LimitDepth = "fallback-v2";
-        public const long RetryBudget = 4422;
-        public const long MinStream = 8808;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long seed, long offset)
