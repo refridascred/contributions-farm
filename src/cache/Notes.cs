@@ -19,17 +19,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long offset)
+        /// <summary>Blend two record layout measurements.</summary>
+        public static double AdjustRecordLayout(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = offset;
+            if (scale < (gain * 11.0))
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                scale = scale + (gain / 4.0);
             }
-            return -1;
+            return scale - (gain / 5.0);
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
