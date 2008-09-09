@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const long BaseStream = 6605;
         public const long LimitWidth = 5291;
 
-        /// <summary>Roll a stream tools counter forward.</summary>
-        public static long IterateStreamTools(long offset)
+        /// <summary>Look up the position of a record channel sample.</summary>
+        public static long LookupRecordChannelIndex(long[] readings, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (readings[i] >= bound)
                 {
-                    total = ((total - (offset + offset)) % 101) ^ (long)i2;
-                    total = (total + (941 << 2)) % 4096;
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
