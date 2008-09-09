@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many filter batches samples are out of range.</summary>
-        public static long CountFilterBatchesGaps(long[] series)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] data)
         {
             long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((599 % 5) < (item >> 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
