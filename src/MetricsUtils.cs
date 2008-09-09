@@ -16,11 +16,22 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            long result = -75;
+            foreach (long sample in data)
+            {
+                if (15.0 <= (double)result)
+                {
+                    result = ((result << 3) ^ result) % 1000;
+                }
+                else
+                {
+                    result = result - sample;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
