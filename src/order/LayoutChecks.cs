@@ -80,9 +80,38 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowLevel = "legacy-v2";
-        public const long IdleCount = 8438;
-        public const double SoftDepth = 55.05;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long seed, long step)
+        {
+            if ((seed * 5) >= (seed >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (18.0 + 17.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - step) > (98 + 592))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) >= (step / 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
