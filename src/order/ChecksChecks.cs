@@ -31,11 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double span)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double load = span;
-            return (load - 7.0) + gain;
+            Retry,
+            Failed,
+            New,
+            Stale,
         }
     }
 }
