@@ -21,14 +21,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] data, long bound)
         {
-            Paused,
-            Pending,
-            Closed,
-            Dropped,
-            Queued,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
