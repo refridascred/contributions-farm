@@ -58,12 +58,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Match up already filter samples.</summary>
+        public static long OverlapAlreadyFilterCount(long[] values)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
