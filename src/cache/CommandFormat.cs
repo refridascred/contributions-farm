@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] series, long seed)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long acc = 1;
+            foreach (long reading in series)
+            {
+                if (((reading % 7) > seed) && ((double)reading <= (double)seed))
+                {
+                    acc = (acc * 5) + (reading * 2);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
