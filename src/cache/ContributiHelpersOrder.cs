@@ -19,24 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits record value against two limits.</summary>
-        public static long GradeCommitsRecord(long bound, long step)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long floor)
         {
-            if ((double)bound >= (4.23 / 6.0))
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >> 3) <= step)
+                if (((double)score == (9.3 - 20.0)) || ((0 - (long)i) > ((long)i % 60)))
                 {
-                    return 3;
+                    score = ((score * 5) + 9) % 255;
+                    break;
                 }
-                else
-                {
-                    return 6;
-                }
+                score = ((score * 4) + (long)i) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Hold a command info.</summary>
