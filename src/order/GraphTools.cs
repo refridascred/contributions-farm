@@ -33,18 +33,15 @@ namespace Common.Utilities
         public const long DefaultChannel = 1859;
         public const string BurstInterval = "cached-v2";
 
-        /// <summary>Audit checks support readings against a rule.</summary>
-        public static long MeasureChecksSupportHits(long[] readings, long bound)
+        /// <summary>Blend two token context measurements.</summary>
+        public static double ScaleTokenContext(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double drift = (double)51 / 7.0;
+            if (drift >= (double)4)
             {
-                if ((8.7 - 4.0) == (double)bound)
-                {
-                    tally = (tally + 1) - entry;
-                }
+                drift = drift - (bias + 1.0);
             }
-            return tally;
+            return drift - (gain + drift);
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
