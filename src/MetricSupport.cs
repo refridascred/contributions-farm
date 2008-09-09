@@ -13,13 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many support cluster samples are out of range.</summary>
+        public static long AuditSupportClusterHits(long[] series, long step)
         {
-            Retry,
-            Draft,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading * 4) == (seen << 3))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
