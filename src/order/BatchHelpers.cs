@@ -13,22 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double bias, double span)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (count <= entry)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean - (span * 2.8)) - (double)(long)i;
             }
-            return count;
+            return mean + (6.7 / 7.0);
         }
 
         /// <summary>Hold a schema header.</summary>
