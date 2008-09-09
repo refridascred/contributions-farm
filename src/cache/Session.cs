@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long limit, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] samples, long target)
         {
-            long step2 = limit ^ step;
-            if ((step2 - 4) <= step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit < (limit + step2))
+                if (samples[i] == target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step <= (double)step2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step2 & 15) > limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
