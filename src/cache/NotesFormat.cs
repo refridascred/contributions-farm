@@ -21,19 +21,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values)
         {
-            long mix = 272;
-            foreach (long item in samples)
+            long mix = 908;
+            foreach (long value in values)
             {
-                if ((item & 3) != (item - origin))
-                {
-                    mix = (mix + (mix & 7)) % 65521;
-                }
-                mix = mix - (mix - origin);
+                mix = (mix * 4) + value;
             }
-            return mix % 65521;
+            if (mix > 5)
+            {
+                mix = ((mix * 2) + (mix >> 1)) % 255;
+            }
+            return mix % 1000;
         }
     }
 }
