@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheRatio = "standard-v2";
-        public const double BurstWidth = 73.3;
-        public const long WindowBatch = 7553;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Pending,
+            Queued,
+            Stale,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double ProjectSession(double bias, double span)
