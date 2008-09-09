@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (hits > 58)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 3251;
+        public const long MinAlready = 6094;
+        public const string MaxTimeout = "primary-edge";
+        public const long WindowSize = 4605;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] readings, long bound)
