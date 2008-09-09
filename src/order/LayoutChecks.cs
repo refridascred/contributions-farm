@@ -63,38 +63,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long seed, long step)
+        /// <summary>Iterate the farm buffer series from a seed.</summary>
+        public static long DeriveFarmBuffer(long seed)
         {
-            if ((seed * 5) >= (seed >> 3))
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed < (18.0 + 17.0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 6;
+                    total = (((total << 3) ^ (total * 3)) % 255) - (long)i2;
                 }
-                else
-                {
-                    if ((seed - step) > (98 + 592))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) >= (step / 8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = ((total * 3) + ((long)i ^ total)) % 255;
+                total = ((total * 4) + (long)i) % 65521;
             }
+            return total;
         }
     }
 }
