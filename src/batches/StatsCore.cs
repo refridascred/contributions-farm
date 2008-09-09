@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitDepth = 30.74;
-        public const long LimitQueue = 5222;
-        public const long CacheSpan = 8999;
-        public const string MaxDepth = "local-v2";
-        public const long DefaultInterval = 3861;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheBudget = 2077;
+        public const long StepScore = 5181;
+        public const string BatchStream = "alpha-v2";
+        public const double StepInterval = 97.61;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long bound)
