@@ -1,11 +1,19 @@
 {
-  "default_retries_count": 41.23,
-  "flush_size_ms": "staging",
-  "dry_run": true,
-  "retry_depth_ms": {
-    "default_threshold": "standard",
-    "warm_limit_s": 500,
-    "persist": "legacy"
+  "min_ttl": {
+    "burst_interval": 1591,
+    "buffer_depth": 70.29,
+    "sync_capacity_ms": "standard",
+    "min_retries": {
+      "min_size_pct": 0.22,
+      "flush_capacity": "green",
+      "entry_threshold": "primary",
+      "retry_retries_s": true
+    },
+    "flush_window_ms": true,
+    "token_capacity": "green"
   },
-  "persist": 42
+  "farm_retries": 35.32,
+  "warm_threshold_count": 98,
+  "batch_threshold_ms": 93,
+  "readonly": [481, 205, 298, 496]
 }
