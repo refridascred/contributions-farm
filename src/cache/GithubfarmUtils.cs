@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 4;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (step < (step * 3))
                 {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum ^ (sum * 5)) - reading;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the order class values.</summary>
