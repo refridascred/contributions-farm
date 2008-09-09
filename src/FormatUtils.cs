@@ -36,11 +36,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
