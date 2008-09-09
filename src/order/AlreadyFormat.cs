@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
