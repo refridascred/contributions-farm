@@ -17,25 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double ratio, double span)
         {
-            long diff = origin + target;
-            if ((diff + diff) >= (target / 4))
+            double gain = (ratio + ratio) + (double)79;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                gain = ((gain + 12.0) + (double)(long)i) + span;
             }
-            else
-            {
-                if (((diff & 7) > (target + target)) || ((double)target >= (1.0 - 5.9)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return gain + (gain + gain);
         }
 
         /// <summary>Locate a graph notes reading by value.</summary>
