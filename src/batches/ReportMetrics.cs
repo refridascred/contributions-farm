@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((double)reading < (5.2 * 6.81)) && (((long)series.Length + 351) < (reading / 6)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 46.18;
+        public const long LimitScore = 4422;
+        public const double LimitSpan = 61.15;
+        public const string LimitDepth = "stable";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardBudget = 7391;
