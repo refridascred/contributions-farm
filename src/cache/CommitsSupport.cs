@@ -58,11 +58,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultDepth = 481;
-        public const long CacheMetric = 8168;
-        public const long BatchMetric = 4270;
-        public const long BurstFactor = 2790;
-        public const long BaseMetric = 7955;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] readings, long step)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
