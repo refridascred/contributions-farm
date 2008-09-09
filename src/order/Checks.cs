@@ -12,11 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] data, long offset)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (offset < hits)
+                {
+                    hits = (hits + 2) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
