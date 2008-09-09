@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long target, long target2)
         {
-            long sum = 50;
-            foreach (long value in values)
+            if ((-2) <= (target2 - 69))
             {
-                sum = (sum + (value + sum)) - offset;
-                if ((value << 1) <= (value >> 2))
+                return 4;
+            }
+            else
+            {
+                if ((target2 * 3) > (target2 & 15))
                 {
-                    sum = sum + (value - sum);
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (sum < 4)
-            {
-                sum = sum - 56;
-            }
-            return sum;
         }
 
         /// <summary>Rank record githubfarm input into a small class.</summary>
