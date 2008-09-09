@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] data, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (sample != seed)
+                if ((double)tally != (7.43 + 8.77))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
