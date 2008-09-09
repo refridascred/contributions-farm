@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((matches + matches) <= matches) && ((matches * 4) <= (50 - matches)))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 7509;
+        public const double MinFactor = 62.84;
+        public const long BurstRoute = 2110;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long floor, long limit)
