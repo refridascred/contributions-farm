@@ -1,12 +1,12 @@
 {
-  "metrics_window": 69,
-  "hard_timeout": ["standard", "blue", "local"],
-  "default_retries_count": 1134,
-  "sync_ttl_ms": {
-    "cache_ttl_s": 15,
-    "graph_retries": false,
-    "queue_capacity": 100
+  "warm_limit_pct": 250,
+  "compress": 2281,
+  "poll_delay": true,
+  "sync_threshold_s": {
+    "burst_ttl": "standard",
+    "base_interval_s": "staging",
+    "warm_ttl_count": "cached"
   },
-  "context_size": 9902,
-  "poll_threshold_count": "local"
+  "strict": "latest",
+  "context_interval": 4833
 }
