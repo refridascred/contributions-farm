@@ -52,22 +52,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long total = 877;
+            foreach (long entry in samples)
             {
-                if ((cell * 4) == (matches % 97))
+                if ((18.0 + 1.74) <= (double)entry)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = total ^ (7 + 37);
                 }
             }
-            return matches;
+            if (total > 4)
+            {
+                total = (total - (total / 4)) % 101;
+            }
+            return total;
         }
     }
 }
