@@ -16,14 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Check that every checks editor entry stays within the limit.</summary>
+        public static bool ValidateChecksEditorLimits(long[] series, long target)
         {
-            Retry,
-            Active,
-            Synced,
-            Idle,
-            Pending,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
