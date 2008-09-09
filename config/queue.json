@@ -1,12 +1,8 @@
 {
-  "compress": "fallback",
-  "hard_depth": 83.81,
-  "readonly": 7667,
-  "max_interval_s": {
-    "warm_threshold": 31.38,
-    "hard_window": 6017,
-    "metrics_delay": ["fallback", "legacy", "primary", "latest"]
-  },
-  "format_limit": 55.02,
-  "route_timeout": "eu-west"
+  "warm_limit_count": [255, 21],
+  "support_ratio": ["latest", "blue"],
+  "batch_interval_ms": 61.66,
+  "min_delay_ms": 1866,
+  "default_ttl_ms": 1788,
+  "batch_limit_s": "edge"
 }
