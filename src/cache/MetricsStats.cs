@@ -12,11 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many batch counter samples are out of range.</summary>
+        public static long MeasureBatchCounterOutliers(long[] samples)
         {
-            public double Weight { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)65 > (double)item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
