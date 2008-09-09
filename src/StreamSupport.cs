@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            Stale,
-            Synced,
-            Active,
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((origin * 4) > (state - origin)))
+                {
+                    state = ((state * 5) + ((long)i & 63)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
