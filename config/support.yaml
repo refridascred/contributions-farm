@@ -1,19 +1,4 @@
 # support settings
-dry_run:
-  - open
-  - strict
-  - open
-compress: 74
-idle_depth:
-  audit: 60
-  sync_retries_ms:
-    max_ttl_count:
-      - stable
-      - blue
-    buffer_window: 26
-    compress: 40
-  burst_capacity_count: 54.15
-  burst_depth: open
-max_ttl_pct: 4214
-max_depth_s: blue
-persist: staging
+default_timeout_s: 85.9
+min_window: true
+hard_interval_count: 3281
