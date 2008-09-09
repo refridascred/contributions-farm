@@ -27,14 +27,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long seed, long offset)
         {
-            Synced,
-            Idle,
-            Pending,
-            Queued,
-            Failed,
+            long edge = seed ^ offset;
+            if ((edge % 12) > (edge ^ offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((edge >> 2) > 1)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed < (seed - edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (12.0 * 18.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
