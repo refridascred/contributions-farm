@@ -65,18 +65,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] items, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading + count) < 30)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) - target;
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
