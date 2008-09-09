@@ -20,19 +20,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] values, long limit)
         {
-            long acc = 700;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                acc = ((acc - (3 << 3)) % 97) ^ datum;
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc < 0)
-            {
-                acc = (acc ^ 251) % 4096;
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
