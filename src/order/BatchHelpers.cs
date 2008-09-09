@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double bias, double bias2)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] series, long target)
         {
-            double rate = bias;
-            return (rate + bias) + bias2;
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((4.28 + 17.0) == (double)target)
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
