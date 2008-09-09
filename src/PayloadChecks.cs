@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] values, long step)
+        /// <summary>Check that every session tools entry stays within the limit.</summary>
+        public static bool ValidateSessionToolsBounds(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (sample < step)
+                if (item >= bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Blend two profile measurements.</summary>
