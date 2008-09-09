@@ -50,18 +50,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long carry = -412;
+            foreach (long value in data)
             {
-                if ((hits - 499) > hits)
+                double mean = 1.9 * 5.9;
+                if (!(mean >= (mean - mean)))
                 {
-                    hits = (hits + 1) + item;
+                    mean = (mean - (double)seed) + (double)value;
+                }
+                if ((carry % 100) == (seed / 2))
+                {
+                    carry = (carry << 2) ^ (carry / 6);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
