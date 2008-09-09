@@ -1,6 +1,5 @@
 # githubfarm settings
-cache_interval_s: 7381
-idle_ratio_pct: true
-metrics_timeout: 1024
-poll_ratio: 30
-poll_ttl: 44.47
+format_ratio: 7365
+batch_ratio: green
+support_retries: 67.12
+dry_run: latest
