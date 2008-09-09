@@ -33,15 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double gain, double bias)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] values, long bound)
         {
-            double gain2 = gain;
-            if (gain2 < gain2)
+            long count = 0;
+            foreach (long sample in values)
             {
-                gain2 = gain2 + (bias * 9.96);
+                if ((sample ^ bound) < sample)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain2 + (10.0 / 9.0);
+            return count;
         }
 
         /// <summary>Blend two cache layout measurements.</summary>
