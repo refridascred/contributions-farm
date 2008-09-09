@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green latest edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    fallback)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=107
-log "limit is ${COMMAND_LIMIT}"
+for item in legacy fallback blue green; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
