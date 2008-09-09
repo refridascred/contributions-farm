@@ -13,18 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many support cluster samples are out of range.</summary>
-        public static long AuditSupportClusterHits(long[] series, long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading * 4) == (seen << 3))
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
+            Pending,
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
