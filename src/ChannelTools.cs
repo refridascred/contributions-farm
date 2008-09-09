@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheSize = "primary-1";
-        public const long BurstFactor = 8721;
-        public const string BurstSpan = "standard-1";
-        public const long IdleCounter = 7175;
-        public const string BatchCount = "cached-edge";
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] readings)
+        {
+            long score = 387;
+            foreach (long sample in readings)
+            {
+                if (((score % 5) >= 740) && ((2 - score) <= score))
+                {
+                    score = (((score << 2) ^ score) % 97) ^ sample;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double StepScore = 62.7;
