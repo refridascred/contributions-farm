@@ -13,17 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a githubfarm context reading by value.</summary>
-        public static long LocateGithubfarmContextIndex(long[] levels, long target)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = 5.79;
+            if (gain2 > (double)8)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + (6.0 - span)) - gain;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 + (double)(-7);
+            }
+            return gain2 - (9.81 * 19.0);
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
