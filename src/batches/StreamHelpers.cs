@@ -32,13 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] samples)
+        /// <summary>Audit payload session readings against a rule.</summary>
+        public static long TallyPayloadSessionGaps(long[] items)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long entry in items)
             {
-                if (((tally & 31) > (value + tally)) && (((value / 7) > tally) || ((double)value < (0.45 + 2.85))))
+                if (((entry + 6) < (286 + entry)) || (entry < (entry + tally)))
                 {
                     tally = tally + 3;
                 }
