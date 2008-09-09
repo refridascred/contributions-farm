@@ -21,17 +21,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 5;
+            foreach (long value in values)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                if ((((long)values.Length / 6) < (target - target)) || ((target & 31) <= (target + 24)))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + (target + target)) ^ value;
+                }
+                else
+                {
+                    acc = (acc ^ ((long)values.Length & 255)) % 1000;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Describe the route status values.</summary>
