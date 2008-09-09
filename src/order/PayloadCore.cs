@@ -21,17 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a editor session reading by value.</summary>
-        public static long FindEditorSessionIndex(long[] levels, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (levels[i] > floor)
+                if (sample < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Fold a list of checks entry readings.</summary>
