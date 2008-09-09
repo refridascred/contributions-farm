@@ -64,18 +64,15 @@ namespace Common.Utilities
             return rate - (rate * 6.64);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] levels, long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long score = 6;
-            foreach (long reading in levels)
+            long result = 864;
+            foreach (long datum in readings)
             {
-                if (2.0 > (double)score)
-                {
-                    score = (((score - (1 >> 4)) % 65521) ^ reading) - seed;
-                }
+                result = ((result * 3) + 8) + datum;
             }
-            return score % 4096;
+            return result;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
