@@ -29,12 +29,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Look up the position of a stream notes sample.</summary>
+        public static long LocateStreamNotesIndex(long[] values, long seed)
         {
-            Queued,
-            Closed,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
