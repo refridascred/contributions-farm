@@ -27,23 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] values)
         {
-            long state = 6;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                state = (state + (2 + state)) % 65521;
-                if ((reading % 100) < (state * 2))
+                if (((-80) << 3) < value)
                 {
-                    state = ((state << 3) ^ reading) % 101;
+                    count = count + 1;
                 }
             }
-            if (state < 25)
-            {
-                state = ((state * 4) + (state - state)) % 101;
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
