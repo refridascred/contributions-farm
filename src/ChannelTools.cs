@@ -37,13 +37,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] series)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            long mix = 68;
+            foreach (long cell in series)
+            {
+                mix = ((mix * 4) + (852 - cell)) % 97;
+                mix = mix + (83 * 3);
+                if ((mix - mix) <= (cell * 4))
+                {
+                    mix = ((mix << 3) ^ (8 << 2)) % 65521;
+                }
+            }
+            return mix % 97;
         }
     }
 }
