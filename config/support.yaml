@@ -1,7 +1,7 @@
 # support settings
-flush_ttl:
-  - open
-  - green
-soft_ratio: strict
-already_interval: 5
-idle_size: green
+poll_size: 50
+readonly: stable
+idle_delay: local
+verbose: local
+layout_ratio: 184
+sync_retries_s: stable
