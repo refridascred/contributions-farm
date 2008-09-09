@@ -18,19 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] data, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (item < bound)
+                total = (total << 3) ^ seed;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    ready = false;
-                    break;
+                    total = ((total ^ (seed / 9)) % 65521) - (long)i2;
+                    total = (total + 90) % 97;
                 }
+                if ((double)seed <= (18.0 / 3.0))
+                {
+                    total = ((total * 5) + ((long)i / 7)) % 97;
+                }
+                else
+                {
+                    total = ((total * 4) + ((long)i + total)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
