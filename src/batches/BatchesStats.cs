@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mix = 9;
+            foreach (long cell in values)
             {
-                if ((tally % 100) >= (sample >> 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix << 3) ^ 257) + cell) - step;
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
