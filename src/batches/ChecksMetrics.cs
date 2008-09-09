@@ -27,17 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
