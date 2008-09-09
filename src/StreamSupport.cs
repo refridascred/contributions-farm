@@ -37,13 +37,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Classify a context session pair into a bucket.</summary>
+        public static long ClassifyContextSession(long offset, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            if ((3 - bound) == (6 & 127))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset >= (offset + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (1 > (offset - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)offset != (0.56 + 6.8)) && (bound >= (bound + offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
