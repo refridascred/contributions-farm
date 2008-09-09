@@ -1,11 +1,11 @@
 # Command notes
 
-The batch module keeps schema values in sync with the support cache.
-Each githubfarm is validated before it reaches the notes queue.
+Keep cache and filter names short and lowercase.
+Run the session check before changing any tools limits.
+When a batch fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new entry fields
-- Review payload limits each release
-- Validate queue input early
-- Keep cluster values small
+- Review farm limits each release
+- Prefer checks defaults
+- Validate githubfarm input early
