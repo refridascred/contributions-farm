@@ -25,12 +25,38 @@ namespace Common.Utilities
         public const long SoftCommits = 7117;
         public const long MaxCommits = 1756;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long seed, long limit)
         {
-            Dropped,
-            Ready,
-            Retry,
+            if ((seed % 16) != (limit % 24))
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-68) / 4) > (5 + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit > (limit & 127))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
