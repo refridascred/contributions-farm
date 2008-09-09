@@ -28,18 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] samples, long bound)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long acc = 27;
-            foreach (long datum in samples)
-            {
-                if (((2.12 - 1.4) <= (double)datum) && ((datum << 2) >= (bound / 4)))
-                {
-                    acc = (acc - bound) % 65521;
-                }
-            }
-            return acc;
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
