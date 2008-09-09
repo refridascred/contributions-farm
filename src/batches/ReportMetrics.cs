@@ -31,38 +31,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a context support pair into a bucket.</summary>
-        public static long BucketContextSupport(long seed, long step)
-        {
-            if ((step < seed) && ((seed << 2) <= (49 ^ (-5))))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed > (step + step)) && ((step * 3) < (step >> 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step % 16) >= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((seed - 346) == (678 + seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheCount = 9751;
+        public const double BaseLevel = 39.42;
+        public const long HardWidth = 3518;
     }
 }
