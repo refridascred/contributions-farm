@@ -1,11 +1,10 @@
 {
-  "default_timeout_pct": {
-    "retry_threshold": ["fallback", "staging"],
-    "profile_delay": [82, 185, 398],
-    "retry_ratio_pct": 97,
-    "flush_delay": ["stable", "green"]
-  },
-  "enabled": ["stable", "strict"],
-  "queue_timeout": "standard",
-  "retry_ratio": [340, 277, 309, 18]
+  "poll_threshold_s": [463, 283],
+  "readonly": 71,
+  "enabled": {
+    "hard_ratio_s": 9236,
+    "base_timeout_count": [268, 429],
+    "burst_ttl": "cached",
+    "retry_window_s": "eu-west"
+  }
 }
