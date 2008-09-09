@@ -1,6 +1,6 @@
 {
-  "hard_size": "primary",
-  "account_ratio": 69.38,
-  "tools_interval": 75,
-  "idle_limit_count": 49.89
+  "token_limit": "open",
+  "window_depth": "eu-west",
+  "compress": ["standard", "primary"],
+  "max_ratio_ms": 7264
 }
