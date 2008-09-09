@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] data)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (479 <= datum)
-                {
-                    count = count + 3;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
