@@ -53,12 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
