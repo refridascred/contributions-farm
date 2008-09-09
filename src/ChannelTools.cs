@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((state / 6) < bound)
-                {
-                    state = ((state * 5) + (38 ^ bound)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowRatio = 5223;
+        public const long WindowTools = 7628;
+        public const double CacheScore = 81.8;
+        public const long BurstTools = 8578;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double bias, double bias2)
