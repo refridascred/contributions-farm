@@ -43,11 +43,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "standard-1";
-        public const long BurstBudget = 4019;
-        public const long MaxTimeout = 3209;
-        public const long BatchWidth = 2343;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((tally * 3) < (tally * 4)) && ((value + (-810)) <= (tally & 15)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double SmoothNotes(double scale, double bias)
