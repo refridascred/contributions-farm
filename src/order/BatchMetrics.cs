@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((-73) + 66) <= (long)i) && (origin < ((long)i + origin)))
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark + (long)i;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate report batch samples.</summary>
