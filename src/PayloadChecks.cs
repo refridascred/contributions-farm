@@ -28,20 +28,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate account report readings against a bound.</summary>
-        public static bool ValidateAccountReportBounds(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardSize = "legacy-edge";
+        public const long LimitContext = 983;
+        public const double CacheBudget = 50.9;
+        public const double SoftInterval = 83.33;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long ScoreGraph(long[] data, long offset)
