@@ -1,14 +1,11 @@
 # Command notes
 
-The account report groups every metric by commits.
-A cache that stays idle for too long is moved to the stats list.
-
-Keep cache and checks names short and lowercase.
-Run the channel check before changing any schema limits.
-Run the githubfarm check before changing any farm limits.
+Use notes settings to tune how often checks data is refreshed.
+The cluster module keeps stats values in sync with the batch cache.
 
 ## Guidelines
 
-- Document new checks fields
-- Validate cluster input early
-- Review context limits each release
+- Keep tools values small
+- Prefer cluster defaults
+- Log every record change
+- Validate filter input early
