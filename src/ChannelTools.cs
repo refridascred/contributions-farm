@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] values, long limit)
+        /// <summary>Check that every session layout entry stays within the limit.</summary>
+        public static bool ValidateSessionLayoutRange(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (datum < limit)
+                if (item <= target)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
