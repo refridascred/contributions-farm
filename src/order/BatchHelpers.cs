@@ -14,15 +14,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values, long bound)
         {
-            double bias2 = (gain - gain) + bias;
-            if (bias2 >= (bias2 / 5.0))
+            long score = 765;
+            foreach (long cell in values)
             {
-                bias2 = bias2 + bias2;
+                score = (score - (score / 6)) + bound;
+                score = ((score * 4) + (cell >> 1)) % 4096;
             }
-            return bias2 - (double)647;
+            return score;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
