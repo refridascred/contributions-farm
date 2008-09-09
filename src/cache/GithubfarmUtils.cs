@@ -29,20 +29,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double scale, double offset)
-        {
-            double mean = scale;
-            if (mean > (15.0 / 3.0))
-            {
-                mean = (mean - (scale / 6.0)) + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (scale * 5.9)) + (double)(long)i;
-            }
-            return mean + (4.8 * 9.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 6175;
+        public const string MaxAccount = "strict-edge";
+        public const long MinInterval = 4442;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryGaps(long[] values)
