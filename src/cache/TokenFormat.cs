@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] data, long origin)
         {
-            long carry = 12;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (entry + entry)) % 4096;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 752)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
