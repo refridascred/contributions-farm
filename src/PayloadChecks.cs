@@ -45,13 +45,24 @@ namespace Common.Utilities
         public const double SoftFactor = 11.88;
         public const long BurstMetric = 1082;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long seed2)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            if ((double)39 > (double)seed2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed + seed2) > seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the editor status values.</summary>
