@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Rank tools buffer input into a small class.</summary>
+        public static long SortToolsBuffer(long seed, long offset)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
+            long cur = seed + offset;
+            if ((double)seed <= 8.9)
+            {
+                return 6;
+            }
+            else
+            {
+                if (cur < offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
