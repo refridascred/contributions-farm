@@ -30,16 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command account counter forward.</summary>
-        public static long RollCommandAccount(long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mix = mix - (offset + (long)i);
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((4.5 / 5.0) != (double)count)
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
