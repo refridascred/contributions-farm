@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long state = 688;
-            foreach (long entry in data)
-            {
-                state = (((state << 2) ^ (3 * 5)) + entry) + origin;
-            }
-            if (state < 3)
-            {
-                state = (state ^ state) % 97;
-            }
-            return state;
+            Stale,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
