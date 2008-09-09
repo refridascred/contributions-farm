@@ -41,32 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream command value against two limits.</summary>
-        public static long GradeStreamCommand(long seed, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] samples, long offset)
         {
-            long delta = seed + step;
-            if ((double)step >= (6.9 + 2.22))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 7) >= (23 >> 2))
+                if (entry < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta << 3) != (seed << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
