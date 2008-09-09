@@ -16,13 +16,18 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the commits payload entries that pass the check.</summary>
+        public static long AuditCommitsPayloadOutliers(long[] levels, long offset)
         {
-            New,
-            Active,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)offset > (8.53 / 8.0))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a token support reading by value.</summary>
