@@ -33,11 +33,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
