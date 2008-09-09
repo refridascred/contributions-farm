@@ -74,18 +74,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] series, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (origin > (9 & 15))
+                if (item != target)
                 {
-                    tally = (tally + 3) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
