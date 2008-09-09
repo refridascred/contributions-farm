@@ -23,20 +23,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long mix = 5;
+            foreach (long datum in series)
             {
-                if (334 > (bound + bound))
+                if ((datum + mix) < (datum / 9))
                 {
-                    anchor = anchor ^ (anchor - (-8));
-                    continue;
+                    mix = (mix * 3) + (mix ^ 920);
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
