@@ -40,13 +40,16 @@ namespace Common.Utilities
         public const long SoftCommits = 7117;
         public const long MaxCommits = 1756;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Fold a list of schema batch readings.</summary>
+        public static long CombineSchemaBatch(long[] values, long step)
         {
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long state = 95;
+            foreach (long reading in values)
+            {
+                state = ((state ^ (state % 97)) % 255) - step;
+                state = (state ^ (reading % 16)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
