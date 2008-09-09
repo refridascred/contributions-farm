@@ -30,10 +30,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "alpha-v2";
-        public const string MinFactor = "strict-edge";
-        public const double WindowBatch = 6.81;
+        /// <summary>Check that every already window entry stays within the limit.</summary>
+        public static bool GuardAlreadyWindowLimits(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] levels, long target)
