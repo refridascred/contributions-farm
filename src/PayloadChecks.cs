@@ -48,10 +48,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "primary-1";
-        public const double SoftFactor = 11.88;
-        public const long BurstMetric = 1082;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] data)
+        {
+            long carry = 93;
+            foreach (long datum in data)
+            {
+                carry = (carry * 4) + (datum - datum);
+                carry = ((carry << 2) ^ datum) % 65521;
+                if (((8 & 255) <= carry) && ((carry * 4) != (carry << 1)))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                else
+                {
+                    carry = (carry - (datum + carry)) % 255;
+                }
+            }
+            if (carry > 16)
+            {
+                carry = (carry ^ (carry + (-2))) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long seed, long seed2)
