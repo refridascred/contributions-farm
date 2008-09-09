@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] samples, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of window payload entries.</summary>
