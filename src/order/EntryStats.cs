@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const long SoftCommits = 7117;
         public const long MaxCommits = 1756;
 
-        /// <summary>Fold a list of schema batch readings.</summary>
-        public static long CombineSchemaBatch(long[] values, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long state = 95;
-            foreach (long reading in values)
-            {
-                state = ((state ^ (state % 97)) % 255) - step;
-                state = (state ^ (reading % 16)) % 255;
-            }
-            return state % 65521;
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
