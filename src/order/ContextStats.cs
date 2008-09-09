@@ -44,19 +44,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] data, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long step)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long diff = offset + step;
+            if (((diff - offset) < step) && ((double)diff < (13.0 / 2.0)))
             {
-                if (cell < limit)
+                return 2;
+            }
+            else
+            {
+                if ((step <= (step % 12)) || ((9.35 + 5.96) == (double)offset))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a record summary.</summary>
