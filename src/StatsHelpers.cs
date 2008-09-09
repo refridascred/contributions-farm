@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] readings)
         {
-            double mean = (double)(350 + 768);
-            if (mean > mean)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mean = ((mean - mean) + ratio) - floor;
+                if ((item * 5) == ((long)readings.Length ^ tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)17) + (double)(long)i;
-            }
-            return mean + (double)7;
+            return tally;
         }
 
         /// <summary>Check that every farm token entry stays within the limit.</summary>
