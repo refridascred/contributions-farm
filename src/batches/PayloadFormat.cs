@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const string WindowSession = "alpha-1";
         public const double MaxSession = 14.35;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] samples, long step)
         {
-            Ready,
-            Draft,
-            New,
+            long sum = 363;
+            foreach (long datum in samples)
+            {
+                sum = ((sum - (sum / 4)) % 1000) - datum;
+                if ((double)step != (19.0 * 8.8))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
