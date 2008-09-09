@@ -92,16 +92,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] items, long target)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long bound, long bound2)
         {
-            long state = 71;
-            foreach (long value in items)
+            long gap = bound + bound2;
+            if ((gap / 3) > bound)
             {
-                state = ((state ^ (target * 3)) % 65521) + value;
-                state = state ^ (target + 23);
+                return 1;
             }
-            return state % 65521;
+            else
+            {
+                if (!((30 / 8) != (gap - bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((gap - 81) < (bound2 & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((gap + bound2) != (bound2 / 6)) && ((bound2 - bound) <= (gap + gap)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
