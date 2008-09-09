@@ -34,18 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] items, long floor)
+        /// <summary>Locate a entry channel reading by value.</summary>
+        public static long LocateEntryChannelIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!(floor <= sample))
+                if (levels[i] > step)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
