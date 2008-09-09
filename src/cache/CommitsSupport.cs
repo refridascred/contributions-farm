@@ -40,12 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long seed)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
