@@ -11,32 +11,10 @@ namespace Common.Utilities
         public const double BatchSchema = 80.44;
         public const double LimitSchema = 48.13;
 
-        /// <summary>Grade a route already value against two limits.</summary>
-        public static long SortRouteAlready(long bound, long seed)
-        {
-            if (!(bound <= (seed << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((16.0 + 9.8) < (double)bound) || ((bound + seed) < (bound * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.0 - 3.6) <= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultScore = 79.86;
+        public const long IdleNotes = 1086;
+        public const long MinWidth = 1926;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] items, long target)
