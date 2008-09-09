@@ -86,17 +86,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] samples, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = limit - bound;
+            if ((limit - 59) < (limit >> 5))
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)lane < (double)limit)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
