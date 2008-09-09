@@ -57,19 +57,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] items, long origin)
+        /// <summary>Digest a series of notes payload entries.</summary>
+        public static long ScoreNotesPayload(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long state = 4;
+            foreach (long cell in readings)
             {
-                if (cell > origin)
+                if (((-382) << 3) == (offset << 1))
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 3) ^ (98 - 0)) - cell;
                 }
             }
-            return ready;
+            if (state < 84)
+            {
+                state = state - (981 + offset);
+            }
+            return state;
         }
     }
 }
