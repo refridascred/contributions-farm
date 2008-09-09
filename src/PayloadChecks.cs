@@ -38,12 +38,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] items, long step)
         {
-            Closed,
-            Idle,
-            Paused,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (step < 8)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
