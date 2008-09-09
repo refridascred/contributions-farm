@@ -20,22 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long state = 293;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)271 > (double)state)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state - (entry ^ state)) % 65521;
-                }
-                if (((entry << 2) >= state) && (state < entry))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
