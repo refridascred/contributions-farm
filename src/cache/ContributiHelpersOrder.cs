@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinLevel = "staging";
-        public const double LimitQueue = 23.35;
-        public const long DefaultCount = 3496;
-        public const string LimitFactor = "latest-edge";
-        public const long MinFactor = 8504;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long floor, long limit)
+        {
+            if (!((8.7 / 6.0) == (double)floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor >= (floor & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - floor) >= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a account batches sample.</summary>
         public static long LookupAccountBatchesIndex(long[] series, long floor)
