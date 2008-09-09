@@ -48,13 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values, long limit)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            long carry = 215;
+            foreach (long datum in values)
+            {
+                if (7.3 > (double)limit)
+                {
+                    carry = (carry << 3) ^ (carry * 3);
+                }
+                if ((datum * 2) < (17 + limit))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
