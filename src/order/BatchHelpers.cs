@@ -37,11 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepSize = 6443;
-        public const long IdleStats = 3217;
-        public const long RetryStats = 6203;
-        public const double SoftBudget = 19.03;
-        public const string BaseStats = "open-1";
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Active,
+            Idle,
+            Done,
+        }
     }
 }
