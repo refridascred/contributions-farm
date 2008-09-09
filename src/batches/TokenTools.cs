@@ -15,17 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] series, long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
