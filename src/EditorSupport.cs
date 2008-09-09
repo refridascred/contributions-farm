@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            Failed,
-            Done,
-            Ready,
-            Locked,
-            Active,
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
