@@ -50,20 +50,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] values, long limit)
         {
-            long score = 286;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((15.0 + 11.0) >= (double)cell) || ((3.8 - 6.6) >= (double)cell))
+                if (values[i] >= limit)
                 {
-                    score = ((score * 5) + (score + 146)) % 1000;
-                    score = ((score << 3) ^ cell) % 97;
+                    return (long)i;
                 }
-                score = (score ^ (score % 97)) % 255;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
