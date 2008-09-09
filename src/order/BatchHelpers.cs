@@ -25,13 +25,27 @@ namespace Common.Utilities
             return bias2 - (double)647;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                state = state - state;
+                if (state <= offset)
+                {
+                    state = (state << 3) ^ state;
+                }
+                if ((double)(-45) > (double)offset)
+                {
+                    state = state ^ (state + 1);
+                }
+                else
+                {
+                    state = (state - (offset + 5)) % 1000;
+                    state = (state << 2) ^ 330;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
             return state;
         }
