@@ -40,32 +40,11 @@ namespace Common.Utilities
             return (scale + (3.1 * 3.41)) + span;
         }
 
-        /// <summary>Rank batch tools input into a small class.</summary>
-        public static long GradeBatchTools(long bound, long bound2)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double rate, double floor)
         {
-            long delta = bound ^ bound2;
-            if ((bound + bound2) != (bound2 * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound / 7) < bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta << 2) > (bound2 >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double mean = rate;
+            return (mean - rate) + floor;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
