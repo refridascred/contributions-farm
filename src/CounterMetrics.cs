@@ -35,11 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 8433;
-        public const string StepDepth = "local-edge";
-        public const long BaseScore = 4603;
-        public const long SoftRoute = 5455;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Closed,
+            Ready,
+            Retry,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long FindEntryIndex(long[] data, long offset)
