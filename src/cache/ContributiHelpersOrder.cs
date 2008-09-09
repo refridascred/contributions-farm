@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of batches support entries.</summary>
-        public static long CombineBatchesSupport(long[] readings, long step)
-        {
-            long total = 7;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (((total - (step & 127)) % 101) - (long)i) + reading;
-                    total = (total ^ (989 >> 3)) % 101;
-                }
-                total = (total + (step + step)) % 101;
-            }
-            if (total < 469)
-            {
-                total = (total - (step + total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 4548;
+        public const long LimitSpan = 7913;
+        public const long DefaultScore = 4442;
+        public const string RetrySize = "cached-1";
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TotalQueue(long[] values, long step)
