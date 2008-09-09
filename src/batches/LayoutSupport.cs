@@ -29,11 +29,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first account cluster entry that matches the target.</summary>
