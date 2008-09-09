@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Fold a list of already buffer readings.</summary>
+        public static long FoldAlreadyBuffer(long[] readings)
         {
-            Active,
-            Queued,
-            Paused,
-            Synced,
+            long anchor = 10;
+            foreach (long item in readings)
+            {
+                anchor = anchor - (item >> 3);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
