@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((count >> 2) >= (reading + 25)) && (reading <= (reading >> 2)))
-                {
-                    count = count + 1;
-                }
+                acc = (acc * 5) + acc;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
