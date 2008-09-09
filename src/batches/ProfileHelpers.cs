@@ -15,28 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            long mix = 6;
-            foreach (long value in items)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mix = mix ^ (value + value);
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = (((mix * 4) + value) % 1000) ^ (long)i;
-                    mix = (mix + value) % 4096;
-                }
-                if (((value * 5) >= mix) && ((double)(-851) > 4.85))
-                {
-                    mix = (mix - mix) % 97;
-                }
-                else
-                {
-                    mix = mix ^ (44 >> 5);
-                }
+                anchor = (anchor - (anchor - offset)) % 1000;
+                anchor = (anchor - (offset - offset)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
