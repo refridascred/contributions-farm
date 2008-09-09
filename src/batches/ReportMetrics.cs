@@ -13,19 +13,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] series, long floor)
+        /// <summary>Grade a channel checks value against two limits.</summary>
+        public static long BucketChannelChecks(long step, long step2)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            if ((step + step) > (step ^ 84))
             {
-                if (reading <= floor)
+                return 7;
+            }
+            else
+            {
+                if (step > (step2 + step2))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
