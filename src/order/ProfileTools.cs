@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] samples, long bound)
         {
-            long score = 36;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ (44 * 5)) - cell;
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a support profile value against two limits.</summary>
