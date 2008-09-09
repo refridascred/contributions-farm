@@ -1,8 +1,11 @@
 # githubfarm settings
-poll_delay_pct: stable
-format_delay: 1024
-strict:
-  - green
-  - staging
-  - legacy
-  - standard
+account_retries: 13
+soft_delay_ms:
+  base_capacity_count:
+    - 267
+    - 217
+    - 207
+  sync_ratio_count: 22
+  record_limit: 78.29
+hard_delay_pct: 6511
+audit: 30
