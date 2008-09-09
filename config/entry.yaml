@@ -1,32 +1,38 @@
 # entry settings
-filter_depth:
-  record_timeout:
-    report_timeout: edge
-    layout_delay: staging
-    readonly: 79.23
-    cache_timeout_ms: 2263
-    poll_ratio_s: 47
-  idle_retries_pct: eu-west
-  base_delay:
-    poll_limit_ms:
-      - 331
-      - 261
-    flush_ttl_count: 45.12
-    base_interval: open
-    readonly: false
-  account_threshold: stable
-sync_depth_pct: 47.03
-githubfarm_delay: false
-persist:
-  poll_size: edge
-  warm_retries_pct: edge
-  layout_window:
-    flush_ttl_count: 98
-    command_interval: true
-    warm_delay_count: latest
-    warm_size_count: edge
-  entry_window:
-    - 103
-    - 397
-  poll_threshold: 65.59
-soft_size: 30
+token_retries: staging
+record_ratio:
+  buffer_timeout:
+    - 348
+    - 417
+    - 245
+    - 38
+  warm_threshold_ms: staging
+  min_ratio_s: 30
+  warm_ttl_pct: standard
+  batch_window: 250
+  min_interval: blue
+compress: 30
+enabled:
+  stream_limit:
+    - open
+    - blue
+  enabled: 30
+  dry_run:
+    - standard
+    - edge
+    - edge
+    - blue
+  cache_ttl_ms: 1262
+  min_ratio_s:
+    flush_threshold_pct: 1690
+    min_ttl_pct: primary
+    persist:
+      - primary
+      - cached
+      - staging
+      - strict
+    dry_run: 60
+    graph_ttl: 19.21
+    max_limit_count: false
+  verbose: true
+hard_delay_s: 60
