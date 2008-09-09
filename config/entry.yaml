@@ -1,38 +1,19 @@
 # entry settings
-poll_limit_pct: 92.96
-stream_capacity:
-  readonly:
-    counter_capacity: 45.25
-    poll_ttl_ms: true
-    githubfarm_window:
-      - 4
-      - 4
-      - 200
-    burst_interval_s: 36.27
-  idle_window:
-    schema_size:
-      - standard
-      - fallback
-      - latest
-      - fallback
-    default_limit: false
-    schema_retries: eu-west
-  flush_interval_s: 0.1
-  batch_interval_s: 60.86
-  farm_delay: primary
+farm_ratio:
+  already_window: 23
+  cache_window_count: eu-west
+  max_limit_s:
+    - 339
+    - 178
+    - 59
+  retry_timeout:
+    - green
+    - legacy
+  min_size_s: 500
+  schema_size: 250
 compress:
-  strict: false
-  cache_capacity: local
-  account_limit: 74.06
-  entry_depth:
-    filter_threshold: open
-    enabled: local
-    record_threshold: primary
-  compress:
-    - stable
-    - fallback
-  poll_interval: false
-enabled:
-  - stable
-  - blue
-order_ratio: strict
+  poll_size_count: 55
+  route_delay: 100
+  min_timeout_pct: 9971
+batch_delay: 100
+default_ratio_s: legacy
