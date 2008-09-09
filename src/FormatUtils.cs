@@ -47,12 +47,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] series)
         {
-            Paused,
-            Closed,
-            Synced,
+            long carry = -187;
+            foreach (long entry in series)
+            {
+                if (((entry & 255) < entry) && (19 <= (entry ^ 91)))
+                {
+                    carry = ((carry * 4) + (entry + 96)) % 255;
+                    break;
+                }
+                if (((long)series.Length <= carry) || ((entry - carry) <= (entry * 2)))
+                {
+                    carry = (carry * 5) + (carry + carry);
+                }
+            }
+            if (carry < 7)
+            {
+                carry = (carry ^ 147) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metrics status values.</summary>
