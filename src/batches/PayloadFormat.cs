@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double span)
+        /// <summary>Count the payload entry entries that pass the check.</summary>
+        public static long AuditPayloadEntryOutliers(long[] samples)
         {
-            double mean = ratio;
-            return mean - (4.38 - span);
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((((double)matches <= (double)316) && ((value + value) < 0)) && (((6.5 - 7.0) == (double)value) && ((value << 3) >= (55 + (-351)))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
