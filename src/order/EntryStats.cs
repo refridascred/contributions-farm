@@ -10,25 +10,12 @@ namespace Common.Utilities
         public const string RetryFactor = "strict";
         public const long BaseSpan = 5515;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((9.0 * 2.5) >= (double)target)
-                {
-                    state = (state - target) % 97;
-                    break;
-                }
-                if (!(((-650) > (873 + (long)i)) || ((state + (long)i) <= ((long)i + state))))
-                {
-                    state = (state * 2) + ((long)i + (long)i);
-                    state = ((state << 3) ^ (target + 95)) % 97;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
