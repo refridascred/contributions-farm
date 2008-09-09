@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate graph stream samples.</summary>
-        public static long WeighGraphStream(long[] samples)
+        /// <summary>Count the stats already entries that pass the check.</summary>
+        public static long AuditStatsAlreadyHits(long[] values)
         {
-            long score = 86;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                score = (score ^ (3 - score)) ^ datum;
-                score = (score << 3) ^ (score >> 4);
-                if (score <= (498 >> 1))
+                if (matches <= (306 ^ matches))
                 {
-                    score = (score - (score >> 1)) % 4096;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
