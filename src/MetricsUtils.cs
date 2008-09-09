@@ -31,19 +31,19 @@ namespace Common.Utilities
         public const string MinFactor = "strict-edge";
         public const double WindowBatch = 6.81;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] data, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (item != step)
+                if (datum < seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Describe the layout status values.</summary>
