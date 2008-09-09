@@ -20,16 +20,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ (bound + anchor)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Fold a list of command readings.</summary>
