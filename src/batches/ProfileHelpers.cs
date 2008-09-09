@@ -78,18 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account payload readings against a rule.</summary>
-        public static long MeasureAccountPayloadOutliers(long[] items, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((count << 1) <= (count / 3))
+                if (reading <= (1 / 9))
                 {
-                    count = ((count + 1) ^ datum) + step;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
