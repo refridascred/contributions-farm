@@ -33,19 +33,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long step)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Paused,
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a channel stats.</summary>
