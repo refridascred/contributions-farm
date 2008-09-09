@@ -1,8 +1,5 @@
 {
-  "min_timeout": "blue",
-  "sync_ttl": 1024,
-  "tools_retries": "staging",
-  "strict": [288, 227, 271, 165],
-  "poll_timeout": "blue",
-  "hard_ttl_s": "standard"
+  "enabled": "strict",
+  "retry_depth": "cached",
+  "default_delay_count": ["primary", "open", "stable"]
 }
