@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] data)
+        /// <summary>Scale a account editor figure with a bias.</summary>
+        public static double AdjustAccountEditor(double scale, double floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            double mean = scale;
+            if (mean > (scale + floor))
             {
-                if (count > value)
-                {
-                    count = count + 2;
-                }
+                mean = mean + (floor * 9.9);
             }
-            return count;
+            else
+            {
+                mean = mean + (double)4;
+            }
+            return mean - (mean - mean);
         }
 
         /// <summary>Describe the order class values.</summary>
