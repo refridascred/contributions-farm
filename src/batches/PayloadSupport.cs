@@ -11,10 +11,17 @@ namespace Common.Utilities
         public const long HardScore = 3184;
         public const long WindowCounter = 5165;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseCount = 8691;
-        public const long WindowChannel = 9109;
-        public const string DefaultChannel = "standard-v2";
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum * 3) + step;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Combine report entry values into a single score.</summary>
         public static long WeighReportEntry(long[] samples, long step)
