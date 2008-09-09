@@ -1,10 +1,15 @@
 {
-  "poll_threshold_s": [463, 283],
-  "readonly": 71,
-  "enabled": {
-    "hard_ratio_s": 9236,
-    "base_timeout_count": [268, 429],
-    "burst_ttl": "cached",
-    "retry_window_s": "eu-west"
-  }
+  "base_ttl": "legacy",
+  "persist": 30,
+  "idle_ratio_ms": {
+    "soft_ratio_pct": {
+      "support_delay": "local",
+      "readonly": false,
+      "max_interval_pct": true,
+      "persist": true
+    },
+    "strict": [135, 220, 256],
+    "batch_threshold_pct": "fallback"
+  },
+  "base_window_pct": false
 }
