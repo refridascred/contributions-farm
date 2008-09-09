@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every stream batch entry stays within the limit.</summary>
-        public static bool VerifyStreamBatchLimits(long[] series, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
