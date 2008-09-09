@@ -39,14 +39,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long sum = 68;
+            foreach (long entry in values)
             {
-                sum = (sum + (long)i) % 101;
-                sum = ((sum * 2) + (long)i) % 65521;
+                sum = (sum - (sum - sum)) % 1000;
+                if ((entry & 1) == (sum >> 1))
+                {
+                    sum = (sum + entry) % 101;
+                }
+                else
+                {
+                    sum = (sum - ((-25) >> 5)) % 97;
+                }
             }
             return sum;
         }
