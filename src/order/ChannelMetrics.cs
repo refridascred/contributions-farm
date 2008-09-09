@@ -31,22 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] series, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] values, long origin)
         {
-            long mix = -84;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (7 >= (limit / 5))
+                if (value != origin)
                 {
-                    mix = ((mix << 3) ^ (reading & 3)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 279)
-            {
-                mix = (mix + 73) % 65521;
-            }
-            return mix % 1000;
+            return ok;
         }
     }
 }
