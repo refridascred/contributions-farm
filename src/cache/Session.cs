@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double gain, double bias)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double load = 4.88;
-            if (load < (double)3)
-            {
-                load = load + (gain / 6.0);
-            }
-            return load - (bias + bias);
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
