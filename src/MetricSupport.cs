@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 16.01;
-        public const double BatchSize = 91.14;
-        public const double IdleEditor = 34.71;
-        public const long DefaultEditor = 4736;
-        public const long SoftWidth = 122;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (carry > (158 >> 2))
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 97;
+                }
+                else
+                {
+                    carry = carry + (carry - carry);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long origin)
