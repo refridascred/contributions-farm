@@ -34,14 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Idle,
-            Ready,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitFactor = 4991;
+        public const long RetryToken = 7708;
+        public const long StepFactor = 6486;
+        public const long BaseLevel = 2638;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] series, long limit)
