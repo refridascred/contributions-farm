@@ -37,38 +37,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a context session pair into a bucket.</summary>
-        public static long ClassifyContextSession(long offset, long bound)
+        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
+        public static long SeriesGithubfarmCluster(long step)
         {
-            if ((3 - bound) == (6 & 127))
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (offset >= (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (1 > (offset - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)offset != (0.56 + 6.8)) && (bound >= (bound + offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
