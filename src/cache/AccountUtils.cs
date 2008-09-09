@@ -39,24 +39,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long step, long floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if (((step + step) <= step) || ((8 * 2) > (step & 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((1.43 / 8.0) != (double)step) || ((double)step > (3.0 - 4.3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
