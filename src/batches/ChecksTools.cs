@@ -66,21 +66,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up already filter samples.</summary>
-        public static long OverlapAlreadyFilterCount(long[] values)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] == seed)
                 {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
