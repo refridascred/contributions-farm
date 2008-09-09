@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream farm entry that matches the target.</summary>
-        public static long SeekStreamFarmIndex(long[] samples, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
+                if (16 > (sample + sample))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next format account value.</summary>
