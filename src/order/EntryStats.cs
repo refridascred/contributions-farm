@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long bound)
         {
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark - 22) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry info.</summary>
