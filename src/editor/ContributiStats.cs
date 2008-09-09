@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi stats helpers.</summary>
     public static class ContributiStats
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Draft,
-            Locked,
-            Paused,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleScore = 10.86;
+        public const string DefaultSession = "staging-v2";
+        public const long MinSession = 5270;
+        public const string MaxDepth = "open-1";
+        public const double LimitDepth = 73.58;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatMatches(long[] items)
