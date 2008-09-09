@@ -37,18 +37,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report cache entries.</summary>
-        public static long DigestReportCache(long[] data, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long offset)
         {
-            long acc = 1;
-            foreach (long entry in data)
+            long step = limit ^ offset;
+            if (limit <= (step + limit))
             {
-                if ((entry * 3) > (45 + acc))
+                return 5;
+            }
+            else
+            {
+                if ((7.0 / 2.0) != (double)step)
                 {
-                    acc = acc ^ (target ^ entry);
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return acc;
         }
     }
 }
