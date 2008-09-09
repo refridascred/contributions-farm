@@ -36,11 +36,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 11.86;
-        public const string IdleBudget = "standard-edge";
-        public const long MaxOrder = 5377;
-        public const double BatchSpan = 83.01;
-        public const long CacheSpan = 1174;
+        public const string DefaultWidth = "local-1";
+        public const long CacheOrder = 2118;
+        public const double WindowScore = 69.1;
+        public const long DefaultOrder = 3987;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
