@@ -20,18 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 1747;
+        public const long CacheRecord = 2409;
+        public const long MinDepth = 6141;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BaseTimeout = 6192;
