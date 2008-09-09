@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 3835;
+        public const long BurstCluster = 6423;
+        public const long StepTimeout = 3341;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryOutliers(long[] readings)
