@@ -44,9 +44,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 1543;
-        public const double LimitInterval = 75.4;
-        public const long BaseGithubfarm = 1417;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
