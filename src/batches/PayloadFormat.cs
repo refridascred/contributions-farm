@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double rate, double offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            double load = offset * 8.3;
-            if (load <= (load / 8.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - 3.81) - rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - (offset - 5.44);
+            return tally;
         }
 
         /// <summary>Project the next cache value.</summary>
