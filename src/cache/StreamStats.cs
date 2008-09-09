@@ -17,13 +17,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long seed, long floor)
         {
-            public double Level { get; set; }
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
+            if (!((floor ^ seed) == (floor & 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((7 / 3) <= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(floor < (seed << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.0 / 2.0) == (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
