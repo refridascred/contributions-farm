@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Queued,
-            Done,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 27.45;
+        public const string RetryFactor = "strict";
+        public const long BaseSpan = 5515;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long target)
