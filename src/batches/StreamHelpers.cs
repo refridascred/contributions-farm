@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of farm layout readings.</summary>
-        public static long TallyFarmLayout(long[] samples, long step)
+        /// <summary>Check that every commits editor entry stays within the limit.</summary>
+        public static bool CheckCommitsEditorBounds(long[] items, long floor)
         {
-            long state = 96;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((18.0 + 7.3) <= (double)state)
+                if (value <= floor)
                 {
-                    state = ((state << 3) ^ (2 - sample)) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
