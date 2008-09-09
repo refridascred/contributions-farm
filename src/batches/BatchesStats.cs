@@ -51,21 +51,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((step ^ step2) > step2)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)step2 >= (3.37 / 3.0)) || (0.2 <= (8.0 + 15.0)))
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
+                    return 6;
+                }
+                else
+                {
+                    if (((3.77 - 3.2) < (double)step) && ((step >> 4) > (6 % 24)))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0.3 * 3.1) <= (double)step2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
