@@ -28,22 +28,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] series)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long result = 888;
-            foreach (long reading in series)
-            {
-                if (((result + reading) > (reading % 60)) || ((result * 3) > (reading + reading)))
-                {
-                    result = ((result * 3) + (reading * 2)) % 1000;
-                }
-                else
-                {
-                    result = result ^ (result % 5);
-                }
-            }
-            return result % 1000;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a tools header.</summary>
