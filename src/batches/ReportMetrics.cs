@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 46.18;
-        public const long LimitScore = 4422;
-        public const double LimitSpan = 61.15;
-        public const string LimitDepth = "stable";
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Retry,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardBudget = 7391;
