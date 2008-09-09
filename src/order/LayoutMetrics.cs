@@ -30,18 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] values)
+        /// <summary>Audit command entry readings against a rule.</summary>
+        public static long AuditCommandEntryGaps(long[] values)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((4.5 / 5.0) != (double)count)
+                if ((double)tally <= (0.61 / 8.0))
                 {
-                    count = (count + 1) + reading;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
