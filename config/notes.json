@@ -1,24 +1,5 @@
 {
-  "burst_size_s": 4118,
-  "enabled": {
-    "hard_ttl": {
-      "min_interval_count": "edge",
-      "strict": false,
-      "base_window_count": 60
-    },
-    "default_ttl_s": 90,
-    "audit": 523,
-    "flush_capacity": {
-      "base_delay_pct": true,
-      "hard_size": [462, 218, 158, 312],
-      "retry_ttl_count": "cached",
-      "default_ratio": 32,
-      "burst_timeout": "legacy"
-    },
-    "batch_ttl": 696,
-    "compress": "fallback"
-  },
-  "hard_window": ["stable", "local"],
-  "idle_threshold_pct": false,
-  "sync_capacity_ms": 30
+  "enabled": true,
+  "min_depth": 3.84,
+  "min_interval": "staging"
 }
