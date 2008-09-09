@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] values, long offset)
         {
-            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] == offset)
                 {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a queue summary.</summary>
