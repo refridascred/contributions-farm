@@ -50,22 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] values, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((datum << 1) >= (746 + limit)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
