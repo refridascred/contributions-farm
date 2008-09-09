@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Combine buffer commits values into a single score.</summary>
