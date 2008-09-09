@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinCount = 27.7;
-        public const double DefaultSize = 43.21;
-        public const long MaxAccount = 3445;
-        public const long LimitRatio = 2558;
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long CombineCache(long[] series)
