@@ -31,19 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] series, long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long bound)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum > limit)
+                acc = (acc + bound) % 97;
+                if ((double)(long)i <= (14.0 + 8.7))
                 {
-                    found = false;
-                    break;
+                    acc = (acc << 3) ^ ((long)i >> 1);
+                    acc = (acc ^ (acc + bound)) % 255;
                 }
+                acc = acc + (acc >> 4);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
