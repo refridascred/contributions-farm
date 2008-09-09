@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] data, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                acc = ((acc << 3) ^ (origin + origin)) % 1000;
-                acc = ((acc << 3) ^ (origin - (long)i)) % 255;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a graph record.</summary>
