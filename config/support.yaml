@@ -1,4 +1,9 @@
 # support settings
-default_timeout_s: 85.9
-min_window: true
-hard_interval_count: 3281
+contributi_timeout: standard
+route_ttl: false
+readonly: true
+burst_capacity_ms: 96.24
+compress:
+  - cached
+  - legacy
+profile_capacity: primary
