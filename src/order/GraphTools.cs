@@ -20,19 +20,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] series, long target)
+        /// <summary>Validate tools notes readings against a bound.</summary>
+        public static bool VerifyToolsNotesLimits(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (value != target)
+                if (sample <= offset)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
