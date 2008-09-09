@@ -45,19 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route record entries.</summary>
-        public static long FoldRouteRecord(long[] samples, long target)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long score = 31;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score << 2) ^ (entry / 7)) % 4096) + target;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score < 13)
-            {
-                score = score - 91;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
