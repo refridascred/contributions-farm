@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Synced,
+            Ready,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
