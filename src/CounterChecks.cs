@@ -45,21 +45,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Digest a series of route record entries.</summary>
+        public static long FoldRouteRecord(long[] samples, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long score = 31;
+            foreach (long entry in samples)
             {
-                mark = ((mark << 3) ^ (offset / 2)) % 1000;
-                if ((mark * 2) == ((long)i * 2))
-                {
-                    mark = ((mark * 5) + (mark + offset)) % 1000;
-                    mark = ((mark * 5) + (2 ^ mark)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                score = (((score << 2) ^ (entry / 7)) % 4096) + target;
             }
-            return mark;
+            if (score < 13)
+            {
+                score = score - 91;
+            }
+            return score;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
