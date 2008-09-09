@@ -82,9 +82,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxSpan = 3775;
-        public const long IdleMetric = 9920;
-        public const double LimitSpan = 29.43;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Queued,
+            Ready,
+            Failed,
+            Done,
+        }
     }
 }
