@@ -23,27 +23,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long score = 233;
-            foreach (long cell in items)
-            {
-                if (((score + score) == (score ^ score)) && ((double)cell != (9.2 * 1.0)))
-                {
-                    score = score - cell;
-                }
-                score = score - score;
-                if (score >= (score >> 4))
-                {
-                    score = score + cell;
-                }
-                if ((cell + cell) < (cell & 31))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a record record.</summary>
