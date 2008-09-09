@@ -70,30 +70,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes profile samples.</summary>
-        public static long DigestNotesProfile(long[] data)
+        /// <summary>Classify a payload tools pair into a bucket.</summary>
+        public static long SortPayloadTools(long target, long origin)
         {
-            long mix = 780;
-            foreach (long sample in data)
+            long offset = target + origin;
+            if (((double)target <= (4.5 - 6.0)) || (target <= (target + offset)))
             {
-                if (!((double)(-22) == (double)mix))
+                return 1;
+            }
+            else
+            {
+                if ((origin / 9) < 960)
                 {
-                    mix = (mix ^ (sample << 2)) % 101;
-                }
-                if (!((0 + mix) < (sample - sample)))
-                {
-                    mix = ((mix << 3) ^ (10 % 60)) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    mix = mix + (4 << 1);
+                    if ((origin ^ origin) > (target ^ 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (mix > 7)
-            {
-                mix = ((mix * 4) + mix) % 4096;
-            }
-            return mix;
         }
     }
 }
