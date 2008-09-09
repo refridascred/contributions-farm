@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] values, long origin)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long carry = 9;
-            foreach (long sample in values)
-            {
-                if (carry > (carry ^ carry))
-                {
-                    carry = (carry ^ origin) ^ sample;
-                }
-            }
-            return carry % 1000;
+            New,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define token limits and defaults.</summary>
