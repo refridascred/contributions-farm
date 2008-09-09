@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long sum = 42;
-            foreach (long item in readings)
-            {
-                if (item < (sum + item))
-                {
-                    sum = (sum - sum) - target;
-                }
-            }
-            return sum % 97;
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
