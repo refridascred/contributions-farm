@@ -1,5 +1,8 @@
 # entry settings
-soft_capacity: 168
-burst_threshold: 30
-editor_ttl: strict
-warm_depth_pct: true
+batch_limit: 87
+cache_capacity: 29.73
+tools_retries: local
+account_interval:
+  - strict
+  - green
+sync_timeout_pct: true
