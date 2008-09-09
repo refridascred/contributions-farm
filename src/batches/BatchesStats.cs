@@ -38,14 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Locate a graph notes reading by value.</summary>
+        public static long LookupGraphNotesIndex(long[] series, long seed)
         {
-            Done,
-            Active,
-            Locked,
-            Draft,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches kind values.</summary>
