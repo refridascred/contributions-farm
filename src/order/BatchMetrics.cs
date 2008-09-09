@@ -45,38 +45,17 @@ namespace Common.Utilities
         public const long SoftDepth = 512;
         public const long BatchContext = 7609;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long offset, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long offset)
         {
-            if ((limit + limit) <= offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit >= (368 << 2))
+                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - 7) != (offset + 75))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit ^ offset) < (limit & 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
