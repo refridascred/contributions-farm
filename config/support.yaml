@@ -1,10 +1,14 @@
 # support settings
-poll_retries_count:
-  - staging
-  - latest
-  - fallback
-  - green
-tools_ttl: 7605
-schema_limit: legacy
-warm_threshold: strict
-min_timeout_ms: 82
+enabled:
+  min_timeout: edge
+  max_limit: 87.93
+  persist: false
+  batch_timeout_s: 77.81
+  entry_window: 905
+sync_capacity_pct: 606
+warm_retries:
+  - standard
+  - standard
+  - stable
+  - eu-west
+payload_delay: 25
