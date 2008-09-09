@@ -47,21 +47,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                long delta = (acc - 643) * 4;
-                if ((delta * 4) < (delta + delta))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxTimeout = 9466;
+        public const double LimitSpan = 69.05;
+        public const string BurstSpan = "latest-v2";
+        public const long IdleBatch = 8059;
+        public const string BaseBatch = "standard-edge";
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
