@@ -1,20 +1,5 @@
 {
-  "profile_timeout": ["latest", "blue", "edge", "eu-west"],
-  "persist": {
-    "max_delay_ms": "eu-west",
-    "soft_threshold": 89.74,
-    "dry_run": 8
-  },
-  "sync_capacity_pct": "edge",
-  "token_depth": {
-    "support_depth": "fallback",
-    "hard_threshold_ms": ["green", "local"],
-    "sync_depth_count": {
-      "audit": "cached",
-      "min_depth_s": 70,
-      "sync_retries_pct": true,
-      "queue_limit": "stable"
-    },
-    "checks_ttl": [201, 49]
-  }
+  "route_capacity": 30,
+  "min_ttl_ms": ["green", "strict", "latest"],
+  "default_size_count": "eu-west"
 }
