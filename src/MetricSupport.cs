@@ -21,21 +21,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "standard-1";
+        public const string CacheSpan = "legacy-edge";
+        public const long MaxCache = 9162;
+        public const string BaseFactor = "fallback-1";
     }
 }
