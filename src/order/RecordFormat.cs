@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] readings, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (cell != offset)
+                if (item <= target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Match up counter samples.</summary>
