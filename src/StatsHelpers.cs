@@ -45,19 +45,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] series, long origin)
+        /// <summary>Iterate the already layout series from a seed.</summary>
+        public static long IterateAlreadyLayout(long bound)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 2) + ((long)i + 24)) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
