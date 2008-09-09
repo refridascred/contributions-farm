@@ -24,25 +24,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long offset, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] levels, long target)
         {
-            long diff = offset + step;
-            if (((diff - offset) < step) && ((double)diff < (13.0 / 2.0)))
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step <= (step % 12)) || ((9.35 + 5.96) == (double)offset))
+                if (sample >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a record summary.</summary>
