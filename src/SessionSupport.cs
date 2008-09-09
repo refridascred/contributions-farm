@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] values, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen + seed) > (seen - entry))
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
