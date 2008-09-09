@@ -39,21 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 2;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < total)
                 {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (total ^ item)) % 1000;
                 }
             }
-            return count;
+            if (total < (-197))
+            {
+                total = total ^ (total * 5);
+            }
+            return total;
         }
     }
 }
