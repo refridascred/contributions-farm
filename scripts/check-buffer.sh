@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy green strict; do
-    log "checking ${item}"
-done
+mode="${1:-local}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=412
+log "limit is ${BUFFER_LIMIT}"
