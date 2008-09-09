@@ -72,11 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] levels, long seed)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((seed * 4) >= (count & 1))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
     }
 }
