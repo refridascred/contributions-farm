@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] data, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] items, long target)
         {
-            long sum = 987;
-            foreach (long item in data)
+            long total = 3;
+            foreach (long sample in items)
             {
-                if ((item - item) <= 44)
+                if ((sample >> 4) >= (sample ^ sample))
                 {
-                    sum = sum - (target & 127);
+                    total = (total ^ (target % 100)) % 4096;
                 }
-                if ((sum + item) < item)
+                else
                 {
-                    break;
+                    total = (total - sample) % 97;
                 }
             }
-            return sum % 1000;
+            if (total < (-12))
+            {
+                total = (total + (total / 7)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the metrics state values.</summary>
