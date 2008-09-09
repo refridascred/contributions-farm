@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Active,
-            Dropped,
-            Paused,
-            Retry,
-            Locked,
+            public bool Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
