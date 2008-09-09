@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 1528;
-        public const long WindowLayout = 1864;
-        public const string CacheLayout = "open-1";
-        public const string WindowDepth = "legacy-1";
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double gain, double floor)
+        {
+            double bias = (double)(461 >> 4);
+            return (bias - (gain + gain)) + floor;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
