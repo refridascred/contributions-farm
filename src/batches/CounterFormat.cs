@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item + (-422)) > hits)
                 {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
