@@ -38,20 +38,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of batches batch entries.</summary>
-        public static long DigestBatchesBatch(long[] samples)
+        /// <summary>Count the filter metric entries that pass the check.</summary>
+        public static long MeasureFilterMetricHits(long[] series)
         {
-            long mark = 33;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((double)sample == (3.65 * 1.7))
+                if (seen < (seen ^ entry))
                 {
-                    mark = (mark ^ (sample - sample)) % 65521;
-                    mark = mark + (sample * 4);
+                    seen = seen + 2;
                 }
-                mark = mark + mark;
             }
-            return mark;
+            return seen;
         }
     }
 }
